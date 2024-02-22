@@ -1,10 +1,10 @@
 # LCOM Project
 
-LCOM Project for group T&lt;m&gt;&lt;n&gt;G&lt;p&gt;&lt;q&gt;.
+LCOM Project for group T05-G02.
 
 Group members:
 
-1. &lt;first name&gt; &lt;family name&gt; (&lt;email address&gt;)
-2. &lt;first name&gt; &lt;family name&gt; (&lt;email address&gt;)
-3. &lt;first name&gt; &lt;family name&gt; (&lt;email address&gt;)
-4. &lt;first name&gt; &lt;family name&gt; (&lt;email address&gt;)
+1. Pedro Fonseca       (up202108653@fe.up.pt)
+2. José Quintas        (up202108712@fe.up.pt)
+3. Maria Laranjeira    (up202004453@fe.up.pt)
+4. Manuel Silva        (up202108874@fe.up.pt)
