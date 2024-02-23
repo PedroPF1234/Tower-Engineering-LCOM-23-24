@@ -66,14 +66,14 @@ int(kbd_test_scan)() {
 
             else {
               if (scancode[0]) {
-                if (scancode[1] & 0xF0)
+                if (scancode[1] & 0x80)
                   kbd_print_scancode(BREAK, 2, &scancode[0]);
                 else
                   kbd_print_scancode(MAKE, 2, &scancode[0]);
                 scancode[0] = 0;
               }
               else {
-                if (scancode[1] & 0xF0)
+                if (scancode[1] & 0x80)
                   kbd_print_scancode(BREAK, 1, &scancode[1]);
                 else
                   kbd_print_scancode(MAKE, 1, &scancode[1]);

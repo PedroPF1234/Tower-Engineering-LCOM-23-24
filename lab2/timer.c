@@ -55,7 +55,6 @@ int (timer_subscribe_int)(uint8_t *bit_no) {
 
   if (sys_irqsetpolicy(TIMER0_IRQ, IRQ_REENABLE, &hook_id)) return 1;
   
-  
   return 0;
 }
 
