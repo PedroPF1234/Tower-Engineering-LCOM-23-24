@@ -1,0 +1,25 @@
+@lcflib.a:2019, lcf_start
+  kbd_test_scan()
+  @kbc.c:16, kbc_subscribe_int
+    sys_irqsetpolicy(KBC_IRQ, IRQ_REENABLE | IRQ_EXCLUSIVE, &hook_id)
+  > sys_irqsetpolicy(1, 3, addr: 0x822c888 [1])
+  < sys_irqsetpolicy(1, 3, addr: 0x822c888 [10]) -> (ret: 0)
+  @lab3.c:48, kbd_test_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff710, addr: 0xeffff758)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000010]>)
+  @lab3.c:57, kbd_test_scan
+    kbc_ih()
+    @utils.c:18, util_sys_inb
+      sys_inb(port, &value32)
+    > sys_inb(0x64, addr: 0xeffff628)
+    < sys_inb(0x64, addr: 0xeffff628 [0x1d = 0b00011101])
+    @utils.c:21, util_sys_inb
+      util_get_LSB(value32, value)
+    > util_get_LSB(0x001d, addr: 0xeffff64b)
+    < util_get_LSB(0x001d, addr: 0xeffff64b [0x1d]) -> (ret: 0)
+    @kbc.c:38, kbc_ih
+      micros_to_ticks(DELAY_US)
+    @kbc.c:38, kbc_ih
+      tickdelay(micros_to_ticks(DELAY_US))
+    > tickdelay(1 [16.7 ms])

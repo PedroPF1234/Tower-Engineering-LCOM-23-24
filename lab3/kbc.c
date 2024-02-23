@@ -3,18 +3,50 @@
 
 #include "i8042.h"
 
+#define LAB3
+
 int hook_id = KBC_IRQ;
+uint8_t scancode[2] = {0, 0};
+int ctr = 0;
 
 int (kbc_subscribe_int)(uint8_t *bit_no) {
   if (bit_no == NULL) return 1;
   *bit_no = hook_id;
 
-  if (sys_irqsetpolicy(KBC_IRQ, IRQ_REENABLE | IRQ_EXCLUSIVE, &bit_no)) return 1;
+  if (sys_irqsetpolicy(KBC_IRQ, IRQ_REENABLE | IRQ_EXCLUSIVE, &hook_id)) return 1;
 
   return 0;
 }
 
-int (kbs_unsubscribe_int)() {
+int (kbc_unsubscribe_int)() {
   if (sys_irqrmpolicy(&hook_id)) return 1;
   return 0;
+}
+
+void (kbc_ih)() {
+
+  uint8_t status = 0;
+  uint8_t retries = 3;
+
+  for (size_t i = 0; i < retries; i++) {
+
+    if (util_sys_inb(KBC_STATUS_RG, &status)) return;
+    #ifdef LAB3
+    ctr++;
+    #endif
+
+    //tickdelay(micros_to_ticks(DELAY_US));
+
+    if (status & (KBC_TRANSMIT_TIMEOUT_ERR | KBC_RECEIVE_TIMEOUT_ERR | KBC_PARITY_ERR)) return;
+
+    if (status & KBC_OUT_BUFFER_FULL) {
+      if (util_sys_inb(KBC_DATA_REG, &scancode[1])) return;
+      #ifdef LAB3
+      ctr++;
+      #endif
+      break;
+    }
+  }
+
+  return;
 }
