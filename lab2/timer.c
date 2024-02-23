@@ -48,6 +48,11 @@ int (timer_set_frequency)(uint8_t timer, uint32_t freq) {
 }
 
 int (timer_subscribe_int)(uint8_t *bit_no) {
+
+  if (bit_no == NULL) return 1;
+
+  *bit_no = hook_id;
+
   if (sys_irqsetpolicy(TIMER0_IRQ, IRQ_REENABLE, &hook_id)) return 1;
   
   
