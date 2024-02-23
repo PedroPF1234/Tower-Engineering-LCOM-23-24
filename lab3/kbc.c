@@ -3,21 +3,21 @@
 
 #include "i8042.h"
 
-int hook_id = KBC_IRQ;
+int kbc_hook_id = KBC_IRQ;
 uint8_t scancode[2] = {0, 0};
 gid_t ctr = 0;
 
 int (kbc_subscribe_int)(uint8_t *bit_no) {
   if (bit_no == NULL) return 1;
-  *bit_no = hook_id;
+  *bit_no = kbc_hook_id;
 
-  if (sys_irqsetpolicy(KBC_IRQ, IRQ_REENABLE | IRQ_EXCLUSIVE, &hook_id)) return 1;
+  if (sys_irqsetpolicy(KBC_IRQ, IRQ_REENABLE | IRQ_EXCLUSIVE, &kbc_hook_id)) return 1;
 
   return 0;
 }
 
 int (kbc_unsubscribe_int)() {
-  if (sys_irqrmpolicy(&hook_id)) return 1;
+  if (sys_irqrmpolicy(&kbc_hook_id)) return 1;
   return 0;
 }
 
