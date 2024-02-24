@@ -11,6 +11,8 @@
 
 // Keyboard Controller Commands and Interrupt Identifiers
 
+#define MAX_RETRIES 5 // Maximum Number of Tries to Read/Write to KBC
+
 #define KBC_ACK 0xFA // Acknowledgment Byte
 #define KBC_RESEND 0xFE // Resend Byte
 

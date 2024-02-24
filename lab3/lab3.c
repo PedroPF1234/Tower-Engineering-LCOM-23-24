@@ -91,8 +91,6 @@ int(kbd_test_scan)() {
 
   if (kbc_unsubscribe_int()) return 1;
 
-  if (kbd_print_no_sysinb(ctr)) return 1;
-
   return 0;
 }
 
