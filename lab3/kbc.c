@@ -49,7 +49,7 @@ void (kbc_ih)() {
   return;
 }
 
-int (kbd_write_cmdb)(uint8_t cmd) {
+int (kbd_write_cmdb)(uint8_t port, uint8_t cmd) {
   uint8_t status = 0;
   uint8_t retries = 3;
 
@@ -67,12 +67,53 @@ int (kbd_write_cmdb)(uint8_t cmd) {
       continue;
     }
 
-    if (sys_outb(KBC_COMMAND_REG, KBC_WRITE_COMMAND_BYTE)) return 1;
-
-    if (sys_outb(KBC_INPUT_BUFFER, cmd)) return 1;
-
+    if (sys_outb(port, cmd)) return 1;
     break;
   }
+
+  return 0;
+}
+
+int (kbd_read_cmdb)(uint8_t port, uint8_t *cmd) {
+  uint8_t status = 0;
+  uint8_t retries = 3;
+
+  for (size_t i = 0; i < retries; i++) {
+
+    if (util_sys_inb(KBC_STATUS_RG, &status)) return 1;
+    #ifdef LAB3
+    ctr++;
+    #endif
+
+    if (status & (KBC_TRANSMIT_TIMEOUT_ERR | KBC_RECEIVE_TIMEOUT_ERR | KBC_PARITY_ERR)) return 1;
+
+    if (status & KBC_OUT_BUFFER_FULL) {
+      if (util_sys_inb(port, cmd)) return 1;
+      #ifdef LAB3
+      ctr++;
+      #endif
+      break;
+    }
+  }
+
+  return 0;
+}
+
+int (kbd_reenable_interrupts)() {
+
+  uint8_t cmd;
+
+  if (kbd_write_cmdb(KBC_COMMAND_REG, KBC_READ_COMMAND_BYTE)) return 1;
+
+  if (kbd_read_cmdb(KBC_OUTPUT_BUFFER, &cmd)) return 1;
+
+  cmd |= KBC_ENABLE_KBD_INT;
+
+  if (kbd_write_cmdb(KBC_COMMAND_REG, KBC_WRITE_COMMAND_BYTE)) return 1;
+
+  if (kbd_write_cmdb(KBC_INPUT_BUFFER, cmd)) return 1;
+
+  if (kbd_print_no_sysinb(ctr)) return 1;
 
   return 0;
 }
