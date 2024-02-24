@@ -133,7 +133,7 @@ int(kbd_test_poll)() {
 int(kbd_test_timed_scan)(uint8_t n) {
   int ipc_status;
   message msg;
-  uint8_t r;
+  int r;
   uint8_t kbc_bit_no;
   uint8_t timer_bit_no;
   uint8_t esc_found = 1;

@@ -10,8 +10,4 @@ int (mouse_write_cmdb)(uint8_t cmd);
 
 int (mouse_read_cmdb)(uint8_t *info);
 
-int (mouse_enable_data_reporting)();
-
-int (mouse_disable_data_reporting)();
-
 void (mouse_ih)();

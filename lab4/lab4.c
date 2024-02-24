@@ -38,11 +38,11 @@ int main(int argc, char *argv[]) {
 int (mouse_test_packet)(uint32_t cnt) {
   int ipc_status;
   message msg;
-  uint8_t r;
+  int r;
   uint8_t mouse_bit_no;
 
+  if (mouse_write_cmdb(KBC_MOUSE_ENABLE_STREAM_MODE_REPORTING)) return 1;
   if (mouse_subscribe_int(&mouse_bit_no)) return 1;
-  if (mouse_enable_data_reporting()) return 1;
 
   while (cnt) {
     if ((r = driver_receive(ANY, &msg, &ipc_status)) != 0) {
@@ -67,8 +67,8 @@ int (mouse_test_packet)(uint32_t cnt) {
     }
   }
 
-  if (mouse_disable_data_reporting()) return 1;
   if (mouse_unsubscribe_int()) return 1;
+  if (mouse_write_cmdb(KBC_MOUSE_DISABLE_STREAM_MODE_REPORTING)) return 1;
 
   return 0;
 }

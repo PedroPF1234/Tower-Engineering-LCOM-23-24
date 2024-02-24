@@ -4,7 +4,7 @@
 #include "../lab3/i8042.h"
 #include "kbc.h"
 
-int mouse_hook_id = 12;
+int mouse_hook_id = 2;
 
 struct packet pp;
 uint8_t packet[3] = {0, 0, 0};
@@ -33,7 +33,7 @@ int (mouse_write_cmdb)(uint8_t cmd) {
 
   tickdelay(micros_to_ticks(DELAY_US));
 
-  if (kbc_read_cmdb(&ack)) return 1;
+  if (util_sys_inb(KBC_OUTPUT_BUFFER, &ack)) return 1;
 
   if (ack != KBC_ACK) return 1;
 
@@ -45,22 +45,6 @@ int (mouse_read_cmdb)(uint8_t *info) {
   return 0;
 }
 
-/*
-
-Already implemented but LCF already has it implemented.
-Gonna be used for project.
-
-int (mouse_enable_data_reporting)() {
-  if (mouse_write_cmdb(KBC_MOUSE_ENABLE_STREAM_MODE_REPORTING)) return 1;
-  return 0;
-}
-*/
-
-int (mouse_disable_data_reporting)() {
-  if (mouse_write_cmdb(KBC_MOUSE_DISABLE_STREAM_MODE_REPORTING)) return 1;
-  return 0;
-}
-
 void (mouse_ih)() {
   uint8_t status = 0;
   uint8_t retries = MAX_RETRIES;
@@ -68,7 +52,7 @@ void (mouse_ih)() {
   for (size_t i = 0; i < retries; i++) {
     if (util_sys_inb(KBC_STATUS_RG, &status)) return;
 
-    if (status & (KBC_TRANSMIT_TIMEOUT_ERR | KBC_RECEIVE_TIMEOUT_ERR | KBC_PARITY_ERR)) return;
+    if (status & (KBC_RECEIVE_TIMEOUT_ERR | KBC_PARITY_ERR)) return;
 
     if (status & KBC_OUT_BUFFER_FULL) {
       if (util_sys_inb(KBC_DATA_REG, &packet[packet_to_read])) return;
@@ -76,6 +60,8 @@ void (mouse_ih)() {
     }
 
     tickdelay(micros_to_ticks(DELAY_US));
+
+    if (i == retries -1) return;
   }
 
   if (packet_to_read == 0) {
@@ -87,7 +73,6 @@ void (mouse_ih)() {
     packet_to_read++;
   } else {
     packet_to_read = 0;
-    memset(&packet, 0, sizeof(packet));
     pp.bytes[0] = packet[0];
     pp.bytes[1] = packet[1];
     pp.bytes[2] = packet[2];
@@ -109,6 +94,6 @@ void (mouse_ih)() {
     } else {
       pp.delta_y = packet[2];
     }
+    memset(&packet, 0, sizeof(packet));
   }
-
 }
