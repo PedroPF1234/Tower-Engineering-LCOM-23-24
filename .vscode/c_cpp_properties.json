@@ -16,7 +16,8 @@
             "includePath": [
                 "${workspaceFolder}",
                 "${env:minix.include}",
-                "${workspaceFolder}/.minix-src/include"
+                "${workspaceFolder}/.minix-src/include",
+                "${workspaceFolder}/lab3"
             ],
             "browse": {
                 "path": [

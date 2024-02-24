@@ -99,7 +99,7 @@ int (kbc_read_cmdb)(uint8_t port, uint8_t *cmd) {
   return 0;
 }
 
-int (kbd_reenable_interrupts)() {
+int (kbc_reenable_interrupts)() {
 
   uint8_t cmd;
 
