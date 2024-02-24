@@ -5,6 +5,10 @@
 #include <stdio.h>
 
 // Any header files included below this line should have been created by you
+#include "../lab3/i8042.h"
+#include "mouse.h"
+
+extern struct packet pp;
 
 int main(int argc, char *argv[]) {
   // sets the language of LCF messages (can be either EN-US or PT-PT)
@@ -32,25 +36,57 @@ int main(int argc, char *argv[]) {
 
 
 int (mouse_test_packet)(uint32_t cnt) {
-    /* To be completed */
-    printf("%s(%u): under construction\n", __func__, cnt);
-    return 1;
+  int ipc_status;
+  message msg;
+  uint8_t r;
+  uint8_t mouse_bit_no;
+
+  if (mouse_subscribe_int(&mouse_bit_no)) return 1;
+  if (mouse_enable_data_reporting()) return 1;
+
+  while (cnt) {
+    if ((r = driver_receive(ANY, &msg, &ipc_status)) != 0) {
+      printf("driver_receive failed with: %d", r);
+      continue;
+    }
+
+    if (is_ipc_notify(ipc_status)) {
+      switch (_ENDPOINT_P(msg.m_source)) {
+        case HARDWARE:
+          if (msg.m_notify.interrupts & BIT(mouse_bit_no)) {
+            mouse_ih();
+            if (pp.bytes[0] & BIT(3)) {
+              mouse_print_packet(&pp);
+              cnt--;
+            }
+          }
+          break;
+        default:
+          break;
+      }
+    }
+  }
+
+  if (mouse_disable_data_reporting()) return 1;
+  if (mouse_unsubscribe_int()) return 1;
+
+  return 0;
 }
 
+/*
 int (mouse_test_async)(uint8_t idle_time) {
-    /* To be completed */
-    printf("%s(%u): under construction\n", __func__, idle_time);
     return 1;
 }
+*/
 
+/*
 int (mouse_test_gesture)() {
-    /* To be completed */
-    printf("%s: under construction\n", __func__);
     return 1;
 }
+*/
 
+/*
 int (mouse_test_remote)(uint16_t period, uint8_t cnt) {
-    /* This year you need not implement this. */
-    printf("%s(%u, %u): under construction\n", __func__, period, cnt);
     return 1;
 }
+*/

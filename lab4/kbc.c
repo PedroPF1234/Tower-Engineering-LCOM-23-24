@@ -1,7 +1,7 @@
 #include <lcom/lcf.h>
 #include <stdint.h>
 
-#include "i8042.h"
+#include "../lab3/i8042.h"
 
 int kbc_hook_id = KBC_IRQ;
 uint8_t scancode[2] = {0, 0};

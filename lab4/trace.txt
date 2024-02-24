@@ -1,0 +1,97 @@
+@lcflib.a:2019, lcf_start
+  mouse_test_packet(cnt)
+> mouse_test_packet(4)
+  @mouse.c:17, mouse_subscribe_int
+    sys_irqsetpolicy(KBC_MOUSE_IRQ, IRQ_REENABLE | IRQ_EXCLUSIVE, &mouse_hook_id)
+  > sys_irqsetpolicy(12, 3, addr: 0x822d330 [12])
+  < sys_irqsetpolicy(12, 3, addr: 0x822d330 [10]) -> (ret: 0)
+  @lab4.c:45, mouse_test_packet
+    mouse_enable_data_reporting()
+  @lab4.c:48, mouse_test_packet
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6c0, addr: 0xeffff708)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000001000000000000]>)
+  @lab4.c:57, mouse_test_packet
+    mouse_ih()
+    @utils.c:18, util_sys_inb
+      sys_inb(port, &value32)
+    > sys_inb(0x64, addr: 0xeffff5c8)
+    < sys_inb(0x64, addr: 0xeffff5c8 [0x1c = 0b00011100])
+    @utils.c:21, util_sys_inb
+      util_get_LSB(value32, value)
+    > util_get_LSB(0x001c, addr: 0xeffff5eb)
+    < util_get_LSB(0x001c, addr: 0xeffff5eb [0x1c]) -> (ret: 0)
+    @mouse.c:78, mouse_ih
+      micros_to_ticks(DELAY_US)
+    @mouse.c:78, mouse_ih
+      tickdelay(micros_to_ticks(DELAY_US))
+    > tickdelay(1 [16.7 ms])
+    @utils.c:18, util_sys_inb
+      sys_inb(port, &value32)
+    > sys_inb(0x64, addr: 0xeffff5c8)
+    < sys_inb(0x64, addr: 0xeffff5c8 [0x1c = 0b00011100])
+    @utils.c:21, util_sys_inb
+      util_get_LSB(value32, value)
+    > util_get_LSB(0x001c, addr: 0xeffff5eb)
+    < util_get_LSB(0x001c, addr: 0xeffff5eb [0x1c]) -> (ret: 0)
+    @mouse.c:78, mouse_ih
+      micros_to_ticks(DELAY_US)
+    @mouse.c:78, mouse_ih
+      tickdelay(micros_to_ticks(DELAY_US))
+    > tickdelay(1 [16.7 ms])
+    @utils.c:18, util_sys_inb
+      sys_inb(port, &value32)
+    > sys_inb(0x64, addr: 0xeffff5c8)
+    < sys_inb(0x64, addr: 0xeffff5c8 [0x1c = 0b00011100])
+    @utils.c:21, util_sys_inb
+      util_get_LSB(value32, value)
+    > util_get_LSB(0x001c, addr: 0xeffff5eb)
+    < util_get_LSB(0x001c, addr: 0xeffff5eb [0x1c]) -> (ret: 0)
+    @mouse.c:78, mouse_ih
+      micros_to_ticks(DELAY_US)
+    @mouse.c:78, mouse_ih
+      tickdelay(micros_to_ticks(DELAY_US))
+    > tickdelay(1 [16.7 ms])
+    @utils.c:18, util_sys_inb
+      sys_inb(port, &value32)
+    > sys_inb(0x64, addr: 0xeffff5c8)
+    < sys_inb(0x64, addr: 0xeffff5c8 [0x1c = 0b00011100])
+    @utils.c:21, util_sys_inb
+      util_get_LSB(value32, value)
+    > util_get_LSB(0x001c, addr: 0xeffff5eb)
+    < util_get_LSB(0x001c, addr: 0xeffff5eb [0x1c]) -> (ret: 0)
+    @mouse.c:78, mouse_ih
+      micros_to_ticks(DELAY_US)
+    @mouse.c:78, mouse_ih
+      tickdelay(micros_to_ticks(DELAY_US))
+    > tickdelay(1 [16.7 ms])
+    @utils.c:18, util_sys_inb
+      sys_inb(port, &value32)
+    > sys_inb(0x64, addr: 0xeffff5c8)
+    < sys_inb(0x64, addr: 0xeffff5c8 [0x1c = 0b00011100])
+    @utils.c:21, util_sys_inb
+      util_get_LSB(value32, value)
+    > util_get_LSB(0x001c, addr: 0xeffff5eb)
+    < util_get_LSB(0x001c, addr: 0xeffff5eb [0x1c]) -> (ret: 0)
+    @mouse.c:78, mouse_ih
+      micros_to_ticks(DELAY_US)
+    @mouse.c:78, mouse_ih
+      tickdelay(micros_to_ticks(DELAY_US))
+    > tickdelay(1 [16.7 ms])
+  @lab4.c:48, mouse_test_packet
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6c0, addr: 0xeffff708)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000001000000000000]>)
+  @lab4.c:57, mouse_test_packet
+    mouse_ih()
+    @utils.c:18, util_sys_inb
+      sys_inb(port, &value32)
+    > sys_inb(0x64, addr: 0xeffff5c8)
+    < sys_inb(0x64, addr: 0xeffff5c8 [0x3d = 0b00111101])
+    @utils.c:21, util_sys_inb
+      util_get_LSB(value32, value)
+    > util_get_LSB(0x003d, addr: 0xeffff5eb)
+    < util_get_LSB(0x003d, addr: 0xeffff5eb [0x3d]) -> (ret: 0)
+  @lab4.c:48, mouse_test_packet
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6c0, addr: 0xeffff708)

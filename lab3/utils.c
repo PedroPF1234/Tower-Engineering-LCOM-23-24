@@ -17,8 +17,6 @@ int (util_sys_inb)(int port, uint8_t *value) {
 
   if(sys_inb(port, &value32)) return 1;
   *value = (uint8_t) value32;
-
-  if (util_get_LSB(value32, value)) return 1;
   
   return 0;
 }
