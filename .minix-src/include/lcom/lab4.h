@@ -22,7 +22,7 @@ struct mouse_ev {
   int16_t delta_x, delta_y;
 };
 
-struct mouse_ev *(mouse_detect_event)(struct packet *pp);
+struct mouse_ev *(mouse_detect_event_)(struct packet *pp);
 
 /** 
  * @brief To test packet reception via interrupts 

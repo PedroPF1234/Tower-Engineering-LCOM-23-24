@@ -11,3 +11,5 @@ int (mouse_write_cmdb)(uint8_t cmd);
 int (mouse_read_cmdb)(uint8_t *info);
 
 void (mouse_ih)();
+
+bool mouse_gesture_event(struct packet* pp, uint8_t x_len, uint8_t tolerance);

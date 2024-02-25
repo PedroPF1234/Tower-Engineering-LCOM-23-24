@@ -4,11 +4,26 @@
 #include "i8042.h"
 #include "kbc.h"
 
+#define GESTURE_START 0
+#define GESTURE_LB_PRESS 1
+#define GESTURE_LB_MOVE 2
+#define GESTURE_LB_RELEASE 3
+#define GESTURE_RB_PRESS 4
+#define GESTURE_RB_MOV 5
+
 int mouse_hook_id = 2;
 
 struct packet pp;
 uint8_t packet[3] = {0, 0, 0};
 uint8_t packet_to_read = 0;
+uint8_t state = GESTURE_START;
+bool previous_lb = false;
+bool previous_rb = false;
+
+int16_t min_x_len = 0;
+
+int16_t initial_pos[2] = {0, 0};
+int16_t current_pos[2] = {0, 0};
 
 int (mouse_subscribe_int)(uint8_t *bit_no) {
   if (bit_no == NULL) return 1;
@@ -98,17 +113,22 @@ void (mouse_ih)() {
   }
 }
 
-
-struct mouse_ev* mouse_detect_event	(struct packet* pp) {
+struct mouse_ev* mouse_detect_event_	(struct packet* pp) {
 
   static struct mouse_ev me;
 
-  if (pp->lb) {
+  if (pp->lb && !previous_lb) {
     me.type = LB_PRESSED;
-  } else if (pp->rb) {
+    previous_lb = true;
+  } else if (!pp->lb && previous_lb) {
+    me.type = LB_RELEASED;
+    previous_lb = false;
+  } else if (pp->rb && !previous_rb) {
     me.type = RB_PRESSED;
-  } else if (pp->mb) {
-    me.type = BUTTON_EV;
+    previous_rb = true;
+  } else if (!pp->rb && previous_rb) {
+    me.type = RB_RELEASED;
+    previous_rb = false;
   } else {
     me.type = MOUSE_MOV;
     me.delta_x = pp->delta_x;
@@ -121,7 +141,77 @@ struct mouse_ev* mouse_detect_event	(struct packet* pp) {
 
 bool mouse_gesture_event(struct packet* pp, uint8_t x_len, uint8_t tolerance) {
 
-  struct mouse_ev* me = mouse_detect_event(pp);
+  struct mouse_ev* me = mouse_detect_event_(pp);
+
+  switch (state)
+  {
+  case GESTURE_START:
+    if (me->type == LB_PRESSED) {
+      state = GESTURE_LB_PRESS;
+      min_x_len = x_len;
+    }
+    break;
+
+  case GESTURE_LB_PRESS:
+    if (me->type == MOUSE_MOV) {  
+      current_pos[0] += me->delta_x;
+      current_pos[1] += me->delta_y;
+      float slope = (float)current_pos[1] / (float)current_pos[0];
+      if ((slope < 1 && slope > -1) || ((me->delta_y - tolerance) > 0 ||
+      (me-> delta_x + tolerance) < 0)) {
+        memset(&current_pos, 0, sizeof(current_pos));
+        state = GESTURE_START;
+        break;
+      }
+      min_x_len -= abs(me->delta_x);
+    }
+    else if (me->type == LB_RELEASED) {
+      if (min_x_len < 0) state = GESTURE_LB_RELEASE;
+      else state = GESTURE_START;
+    }
+    else {
+      state = GESTURE_START;
+    }
+    break;
+
+  case GESTURE_LB_RELEASE:
+    if (me->type == RB_PRESSED) {
+      state = GESTURE_RB_PRESS;
+      min_x_len = x_len;
+    }
+    else if (me->type == MOUSE_MOV) {
+      break;
+    }
+    else {
+      state = GESTURE_START;
+    }
+    break;
+
+  case GESTURE_RB_PRESS:
+    if (me->type == MOUSE_MOV) { 
+      current_pos[0] += me->delta_x;
+      current_pos[1] += me->delta_y;
+      float slope = (float)current_pos[1] / (float)current_pos[0];
+      if ((slope < 1 && slope > -1) || ((me->delta_y + tolerance) < 0 ||
+      (me-> delta_x + tolerance) < 0)) {
+        memset(&current_pos, 0, sizeof(current_pos));
+        state = GESTURE_START;
+        break;
+      }
+      min_x_len -= abs(me->delta_x);
+    }
+    else if (me->type == RB_RELEASED) {
+      if (min_x_len < 0) return true;
+      else state = GESTURE_START;
+    }
+    else {
+      state = GESTURE_START;
+    }
+    break;
+  
+  default:
+    break;
+  }
 
 
   return false;

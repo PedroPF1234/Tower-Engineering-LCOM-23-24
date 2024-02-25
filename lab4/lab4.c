@@ -151,6 +151,7 @@ int (mouse_test_gesture)(uint8_t x_len, uint8_t tolerance) {
             mouse_ih();
             if (pp.bytes[0] & BIT(3)) {
               mouse_print_packet(&pp);
+              finished_gesture = mouse_gesture_event(&pp, x_len, tolerance);
             }
           }
           break;
