@@ -5,10 +5,12 @@
 #include <stdio.h>
 
 // Any header files included below this line should have been created by you
-#include "../lab3/i8042.h"
+#include "i8042.h"
+#include "i8254.h"
 #include "mouse.h"
 
 extern struct packet pp;
+extern int counter;
 
 int main(int argc, char *argv[]) {
   // sets the language of LCF messages (can be either EN-US or PT-PT)
@@ -73,17 +75,96 @@ int (mouse_test_packet)(uint32_t cnt) {
   return 0;
 }
 
-/*
-int (mouse_test_async)(uint8_t idle_time) {
-    return 1;
-}
-*/
 
-/*
-int (mouse_test_gesture)() {
-    return 1;
+int (mouse_test_async)(uint8_t idle_time) {
+  uint8_t mouse_bit_no;
+  uint8_t timer_bit_no;
+  uint8_t idle = idle_time;
+  int32_t interrupt_freq = sys_hz();
+
+  if (mouse_write_cmdb(KBC_MOUSE_ENABLE_STREAM_MODE_REPORTING)) return 1;
+  if (mouse_subscribe_int(&mouse_bit_no)) return 1;
+  if (timer_subscribe_int(&timer_bit_no)) return 1;
+
+  int ipc_status;
+  message msg;
+  int r;
+
+  while (idle) {
+    if ((r = driver_receive(ANY, &msg, &ipc_status)) != 0) {
+      printf("driver_receive failed with: %d", r);
+      continue;
+    }
+
+    if (is_ipc_notify(ipc_status)) {
+      switch (_ENDPOINT_P(msg.m_source)) {
+        case HARDWARE:
+          if (msg.m_notify.interrupts & BIT(mouse_bit_no)) {
+            mouse_ih();
+            if (pp.bytes[0] & BIT(3)) {
+              mouse_print_packet(&pp);
+            }
+            idle = idle_time;
+          }
+          if (msg.m_notify.interrupts & BIT(timer_bit_no)) {
+            timer_int_handler();
+            if (counter == interrupt_freq) {
+              idle--;
+              counter = 0;
+            }
+          }
+          break;
+        default:
+          break;
+      }
+    }
+  }
+
+  if (mouse_unsubscribe_int()) return 1;
+  if (timer_unsubscribe_int()) return 1;
+  if (mouse_write_cmdb(KBC_MOUSE_DISABLE_STREAM_MODE_REPORTING)) return 1;
+
+  return 0;
 }
-*/
+
+
+int (mouse_test_gesture)(uint8_t x_len, uint8_t tolerance) {
+  int ipc_status;
+  message msg;
+  int r;
+  uint8_t mouse_bit_no;
+  bool finished_gesture = false;
+
+  if (mouse_write_cmdb(KBC_MOUSE_ENABLE_STREAM_MODE_REPORTING)) return 1;
+  if (mouse_subscribe_int(&mouse_bit_no)) return 1;
+
+  while (!finished_gesture) {
+    if ((r = driver_receive(ANY, &msg, &ipc_status)) != 0) {
+      printf("driver_receive failed with: %d", r);
+      continue;
+    }
+
+    if (is_ipc_notify(ipc_status)) {
+      switch (_ENDPOINT_P(msg.m_source)) {
+        case HARDWARE:
+          if (msg.m_notify.interrupts & BIT(mouse_bit_no)) {
+            mouse_ih();
+            if (pp.bytes[0] & BIT(3)) {
+              mouse_print_packet(&pp);
+            }
+          }
+          break;
+        default:
+          break;
+      }
+    }
+  }
+
+  if (mouse_unsubscribe_int()) return 1;
+  if (mouse_write_cmdb(KBC_MOUSE_DISABLE_STREAM_MODE_REPORTING)) return 1;
+
+  return 0;
+}
 
 /*
 int (mouse_test_remote)(uint16_t period, uint8_t cnt) {

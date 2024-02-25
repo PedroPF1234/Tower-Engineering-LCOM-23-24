@@ -1,7 +1,7 @@
 #include <lcom/lcf.h>
 #include <stdint.h>
 
-#include "../lab3/i8042.h"
+#include "i8042.h"
 #include "kbc.h"
 
 int mouse_hook_id = 2;
@@ -96,4 +96,33 @@ void (mouse_ih)() {
     }
     memset(&packet, 0, sizeof(packet));
   }
+}
+
+
+struct mouse_ev* mouse_detect_event	(struct packet* pp) {
+
+  static struct mouse_ev me;
+
+  if (pp->lb) {
+    me.type = LB_PRESSED;
+  } else if (pp->rb) {
+    me.type = RB_PRESSED;
+  } else if (pp->mb) {
+    me.type = BUTTON_EV;
+  } else {
+    me.type = MOUSE_MOV;
+    me.delta_x = pp->delta_x;
+    me.delta_y = pp->delta_y;
+  }
+
+  return &me;
+
+}
+
+bool mouse_gesture_event(struct packet* pp, uint8_t x_len, uint8_t tolerance) {
+
+  struct mouse_ev* me = mouse_detect_event(pp);
+
+
+  return false;
 }
