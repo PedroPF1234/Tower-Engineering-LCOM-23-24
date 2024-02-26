@@ -42,9 +42,9 @@ int (mouse_unsubscribe_int)() {
 int (mouse_write_cmdb)(uint8_t cmd) {
   uint8_t ack = 0;
 
-  if (kbc_write_cmdb(KBC_COMMAND_REG, KBC_WRITE_TO_MOUSE)) return 1;
+  if (kbc_write_cmdb(KBC_COMMAND_REG, KBC_WRITE_TO_MOUSE, true)) return 1;
 
-  if (kbc_write_cmdb(KBC_INPUT_BUFFER, cmd)) return 1;
+  if (kbc_write_cmdb(KBC_INPUT_BUFFER, cmd, true)) return 1;
 
   tickdelay(micros_to_ticks(DELAY_US));
 
@@ -56,7 +56,7 @@ int (mouse_write_cmdb)(uint8_t cmd) {
 }
 
 int (mouse_read_cmdb)(uint8_t *info) {
-  if (kbc_read_cmdb(info)) return 1;
+  if (kbc_read_cmdb(info, true)) return 1;
   return 0;
 }
 

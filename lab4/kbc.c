@@ -49,7 +49,7 @@ void (kbc_ih)() {
   return;
 }
 
-int (kbc_write_cmdb)(uint8_t port, uint8_t cmd) {
+int (kbc_write_cmdb)(uint8_t port, uint8_t cmd, bool is_mouse_cmd) {
   uint8_t status = 0;
   uint8_t retries = MAX_RETRIES;
 
@@ -60,7 +60,11 @@ int (kbc_write_cmdb)(uint8_t port, uint8_t cmd) {
     ctr++;
     #endif
 
-    if (status & (KBC_TRANSMIT_TIMEOUT_ERR | KBC_RECEIVE_TIMEOUT_ERR | KBC_PARITY_ERR)) return 1;
+    if (is_mouse_cmd) {
+      if (status & (KBC_RECEIVE_TIMEOUT_ERR | KBC_PARITY_ERR)) return 1;
+    } else {
+      if (status & (KBC_TRANSMIT_TIMEOUT_ERR | KBC_RECEIVE_TIMEOUT_ERR | KBC_PARITY_ERR)) return 1;
+    }
 
     if (status & KBC_IN_BUFFER_FULL) {
       tickdelay(micros_to_ticks(DELAY_US));
@@ -74,7 +78,7 @@ int (kbc_write_cmdb)(uint8_t port, uint8_t cmd) {
   return 0;
 }
 
-int (kbc_read_cmdb)(uint8_t *cmd) {
+int (kbc_read_cmdb)(uint8_t *cmd, bool is_mouse_cmd) {
   uint8_t status = 0;
   uint8_t retries = MAX_RETRIES;
 
@@ -85,7 +89,11 @@ int (kbc_read_cmdb)(uint8_t *cmd) {
     ctr++;
     #endif
 
-    if (status & (KBC_TRANSMIT_TIMEOUT_ERR | KBC_RECEIVE_TIMEOUT_ERR | KBC_PARITY_ERR)) return 1;
+    if (is_mouse_cmd) {
+      if (status & (KBC_RECEIVE_TIMEOUT_ERR | KBC_PARITY_ERR)) return 1;
+    } else {
+      if (status & (KBC_TRANSMIT_TIMEOUT_ERR | KBC_RECEIVE_TIMEOUT_ERR | KBC_PARITY_ERR)) return 1;
+    }
 
     if (status & KBC_OUT_BUFFER_FULL) {
       if (util_sys_inb(KBC_OUTPUT_BUFFER, cmd)) return 1;
@@ -105,15 +113,15 @@ int (kbd_reenable_interrupts)() {
 
   uint8_t cmd;
 
-  if (kbc_write_cmdb(KBC_COMMAND_REG, KBC_READ_COMMAND_BYTE)) return 1;
+  if (kbc_write_cmdb(KBC_COMMAND_REG, KBC_READ_COMMAND_BYTE, false)) return 1;
 
-  if (kbc_read_cmdb(&cmd)) return 1;
+  if (kbc_read_cmdb(&cmd, false)) return 1;
 
   cmd |= KBC_ENABLE_KBD_INT;
 
-  if (kbc_write_cmdb(KBC_COMMAND_REG, KBC_WRITE_COMMAND_BYTE)) return 1;
+  if (kbc_write_cmdb(KBC_COMMAND_REG, KBC_WRITE_COMMAND_BYTE, false)) return 1;
 
-  if (kbc_write_cmdb(KBC_INPUT_BUFFER, cmd)) return 1;
+  if (kbc_write_cmdb(KBC_INPUT_BUFFER, cmd, false)) return 1;
 
   return 0;
 }
