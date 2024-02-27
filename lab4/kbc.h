@@ -10,8 +10,8 @@ int (kbd_reenable_interrupts)();
 
 void (kbc_ih)();
 
-int (kbc_write_cmdb)(uint8_t port, uint8_t cmd);
+int (kbc_write_cmdb)(uint8_t port, uint8_t cmd, bool is_mouse_cmd);
 
-int (kbc_read_cmdb)(uint8_t *cmd);
+int (kbc_read_cmdb)(uint8_t *cmd, bool is_mouse_cmd);
 
 int (kbd_reenable_interrupts)();
