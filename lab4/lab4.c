@@ -99,18 +99,20 @@ int (mouse_test_async)(uint8_t idle_time) {
     if (is_ipc_notify(ipc_status)) {
       switch (_ENDPOINT_P(msg.m_source)) {
         case HARDWARE:
+          if (msg.m_notify.interrupts & BIT(timer_bit_no)) {
+            timer_int_handler();
+            if (counter % interrupt_freq == 0) {
+              idle--;
+            }
+          }
+          
           if (msg.m_notify.interrupts & BIT(mouse_bit_no)) {
             mouse_ih();
             if (pp.bytes[0] & BIT(3)) {
               mouse_print_packet(&pp);
             }
             idle = idle_time;
-          }
-          if (msg.m_notify.interrupts & BIT(timer_bit_no)) {
-            timer_int_handler();
-            if (counter % interrupt_freq == 0) {
-              idle--;
-            }
+            counter = 0;
           }
           break;
         default:
