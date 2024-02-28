@@ -52,9 +52,7 @@ int(timer_test_int)(uint8_t time) {
   
   if (timer_subscribe_int(&bit_no)) return 1;
 
-  uint8_t run = 1;
-
-  while( run ) { /* You may want to use a different condition */
+  while( time ) { /* You may want to use a different condition */
     /* Get a request message. */
     if ( (r = driver_receive(ANY, &msg, &ipc_status)) != 0 ) { 
         printf("driver_receive failed with: %d", r);
@@ -64,17 +62,11 @@ int(timer_test_int)(uint8_t time) {
         switch (_ENDPOINT_P(msg.m_source)) {
             case HARDWARE: /* hardware interrupt notification */				
                 if (msg.m_notify.interrupts & BIT(bit_no)) { /* subscribed interrupt */
-                    timer_int_handler();
-                    if (counter == 60) {
-                      counter = 0;
-                      time--;
-                      timer_print_elapsed_time();
-                      break;
-                    }
-
-                    if (time == 0) {
-                      run = 0;
-                    }
+                  timer_int_handler();
+                  if (counter % 60 == 0) {
+                    time--;
+                    timer_print_elapsed_time();
+                  }
                 }
                 break;
             default:

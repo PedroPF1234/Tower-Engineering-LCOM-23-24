@@ -108,9 +108,8 @@ int (mouse_test_async)(uint8_t idle_time) {
           }
           if (msg.m_notify.interrupts & BIT(timer_bit_no)) {
             timer_int_handler();
-            if (counter == interrupt_freq) {
+            if (counter % interrupt_freq == 0) {
               idle--;
-              counter = 0;
             }
           }
           break;
@@ -210,6 +209,7 @@ int (mouse_test_remote)(uint16_t period, uint8_t cnt) {
               uint8_t data;
               if (mouse_read_cmdb(&data)) return 1;
               mouse_print_packet(&pp);
+            }
           }
           break;
         default:
