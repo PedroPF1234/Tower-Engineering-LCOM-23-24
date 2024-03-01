@@ -143,6 +143,9 @@ bool mouse_gesture_event(struct packet* pp, uint8_t x_len, uint8_t tolerance) {
 
   struct mouse_ev* me = mouse_detect_event_(pp);
 
+  // Print which mouse event happened
+  //printf("%s\n", me->type == MOUSE_MOV ? "MOUSE_MOV" : me->type == LB_PRESSED ? "LB_PRESSED" : me->type == LB_RELEASED ? "LB_RELEASED" : me->type == RB_PRESSED ? "RB_PRESSED" : "RB_RELEASED");
+
   switch (state)
   {
   case GESTURE_START:
@@ -150,45 +153,12 @@ bool mouse_gesture_event(struct packet* pp, uint8_t x_len, uint8_t tolerance) {
       state = GESTURE_LB_PRESS;
       min_x_len = x_len;
     }
+    printf("GESTURE_START\n");
     break;
 
   case GESTURE_LB_PRESS:
+    printf("GESTURE_LB_PRESS\n");
     if (me->type == MOUSE_MOV) {  
-      current_pos[0] += me->delta_x;
-      current_pos[1] += me->delta_y;
-      float slope = (float)current_pos[1] / (float)current_pos[0];
-      if ((slope < 1 && slope > -1) || ((me->delta_y - tolerance) > 0 ||
-      (me-> delta_x + tolerance) < 0)) {
-        memset(&current_pos, 0, sizeof(current_pos));
-        state = GESTURE_START;
-        break;
-      }
-      min_x_len -= abs(me->delta_x);
-    }
-    else if (me->type == LB_RELEASED) {
-      if (min_x_len < 0) state = GESTURE_LB_RELEASE;
-      else state = GESTURE_START;
-    }
-    else {
-      state = GESTURE_START;
-    }
-    break;
-
-  case GESTURE_LB_RELEASE:
-    if (me->type == RB_PRESSED) {
-      state = GESTURE_RB_PRESS;
-      min_x_len = x_len;
-    }
-    else if (me->type == MOUSE_MOV) {
-      break;
-    }
-    else {
-      state = GESTURE_START;
-    }
-    break;
-
-  case GESTURE_RB_PRESS:
-    if (me->type == MOUSE_MOV) { 
       current_pos[0] += me->delta_x;
       current_pos[1] += me->delta_y;
       float slope = (float)current_pos[1] / (float)current_pos[0];
@@ -200,9 +170,52 @@ bool mouse_gesture_event(struct packet* pp, uint8_t x_len, uint8_t tolerance) {
       }
       min_x_len -= abs(me->delta_x);
     }
-    else if (me->type == RB_RELEASED) {
-      if (min_x_len < 0) return true;
+    else if (me->type == LB_RELEASED) {
+      if (min_x_len <= 0) {
+        state = GESTURE_LB_RELEASE;
+        current_pos[0] = initial_pos[0];
+        current_pos[1] = initial_pos[1];
+      }
       else state = GESTURE_START;
+    }
+    else {
+      state = GESTURE_START;
+    }
+    break;
+
+  case GESTURE_LB_RELEASE:
+    printf("GESTURE_LB_RELEASE\n");
+    if (me->type == RB_PRESSED) {
+      state = GESTURE_RB_PRESS;
+      min_x_len = x_len;
+      break;
+    }
+    else if (me->type == MOUSE_MOV) {
+      break;
+    }
+    else {
+      state = GESTURE_START;
+      break;
+    }
+    break;
+
+  case GESTURE_RB_PRESS:
+    printf("GESTURE_RB_PRESS\n");
+    if (min_x_len <= 0) {
+      return true;
+    }
+    if (me->type == MOUSE_MOV) { 
+      current_pos[0] += me->delta_x;
+      current_pos[1] += me->delta_y;
+      float slope = (float)current_pos[1] / (float)current_pos[0];
+      if ((slope < 1 && slope > -1) || ((me->delta_y - tolerance) > 0 ||
+      (me-> delta_x + tolerance) < 0)) {
+        memset(&current_pos, 0, sizeof(current_pos));
+        printf("Knocked out by slope or lack of tolerance\n");
+        state = GESTURE_START;
+        break;
+      }
+      min_x_len -= abs(me->delta_x);
     }
     else {
       state = GESTURE_START;

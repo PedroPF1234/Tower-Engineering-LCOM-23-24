@@ -30,7 +30,6 @@ int (timer_set_frequency)(uint8_t timer, uint32_t freq) {
   
   default:
     return 1;
-    break;
   }
 
   if (sys_outb(TIMER_CTRL, control_word)) return 1;
