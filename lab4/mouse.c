@@ -13,9 +13,8 @@
 
 int mouse_hook_id = 2;
 
+uint8_t mouse_byte = 0;
 struct packet pp;
-uint8_t packet[3] = {0, 0, 0};
-uint8_t packet_to_read = 0;
 uint8_t state = GESTURE_START;
 bool previous_lb = false;
 bool previous_rb = false;
@@ -70,46 +69,13 @@ void (mouse_ih)() {
     if (status & (KBC_RECEIVE_TIMEOUT_ERR | KBC_PARITY_ERR)) return;
 
     if (status & KBC_OUT_BUFFER_FULL) {
-      if (util_sys_inb(KBC_DATA_REG, &packet[packet_to_read])) return;
+      if (util_sys_inb(KBC_DATA_REG, &mouse_byte)) return;
       break;
     }
 
     tickdelay(micros_to_ticks(DELAY_US));
 
     if (i == retries -1) return;
-  }
-
-  if (packet_to_read == 0) {
-    memset(&pp, 0, sizeof(pp));
-    if (packet[0] & BIT(3)) {
-      packet_to_read++;
-    }
-  } else if (packet_to_read == 1) {
-    packet_to_read++;
-  } else {
-    packet_to_read = 0;
-    pp.bytes[0] = packet[0];
-    pp.bytes[1] = packet[1];
-    pp.bytes[2] = packet[2];
-
-    pp.lb = packet[0] & BIT(0);
-    pp.rb = packet[0] & BIT(1);
-    pp.mb = packet[0] & BIT(2);
-    pp.x_ov = packet[0] & BIT(6);
-    pp.y_ov = packet[0] & BIT(7);
-
-    if (packet[0] & BIT(4)) {
-      pp.delta_x = packet[1] - 256;
-    } else {
-      pp.delta_x = packet[1];
-    }
-
-    if (packet[0] & BIT(5)) {
-      pp.delta_y = packet[2] - 256;
-    } else {
-      pp.delta_y = packet[2];
-    }
-    memset(&packet, 0, sizeof(packet));
   }
 }
 

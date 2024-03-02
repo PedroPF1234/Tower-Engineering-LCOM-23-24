@@ -12,6 +12,10 @@
 extern struct packet pp;
 extern int counter;
 
+uint8_t packet_to_read = 0;
+uint8_t packet[3] = {0, 0, 0};
+extern uint8_t mouse_byte;
+
 int main(int argc, char *argv[]) {
   // sets the language of LCF messages (can be either EN-US or PT-PT)
   lcf_set_language("EN-US");
@@ -57,7 +61,40 @@ int (mouse_test_packet)(uint32_t cnt) {
         case HARDWARE:
           if (msg.m_notify.interrupts & BIT(mouse_bit_no)) {
             mouse_ih();
-            if (pp.bytes[0] & BIT(3)) {
+            if (packet_to_read == 0) {
+              memset(&pp, 0, sizeof(pp));
+              if (mouse_byte & BIT(3)) {
+                packet[0] = mouse_byte;
+                packet_to_read++;
+              }
+            } else if (packet_to_read == 1) {
+              packet[1] = mouse_byte;
+              packet_to_read++;
+            } else {
+              packet[2] = mouse_byte;
+              packet_to_read = 0;
+              pp.bytes[0] = packet[0];
+              pp.bytes[1] = packet[1];
+              pp.bytes[2] = packet[2];
+
+              pp.lb = packet[0] & BIT(0);
+              pp.rb = packet[0] & BIT(1);
+              pp.mb = packet[0] & BIT(2);
+              pp.x_ov = packet[0] & BIT(6);
+              pp.y_ov = packet[0] & BIT(7);
+
+              if (packet[0] & BIT(4)) {
+                pp.delta_x = packet[1] - 256;
+              } else {
+                pp.delta_x = packet[1];
+              }
+
+              if (packet[0] & BIT(5)) {
+                pp.delta_y = packet[2] - 256;
+              } else {
+                pp.delta_y = packet[2];
+              }
+              memset(&packet, 0, sizeof(packet));
               mouse_print_packet(&pp);
               cnt--;
             }
@@ -108,7 +145,40 @@ int (mouse_test_async)(uint8_t idle_time) {
           
           if (msg.m_notify.interrupts & BIT(mouse_bit_no)) {
             mouse_ih();
-            if (pp.bytes[0] & BIT(3)) {
+            if (packet_to_read == 0) {
+              memset(&pp, 0, sizeof(pp));
+              if (mouse_byte & BIT(3)) {
+                packet[0] = mouse_byte;
+                packet_to_read++;
+              }
+            } else if (packet_to_read == 1) {
+              packet[1] = mouse_byte;
+              packet_to_read++;
+            } else {
+              packet[2] = mouse_byte;
+              packet_to_read = 0;
+              pp.bytes[0] = packet[0];
+              pp.bytes[1] = packet[1];
+              pp.bytes[2] = packet[2];
+
+              pp.lb = packet[0] & BIT(0);
+              pp.rb = packet[0] & BIT(1);
+              pp.mb = packet[0] & BIT(2);
+              pp.x_ov = packet[0] & BIT(6);
+              pp.y_ov = packet[0] & BIT(7);
+
+              if (packet[0] & BIT(4)) {
+                pp.delta_x = packet[1] - 256;
+              } else {
+                pp.delta_x = packet[1];
+              }
+
+              if (packet[0] & BIT(5)) {
+                pp.delta_y = packet[2] - 256;
+              } else {
+                pp.delta_y = packet[2];
+              }
+              memset(&packet, 0, sizeof(packet));
               mouse_print_packet(&pp);
             }
             idle = idle_time;
@@ -150,7 +220,40 @@ int (mouse_test_gesture)(uint8_t x_len, uint8_t tolerance) {
         case HARDWARE:
           if (msg.m_notify.interrupts & BIT(mouse_bit_no)) {
             mouse_ih();
-            if (pp.bytes[0] & BIT(3)) {
+            if (packet_to_read == 0) {
+              memset(&pp, 0, sizeof(pp));
+              if (mouse_byte & BIT(3)) {
+                packet[0] = mouse_byte;
+                packet_to_read++;
+              }
+            } else if (packet_to_read == 1) {
+              packet[1] = mouse_byte;
+              packet_to_read++;
+            } else {
+              packet[2] = mouse_byte;
+              packet_to_read = 0;
+              pp.bytes[0] = packet[0];
+              pp.bytes[1] = packet[1];
+              pp.bytes[2] = packet[2];
+
+              pp.lb = packet[0] & BIT(0);
+              pp.rb = packet[0] & BIT(1);
+              pp.mb = packet[0] & BIT(2);
+              pp.x_ov = packet[0] & BIT(6);
+              pp.y_ov = packet[0] & BIT(7);
+
+              if (packet[0] & BIT(4)) {
+                pp.delta_x = packet[1] - 256;
+              } else {
+                pp.delta_x = packet[1];
+              }
+
+              if (packet[0] & BIT(5)) {
+                pp.delta_y = packet[2] - 256;
+              } else {
+                pp.delta_y = packet[2];
+              }
+              memset(&packet, 0, sizeof(packet));
               mouse_print_packet(&pp);
               finished_gesture = mouse_gesture_event(&pp, x_len, tolerance);
             }
