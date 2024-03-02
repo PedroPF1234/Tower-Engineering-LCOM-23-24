@@ -179,6 +179,8 @@ int (mouse_test_remote)(uint16_t period, uint8_t cnt) {
 
   if (mouse_write_cmdb(KBC_MOUSE_SET_REMOTE_MODE)) return 1;
 
+  if (timer_set_frequency(0, 1000)) return 1;
+
   if (mouse_subscribe_int(&mouse_bit_no)) return 1;
   if (timer_subscribe_int(&timer_bit_no)) return 1;
 
@@ -192,12 +194,6 @@ int (mouse_test_remote)(uint16_t period, uint8_t cnt) {
     if (is_ipc_notify(ipc_status)) {
       switch (_ENDPOINT_P(msg.m_source)) {
         case HARDWARE:
-          if (msg.m_notify.interrupts & BIT(mouse_bit_no)) {
-            mouse_ih();
-            if (pp.bytes[0] & BIT(3)) {
-              mouse_print_packet(&pp);
-            }
-          }
           if (msg.m_notify.interrupts & BIT(timer_bit_no)) {
             timer_int_handler();
             if (counter == interrupt_freq) {
@@ -208,8 +204,11 @@ int (mouse_test_remote)(uint16_t period, uint8_t cnt) {
               delay = period;
               cnt--;
               if (mouse_write_cmdb(KBC_MOUSE_READ_DATA)) return 1;
-              uint8_t data;
-              if (mouse_read_cmdb(&data)) return 1;
+            }
+          }
+          if (msg.m_notify.interrupts & BIT(mouse_bit_no)) {
+            mouse_ih();
+            if (pp.bytes[0] & BIT(3)) {
               mouse_print_packet(&pp);
             }
           }
@@ -222,6 +221,8 @@ int (mouse_test_remote)(uint16_t period, uint8_t cnt) {
 
   if (mouse_unsubscribe_int()) return 1;
   if (timer_unsubscribe_int()) return 1;
+  
+  if (timer_set_frequency(0, 60)) return 1;
   if (mouse_write_cmdb(KBC_MOUSE_SET_STREAM_MODE)) return 1;
 
   minix_get_dflt_kbc_cmd_byte();

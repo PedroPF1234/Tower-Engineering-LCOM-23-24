@@ -42,11 +42,11 @@ int(kbd_test_scan)() {
   message msg;
   uint8_t r;
   uint8_t bit_no;
-  uint8_t esc_found = 1;
+  bool run = true;
 
   if (kbc_subscribe_int(&bit_no)) return 1;
 
-  while (esc_found) {
+  while (run) {
     if ((r = driver_receive(ANY, &msg, &ipc_status)) != 0) {
       printf("driver_receive failed with: %d", r);
       continue;
@@ -57,9 +57,8 @@ int(kbd_test_scan)() {
         case HARDWARE:
           if (msg.m_notify.interrupts & BIT(bit_no)) {
             kbc_ih();
-            if (scancode[1] == ESC_MAKE) {
-              esc_found = 0;
-              break;
+            if (scancode[1] == ESC_BREAK) {
+              run = false;
             }
             if (scancode[1] == SPECIAL_KEY) {
               scancode[0] = scancode[1];
@@ -68,18 +67,12 @@ int(kbd_test_scan)() {
 
             else {
               if (scancode[0]) {
-                if (scancode[1] & 0x80)
-                  kbd_print_scancode(BREAK, 2, &scancode[0]);
-                else
-                  kbd_print_scancode(MAKE, 2, &scancode[0]);
-                scancode[0] = 0;
+                kbd_print_scancode((scancode[1] & BIT(7)) ? BREAK : MAKE, 2, &scancode[0]);
               }
               else {
-                if (scancode[1] & 0x80)
-                  kbd_print_scancode(BREAK, 1, &scancode[1]);
-                else
-                  kbd_print_scancode(MAKE, 1, &scancode[1]);
+                kbd_print_scancode((scancode[1] & BIT(7)) ? BREAK : MAKE, 1, &scancode[1]);
               }
+              memset(scancode, 0, 2);
             }
           }
           break;
@@ -95,13 +88,12 @@ int(kbd_test_scan)() {
 }
 
 int(kbd_test_poll)() {
-  uint8_t esc_found = 1;
+  bool run = true;
 
-  while (esc_found) {
+  while (run) {
     kbc_ih();
-    if (scancode[1] == ESC_MAKE) {
-      esc_found = 0;
-      break;
+    if (scancode[1] == ESC_BREAK) {
+      run = false;
     }
     if (scancode[1] == SPECIAL_KEY) {
       scancode[0] = scancode[1];
@@ -110,17 +102,11 @@ int(kbd_test_poll)() {
 
     else {
       if (scancode[0]) {
-        if (scancode[1] & 0x80)
-          kbd_print_scancode(BREAK, 2, &scancode[0]);
-        else
-          kbd_print_scancode(MAKE, 2, &scancode[0]);
+        kbd_print_scancode((scancode[1] & BIT(7)) ? BREAK : MAKE, 2, &scancode[0]);
         scancode[0] = 0;
       }
       else {
-        if (scancode[1] & 0x80)
-          kbd_print_scancode(BREAK, 1, &scancode[1]);
-        else
-          kbd_print_scancode(MAKE, 1, &scancode[1]);
+        kbd_print_scancode((scancode[1] & BIT(7)) ? BREAK : MAKE, 1, &scancode[1]);
       }
     }
   }
@@ -136,13 +122,13 @@ int(kbd_test_timed_scan)(uint8_t n) {
   int r;
   uint8_t kbc_bit_no;
   uint8_t timer_bit_no;
-  uint8_t esc_found = 1;
+  bool run = true;
   uint8_t idle = n;
 
   if (kbc_subscribe_int(&kbc_bit_no)) return 1;
   if (timer_subscribe_int(&timer_bit_no)) return 1;
 
-  while (esc_found) {
+  while (run) {
     if ((r = driver_receive(ANY, &msg, &ipc_status)) != 0) {
       printf("driver_receive failed with: %d", r);
       continue;
@@ -154,9 +140,8 @@ int(kbd_test_timed_scan)(uint8_t n) {
           if (msg.m_notify.interrupts & BIT(kbc_bit_no)) {
             idle = n;
             kbc_ih();
-            if (scancode[1] == ESC_MAKE) {
-              esc_found = 0;
-              break;
+            if (scancode[1] == ESC_BREAK) {
+              run = false;
             }
             if (scancode[1] == SPECIAL_KEY) {
               scancode[0] = scancode[1];
@@ -165,17 +150,11 @@ int(kbd_test_timed_scan)(uint8_t n) {
 
             else {
               if (scancode[0]) {
-                if (scancode[1] & 0x80)
-                  kbd_print_scancode(BREAK, 2, &scancode[0]);
-                else
-                  kbd_print_scancode(MAKE, 2, &scancode[0]);
+                kbd_print_scancode((scancode[1] & BIT(7)) ? BREAK : MAKE, 2, &scancode[0]);
                 scancode[0] = 0;
               }
               else {
-                if (scancode[1] & 0x80)
-                  kbd_print_scancode(BREAK, 1, &scancode[1]);
-                else
-                  kbd_print_scancode(MAKE, 1, &scancode[1]);
+                kbd_print_scancode((scancode[1] & BIT(7)) ? BREAK : MAKE, 1, &scancode[1]);
               }
             }
           }
@@ -188,7 +167,7 @@ int(kbd_test_timed_scan)(uint8_t n) {
               //timer_print_elapsed_time();
             }
             if (idle == 0) {
-              esc_found = 0;
+              run = false;
             }
           }
           break;
