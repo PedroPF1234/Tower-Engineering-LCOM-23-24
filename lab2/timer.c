@@ -9,10 +9,16 @@ int counter = 0;
 int hook_id = TIMER0_IRQ;
 
 int (timer_set_frequency)(uint8_t timer, uint32_t freq) {
+  
+  if (freq > TIMER_FREQ || freq < 19 || timer > 2 || timer < 0) {
+    printf("Illegal frequency\n");
+    return 1;
+  }
+
   uint8_t st;
   if (timer_get_conf(timer, &st)) return 1;
 
-  uint8_t control_word = TIMER_LSB_MSB | TIMER_SQR_WAVE | TIMER_BIN;
+  uint8_t control_word = TIMER_LSB_MSB | (st & 0x0F);
 
   switch (timer)
   {
@@ -81,6 +87,7 @@ int (timer_display_conf)(uint8_t timer, uint8_t st,
                         enum timer_status_field field) {
   
   union timer_status_field_val conf;
+  uint8_t mode;
 
   switch (field)
   {
@@ -93,7 +100,16 @@ int (timer_display_conf)(uint8_t timer, uint8_t st,
     break;
 
   case tsf_mode:
-    conf.count_mode = (st & (BIT(3) | BIT(2) | BIT(1))) >> 1;
+    mode = ((st & (BIT(3) | BIT(2) | BIT(1))) >> 1);
+    if (mode == 6) {
+      conf.count_mode = 2;
+    }
+    else if (mode == 7) {
+      conf.count_mode = 3;
+    }
+    else {
+      conf.count_mode = mode;
+    }
     break;
 
   case tsf_base:
