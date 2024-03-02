@@ -272,19 +272,15 @@ int (mouse_test_gesture)(uint8_t x_len, uint8_t tolerance) {
 }
 
 int (mouse_test_remote)(uint16_t period, uint8_t cnt) {
-  uint8_t mouse_bit_no;
   uint8_t timer_bit_no;
-  int32_t interrupt_freq = sys_hz();
   int ipc_status;
   message msg;
   int r;
-  int delay = period;
+  bool get_info = false;
 
   if (mouse_write_cmdb(KBC_MOUSE_SET_REMOTE_MODE)) return 1;
 
   if (timer_set_frequency(0, 1000)) return 1;
-
-  if (mouse_subscribe_int(&mouse_bit_no)) return 1;
   if (timer_subscribe_int(&timer_bit_no)) return 1;
 
 
@@ -299,20 +295,56 @@ int (mouse_test_remote)(uint16_t period, uint8_t cnt) {
         case HARDWARE:
           if (msg.m_notify.interrupts & BIT(timer_bit_no)) {
             timer_int_handler();
-            if (counter == interrupt_freq) {
+            if (counter % period == 0) {
               counter = 0;
-              delay--;
-            }
-            if (delay == 0) {
-              delay = period;
               cnt--;
-              if (mouse_write_cmdb(KBC_MOUSE_READ_DATA)) return 1;
+              get_info = true;
             }
-          }
-          if (msg.m_notify.interrupts & BIT(mouse_bit_no)) {
-            mouse_ih();
-            if (pp.bytes[0] & BIT(3)) {
-              mouse_print_packet(&pp);
+            if (get_info) {
+              get_info = false;
+              if (mouse_write_cmdb(KBC_MOUSE_READ_DATA)) return 1;
+
+              for (int i = 0; i < 5; i++) {
+                if (mouse_read_cmdb(&mouse_byte)) return 1;
+
+                if (packet_to_read == 0) {
+                  memset(&pp, 0, sizeof(pp));
+                  if (mouse_byte & BIT(3)) {
+                    packet[0] = mouse_byte;
+                    packet_to_read++;
+                  }
+                } else if (packet_to_read == 1) {
+                  packet[1] = mouse_byte;
+                  packet_to_read++;
+                } else {
+                  packet[2] = mouse_byte;
+                  packet_to_read = 0;
+                  pp.bytes[0] = packet[0];
+                  pp.bytes[1] = packet[1];
+                  pp.bytes[2] = packet[2];
+
+                  pp.lb = packet[0] & BIT(0);
+                  pp.rb = packet[0] & BIT(1);
+                  pp.mb = packet[0] & BIT(2);
+                  pp.x_ov = packet[0] & BIT(6);
+                  pp.y_ov = packet[0] & BIT(7);
+
+                  if (packet[0] & BIT(4)) {
+                    pp.delta_x = packet[1] - 256;
+                  } else {
+                    pp.delta_x = packet[1];
+                  }
+
+                  if (packet[0] & BIT(5)) {
+                    pp.delta_y = packet[2] - 256;
+                  } else {
+                    pp.delta_y = packet[2];
+                  }
+                  memset(&packet, 0, sizeof(packet));
+                  mouse_print_packet(&pp);
+                  break;
+                }
+              }
             }
           }
           break;
@@ -322,13 +354,13 @@ int (mouse_test_remote)(uint16_t period, uint8_t cnt) {
     }
   }
 
-  if (mouse_unsubscribe_int()) return 1;
   if (timer_unsubscribe_int()) return 1;
-  
   if (timer_set_frequency(0, 60)) return 1;
-  if (mouse_write_cmdb(KBC_MOUSE_SET_STREAM_MODE)) return 1;
 
-  minix_get_dflt_kbc_cmd_byte();
+  if (mouse_write_cmdb(KBC_MOUSE_SET_STREAM_MODE)) return 1;
+  if (mouse_write_cmdb(KBC_MOUSE_DISABLE_STREAM_MODE_REPORTING)) return 1;
+
+  // minix_get_dflt_kbc_cmd_byte();
 
   return 0;
 }
