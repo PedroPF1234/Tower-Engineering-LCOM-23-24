@@ -13,11 +13,11 @@
 
 
 // Video Modes
-#define MODE_1024x768 0x105
-#define MODE_640x480 0x110
-#define MODE_800x600 0x115
-#define MODE_1280x1024 0x11A
-#define MODE_1152x864 0x14C
+#define MODE_INDEXED 0x105
+#define MODE_DIRECT_15 0x110
+#define MODE_DIRECT_24 0x115
+#define MODE_DIRECT_16 0x11A
+#define MODE_DIRECT_32 0x14C
 
 // VBE Mode
 #define SET_VBE_MODE 0x02
