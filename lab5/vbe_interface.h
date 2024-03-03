@@ -10,3 +10,15 @@
 #define AH_FUNC_FAILED_CALL 0x01
 #define AH_FUNC_FAILED_HW_SUPPORT 0x02
 #define AH_FUNC_FAILED_INVALID_MODE 0x03
+
+
+// Video Modes
+#define MODE_1024x768 0x105
+#define MODE_640x480 0x110
+#define MODE_800x600 0x115
+#define MODE_1280x1024 0x11A
+#define MODE_1152x864 0x14C
+
+// VBE Mode
+#define SET_VBE_MODE 0x02
+#define SET_TEXT_MODE 0x03

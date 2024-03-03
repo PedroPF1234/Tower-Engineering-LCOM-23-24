@@ -15,14 +15,14 @@ int mouse_hook_id = 2;
 
 uint8_t mouse_byte = 0;
 struct packet pp;
-uint8_t state = GESTURE_START;
-bool previous_lb = false;
-bool previous_rb = false;
+static uint8_t state = GESTURE_START;
+static bool previous_lb = false;
+static bool previous_rb = false;
 
-int16_t min_x_len = 0;
+static int16_t min_x_len = 0;
 
-int16_t initial_pos[2] = {0, 0};
-int16_t current_pos[2] = {0, 0};
+static int16_t initial_pos[2] = {0, 0};
+static int16_t current_pos[2] = {0, 0};
 
 int (mouse_subscribe_int)(uint8_t *bit_no) {
   if (bit_no == NULL) return 1;
