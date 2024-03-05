@@ -1,1 +1,4 @@
-bytes per pixel: 2
+bytes per pixel: 1
+vg_draw_rectangle: invalid coordinates
+vg_draw_rectangle: invalid coordinates
+vg_draw_rectangle: invalid coordinates

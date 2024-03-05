@@ -15,6 +15,17 @@
 extern int counter;
 extern uint8_t scancode[2];
 
+extern uint8_t red_pixel_mask;
+extern uint8_t green_pixel_mask;
+extern uint8_t blue_pixel_mask;
+
+extern unsigned h_res;
+extern unsigned v_res;
+
+extern unsigned bits_per_pixel;
+
+extern uint16_t current_mode;
+
 int main(int argc, char *argv[]) {
   // sets the language of LCF messages (can be either EN-US or PT-PT)
   lcf_set_language("EN-US");
@@ -132,9 +143,73 @@ int(video_test_rectangle)(uint16_t mode, uint16_t x, uint16_t y,
 }
 
 int(video_test_pattern)(uint16_t mode, uint8_t no_rectangles, uint32_t first, uint8_t step) {
-  /* To be completed */
-  printf("%s(0x%03x, %u, 0x%08x, %d): under construction\n", __func__,
-         mode, no_rectangles, first, step);
+  
+  uint8_t kbc_bit_no;
+
+  if (vg_init(mode) == NULL) return 1;
+  if (kbc_subscribe_int(&kbc_bit_no)) return 1;
+
+  uint16_t h_size = h_res / no_rectangles;
+  uint16_t v_size = v_res / no_rectangles;
+
+  uint32_t color;
+
+  if (current_mode == MODE_INDEXED) {
+    for (uint32_t i = 0; i < h_res; i+= h_size) {
+      for (uint32_t j = 0; j < v_res; j += v_size) {
+
+        color = (first + (j * no_rectangles + i) * step) % (1 << bits_per_pixel);
+        if (vg_draw_rectangle(i, j, h_size, v_size, color));
+
+      }
+    }
+  } else {
+    for (uint32_t i = 0; i < h_res; i+= h_size) {
+      for (uint32_t j = 0; j < v_res; j += v_size) {
+
+        color = (first + (j * no_rectangles + i) * step) % (1 << bits_per_pixel);
+        if (vg_draw_rectangle(i, j, h_size, v_size, color));
+
+      }
+    }
+  }
+
+  int ipc_status;
+  message msg;
+  int r;
+
+  bool running = true;
+
+  while (running) {
+    if ((r = driver_receive(ANY, &msg, &ipc_status)) != 0) {
+      printf("driver_receive failed with: %d", r);
+      continue;
+    }
+
+    if (is_ipc_notify(ipc_status)) {
+      switch (_ENDPOINT_P(msg.m_source)) {
+        case HARDWARE:
+          if (msg.m_notify.interrupts & BIT(kbc_bit_no)) {
+            kbc_ih();
+            if (scancode[1] == ESC_BREAK) {
+              running = false;
+            }
+            if (scancode[1] == SPECIAL_KEY) {
+              scancode[0] = scancode[1];
+              break;
+            }
+          }
+          break;
+        default:
+          break;
+      }
+    }
+  }
+
+  if (kbc_unsubscribe_int()) return 1;
+  if (vg_exit()) return 1;
+
+  return 1;
 
   return 1;
 }

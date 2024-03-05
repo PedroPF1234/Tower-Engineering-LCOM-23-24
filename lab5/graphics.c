@@ -9,18 +9,22 @@ static vbe_mode_info_t vmi_p;
 
 static char *video_mem;
 
-static unsigned h_res;
-static unsigned v_res;
-static unsigned bits_per_pixel;
 static unsigned bytes_per_pixel;
-static uint8_t red_pixel_mask;
-static uint8_t green_pixel_mask;
-static uint8_t blue_pixel_mask;
+
 static uint8_t red_field_position;
 static uint8_t green_field_position;
 static uint8_t blue_field_position;
 
-static uint16_t current_mode;
+unsigned bits_per_pixel;
+
+unsigned h_res;
+unsigned v_res;
+
+uint8_t red_pixel_mask;
+uint8_t green_pixel_mask;
+uint8_t blue_pixel_mask;
+
+uint16_t current_mode;
 
 int (vbe_get_mode_information)(uint16_t mode, vbe_mode_info_t *vmi_p) {
   mmap_t map;
@@ -112,9 +116,9 @@ uint32_t (normalize_color)(uint32_t color) {
     return normalized_color;
   }
 
-  normalized_color |= (color & (BIT(red_pixel_mask + 1) - 1)) << red_field_position;
-  normalized_color |= ((color >> 8) & (BIT(green_pixel_mask + 1) - 1)) << green_field_position;
-  normalized_color |= ((color >> 16) & (BIT(blue_pixel_mask + 1) - 1)) << blue_field_position;
+  normalized_color |= (color & BIT_MASK(red_pixel_mask)) << red_field_position;
+  normalized_color |= ((color >> 8) & BIT_MASK(green_field_position)) << green_field_position;
+  normalized_color |= ((color >> 16) & BIT_MASK(blue_pixel_mask)) << blue_field_position;
 
   return normalized_color;
 
