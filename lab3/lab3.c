@@ -68,6 +68,7 @@ int(kbd_test_scan)() {
             else {
               if (scancode[0]) {
                 kbd_print_scancode((scancode[1] & BIT(7)) ? BREAK : MAKE, 2, &scancode[0]);
+                scancode[0] = 0;
               }
               else {
                 kbd_print_scancode((scancode[1] & BIT(7)) ? BREAK : MAKE, 1, &scancode[1]);
@@ -140,6 +141,7 @@ int(kbd_test_timed_scan)(uint8_t n) {
           if (msg.m_notify.interrupts & BIT(kbc_bit_no)) {
             idle = n;
             kbc_ih();
+            
             if (scancode[1] == ESC_BREAK) {
               run = false;
             }
@@ -150,6 +152,7 @@ int(kbd_test_timed_scan)(uint8_t n) {
 
             else {
               if (scancode[0]) {
+                
                 kbd_print_scancode((scancode[1] & BIT(7)) ? BREAK : MAKE, 2, &scancode[0]);
                 scancode[0] = 0;
               }

@@ -152,13 +152,13 @@ int(video_test_pattern)(uint16_t mode, uint8_t no_rectangles, uint32_t first, ui
   uint16_t h_size = h_res / no_rectangles;
   uint16_t v_size = v_res / no_rectangles;
 
-  uint32_t color;
+  uint32_t color = 0;
 
   if (current_mode == MODE_INDEXED) {
     for (uint32_t i = 0; i < h_res; i+= h_size) {
       for (uint32_t j = 0; j < v_res; j += v_size) {
 
-        color = (first + (j * no_rectangles + i) * step) % (1 << bits_per_pixel);
+        color = (first + ((i / h_size) * no_rectangles + (j/v_size)) * step) % (1 << bits_per_pixel);
         if (vg_draw_rectangle(i, j, h_size, v_size, color));
 
       }
@@ -167,8 +167,10 @@ int(video_test_pattern)(uint16_t mode, uint8_t no_rectangles, uint32_t first, ui
     for (uint32_t i = 0; i < h_res; i+= h_size) {
       for (uint32_t j = 0; j < v_res; j += v_size) {
 
-        color = (first + (j * no_rectangles + i) * step) % (1 << bits_per_pixel);
-        if (vg_draw_rectangle(i, j, h_size, v_size, color));
+        color |= ((uint8_t)first + (j/v_size) * step) % (1 << red_pixel_mask);
+        color |= (((uint8_t)(first >> 8) + (i/h_size) * step) % (1 << green_pixel_mask)) << 8;
+        color |= (((uint8_t)(first >> 16) + ((i/h_size) * (j/v_size)) * step) % (1 << blue_pixel_mask)) << 16;
+        color |= 0xFF000000;
 
       }
     }

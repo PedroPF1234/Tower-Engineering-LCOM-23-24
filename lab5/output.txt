@@ -1,4 +1,1 @@
-bytes per pixel: 1
-vg_draw_rectangle: invalid coordinates
-vg_draw_rectangle: invalid coordinates
-vg_draw_rectangle: invalid coordinates
+bytes per pixel: 4

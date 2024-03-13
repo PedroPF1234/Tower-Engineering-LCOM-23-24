@@ -3,7 +3,7 @@
 
 #include "i8042.h"
 
-int kbc_hook_id = KBC_IRQ;
+static int kbc_hook_id = KBC_IRQ;
 uint8_t scancode[2] = {0, 0};
 gid_t ctr = 0;
 
@@ -33,8 +33,6 @@ void (kbc_ih)() {
     ctr++;
     #endif
 
-    //tickdelay(micros_to_ticks(DELAY_US));
-
     if (status & (KBC_TRANSMIT_TIMEOUT_ERR | KBC_RECEIVE_TIMEOUT_ERR | KBC_PARITY_ERR)) return;
 
     if (status & KBC_OUT_BUFFER_FULL) {
@@ -44,6 +42,8 @@ void (kbc_ih)() {
       #endif
       break;
     }
+
+    tickdelay(micros_to_ticks(DELAY_US));
   }
 
   return;

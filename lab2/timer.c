@@ -5,6 +5,8 @@
 
 #include "i8254.h"
 
+#define BIT(n) (0x01 << n)
+
 int counter = 0;
 int hook_id = TIMER0_IRQ;
 
