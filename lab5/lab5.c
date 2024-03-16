@@ -91,7 +91,7 @@ int(video_test_init)(uint16_t mode, uint8_t delay) {
   if (timer_unsubscribe_int()) return 1;
   if (vg_exit()) return 1;
 
-  return 1;
+  return 0;
 }
 
 int(video_test_rectangle)(uint16_t mode, uint16_t x, uint16_t y,
@@ -139,7 +139,7 @@ int(video_test_rectangle)(uint16_t mode, uint16_t x, uint16_t y,
   if (kbc_unsubscribe_int()) return 1;
   if (vg_exit()) return 1;
 
-  return 1;
+  return 0;
 }
 
 int(video_test_pattern)(uint16_t mode, uint8_t no_rectangles, uint32_t first, uint8_t step) {
@@ -171,6 +171,8 @@ int(video_test_pattern)(uint16_t mode, uint8_t no_rectangles, uint32_t first, ui
         color |= (((uint8_t)(first >> 8) + (i/h_size) * step) % (1 << green_pixel_mask)) << 8;
         color |= (((uint8_t)(first >> 16) + ((i/h_size) * (j/v_size)) * step) % (1 << blue_pixel_mask)) << 16;
         color |= 0xFF000000;
+
+        if (vg_draw_rectangle(i, j, h_size, v_size, color));
 
       }
     }
@@ -211,25 +213,159 @@ int(video_test_pattern)(uint16_t mode, uint8_t no_rectangles, uint32_t first, ui
   if (kbc_unsubscribe_int()) return 1;
   if (vg_exit()) return 1;
 
-  return 1;
-
-  return 1;
+  return 0;
 }
 
 int(video_test_xpm)(xpm_map_t xpm, uint16_t x, uint16_t y) {
-  /* To be completed */
-  printf("%s(%8p, %u, %u): under construction\n", __func__, xpm, x, y);
+  
+  uint8_t kbc_bit_no;
 
-  return 1;
+  xpm_image_t image;
+
+  if (vg_init(MODE_INDEXED) == NULL) return 1;
+  if (kbc_subscribe_int(&kbc_bit_no)) return 1;
+
+  if(xpm_load(xpm, XPM_INDEXED, &image) == NULL) return 1;
+
+  if (vg_draw_xpm(x, y, image, (bits_per_pixel + 7)/8)) return 1;
+
+  int ipc_status;
+  message msg;
+  int r;
+
+  bool running = true;
+
+  while (running) {
+    if ((r = driver_receive(ANY, &msg, &ipc_status)) != 0) {
+      printf("driver_receive failed with: %d", r);
+      continue;
+    }
+
+    if (is_ipc_notify(ipc_status)) {
+      switch (_ENDPOINT_P(msg.m_source)) {
+        case HARDWARE:
+          if (msg.m_notify.interrupts & BIT(kbc_bit_no)) {
+            kbc_ih();
+            if (scancode[1] == ESC_BREAK) {
+              running = false;
+            }
+            if (scancode[1] == SPECIAL_KEY) {
+              scancode[0] = scancode[1];
+              break;
+            }
+          }
+          break;
+        default:
+          break;
+      }
+    }
+  }
+
+  if (kbc_unsubscribe_int()) return 1;
+  if (vg_exit()) return 1;
+
+  return 0;
 }
 
 int(video_test_move)(xpm_map_t xpm, uint16_t xi, uint16_t yi, uint16_t xf, uint16_t yf,
                      int16_t speed, uint8_t fr_rate) {
-  /* To be completed */
-  printf("%s(%8p, %u, %u, %u, %u, %d, %u): under construction\n",
-         __func__, xpm, xi, yi, xf, yf, speed, fr_rate);
+  
+  uint8_t kbc_bit_no;
+  uint8_t timer_bit_no;
 
-  return 1;
+  xpm_image_t image;
+
+  uint16_t xp = xi;
+  uint16_t yp = yi;
+  int16_t xd, yd;
+  uint16_t wait = 0;
+  uint8_t rate_of_change = 60 / fr_rate;
+
+  if (speed == 0) {
+    panic("Speed is zero, sprite cannot move.\n");
+    return 1;
+  }
+
+  if (xf > xi) xd = speed > 0 ? speed : 1;
+  else if (xf < xi) xd = speed > 0 ? (0 - speed) : -1;
+  else xd = 0;
+
+  if (yf > yi) yd = speed > 0 ? speed : 1;
+  else if (yf < yi) yd = speed > 0 ? (0 - speed) : -1;
+  else yd = 0;
+
+  wait = speed > 0 ? 0 : (0 - speed);
+
+  if (vg_init(MODE_INDEXED) == NULL) return 1;
+
+  if(xpm_load(xpm, XPM_INDEXED, &image) == NULL) return 1;
+
+  if (vg_draw_xpm(xi, yi, image, (bits_per_pixel + 7)/8)) return 1;
+
+  if (kbc_subscribe_int(&kbc_bit_no)) return 1;
+  if (timer_subscribe_int(&timer_bit_no)) return 1;
+
+  int ipc_status;
+  message msg;
+  int r;
+
+  uint16_t tempwait = wait;
+
+  bool running = true;
+
+  while (running) {
+    if ((r = driver_receive(ANY, &msg, &ipc_status)) != 0) {
+      printf("driver_receive failed with: %d", r);
+      continue;
+    }
+
+    if (is_ipc_notify(ipc_status)) {
+      switch (_ENDPOINT_P(msg.m_source)) {
+        case HARDWARE:
+          if (msg.m_notify.interrupts & BIT(kbc_bit_no)) {
+            kbc_ih();
+            if (scancode[1] == ESC_BREAK) {
+              running = false;
+            }
+            if (scancode[1] == SPECIAL_KEY) {
+              scancode[0] = scancode[1];
+              break;
+            }
+          }
+
+          if (msg.m_notify.interrupts & BIT(timer_bit_no)) {
+            timer_int_handler();
+            if (counter % rate_of_change == 0) {
+              if (tempwait) {
+                tempwait--;
+              } else {
+
+                if (xd > xf - xp) xd = xf - xp;
+                else xp += xd;
+                if (yd > yf - yp) yd = yf - yp;
+                else yp += yd;
+                
+                if (vg_clean_screen()) return 1;
+                if (vg_draw_xpm(xp, yp, image, (bits_per_pixel + 7)/8)) return 1;
+                tempwait = wait;
+              }
+            }
+
+          }
+          break;
+        default:
+          break;
+      }
+    }
+  }
+
+  if (kbc_unsubscribe_int()) return 1;
+  if (vg_exit()) return 1;
+
+  return 0;
+
+
+  return 0;
 }
 
 int(video_test_controller)() {

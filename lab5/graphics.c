@@ -112,7 +112,7 @@ uint32_t (normalize_color)(uint32_t color) {
   uint32_t normalized_color = 0;
 
   if (current_mode == MODE_INDEXED) {
-    normalized_color = (uint8_t) color;
+    normalized_color = (uint8_t)(color % 256);
     return normalized_color;
   }
 
@@ -158,6 +158,37 @@ int (vg_draw_rectangle)(uint16_t x, uint16_t y, uint16_t width, uint16_t height,
 
   for (unsigned i = 0; i < height; i++) {
     if (vg_draw_hline(x, y + i, width, color)) return 1;
+  }
+
+  return 0;
+}
+
+int (vg_draw_xpm)(uint16_t x, uint16_t y, xpm_image_t img, uint8_t bytespp) {
+  if (x + img.width > h_res || y + img.height > v_res) {
+    printf("vg_draw_xpm: invalid coordinates\n");
+    return 0;
+  }
+
+  uint32_t color = 0;
+
+  for (unsigned i = 0; i < img.height; i++) {
+    for (unsigned j = 0; j < img.width; j++) {
+
+      for (unsigned k = 0; k < bytespp; k++) {
+        color |= (uint32_t) *(img.bytes + (i * img.width) + j + k);
+      }
+
+      if (vg_draw_pixel(x + j, y + i, color)) return 1;
+      color = 0;
+    }
+  }
+
+  return 0;
+}
+
+int (vg_clean_screen)() {
+  for (unsigned i = 0; i < v_res; i++) {
+    if (vg_draw_hline(0, i, h_res, 0)) return 1;
   }
 
   return 0;

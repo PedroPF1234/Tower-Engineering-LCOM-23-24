@@ -1,1 +1,1 @@
-bytes per pixel: 4
+bytes per pixel: 1
