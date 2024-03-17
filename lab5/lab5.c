@@ -301,6 +301,7 @@ int(video_test_move)(xpm_map_t xpm, uint16_t xi, uint16_t yi, uint16_t xf, uint1
   if(xpm_load(xpm, XPM_INDEXED, &image) == NULL) return 1;
 
   if (vg_draw_xpm(xi, yi, image, (bits_per_pixel + 7)/8)) return 1;
+  if (vg_replace_buffer()) return 1;
 
   if (kbc_subscribe_int(&kbc_bit_no)) return 1;
   if (timer_subscribe_int(&timer_bit_no)) return 1;
@@ -345,8 +346,8 @@ int(video_test_move)(xpm_map_t xpm, uint16_t xi, uint16_t yi, uint16_t xf, uint1
                 if (yd > yf - yp) yd = yf - yp;
                 else yp += yd;
                 
-                if (vg_clean_screen()) return 1;
                 if (vg_draw_xpm(xp, yp, image, (bits_per_pixel + 7)/8)) return 1;
+                if (vg_replace_buffer()) return 1;
                 tempwait = wait;
               }
             }

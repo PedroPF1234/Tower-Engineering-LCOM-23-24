@@ -9,6 +9,8 @@ static vbe_mode_info_t vmi_p;
 
 static char *video_mem;
 
+static char *secondary_buffer;
+
 static unsigned bytes_per_pixel;
 
 static uint8_t red_field_position;
@@ -86,6 +88,8 @@ void* (vg_init)(uint16_t mode) {
   }
 
   video_mem = (char *) video_addr;
+  secondary_buffer = (char *) malloc(vram_size);
+  memset(secondary_buffer, 0, vram_size);
 
   h_res = vmi_p.XResolution;
   v_res = vmi_p.YResolution;
@@ -132,7 +136,7 @@ int (vg_draw_pixel)(uint16_t x, uint16_t y, uint32_t color) {
 
   uint32_t normalized_color = normalize_color(color);
 
-  memcpy((video_mem + (y * h_res + x) * bytes_per_pixel), &normalized_color, bytes_per_pixel);
+  memcpy((secondary_buffer + (y * h_res + x) * bytes_per_pixel), &normalized_color, bytes_per_pixel);
 
   return 0;
 }
@@ -186,10 +190,14 @@ int (vg_draw_xpm)(uint16_t x, uint16_t y, xpm_image_t img, uint8_t bytespp) {
   return 0;
 }
 
-int (vg_clean_screen)() {
-  for (unsigned i = 0; i < v_res; i++) {
-    if (vg_draw_hline(0, i, h_res, 0)) return 1;
-  }
-
+int (vg_clean_buffer)() {
+  memset(secondary_buffer, 0, (h_res * v_res * bytes_per_pixel));
   return 0;
 }
+
+int (vg_replace_buffer)() {
+  memcpy(video_mem, secondary_buffer, (h_res * v_res * bytes_per_pixel));
+  if (vg_clean_buffer()) return 1;
+  return 0; 
+}
+
