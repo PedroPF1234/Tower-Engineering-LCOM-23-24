@@ -115,7 +115,7 @@ uint32_t (normalize_color)(uint32_t color) {
 
   uint32_t normalized_color = 0;
 
-  if (current_mode == MODE_INDEXED) {
+  if (current_mode == MODE_INDEXED_DEFAULT) {
     normalized_color = (uint8_t)(color % 256);
     return normalized_color;
   }

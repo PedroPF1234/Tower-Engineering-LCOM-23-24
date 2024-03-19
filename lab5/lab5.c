@@ -154,7 +154,7 @@ int(video_test_pattern)(uint16_t mode, uint8_t no_rectangles, uint32_t first, ui
 
   uint32_t color = 0;
 
-  if (current_mode == MODE_INDEXED) {
+  if (current_mode == MODE_INDEXED_DEFAULT) {
     for (uint32_t i = 0; i < h_res; i+= h_size) {
       for (uint32_t j = 0; j < v_res; j += v_size) {
 
@@ -222,7 +222,7 @@ int(video_test_xpm)(xpm_map_t xpm, uint16_t x, uint16_t y) {
 
   xpm_image_t image;
 
-  if (vg_init(MODE_INDEXED) == NULL) return 1;
+  if (vg_init(MODE_INDEXED_DEFAULT) == NULL) return 1;
   if (kbc_subscribe_int(&kbc_bit_no)) return 1;
 
   if(xpm_load(xpm, XPM_INDEXED, &image) == NULL) return 1;
@@ -296,7 +296,7 @@ int(video_test_move)(xpm_map_t xpm, uint16_t xi, uint16_t yi, uint16_t xf, uint1
 
   wait = speed > 0 ? 0 : (0 - speed);
 
-  if (vg_init(MODE_INDEXED) == NULL) return 1;
+  if (vg_init(MODE_INDEXED_DEFAULT) == NULL) return 1;
 
   if(xpm_load(xpm, XPM_INDEXED, &image) == NULL) return 1;
 
