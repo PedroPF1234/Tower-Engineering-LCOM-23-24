@@ -32,7 +32,7 @@ int main(int argc, char *argv[]) {
 
   // enables to log function invocations that are being "wrapped" by LCF
   // [comment this out if you don't want/need it]
-  lcf_trace_calls("/home/lcom/labs/lab5/trace.txt");
+  // lcf_trace_calls("/home/lcom/labs/lab5/trace.txt");
 
   // enables to save the output of printf function calls on a file
   // [comment this out if you don't want/need it]
@@ -51,44 +51,11 @@ int main(int argc, char *argv[]) {
 }
 
 int(video_test_init)(uint16_t mode, uint8_t delay) {
-  uint8_t timer_bit_no;
-  reg86_t reg86;
 
-  memset(&reg86, 0, sizeof(reg86));
-  reg86.intno = 0x10;
-  reg86.ax = 0x4F02;
-  reg86.bx = BIT(14) | mode;
-  if (sys_int86(&reg86)) return 1;
+  if ((vg_init)(mode) == NULL) return 1;
 
-  if (timer_subscribe_int(&timer_bit_no)) return 1;
+  sleep(delay);
 
-  int ipc_status;
-  message msg;
-  int r;
-
-  bool running = true;
-
-  while (running) {
-    if ((r = driver_receive(ANY, &msg, &ipc_status)) != 0) {
-      printf("driver_receive failed with: %d", r);
-      continue;
-    }
-
-    if (is_ipc_notify(ipc_status)) {
-      switch (_ENDPOINT_P(msg.m_source)) {
-        case HARDWARE:
-          if (msg.m_notify.interrupts & BIT(timer_bit_no)) {
-            timer_int_handler();
-            if (counter >= delay * 60) running = false;
-          }
-          break;
-        default:
-          break;
-      }
-    }
-  }
-
-  if (timer_unsubscribe_int()) return 1;
   if (vg_exit()) return 1;
 
   return 0;
@@ -103,6 +70,7 @@ int(video_test_rectangle)(uint16_t mode, uint16_t x, uint16_t y,
   if (kbc_subscribe_int(&kbc_bit_no)) return 1;
 
   if (vg_draw_rectangle(x, y, width, height, color)) return 1;
+  if (vg_replace_buffer()) return 1;
 
   int ipc_status;
   message msg;
@@ -160,7 +128,6 @@ int(video_test_pattern)(uint16_t mode, uint8_t no_rectangles, uint32_t first, ui
 
         color = (first + ((i / h_size) * no_rectangles + (j/v_size)) * step) % (1 << bits_per_pixel);
         if (vg_draw_rectangle(i, j, h_size, v_size, color));
-
       }
     }
   } else {
@@ -173,10 +140,11 @@ int(video_test_pattern)(uint16_t mode, uint8_t no_rectangles, uint32_t first, ui
         color |= 0xFF000000;
 
         if (vg_draw_rectangle(i, j, h_size, v_size, color));
-
       }
     }
   }
+
+  if (vg_replace_buffer()) return 1;
 
   int ipc_status;
   message msg;
@@ -228,6 +196,7 @@ int(video_test_xpm)(xpm_map_t xpm, uint16_t x, uint16_t y) {
   if(xpm_load(xpm, XPM_INDEXED, &image) == NULL) return 1;
 
   if (vg_draw_xpm(x, y, image, (bits_per_pixel + 7)/8)) return 1;
+  if (vg_replace_buffer()) return 1;
 
   int ipc_status;
   message msg;
@@ -360,11 +329,10 @@ int(video_test_move)(xpm_map_t xpm, uint16_t xi, uint16_t yi, uint16_t xf, uint1
     }
   }
 
+  if (timer_unsubscribe_int()) return 1;
   if (kbc_unsubscribe_int()) return 1;
+  if (vg_free()) return 1;
   if (vg_exit()) return 1;
-
-  return 0;
-
 
   return 0;
 }

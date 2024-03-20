@@ -11,3 +11,5 @@ int (vg_draw_rectangle)(uint16_t x, uint16_t y, uint16_t width, uint16_t height,
 int (vg_draw_xpm)(uint16_t x, uint16_t y, xpm_image_t img, uint8_t bytespp);
 
 int (vg_replace_buffer)();
+
+int (vg_free)();

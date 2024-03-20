@@ -64,10 +64,6 @@ void* (vg_init)(uint16_t mode) {
   int r;
 
   memset(&reg86, 0, sizeof(reg86));
-  reg86.intno = 0x10;
-  reg86.ax = 0x4F02;
-  reg86.bx = BIT(14) | mode;
-  if (sys_int86(&reg86)) return NULL;
 
   if (vbe_get_mode_information(mode, &vmi_p)) return NULL;
 
@@ -87,6 +83,11 @@ void* (vg_init)(uint16_t mode) {
     panic("couldn't map video memory");
   }
 
+  reg86.intno = 0x10;
+  reg86.ax = 0x4F02;
+  reg86.bx = BIT(14) | mode;
+  if (sys_int86(&reg86)) return NULL;
+
   video_mem = (char *) video_addr;
   secondary_buffer = (char *) malloc(vram_size);
   memset(secondary_buffer, 0, vram_size);
@@ -95,8 +96,6 @@ void* (vg_init)(uint16_t mode) {
   v_res = vmi_p.YResolution;
   bits_per_pixel = vmi_p.BitsPerPixel;
   bytes_per_pixel = (bits_per_pixel + 7) / 8;
-
-  printf("bytes per pixel: %d\n", bytes_per_pixel);
 
   red_pixel_mask = vmi_p.RedMaskSize;
   green_pixel_mask = vmi_p.GreenMaskSize;
@@ -199,5 +198,11 @@ int (vg_replace_buffer)() {
   memcpy(video_mem, secondary_buffer, (h_res * v_res * bytes_per_pixel));
   if (vg_clean_buffer()) return 1;
   return 0; 
+}
+
+int (vg_free)() {
+  if (vg_replace_buffer()) return 1;
+  free(secondary_buffer);
+  return 0;
 }
 
