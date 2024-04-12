@@ -17,3 +17,7 @@ bool mouse_gesture_event(struct packet* pp, uint8_t x_len, uint8_t tolerance);
 int mouse_get_info(struct packet *target);
 
 int mouse_remote(uint8_t remote_byte);
+
+int mouse_initiate(uint8_t *bit_no);
+
+int mouse_terminate();

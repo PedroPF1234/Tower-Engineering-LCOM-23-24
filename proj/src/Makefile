@@ -1,10 +1,14 @@
 # name of the program (Minix service)
 PROG=proj
 
-.PATH: ${.CURDIR}/devices/
+.PATH: ${.CURDIR}/Devices/
+.PATH: ${.CURDIR}/Devices/Graphics/
+.PATH: ${.CURDIR}/Devices/KeyBoard/
+.PATH: ${.CURDIR}/Devices/Mouse/
+.PATH: ${.CURDIR}/Devices/Timer/
 
 # source code files to be compiled
-SRCS = proj.c graphics.c kbc.c mouse.c timer.c utils.c
+SRCS = proj.c graphics.c kbc.c mouse.c timer.c utils.c device_controller.c
 
 # additional compilation flags
 # "-Wall -Wextra -Werror -I . -std=c11 -Wno-unused-parameter" are already set

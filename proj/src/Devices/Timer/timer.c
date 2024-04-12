@@ -6,7 +6,7 @@
 #include "i8254.h"
 
 int counter = 0;
-int timer_hook_id = TIMER0_IRQ;
+static int timer_hook_id = 0;
 
 int (timer_set_frequency)(uint8_t timer, uint32_t freq) {
   uint8_t st;
@@ -106,6 +106,15 @@ int (timer_display_conf)(uint8_t timer, uint8_t st,
   }
 
   timer_print_config(timer, field, conf);
+
+  return 0;
+}
+
+int timer_initiate_and_subscribe(uint8_t *bit_no, uint32_t freq) {
+
+  if (timer_set_frequency(0, freq)) return 1;
+
+  if (timer_subscribe_int(bit_no)) return 1;
 
   return 0;
 }

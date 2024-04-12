@@ -2,7 +2,7 @@
 #include <stdint.h>
 
 #include "i8042.h"
-#include "kbc.h"
+#include "../KeyBoard/kbc.h"
 
 #define GESTURE_START 0
 #define GESTURE_LB_PRESS 1
@@ -11,10 +11,15 @@
 #define GESTURE_RB_PRESS 4
 #define GESTURE_RB_MOV 5
 
-int mouse_hook_id = 2;
+static int mouse_hook_id = 2;
 
-uint8_t mouse_byte = 0;
-struct packet pp;
+static uint8_t packet_to_read = 0;
+static uint8_t packet[3] = {0, 0, 0};
+static bool ready_to_read = false;
+static struct packet pp;
+static uint8_t mouse_byte = 0;
+
+
 static uint8_t state = GESTURE_START;
 static bool previous_lb = false;
 static bool previous_rb = false;
@@ -77,6 +82,96 @@ void (mouse_ih)() {
 
     if (i == retries -1) return;
   }
+
+  if (packet_to_read == 0) {
+    memset(&pp, 0, sizeof(pp));
+    if (mouse_byte & BIT(3)) {
+      packet[0] = mouse_byte;
+      packet_to_read++;
+    }
+  } else if (packet_to_read == 1) {
+    packet[1] = mouse_byte;
+    packet_to_read++;
+  } else {
+    packet[2] = mouse_byte;
+    packet_to_read = 0;
+    pp.bytes[0] = packet[0];
+    pp.bytes[1] = packet[1];
+    pp.bytes[2] = packet[2];
+
+    pp.lb = packet[0] & BIT(0);
+    pp.rb = packet[0] & BIT(1);
+    pp.mb = packet[0] & BIT(2);
+    pp.x_ov = packet[0] & BIT(6);
+    pp.y_ov = packet[0] & BIT(7);
+
+    if (packet[0] & BIT(4)) {
+      pp.delta_x = packet[1] - 256;
+    } else {
+      pp.delta_x = packet[1];
+    }
+
+    if (packet[0] & BIT(5)) {
+      pp.delta_y = packet[2] - 256;
+    } else {
+      pp.delta_y = packet[2];
+    }
+    memset(&packet, 0, sizeof(packet));
+    ready_to_read = true;
+  }
+}
+
+int mouse_get_info(struct packet *target){
+  if (ready_to_read) {
+    memcpy(target, &pp, sizeof(pp));
+    ready_to_read = false;
+    return true;
+  } else {
+    return false;
+  }
+}
+
+int mouse_remote(uint8_t remote_byte) {
+  mouse_byte = remote_byte;
+
+  if (packet_to_read == 0) {
+    memset(&pp, 0, sizeof(pp));
+    if (mouse_byte & BIT(3)) {
+      packet[0] = mouse_byte;
+      packet_to_read++;
+    }
+  } else if (packet_to_read == 1) {
+    packet[1] = mouse_byte;
+    packet_to_read++;
+  } else {
+    packet[2] = mouse_byte;
+    packet_to_read = 0;
+    pp.bytes[0] = packet[0];
+    pp.bytes[1] = packet[1];
+    pp.bytes[2] = packet[2];
+
+    pp.lb = packet[0] & BIT(0);
+    pp.rb = packet[0] & BIT(1);
+    pp.mb = packet[0] & BIT(2);
+    pp.x_ov = packet[0] & BIT(6);
+    pp.y_ov = packet[0] & BIT(7);
+
+    if (packet[0] & BIT(4)) {
+      pp.delta_x = packet[1] - 256;
+    } else {
+      pp.delta_x = packet[1];
+    }
+
+    if (packet[0] & BIT(5)) {
+      pp.delta_y = packet[2] - 256;
+    } else {
+      pp.delta_y = packet[2];
+    }
+    memset(&packet, 0, sizeof(packet));
+    ready_to_read = true;
+  }
+
+  return 0;
 }
 
 struct mouse_ev* mouse_detect_event_	(struct packet* pp) {
@@ -194,4 +289,22 @@ bool mouse_gesture_event(struct packet* pp, uint8_t x_len, uint8_t tolerance) {
 
 
   return false;
+}
+
+int mouse_initiate(uint8_t *bit_no) {
+  
+  if (mouse_write_cmdb(KBC_MOUSE_ENABLE_STREAM_MODE_REPORTING)) return 1;
+
+  if (mouse_subscribe_int(bit_no)) return 1;
+
+  return 0;
+}
+
+int mouse_terminate() {
+  
+  if (mouse_unsubscribe_int()) return 1;
+
+  if (mouse_write_cmdb(KBC_MOUSE_DISABLE_STREAM_MODE_REPORTING)) return 1;
+
+  return 0;
 }
