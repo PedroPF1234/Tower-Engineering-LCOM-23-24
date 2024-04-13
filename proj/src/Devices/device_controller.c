@@ -7,33 +7,27 @@
 #include "KeyBoard/kbc.h"
 #include "Graphics/graphics.h"
 #include "Timer/timer.h"
+#include "device_controller.h"
  
-// Temp includes
-#include "../ImageAssets/MouseCursor.xpm"
-// End of temp includes
+// Device Interrupt Bit Masks
+static uint8_t timer_bit_no;
+static uint8_t kbc_bit_no;
+static uint8_t mouse_bit_no;
 
-uint8_t timer_bit_no;
-uint8_t kbc_bit_no;
-uint8_t mouse_bit_no;
-
-struct packet pp;
+static struct packet pp;
 extern int counter;
 extern uint8_t scancode[2];
 
 extern unsigned h_res;
 extern unsigned v_res;
 
-extern unsigned bits_per_pixel;
+extern uint8_t bytes_per_pixel;
 
-int16_t mouse_position[2] = {0, 0};
+extern Mouse mouse; 
 
-int default_video_mode = 0x11B;
+static int default_video_mode = 0x11B;
 
-// Temp variables
-xpm_image_t mouse_cursor_xpm;
-// End of temp variables
-
-int boot_devices(uint32_t freq) {
+int boot_devices(uint32_t freq, uint16_t mode) {
 
   if (timer_initiate_and_subscribe(&timer_bit_no, freq)) return 1;
 
@@ -41,13 +35,14 @@ int boot_devices(uint32_t freq) {
 
   if (kbc_subscribe_int(&kbc_bit_no)) return 1;
 
-  if (vg_init(default_video_mode) == NULL) return 1;
+  if (mode) {
+    if (vg_init(mode) == NULL) return 1;
+  } else {
+    if (vg_init(default_video_mode) == NULL) return 1;
+  }
 
-  // Temp section
-  if (xpm_load((xpm_map_t) MouseCursor, XPM_8_8_8, &mouse_cursor_xpm) == NULL) return 1;
-  mouse_position[0] = h_res / 2;
-  mouse_position[1] = v_res / 2;
-  // End of temp section
+  mouse.x_position = h_res / 2;
+  mouse.y_position = v_res / 2;
 
   return 0;
 }
@@ -71,20 +66,20 @@ int interrupt_handler(uint32_t interrupt_mask) {
     mouse_ih();
     if (mouse_get_info(&pp)) {
 
-      mouse_position[0] += pp.delta_x;
-      mouse_position[1] -= pp.delta_y;
+      mouse.x_position += pp.delta_x;
+      mouse.y_position -= pp.delta_y;
 
-      if (mouse_position[0] < 0) mouse_position[0] = 0;
-      if (mouse_position[0] >= (int16_t) h_res) mouse_position[0] = h_res - 1;
-      if (mouse_position[1] < 0) mouse_position[1] = 0;
-      if (mouse_position[1] >= (int16_t) v_res) mouse_position[1] = v_res - 1;
+      if (mouse.x_position < 0) mouse.x_position = 0;
+      if (mouse.x_position >= (int16_t) h_res) mouse.x_position = h_res - 1;
+      if (mouse.y_position < 0) mouse.y_position = 0;
+      if (mouse.y_position >= (int16_t) v_res) mouse.y_position = v_res - 1;
     }
   }
   
   if (interrupt_mask & BIT(timer_bit_no)) {
     timer_int_handler();
-    if (vg_draw_xpm(mouse_position[0], mouse_position[1], 
-                    mouse_cursor_xpm, (bits_per_pixel + 7)/8)) return 1;
+    if (vg_draw_xpm(mouse.x_position, mouse.y_position, 
+                    mouse.sprite->width, mouse.sprite->height, mouse.sprite->map)) return 1;
     if (vg_replace_buffer()) return 1;
   }
 
@@ -95,5 +90,11 @@ int interrupt_handler(uint32_t interrupt_mask) {
     }
   }
 
+  return 0;
+}
+
+int update_timer_freq(uint32_t freq) {
+  if (timer_unsubscribe_int()) return 1;
+  if (timer_initiate_and_subscribe(&timer_bit_no, freq)) return 1;
   return 0;
 }

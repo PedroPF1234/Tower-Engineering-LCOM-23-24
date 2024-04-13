@@ -6,6 +6,12 @@
 
 #include "Devices/device_controller.h"
 
+// Temp includes
+#include "ImageAssets/MouseCursor.xpm"
+// End of temp includes
+
+Mouse mouse;
+
 int main(int argc, char *argv[]) {
   // sets the language of LCF messages (can be either EN-US or PT-PT)
   lcf_set_language("EN-US");
@@ -36,7 +42,8 @@ int (proj_main_loop)(int argc, char **argv) {
   message msg;
   int r;
 
-  if (boot_devices(60)) return 1;
+  if (boot_devices(60, 0x11B)) return 1;
+  mouse.sprite = create_sprite((xpm_map_t) MouseCursor, 0, 0, 0);
 
   bool running = true;
 
@@ -62,6 +69,7 @@ int (proj_main_loop)(int argc, char **argv) {
   }
 
   if (stop_devices()) return 1;
-  
+  destroy_sprite(mouse.sprite);
+
   return 0;
 }

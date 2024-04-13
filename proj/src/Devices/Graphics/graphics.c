@@ -165,7 +165,7 @@ int (vg_draw_rectangle)(uint16_t x, uint16_t y, uint16_t width, uint16_t height,
   return 0;
 }
 
-int (vg_draw_xpm)(uint16_t x, uint16_t y, xpm_image_t img, uint8_t bytespp) {
+int vg_draw_xpm(uint16_t x, uint16_t y, uint16_t width, uint16_t height, uint8_t *bytes) {
   if (x > h_res || y > v_res) {
     printf("vg_draw_xpm: invalid coordinates\n");
     return 0;
@@ -173,10 +173,10 @@ int (vg_draw_xpm)(uint16_t x, uint16_t y, xpm_image_t img, uint8_t bytespp) {
 
   uint32_t color = 0;
 
-  for (unsigned i = 0; i < img.height; i++) {
-    for (unsigned j = 0; j < img.width; j++) {
+  for (unsigned i = 0; i < height; i++) {
+    for (unsigned j = 0; j < width; j++) {
 
-      memcpy(&color, img.bytes + (i * img.width + j) * bytespp, bytespp);
+      memcpy(&color, bytes + (i * width + j) * bytes_per_pixel, bytes_per_pixel);
       if (vg_draw_pixel(x + j, y + i, color)) return 1;
       color = 0;
     }
@@ -185,18 +185,18 @@ int (vg_draw_xpm)(uint16_t x, uint16_t y, xpm_image_t img, uint8_t bytespp) {
   return 0;
 }
 
-int (vg_clean_buffer)() {
+int vg_clean_buffer() {
   memset(secondary_buffer, 0, (h_res * v_res * bytes_per_pixel));
   return 0;
 }
 
-int (vg_replace_buffer)() {
+int vg_replace_buffer() {
   memcpy(video_mem, secondary_buffer, (h_res * v_res * bytes_per_pixel));
   if (vg_clean_buffer()) return 1;
   return 0; 
 }
 
-int (vg_free)() {
+int vg_free() {
   if (vg_replace_buffer()) return 1;
   free(secondary_buffer);
   return 0;
