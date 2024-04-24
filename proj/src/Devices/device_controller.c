@@ -8,6 +8,11 @@
 #include "Graphics/graphics.h"
 #include "Timer/timer.h"
 #include "device_controller.h"
+
+#include "../GameObjects/gameobject.h"
+
+// Mouse Game Object
+extern GameObject_t* mouse;
  
 // Device Interrupt Bit Masks
 static uint8_t timer_bit_no;
@@ -23,11 +28,11 @@ extern unsigned v_res;
 
 extern uint8_t bytes_per_pixel;
 
-extern Mouse mouse; 
-
 static int default_video_mode = 0x11B;
 
 int boot_devices(uint32_t freq, uint16_t mode) {
+
+  if (create_gameobjects()) return 1;
 
   if (timer_initiate_and_subscribe(&timer_bit_no, freq)) return 1;
 
@@ -41,13 +46,15 @@ int boot_devices(uint32_t freq, uint16_t mode) {
     if (vg_init(default_video_mode) == NULL) return 1;
   }
 
-  mouse.x_position = h_res / 2;
-  mouse.y_position = v_res / 2;
+  mouse->x = h_res / 2;
+  mouse->y = v_res / 2;
 
   return 0;
 }
 
 int stop_devices() {
+
+  if (destroy_gameobjects()) return 1;
 
   if (kbc_unsubscribe_int()) return 1;
 
@@ -66,20 +73,19 @@ int interrupt_handler(uint32_t interrupt_mask) {
     mouse_ih();
     if (mouse_get_info(&pp)) {
 
-      mouse.x_position += pp.delta_x;
-      mouse.y_position -= pp.delta_y;
+      mouse->x += pp.delta_x;
+      mouse->y -= pp.delta_y;
 
-      if (mouse.x_position < 0) mouse.x_position = 0;
-      if (mouse.x_position >= (int16_t) h_res) mouse.x_position = h_res - 1;
-      if (mouse.y_position < 0) mouse.y_position = 0;
-      if (mouse.y_position >= (int16_t) v_res) mouse.y_position = v_res - 1;
+      if (mouse->x < 0) mouse->x = 0;
+      if (mouse->x >= (int16_t) h_res) mouse->x = h_res - 1;
+      if (mouse->y < 0) mouse->y = 0;
+      if (mouse->y >= (int16_t) v_res) mouse->y = v_res - 1;
     }
   }
   
   if (interrupt_mask & BIT(timer_bit_no)) {
     timer_int_handler();
-    if (vg_draw_xpm(mouse.x_position, mouse.y_position, 
-                    mouse.sprite->width, mouse.sprite->height, mouse.sprite->map)) return 1;
+    if (draw_gameObject(mouse)) return 1;
     if (vg_replace_buffer()) return 1;
   }
 

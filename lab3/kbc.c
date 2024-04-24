@@ -21,34 +21,6 @@ int (kbc_unsubscribe_int)() {
   return 0;
 }
 
-void (kbc_ih)() {
-
-  uint8_t status = 0;
-  uint8_t retries = MAX_RETRIES;
-
-  for (size_t i = 0; i < retries; i++) {
-
-    if (util_sys_inb(KBC_STATUS_RG, &status)) return;
-    #ifdef LAB3
-    ctr++;
-    #endif
-
-    if (status & (KBC_TRANSMIT_TIMEOUT_ERR | KBC_RECEIVE_TIMEOUT_ERR | KBC_PARITY_ERR)) return;
-
-    if (status & KBC_OUT_BUFFER_FULL) {
-      if (util_sys_inb(KBC_DATA_REG, &scancode[1])) return;
-      #ifdef LAB3
-      ctr++;
-      #endif
-      break;
-    }
-
-    tickdelay(micros_to_ticks(DELAY_US));
-  }
-
-  return;
-}
-
 int (kbc_write_cmdb)(uint8_t port, uint8_t cmd, bool is_mouse_cmd) {
   uint8_t status = 0;
   uint8_t retries = MAX_RETRIES;
@@ -124,4 +96,11 @@ int (kbd_reenable_interrupts)() {
   if (kbc_write_cmdb(KBC_INPUT_BUFFER, cmd, false)) return 1;
 
   return 0;
+}
+
+void (kbc_ih)() {
+
+  if (kbc_read_cmdb(&scancode[1], false)) return;
+
+  return;
 }

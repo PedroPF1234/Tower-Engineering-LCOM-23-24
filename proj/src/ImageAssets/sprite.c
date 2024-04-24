@@ -4,8 +4,12 @@
 
 #include "sprite.h"
 
-Sprite* create_sprite(xpm_map_t pic, uint16_t origin_offset_x,
-                      uint16_t origin_offset_y, uint16_t z_index) {
+#include "../Devices/Graphics/graphics.h"
+
+static uint32_t createdSprites = 0;
+
+Sprite* create_sprite(xpm_map_t pic, uint16_t x, uint16_t y, uint16_t z_index) {
+  
   Sprite* sp = (Sprite*) malloc(sizeof(Sprite));
   if (sp == NULL) return NULL;
 
@@ -19,8 +23,11 @@ Sprite* create_sprite(xpm_map_t pic, uint16_t origin_offset_x,
   sp->z_index = z_index;
   sp->width = img.width;
   sp->height = img.height;
-  sp->origin_offset_x = origin_offset_x;
-  sp->origin_offset_y = origin_offset_y;
+  sp->x = x;
+  sp->y = y;
+  sp->is_visible = true;
+
+  createdSprites++;
 
   return sp;
 }
@@ -29,9 +36,18 @@ void destroy_sprite(Sprite *sp) {
   if (sp == NULL) return;
   free(sp->map);
   free(sp);
+  createdSprites--;
 }
 
 void update_sprite_depth(Sprite *sp, uint16_t z_index) {
   if (sp == NULL) return;
   sp->z_index = z_index;
+}
+
+int draw_sprite(Sprite *sp) {
+  if (sp == NULL) return 1;
+  if (sp->is_visible) {
+    if (vg_draw_xpm(sp->x, sp->y, sp->width, sp->height, sp->map)) return 1;
+  }
+  return 0;
 }

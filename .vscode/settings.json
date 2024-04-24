@@ -8,6 +8,7 @@
   "editor.wordWrapColumn": 100,
   "files.associations": {
     "stdint.h": "c",
-    "*.xpm": "c"
+    "*.xpm": "c",
+    "graphics.h": "c"
   },
 }

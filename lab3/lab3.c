@@ -100,7 +100,6 @@ int(kbd_test_poll)() {
       scancode[0] = scancode[1];
       continue;
     }
-
     else {
       if (scancode[0]) {
         kbd_print_scancode((scancode[1] & BIT(7)) ? BREAK : MAKE, 2, &scancode[0]);
