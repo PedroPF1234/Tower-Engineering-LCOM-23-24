@@ -1,5 +1,5 @@
 
-#define BIT_MASK(n) ((1 << (n + 1)) - 1)
+#define BIT_MASK(n) ((1 << n) - 1)
 
 // VBE function status and register values
 

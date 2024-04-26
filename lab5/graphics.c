@@ -7,7 +7,7 @@ static reg86_t reg86;
 static vbe_mode_info_t vmi_p;
 //static vg_vbe_contr_info_t vci_p;
 
-static char *video_mem;
+static char *primary_buffer;
 
 static char *secondary_buffer;
 
@@ -88,7 +88,7 @@ void* (vg_init)(uint16_t mode) {
   reg86.bx = BIT(14) | mode;
   if (sys_int86(&reg86)) return NULL;
 
-  video_mem = (char *) video_addr;
+  primary_buffer = (char *) video_addr;
   secondary_buffer = (char *) malloc(vram_size);
   memset(secondary_buffer, 0, vram_size);
 
@@ -195,7 +195,7 @@ int (vg_clean_buffer)() {
 }
 
 int (vg_replace_buffer)() {
-  memcpy(video_mem, secondary_buffer, (h_res * v_res * bytes_per_pixel));
+  memcpy(primary_buffer, secondary_buffer, (h_res * v_res * bytes_per_pixel));
   if (vg_clean_buffer()) return 1;
   return 0; 
 }

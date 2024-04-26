@@ -12,7 +12,7 @@
 #include "../GameObjects/gameobject.h"
 
 // Mouse Game Object
-extern GameObject_t* mouse;
+extern GameObject* mouse;
  
 // Device Interrupt Bit Masks
 static uint8_t timer_bit_no;
@@ -82,18 +82,18 @@ int interrupt_handler(uint32_t interrupt_mask) {
       if (mouse->y >= (int16_t) v_res) mouse->y = v_res - 1;
     }
   }
-  
-  if (interrupt_mask & BIT(timer_bit_no)) {
-    timer_int_handler();
-    if (draw_gameObject(mouse)) return 1;
-    if (vg_replace_buffer()) return 1;
-  }
 
   if (interrupt_mask & BIT(kbc_bit_no)) {
     kbc_ih();
     if (scancode[1] == 0x81) {
       return 1;
     }
+  }
+  
+  if (interrupt_mask & BIT(timer_bit_no)) {
+    timer_int_handler();
+    renderGameObjects();
+    if (vg_replace_buffer()) return 1;
   }
 
   return 0;
