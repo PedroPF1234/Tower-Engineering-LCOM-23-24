@@ -109,6 +109,35 @@ void* (vg_init)(uint16_t mode) {
 
   return video_addr;
 }
+/*
+uint32_t (normalize_color)(uint32_t color) {
+  uint32_t newcolor;
+
+  if (bits_per_pixel == 32) return color;
+
+  newcolor = color & BIT_MASK(bits_per_pixel);
+
+  return newcolor;
+}
+
+
+uint32_t (normalize_color)(uint32_t color) {
+  uint32_t normalized_color = 0;
+
+  if (current_mode == MODE_INDEXED_DEFAULT) {
+    normalized_color = (uint8_t)(color % 256);
+    return normalized_color;
+  }
+  
+  uint32_t redComponent = ((color >> 16) & BIT_MASK(red_pixel_mask)) << red_field_position;
+  uint32_t greenComponent = ((color >> 8) & BIT_MASK(green_pixel_mask)) << green_field_position;
+  uint32_t blueComponent = (color & BIT_MASK(blue_pixel_mask)) << blue_field_position;
+
+  normalized_color = redComponent | greenComponent | blueComponent;
+
+  return normalized_color;
+}
+*/
 
 uint32_t (normalize_color)(uint32_t color) {
 
@@ -119,13 +148,24 @@ uint32_t (normalize_color)(uint32_t color) {
     return normalized_color;
   }
 
-  normalized_color |= (color & BIT_MASK(red_pixel_mask)) << red_field_position;
-  normalized_color |= ((color >> 8) & BIT_MASK(green_field_position)) << green_field_position;
-  normalized_color |= ((color >> 16) & BIT_MASK(blue_pixel_mask)) << blue_field_position;
+  uint8_t redOriginalComponent = (uint8_t) (color >> 16);
+  uint8_t greenOriginalComponent = (uint8_t) (color >> 8);
+  uint8_t blueOriginalComponent = (uint8_t) color;
+
+  uint8_t redNewValue = BIT_MASK(red_pixel_mask) * redOriginalComponent / 255;
+  uint8_t greenNewValue = BIT_MASK(green_pixel_mask) * greenOriginalComponent / 255;
+  uint8_t blueNewValue = BIT_MASK(blue_pixel_mask) * blueOriginalComponent / 255;
+
+  uint32_t redComponent = ((uint32_t) redNewValue) << red_field_position;
+  uint32_t greenComponent = ((uint32_t) greenNewValue) << green_field_position;
+  uint32_t blueComponent = ((uint32_t) blueNewValue) << blue_field_position;
+
+  normalized_color = redComponent | greenComponent | blueComponent;
 
   return normalized_color;
 
 }
+
 
 int (vg_draw_pixel)(uint16_t x, uint16_t y, uint32_t color) {
   if (x > h_res || y > v_res) {

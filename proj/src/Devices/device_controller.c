@@ -9,10 +9,12 @@
 #include "Timer/timer.h"
 #include "device_controller.h"
 
-#include "../GameObjects/gameobject.h"
-
 // Mouse Game Object
 extern GameObject* mouse;
+
+// Global device interfaces
+MouseDevice* mouse_device;
+KeyboardDevice* keyboard_device;
  
 // Device Interrupt Bit Masks
 static uint8_t timer_bit_no;
@@ -30,9 +32,20 @@ extern uint8_t bytes_per_pixel;
 
 static int default_video_mode = 0x11B;
 
+static bool was_left_button_pressed = false;
+static bool was_right_button_pressed = false;
+static bool was_middle_button_pressed = false;
+
 int boot_devices(uint32_t freq, uint16_t mode) {
 
   if (create_gameobjects()) return 1;
+
+  mouse_device = (MouseDevice*) malloc(sizeof(MouseDevice));
+  memset(mouse_device, 0, sizeof(MouseDevice));
+  mouse_device->mouse = mouse;
+
+  keyboard_device = (KeyboardDevice*) malloc(sizeof(KeyboardDevice));
+  memset(keyboard_device, 0, sizeof(KeyboardDevice));
 
   if (timer_initiate_and_subscribe(&timer_bit_no, freq)) return 1;
 
@@ -73,6 +86,36 @@ int interrupt_handler(uint32_t interrupt_mask) {
     mouse_ih();
     if (mouse_get_info(&pp)) {
 
+      if (!was_left_button_pressed && pp.lb) {
+        mouse_device->left_button_is_pressed = true;
+        mouse_device->left_button_released = false;
+        was_left_button_pressed = true;
+      } else if (was_left_button_pressed && !pp.lb) {
+        mouse_device->left_button_released = true;
+        mouse_device->left_button_is_pressed = false;
+        was_left_button_pressed = false;
+      }
+
+      if (!was_right_button_pressed && pp.rb) {
+        mouse_device->right_button_is_pressed = true;
+        mouse_device->right_button_released = false;
+        was_right_button_pressed = true;
+      } else if (was_right_button_pressed && !pp.rb) {
+        mouse_device->right_button_released = true;
+        mouse_device->right_button_is_pressed = false;
+        was_right_button_pressed = false;
+      }
+
+      if (!was_middle_button_pressed && pp.mb) {
+        mouse_device->middle_button_is_pressed = true;
+        mouse_device->middle_button_released = false;
+        was_middle_button_pressed = true;
+      } else if (was_middle_button_pressed && !pp.mb) {
+        mouse_device->middle_button_released = true;
+        mouse_device->middle_button_is_pressed = false;
+        was_middle_button_pressed = false;
+      }
+
       mouse->x += pp.delta_x;
       mouse->y -= pp.delta_y;
 
@@ -86,7 +129,7 @@ int interrupt_handler(uint32_t interrupt_mask) {
   if (interrupt_mask & BIT(kbc_bit_no)) {
     kbc_ih();
     if (scancode[1] == 0x81) {
-      return 1;
+      keyboard_device->escape_key_pressed = true;
     }
   }
   

@@ -12,7 +12,8 @@ Node *head = NULL;
 GameObject* mouse;
 GameObject* background;
 
-static void insertSorted(Node **head, GameObject *newGameObject) {
+
+static void insertRenderPipeline(Node **head, GameObject *newGameObject) {
     Node *newNode = (Node *)malloc(sizeof(Node));
     newNode->gameObject = newGameObject;
     newNode->next = NULL;
@@ -57,10 +58,10 @@ static void deleteNode(Node **head, GameObject *gameObject) {
     free(temp);
 }
 
-GameObject* create_gameobject(xpm_map_t pic, uint16_t x, uint16_t y, uint16_t origin_offset_x, uint16_t origin_offset_y, uint16_t z_index, bool square_shape) {
+GameObject* create_gameobject(xpm_map_t pic, uint16_t x, uint16_t y, int16_t origin_offset_x, int16_t origin_offset_y, uint16_t z_index, bool square_shape, bool visible) {
 
   GameObject* gameObject = (GameObject*) malloc(sizeof(GameObject));
-  Sprite* sprite = create_sprite(pic, x, y, z_index, square_shape);
+  Sprite* sprite = create_sprite(pic, x, y, z_index, square_shape, visible);
 
   gameObject->sprite = sprite;
   gameObject->x = x;
@@ -68,7 +69,7 @@ GameObject* create_gameobject(xpm_map_t pic, uint16_t x, uint16_t y, uint16_t or
   gameObject->origin_offset_x = origin_offset_x;
   gameObject->origin_offset_y = origin_offset_y;
 
-  insertSorted(&head, gameObject);
+  insertRenderPipeline(&head, gameObject);
 
   return gameObject;
 }
@@ -95,8 +96,8 @@ void renderGameObjects() {
 }
 
 int create_gameobjects() {
-  mouse = create_gameobject((xpm_map_t) MouseCursor, 0, 0, 0, 0, BIT_MASK(16), false);
-  background = create_gameobject((xpm_map_t) Background, 0, 0, 0, 0, 0, true);
+  mouse = create_gameobject((xpm_map_t) MouseCursor, 0, 0, 0, 0, BIT_MASK(16), false, true);
+  background = create_gameobject((xpm_map_t) Background, 0, 0, 0, 0, 0, true, true);
 
   return 0;
 }

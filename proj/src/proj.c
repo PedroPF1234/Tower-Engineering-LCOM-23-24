@@ -5,6 +5,7 @@
 #include <stdio.h>
 
 #include "Devices/device_controller.h"
+#include "Game/gameloop.h"
 
 int main(int argc, char *argv[]) {
   // sets the language of LCF messages (can be either EN-US or PT-PT)
@@ -51,6 +52,10 @@ int (proj_main_loop)(int argc, char **argv) {
         case HARDWARE:
           
           if (interrupt_handler((uint32_t) msg.m_notify.interrupts)) {
+            return 1;
+          }
+
+          if (game_main_loop()) {
             running = false;
           }
 

@@ -5,8 +5,21 @@
 
 #define SPECIAL_KEY 0xE0 // Special Key Scancode Byte
 
+// Keyboard Scancodes
 #define ESC_MAKE 0x01 // Make Code for ESC Key
 #define ESC_BREAK 0x81 // Break Code for ESC Key
+
+#define UP_ARROW_MAKE 0x48 // Make Code for UP Arrow Key
+#define UP_ARROW_BREAK 0xC8 // Break Code for UP Arrow Key
+#define DOWN_ARROW_MAKE 0x50 // Make Code for DOWN Arrow Key
+#define DOWN_ARROW_BREAK 0xD0 // Break Code for DOWN Arrow Key
+#define LEFT_ARROW_MAKE 0x4B // Make Code for LEFT Arrow Key
+#define LEFT_ARROW_BREAK 0xCB // Break Code for LEFT Arrow Key
+#define RIGHT_ARROW_MAKE 0x4D // Make Code for RIGHT Arrow Key
+#define RIGHT_ARROW_BREAK 0xCD // Break Code for RIGHT Arrow Key
+
+#define ENTER_MAKE 0x1C // Make Code for ENTER Key
+#define ENTER_BREAK 0x9C // Break Code for ENTER Key
 
 
 // Keyboard Controller Commands and Interrupt Identifiers

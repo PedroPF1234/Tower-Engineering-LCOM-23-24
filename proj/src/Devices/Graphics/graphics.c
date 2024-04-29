@@ -114,7 +114,6 @@ void* (vg_init)(uint16_t mode) {
   return video_addr;
 }
 
-// Broken
 uint32_t (normalize_color)(uint32_t color) {
 
   uint32_t normalized_color = 0;
@@ -124,9 +123,19 @@ uint32_t (normalize_color)(uint32_t color) {
     return normalized_color;
   }
 
-  normalized_color |= ((color >> 16) & BIT_MASK(red_pixel_mask)) << red_field_position;
-  normalized_color |= ((color >> 8) & BIT_MASK(green_field_position)) << green_field_position;
-  normalized_color |= (color & BIT_MASK(blue_pixel_mask)) << blue_field_position;
+  uint8_t redOriginalComponent = (uint8_t) (color >> 16);
+  uint8_t greenOriginalComponent = (uint8_t) (color >> 8);
+  uint8_t blueOriginalComponent = (uint8_t) color;
+
+  uint8_t redNewValue = BIT_MASK(red_pixel_mask) * redOriginalComponent / 255;
+  uint8_t greenNewValue = BIT_MASK(green_pixel_mask) * greenOriginalComponent / 255;
+  uint8_t blueNewValue = BIT_MASK(blue_pixel_mask) * blueOriginalComponent / 255;
+
+  uint32_t redComponent = ((uint32_t) redNewValue) << red_field_position;
+  uint32_t greenComponent = ((uint32_t) greenNewValue) << green_field_position;
+  uint32_t blueComponent = ((uint32_t) blueNewValue) << blue_field_position;
+
+  normalized_color = redComponent | greenComponent | blueComponent;
 
   return normalized_color;
 
@@ -145,7 +154,7 @@ int (vg_draw_pixel)(uint16_t x, uint16_t y, uint32_t color) {
 }
 
 int proj_draw_pixel(uint16_t x, uint16_t y, uint32_t color) {
-  if (x > h_res - 1 || y > v_res - 1 || color == 0) {
+  if (color == 0 || x >= h_res || y >= v_res || x < 0 || y < 0) {
     return 0;
   }
 
@@ -185,7 +194,7 @@ int (vg_draw_rectangle)(uint16_t x, uint16_t y, uint16_t width, uint16_t height,
 }
 
 int vg_draw_xpm(uint16_t x, uint16_t y, uint16_t width, uint16_t height, uint8_t *bytes, bool square_shape) {
-  if (x > h_res || y > v_res) {
+  if (x >= h_res || y >= v_res || x < 0 || y < 0) {
     //printf("vg_draw_xpm: invalid coordinates\n");
     return 0;
   }
@@ -195,8 +204,11 @@ int vg_draw_xpm(uint16_t x, uint16_t y, uint16_t width, uint16_t height, uint8_t
   for (unsigned i = 0; i < height; i++) {
 
     if (square_shape) {
+
+      uint16_t draw_line_len = x + width > h_res ? h_res - x : width;
+
       memcpy(current_buffer + ((y + i) * h_res * bytes_per_pixel) + (x * bytes_per_pixel),
-       bytes + i * width * bytes_per_pixel, width * bytes_per_pixel);
+       bytes + i * width * bytes_per_pixel, draw_line_len * bytes_per_pixel);
     } else {
       for (unsigned j = 0; j < width; j++) {  
         memcpy(&color, bytes + (i * width + j) * bytes_per_pixel, bytes_per_pixel);
@@ -243,8 +255,7 @@ int vg_replace_buffer() {
 }
 
 int vg_free() {
-  if (vg_replace_buffer()) return 1;
-  free(secondary_buffer);
+  free(primary_buffer);
   return 0;
 }
 

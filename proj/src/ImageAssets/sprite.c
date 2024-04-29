@@ -8,7 +8,7 @@
 
 static uint32_t createdSprites = 0;
 
-Sprite* create_sprite(xpm_map_t pic, uint16_t x, uint16_t y, uint16_t z_index, bool square_shape) {
+Sprite* create_sprite(xpm_map_t pic, uint16_t x, uint16_t y, uint16_t z_index, bool square_shape, bool is_visible) {
   
   Sprite* sp = (Sprite*) malloc(sizeof(Sprite));
   if (sp == NULL) return NULL;
@@ -25,7 +25,7 @@ Sprite* create_sprite(xpm_map_t pic, uint16_t x, uint16_t y, uint16_t z_index, b
   sp->height = img.height;
   sp->x = x;
   sp->y = y;
-  sp->is_visible = true;
+  sp->is_visible = is_visible;
   sp->square_shape = square_shape;
 
   createdSprites++;
