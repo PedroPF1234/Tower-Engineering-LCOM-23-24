@@ -6,12 +6,15 @@
 #include "../ImageAssets/MouseCursor.xpm"
 #include "../ImageAssets/Background.xpm"
 
-Node *head = NULL;
+typedef struct Node {
+    GameObject *gameObject;
+    struct Node *next;
+} Node;
 
+static Node *head = NULL;
 
 GameObject* mouse;
 GameObject* background;
-
 
 static void insertRenderPipeline(Node **head, GameObject *newGameObject) {
     Node *newNode = (Node *)malloc(sizeof(Node));

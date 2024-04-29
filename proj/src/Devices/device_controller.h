@@ -22,6 +22,10 @@ typedef struct KeyboardDevice {
   bool escape_key_pressed;
 } KeyboardDevice;
 
+typedef struct ScreenInfo {
+  uint16_t xres, yres;
+} ScreenInfo;
+
 int boot_devices(uint32_t freq, uint16_t mode);
 
 int stop_devices();
@@ -29,3 +33,5 @@ int stop_devices();
 int interrupt_handler(uint32_t interrupt_mask);
 
 int update_timer_freq(uint32_t freq);
+
+ScreenInfo getScreenInfo();

@@ -5,28 +5,31 @@
 
 static reg86_t reg86;
 static vbe_mode_info_t vmi_p;
-//static vg_vbe_contr_info_t vci_p;
 
+// VRAM buffers
 static char *current_buffer;
 
 static char *primary_buffer;
 static char *secondary_buffer;
+//
 
-
+// Mode Window info
 static unsigned bytes_per_pixel;
+static unsigned bits_per_pixel;
 
+unsigned h_res;
+unsigned v_res;
+//
+
+// Mode Color info
 static uint8_t red_field_position;
 static uint8_t green_field_position;
 static uint8_t blue_field_position;
 
-unsigned bits_per_pixel;
-
-unsigned h_res;
-unsigned v_res;
-
 uint8_t red_pixel_mask;
 uint8_t green_pixel_mask;
 uint8_t blue_pixel_mask;
+//
 
 uint16_t current_mode;
 
@@ -69,8 +72,11 @@ void* (vg_init)(uint16_t mode) {
 
   if (vbe_get_mode_information(mode, &vmi_p)) return NULL;
 
+  bytes_per_pixel = ((vmi_p.BitsPerPixel+7)/8);
+  bits_per_pixel = vmi_p.BitsPerPixel;
+
   vram_base = vmi_p.PhysBasePtr;
-  vram_size = vmi_p.XResolution * vmi_p.YResolution * ((vmi_p.BitsPerPixel + 7) / 8);
+  vram_size = vmi_p.XResolution * vmi_p.YResolution * bytes_per_pixel;
 
   mr.mr_base = (phys_bytes) vram_base;
   mr.mr_limit = mr.mr_base + vram_size*2;
@@ -98,8 +104,6 @@ void* (vg_init)(uint16_t mode) {
 
   h_res = vmi_p.XResolution;
   v_res = vmi_p.YResolution;
-  bits_per_pixel = vmi_p.BitsPerPixel;
-  bytes_per_pixel = (bits_per_pixel + 7) / 8;
 
   red_pixel_mask = vmi_p.RedMaskSize;
   green_pixel_mask = vmi_p.GreenMaskSize;
@@ -259,3 +263,12 @@ int vg_free() {
   return 0;
 }
 
+uint16_t* getInfo() {
+
+  uint16_t* info = malloc(sizeof(uint16_t)*2);
+
+  *info = h_res;
+  *(info+1) = v_res;
+
+  return info;
+}

@@ -11,11 +11,6 @@ typedef struct GameObject {
   int16_t origin_offset_x, origin_offset_y;
 } GameObject;
 
-typedef struct Node {
-    GameObject *gameObject;
-    struct Node *next;
-} Node;
-
 int create_gameobjects();
 int destroy_gameobjects();
 void renderGameObjects();

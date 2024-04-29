@@ -28,8 +28,6 @@ extern uint8_t scancode[2];
 extern unsigned h_res;
 extern unsigned v_res;
 
-extern uint8_t bytes_per_pixel;
-
 static int default_video_mode = 0x11B;
 
 static bool was_left_button_pressed = false;
@@ -146,4 +144,17 @@ int update_timer_freq(uint32_t freq) {
   if (timer_unsubscribe_int()) return 1;
   if (timer_initiate_and_subscribe(&timer_bit_no, freq)) return 1;
   return 0;
+}
+
+ScreenInfo getScreenInfo() {
+  ScreenInfo info;
+
+  uint16_t* vg_info = getInfo();
+
+  info.xres = *vg_info;
+  info.yres = *(vg_info+1);
+
+  free(vg_info);
+  
+  return info;
 }
