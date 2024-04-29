@@ -36,15 +36,12 @@ static ScreenInfo screen;
 MenuNode* menuObjects = NULL;
 
 // Objects of Main Menu
-GameObject* quit;
-GameObject* quitHovered;
 Button* quitButton;
+Button* playButton;
 
 static uint8_t menu_current_selection = 0;
 
-
-/*
-static void insertAtEnd(MenuNode** head, Button* button) {
+static void insertAtEndMenu(MenuNode** head, Button* button) {
 
   MenuNode* newNode = (MenuNode*)malloc(sizeof(MenuNode));
 
@@ -53,15 +50,19 @@ static void insertAtEnd(MenuNode** head, Button* button) {
 
   MenuNode* current = *head;
 
-  while (current != NULL) {
+  if (*head == NULL) {
+    *head = newNode;
+    return;
+  }
+
+  while (current->next != NULL) {
     current = current->next;  
   }
 
   current->next = newNode;
 }
-*/
 
-static void insertAtBegin(MenuNode** head, Button* button) {
+static void insertAtBeginMenu(MenuNode** head, Button* button) {
   
   MenuNode* newNode = (MenuNode*)malloc(sizeof(MenuNode));
 
@@ -71,12 +72,15 @@ static void insertAtBegin(MenuNode** head, Button* button) {
   *head = newNode;
 }
 
-static void deleteNode(MenuNode **head, Button* button) {
+static void deleteNodeMenu(MenuNode **head, Button* button) {
     MenuNode *temp = *head, *prev = NULL;
 
     // If the node to be deleted is the head node
     if (temp != NULL && temp->button == button) {
         *head = temp->next;
+        destroy_gameobject(temp->button->hovering);
+        destroy_gameobject(temp->button->no_hovering);
+        free(temp->button);
         free(temp);
         return;
     }
@@ -96,15 +100,19 @@ static void deleteNode(MenuNode **head, Button* button) {
     free(temp);
 }
 
-static Button* initializeMenuButton(GameObject* hovered, GameObject* no_hovered) {
+static Button* initializeMenuButton(xpm_map_t hovered, xpm_map_t no_hovered, int16_t x, int16_t y,
+                                    int16_t ox, int16_t oy, uint16_t z, bool square) {
 
   Button* button = (Button*)malloc(sizeof(Button));
-  button->hovering = hovered;
-  button->no_hovering = no_hovered;
-  button->x = hovered->x;
-  button->y = hovered->y;
-  button->origin_offset_x = hovered->origin_offset_x;
-  button->origin_offset_y = hovered->origin_offset_y;
+  GameObject* hoveredObject = create_gameobject((xpm_map_t)hovered, x, y, ox, oy, z, square, false);
+  GameObject* noHovered = create_gameobject((xpm_map_t)no_hovered, x, y, ox, oy, z, square, true);
+
+  button->hovering = hoveredObject;
+  button->no_hovering = noHovered;
+  button->x = x;
+  button->y = y;
+  button->origin_offset_x = ox;
+  button->origin_offset_y = oy;
 
   return button;
 }
@@ -157,19 +165,17 @@ int game_main_loop() {
 
       screen = getScreenInfo();
 
-      // Initialize GameObjects of Menu
-      quit = create_gameobject((xpm_map_t) QuitButton, screen.xres/2, screen.yres/2,
-         -50, -25, 1, true, true);
-      quitHovered = create_gameobject((xpm_map_t) QuitButtonHovered, screen.xres/2, screen.yres/2,
-         -50, -25, 1, true, false);
-      //
-
       // Initialize Button Objects of Menu
-      quitButton = initializeMenuButton(quitHovered, quit);
+      quitButton = initializeMenuButton((xpm_map_t)QuitButton, (xpm_map_t)QuitButtonHovered,
+       screen.xres/2-1, screen.yres/2-1, -50, -25, 1, true);
+
+      playButton = initializeMenuButton((xpm_map_t)QuitButton, (xpm_map_t)QuitButtonHovered,
+       screen.xres/2-1, screen.yres/2-101, -50, -25, 1, true);
       //
 
       // Insert all Menu Buttons to the MenuNodesList
-      insertAtBegin(&menuObjects, quitButton);
+      insertAtBeginMenu(&menuObjects, quitButton);
+      insertAtEndMenu(&menuObjects, playButton);
       //
 
       game_booted = true;
@@ -180,9 +186,8 @@ int game_main_loop() {
 
     if (keyboard_device->escape_key_pressed) {
       printf("Exiting game...\n");
-      deleteNode(&menuObjects, quitButton);
-      destroy_gameobject(quit);
-      destroy_gameobject(quitHovered);
+      deleteNodeMenu(&menuObjects, quitButton);
+      deleteNodeMenu(&menuObjects, playButton);
       return 1;
     }
     break;
