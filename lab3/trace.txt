@@ -1,0 +1,13 @@
+@lcflib.a:2019, lcf_start
+  kbd_test_poll()
+  @lab3.c:95, kbd_test_poll
+    kbc_ih()
+    @utils.c:21, util_sys_inb
+      sys_inb(port, &value32)
+    > sys_inb(0x64, addr: 0xeffff670)
+    < sys_inb(0x64, addr: 0xeffff670 [0x1c = 0b00011100])
+    @kbc.c:78, kbc_read_cmdb
+      micros_to_ticks(DELAY_US)
+    @kbc.c:78, kbc_read_cmdb
+      tickdelay(micros_to_ticks(DELAY_US))
+    > tickdelay(1 [16.7 ms])
