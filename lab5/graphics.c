@@ -109,7 +109,7 @@ void* (vg_init)(uint16_t mode) {
 
   return video_addr;
 }
-/*
+
 uint32_t (normalize_color)(uint32_t color) {
   uint32_t newcolor;
 
@@ -120,7 +120,7 @@ uint32_t (normalize_color)(uint32_t color) {
   return newcolor;
 }
 
-
+/*
 uint32_t (normalize_color)(uint32_t color) {
   uint32_t normalized_color = 0;
 
@@ -137,7 +137,8 @@ uint32_t (normalize_color)(uint32_t color) {
 
   return normalized_color;
 }
-*/
+
+
 
 uint32_t (normalize_color)(uint32_t color) {
 
@@ -165,6 +166,7 @@ uint32_t (normalize_color)(uint32_t color) {
   return normalized_color;
 
 }
+*/
 
 
 int (vg_draw_pixel)(uint16_t x, uint16_t y, uint32_t color) {

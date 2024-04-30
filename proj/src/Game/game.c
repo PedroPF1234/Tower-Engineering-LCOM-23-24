@@ -1,7 +1,7 @@
 #include <lcom/lcf.h>
 #include <stdint.h>
 
-#include "../Devices/device_controller.h"
+#include "Menu/menu.h"
 
 #include "../ImageAssets/Button.xpm"
 
@@ -11,18 +11,6 @@ typedef enum gameState {
   GAME_OVER,
   PAUSE
 } gameState;
-
-typedef struct Button {
-  GameObject* hovering;
-  GameObject* no_hovering;
-  int16_t x, y;
-  int16_t origin_offset_x, origin_offset_y;
-} Button;
-
-typedef struct MenuNode {
-    Button* button;
-    struct MenuNode* next;
-} MenuNode;
 
 extern MouseDevice* mouse_device;
 extern KeyboardDevice* keyboard_device;
@@ -40,82 +28,6 @@ Button* quitButton;
 Button* playButton;
 
 static uint8_t menu_current_selection = 0;
-
-static void insertAtEndMenu(MenuNode** head, Button* button) {
-
-  MenuNode* newNode = (MenuNode*)malloc(sizeof(MenuNode));
-
-  newNode->button = button;
-  newNode->next = NULL;
-
-  MenuNode* current = *head;
-
-  if (*head == NULL) {
-    *head = newNode;
-    return;
-  }
-
-  while (current->next != NULL) {
-    current = current->next;  
-  }
-
-  current->next = newNode;
-}
-
-static void insertAtBeginMenu(MenuNode** head, Button* button) {
-  
-  MenuNode* newNode = (MenuNode*)malloc(sizeof(MenuNode));
-
-  newNode->button = button;
-  newNode->next = *head;
-
-  *head = newNode;
-}
-
-static void deleteNodeMenu(MenuNode **head, Button* button) {
-    MenuNode *temp = *head, *prev = NULL;
-
-    // If the node to be deleted is the head node
-    if (temp != NULL && temp->button == button) {
-        *head = temp->next;
-        destroy_gameobject(temp->button->hovering);
-        destroy_gameobject(temp->button->no_hovering);
-        free(temp->button);
-        free(temp);
-        return;
-    }
-
-    // Find the node to be deleted
-    while (temp != NULL && temp->button != button) {
-        prev = temp;
-        temp = temp->next;
-    }
-
-    // If not found
-    if (temp == NULL) return;
-
-    // Unlink the node from linked list
-    prev->next = temp->next;
-
-    free(temp);
-}
-
-static Button* initializeMenuButton(xpm_map_t hovered, xpm_map_t no_hovered, int16_t x, int16_t y,
-                                    int16_t ox, int16_t oy, uint16_t z, bool square) {
-
-  Button* button = (Button*)malloc(sizeof(Button));
-  GameObject* hoveredObject = create_gameobject((xpm_map_t)hovered, x, y, ox, oy, z, square, false);
-  GameObject* noHovered = create_gameobject((xpm_map_t)no_hovered, x, y, ox, oy, z, square, true);
-
-  button->hovering = hoveredObject;
-  button->no_hovering = noHovered;
-  button->x = x;
-  button->y = y;
-  button->origin_offset_x = ox;
-  button->origin_offset_y = oy;
-
-  return button;
-}
 
 static void checkMenuHovered(MenuNode** head) {
 
@@ -174,7 +86,7 @@ int game_main_loop() {
       //
 
       // Insert all Menu Buttons to the MenuNodesList
-      insertAtBeginMenu(&menuObjects, quitButton);
+      insertAtEndMenu(&menuObjects, quitButton);
       insertAtEndMenu(&menuObjects, playButton);
       //
 
@@ -186,8 +98,7 @@ int game_main_loop() {
 
     if (keyboard_device->escape_key_pressed) {
       printf("Exiting game...\n");
-      deleteNodeMenu(&menuObjects, quitButton);
-      deleteNodeMenu(&menuObjects, playButton);
+      deleteListMenu(&menuObjects);
       return 1;
     }
     break;

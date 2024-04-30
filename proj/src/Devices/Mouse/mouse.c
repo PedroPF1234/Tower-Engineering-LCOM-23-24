@@ -44,17 +44,11 @@ int (mouse_unsubscribe_int)() {
 }
 
 int (mouse_write_cmdb)(uint8_t cmd) {
-  uint8_t ack = 0;
+  //uint8_t ack = 0;
 
   if (kbc_write_cmdb(KBC_COMMAND_REG, KBC_WRITE_TO_MOUSE, true)) return 1;
 
   if (kbc_write_cmdb(KBC_INPUT_BUFFER, cmd, true)) return 1;
-
-  tickdelay(micros_to_ticks(DELAY_US));
-
-  if (util_sys_inb(KBC_OUTPUT_BUFFER, &ack)) return 1;
-
-  if (ack != KBC_ACK) return 1;
 
   return 0;
 }
@@ -65,23 +59,8 @@ int (mouse_read_cmdb)(uint8_t *info) {
 }
 
 void (mouse_ih)() {
-  uint8_t status = 0;
-  uint8_t retries = MAX_RETRIES;
-
-  for (size_t i = 0; i < retries; i++) {
-    if (util_sys_inb(KBC_STATUS_RG, &status)) return;
-
-    if (status & (KBC_RECEIVE_TIMEOUT_ERR | KBC_PARITY_ERR)) return;
-
-    if (status & KBC_OUT_BUFFER_FULL) {
-      if (util_sys_inb(KBC_DATA_REG, &mouse_byte)) return;
-      break;
-    }
-
-    tickdelay(micros_to_ticks(DELAY_US));
-
-    if (i == retries -1) return;
-  }
+  
+  if (kbc_read_cmdb(&mouse_byte, true)) return;
 
   if (packet_to_read == 0) {
     memset(&pp, 0, sizeof(pp));

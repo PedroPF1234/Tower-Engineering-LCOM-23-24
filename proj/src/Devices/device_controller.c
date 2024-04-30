@@ -3,6 +3,8 @@
 
 #include <stdint.h>
 
+#include "../Game/game.h"
+
 #include "Mouse/mouse.h"
 #include "KeyBoard/kbc.h"
 #include "Graphics/graphics.h"
@@ -22,7 +24,7 @@ static uint8_t kbc_bit_no;
 static uint8_t mouse_bit_no;
 
 static struct packet pp;
-extern int counter;
+extern uint64_t counter;
 extern uint8_t scancode[2];
 
 extern unsigned h_res;
@@ -34,7 +36,13 @@ static bool was_left_button_pressed = false;
 static bool was_right_button_pressed = false;
 static bool was_middle_button_pressed = false;
 
-int boot_devices(uint32_t freq, uint16_t mode) {
+uint16_t FPS = 0;
+static uint32_t frequency = 0;
+
+int boot_devices(uint32_t freq, uint16_t framespersecond, uint16_t mode) {
+
+  FPS = framespersecond;
+  frequency = freq;
 
   if (create_gameobjects()) return 1;
 
@@ -80,7 +88,10 @@ int stop_devices() {
 }
 
 int interrupt_handler(uint32_t interrupt_mask) {
-  if (interrupt_mask & BIT(mouse_bit_no)) {
+
+  if ((interrupt_mask & (BIT(mouse_bit_no) | BIT(kbc_bit_no))) == 0x110) {
+
+  } else if (interrupt_mask & BIT(mouse_bit_no)) {
     mouse_ih();
     if (mouse_get_info(&pp)) {
 
@@ -122,9 +133,7 @@ int interrupt_handler(uint32_t interrupt_mask) {
       if (mouse->y < 0) mouse->y = 0;
       if (mouse->y >= (int16_t) v_res) mouse->y = v_res - 1;
     }
-  }
-
-  if (interrupt_mask & BIT(kbc_bit_no)) {
+  } else if (interrupt_mask & BIT(kbc_bit_no)) {
     kbc_ih();
     if (scancode[1] == 0x81) {
       keyboard_device->escape_key_pressed = true;
@@ -133,8 +142,15 @@ int interrupt_handler(uint32_t interrupt_mask) {
   
   if (interrupt_mask & BIT(timer_bit_no)) {
     timer_int_handler();
-    renderGameObjects();
-    if (vg_replace_buffer()) return 1;
+
+    if (game_main_loop()) {
+      return 1;
+    }
+
+    if (counter % (frequency / FPS) == 0) {
+      renderGameObjects();
+      if (vg_replace_buffer()) return 1;
+    }
   }
 
   return 0;

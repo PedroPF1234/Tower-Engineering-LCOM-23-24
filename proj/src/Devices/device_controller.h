@@ -26,7 +26,7 @@ typedef struct ScreenInfo {
   uint16_t xres, yres;
 } ScreenInfo;
 
-int boot_devices(uint32_t freq, uint16_t mode);
+int boot_devices(uint32_t freq, uint16_t framespersecond, uint16_t mode);
 
 int stop_devices();
 
