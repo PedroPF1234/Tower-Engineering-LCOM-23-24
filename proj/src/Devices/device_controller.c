@@ -87,56 +87,89 @@ int stop_devices() {
   return 0;
 }
 
+static int kbc_interrupt() {
+  uint8_t kbc_status;
+
+  for (int j = 0; j < 5; j++) {
+
+    if(kbc_read_status(&kbc_status)) {
+      return 1;
+    }
+
+    if (!(kbc_status & BIT(0))) {
+      continue;
+    }
+    
+    if (kbc_status & (BIT(6) | BIT(7))) {
+      return 1;
+    } else {
+      if (kbc_status & BIT(5)) {
+        mouse_ih();
+        if (mouse_get_info(&pp)) {
+          if (!was_left_button_pressed && pp.lb) {
+            mouse_device->left_button_is_pressed = true;
+            mouse_device->left_button_released = false;
+            was_left_button_pressed = true;
+          } else if (was_left_button_pressed && !pp.lb) {
+            mouse_device->left_button_released = true;
+            mouse_device->left_button_is_pressed = false;
+            was_left_button_pressed = false;
+          }
+
+          if (!was_right_button_pressed && pp.rb) {
+            mouse_device->right_button_is_pressed = true;
+            mouse_device->right_button_released = false;
+            was_right_button_pressed = true;
+          } else if (was_right_button_pressed && !pp.rb) {
+            mouse_device->right_button_released = true;
+            mouse_device->right_button_is_pressed = false;
+            was_right_button_pressed = false;
+          }
+
+          if (!was_middle_button_pressed && pp.mb) {
+            mouse_device->middle_button_is_pressed = true;
+            mouse_device->middle_button_released = false;
+            was_middle_button_pressed = true;
+          } else if (was_middle_button_pressed && !pp.mb) {
+            mouse_device->middle_button_released = true;
+            mouse_device->middle_button_is_pressed = false;
+            was_middle_button_pressed = false;
+          }
+
+          mouse->x += pp.delta_x;
+          mouse->y -= pp.delta_y;
+
+          if (mouse->x < 0) mouse->x = 0;
+          if (mouse->x >= (int16_t) h_res) mouse->x = h_res - 1;
+          if (mouse->y < 0) mouse->y = 0;
+          if (mouse->y >= (int16_t) v_res) mouse->y = v_res - 1;
+        }
+        return 0;
+      } else {
+        kbc_ih();
+        if (scancode[1] == 0x81) {
+          keyboard_device->escape_key_pressed = true;
+        }
+        return 0;
+      }
+    }
+  }
+
+  return 1;
+}
+
 int interrupt_handler(uint32_t interrupt_mask) {
 
-  if ((interrupt_mask & (BIT(mouse_bit_no) | BIT(kbc_bit_no))) == 0x110) {
+  if (interrupt_mask & (BIT(mouse_bit_no) | BIT(kbc_bit_no))) {
 
-  } else if (interrupt_mask & BIT(mouse_bit_no)) {
-    mouse_ih();
-    if (mouse_get_info(&pp)) {
+    int i = 1;
 
-      if (!was_left_button_pressed && pp.lb) {
-        mouse_device->left_button_is_pressed = true;
-        mouse_device->left_button_released = false;
-        was_left_button_pressed = true;
-      } else if (was_left_button_pressed && !pp.lb) {
-        mouse_device->left_button_released = true;
-        mouse_device->left_button_is_pressed = false;
-        was_left_button_pressed = false;
-      }
-
-      if (!was_right_button_pressed && pp.rb) {
-        mouse_device->right_button_is_pressed = true;
-        mouse_device->right_button_released = false;
-        was_right_button_pressed = true;
-      } else if (was_right_button_pressed && !pp.rb) {
-        mouse_device->right_button_released = true;
-        mouse_device->right_button_is_pressed = false;
-        was_right_button_pressed = false;
-      }
-
-      if (!was_middle_button_pressed && pp.mb) {
-        mouse_device->middle_button_is_pressed = true;
-        mouse_device->middle_button_released = false;
-        was_middle_button_pressed = true;
-      } else if (was_middle_button_pressed && !pp.mb) {
-        mouse_device->middle_button_released = true;
-        mouse_device->middle_button_is_pressed = false;
-        was_middle_button_pressed = false;
-      }
-
-      mouse->x += pp.delta_x;
-      mouse->y -= pp.delta_y;
-
-      if (mouse->x < 0) mouse->x = 0;
-      if (mouse->x >= (int16_t) h_res) mouse->x = h_res - 1;
-      if (mouse->y < 0) mouse->y = 0;
-      if (mouse->y >= (int16_t) v_res) mouse->y = v_res - 1;
+    if (interrupt_mask & 0x110) {
+      i = 2;
     }
-  } else if (interrupt_mask & BIT(kbc_bit_no)) {
-    kbc_ih();
-    if (scancode[1] == 0x81) {
-      keyboard_device->escape_key_pressed = true;
+
+    for (; i > 0; i--) {
+      if (kbc_interrupt()) return 1;
     }
   }
   

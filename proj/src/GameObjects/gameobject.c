@@ -4,7 +4,6 @@
 #include "gameobject.h"
 
 #include "../ImageAssets/MouseCursor.xpm"
-#include "../ImageAssets/Background.xpm"
 
 typedef struct Node {
     GameObject *gameObject;
@@ -14,7 +13,6 @@ typedef struct Node {
 static Node *head = NULL;
 
 GameObject* mouse;
-GameObject* background;
 
 static void insertRenderPipeline(Node **head, GameObject *newGameObject) {
     Node *newNode = (Node *)malloc(sizeof(Node));
@@ -100,14 +98,12 @@ void renderGameObjects() {
 
 int create_gameobjects() {
   mouse = create_gameobject((xpm_map_t) MouseCursor, 0, 0, 0, 0, BIT_MASK(16), false, true);
-  background = create_gameobject((xpm_map_t) Background, 0, 0, 0, 0, 0, true, true);
 
   return 0;
 }
 
 int destroy_gameobjects() {
   destroy_gameobject(mouse);
-  destroy_gameobject(background);
 
   return 0;
 }

@@ -4,12 +4,14 @@
 #include "Menu/menu.h"
 
 #include "../ImageAssets/Button.xpm"
+#include "../ImageAssets/Background.xpm"
 
 typedef enum gameState {
   MAIN_MENU,
   GAME,
   GAME_OVER,
-  PAUSE
+  PAUSE,
+  QUIT
 } gameState;
 
 extern MouseDevice* mouse_device;
@@ -26,8 +28,11 @@ MenuNode* menuObjects = NULL;
 // Objects of Main Menu
 Button* quitButton;
 Button* playButton;
+GameObject* background;
+//
 
 static uint8_t menu_current_selection = 0;
+static int8_t selected_button = -1;
 
 static void checkMenuHovered(MenuNode** head) {
 
@@ -51,7 +56,7 @@ static void checkMenuHovered(MenuNode** head) {
         mouse_y > upMostBound   && mouse_y < downMostBound) {
 
       if (mouse_device->left_button_is_pressed) {
-        keyboard_device->escape_key_pressed = true;
+        selected_button = index;
       }
 
       normal->sprite->is_visible = false;
@@ -66,6 +71,21 @@ static void checkMenuHovered(MenuNode** head) {
     current_button = current_button->next;
     index++;
   }
+
+  switch (selected_button)
+  {
+  case -1:
+    break;
+  
+  case 0:
+    state = GAME;
+    break;
+
+  case 1:
+    state = QUIT;
+  default:
+    break;
+  }
 }
 
 int game_main_loop() {
@@ -77,17 +97,19 @@ int game_main_loop() {
 
       screen = getScreenInfo();
 
-      // Initialize Button Objects of Menu
-      quitButton = initializeMenuButton((xpm_map_t)QuitButton, (xpm_map_t)QuitButtonHovered,
-       screen.xres/2-1, screen.yres/2-1, -50, -25, 1, true);
+      background = create_gameobject((xpm_map_t) Background, 0, 0, 0, 0, 0, true, true);
 
+      // Initialize Button Objects of Menu
       playButton = initializeMenuButton((xpm_map_t)QuitButton, (xpm_map_t)QuitButtonHovered,
        screen.xres/2-1, screen.yres/2-101, -50, -25, 1, true);
+
+      quitButton = initializeMenuButton((xpm_map_t)QuitButton, (xpm_map_t)QuitButtonHovered,
+       screen.xres/2-1, screen.yres/2-1, -50, -25, 1, true);
       //
 
       // Insert all Menu Buttons to the MenuNodesList
-      insertAtEndMenu(&menuObjects, quitButton);
       insertAtEndMenu(&menuObjects, playButton);
+      insertAtEndMenu(&menuObjects, quitButton);
       //
 
       game_booted = true;
@@ -97,12 +119,21 @@ int game_main_loop() {
     checkMenuHovered(&menuObjects);
 
     if (keyboard_device->escape_key_pressed) {
-      printf("Exiting game...\n");
-      deleteListMenu(&menuObjects);
-      return 1;
+      state = QUIT;
     }
     break;
   
+  case GAME:
+    printf("Exiting game... through game.\n");
+    deleteListMenu(&menuObjects);
+    destroy_gameobject(background);
+    return 1;
+
+  case QUIT:
+    printf("Exiting game... through quit.\n");
+    deleteListMenu(&menuObjects);
+    destroy_gameobject(background);
+    return 1;
   default:
     return 1;
   }

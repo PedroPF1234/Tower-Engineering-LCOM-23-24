@@ -52,6 +52,7 @@
 
 #define KBC_OUT_BUFFER_FULL BIT(0) // Status Register Bit 0
 #define KBC_IN_BUFFER_FULL BIT(1) // Status Register Bit 1
+#define MOUSE_DATA BIT(5) // Status Register Bit 5
 
 #define KBC_TRANSMIT_TIMEOUT_ERR BIT(5) // Status Register Bit 5
 #define KBC_RECEIVE_TIMEOUT_ERR BIT(6) // Status Register Bit 6

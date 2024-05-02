@@ -60,7 +60,7 @@ int (mouse_read_cmdb)(uint8_t *info) {
 
 void (mouse_ih)() {
   
-  if (kbc_read_cmdb(&mouse_byte, true)) return;
+  if (util_sys_inb(KBC_OUTPUT_BUFFER, &mouse_byte)) return;
 
   if (packet_to_read == 0) {
     memset(&pp, 0, sizeof(pp));

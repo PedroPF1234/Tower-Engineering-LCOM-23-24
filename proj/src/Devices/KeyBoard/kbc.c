@@ -99,8 +99,11 @@ int (kbd_reenable_interrupts)() {
 }
 
 void (kbc_ih)() {
-
-  if (kbc_read_cmdb(&scancode[1], false)) return;
-
+  if (util_sys_inb(KBC_OUTPUT_BUFFER, &scancode[1])) return;
   return;
+}
+
+int kbc_read_status(uint8_t *status) {
+  if (util_sys_inb(KBC_STATUS_RG, status)) return 1;
+  return 0;
 }
