@@ -4,6 +4,8 @@
 
 #include <stdint.h>
 
+#include "../Devices/KeyBoard/keyboardkeys.h"
+
 #include "../GameObjects/gameobject.h"
 #include "../ImageAssets/sprite.h"
 
@@ -18,8 +20,7 @@ typedef struct MouseDevice {
 } MouseDevice;
 
 typedef struct KeyboardDevice {
-  uint8_t scancode[2];
-  bool escape_key_pressed;
+  KeyPresses* keyPresses;
 } KeyboardDevice;
 
 typedef struct ScreenInfo {

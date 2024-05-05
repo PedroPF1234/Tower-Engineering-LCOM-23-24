@@ -16,6 +16,7 @@ typedef enum gameState {
 
 extern MouseDevice* mouse_device;
 extern KeyboardDevice* keyboard_device;
+extern bool last_pressed_was_mouse;
 
 static gameState state = MAIN_MENU;
 
@@ -31,8 +32,8 @@ Button* playButton;
 GameObject* background;
 //
 
-static uint8_t menu_current_selection = 0;
-static int8_t selected_button = -1;
+static bool pressed_menu_button = false;
+static int8_t menu_current_selection = -1;
 
 static void checkMenuHovered(MenuNode** head) {
 
@@ -52,40 +53,101 @@ static void checkMenuHovered(MenuNode** head) {
     int16_t upMostBound = button->y + button->origin_offset_y;
     int16_t downMostBound = button->y + button->origin_offset_y + button->hovering->sprite->height;
 
-    if (mouse_x > leftMostBound && mouse_x < rightMostBound &&
-        mouse_y > upMostBound   && mouse_y < downMostBound) {
+    if (!pressed_menu_button) {
+      if (mouse_x > leftMostBound && mouse_x < rightMostBound &&
+          mouse_y > upMostBound && mouse_y < downMostBound && last_pressed_was_mouse) {
 
-      if (mouse_device->left_button_is_pressed) {
-        selected_button = index;
+        if (mouse_device->left_button_is_pressed) {
+          pressed_menu_button = true;
+        }
+
+        normal->sprite->is_visible = false;
+        hovering->sprite->is_visible = true;
+        menu_current_selection = index;
+
+      } else if (!last_pressed_was_mouse && menu_current_selection == index) {
+        normal->sprite->is_visible = false;
+        hovering->sprite->is_visible = true;
+      } else {
+        normal->sprite->is_visible = true;
+        hovering->sprite->is_visible = false;
       }
-
-      normal->sprite->is_visible = false;
-      hovering->sprite->is_visible = true;
-      menu_current_selection = index;
-
-    } else {
-      normal->sprite->is_visible = true;
-      hovering->sprite->is_visible = false;
     }
 
     current_button = current_button->next;
     index++;
   }
 
-  switch (selected_button)
-  {
-  case -1:
-    break;
-  
-  case 0:
-    state = GAME;
-    break;
+  if (pressed_menu_button) {
+    switch (menu_current_selection)
+    {
+    case -1:
+      break;
+    
+    case 0:
+      state = GAME;
+      break;
 
-  case 1:
-    state = QUIT;
-  default:
-    break;
+    case 1:
+      state = QUIT;
+    default:
+      break;
+    }
   }
+}
+
+static void checkMenuKeyboardInput(KeyPresses** head) {
+
+  KeyPresses* current = *head;
+
+  while (current != NULL) {
+    printf("Key: %x\n", current->key);
+    printf("Special: %d\n", current->special);
+    if (current->special) {
+      switch (current->key)
+      {
+      case DOWN_ARROW_MAKE:
+        menu_current_selection++;
+        if (menu_current_selection > 1) menu_current_selection = 0;
+        break;
+
+      case UP_ARROW_MAKE:
+        menu_current_selection--;
+        if (menu_current_selection < 0) menu_current_selection = 1;
+        break;
+
+      default:
+        break;
+      }
+    } else {
+      switch (current->key)
+      {
+      case ESC_BREAK:
+        state = QUIT;
+        break;
+
+      case ENTER_MAKE:
+        pressed_menu_button = true;
+        break;    
+      
+      default:
+        break;
+      }
+    }
+
+    if (current->next == NULL) {
+      printf("Freeing key %x and breaking\n", current->key);
+      free(current);
+      break;
+    } else {
+      printf("Freeing key %x and moving forward\n", current->key);
+      KeyPresses* next = current->next;
+      free(current);
+      current = next;
+    }
+  }
+
+  *head = NULL;
 }
 
 int game_main_loop() {
@@ -115,12 +177,10 @@ int game_main_loop() {
       game_booted = true;
     }
 
-    // Checks which button is being hovered by the mouse
+    // Checks which button is being hovered by the mouse or selected by the keyboard
+    checkMenuKeyboardInput(&keyboard_device->keyPresses);
     checkMenuHovered(&menuObjects);
 
-    if (keyboard_device->escape_key_pressed) {
-      state = QUIT;
-    }
     break;
   
   case GAME:

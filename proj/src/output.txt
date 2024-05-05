@@ -1,1 +1,231 @@
+Adding key 9c
+Special: 0
+Key: 9c
+Special: 0
+Freeing key 9c and breaking
+Adding key 50
+Special: 1
+Key: 50
+Special: 1
+Freeing key 50 and breaking
+Adding key d0
+Special: 1
+Key: d0
+Special: 1
+Freeing key d0 and breaking
+Adding key 48
+Special: 1
+Key: 48
+Special: 1
+Freeing key 48 and breaking
+Adding key c8
+Special: 1
+Key: c8
+Special: 1
+Freeing key c8 and breaking
+Adding key 50
+Special: 1
+Key: 50
+Special: 1
+Freeing key 50 and breaking
+Adding key d0
+Special: 1
+Key: d0
+Special: 1
+Freeing key d0 and breaking
+Adding key 48
+Special: 1
+Key: 48
+Special: 1
+Freeing key 48 and breaking
+Adding key c8
+Special: 1
+Key: c8
+Special: 1
+Freeing key c8 and breaking
+Adding key 50
+Special: 1
+Key: 50
+Special: 1
+Freeing key 50 and breaking
+Adding key d0
+Special: 1
+Key: d0
+Special: 1
+Freeing key d0 and breaking
+Adding key 48
+Special: 1
+Key: 48
+Special: 1
+Freeing key 48 and breaking
+Adding key c8
+Special: 1
+Key: c8
+Special: 1
+Freeing key c8 and breaking
+Adding key 50
+Special: 1
+Key: 50
+Special: 1
+Freeing key 50 and breaking
+Adding key d0
+Special: 1
+Key: d0
+Special: 1
+Freeing key d0 and breaking
+Adding key 48
+Special: 1
+Key: 48
+Special: 1
+Freeing key 48 and breaking
+Adding key c8
+Special: 1
+Key: c8
+Special: 1
+Freeing key c8 and breaking
+Adding key 50
+Special: 1
+Key: 50
+Special: 1
+Freeing key 50 and breaking
+Adding key d0
+Special: 1
+Key: d0
+Special: 1
+Freeing key d0 and breaking
+Adding key 48
+Special: 1
+Key: 48
+Special: 1
+Freeing key 48 and breaking
+Adding key c8
+Special: 1
+Key: c8
+Special: 1
+Freeing key c8 and breaking
+Adding key 50
+Special: 1
+Key: 50
+Special: 1
+Freeing key 50 and breaking
+Adding key d0
+Special: 1
+Key: d0
+Special: 1
+Freeing key d0 and breaking
+Adding key 48
+Special: 1
+Key: 48
+Special: 1
+Freeing key 48 and breaking
+Adding key c8
+Special: 1
+Key: c8
+Special: 1
+Freeing key c8 and breaking
+Adding key 50
+Special: 1
+Key: 50
+Special: 1
+Freeing key 50 and breaking
+Adding key d0
+Special: 1
+Key: d0
+Special: 1
+Freeing key d0 and breaking
+Adding key 48
+Special: 1
+Key: 48
+Special: 1
+Freeing key 48 and breaking
+Adding key c8
+Special: 1
+Key: c8
+Special: 1
+Freeing key c8 and breaking
+Adding key 50
+Special: 1
+Key: 50
+Special: 1
+Freeing key 50 and breaking
+Adding key d0
+Special: 1
+Key: d0
+Special: 1
+Freeing key d0 and breaking
+Adding key 48
+Special: 1
+Key: 48
+Special: 1
+Freeing key 48 and breaking
+Adding key c8
+Special: 1
+Key: c8
+Special: 1
+Freeing key c8 and breaking
+Adding key 50
+Special: 1
+Key: 50
+Special: 1
+Freeing key 50 and breaking
+Adding key d0
+Special: 1
+Key: d0
+Special: 1
+Freeing key d0 and breaking
+Adding key 48
+Special: 1
+Key: 48
+Special: 1
+Freeing key 48 and breaking
+Adding key c8
+Special: 1
+Key: c8
+Special: 1
+Freeing key c8 and breaking
+Adding key 50
+Special: 1
+Key: 50
+Special: 1
+Freeing key 50 and breaking
+Adding key d0
+Special: 1
+Key: d0
+Special: 1
+Freeing key d0 and breaking
+Adding key 48
+Special: 1
+Key: 48
+Special: 1
+Freeing key 48 and breaking
+Adding key c8
+Special: 1
+Key: c8
+Special: 1
+Freeing key c8 and breaking
+Adding key 50
+Special: 1
+Key: 50
+Special: 1
+Freeing key 50 and breaking
+Adding key d0
+Special: 1
+Key: d0
+Special: 1
+Freeing key d0 and breaking
+Adding key 50
+Special: 1
+Key: 50
+Special: 1
+Freeing key 50 and breaking
+Adding key d0
+Special: 1
+Key: d0
+Special: 1
+Freeing key d0 and breaking
+Adding key 1c
+Special: 0
+Key: 1c
+Special: 0
+Freeing key 1c and breaking
 Exiting game... through quit.

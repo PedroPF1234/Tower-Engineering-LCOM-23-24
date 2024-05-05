@@ -17,6 +17,7 @@ extern GameObject* mouse;
 // Global device interfaces
 MouseDevice* mouse_device;
 KeyboardDevice* keyboard_device;
+bool last_pressed_was_mouse = true;
  
 // Device Interrupt Bit Masks
 static uint8_t timer_bit_no;
@@ -144,12 +145,19 @@ static int kbc_interrupt() {
           if (mouse->y < 0) mouse->y = 0;
           if (mouse->y >= (int16_t) v_res) mouse->y = v_res - 1;
         }
+        last_pressed_was_mouse = true;
         return 0;
       } else {
         kbc_ih();
-        if (scancode[1] == 0x81) {
-          keyboard_device->escape_key_pressed = true;
+        if (scancode[1] == 0xE0) {
+          scancode[0] = 0xE0;
+          scancode[1] = 0;
+        } else {
+          addKeyPressAtEnd(&keyboard_device->keyPresses, scancode[1], scancode[0] ? true : false);
+          scancode[0] = 0;
+          scancode[1] = 0;
         }
+        last_pressed_was_mouse = false;
         return 0;
       }
     }
