@@ -84,3 +84,23 @@ Button* initializeMenuButton(xpm_map_t hovered, xpm_map_t no_hovered, int16_t x,
 
   return button;
 }
+
+void hideMenuButtons(MenuNode** head) {
+  MenuNode* current = *head;
+
+  while (current != NULL) {
+    current->button->hovering->sprite->is_visible = false;
+    current->button->no_hovering->sprite->is_visible = false;
+    current = current->next;
+  }
+}
+
+void showMenuButtons(MenuNode** head) {
+  MenuNode* current = *head;
+
+  while (current != NULL) {
+    current->button->no_hovering->sprite->is_visible = true;
+    current = current->next;
+  }
+}
+

@@ -3,8 +3,6 @@
 #include "keyboardkeys.h"
 
 void addKeyPressAtEnd(KeyPresses** head, uint8_t key, bool special) {
-  printf("Adding key %x\n", key);
-  printf("Special: %d\n", special);
   KeyPresses* newKeyPress = (KeyPresses*)malloc(sizeof(KeyPresses));
   newKeyPress->key = key;
   newKeyPress->special = special;

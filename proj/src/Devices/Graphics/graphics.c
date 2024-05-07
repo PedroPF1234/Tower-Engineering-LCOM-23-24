@@ -217,7 +217,10 @@ int vg_draw_xpm(uint16_t x, uint16_t y, uint16_t width, uint16_t height, uint8_t
       for (unsigned j = 0; j < width; j++) {  
         memcpy(&color, bytes + (i * width + j) * bytes_per_pixel, bytes_per_pixel);
         #if 1
-        if (proj_draw_pixel(x + j, y + i, color)) return 1;
+        if (color == 0 || x >= h_res || y >= v_res || x < 0 || y < 0) {
+          continue;
+        }
+        memcpy((current_buffer+((y+i) * h_res + (x+j)) * bytes_per_pixel), &color, bytes_per_pixel);
         #else
         if (vg_draw_pixel(x + i, y, color)) return 1;
         #endif

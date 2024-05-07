@@ -8,6 +8,7 @@
 
 typedef enum gameState {
   MAIN_MENU,
+  INSTRUCTIONS,
   GAME,
   GAME_OVER,
   PAUSE,
@@ -21,15 +22,24 @@ extern bool last_pressed_was_mouse;
 static gameState state = MAIN_MENU;
 
 static bool game_booted = false;
+static bool first_time_menu = true;
+
+static bool instructions_booted = false;
+static bool first_time_instructions = true;
 
 static ScreenInfo screen;
 
 MenuNode* menuObjects = NULL;
 
 // Objects of Main Menu
-Button* quitButton;
 Button* playButton;
+Button* instructionsButton;
+Button* quitButton;
 GameObject* background;
+//
+
+// Object for instructions
+GameObject* instructions_background;
 //
 
 static bool pressed_menu_button = false;
@@ -89,7 +99,13 @@ static void checkMenuHovered(MenuNode** head) {
       break;
 
     case 1:
+      state = INSTRUCTIONS;
+      break;
+
+    case 2:
       state = QUIT;
+      break;
+
     default:
       break;
     }
@@ -101,8 +117,6 @@ static void checkMenuKeyboardInput(KeyPresses** head) {
   KeyPresses* current = *head;
 
   while (current != NULL) {
-    printf("Key: %x\n", current->key);
-    printf("Special: %d\n", current->special);
     if (current->special) {
       switch (current->key)
       {
@@ -136,11 +150,51 @@ static void checkMenuKeyboardInput(KeyPresses** head) {
     }
 
     if (current->next == NULL) {
-      printf("Freeing key %x and breaking\n", current->key);
       free(current);
       break;
     } else {
-      printf("Freeing key %x and moving forward\n", current->key);
+      KeyPresses* next = current->next;
+      free(current);
+      current = next;
+    }
+  }
+
+  *head = NULL;
+}
+
+static void checkMenu(MenuNode** head, KeyPresses** keyPresses) {
+  checkMenuHovered(head);
+  checkMenuKeyboardInput(keyPresses);
+}
+
+static void checkInstructionsKeyboardInput(KeyPresses** head) {
+
+  KeyPresses* current = *head;
+
+  while (current != NULL) {
+    if (current->special) {
+      switch (current->key)
+      {
+      default:
+        break;
+      }
+    } else {
+      switch (current->key)
+      {
+      case ESC_BREAK:
+        state = MAIN_MENU;
+        printf("Exiting instructions...\n");
+        break;
+      
+      default:
+        break;
+      }
+    }
+
+    if (current->next == NULL) {
+      free(current);
+      break;
+    } else {
       KeyPresses* next = current->next;
       free(current);
       current = next;
@@ -165,21 +219,33 @@ int game_main_loop() {
       playButton = initializeMenuButton((xpm_map_t)QuitButton, (xpm_map_t)QuitButtonHovered,
        screen.xres/2-1, screen.yres/2-101, -50, -25, 1, true);
 
-      quitButton = initializeMenuButton((xpm_map_t)QuitButton, (xpm_map_t)QuitButtonHovered,
+      instructionsButton = initializeMenuButton((xpm_map_t)QuitButton, (xpm_map_t)QuitButtonHovered,
        screen.xres/2-1, screen.yres/2-1, -50, -25, 1, true);
+
+      quitButton = initializeMenuButton((xpm_map_t)QuitButton, (xpm_map_t)QuitButtonHovered,
+       screen.xres/2-1, screen.yres/2+99, -50, -25, 1, true);
       //
 
       // Insert all Menu Buttons to the MenuNodesList
       insertAtEndMenu(&menuObjects, playButton);
+      insertAtEndMenu(&menuObjects, instructionsButton);
       insertAtEndMenu(&menuObjects, quitButton);
       //
 
       game_booted = true;
     }
 
+    if (instructions_booted && first_time_menu) {
+      first_time_instructions = true;
+      first_time_menu = false;
+      pressed_menu_button = false;
+      showMenuButtons(&menuObjects);
+      instructions_background->sprite->is_visible = false;
+      menu_current_selection = -1;
+    }
+
     // Checks which button is being hovered by the mouse or selected by the keyboard
-    checkMenuKeyboardInput(&keyboard_device->keyPresses);
-    checkMenuHovered(&menuObjects);
+    checkMenu(&menuObjects, &keyboard_device->keyPresses);
 
     break;
   
@@ -189,10 +255,31 @@ int game_main_loop() {
     destroy_gameobject(background);
     return 1;
 
+  case INSTRUCTIONS:
+    if (!instructions_booted) {
+
+      instructions_background = create_gameobject((xpm_map_t) Background, 0, 0, 0, 0, 0, true, true);
+
+      instructions_booted = true;
+
+    }
+
+    if (first_time_instructions) {
+      first_time_instructions = false;
+      first_time_menu = true;
+      hideMenuButtons(&menuObjects);
+      instructions_background->sprite->is_visible = true;
+    }
+
+    checkInstructionsKeyboardInput(&keyboard_device->keyPresses);
+
+    break;
+
   case QUIT:
     printf("Exiting game... through quit.\n");
     deleteListMenu(&menuObjects);
     destroy_gameobject(background);
+    destroy_gameobject(instructions_background);
     return 1;
   default:
     return 1;
