@@ -47,9 +47,7 @@ GameObject* instructions_background;
 // Object for games
 GameObject* game_background;
 Player* player1;
-Player* player2;
-int8_t speed1[2] = {0, 0};
-int8_t speed2[2] = {0, 0};
+int8_t speed[2] = {0, 0};
 //
 
 static bool pressed_menu_button = false;
@@ -239,59 +237,35 @@ static void checkGameKeyboardInput(KeyPresses** head) {
       switch (current->key)
       {
       case DOWN_ARROW_MAKE:
-        speed1[1] = 1;
+        speed[1] = 1;
         break;
 
       case UP_ARROW_MAKE:
-        speed1[1] = -1;
+        speed[1] = -1;
         break;
 
       case LEFT_ARROW_MAKE:
-        speed1[0] = -1;
+        speed[0] = -1;
         break;
 
       case RIGHT_ARROW_MAKE:
-        speed1[0] = 1;
+        speed[0] = 1;
         break;
 
       case DOWN_ARROW_BREAK:
-        speed1[1] = 0;
+        speed[1] = 0;
         break;
 
       case UP_ARROW_BREAK:
-        speed1[1] = 0;
+        speed[1] = 0;
         break;
 
       case LEFT_ARROW_BREAK:
-        speed1[0] = 0;
+        speed[0] = 0;
         break;
 
       case RIGHT_ARROW_BREAK:
-        speed1[0] = 0;
-        break;
-
-      case W_KEY_MAKE:
-        speed2[1] = -1;
-        break;
-
-      case A_KEY_MAKE:
-        speed2[0] = -1;
-        break;
-
-      case D_KEY_MAKE:
-        speed2[0] = 1;
-        break;
-
-      case W_BREAK:
-        speed2[1] = 0;
-        break;
-
-      case A_BREAK:
-        speed2[0] = 0;
-        break;
-
-      case D_BREAK:
-        speed2[0] = 0;
+        speed[0] = 0;
         break;
 
       default:
@@ -305,8 +279,7 @@ static void checkGameKeyboardInput(KeyPresses** head) {
         game_background->sprite->is_visible = false;
         background->sprite->is_visible = true;
         playing = false;
-        setAllSpritesInvisible(player1);
-        setAllSpritesInvisible(player2);
+        setAllSpritesInvisible(player);
         printf("Exiting game...\n");
         break;
       
@@ -356,7 +329,6 @@ int game_main_loop() {
 
       // Game initialization
       player1 = initializePlayer(32, 28, -16, -29, 100);
-      player2 = initializePlayer(32, 28, -16, -29, 100);
       game_background = create_gameobject((xpm_map_t) Background, 0, 0, 0, 0, 0, true, true);
       //
 
@@ -376,10 +348,8 @@ int game_main_loop() {
     checkGameKeyboardInput(&keyboard_device->keyPresses);
 
     if (playing) {
-      updatePlayerPosition(player1, speed1[0], speed1[1]);
-      updatePlayerSpriteBasedOnPosition(player1, speed1[0], speed1[1]);
-      updatePlayerPosition(player2, speed2[0], speed2[1]);
-      updatePlayerSpriteBasedOnPosition(player2, speed2[0], speed2[1]);
+      updatePlayerPosition(player, speed[0], speed[1]);
+      updatePlayerSpriteBasedOnPosition(player, speed[0], speed[1]);
     }
     
     break;
@@ -395,8 +365,7 @@ int game_main_loop() {
     destroy_gameobject(background);
     destroy_gameobject(instructions_background);
     destroy_gameobject(game_background);
-    destroyPlayer(player1);
-    destroyPlayer(player2);
+    destroyPlayer(player);
     return 1;
 
   default:

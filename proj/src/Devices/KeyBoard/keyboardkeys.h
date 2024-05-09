@@ -20,7 +20,8 @@
 #define A_BREAK 0x9E // Break Code for A Key
 #define D_KEY_MAKE 0x20 // Make Code for D Key
 #define D_BREAK 0xA0 // Break Code for D Key
-
+#define S_KEY_ MAKE 0x1F // Make Code for S Key
+#define S_BREAK 0x9F // Break Code for S Key
 
 #define ENTER_MAKE 0x1C // Make Code for ENTER Key
 #define ENTER_BREAK 0x9C // Break Code for ENTER Key
