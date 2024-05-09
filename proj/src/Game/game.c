@@ -76,6 +76,7 @@ static void checkMenuHovered(MenuNode** head) {
         menu_current_selection = index;
 
       } else if (!last_pressed_was_mouse && menu_current_selection == index) {
+
         normal->sprite->is_visible = false;
         hovering->sprite->is_visible = true;
       } else {

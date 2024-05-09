@@ -1,1 +1,1 @@
-Exiting game... through game.
+Exiting game... through quit.
