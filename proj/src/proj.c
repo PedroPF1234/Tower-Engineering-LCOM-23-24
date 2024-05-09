@@ -12,7 +12,7 @@ int main(int argc, char *argv[]) {
 
   // enables to log function invocations that are being "wrapped" by LCF
   // [comment this out if you don't want/need it]
-  lcf_trace_calls("/home/lcom/labs/proj/src/trace.txt");
+  //lcf_trace_calls("/home/lcom/labs/proj/src/trace.txt");
 
   // enables to save the output of printf function calls on a file
   // [comment this out if you don't want/need it]
@@ -36,7 +36,7 @@ int (proj_main_loop)(int argc, char **argv) {
   message msg;
   int r;
 
-  if (boot_devices(1000, 60, 0x11B)) return 1;
+  if (boot_devices(100, 60, 0x11B)) return 1;
 
   bool running = true;
 

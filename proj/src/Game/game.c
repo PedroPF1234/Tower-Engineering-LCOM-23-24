@@ -2,32 +2,34 @@
 #include <stdint.h>
 
 #include "Menu/menu.h"
+#include "Player/player.h"
 
 #include "../ImageAssets/Button.xpm"
 #include "../ImageAssets/Background.xpm"
 
-typedef enum gameState {
+typedef enum GameState {
   MAIN_MENU,
   INSTRUCTIONS,
   GAME,
   GAME_OVER,
   PAUSE,
   QUIT
-} gameState;
+} GameState;
+
+bool multiplayer = false;
 
 extern MouseDevice* mouse_device;
 extern KeyboardDevice* keyboard_device;
 extern bool last_pressed_was_mouse;
 
-static gameState state = MAIN_MENU;
+static GameState state = MAIN_MENU;
 
+// Boot flags
 static bool game_booted = false;
-static bool first_time_menu = true;
+static bool playing = false;
+//
 
-static bool instructions_booted = false;
-static bool first_time_instructions = true;
-
-static ScreenInfo screen;
+extern ScreenInfo screen;
 
 MenuNode* menuObjects = NULL;
 
@@ -40,6 +42,14 @@ GameObject* background;
 
 // Object for instructions
 GameObject* instructions_background;
+//
+
+// Object for games
+GameObject* game_background;
+Player* player1;
+Player* player2;
+int8_t speed1[2] = {0, 0};
+int8_t speed2[2] = {0, 0};
 //
 
 static bool pressed_menu_button = false;
@@ -96,11 +106,23 @@ static void checkMenuHovered(MenuNode** head) {
       break;
     
     case 0:
+      printf("Starting game...\n");
       state = GAME;
+      playing = true;
+      game_background->sprite->is_visible = true;
+      pressed_menu_button = false;
+      menu_current_selection = -1;
+      hideMenuButtons(&menuObjects);
+      background->sprite->is_visible = false;
       break;
 
     case 1:
       state = INSTRUCTIONS;
+      instructions_background->sprite->is_visible = true;
+      pressed_menu_button = false;
+      menu_current_selection = -1;
+      hideMenuButtons(&menuObjects);
+      background->sprite->is_visible = false;
       break;
 
     case 2:
@@ -123,12 +145,12 @@ static void checkMenuKeyboardInput(KeyPresses** head) {
       {
       case DOWN_ARROW_MAKE:
         menu_current_selection++;
-        if (menu_current_selection > 1) menu_current_selection = 0;
+        if (menu_current_selection > 2) menu_current_selection = 0;
         break;
 
       case UP_ARROW_MAKE:
         menu_current_selection--;
-        if (menu_current_selection < 0) menu_current_selection = 1;
+        if (menu_current_selection < 0) menu_current_selection = 2;
         break;
 
       default:
@@ -184,7 +206,108 @@ static void checkInstructionsKeyboardInput(KeyPresses** head) {
       {
       case ESC_BREAK:
         state = MAIN_MENU;
+        instructions_background->sprite->is_visible = false;
+        background->sprite->is_visible = true;
+        showMenuButtons(&menuObjects);
         printf("Exiting instructions...\n");
+        break;
+      
+      default:
+        break;
+      }
+    }
+
+    if (current->next == NULL) {
+      free(current);
+      break;
+    } else {
+      KeyPresses* next = current->next;
+      free(current);
+      current = next;
+    }
+  }
+
+  *head = NULL;
+}
+
+static void checkGameKeyboardInput(KeyPresses** head) {
+
+  KeyPresses* current = *head;
+
+  while (current != NULL) {
+    if (current->special) {
+      switch (current->key)
+      {
+      case DOWN_ARROW_MAKE:
+        speed1[1] = 1;
+        break;
+
+      case UP_ARROW_MAKE:
+        speed1[1] = -1;
+        break;
+
+      case LEFT_ARROW_MAKE:
+        speed1[0] = -1;
+        break;
+
+      case RIGHT_ARROW_MAKE:
+        speed1[0] = 1;
+        break;
+
+      case DOWN_ARROW_BREAK:
+        speed1[1] = 0;
+        break;
+
+      case UP_ARROW_BREAK:
+        speed1[1] = 0;
+        break;
+
+      case LEFT_ARROW_BREAK:
+        speed1[0] = 0;
+        break;
+
+      case RIGHT_ARROW_BREAK:
+        speed1[0] = 0;
+        break;
+
+      case W_KEY_MAKE:
+        speed2[1] = -1;
+        break;
+
+      case A_KEY_MAKE:
+        speed2[0] = -1;
+        break;
+
+      case D_KEY_MAKE:
+        speed2[0] = 1;
+        break;
+
+      case W_BREAK:
+        speed2[1] = 0;
+        break;
+
+      case A_BREAK:
+        speed2[0] = 0;
+        break;
+
+      case D_BREAK:
+        speed2[0] = 0;
+        break;
+
+      default:
+        break;
+      }
+    } else {
+      switch (current->key)
+      {
+      case ESC_BREAK:
+        state = MAIN_MENU;
+        game_background->sprite->is_visible = false;
+        background->sprite->is_visible = true;
+        playing = false;
+        setAllSpritesInvisible(player1);
+        setAllSpritesInvisible(player2);
+        printf("Exiting game...\n");
         break;
       
       default:
@@ -212,8 +335,6 @@ int game_main_loop() {
   case MAIN_MENU:
     if (!game_booted) {
 
-      screen = getScreenInfo();
-
       background = create_gameobject((xpm_map_t) Background, 0, 0, 0, 0, 0, true, true);
 
       // Initialize Button Objects of Menu
@@ -233,16 +354,17 @@ int game_main_loop() {
       insertAtEndMenu(&menuObjects, quitButton);
       //
 
-      game_booted = true;
-    }
+      // Game initialization
+      player1 = initializePlayer(32, 28, -16, -29, 100);
+      player2 = initializePlayer(32, 28, -16, -29, 100);
+      game_background = create_gameobject((xpm_map_t) Background, 0, 0, 0, 0, 0, true, true);
+      //
 
-    if (instructions_booted && first_time_menu) {
-      first_time_instructions = true;
-      first_time_menu = false;
-      pressed_menu_button = false;
-      showMenuButtons(&menuObjects);
-      instructions_background->sprite->is_visible = false;
-      menu_current_selection = -1;
+      // Instructions initialization
+      instructions_background = create_gameobject((xpm_map_t) Background, 0, 0, 0, 0, 0, true, true);
+      //
+
+      game_booted = true;
     }
 
     // Checks which button is being hovered by the mouse or selected by the keyboard
@@ -251,27 +373,18 @@ int game_main_loop() {
     break;
   
   case GAME:
-    printf("Exiting game... through game.\n");
-    deleteListMenu(&menuObjects);
-    destroy_gameobject(background);
-    return 1;
+    checkGameKeyboardInput(&keyboard_device->keyPresses);
+
+    if (playing) {
+      updatePlayerPosition(player1, speed1[0], speed1[1]);
+      updatePlayerSpriteBasedOnPosition(player1, speed1[0], speed1[1]);
+      updatePlayerPosition(player2, speed2[0], speed2[1]);
+      updatePlayerSpriteBasedOnPosition(player2, speed2[0], speed2[1]);
+    }
+    
+    break;
 
   case INSTRUCTIONS:
-    if (!instructions_booted) {
-
-      instructions_background = create_gameobject((xpm_map_t) Background, 0, 0, 0, 0, 0, true, true);
-
-      instructions_booted = true;
-
-    }
-
-    if (first_time_instructions) {
-      first_time_instructions = false;
-      first_time_menu = true;
-      hideMenuButtons(&menuObjects);
-      instructions_background->sprite->is_visible = true;
-    }
-
     checkInstructionsKeyboardInput(&keyboard_device->keyPresses);
 
     break;
@@ -281,7 +394,11 @@ int game_main_loop() {
     deleteListMenu(&menuObjects);
     destroy_gameobject(background);
     destroy_gameobject(instructions_background);
+    destroy_gameobject(game_background);
+    destroyPlayer(player1);
+    destroyPlayer(player2);
     return 1;
+
   default:
     return 1;
   }

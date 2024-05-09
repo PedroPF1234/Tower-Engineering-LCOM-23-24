@@ -14,6 +14,13 @@
 #define LEFT_ARROW_BREAK 0xCB // Break Code for LEFT Arrow Key
 #define RIGHT_ARROW_MAKE 0x4D // Make Code for RIGHT Arrow Key
 #define RIGHT_ARROW_BREAK 0xCD // Break Code for RIGHT Arrow Key
+#define W_KEY_MAKE 0x11 // Make Code for W Key
+#define W_BREAK 0x91 // Break Code for W Key
+#define A_KEY_MAKE 0x1E // Make Code for A Key
+#define A_BREAK 0x9E // Break Code for A Key
+#define D_KEY_MAKE 0x20 // Make Code for D Key
+#define D_BREAK 0xA0 // Break Code for D Key
+
 
 #define ENTER_MAKE 0x1C // Make Code for ENTER Key
 #define ENTER_BREAK 0x9C // Break Code for ENTER Key

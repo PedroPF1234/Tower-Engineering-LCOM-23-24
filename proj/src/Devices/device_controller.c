@@ -28,9 +28,6 @@ static struct packet pp;
 extern uint64_t counter;
 extern uint8_t scancode[2];
 
-extern unsigned h_res;
-extern unsigned v_res;
-
 static int default_video_mode = 0x11B;
 
 static bool was_left_button_pressed = false;
@@ -38,6 +35,7 @@ static bool was_right_button_pressed = false;
 static bool was_middle_button_pressed = false;
 
 uint16_t FPS = 0;
+ScreenInfo screen;
 static uint32_t frequency = 0;
 
 int boot_devices(uint32_t freq, uint16_t framespersecond, uint16_t mode) {
@@ -66,8 +64,10 @@ int boot_devices(uint32_t freq, uint16_t framespersecond, uint16_t mode) {
     if (vg_init(default_video_mode) == NULL) return 1;
   }
 
-  mouse->x = h_res / 2;
-  mouse->y = v_res / 2;
+  screen = getScreenInfo();
+
+  mouse->x = screen.xres / 2;
+  mouse->y = screen.yres / 2;
 
   return 0;
 }
@@ -141,9 +141,9 @@ static int kbc_interrupt() {
           mouse->y -= pp.delta_y;
 
           if (mouse->x < 0) mouse->x = 0;
-          if (mouse->x >= (int16_t) h_res) mouse->x = h_res - 1;
+          if (mouse->x >= (int16_t) screen.xres) mouse->x = screen.xres - 1;
           if (mouse->y < 0) mouse->y = 0;
-          if (mouse->y >= (int16_t) v_res) mouse->y = v_res - 1;
+          if (mouse->y >= (int16_t) screen.xres) mouse->y = screen.yres - 1;
         }
         last_pressed_was_mouse = true;
         return 0;
