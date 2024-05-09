@@ -17,8 +17,8 @@ static char *secondary_buffer;
 static unsigned bytes_per_pixel;
 static unsigned bits_per_pixel;
 
-unsigned h_res;
-unsigned v_res;
+static int h_res;
+static int v_res;
 //
 
 // Mode Color info
@@ -197,33 +197,26 @@ int (vg_draw_rectangle)(uint16_t x, uint16_t y, uint16_t width, uint16_t height,
   return 0;
 }
 
-int vg_draw_xpm(uint16_t x, uint16_t y, uint16_t width, uint16_t height, uint8_t *bytes, bool square_shape) {
-  if (x >= h_res || y >= v_res || x < 0 || y < 0) {
-    //printf("vg_draw_xpm: invalid coordinates\n");
-    return 0;
-  }
+int vg_draw_xpm(int16_t x, int16_t y, uint16_t width, uint16_t height, uint8_t *bytes, bool square_shape) {
 
   uint32_t color = 0;
 
-  for (unsigned i = 0; i < height; i++) {
+  for (int i = 0; i < height; i++) {
 
     if (square_shape) {
 
-      uint16_t draw_line_len = x + width > h_res ? h_res - x : width;
+      uint16_t draw_line_len = x + width >= h_res ? h_res - x : width;
 
       memcpy(current_buffer + ((y + i) * h_res * bytes_per_pixel) + (x * bytes_per_pixel),
        bytes + i * width * bytes_per_pixel, draw_line_len * bytes_per_pixel);
     } else {
-      for (unsigned j = 0; j < width; j++) {  
+      for (int j = 0; j < width; j++) {  
+
         memcpy(&color, bytes + (i * width + j) * bytes_per_pixel, bytes_per_pixel);
-        #if 1
-        if (color == 0 || x >= h_res || y >= v_res || x < 0 || y < 0) {
+        if (y + i > v_res || x + j > h_res || y + i < 0 || x + j < 0 || color == 0) {
           continue;
         }
         memcpy((current_buffer+((y+i) * h_res + (x+j)) * bytes_per_pixel), &color, bytes_per_pixel);
-        #else
-        if (vg_draw_pixel(x + i, y, color)) return 1;
-        #endif
         color = 0;
       }
     }
@@ -270,8 +263,8 @@ uint16_t* getInfo() {
 
   uint16_t* info = malloc(sizeof(uint16_t)*2);
 
-  *info = h_res;
-  *(info+1) = v_res;
+  *info = (uint16_t)h_res;
+  *(info+1) = (uint16_t)v_res;
 
   return info;
 }

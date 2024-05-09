@@ -29,7 +29,7 @@ static bool game_booted = false;
 static bool playing = false;
 //
 
-static ScreenInfo screen;
+extern ScreenInfo screen;
 
 MenuNode* menuObjects = NULL;
 
@@ -307,8 +307,6 @@ int game_main_loop() {
   case MAIN_MENU:
     if (!game_booted) {
 
-      screen = getScreenInfo();
-
       background = create_gameobject((xpm_map_t) Background, 0, 0, 0, 0, 0, true, true);
 
       // Initialize Button Objects of Menu
@@ -329,7 +327,7 @@ int game_main_loop() {
       //
 
       // Game initialization
-      player = initializePlayer(100, 100, -16, -29, 100);
+      player = initializePlayer(32, 28, -16, -29, 100);
       game_background = create_gameobject((xpm_map_t) Background, 0, 0, 0, 0, 0, true, true);
       //
 
@@ -369,7 +367,7 @@ int game_main_loop() {
     destroy_gameobject(game_background);
     destroyPlayer(player);
     return 1;
-    
+
   default:
     return 1;
   }

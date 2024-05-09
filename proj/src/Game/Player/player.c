@@ -2,8 +2,11 @@
 #include <stdint.h>
 
 #include "player.h"
+#include "../../Devices/device_controller.h"
 
 #include "../../ImageAssets/Bicho.xpm"
+
+extern ScreenInfo screen;
 
 Player* initializePlayer(int16_t x, int16_t y, int16_t ox, int16_t oy, int16_t hp) {
   Player* new_player = (Player*)malloc(sizeof(Player));
@@ -43,32 +46,40 @@ void updatePlayerPosition(Player* player, int8_t x, int8_t y) {
   player->x += x;
   player->y += y;
 
-  player->up->x += x;
-  player->up->y += y;
+  if (player->x < 0) player->x = 0;
+  if (player->y < 0) player->y = 0;
+  if (player->x > screen.xres) player->x = screen.xres;
+  if (player->y > screen.yres) player->y = screen.yres;
 
-  player->down->x += x;
-  player->down->y += y;
+  uint16_t new_x = player->x;
+  uint16_t new_y = player->y;
 
-  player->left->x += x;
-  player->left->y += y;
+  player->up->x = new_x;
+  player->up->y = new_y;
 
-  player->right->x += x;
-  player->right->y += y;
+  player->down->x = new_x;
+  player->down->y = new_y;
 
-  player->up_left->x += x;
-  player->up_left->y += y;
+  player->left->x = new_x;
+  player->left->y = new_y;
 
-  player->up_right->x += x;
-  player->up_right->y += y;
+  player->right->x = new_x;
+  player->right->y = new_y;
 
-  player->down_left->x += x;
-  player->down_left->y += y;
+  player->up_left->x = new_x;
+  player->up_left->y = new_y;
 
-  player->down_right->x += x;
-  player->down_right->y += y;
+  player->up_right->x = new_x;
+  player->up_right->y = new_y;
 
-  player->stationary->x += x;
-  player->stationary->y += y;
+  player->down_left->x = new_x;
+  player->down_left->y = new_y;
+
+  player->down_right->x = new_x;
+  player->down_right->y = new_y;
+
+  player->stationary->x = new_x;
+  player->stationary->y = new_y;
 }
 
 void setAllSpritesInvisible(Player* player) {
