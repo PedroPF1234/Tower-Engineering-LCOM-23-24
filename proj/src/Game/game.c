@@ -46,7 +46,7 @@ GameObject* instructions_background;
 
 // Object for games
 GameObject* game_background;
-Player* player1;
+Player* player;
 int8_t speed[2] = {0, 0};
 //
 
@@ -328,7 +328,7 @@ int game_main_loop() {
       //
 
       // Game initialization
-      player1 = initializePlayer(32, 28, -16, -29, 100);
+      player = initializePlayer(32, 28, -16, -29, 100);
       game_background = create_gameobject((xpm_map_t) Background, 0, 0, 0, 0, 0, true, true);
       //
 
