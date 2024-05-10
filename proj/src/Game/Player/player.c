@@ -33,7 +33,8 @@ bool multiplayer = false;
 GameObject* game_background;
 Player* player1;
 Player* player2;
-float speed[2] = {0, 0};
+static float speedPlayer1[2] = {0, 0};
+static float speedPlayer2[2] = {0, 0};
 
 static void checkGameKeyboardInput(KeyPresses** head) {
 
@@ -44,35 +45,60 @@ static void checkGameKeyboardInput(KeyPresses** head) {
       switch (current->key)
       {
       case DOWN_ARROW_MAKE:
-        speed[1] = 0.3f;
+
+        if (speedPlayer1[1] < 0.0f) speedPlayer1[1] = 0.0f;
+        else if (speedPlayer1[0] == 0.3f || speedPlayer1[0] == -0.3f) {
+          speedPlayer1[1] = 0.212f;
+          if (speedPlayer1[0] > 0.0f) speedPlayer1[0] = 0.212f;
+          else speedPlayer1[0] = -0.212f;
+        }
+        else speedPlayer1[1] = 0.3f;
         break;
 
       case UP_ARROW_MAKE:
-        speed[1] = -0.3f;
+        if (speedPlayer1[1] > 0.0f) speedPlayer1[1] = 0.0f;
+        else if (speedPlayer1[0] == 0.3f || speedPlayer1[0] == -0.3f) {
+          speedPlayer1[1] = -0.212f;
+          if (speedPlayer1[0] > 0.0f) speedPlayer1[0] = 0.212f;
+          else speedPlayer1[0] = -0.212f;
+        }
+        else speedPlayer1[1] = -0.3f;
         break;
 
       case LEFT_ARROW_MAKE:
-        speed[0] = -0.3f;
+        if (speedPlayer1[0] > 0.0f) speedPlayer1[0] = 0.0f;
+        else if (speedPlayer1[1] == 0.3f || speedPlayer1[1] == -0.3f) {
+          speedPlayer1[0] = -0.212f;
+          if (speedPlayer1[1] > 0.0f) speedPlayer1[1] = 0.212f;
+          else speedPlayer1[1] = -0.212f;
+        }
+        else speedPlayer1[0] = -0.3f;
         break;
 
       case RIGHT_ARROW_MAKE:
-        speed[0] = 0.3f;
+        if (speedPlayer1[0] < 0.0f) speedPlayer1[0] = 0.0f;
+        else if (speedPlayer1[1] == 0.3f || speedPlayer1[1] == -0.3f) {
+          speedPlayer1[0] = 0.212f;
+          if (speedPlayer1[1] > 0.0f) speedPlayer1[1] = 0.212f;
+          else speedPlayer1[1] = -0.212f;
+        }
+        else speedPlayer1[0] = 0.3f;
         break;
 
       case DOWN_ARROW_BREAK:
-        speed[1] = 0.0f;
+        speedPlayer1[1] = 0.0f;
         break;
 
       case UP_ARROW_BREAK:
-        speed[1] = 0.0f;
+        speedPlayer1[1] = 0.0f;
         break;
 
       case LEFT_ARROW_BREAK:
-        speed[0] = 0.0f;
+        speedPlayer1[0] = 0.0f;
         break;
 
       case RIGHT_ARROW_BREAK:
-        speed[0] = 0.0f;
+        speedPlayer1[0] = 0.0f;
         break;
 
       default:
@@ -105,19 +131,21 @@ static void checkGameKeyboardInput(KeyPresses** head) {
   *head = NULL;
 }
 
-
 static Player* initializePlayer(int16_t x, int16_t y, int16_t ox, int16_t oy, int16_t hp) {
   Player* new_player = (Player*)malloc(sizeof(Player));
 
-  new_player->up = create_gameobject((xpm_map_t)BichoUp, x, y, ox, oy, 1000, false, false);
-  new_player->down = create_gameobject((xpm_map_t)BichoDown, x, y, ox, oy, 1000, false, false);
-  new_player->left = create_gameobject((xpm_map_t)BichoLeft, x, y, ox, oy, 1000, false, false);
-  new_player->right = create_gameobject((xpm_map_t)BichoRight, x, y, ox, oy, 1000, false, false);
-  new_player->up_left = create_gameobject((xpm_map_t)BichoUpperLeft, x, y, ox, oy, 1000, false, false);
-  new_player->up_right = create_gameobject((xpm_map_t)BichoUpperRight, x, y, ox, oy, 1000, false, false);
-  new_player->down_left = create_gameobject((xpm_map_t)BichoLowerLeft, x, y, ox, oy, 1000, false, false);
-  new_player->down_right = create_gameobject((xpm_map_t)BichoLowerRight, x, y, ox, oy, 1000, false, false);
-  new_player->stationary = create_gameobject((xpm_map_t)BichoStationary, x, y, ox, oy, 1000, false, false);
+  new_player->up = create_sprite((xpm_map_t)BichoUp, x, y, 1000, false, true);
+  new_player->down = create_sprite((xpm_map_t)BichoDown, x, y, 1000, false, true);
+  new_player->left = create_sprite((xpm_map_t)BichoLeft, x, y, 1000, false, true);
+  new_player->right = create_sprite((xpm_map_t)BichoRight, x, y, 1000, false, true);
+  new_player->up_left = create_sprite((xpm_map_t)BichoUpperLeft, x, y, 1000, false, true);
+  new_player->up_right = create_sprite((xpm_map_t)BichoUpperRight, x, y, 1000, false, true);
+  new_player->down_left = create_sprite((xpm_map_t)BichoLowerLeft, x, y, 1000, false, true);
+  new_player->down_right = create_sprite((xpm_map_t)BichoLowerRight, x, y, 1000, false, true);
+  new_player->stationary = create_sprite((xpm_map_t)BichoStationary, x, y, 1000, false, false);
+
+  new_player->player = create_gameobject_from_sprite(new_player->stationary, x, y, ox, oy);
+
   new_player->x = x;
   new_player->y = y;
   new_player->origin_offset_x = ox;
@@ -128,15 +156,16 @@ static Player* initializePlayer(int16_t x, int16_t y, int16_t ox, int16_t oy, in
 }
 
 static void destroyPlayer(Player* player) {
-  destroy_gameobject(player->up);
-  destroy_gameobject(player->down);
-  destroy_gameobject(player->left);
-  destroy_gameobject(player->right);
-  destroy_gameobject(player->up_left);
-  destroy_gameobject(player->up_right);
-  destroy_gameobject(player->down_left);
-  destroy_gameobject(player->down_right);
-  destroy_gameobject(player->stationary);
+  destroy_sprite(player->up);
+  destroy_sprite(player->down);
+  destroy_sprite(player->left);
+  destroy_sprite(player->right);
+  destroy_sprite(player->up_left);
+  destroy_sprite(player->up_right);
+  destroy_sprite(player->down_left);
+  destroy_sprite(player->down_right);
+  destroy_sprite(player->stationary);
+  destroy_gameobject_after_sprite_destroyed(player->player);
   free(player);
 }
 
@@ -152,75 +181,37 @@ static void updatePlayerPosition(Player* player, float x, float y) {
   uint16_t new_x = (uint16_t) player->x;
   uint16_t new_y = (uint16_t) player->y;
 
-  player->up->x = new_x;
-  player->up->y = new_y;
-
-  player->down->x = new_x;
-  player->down->y = new_y;
-
-  player->left->x = new_x;
-  player->left->y = new_y;
-
-  player->right->x = new_x;
-  player->right->y = new_y;
-
-  player->up_left->x = new_x;
-  player->up_left->y = new_y;
-
-  player->up_right->x = new_x;
-  player->up_right->y = new_y;
-
-  player->down_left->x = new_x;
-  player->down_left->y = new_y;
-
-  player->down_right->x = new_x;
-  player->down_right->y = new_y;
-
-  player->stationary->x = new_x;
-  player->stationary->y = new_y;
-}
-
-static void setAllSpritesInvisible(Player* player) {
-  player->up->sprite->is_visible = false;
-  player->down->sprite->is_visible = false;
-  player->left->sprite->is_visible = false;
-  player->right->sprite->is_visible = false;
-  player->up_left->sprite->is_visible = false;
-  player->up_right->sprite->is_visible = false;
-  player->down_left->sprite->is_visible = false;
-  player->down_right->sprite->is_visible = false;
-  player->stationary->sprite->is_visible = false;
+  player->player->x = new_x;
+  player->player->y = new_y;
 }
 
 static void updatePlayerSpriteBasedOnPosition(Player* player, float x, float y) {
 
-  setAllSpritesInvisible(player);
-
   if (x!=0.0f && y!=0.0f) {
     if (x > 0.0f) {
       if (y > 0.0f) {
-        player->down_right->sprite->is_visible = true;
+        updateGameObjectSprite(player->player, player->down_right);
       } else if (y < 0.0f) {
-        player->up_right->sprite->is_visible = true;
+        updateGameObjectSprite(player->player, player->up_right);
       }
     } else {
       if (y > 0.0f) {
-        player->down_left->sprite->is_visible = true;
+        updateGameObjectSprite(player->player, player->down_left);
       } else if (y < 0.0f) {
-        player->up_left->sprite->is_visible = true;
+        updateGameObjectSprite(player->player, player->up_left);
       }
     }
   } else {
     if (x > 0.0f) {
-      player->right->sprite->is_visible = true;
+      updateGameObjectSprite(player->player, player->right);
     } else if (x < 0.0f) {
-      player->left->sprite->is_visible = true;
+      updateGameObjectSprite(player->player, player->left);
     } else if (y > 0.0f) {
-      player->down->sprite->is_visible = true;
+      updateGameObjectSprite(player->player, player->down);
     } else if (y < 0.0f) {
-      player->up->sprite->is_visible = true;
+      updateGameObjectSprite(player->player, player->up);
     } else {
-      player->stationary->sprite->is_visible = true;
+      updateGameObjectSprite(player->player, player->stationary);
     }
   }
 
@@ -236,23 +227,28 @@ void enterGame(bool multi) {
   multiplayer = multi;
   playing = true;
   game_background->sprite->is_visible = true;
-  player1->stationary->sprite->is_visible = true;
-  if (multi) player2->stationary->sprite->is_visible = true;
+  player1->player->sprite->is_visible = true;
+  if (multi) player2->player->sprite->is_visible = true;
 }
 
 void updateGame() {
   checkGameKeyboardInput(&keyboard_device->keyPresses);
   if (playing) {
-    updatePlayerPosition(player1, speed[0], speed[1]);
-    updatePlayerSpriteBasedOnPosition(player1, speed[0], speed[1]);
+    updatePlayerPosition(player1, speedPlayer1[0], speedPlayer1[1]);
+    updatePlayerSpriteBasedOnPosition(player1, speedPlayer1[0], speedPlayer1[1]);
+
+    if (multiplayer) {
+      updatePlayerPosition(player2, speedPlayer2[0], speedPlayer2[1]);
+      updatePlayerSpriteBasedOnPosition(player2, speedPlayer2[0], speedPlayer2[1]);
+    }
   }
 }
 
 void exitGame() {
   playing = false;
   game_background->sprite->is_visible = false;
-  setAllSpritesInvisible(player1);
-  setAllSpritesInvisible(player2);
+  player1->player->sprite->is_visible = false;
+  player2->player->sprite->is_visible = false;
 }
 
 void destroyGame() {

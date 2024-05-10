@@ -16,6 +16,6 @@ typedef struct MenuNode {
 
 void initializeMenu();
 void enterMenu();
-void checkMenu();
+void updateMenu();
 void exitMenu();
 void destroyMenu();

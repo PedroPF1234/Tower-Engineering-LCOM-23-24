@@ -30,7 +30,7 @@ int game_main_loop() {
   switch (state)
   {
   case MAIN_MENU:
-  
+
     if (!game_booted) {
       initializeMenu();
       initializeGame();
@@ -38,7 +38,7 @@ int game_main_loop() {
       game_booted = true;
     }
 
-    checkMenu();
+    updateMenu();
     break;
   
   case GAME:

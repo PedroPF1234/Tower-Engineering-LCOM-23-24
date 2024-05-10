@@ -75,9 +75,28 @@ GameObject* create_gameobject(xpm_map_t pic, uint16_t x, uint16_t y, int16_t ori
   return gameObject;
 }
 
+GameObject* create_gameobject_from_sprite(Sprite* sprite, uint16_t x, uint16_t y, int16_t origin_offset_x, int16_t origin_offset_y) {
+  GameObject* gameObject = (GameObject*) malloc(sizeof(GameObject));
+
+  gameObject->sprite = sprite;
+  gameObject->x = x;
+  gameObject->y = y;
+  gameObject->origin_offset_x = origin_offset_x;
+  gameObject->origin_offset_y = origin_offset_y;
+
+  insertRenderPipeline(&head, gameObject);
+
+  return gameObject;
+}
+
 void destroy_gameobject(GameObject* gameObject) {
   deleteNode(&head, gameObject);
   destroy_sprite(gameObject->sprite);
+  free(gameObject);
+}
+
+void destroy_gameobject_after_sprite_destroyed(GameObject* gameObject) {
+  deleteNode(&head, gameObject);
   free(gameObject);
 }
 
@@ -86,6 +105,10 @@ static int draw_gameObject(GameObject* gameObject) {
   gameObject->sprite->y = gameObject->y + gameObject->origin_offset_y;
 
   return draw_sprite(gameObject->sprite);
+}
+
+void updateGameObjectSprite(GameObject* gameObject, Sprite* sprite) {
+  gameObject->sprite = sprite;
 }
 
 void renderGameObjects() {
@@ -107,4 +130,5 @@ int destroy_gameobjects() {
 
   return 0;
 }
+
 

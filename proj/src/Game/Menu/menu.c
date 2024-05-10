@@ -282,7 +282,7 @@ void enterMenu() {
   background->sprite->is_visible = true;
 }
 
-void checkMenu() {
+void updateMenu() {
   checkMenuHovered(&menuObjects);
   checkMenuKeyboardInput(&keyboard_device->keyPresses);
 }

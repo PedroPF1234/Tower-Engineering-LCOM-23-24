@@ -3,19 +3,29 @@
 #include "../../Devices/device_controller.h"
 
 typedef struct Player {
-  GameObject* up;
-  GameObject* down;
-  GameObject* left;
-  GameObject* right;
-  GameObject* up_left;
-  GameObject* up_right;
-  GameObject* down_left;
-  GameObject* down_right;
-  GameObject* stationary;
+  GameObject* player; // Default sprite is stationary
+  Sprite* up;
+  Sprite* down;
+  Sprite* left;
+  Sprite* right;
+  Sprite* up_left;
+  Sprite* up_right;
+  Sprite* down_left;
+  Sprite* down_right;
+  Sprite* stationary;
   float x, y;
   int16_t origin_offset_x, origin_offset_y;
   int16_t hit_points;
 } Player;
+
+typedef struct TowerBase {
+  GameObject* base;
+  GameObject* base_selected;
+  GameObject* turret;
+  int16_t x, y;
+  int16_t origin_offset_x, origin_offset_y;
+  int16_t hit_points;
+} TowerBase;
 
 void initializeGame();
 void enterGame(bool multi);
