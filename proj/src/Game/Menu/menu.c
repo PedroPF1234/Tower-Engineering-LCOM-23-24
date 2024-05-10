@@ -3,7 +3,163 @@
 
 #include "menu.h"
 
-void insertAtEndMenu(MenuNode** head, Button* button) {
+#include "../Player/player.h"
+#include "../Instructions/instructions.h"
+
+#include "../../ImageAssets/Button.xpm"
+#include "../../ImageAssets/Background.xpm"
+
+typedef enum GameState {
+  MAIN_MENU,
+  INSTRUCTIONS,
+  GAME,
+  GAME_OVER,
+  PAUSE,
+  QUIT
+} GameState;
+
+extern GameState state;
+
+extern ScreenInfo screen;
+
+extern MouseDevice* mouse_device;
+extern KeyboardDevice* keyboard_device;
+extern bool last_pressed_was_mouse;
+
+extern bool playing;
+
+static bool pressed_menu_button = false;
+static int8_t menu_current_selection = -1;
+
+Button* playButton;
+Button* instructionsButton;
+Button* quitButton;
+GameObject* background;
+
+MenuNode* menuObjects = NULL;
+
+static void checkMenuHovered(MenuNode** head) {
+
+  MenuNode* current_button = *head;
+  uint8_t index = 0;
+
+  while (current_button != NULL) {
+
+    Button* button = current_button->button;
+    GameObject* normal = button->no_hovering;
+    GameObject* hovering = button->hovering;
+
+    int16_t mouse_x = mouse_device->mouse->x;
+    int16_t mouse_y = mouse_device->mouse->y;
+    int16_t leftMostBound = button->x + button->origin_offset_x;
+    int16_t rightMostBound = button->x + button->origin_offset_x + button->hovering->sprite->width;
+    int16_t upMostBound = button->y + button->origin_offset_y;
+    int16_t downMostBound = button->y + button->origin_offset_y + button->hovering->sprite->height;
+
+    if (!pressed_menu_button) {
+      if (mouse_x > leftMostBound && mouse_x < rightMostBound &&
+          mouse_y > upMostBound && mouse_y < downMostBound && last_pressed_was_mouse) {
+
+        if (mouse_device->left_button_is_pressed) {
+          pressed_menu_button = true;
+        }
+
+        normal->sprite->is_visible = false;
+        hovering->sprite->is_visible = true;
+        menu_current_selection = index;
+
+      } else if (!last_pressed_was_mouse && menu_current_selection == index) {
+        normal->sprite->is_visible = false;
+        hovering->sprite->is_visible = true;
+      } else {
+        normal->sprite->is_visible = true;
+        hovering->sprite->is_visible = false;
+      }
+    }
+
+    current_button = current_button->next;
+    index++;
+  }
+
+  if (pressed_menu_button) {
+    switch (menu_current_selection)
+    {
+    case -1:
+      break;
+    
+    case 0:
+      state = GAME;
+      exitMenu();
+      enterGame(false);
+      break;
+
+    case 1:
+      state = INSTRUCTIONS;
+      exitMenu();
+      enterInstructions();
+      break;
+
+    case 2:
+      state = QUIT;
+      break;
+
+    default:
+      break;
+    }
+  }
+}
+
+static void checkMenuKeyboardInput(KeyPresses** head) {
+
+  KeyPresses* current = *head;
+
+  while (current != NULL) {
+    if (current->special) {
+      switch (current->key)
+      {
+      case DOWN_ARROW_MAKE:
+        menu_current_selection++;
+        if (menu_current_selection > 2) menu_current_selection = 0;
+        break;
+
+      case UP_ARROW_MAKE:
+        menu_current_selection--;
+        if (menu_current_selection < 0) menu_current_selection = 2;
+        break;
+
+      default:
+        break;
+      }
+    } else {
+      switch (current->key)
+      {
+      case ESC_BREAK:
+        state = QUIT;
+        break;
+
+      case ENTER_MAKE:
+        pressed_menu_button = true;
+        break;    
+      
+      default:
+        break;
+      }
+    }
+
+    if (current->next == NULL) {
+      free(current);
+      break;
+    } else {
+      KeyPresses* next = current->next;
+      free(current);
+      current = next;
+    }
+  }
+
+  *head = NULL;
+}
+
+static void insertAtEndMenu(MenuNode** head, Button* button) {
 
   MenuNode* newNode = (MenuNode*)malloc(sizeof(MenuNode));
 
@@ -23,8 +179,8 @@ void insertAtEndMenu(MenuNode** head, Button* button) {
 
   current->next = newNode;
 }
-
-void deleteNodeMenu(MenuNode** head, Button* button) {
+/*
+static void deleteNodeMenu(MenuNode** head, Button* button) {
     MenuNode *temp = *head, *prev = NULL;
 
     // If the node to be deleted is the head node
@@ -51,8 +207,8 @@ void deleteNodeMenu(MenuNode** head, Button* button) {
 
     free(temp);
 }
-
-void deleteListMenu(MenuNode** head) {
+*/
+static void deleteListMenu(MenuNode** head) {
     MenuNode* current = *head;
     MenuNode* next;
 
@@ -68,7 +224,7 @@ void deleteListMenu(MenuNode** head) {
     *head = NULL;
 }
 
-Button* initializeMenuButton(xpm_map_t hovered, xpm_map_t no_hovered, int16_t x, int16_t y,
+static Button* initializeMenuButton(xpm_map_t hovered, xpm_map_t no_hovered, int16_t x, int16_t y,
                              int16_t ox, int16_t oy, uint16_t z, bool square) {
 
   Button* button = (Button*)malloc(sizeof(Button));
@@ -85,7 +241,7 @@ Button* initializeMenuButton(xpm_map_t hovered, xpm_map_t no_hovered, int16_t x,
   return button;
 }
 
-void hideMenuButtons(MenuNode** head) {
+static void hideMenuButtons(MenuNode** head) {
   MenuNode* current = *head;
 
   while (current != NULL) {
@@ -95,7 +251,7 @@ void hideMenuButtons(MenuNode** head) {
   }
 }
 
-void showMenuButtons(MenuNode** head) {
+static void showMenuButtons(MenuNode** head) {
   MenuNode* current = *head;
 
   while (current != NULL) {
@@ -104,3 +260,41 @@ void showMenuButtons(MenuNode** head) {
   }
 }
 
+void initializeMenu() {
+  background = create_gameobject((xpm_map_t) Background, 0, 0, 0, 0, 0, true, true);
+
+  playButton = initializeMenuButton((xpm_map_t)QuitButton, (xpm_map_t)QuitButtonHovered,
+    screen.xres/2-1, screen.yres/2-101, -50, -25, 1, true);
+
+  instructionsButton = initializeMenuButton((xpm_map_t)QuitButton, (xpm_map_t)QuitButtonHovered,
+    screen.xres/2-1, screen.yres/2-1, -50, -25, 1, true);
+
+  quitButton = initializeMenuButton((xpm_map_t)QuitButton, (xpm_map_t)QuitButtonHovered,
+    screen.xres/2-1, screen.yres/2+99, -50, -25, 1, true);
+
+  insertAtEndMenu(&menuObjects, playButton);
+  insertAtEndMenu(&menuObjects, instructionsButton);
+  insertAtEndMenu(&menuObjects, quitButton);
+}
+
+void enterMenu() {
+  showMenuButtons(&menuObjects);
+  background->sprite->is_visible = true;
+}
+
+void checkMenu() {
+  checkMenuHovered(&menuObjects);
+  checkMenuKeyboardInput(&keyboard_device->keyPresses);
+}
+
+void exitMenu() {
+  pressed_menu_button = false;
+  menu_current_selection = -1;
+  hideMenuButtons(&menuObjects);
+  background->sprite->is_visible = false;
+}
+
+void destroyMenu() {
+  deleteListMenu(&menuObjects);
+  destroy_gameobject(background);
+}
