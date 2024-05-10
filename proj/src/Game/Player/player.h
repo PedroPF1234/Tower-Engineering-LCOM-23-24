@@ -29,6 +29,11 @@ typedef struct TowerBase {
   int16_t hit_points;
 } TowerBase;
 
+typedef struct TowerNode {
+    TowerBase* tower;
+    struct TowerNode* next;
+} TowerNode;
+
 void initializeGame();
 void enterGame(bool multi);
 void updateGame();

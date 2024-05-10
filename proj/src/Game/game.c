@@ -41,6 +41,7 @@ int game_main_loop() {
     updateMenu();
     break;
   
+  case PAUSE:
   case GAME:
 
     updateGame();
