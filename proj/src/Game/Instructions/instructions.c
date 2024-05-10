@@ -69,7 +69,7 @@ static void checkInstructionsKeyboardInput(KeyPresses** head) {
 
 
 void initializeInstructions() {
-  instructions_background = create_gameobject((xpm_map_t)Background, 0, 0, 0, 0, 0, false, false);
+  instructions_background = create_gameobject((xpm_map_t)Background, 0, 0, 0, 0, 0, true, false);
 }
 
 void enterInstructions() {
