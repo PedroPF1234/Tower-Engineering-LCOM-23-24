@@ -2,3 +2,4 @@
 *.rar
 *.gdbinit
 .vscode/
+.minix-src/
