@@ -46,15 +46,14 @@ static void checkMenuHovered(MenuNode** head) {
   while (current_button != NULL) {
 
     Button* button = current_button->button;
-    GameObject* normal = button->no_hovering;
-    GameObject* hovering = button->hovering;
+    GameObject* buttonObject = button->button;
 
     int16_t mouse_x = mouse_device->mouse->x;
     int16_t mouse_y = mouse_device->mouse->y;
     int16_t leftMostBound = button->x + button->origin_offset_x;
-    int16_t rightMostBound = button->x + button->origin_offset_x + button->hovering->sprite->width;
+    int16_t rightMostBound = button->x + button->origin_offset_x + button->button->sprite->width;
     int16_t upMostBound = button->y + button->origin_offset_y;
-    int16_t downMostBound = button->y + button->origin_offset_y + button->hovering->sprite->height;
+    int16_t downMostBound = button->y + button->origin_offset_y + button->button->sprite->height;
 
     if (!pressed_menu_button) {
       if (mouse_x > leftMostBound && mouse_x < rightMostBound &&
@@ -64,16 +63,13 @@ static void checkMenuHovered(MenuNode** head) {
           pressed_menu_button = true;
         }
 
-        normal->sprite->is_visible = false;
-        hovering->sprite->is_visible = true;
+        updateGameObjectSprite(buttonObject, button->hovering);
         menu_current_selection = index;
 
       } else if (!last_pressed_was_mouse && menu_current_selection == index) {
-        normal->sprite->is_visible = false;
-        hovering->sprite->is_visible = true;
+        updateGameObjectSprite(buttonObject, button->hovering);
       } else {
-        normal->sprite->is_visible = true;
-        hovering->sprite->is_visible = false;
+        updateGameObjectSprite(buttonObject, button->no_hovering);
       }
     }
 
@@ -214,8 +210,9 @@ static void deleteListMenu(MenuNode** head) {
 
     while (current != NULL) {
         next = current->next;
-        destroy_gameobject(current->button->hovering);
-        destroy_gameobject(current->button->no_hovering);
+        destroy_sprite(current->button->hovering);
+        destroy_sprite(current->button->no_hovering);
+        destroy_gameobject_after_sprite_destroyed(current->button->button);
         free(current->button);
         free(current);
         current = next;
@@ -228,11 +225,13 @@ static Button* initializeMenuButton(xpm_map_t hovered, xpm_map_t no_hovered, int
                              int16_t ox, int16_t oy, uint16_t z, bool square) {
 
   Button* button = (Button*)malloc(sizeof(Button));
-  GameObject* hoveredObject = create_gameobject((xpm_map_t)hovered, x, y, ox, oy, z, square, false);
-  GameObject* noHovered = create_gameobject((xpm_map_t)no_hovered, x, y, ox, oy, z, square, true);
+  Sprite* normal = create_sprite((xpm_map_t)no_hovered, x, y, z, false, true);
+  Sprite* hoveredSprite = create_sprite((xpm_map_t)hovered, x, y, z, false, true);
+  GameObject* buttonObject = create_gameobject_from_sprite(normal, x, y, ox, oy);
 
-  button->hovering = hoveredObject;
-  button->no_hovering = noHovered;
+  button->hovering = hoveredSprite;
+  button->no_hovering = normal;
+  button->button = buttonObject;
   button->x = x;
   button->y = y;
   button->origin_offset_x = ox;
@@ -245,8 +244,7 @@ static void hideMenuButtons(MenuNode** head) {
   MenuNode* current = *head;
 
   while (current != NULL) {
-    current->button->hovering->sprite->is_visible = false;
-    current->button->no_hovering->sprite->is_visible = false;
+    current->button->button->sprite->is_visible = false;
     current = current->next;
   }
 }
@@ -255,7 +253,7 @@ static void showMenuButtons(MenuNode** head) {
   MenuNode* current = *head;
 
   while (current != NULL) {
-    current->button->no_hovering->sprite->is_visible = true;
+    current->button->button->sprite->is_visible = true;
     current = current->next;
   }
 }

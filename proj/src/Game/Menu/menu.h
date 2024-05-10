@@ -3,8 +3,9 @@
 #include "../../Devices/device_controller.h"
 
 typedef struct Button {
-  GameObject* hovering;
-  GameObject* no_hovering;
+  GameObject* button;
+  Sprite* hovering;
+  Sprite* no_hovering;
   int16_t x, y;
   int16_t origin_offset_x, origin_offset_y;
 } Button;
