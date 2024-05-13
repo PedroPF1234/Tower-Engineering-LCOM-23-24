@@ -1,3 +1,11 @@
+<<<<<<< HEAD
 *.o
 *.rar
 *.gdbinit
+=======
+*.o
+*.rar
+*.gdbinit
+.vscode/
+.minix-src/
+>>>>>>> 43e4f187f33426dab903df5038f4fea3627e14fe
