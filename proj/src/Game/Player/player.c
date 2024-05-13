@@ -2,7 +2,6 @@
 #include <stdint.h>
 
 #include "player.h"
-#include "../../Devices/device_controller.h"
 
 #include "../../ImageAssets/Bicho.xpm"
 
