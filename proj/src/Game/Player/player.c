@@ -10,6 +10,7 @@
 #include "../../ImageAssets/TowerBase.xpm"
 #include "../../ImageAssets/Background.xpm"
 #include "../../ImageAssets/Pause.xpm"
+#include "../../ImageAssets/Crossbow.xpm"
 
 typedef enum GameState {
   MAIN_MENU,
@@ -49,6 +50,11 @@ TowerNode* towers = NULL;
 TowerBase* tower1;
 TowerBase* tower2;
 TowerBase* tower3;
+//Temp
+GameObject* crossbow;
+Sprite* crossbow_sprite;
+static int currentAngle = 0;
+//
 
 static void checkGameKeyboardInput(KeyPresses** head) {
 
@@ -345,7 +351,25 @@ void initializeGame() {
   addTowerToList(&towers, tower3);
   game_background = create_gameobject((xpm_map_t)Background, 0, 0, 0, 0, 0, true, true);
   pause_text = create_gameobject((xpm_map_t)PauseText, 0, 0, 0, 0, 0xFFFE, false, false);
+
+  // Temp
+  int num_sprites;
+  crossbow_sprite = create_rotation_abled_sprite((xpm_map_t)Crossbow, 500, 500, 0xFFFF, false, true, &num_sprites);
+
+  crossbow = create_gameobject_from_sprite(crossbow_sprite, 500, 500, 0, 0);
+  //
 }
+
+//Temp
+void testRotate() {
+  currentAngle += 1;
+  if (currentAngle >= 36) currentAngle = 0;
+  Sprite* current = &crossbow_sprite[currentAngle];
+  crossbow->origin_offset_x = -(current->width/2);
+  crossbow->origin_offset_y = -(current->height/2);
+  updateGameObjectSprite(crossbow, current);
+}
+//
 
 void enterGame(bool multi) {
   multiplayer = multi;
