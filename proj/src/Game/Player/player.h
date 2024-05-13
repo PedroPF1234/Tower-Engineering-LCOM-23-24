@@ -34,3 +34,7 @@ void enterGame(bool multi);
 void updateGame();
 void exitGame();
 void destroyGame();
+
+//Temp
+void testRotate();
+//

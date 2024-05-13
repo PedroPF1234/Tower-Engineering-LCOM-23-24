@@ -8,6 +8,7 @@
 
 #include "../../ImageAssets/Bicho.xpm"
 #include "../../ImageAssets/Background.xpm"
+#include "../../ImageAssets/Crossbow.xpm"
 
 typedef enum GameState {
   MAIN_MENU,
@@ -35,6 +36,12 @@ Player* player1;
 Player* player2;
 static float speedPlayer1[2] = {0, 0};
 static float speedPlayer2[2] = {0, 0};
+
+//Temp
+GameObject* crossbow;
+Sprite* crossbow_sprite;
+static int currentAngle = 0;
+//
 
 static void checkGameKeyboardInput(KeyPresses** head) {
 
@@ -221,7 +228,25 @@ void initializeGame() {
   player1 = initializePlayer(32, 28, -16, -29, 100);
   player2 = initializePlayer(32, 28, -16, -29, 100);
   game_background = create_gameobject((xpm_map_t)Background, 0, 0, 0, 0, 0, true, true);
+
+  // Temp
+  int num_sprites;
+  crossbow_sprite = create_rotation_abled_sprite((xpm_map_t)Crossbow, 500, 500, 0xFFFF, false, true, &num_sprites);
+
+  crossbow = create_gameobject_from_sprite(crossbow_sprite, 500, 500, 0, 0);
+  //
 }
+
+//Temp
+void testRotate() {
+  currentAngle += 1;
+  if (currentAngle >= 36) currentAngle = 0;
+  Sprite* current = &crossbow_sprite[currentAngle];
+  crossbow->origin_offset_x = -(current->width/2);
+  crossbow->origin_offset_y = -(current->height/2);
+  updateGameObjectSprite(crossbow, current);
+}
+//
 
 void enterGame(bool multi) {
   multiplayer = multi;
