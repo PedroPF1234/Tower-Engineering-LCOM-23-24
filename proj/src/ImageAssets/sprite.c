@@ -8,7 +8,7 @@
 
 #include "../Devices/Graphics/graphics.h"
 
-#define DEFAULT_ANGLE_INCREMENT 10.0
+#define DEFAULT_ANGLE_INCREMENT 1.0
 
 static uint32_t createdSprites = 0;
 
@@ -66,7 +66,7 @@ static uint8_t* rotate_image(uint8_t* original_pixels, uint16_t width, uint16_t 
         }
       } else {
         for (int c = 0; c < 3; c++) {
-          rotated_pixels[(y * *new_width + x) * 3 + c] = ' ';
+          rotated_pixels[(y * *new_width + x) * 3 + c] = 0x00;
         }
       }
     }

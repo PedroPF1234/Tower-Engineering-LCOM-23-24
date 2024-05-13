@@ -10,6 +10,7 @@
     "stdint.h": "c",
     "*.xpm": "c",
     "graphics.h": "c",
-    "device_controller.h": "c"
+    "device_controller.h": "c",
+    "keyboardkeys.h": "c"
   },
 }

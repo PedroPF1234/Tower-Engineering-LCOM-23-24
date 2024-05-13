@@ -10,7 +10,10 @@
 #include "../../ImageAssets/TowerBase.xpm"
 #include "../../ImageAssets/Background.xpm"
 #include "../../ImageAssets/Pause.xpm"
-#include "../../ImageAssets/Crossbow.xpm"
+
+// Temp
+#include "../../ImageAssets/Towers.xpm"
+//
 
 typedef enum GameState {
   MAIN_MENU,
@@ -137,11 +140,12 @@ static void checkGameKeyboardInput(KeyPresses** head) {
           paused = false;
           pause_text->sprite->is_visible = false;
         }
-        /*
+        break;
+
+      case BACKSPACE_BREAK:
         state = MAIN_MENU;
         exitGame();
         enterMenu();
-        */
         break;
       
       default:
@@ -232,8 +236,8 @@ static Player* initializePlayer(int16_t x, int16_t y, int16_t ox, int16_t oy, in
 static TowerBase* initializeTower(int16_t x, int16_t y, int16_t ox, int16_t oy, int16_t hp) {
   TowerBase* new_tower = (TowerBase*)malloc(sizeof(TowerBase));
 
-  new_tower->baseNormal = create_sprite((xpm_map_t)TowerBaseNormal, x, y, 1000, false, false);
-  new_tower->baseHovered = create_sprite((xpm_map_t)TowerBaseHovered, x, y, 1000, false, true);
+  new_tower->baseNormal = create_sprite((xpm_map_t)CrossbowBase, x, y, 1000, false, false);
+  new_tower->baseHovered = create_sprite((xpm_map_t)CrossbowBaseHovered, x, y, 1000, false, true);
   // Add sprite for tower turrets.
 
   new_tower->base = create_gameobject_from_sprite(new_tower->baseNormal, x, y, ox, oy);
@@ -343,9 +347,9 @@ static void deleteListGame(TowerNode** head) {
 void initializeGame() {
   player1 = initializePlayer(32, 28, -16, -29, 100);
   player2 = initializePlayer(32, 28, -16, -29, 100);
-  tower1 = initializeTower(128, 128, -64, -64, 100);
-  tower2 = initializeTower(256, 256, -64, -64, 100);
-  tower3 = initializeTower(384, 384, -64, -64, 100);
+  tower1 = initializeTower(128, 128, -55, -55, 100);
+  tower2 = initializeTower(256, 256, -55, -55, 100);
+  tower3 = initializeTower(384, 384, -55, -55, 100);
   addTowerToList(&towers, tower1);
   addTowerToList(&towers, tower2);
   addTowerToList(&towers, tower3);
@@ -354,16 +358,16 @@ void initializeGame() {
 
   // Temp
   int num_sprites;
-  crossbow_sprite = create_rotation_abled_sprite((xpm_map_t)Crossbow, 500, 500, 0xFFFF, false, true, &num_sprites);
+  crossbow_sprite = create_rotation_abled_sprite((xpm_map_t)Crossbow, 384, 384, 0xFFFF, false, true, &num_sprites);
 
-  crossbow = create_gameobject_from_sprite(crossbow_sprite, 500, 500, 0, 0);
+  crossbow = create_gameobject_from_sprite(crossbow_sprite, 384, 384, 0, 0);
   //
 }
 
 //Temp
 void testRotate() {
   currentAngle += 1;
-  if (currentAngle >= 36) currentAngle = 0;
+  if (currentAngle >= 360) currentAngle = 0;
   Sprite* current = &crossbow_sprite[currentAngle];
   crossbow->origin_offset_x = -(current->width/2);
   crossbow->origin_offset_y = -(current->height/2);
