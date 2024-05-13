@@ -261,8 +261,8 @@ static void showMenuButtons(MenuNode** head) {
 void initializeMenu() {
   background = create_gameobject((xpm_map_t) Background, 0, 0, 0, 0, 0, true, true);
 
-  playButton = initializeMenuButton((xpm_map_t)QuitButton, (xpm_map_t)QuitButtonHovered,
-    screen.xres/2-1, screen.yres/2-101, -50, -25, 1, true);
+  playButton = initializeMenuButton((xpm_map_t)PlayButtonHovered, (xpm_map_t)PlayButton,
+    screen.xres/2-1, screen.yres/2-101, -200, -35, 1, true);
 
   instructionsButton = initializeMenuButton((xpm_map_t)QuitButton, (xpm_map_t)QuitButtonHovered,
     screen.xres/2-1, screen.yres/2-1, -50, -25, 1, true);
