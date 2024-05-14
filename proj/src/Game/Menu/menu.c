@@ -36,16 +36,66 @@ Button* instructionsButton;
 Button* quitButton;
 GameObject* background;
 
-MenuNode* menuObjects = NULL;
+ButtonArray menuButtons;
 
-static void checkMenuHovered(MenuNode** head) {
+static ButtonArray newButtonArray(uint32_t capacity) {
+  ButtonArray array;
+  array.length = 0;
 
-  MenuNode* current_button = *head;
-  uint8_t index = 0;
+  if (capacity) {
+    array.buttons = (Button*)malloc(capacity * sizeof(Button));
+    array.capacity = capacity;
+  } else {
+    array.buttons = (Button*)malloc(sizeof(Button) * 10);
+    array.capacity = 10;
+  }
+  return array;
+}
 
-  while (current_button != NULL) {
+static void pushButtonArray(ButtonArray* array, Button* button) {
 
-    Button* button = current_button->button;
+  if (array->capacity != array->length) {
+        array->buttons[array->length] = *button;
+    } else {
+      uint32_t newCapacity = array->capacity * 2;
+      Button* oldPointer = array->buttons;
+      Button* newPointer = (Button*)malloc(newCapacity * sizeof(Button));
+      array->buttons = newPointer;
+      for (uint32_t i = 0; i < array->length; i++) {
+        newPointer[i] = oldPointer[i];
+      }
+      free(oldPointer);
+      array->buttons[array->length] = *button;
+    }
+    array->length++;
+}
+
+Button* getButtonArray(ButtonArray* array, uint32_t index) {
+    if (index < array->length) {
+        return &array->buttons[index];
+    } else {
+        return NULL;
+    }
+}
+
+void removeButtonArray(ButtonArray* array, uint32_t index) {
+    if (index < array->length) {
+        destroy_sprite(array->buttons[index].hovering);
+        destroy_sprite(array->buttons[index].no_hovering);
+        destroy_gameobject_after_sprite_destroyed(array->buttons[index].button);
+        for (uint32_t i = index; i < array->length - 1; i++) {
+            array->buttons[i] = array->buttons[i + 1];
+        }
+        memset(&array->buttons[array->length - 1], 0, sizeof(Button));
+        array->length--;
+    }
+}
+
+static void checkMenuHovered(ButtonArray* array) {
+
+  for (int32_t i = 0; i < (int32_t)array->length; i++) {
+
+    Button* button = getButtonArray(array, i);
     GameObject* buttonObject = button->button;
 
     int16_t mouse_x = mouse_device->mouse->x;
@@ -64,17 +114,14 @@ static void checkMenuHovered(MenuNode** head) {
         }
 
         updateGameObjectSprite(buttonObject, button->hovering);
-        menu_current_selection = index;
+        menu_current_selection = i;
 
-      } else if (!last_pressed_was_mouse && menu_current_selection == index) {
+      } else if (!last_pressed_was_mouse && menu_current_selection == i) {
         updateGameObjectSprite(buttonObject, button->hovering);
       } else {
         updateGameObjectSprite(buttonObject, button->no_hovering);
       }
     }
-
-    current_button = current_button->next;
-    index++;
   }
 
   if (pressed_menu_button) {
@@ -154,27 +201,6 @@ static void checkMenuKeyboardInput(KeyPresses** head) {
 
   *head = NULL;
 }
-
-static void insertAtEndMenu(MenuNode** head, Button* button) {
-
-  MenuNode* newNode = (MenuNode*)malloc(sizeof(MenuNode));
-
-  newNode->button = button;
-  newNode->next = NULL;
-
-  MenuNode* current = *head;
-
-  if (*head == NULL) {
-    *head = newNode;
-    return;
-  }
-
-  while (current->next != NULL) {
-    current = current->next;  
-  }
-
-  current->next = newNode;
-}
 /*
 static void deleteNodeMenu(MenuNode** head, Button* button) {
     MenuNode *temp = *head, *prev = NULL;
@@ -204,21 +230,15 @@ static void deleteNodeMenu(MenuNode** head, Button* button) {
     free(temp);
 }
 */
-static void deleteListMenu(MenuNode** head) {
-    MenuNode* current = *head;
-    MenuNode* next;
+static void emptyButtonArray(ButtonArray* array) {
 
-    while (current != NULL) {
-        next = current->next;
-        destroy_sprite(current->button->hovering);
-        destroy_sprite(current->button->no_hovering);
-        destroy_gameobject_after_sprite_destroyed(current->button->button);
-        free(current->button);
-        free(current);
-        current = next;
+    for (int32_t i = 0; i < (int32_t)array->length; i++) {
+        Button* button = getButtonArray(array, i);
+        destroy_sprite(button->hovering);
+        destroy_sprite(button->no_hovering);
+        destroy_gameobject_after_sprite_destroyed(button->button);
+        free(button);
     }
-
-    *head = NULL;
 }
 
 static Button* initializeMenuButton(xpm_map_t hovered, xpm_map_t no_hovered, int16_t x, int16_t y,
@@ -240,25 +260,20 @@ static Button* initializeMenuButton(xpm_map_t hovered, xpm_map_t no_hovered, int
   return button;
 }
 
-static void hideMenuButtons(MenuNode** head) {
-  MenuNode* current = *head;
-
-  while (current != NULL) {
-    current->button->button->sprite->is_visible = false;
-    current = current->next;
+static void hideMenuButtons(ButtonArray* array) {
+  for (int32_t i = 0; i < (int32_t)array->length; i++) {
+    getButtonArray(array, i)->button->sprite->is_visible = false;
   }
 }
 
-static void showMenuButtons(MenuNode** head) {
-  MenuNode* current = *head;
-
-  while (current != NULL) {
-    current->button->button->sprite->is_visible = true;
-    current = current->next;
+static void showMenuButtons(ButtonArray* array) {
+  for (int32_t i = 0; i < (int32_t)array->length; i++) {
+    getButtonArray(array, i)->button->sprite->is_visible = true;
   }
 }
 
 void initializeMenu() {
+  menuButtons = newButtonArray(20);
   background = create_gameobject((xpm_map_t) Background, 0, 0, 0, 0, 0, true, true);
 
   playButton = initializeMenuButton((xpm_map_t)QuitButton, (xpm_map_t)QuitButtonHovered,
@@ -270,29 +285,29 @@ void initializeMenu() {
   quitButton = initializeMenuButton((xpm_map_t)QuitButton, (xpm_map_t)QuitButtonHovered,
     screen.xres/2-1, screen.yres/2+99, -50, -25, 1, true);
 
-  insertAtEndMenu(&menuObjects, playButton);
-  insertAtEndMenu(&menuObjects, instructionsButton);
-  insertAtEndMenu(&menuObjects, quitButton);
+  pushButtonArray(&menuButtons, playButton);
+  pushButtonArray(&menuButtons, instructionsButton);
+  pushButtonArray(&menuButtons, quitButton);
 }
 
 void enterMenu() {
-  showMenuButtons(&menuObjects);
+  showMenuButtons(&menuButtons);
   background->sprite->is_visible = true;
 }
 
 void updateMenu() {
-  checkMenuHovered(&menuObjects);
+  checkMenuHovered(&menuButtons);
   checkMenuKeyboardInput(&keyboard_device->keyPresses);
 }
 
 void exitMenu() {
   pressed_menu_button = false;
   menu_current_selection = -1;
-  hideMenuButtons(&menuObjects);
+  hideMenuButtons(&menuButtons);
   background->sprite->is_visible = false;
 }
 
 void destroyMenu() {
-  deleteListMenu(&menuObjects);
+  emptyButtonArray(&menuButtons);
   destroy_gameobject(background);
 }

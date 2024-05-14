@@ -75,6 +75,25 @@ GameObject* create_gameobject(xpm_map_t pic, uint16_t x, uint16_t y, int16_t ori
   return gameObject;
 }
 
+GameObject* create_spriteless_gameobject(uint16_t x, uint16_t y, int16_t origin_offset_x, int16_t origin_offset_y, uint16_t z_index) {
+  GameObject* gameObject = (GameObject*) malloc(sizeof(GameObject));
+
+  gameObject->sprite = NULL;
+  gameObject->x = x;
+  gameObject->y = y;
+  gameObject->origin_offset_x = origin_offset_x;
+  gameObject->origin_offset_y = origin_offset_y;
+
+  return gameObject;
+}
+
+void add_sprite_to_spriteless_gameobject(GameObject* gameObject, Sprite* sprite, uint16_t z_index, bool square_shape, bool visible) {
+  if (gameObject->sprite == NULL) {
+    gameObject->sprite = sprite;
+    insertRenderPipeline(&head, gameObject);
+  }
+}
+
 GameObject* create_gameobject_from_sprite(Sprite* sprite, uint16_t x, uint16_t y, int16_t origin_offset_x, int16_t origin_offset_y) {
   GameObject* gameObject = (GameObject*) malloc(sizeof(GameObject));
 

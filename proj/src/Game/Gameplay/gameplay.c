@@ -194,6 +194,7 @@ static void checkGameHovered(TowerArray* array) {
 
           if (mouse_device->left_button_is_pressed) {
             pressed_game_button = true;
+            
           }
 
           setTowerHovered(tower, true);

@@ -10,10 +10,11 @@ typedef struct Button {
   int16_t origin_offset_x, origin_offset_y;
 } Button;
 
-typedef struct MenuNode {
-    Button* button;
-    struct MenuNode* next;
-} MenuNode;
+typedef struct ButtonArray {
+    Button* buttons;
+    uint32_t capacity;
+    uint32_t length;
+} ButtonArray;
 
 void initializeMenu();
 void enterMenu();
