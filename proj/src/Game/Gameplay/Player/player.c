@@ -10,17 +10,17 @@ extern ScreenInfo screen;
 Player* initializePlayer(float x, float y, int16_t ox, int16_t oy, int16_t hp) {
   Player* new_player = (Player*)malloc(sizeof(Player));
 
-  new_player->up = create_sprite((xpm_map_t)BichoUp, x, y, 1000, false, true);
-  new_player->down = create_sprite((xpm_map_t)BichoDown, x, y, 1000, false, true);
-  new_player->left = create_sprite((xpm_map_t)BichoLeft, x, y, 1000, false, true);
-  new_player->right = create_sprite((xpm_map_t)BichoRight, x, y, 1000, false, true);
-  new_player->up_left = create_sprite((xpm_map_t)BichoUpperLeft, x, y, 1000, false, true);
-  new_player->up_right = create_sprite((xpm_map_t)BichoUpperRight, x, y, 1000, false, true);
-  new_player->down_left = create_sprite((xpm_map_t)BichoLowerLeft, x, y, 1000, false, true);
-  new_player->down_right = create_sprite((xpm_map_t)BichoLowerRight, x, y, 1000, false, true);
-  new_player->stationary = create_sprite((xpm_map_t)BichoStationary, x, y, 1000, false, false);
+  new_player->up = create_sprite((xpm_map_t)BichoUp, x, y, false, true);
+  new_player->down = create_sprite((xpm_map_t)BichoDown, x, y, false, true);
+  new_player->left = create_sprite((xpm_map_t)BichoLeft, x, y, false, true);
+  new_player->right = create_sprite((xpm_map_t)BichoRight, x, y, false, true);
+  new_player->up_left = create_sprite((xpm_map_t)BichoUpperLeft, x, y, false, true);
+  new_player->up_right = create_sprite((xpm_map_t)BichoUpperRight, x, y, false, true);
+  new_player->down_left = create_sprite((xpm_map_t)BichoLowerLeft, x, y, false, true);
+  new_player->down_right = create_sprite((xpm_map_t)BichoLowerRight, x, y, false, true);
+  new_player->stationary = create_sprite((xpm_map_t)BichoStationary, x, y, false, false);
 
-  new_player->player = create_gameobject_from_sprite(new_player->stationary, x, y, ox, oy);
+  new_player->player = create_gameobject_from_sprite(new_player->stationary, x, y, ox, oy, 1000);
 
   new_player->x = x;
   new_player->y = y;

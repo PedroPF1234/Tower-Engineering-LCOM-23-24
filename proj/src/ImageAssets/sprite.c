@@ -12,7 +12,7 @@
 
 static uint32_t createdSprites = 0;
 
-Sprite* create_sprite(xpm_map_t pic, uint16_t x, uint16_t y, uint16_t z_index, bool square_shape, bool is_visible) {
+Sprite* create_sprite(xpm_map_t pic, uint16_t x, uint16_t y, bool square_shape, bool is_visible) {
   
   Sprite* sp = (Sprite*) malloc(sizeof(Sprite));
   if (sp == NULL) return NULL;
@@ -24,7 +24,6 @@ Sprite* create_sprite(xpm_map_t pic, uint16_t x, uint16_t y, uint16_t z_index, b
     return NULL;
   }
 
-  sp->z_index = z_index;
   sp->width = img.width;
   sp->height = img.height;
   sp->x = x;
@@ -75,7 +74,7 @@ static uint8_t* rotate_image(uint8_t* original_pixels, uint16_t width, uint16_t 
   return rotated_pixels;
 }
 
-Sprite* create_rotation_abled_sprite(xpm_map_t pic, uint16_t x, uint16_t y, uint16_t z_index, bool square_shape, bool is_visible, int* num_sprites) {
+Sprite* create_rotation_abled_sprite(xpm_map_t pic, uint16_t x, uint16_t y, bool square_shape, bool is_visible, int* num_sprites) {
 
   xpm_image_t img;
   uint8_t* bytes = xpm_load(pic, XPM_8_8_8, &img);
@@ -106,7 +105,6 @@ Sprite* create_rotation_abled_sprite(xpm_map_t pic, uint16_t x, uint16_t y, uint
     sprites[i].map = rotated_pixels;
     sprites[i].is_visible = is_visible;
     sprites[i].square_shape = square_shape;
-    sprites[i].z_index = z_index;
   }
 
   return sprites;
@@ -117,11 +115,6 @@ void destroy_sprite(Sprite *sp) {
   free(sp->map);
   free(sp);
   createdSprites--;
-}
-
-void update_sprite_depth(Sprite *sp, uint16_t z_index) {
-  if (sp == NULL) return;
-  sp->z_index = z_index;
 }
 
 void update_sprite_visibility(Sprite *sp, bool is_visible) {

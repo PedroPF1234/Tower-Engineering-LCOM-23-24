@@ -6,14 +6,21 @@
 #include "../../../ImageAssets/TowerBase.xpm"
 #include "../../../ImageAssets/Towers.xpm"
 
+Sprite* CrossbowTurret;
+Sprite* CanonTurret;
+
+void initializeDifferentTowerSprited() {
+  CrossbowTurret = create_sprite((xpm_map_t)CrossbowTurret, 0, 0, false, false);
+  CanonTurret = create_sprite((xpm_map_t)CanonTurret, 0, 0, false, false);
+}
 
 TowerBase* initializeTower(int16_t x, int16_t y, int16_t ox, int16_t oy, int16_t hp) {
   TowerBase* new_tower = (TowerBase*)malloc(sizeof(TowerBase));
 
-  new_tower->baseNormal = create_sprite((xpm_map_t)CrossbowBase, x, y, 1000, false, false);
-  new_tower->baseHovered = create_sprite((xpm_map_t)CrossbowBaseHovered, x, y, 1000, false, true);
+  new_tower->baseNormal = create_sprite((xpm_map_t)CrossbowBase, x, y, false, false);
+  new_tower->baseHovered = create_sprite((xpm_map_t)CrossbowBaseHovered, x, y, false, true);
 
-  new_tower->base = create_gameobject_from_sprite(new_tower->baseNormal, x, y, ox, oy);
+  new_tower->base = create_gameobject_from_sprite(new_tower->baseNormal, x, y, ox, oy, 1000);
   new_tower->turret = create_spriteless_gameobject(x, y, ox, oy, 1000);
 
   new_tower->x = x;

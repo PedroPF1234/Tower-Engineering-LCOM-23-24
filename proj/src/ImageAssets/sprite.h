@@ -12,14 +12,11 @@ typedef struct Sprite {
   uint8_t *map;
   bool is_visible;
   bool square_shape;
-  uint16_t z_index;
 } Sprite;
 
-Sprite *create_sprite(xpm_map_t pic, uint16_t x, uint16_t y,
-  uint16_t z_index, bool square_shape, bool is_visible);
-Sprite* create_rotation_abled_sprite(xpm_map_t pic, uint16_t x, uint16_t y, uint16_t z_index, 
-  bool square_shape, bool is_visible, int* num_sprites);
+Sprite *create_sprite(xpm_map_t pic, uint16_t x, uint16_t y, bool square_shape, bool is_visible);
+Sprite* create_rotation_abled_sprite(xpm_map_t pic, uint16_t x, uint16_t y, bool square_shape, 
+  bool is_visible, int* num_sprites);
 void destroy_sprite(Sprite *sp);
-void update_sprite_depth(Sprite *sp, uint16_t z_index);
 void update_sprite_visibility(Sprite *sp, bool is_visible);
 int draw_sprite(Sprite *sp);

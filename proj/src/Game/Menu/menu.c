@@ -201,35 +201,7 @@ static void checkMenuKeyboardInput(KeyPresses** head) {
 
   *head = NULL;
 }
-/*
-static void deleteNodeMenu(MenuNode** head, Button* button) {
-    MenuNode *temp = *head, *prev = NULL;
 
-    // If the node to be deleted is the head node
-    if (temp != NULL && temp->button == button) {
-        *head = temp->next;
-        destroy_gameobject(temp->button->hovering);
-        destroy_gameobject(temp->button->no_hovering);
-        free(temp->button);
-        free(temp);
-        return;
-    }
-
-    // Find the node to be deleted
-    while (temp != NULL && temp->button != button) {
-        prev = temp;
-        temp = temp->next;
-    }
-
-    // If not found
-    if (temp == NULL) return;
-
-    // Unlink the node from linked list
-    prev->next = temp->next;
-
-    free(temp);
-}
-*/
 static void emptyButtonArray(ButtonArray* array) {
 
     for (int32_t i = 0; i < (int32_t)array->length; i++) {
@@ -245,9 +217,9 @@ static Button* initializeMenuButton(xpm_map_t hovered, xpm_map_t no_hovered, int
                              int16_t ox, int16_t oy, uint16_t z, bool square) {
 
   Button* button = (Button*)malloc(sizeof(Button));
-  Sprite* normal = create_sprite((xpm_map_t)no_hovered, x, y, z, false, true);
-  Sprite* hoveredSprite = create_sprite((xpm_map_t)hovered, x, y, z, false, true);
-  GameObject* buttonObject = create_gameobject_from_sprite(normal, x, y, ox, oy);
+  Sprite* normal = create_sprite((xpm_map_t)no_hovered, x, y, false, true);
+  Sprite* hoveredSprite = create_sprite((xpm_map_t)hovered, x, y, false, true);
+  GameObject* buttonObject = create_gameobject_from_sprite(normal, x, y, ox, oy, z);
 
   button->hovering = hoveredSprite;
   button->no_hovering = normal;

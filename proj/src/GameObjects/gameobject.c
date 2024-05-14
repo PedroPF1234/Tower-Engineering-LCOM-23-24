@@ -19,14 +19,12 @@ static void insertRenderPipeline(Node **head, GameObject *newGameObject) {
     newNode->gameObject = newGameObject;
     newNode->next = NULL;
 
-    // Special case for the head end
-    if (*head == NULL || (*head)->gameObject->sprite->z_index >= newGameObject->sprite->z_index) {
+    if (*head == NULL || (*head)->gameObject->z_index >= newGameObject->z_index) {
         newNode->next = *head;
         *head = newNode;
     } else {
-        // Locate the node before the point of insertion
         Node *current = *head;
-        while (current->next != NULL && current->next->gameObject->sprite->z_index < newGameObject->sprite->z_index) {
+        while (current->next != NULL && current->next->gameObject->z_index < newGameObject->z_index) {
             current = current->next;
         }
         newNode->next = current->next;
@@ -62,13 +60,14 @@ static void deleteNode(Node **head, GameObject *gameObject) {
 GameObject* create_gameobject(xpm_map_t pic, uint16_t x, uint16_t y, int16_t origin_offset_x, int16_t origin_offset_y, uint16_t z_index, bool square_shape, bool visible) {
 
   GameObject* gameObject = (GameObject*) malloc(sizeof(GameObject));
-  Sprite* sprite = create_sprite(pic, x, y, z_index, square_shape, visible);
+  Sprite* sprite = create_sprite(pic, x, y, square_shape, visible);
 
   gameObject->sprite = sprite;
   gameObject->x = x;
   gameObject->y = y;
   gameObject->origin_offset_x = origin_offset_x;
   gameObject->origin_offset_y = origin_offset_y;
+  gameObject->z_index = z_index;
 
   insertRenderPipeline(&head, gameObject);
 
@@ -83,18 +82,19 @@ GameObject* create_spriteless_gameobject(uint16_t x, uint16_t y, int16_t origin_
   gameObject->y = y;
   gameObject->origin_offset_x = origin_offset_x;
   gameObject->origin_offset_y = origin_offset_y;
+  gameObject->z_index = z_index;
 
   return gameObject;
 }
 
-void add_sprite_to_spriteless_gameobject(GameObject* gameObject, Sprite* sprite, uint16_t z_index, bool square_shape, bool visible) {
+void add_sprite_to_spriteless_gameobject(GameObject* gameObject, Sprite* sprite) {
   if (gameObject->sprite == NULL) {
     gameObject->sprite = sprite;
     insertRenderPipeline(&head, gameObject);
   }
 }
 
-GameObject* create_gameobject_from_sprite(Sprite* sprite, uint16_t x, uint16_t y, int16_t origin_offset_x, int16_t origin_offset_y) {
+GameObject* create_gameobject_from_sprite(Sprite* sprite, uint16_t x, uint16_t y, int16_t origin_offset_x, int16_t origin_offset_y, uint16_t z_index) {
   GameObject* gameObject = (GameObject*) malloc(sizeof(GameObject));
 
   gameObject->sprite = sprite;
@@ -102,6 +102,7 @@ GameObject* create_gameobject_from_sprite(Sprite* sprite, uint16_t x, uint16_t y
   gameObject->y = y;
   gameObject->origin_offset_x = origin_offset_x;
   gameObject->origin_offset_y = origin_offset_y;
+  gameObject->z_index = z_index;
 
   insertRenderPipeline(&head, gameObject);
 
