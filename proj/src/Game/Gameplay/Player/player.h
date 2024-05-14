@@ -21,5 +21,5 @@ typedef struct Player {
 
 Player* initializePlayer(float x, float y, int16_t ox, int16_t oy, int16_t hp);
 void destroyPlayer(Player* player);
-void updatePlayersPositions(Player* player);
-void updatePlayersSpritesBasedOnPosition(Player* player);
+void updatePlayerPosition(Player* player);
+void updatePlayerSpriteBasedOnPosition(Player* player);

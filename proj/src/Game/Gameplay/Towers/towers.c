@@ -45,3 +45,12 @@ void deleteListGame(TowerNode** head) {
 
     *head = NULL;
 }
+
+void destroyTower(TowerBase* tower) {
+  destroy_sprite(tower->baseNormal);
+  destroy_sprite(tower->baseHovered);
+  // Destroy sprites for tower turrets.
+  destroy_gameobject_after_sprite_destroyed(tower->base);
+  // Destroy gameobjects for tower turrets.
+  free(tower);
+}

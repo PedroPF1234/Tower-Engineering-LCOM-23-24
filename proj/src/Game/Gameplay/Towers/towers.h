@@ -21,3 +21,4 @@ typedef struct TowerNode {
 TowerBase* initializeTower(int16_t x, int16_t y, int16_t ox, int16_t oy, int16_t hp);
 void addTowerToList(TowerNode** head, TowerBase* tower);
 void deleteListGame(TowerNode** head);
+void destroyTower(TowerBase* tower);

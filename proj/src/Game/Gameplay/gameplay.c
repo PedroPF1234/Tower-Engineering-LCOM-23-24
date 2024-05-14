@@ -196,15 +196,6 @@ static void checkGameHovered(TowerNode** head) {
   }
 }
 
-static void destroyTower(TowerBase* tower) {
-  destroy_sprite(tower->baseNormal);
-  destroy_sprite(tower->baseHovered);
-  // Destroy sprites for tower turrets.
-  destroy_gameobject_after_sprite_destroyed(tower->base);
-  // Destroy gameobjects for tower turrets.
-  free(tower);
-}
-
 void initializeGameplay() {
   player1 = initializePlayer(32, 28, -16, -29, 100);
   player2 = initializePlayer(32, 28, -16, -29, 100);
