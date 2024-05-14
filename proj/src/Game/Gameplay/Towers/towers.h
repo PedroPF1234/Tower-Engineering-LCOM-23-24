@@ -13,12 +13,17 @@ typedef struct TowerBase {
   int16_t hit_points;
 } TowerBase;
 
-typedef struct TowerNode {
-    TowerBase* tower;
-    struct TowerNode* next;
-} TowerNode;
+typedef struct TowerArray {
+    TowerBase* towers;
+    uint32_t capacity;
+    uint32_t length;
+} TowerArray;
 
 TowerBase* initializeTower(int16_t x, int16_t y, int16_t ox, int16_t oy, int16_t hp);
-void addTowerToList(TowerNode** head, TowerBase* tower);
-void deleteListGame(TowerNode** head);
+TowerArray newTowerArray(uint32_t capacity);
+void pushTowerArray(TowerArray* array, TowerBase* tower);
+TowerBase* getTowerArray(TowerArray* array, uint32_t index);
+void removeTowerArray(TowerArray* array, uint32_t index);
+void emptyArray(TowerArray* array);
 void destroyTower(TowerBase* tower);
+void setTowerHovered(TowerBase* tower, bool hovered);

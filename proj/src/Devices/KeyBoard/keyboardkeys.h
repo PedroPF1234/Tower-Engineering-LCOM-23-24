@@ -24,6 +24,15 @@
 #define BACKSPACE_MAKE 0x0E // Make Code for BACKSPACE Key
 #define BACKSPACE_BREAK 0x8E // Break Code for BACKSPACE Key
 
+#define W_MAKE 0x11 // Make Code for W Key
+#define W_BREAK 0x91 // Break Code for W Key
+#define A_MAKE 0x1E // Make Code for A Key
+#define A_BREAK 0x9E // Break Code for A Key
+#define S_MAKE 0x1F // Make Code for S Key
+#define S_BREAK 0x9F // Break Code for S Key
+#define D_MAKE 0x20 // Make Code for D Key
+#define D_BREAK 0xA0 // Break Code for D Key
+
 typedef struct KeyPresses {
   uint8_t key;
   bool special;

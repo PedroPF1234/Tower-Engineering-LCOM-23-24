@@ -25,25 +25,65 @@ TowerBase* initializeTower(int16_t x, int16_t y, int16_t ox, int16_t oy, int16_t
   return new_tower;
 }
 
-void addTowerToList(TowerNode** head, TowerBase* tower) {
-    TowerNode* new_node = (TowerNode*)malloc(sizeof(TowerNode));
-    new_node->tower = tower;
-    new_node->next = *head;
-    *head = new_node;
+TowerArray newTowerArray(uint32_t capacity) {
+
+  TowerArray new_array;
+  new_array.length = 0;
+
+  if (capacity) {
+    new_array.towers = (TowerBase*)malloc(capacity * sizeof(TowerBase));
+    new_array.capacity = capacity;
+  } else { // Default capacity
+    new_array.towers = (TowerBase*)malloc(10 * sizeof(TowerBase));
+    new_array.capacity = 10;
+  }
+
+  return new_array;
 }
 
-void deleteListGame(TowerNode** head) {
-    TowerNode* current = *head;
-    TowerNode* next;
-
-    while (current != NULL) {
-        next = current->next;
-        destroyTower(current->tower);
-        free(current);
-        current = next;
+void pushTowerArray(TowerArray* array, TowerBase* tower) {
+    if (array->capacity != array->length) {
+        array->towers[array->length] = *tower;
+    } else {
+      uint32_t newCapacity = array->capacity * 2;
+      TowerBase* oldPointer = array->towers;
+      TowerBase* newPointer = (TowerBase*)malloc(newCapacity * sizeof(TowerBase));
+      array->towers = newPointer;
+      for (uint32_t i = 0; i < array->length; i++) {
+        newPointer[i] = oldPointer[i];
+      }
+      free(oldPointer);
+      array->towers[array->length] = *tower;
     }
+    array->length++;
+}
 
-    *head = NULL;
+TowerBase* getTowerArray(TowerArray* array, uint32_t index) {
+    if (index < array->length) {
+        return &array->towers[index];
+    } else {
+        return NULL;
+    }
+}
+
+void removeTowerArray(TowerArray* array, uint32_t index) {
+    if (index < array->length) {
+        for (uint32_t i = index; i < array->length - 1; i++) {
+            array->towers[i] = array->towers[i + 1];
+        }
+        memset(&array->towers[array->length - 1], 0, sizeof(TowerBase));
+        array->length--;
+    }
+}
+
+void emptyArray(TowerArray* array) {
+
+    for (uint32_t i = 0; i < array->length; i++) {
+        destroyTower(&array->towers[i]);
+    }
+    array->length = 0;
+
+    memset(array->towers, 0, array->capacity * sizeof(TowerBase));
 }
 
 void destroyTower(TowerBase* tower) {
@@ -53,4 +93,12 @@ void destroyTower(TowerBase* tower) {
   destroy_gameobject_after_sprite_destroyed(tower->base);
   // Destroy gameobjects for tower turrets.
   free(tower);
+}
+
+void setTowerHovered(TowerBase* tower, bool hovered) {
+  if (hovered) {
+    updateGameObjectSprite(tower->base, tower->baseHovered);
+  } else {
+    updateGameObjectSprite(tower->base, tower->baseNormal);
+  }
 }
