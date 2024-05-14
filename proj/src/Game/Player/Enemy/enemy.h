@@ -3,16 +3,17 @@
 #include "../../Devices/device_controller.h"
 
 typedef struct Enemy {
-    GameObject* up;
-    GameObject* down;
-    GameObject* left;
-    GameObject* right;
-    GameObject* up_left;
-    GameObject* up_right;
-    GameObject* down_left;
-    GameObject* down_right;
-    GameObject* stationary;
-    int16_t x, y;
+    GameObject* player; // Default sprite is stationary
+    Sprite* up;
+    Sprite* down;
+    Sprite* left;
+    Sprite* right;
+    Sprite* up_left;
+    Sprite* up_right;
+    Sprite* down_left;
+    Sprite* down_right;
+    Sprite* stationary;
+    float x, y;
     int16_t origin_offset_x, origin_offset_y;
     int16_t hit_points;
 } Enemy;
