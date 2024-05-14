@@ -3,7 +3,7 @@
 #include "../../Devices/device_controller.h"
 
 typedef struct Enemy {
-    GameObject* player; // Default sprite is stationary
+    GameObject* enemy; // Default sprite is stationary
     Sprite* up;
     Sprite* down;
     Sprite* left;
@@ -14,12 +14,12 @@ typedef struct Enemy {
     Sprite* down_right;
     Sprite* stationary;
     float x, y;
+    float speed[2];
     int16_t origin_offset_x, origin_offset_y;
     int16_t hit_points;
 } Enemy;
 
-Enemy* initializeEnemy(int16_t x, int16_t y,  int16_t ox, int16_t oy,int16_t hp);
+Enemy* initializeEnemy(float x, float y,  int16_t ox, int16_t oy, int16_t hp);
 void destroyEnemy(Enemy* enemy);
-void updateEnemy(Enemy* enemy, int8_t x, int8_t y);
-void updateEnemySpriteBasedOnPosition(Enemy* enemy, int8_t x, int8_t y);
-void setAllSpritesInvisible(Enemy* enemy);
+void updateEnemyPosition(Enemy* enemy);
+void updateEnemySpriteBasedOnPosition(Enemy* enemy);

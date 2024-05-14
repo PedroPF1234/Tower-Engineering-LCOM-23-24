@@ -20,7 +20,7 @@ Player* initializePlayer(float x, float y, int16_t ox, int16_t oy, int16_t hp) {
   new_player->down_right = create_sprite((xpm_map_t)BichoLowerRight, x, y, false, true);
   new_player->stationary = create_sprite((xpm_map_t)BichoStationary, x, y, false, false);
 
-  new_player->player = create_gameobject_from_sprite(new_player->stationary, x, y, ox, oy, 1000);
+  new_player->player = create_gameobject_from_sprite(new_player->stationary, x, y, ox, oy, y * Z_INDEX_PER_LAYER + LOW_PRIORITY_Z_INDEX);
 
   new_player->x = x;
   new_player->y = y;
