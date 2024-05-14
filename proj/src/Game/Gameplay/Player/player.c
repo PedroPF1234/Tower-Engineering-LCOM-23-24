@@ -43,7 +43,8 @@ void destroyPlayer(Player* player) {
   destroy_sprite(player->down_left);
   destroy_sprite(player->down_right);
   destroy_sprite(player->stationary);
-  destroy_gameobject_after_sprite_destroyed(player->player);
+  player->player->sprite = NULL;
+  destroy_gameobject(player->player);
   free(player);
 }
 

@@ -80,14 +80,16 @@ Button* getButtonArray(ButtonArray* array, uint32_t index) {
 
 void removeButtonArray(ButtonArray* array, uint32_t index) {
     if (index < array->length) {
-        destroy_sprite(array->buttons[index].hovering);
-        destroy_sprite(array->buttons[index].no_hovering);
-        destroy_gameobject_after_sprite_destroyed(array->buttons[index].button);
-        for (uint32_t i = index; i < array->length - 1; i++) {
-            array->buttons[i] = array->buttons[i + 1];
-        }
-        memset(&array->buttons[array->length - 1], 0, sizeof(Button));
-        array->length--;
+      Button* button = getButtonArray(array, index);
+      destroy_sprite(button->hovering);
+      destroy_sprite(button->no_hovering);
+      button->button->sprite = NULL;
+      destroy_gameobject(button->button);
+      for (uint32_t i = index; i < array->length - 1; i++) {
+          array->buttons[i] = array->buttons[i + 1];
+      }
+      memset(&array->buttons[array->length - 1], 0, sizeof(Button));
+      array->length--;
     }
 }
 
@@ -208,7 +210,8 @@ static void emptyButtonArray(ButtonArray* array) {
         Button* button = getButtonArray(array, i);
         destroy_sprite(button->hovering);
         destroy_sprite(button->no_hovering);
-        destroy_gameobject_after_sprite_destroyed(button->button);
+        button->button->sprite = NULL;
+        destroy_gameobject(button->button);
         free(button);
     }
 }

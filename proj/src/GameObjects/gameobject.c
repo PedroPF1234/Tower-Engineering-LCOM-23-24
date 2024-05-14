@@ -94,6 +94,13 @@ void add_sprite_to_spriteless_gameobject(GameObject* gameObject, Sprite* sprite)
   }
 }
 
+void remove_sprite_from_spriteless_gameobject(GameObject* gameObject) {
+  if (gameObject->sprite != NULL) {
+    deleteNode(&head, gameObject);
+    gameObject->sprite = NULL;
+  }
+}
+
 GameObject* create_gameobject_from_sprite(Sprite* sprite, uint16_t x, uint16_t y, int16_t origin_offset_x, int16_t origin_offset_y, uint16_t z_index) {
   GameObject* gameObject = (GameObject*) malloc(sizeof(GameObject));
 
@@ -117,12 +124,7 @@ void updateGameObjectZIndex(GameObject* gameObject, uint16_t z_index) {
 
 void destroy_gameobject(GameObject* gameObject) {
   deleteNode(&head, gameObject);
-  destroy_sprite(gameObject->sprite);
-  free(gameObject);
-}
-
-void destroy_gameobject_after_sprite_destroyed(GameObject* gameObject) {
-  deleteNode(&head, gameObject);
+  if (gameObject->sprite != NULL) destroy_sprite(gameObject->sprite);
   free(gameObject);
 }
 

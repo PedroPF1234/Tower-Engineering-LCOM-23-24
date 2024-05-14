@@ -194,6 +194,7 @@ static void checkGameHovered(TowerArray* array) {
 
           if (mouse_device->left_button_is_pressed) {
             pressed_game_button = true;
+            mountTowers(tower, 1);
           }
 
           setTowerHovered(tower, true);
@@ -214,6 +215,7 @@ static void checkGameHovered(TowerArray* array) {
 }
 
 void initializeGameplay() {
+  initializeDifferentTowerSprited();
   towers = newTowerArray(20);
   player1 = initializePlayer(32, 28, -16, -29, 100);
   player2 = initializePlayer(32, 28, -16, -29, 100);
@@ -233,9 +235,7 @@ void enterGame(bool multi) {
   game_background->sprite->is_visible = true;
   player1->player->sprite->is_visible = true;
   if (multi) player2->player->sprite->is_visible = true;
-  tower1->base->sprite->is_visible = true;
-  tower2->base->sprite->is_visible = true;
-  tower3->base->sprite->is_visible = true;
+  showTowers(&towers);
 }
 
 void updateGame() {
@@ -252,6 +252,7 @@ void updateGame() {
       }
     }
   }
+  rotateTowersTowardsTarget(&towers, player1->player); 
 }
 
 void exitGame() {
@@ -259,14 +260,12 @@ void exitGame() {
   game_background->sprite->is_visible = false;
   player1->player->sprite->is_visible = false;
   player2->player->sprite->is_visible = false;
-  tower1->base->sprite->is_visible = false;
-  tower2->base->sprite->is_visible = false;
-  tower3->base->sprite->is_visible = false;
+  hideTowers(&towers);
 }
 
 void destroyGame() {
   destroy_gameobject(game_background);
   destroyPlayer(player1);
   destroyPlayer(player2);
-  emptyArray(&towers);
+  destroyArray(&towers);
 }

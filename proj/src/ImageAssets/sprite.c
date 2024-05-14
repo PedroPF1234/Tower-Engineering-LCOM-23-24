@@ -110,6 +110,36 @@ Sprite* create_rotation_abled_sprite(xpm_map_t pic, uint16_t x, uint16_t y, bool
   return sprites;
 }
 
+Sprite* create_sprite_from_sprite(Sprite* sprite, uint16_t x, uint16_t y, bool is_visible, int rotations) {
+  if (sprite == NULL) return NULL;
+
+  Sprite* sp = (Sprite*)malloc(sizeof(Sprite) * rotations);
+  if (sp == NULL) return NULL;
+
+  for (int i = 0; i < rotations; i++) {
+    sp[i].map = (uint8_t*)malloc(sprite[i].width * sprite[i].height * 3);
+    if (sp[i].map == NULL) {
+      for (int j = 0; j < i; j++) {
+        free(sp[j].map);
+      }
+      free(sp);
+      return NULL;
+    }
+
+    memcpy(sp[i].map, sprite[i].map, sprite[i].width * sprite[i].height * 3);
+    sp[i].width = sprite[i].width;
+    sp[i].height = sprite[i].height;
+    sp[i].x = x;
+    sp[i].y = y;
+    sp[i].is_visible = is_visible;
+    sp[i].square_shape = sprite[i].square_shape;
+  }
+
+  createdSprites++;
+
+  return sp;
+}
+
 void destroy_sprite(Sprite *sp) {
   if (sp == NULL) return;
   free(sp->map);

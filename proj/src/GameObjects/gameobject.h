@@ -25,7 +25,7 @@ GameObject* create_gameobject(xpm_map_t pic, uint16_t x, uint16_t y, int16_t ori
 GameObject* create_gameobject_from_sprite(Sprite* sprite, uint16_t x, uint16_t y, int16_t origin_offset_x, int16_t origin_offset_y, uint16_t z_index);
 GameObject* create_spriteless_gameobject(uint16_t x, uint16_t y, int16_t origin_offset_x, int16_t origin_offset_y, uint16_t z_index);
 void add_sprite_to_spriteless_gameobject(GameObject* gameObject, Sprite* sprite);
+void remove_sprite_from_spriteless_gameobject(GameObject* gameObject);
 void updateGameObjectZIndex(GameObject* gameObject, uint16_t z_index);
 void destroy_gameobject(GameObject* gameObject);
-void destroy_gameobject_after_sprite_destroyed(GameObject* gameObject);
 void updateGameObjectSprite(GameObject* gameObject, Sprite* sprite);
