@@ -48,6 +48,7 @@
     "tuple": "c",
     "typeinfo": "c",
     "utility": "c",
-    "vector": "c"
+    "vector": "c",
+    "gameobject.h": "c"
   },
 }

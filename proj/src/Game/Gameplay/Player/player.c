@@ -61,6 +61,8 @@ void updatePlayerPosition(Player* player) {
 
   player->player->x = new_x;
   player->player->y = new_y;
+
+  updateGameObjectZIndex(player->player, new_y * Z_INDEX_PER_LAYER + LOW_PRIORITY_Z_INDEX);
 }
 
 void updatePlayerSpriteBasedOnPosition(Player* player) {

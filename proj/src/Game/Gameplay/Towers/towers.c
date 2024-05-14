@@ -17,11 +17,13 @@ void initializeDifferentTowerSprited() {
 TowerBase* initializeTower(int16_t x, int16_t y, int16_t ox, int16_t oy, int16_t hp) {
   TowerBase* new_tower = (TowerBase*)malloc(sizeof(TowerBase));
 
+  uint16_t z_indexing = y * Z_INDEX_PER_LAYER + MEDIUM_PRIORITY_Z_INDEX;
+
   new_tower->baseNormal = create_sprite((xpm_map_t)CrossbowBase, x, y, false, false);
   new_tower->baseHovered = create_sprite((xpm_map_t)CrossbowBaseHovered, x, y, false, true);
 
-  new_tower->base = create_gameobject_from_sprite(new_tower->baseNormal, x, y, ox, oy, 1000);
-  new_tower->turret = create_spriteless_gameobject(x, y, ox, oy, 1000);
+  new_tower->base = create_gameobject_from_sprite(new_tower->baseNormal, x, y, ox, oy, z_indexing);
+  new_tower->turret = create_spriteless_gameobject(x, y, ox, oy, z_indexing + 1);
 
   new_tower->x = x;
   new_tower->y = y;

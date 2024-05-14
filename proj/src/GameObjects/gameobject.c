@@ -109,6 +109,12 @@ GameObject* create_gameobject_from_sprite(Sprite* sprite, uint16_t x, uint16_t y
   return gameObject;
 }
 
+void updateGameObjectZIndex(GameObject* gameObject, uint16_t z_index) {
+  gameObject->z_index = z_index;
+  deleteNode(&head, gameObject);
+  insertRenderPipeline(&head, gameObject);
+}
+
 void destroy_gameobject(GameObject* gameObject) {
   deleteNode(&head, gameObject);
   destroy_sprite(gameObject->sprite);
