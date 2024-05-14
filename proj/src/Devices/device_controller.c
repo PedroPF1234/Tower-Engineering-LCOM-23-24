@@ -11,9 +11,6 @@
 #include "Timer/timer.h"
 #include "device_controller.h"
 
-// Temp
-#include "../Game/Player/player.h"
-
 // Mouse Game Object
 extern GameObject* mouse;
 
@@ -193,7 +190,6 @@ int interrupt_handler(uint32_t interrupt_mask) {
 
     if (counter % (frequency / FPS) == 0) {
       renderGameObjects();
-      testRotate();
       if (vg_replace_buffer()) return 1;
     }
   }

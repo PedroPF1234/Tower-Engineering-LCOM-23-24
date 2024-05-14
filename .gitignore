@@ -3,3 +3,5 @@
 *.gdbinit
 .vscode/
 .minix-src/
+output.txt
+trace.txt

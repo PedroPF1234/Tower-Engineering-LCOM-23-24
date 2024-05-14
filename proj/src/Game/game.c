@@ -2,7 +2,7 @@
 #include <stdint.h>
 
 #include "Menu/menu.h"
-#include "Player/player.h"
+#include "Gameplay/gameplay.h"
 #include "Instructions/instructions.h"
 
 typedef enum GameState {
@@ -33,7 +33,7 @@ int game_main_loop() {
 
     if (!game_booted) {
       initializeMenu();
-      initializeGame();
+      initializeGameplay();
       initializeInstructions();
       game_booted = true;
     }

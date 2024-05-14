@@ -3,7 +3,7 @@
 
 #include "menu.h"
 
-#include "../Player/player.h"
+#include "../Gameplay/gameplay.h"
 #include "../Instructions/instructions.h"
 
 #include "../../ImageAssets/Button.xpm"

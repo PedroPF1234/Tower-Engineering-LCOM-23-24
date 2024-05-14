@@ -36,7 +36,7 @@ int (proj_main_loop)(int argc, char **argv) {
   message msg;
   int r;
 
-  if (boot_devices(1000, 30, 0x11B)) return 1;
+  if (boot_devices(1000, 60, 0x11B)) return 1;
 
   bool running = true;
 
