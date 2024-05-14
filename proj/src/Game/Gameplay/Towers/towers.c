@@ -34,6 +34,7 @@ TowerBase* initializeTower(int16_t x, int16_t y, int16_t ox, int16_t oy, int16_t
   new_tower->origin_offset_y = oy;
   new_tower->hit_points = hp;
   new_tower->turretSprite = NULL;
+  new_tower->range = 0;
 
   return new_tower;
 }
@@ -133,6 +134,7 @@ void mountTowers(TowerBase* tower, uint32_t type) {
         tower->turretSprite = temp;
       }
       add_sprite_to_spriteless_gameobject(tower->turret, temp);
+      tower->range = 100;
 
       break;
     case 1:
@@ -143,6 +145,7 @@ void mountTowers(TowerBase* tower, uint32_t type) {
         tower->turretSprite = temp;
       }
       add_sprite_to_spriteless_gameobject(tower->turret, temp);
+      tower->range = 200;
       break;
     default:
       break;
@@ -176,6 +179,13 @@ void rotateTowersTowardsTarget(TowerArray* array, GameObject* target) {
       int16_t y_target = target->y;
       int16_t x_diff = x_target - turret_center_x;
       int16_t y_diff = y_target - turret_center_y;
+
+      int16_t distance = (int16_t)(sqrt(x_diff * x_diff + y_diff * y_diff));
+
+      if (distance > tower->range) {
+        continue;
+      }
+
       int angle = (int)((atan2(y_diff, x_diff) * 180 / M_PI));
       
       if (angle < 0) {
