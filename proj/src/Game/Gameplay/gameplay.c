@@ -4,7 +4,9 @@
 #include "gameplay.h"
 #include "../Menu/menu.h"
 #include "Player/player.h"
-#include "Towers/towers.h"
+#include "Tower/towers.h"
+#include "Arena/arena.h"
+#include "Enemy/enemy.h"
 
 #include "../gamestates.h"
 
@@ -17,6 +19,7 @@ extern ScreenInfo screen;
 
 extern MouseDevice* mouse_device;
 extern KeyboardDevice* keyboard_device;
+extern RTC_Time* rtc_time;
 extern bool last_pressed_was_mouse;
 
 extern bool playing;
@@ -24,10 +27,14 @@ extern bool playing;
 static bool pressed_game_button = false;
 static int8_t game_current_selection = -1;
 static bool selecting_tower_base = false;
+static bool to_spawn_enemy = false;
 
 static bool paused = false;
 
 bool multiplayer = false;
+
+Arena* arenas;
+Arena* current_arena;
 
 GameObject* game_background;
 GameObject* pause_text;
@@ -35,10 +42,7 @@ Player* player1;
 Player* player2;
 
 TowerArray towers;
-
-TowerBase* tower1;
-TowerBase* tower2;
-TowerBase* tower3;
+EnemyArray enemies;
 
 static void checkGameKeyboardInput(KeyPresses** head) {
 
@@ -209,29 +213,46 @@ static void checkGameHovered(TowerArray* array) {
 
 void initializeGameplay() {
   initializeDifferentTowerSprited();
-  towers = newTowerArray(20);
+  arenas = initializeArenas();
   player1 = initializePlayer(32, 28, -16, -29, 100);
   player2 = initializePlayer(32, 28, -16, -29, 100);
-  tower1 = initializeTower(128, 128, -55, -55, 100);
-  tower2 = initializeTower(256, 256, -55, -55, 100);
-  tower3 = initializeTower(384, 384, -55, -55, 100);
-  pushTowerArray(&towers, tower1);
-  pushTowerArray(&towers, tower2);
-  pushTowerArray(&towers, tower3);
-  game_background = create_gameobject((xpm_map_t)Background, 0, 0, 0, 0, 0, true, true);
+  towers = newTowerArray(20);
+
+  // Pushing turrets by default method. Supposed to use current_arena to push the turrets later one.
+  // So the pushing will be moved to the "enterGame" function.
+  pushTowerArray(&towers, initializeTower(128, 128, -55, -55, 100));
+  pushTowerArray(&towers, initializeTower(256, 256, -55, -55, 100));
+  pushTowerArray(&towers, initializeTower(384, 384, -55, -55, 100));
+  // 
+
+  game_background = create_spriteless_gameobject(0, 0, 0, 0, 0);
   pause_text = create_gameobject((xpm_map_t)PauseText, 0, 0, 0, 0, 0xFFFE, false, false);
 }
 
-void enterGame(bool multi) {
+void enterGame(bool multi, uint8_t arena) {
   multiplayer = multi;
+  current_arena = &arenas[arena];
+  add_sprite_to_spriteless_gameobject(game_background, current_arena->background);
   playing = true;
-  game_background->sprite->is_visible = true;
   player1->player->sprite->is_visible = true;
   if (multi) player2->player->sprite->is_visible = true;
+
+  // Wont be needed when the pushing of turrets is moved to here.
   showTowers(&towers);
+  //
 }
 
 void updateGame() {
+  
+  if (rtc_time->just_updated) {
+    if (to_spawn_enemy) {
+      to_spawn_enemy = false;
+      // Spawn enemy
+    } else {
+      to_spawn_enemy = true;
+    }
+  }
+
   checkGameKeyboardInput(&keyboard_device->keyPresses);
   if (!paused) {
     checkGameHovered(&towers);
@@ -250,15 +271,19 @@ void updateGame() {
 
 void exitGame() {
   playing = false;
-  game_background->sprite->is_visible = false;
   player1->player->sprite->is_visible = false;
   player2->player->sprite->is_visible = false;
+
+  // Should be replaced by the destroyTurretArray function.
   hideTowers(&towers);
+  //
+  remove_sprite_from_spriteless_gameobject(game_background);
 }
 
 void destroyGame() {
   destroy_gameobject(game_background);
   destroyPlayer(player1);
   destroyPlayer(player2);
-  destroyArray(&towers);
+  destroyTurretArray(&towers);
+  destroyArenas(arenas);
 }

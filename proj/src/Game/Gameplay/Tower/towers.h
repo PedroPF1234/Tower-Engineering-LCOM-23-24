@@ -26,7 +26,7 @@ TowerArray newTowerArray(uint32_t capacity);
 void pushTowerArray(TowerArray* array, TowerBase* tower);
 TowerBase* getTowerArray(TowerArray* array, uint32_t index);
 void removeTowerArray(TowerArray* array, uint32_t index);
-void destroyArray(TowerArray* array);
+void destroyTurretArray(TowerArray* array);
 void destroyTower(TowerBase* tower);
 void setTowerHovered(TowerBase* tower, bool hovered);
 void mountTowers(TowerBase* tower, uint32_t type);

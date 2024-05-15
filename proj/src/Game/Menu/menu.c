@@ -24,9 +24,6 @@ extern bool playing;
 static bool pressed_menu_button = false;
 static int8_t menu_current_selection = -1;
 
-Button* playButton;
-Button* instructionsButton;
-Button* quitButton;
 GameObject* background;
 
 ButtonArray menuButtons;
@@ -128,7 +125,7 @@ static void checkMenuHovered(ButtonArray* array) {
     case 0:
       state = GAME;
       exitMenu();
-      enterGame(false);
+      enterGame(false, 0);
       break;
 
     case 1:
@@ -197,7 +194,7 @@ static void checkMenuKeyboardInput(KeyPresses** head) {
   *head = NULL;
 }
 
-static void emptyButtonArray(ButtonArray* array) {
+static void destroyButtonArray(ButtonArray* array) {
 
     for (int32_t i = 0; i < (int32_t)array->length; i++) {
         Button* button = getButtonArray(array, i);
@@ -244,18 +241,14 @@ void initializeMenu() {
   menuButtons = newButtonArray(20);
   background = create_gameobject((xpm_map_t) Background, 0, 0, 0, 0, 0, true, true);
 
-  playButton = initializeMenuButton((xpm_map_t)QuitButton, (xpm_map_t)QuitButtonHovered,
-    screen.xres/2-1, screen.yres/2-101, -50, -25, 1, true);
+  // Play Button
+  pushButtonArray(&menuButtons, initializeMenuButton((xpm_map_t)QuitButton, (xpm_map_t)QuitButtonHovered, screen.xres/2-1, screen.yres/2-101, -50, -25, 1, true));
 
-  instructionsButton = initializeMenuButton((xpm_map_t)QuitButton, (xpm_map_t)QuitButtonHovered,
-    screen.xres/2-1, screen.yres/2-1, -50, -25, 1, true);
+  // Instructions Button
+  pushButtonArray(&menuButtons, initializeMenuButton((xpm_map_t)QuitButton, (xpm_map_t)QuitButtonHovered, screen.xres/2-1, screen.yres/2-1, -50, -25, 1, true));
 
-  quitButton = initializeMenuButton((xpm_map_t)QuitButton, (xpm_map_t)QuitButtonHovered,
-    screen.xres/2-1, screen.yres/2+99, -50, -25, 1, true);
-
-  pushButtonArray(&menuButtons, playButton);
-  pushButtonArray(&menuButtons, instructionsButton);
-  pushButtonArray(&menuButtons, quitButton);
+  // Quit Button
+  pushButtonArray(&menuButtons, initializeMenuButton((xpm_map_t)QuitButton, (xpm_map_t)QuitButtonHovered, screen.xres/2-1, screen.yres/2+99, -50, -25, 1, true));
 }
 
 void enterMenu() {
@@ -276,6 +269,6 @@ void exitMenu() {
 }
 
 void destroyMenu() {
-  emptyButtonArray(&menuButtons);
+  destroyButtonArray(&menuButtons);
   destroy_gameobject(background);
 }

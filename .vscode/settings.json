@@ -50,7 +50,8 @@
     "utility": "c",
     "vector": "c",
     "gameobject.h": "c",
-    "time.h": "c"
+    "time.h": "c",
+    "player.h": "c"
   },
   "C_Cpp_Runner.msvcBatchPath": "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Auxiliary/Build/vcvarsall.bat",
   "C_Cpp_Runner.cCompilerPath": "gcc",

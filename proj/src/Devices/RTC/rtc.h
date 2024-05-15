@@ -66,17 +66,6 @@
 #define RTC_RATE_250MS (RTC_RS3 | RTC_RS2 | RTC_RS1)   // RTC Periodic Interrupt Rate 250ms
 #define RTC_RATE_500MS (RTC_RS3 | RTC_RS2 | RTC_RS1 | RTC_RS0) // RTC Periodic Interrupt Rate 500ms
 
-
-typedef struct {
-  uint8_t second; // Seconds
-  uint8_t minute; // Minutes
-  uint8_t hour; // Hour
-  uint8_t day; // Day
-  uint8_t month; // Month
-  uint32_t year; // Year
-  bool just_updated; // Just Updated
-} RTC_Time;
-
 int (rtc_read)(uint8_t reg, uint8_t *byte);
 int (rtc_write)(uint8_t reg, uint8_t byte);
 int (rtc_subscribe_int)(uint8_t *bit_no);

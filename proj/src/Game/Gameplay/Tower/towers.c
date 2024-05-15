@@ -91,7 +91,7 @@ void removeTowerArray(TowerArray* array, uint32_t index) {
     }
 }
 
-void destroyArray(TowerArray* array) {
+void destroyTurretArray(TowerArray* array) {
 
     for (uint32_t i = 0; i < array->length; i++) {
         destroyTower(&array->towers[i]);

@@ -2,6 +2,7 @@
 #include <stdint.h>
 
 #include "rtc.h"
+#include "rtc_time.h"
 
 static int rtc_hook_id = RTC_IRQ;
 

@@ -5,6 +5,7 @@
 #include <stdint.h>
 
 #include "../Devices/KeyBoard/keyboardkeys.h"
+#include "../Devices/RTC/rtc_time.h"
 
 #include "../GameObjects/gameobject.h"
 #include "../ImageAssets/sprite.h"
