@@ -9,6 +9,7 @@
 #include "KeyBoard/kbc.h"
 #include "Graphics/graphics.h"
 #include "Timer/timer.h"
+#include "RTC/rtc.h"
 #include "device_controller.h"
 
 // Mouse Game Object
@@ -17,12 +18,14 @@ extern GameObject* mouse;
 // Global device interfaces
 MouseDevice* mouse_device;
 KeyboardDevice* keyboard_device;
+RTC_Time* rtc_time;
 bool last_pressed_was_mouse = true;
  
 // Device Interrupt Bit Masks
 static uint8_t timer_bit_no;
 static uint8_t kbc_bit_no;
 static uint8_t mouse_bit_no;
+static uint8_t rtc_hook_id;
 
 static struct packet pp;
 extern uint64_t counter;
@@ -52,11 +55,21 @@ int boot_devices(uint32_t freq, uint16_t framespersecond, uint16_t mode) {
   keyboard_device = (KeyboardDevice*) malloc(sizeof(KeyboardDevice));
   memset(keyboard_device, 0, sizeof(KeyboardDevice));
 
+  rtc_set_alarm_every_second();
+
   if (timer_initiate_and_subscribe(&timer_bit_no, freq)) return 1;
 
   if (mouse_initiate(&mouse_bit_no)) return 1;
 
   if (kbc_subscribe_int(&kbc_bit_no)) return 1;
+
+  if (rtc_subscribe_int(&rtc_hook_id)) return 1;
+
+  if (rtc_disable_all_ints()) return 1;
+
+  if (rtc_toggle_periodic_int(true,(RTC_REGISTER_A_RS3 | RTC_REGISTER_A_RS2 | RTC_REGISTER_A_RS1))) return 1;
+
+  rtc_time = (RTC_Time*) malloc(sizeof(RTC_Time));
 
   if (mode) {
     if (vg_init(mode) == NULL) return 1;
@@ -81,6 +94,12 @@ int stop_devices() {
   if (mouse_terminate()) return 1;
      
   if (timer_unsubscribe_int()) return 1;
+
+  if (rtc_disable_all_ints()) return 1;
+
+  if (rtc_unsubscribe_int()) return 1;
+
+  free(rtc_time);
 
   if (vg_free()) return 1;
   if (vg_exit()) return 1;
@@ -172,7 +191,12 @@ int interrupt_handler(uint32_t interrupt_mask) {
 
     int i = 1;
 
-    if (interrupt_mask & 0x110) {
+    uint8_t mask = (uint8_t) interrupt_mask;
+
+    mask = mask << 5;
+    mask = mask >> 6;
+
+    if (mask == 0x03) {
       i = 2;
     }
 
@@ -180,7 +204,7 @@ int interrupt_handler(uint32_t interrupt_mask) {
       if (kbc_interrupt()) return 1;
     }
   }
-  
+
   if (interrupt_mask & BIT(timer_bit_no)) {
     timer_int_handler();
 
@@ -192,6 +216,12 @@ int interrupt_handler(uint32_t interrupt_mask) {
       renderGameObjects();
       if (vg_replace_buffer()) return 1;
     }
+  }
+
+  if (interrupt_mask & BIT(rtc_hook_id)) {
+    rtc_ih();
+    //printf("Date: %02d:%02d:%04d\n", rtc_time->day, rtc_time->month, rtc_time->year);
+    //printf("Time: %02d:%02d:%02d\n", rtc_time->hour, rtc_time->minute, rtc_time->second);
   }
 
   return 0;

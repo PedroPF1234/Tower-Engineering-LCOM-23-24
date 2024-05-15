@@ -6,6 +6,7 @@ PROG=proj
 .PATH: ${.CURDIR}/Devices/KeyBoard/
 .PATH: ${.CURDIR}/Devices/Mouse/
 .PATH: ${.CURDIR}/Devices/Timer/
+.PATH: ${.CURDIR}/Devices/RTC/
 .PATH: ${.CURDIR}/ImageAssets/
 .PATH: ${.CURDIR}/GameObjects/
 .PATH: ${.CURDIR}/Game/
@@ -17,7 +18,7 @@ PROG=proj
 .PATH: ${.CURDIR}/Game/Gameplay/Towers/
 
 # source code files to be compiled
-SRCS = proj.c graphics.c kbc.c mouse.c timer.c utils.c device_controller.c sprite.c gameobject.c game.c menu.c keyboardkeys.c player.c instructions.c gameplay.c towers.c
+SRCS = proj.c graphics.c kbc.c mouse.c timer.c rtc.c utils.c device_controller.c sprite.c gameobject.c game.c menu.c keyboardkeys.c player.c instructions.c gameplay.c towers.c
 
 # additional compilation flags
 # "-Wall -Wextra -Werror -I . -std=c11 -Wno-unused-parameter" are already set
