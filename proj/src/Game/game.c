@@ -5,14 +5,7 @@
 #include "Gameplay/gameplay.h"
 #include "Instructions/instructions.h"
 
-typedef enum GameState {
-  MAIN_MENU,
-  INSTRUCTIONS,
-  GAME,
-  GAME_OVER,
-  PAUSE,
-  QUIT
-} GameState;
+#include "gamestates.h"
 
 extern MouseDevice* mouse_device;
 extern KeyboardDevice* keyboard_device;

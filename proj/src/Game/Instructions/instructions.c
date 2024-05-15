@@ -8,14 +8,7 @@
 
 #include "../../ImageAssets/Background.xpm"
 
-typedef enum GameState {
-  MAIN_MENU,
-  INSTRUCTIONS,
-  GAME,
-  GAME_OVER,
-  PAUSE,
-  QUIT
-} GameState;
+#include "gamestates.h"
 
 extern GameState state;
 

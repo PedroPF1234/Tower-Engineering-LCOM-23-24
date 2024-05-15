@@ -6,17 +6,10 @@
 #include "Player/player.h"
 #include "Towers/towers.h"
 
+#include "gamestates.h"
+
 #include "../../ImageAssets/Background.xpm"
 #include "../../ImageAssets/Pause.xpm"
-
-typedef enum GameState {
-  MAIN_MENU,
-  INSTRUCTIONS,
-  GAME,
-  GAME_OVER,
-  PAUSE,
-  QUIT
-} GameState;
 
 extern GameState state;
 
