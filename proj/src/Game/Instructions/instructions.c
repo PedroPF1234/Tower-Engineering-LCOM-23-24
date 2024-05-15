@@ -8,7 +8,7 @@
 
 #include "../../ImageAssets/Background.xpm"
 
-#include "gamestates.h"
+#include "../gamestates.h"
 
 extern GameState state;
 

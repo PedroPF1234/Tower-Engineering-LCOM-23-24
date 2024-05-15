@@ -6,7 +6,7 @@
 #include "Player/player.h"
 #include "Towers/towers.h"
 
-#include "gamestates.h"
+#include "../gamestates.h"
 
 #include "../../ImageAssets/Background.xpm"
 #include "../../ImageAssets/Pause.xpm"

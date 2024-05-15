@@ -6,7 +6,7 @@
 #include "../Gameplay/gameplay.h"
 #include "../Instructions/instructions.h"
 
-#include "gamestates.h"
+#include "../gamestates.h"
 
 #include "../../ImageAssets/Button.xpm"
 #include "../../ImageAssets/Background.xpm"
