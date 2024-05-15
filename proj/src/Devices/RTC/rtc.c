@@ -232,6 +232,28 @@ void(rtc_set_alarm_every_second)() {
   rtc_write(RTC_REGISTER_B, byte);
 }
 
+int rtc_initialize_and_subscribe(uint8_t *bit_no) {
+  if (rtc_subscribe_int(bit_no)) return 1;
+
+  if (rtc_disable_all_ints()) return 1;
+
+  if (rtc_toggle_periodic_int(true, RTC_RATE_500MS)) return 1;
+
+  rtc_time = (RTC_Time*) malloc(sizeof(RTC_Time));
+
+  return 0;
+}
+
+int rtc_disable_and_unsubscribe() {
+  if (rtc_disable_all_ints()) return 1;
+
+  if (rtc_unsubscribe_int()) return 1;
+
+  free(rtc_time);
+
+  return 0;
+}
+
 void rtc_ih() {
   uint8_t reg_c = 0;
 

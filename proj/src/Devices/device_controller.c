@@ -55,21 +55,13 @@ int boot_devices(uint32_t freq, uint16_t framespersecond, uint16_t mode) {
   keyboard_device = (KeyboardDevice*) malloc(sizeof(KeyboardDevice));
   memset(keyboard_device, 0, sizeof(KeyboardDevice));
 
-  rtc_set_alarm_every_second();
-
   if (timer_initiate_and_subscribe(&timer_bit_no, freq)) return 1;
 
   if (mouse_initiate(&mouse_bit_no)) return 1;
 
   if (kbc_subscribe_int(&kbc_bit_no)) return 1;
 
-  if (rtc_subscribe_int(&rtc_hook_id)) return 1;
-
-  if (rtc_disable_all_ints()) return 1;
-
-  if (rtc_toggle_periodic_int(true,(RTC_REGISTER_A_RS3 | RTC_REGISTER_A_RS2 | RTC_REGISTER_A_RS1))) return 1;
-
-  rtc_time = (RTC_Time*) malloc(sizeof(RTC_Time));
+  if (rtc_initialize_and_subscribe(&rtc_hook_id)) return 1;
 
   if (mode) {
     if (vg_init(mode) == NULL) return 1;
@@ -95,11 +87,7 @@ int stop_devices() {
      
   if (timer_unsubscribe_int()) return 1;
 
-  if (rtc_disable_all_ints()) return 1;
-
-  if (rtc_unsubscribe_int()) return 1;
-
-  free(rtc_time);
+  if (rtc_disable_and_unsubscribe()) return 1;
 
   if (vg_free()) return 1;
   if (vg_exit()) return 1;
@@ -216,12 +204,15 @@ int interrupt_handler(uint32_t interrupt_mask) {
       renderGameObjects();
       if (vg_replace_buffer()) return 1;
     }
+
+    rtc_time->just_updated = false;
   }
 
   if (interrupt_mask & BIT(rtc_hook_id)) {
     rtc_ih();
-    //printf("Date: %02d:%02d:%04d\n", rtc_time->day, rtc_time->month, rtc_time->year);
-    //printf("Time: %02d:%02d:%02d\n", rtc_time->hour, rtc_time->minute, rtc_time->second);
+    printf("Date: %02d:%02d:%04d\n", rtc_time->day, rtc_time->month, rtc_time->year);
+    printf("Time: %02d:%02d:%02d\n", rtc_time->hour, rtc_time->minute, rtc_time->second);
+    rtc_time->just_updated = true;
   }
 
   return 0;
