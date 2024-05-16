@@ -7,6 +7,7 @@
 #include "Tower/towers.h"
 #include "Arena/arena.h"
 #include "Enemy/enemy.h"
+#include "Bullet/bullet.h"
 
 #include "../gamestates.h"
 
@@ -43,6 +44,7 @@ Player* player2;
 
 TowerArray towers;
 EnemyArray enemies;
+BulletArray bullets;
 
 static void checkGameKeyboardInput(KeyPresses** head) {
 
@@ -218,6 +220,7 @@ void initializeGameplay() {
   player2 = initializePlayer(32, 28, -16, -29, 100);
   towers = newTowerArray(20);
   enemies = newEnemyArray(100);
+  bullets = newBulletArray(100);
 
   // Pushing turrets by default method. Supposed to use current_arena to push the turrets later one.
   // So the pushing will be moved to the "enterGame" function.
@@ -243,6 +246,22 @@ void enterGame(bool multi, uint8_t arena) {
   //
 }
 
+
+//I dont know very well where should I put this function
+static bool checkCollision(Bullet* bullet, Enemy* enemy) {
+    int16_t bullet_left = bullet->x + bullet->origin_offset_x;
+    int16_t bullet_right = bullet->x + bullet->origin_offset_x + bullet->sprite->width;
+    int16_t bullet_top = bullet->y + bullet->origin_offset_y;
+    int16_t bullet_bottom = bullet->y + bullet->origin_offset_y + bullet->sprite->height;
+
+    int16_t enemy_left = enemy->x + enemy->origin_offset_x;
+    int16_t enemy_right = enemy->x + enemy->origin_offset_x + enemy->enemy->sprite->width;
+    int16_t enemy_top = enemy->y + enemy->origin_offset_y;
+    int16_t enemy_bottom = enemy->y + enemy->origin_offset_y + enemy->enemy->sprite->height;
+
+    return !(bullet_right < enemy_left || bullet_left > enemy_right || bullet_bottom < enemy_top || bullet_top > enemy_bottom);
+}
+
 void updateGame() {
   
   if (rtc_time->just_updated) {
@@ -261,6 +280,20 @@ void updateGame() {
       updatePlayerPosition(player1);
       updatePlayerSpriteBasedOnPosition(player1);
       updateAllEnemyPositions(&enemies);
+      updateAllBulletPositions(&bullets);
+
+      // In case of collisions between bullets and enemies:
+      for (uint32_t i = 0; i < bullets.length; i++) {
+        Bullet* bullet = getBulletArray(&bullets, i);
+          if (bullet->active) {
+            for (uint32_t j = 0; j < enemies.length; j++) {
+              Enemy* enemy = getEnemyArray(&enemies, j);
+              if (checkCollision(bullet, enemy)) {
+                bullet->active = false;
+              }
+            }
+          }
+      }
 
       if (multiplayer) {
         updatePlayerPosition(player2);
