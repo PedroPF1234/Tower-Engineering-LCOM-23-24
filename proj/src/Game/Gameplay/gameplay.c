@@ -8,6 +8,7 @@
 #include "Tower/towers.h"
 #include "Arena/arena.h"
 #include "Enemy/enemy.h"
+#include "Bullet/bullet.h"
 
 #include "../gamestates.h"
 
@@ -56,6 +57,7 @@ TowerArray towers;
 
 // Enemies
 EnemyArray enemies;
+BulletArray bullets;
 
 // Pause Buttons
 ButtonArray pause_buttons;
@@ -351,6 +353,7 @@ void initializeGameplay() {
   player2 = initializePlayer(32, 28, -16, -29, 100);
   towers = newTowerArray(20);
   enemies = newEnemyArray(100);
+  //bullets = newBulletArray(100);
   pause_buttons = newButtonArray(20);
 
   pushButtonArray(&pause_buttons, initializeButton((xpm_map_t)QuitButtonHovered, (xpm_map_t)QuitButton, screen.xres/2, screen.yres/2 - 100, -50, -25, 0xFFFE, true));
@@ -365,6 +368,8 @@ void initializeGameplay() {
   pushTowerArray(&towers, initializeTower(256, 256, -55, -55, 100));
   pushTowerArray(&towers, initializeTower(384, 384, -55, -55, 100));
   // 
+
+  //Falta inicializar a array das bullets! 
 
   game_background = create_spriteless_gameobject(0, 0, 0, 0, 0);
   pause_background = create_gameobject((xpm_map_t)PauseBackground, screen.xres/2, screen.yres/2, -300, -300, 0xFFFE, true, false);
@@ -383,6 +388,23 @@ void enterGame(bool multi, uint8_t arena) {
   showTowers(&towers);
   //
 }
+
+/*
+//I dont know very well where should I put this function
+static bool checkCollision(Bullet* bullet, Enemy* enemy) {
+    int16_t bullet_left = bullet->x + bullet->origin_offset_x;
+    int16_t bullet_right = bullet->x + bullet->origin_offset_x + bullet->sprite->width;
+    int16_t bullet_top = bullet->y + bullet->origin_offset_y;
+    int16_t bullet_bottom = bullet->y + bullet->origin_offset_y + bullet->sprite->height;
+
+    int16_t enemy_left = enemy->x + enemy->origin_offset_x;
+    int16_t enemy_right = enemy->x + enemy->origin_offset_x + enemy->enemy->sprite->width;
+    int16_t enemy_top = enemy->y + enemy->origin_offset_y;
+    int16_t enemy_bottom = enemy->y + enemy->origin_offset_y + enemy->enemy->sprite->height;
+
+    return !(bullet_right < enemy_left || bullet_left > enemy_right || bullet_bottom < enemy_top || bullet_top > enemy_bottom);
+}
+*/
 
 void updateGame() {
   
@@ -406,6 +428,23 @@ void updateGame() {
       updatePlayerPosition(player1);
       updatePlayerSpriteBasedOnPosition(player1);
       updateAllEnemyPositions(&enemies);
+      /*
+      updateAllBulletPositions(&bullets);
+
+
+      // In case of collisions between bullets and enemies:
+      for (uint32_t i = 0; i < bullets.length; i++) {
+        Bullet* bullet = getBulletArray(&bullets, i);
+          if (bullet->active) {
+            for (uint32_t j = 0; j < enemies.length; j++) {
+              Enemy* enemy = getEnemyArray(&enemies, j);
+              if (checkCollision(bullet, enemy)) {
+                bullet->active = false;
+              }
+            }
+          }
+      }
+      */
 
       if (multiplayer) {
         updatePlayerPosition(player2);
