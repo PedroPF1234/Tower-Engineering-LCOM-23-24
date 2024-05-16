@@ -2,6 +2,7 @@
 #include <stdint.h>
 
 #include "gameplay.h"
+#include "../DataStructure/button.h"
 #include "../Menu/menu.h"
 #include "Player/player.h"
 #include "Tower/towers.h"
@@ -13,6 +14,7 @@
 
 #include "../../ImageAssets/Background.xpm"
 #include "../../ImageAssets/Pause.xpm"
+#include "../../ImageAssets/Button.xpm"
 
 extern GameState state;
 
@@ -26,25 +28,39 @@ extern bool last_pressed_was_mouse;
 extern bool playing;
 
 static bool pressed_game_button = false;
-static int8_t game_current_selection = -1;
 static bool selecting_tower_base = false;
 static bool to_spawn_enemy = false;
 
 static bool paused = false;
+static bool pressed_pause_button = false;
+
+static int8_t game_current_selection = -1;
+static int8_t pause_current_selection = -1;
 
 bool multiplayer = false;
 
+// Game Objects
+// Arena
 Arena* arenas;
 Arena* current_arena;
 
+// Backgrounds
 GameObject* game_background;
-GameObject* pause_text;
+GameObject* pause_background;
+
+// Players
 Player* player1;
 Player* player2;
 
+// Towers
 TowerArray towers;
+
+// Enemies
 EnemyArray enemies;
 BulletArray bullets;
+
+// Pause Buttons
+ButtonArray pause_buttons;
 
 static void checkGameKeyboardInput(KeyPresses** head) {
 
@@ -75,11 +91,7 @@ static void checkGameKeyboardInput(KeyPresses** head) {
         if (state == GAME) {
           state = PAUSE;
           paused = true;
-          pause_text->sprite->is_visible = true;
-        } else if (state == PAUSE) {
-          state = GAME;
-          paused = false;
-          pause_text->sprite->is_visible = false;
+          pause_background->sprite->is_visible = true;
         }
         break;
 
@@ -193,7 +205,7 @@ static void checkGameHovered(TowerArray* array) {
 
           if (mouse_device->left_button_is_pressed) {
             pressed_game_button = true;
-            mountTowers(tower, 1);
+            mountTowers(tower, 0);
           }
 
           setTowerHovered(tower, true);
@@ -213,14 +225,143 @@ static void checkGameHovered(TowerArray* array) {
   }
 }
 
+static void checkPauseKeyboardInput(KeyPresses** head) {
+  KeyPresses* current = *head;
+
+  while (current != NULL) {
+    if (current->special) {
+      switch (current->key)
+      {
+      
+      case UP_ARROW_BREAK:
+        pause_current_selection--;
+        if (pause_current_selection < 0) pause_current_selection = 2;
+        break;
+
+      case DOWN_ARROW_BREAK:
+        pause_current_selection++;
+        if (pause_current_selection > 2) pause_current_selection = 0;
+        break;
+
+      default:
+        break;
+      }
+    } else {
+      switch (current->key)
+      {
+      case ESC_BREAK:
+        if (state == PAUSE) {
+          state = GAME;
+          paused = false;
+          pause_background->sprite->is_visible = false;
+        }
+        break;
+
+      case S_BREAK:
+        pause_current_selection++;
+        if (pause_current_selection > 2) pause_current_selection = 0;
+        break;
+
+      case W_BREAK:
+        pause_current_selection--;
+        if (pause_current_selection < 0) pause_current_selection = 2;
+        break;
+
+      case ENTER_BREAK:
+      case SPACE_BREAK:
+        pressed_pause_button = true;
+        break;
+
+      default:
+        break;
+      }
+    }
+
+    if (current->next == NULL) {
+      free(current);
+      break;
+    } else {
+      KeyPresses* next = current->next;
+      free(current);
+      current = next;
+    }
+  }
+
+  *head = NULL;
+}
+
+static void checkPauseHovered(ButtonArray* array) {
+  for (int32_t i = 0; i < (int32_t)array->length; i++) {
+
+    Button* button = getButtonArray(array, i);
+    GameObject* buttonObject = button->button;
+
+    int16_t mouse_x = mouse_device->mouse->x;
+    int16_t mouse_y = mouse_device->mouse->y;
+    int16_t leftMostBound = button->x + button->origin_offset_x;
+    int16_t rightMostBound = button->x + button->origin_offset_x + button->button->sprite->width;
+    int16_t upMostBound = button->y + button->origin_offset_y;
+    int16_t downMostBound = button->y + button->origin_offset_y + button->button->sprite->height;
+
+    if (!pressed_pause_button) {
+      if (mouse_x > leftMostBound && mouse_x < rightMostBound &&
+          mouse_y > upMostBound && mouse_y < downMostBound && last_pressed_was_mouse) {
+
+        if (mouse_device->left_button_is_pressed) {
+          pressed_pause_button = true;
+        }
+
+        updateGameObjectSprite(buttonObject, button->hovering);
+        pause_current_selection = i;
+
+      } else if (!last_pressed_was_mouse && pause_current_selection == i) {
+        updateGameObjectSprite(buttonObject, button->hovering);
+      } else {
+        updateGameObjectSprite(buttonObject, button->no_hovering);
+      }
+    }
+  }
+
+  if (pressed_pause_button) {
+    switch (pause_current_selection)
+    {
+    case -1:
+      break;
+    
+    case 0:
+      if (state == PAUSE) {
+        state = GAME;
+        paused = false;
+        pause_background->sprite->is_visible = false;
+      }
+      break;
+
+    case 1:
+      state = MAIN_MENU;
+      exitGame();
+      enterMenu();
+      break;
+      break;
+
+    default:
+      break;
+    }
+  }
+}
+
 void initializeGameplay() {
-  initializeDifferentTowerSprited();
+  initializeDifferentTowerSprites();
   arenas = initializeArenas();
   player1 = initializePlayer(32, 28, -16, -29, 100);
   player2 = initializePlayer(32, 28, -16, -29, 100);
   towers = newTowerArray(20);
   enemies = newEnemyArray(100);
   bullets = newBulletArray(100);
+  pause_buttons = newButtonArray(20);
+
+  pushButtonArray(&pause_buttons, initializeButton((xpm_map_t)QuitButtonHovered, (xpm_map_t)QuitButton, screen.xres/2, screen.yres/2 - 100, -50, -25, 0xFFFE, true));
+
+  pushButtonArray(&pause_buttons, initializeButton((xpm_map_t)QuitButtonHovered, (xpm_map_t)QuitButton, screen.xres/2, screen.yres/2 + 100, -50, -25, 0xFFFE, true));
 
   // Pushing turrets by default method. Supposed to use current_arena to push the turrets later one.
   // So the pushing will be moved to the "enterGame" function.
@@ -229,8 +370,10 @@ void initializeGameplay() {
   pushTowerArray(&towers, initializeTower(384, 384, -55, -55, 100));
   // 
 
+  //Falta inicializar a array das bullets! 
+
   game_background = create_spriteless_gameobject(0, 0, 0, 0, 0);
-  pause_text = create_gameobject((xpm_map_t)PauseText, 0, 0, 0, 0, 0xFFFE, false, false);
+  pause_background = create_gameobject((xpm_map_t)PauseBackground, screen.xres/2, screen.yres/2, -300, -300, 0xFFFE, true, false);
 }
 
 void enterGame(bool multi, uint8_t arena) {
@@ -299,8 +442,11 @@ void updateGame() {
         updatePlayerSpriteBasedOnPosition(player2);
       }
     }
+  } else {
+    checkPauseKeyboardInput(&keyboard_device->keyPresses);
+    checkPauseHovered(&pause_buttons);
   }
-  rotateTowersTowardsTarget(&towers, player1->player); 
+  rotateTowersTowardsTarget(&towers, &enemies); 
 }
 
 void exitGame() {

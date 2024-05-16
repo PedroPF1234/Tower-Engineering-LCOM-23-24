@@ -11,7 +11,7 @@ Sprite* crossbowTurret;
 Sprite* canonTurret;
 int rotations = 0;
 
-void initializeDifferentTowerSprited() {
+void initializeDifferentTowerSprites() {
   crossbowTurret = create_rotation_abled_sprite((xpm_map_t)Crossbow, 0, 0, false, false, 
   &rotations);
   canonTurret = create_rotation_abled_sprite((xpm_map_t)Cannon, 0, 0, false, false, &rotations);
@@ -35,6 +35,7 @@ TowerBase* initializeTower(int16_t x, int16_t y, int16_t ox, int16_t oy, int16_t
   new_tower->hit_points = hp;
   new_tower->turretSprite = NULL;
   new_tower->range = 0;
+  new_tower->targetting = FIRST;
 
   return new_tower;
 }
@@ -167,22 +168,56 @@ void showTowers(TowerArray* array) {
   }
 }
 
-void rotateTowersTowardsTarget(TowerArray* array, GameObject* target) {
+void rotateTowersTowardsTarget(TowerArray* array, EnemyArray* enemies) {
   for (uint32_t i = 0; i < array->length; i++) {
     TowerBase* tower = getTowerArray(array, i);
+
     if (tower->turret->sprite != NULL) {
-      int16_t turret_center_x = tower->x;
-      int16_t turret_center_y = tower->y;
-      int16_t x_target = target->x;
-      int16_t y_target = target->y;
-      int16_t x_diff = x_target - turret_center_x;
-      int16_t y_diff = y_target - turret_center_y;
 
-      int16_t distance = (int16_t)(sqrt(x_diff * x_diff + y_diff * y_diff));
+      Enemy* closest = NULL;
+      int16_t distance_to_closest = 0;
 
-      if (distance > tower->range) {
+      for (uint32_t j = 0; j < enemies->length; j++) {
+        Enemy* temp = getEnemyArray(enemies, j);
+
+        int16_t x_diff = temp->x - tower->x;
+        int16_t y_diff = temp->y - tower->y;
+
+        int16_t distance = (int16_t)(sqrt(x_diff * x_diff + y_diff * y_diff));
+
+        if (distance > tower->range) {
+          continue;
+        } else {
+          if (closest == NULL) {
+            closest = temp;
+            distance_to_closest = distance;
+          } else {
+            if (tower->targetting == FIRST) {
+              break;
+            } else if (tower->targetting == LAST) {
+              closest = temp;
+              distance_to_closest = distance;
+            } else if (tower->targetting == CLOSEST) {
+              if (distance < distance_to_closest) {
+                closest = temp;
+                distance_to_closest = distance;
+              }
+            }
+          }
+        }
+      }
+
+      if (closest == NULL) {
         continue;
       }
+
+    
+      int16_t turret_center_x = tower->x;
+      int16_t turret_center_y = tower->y;
+      int16_t x_target = closest->x;
+      int16_t y_target = closest->y;
+      int16_t x_diff = x_target - turret_center_x;
+      int16_t y_diff = y_target - turret_center_y;
 
       int angle = (int)((atan2(y_diff, x_diff) * 180 / M_PI));
       
