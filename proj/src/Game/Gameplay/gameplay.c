@@ -246,7 +246,6 @@ void enterGame(bool multi, uint8_t arena) {
   //
 }
 
-
 //I dont know very well where should I put this function
 static bool checkCollision(Bullet* bullet, Enemy* enemy) {
     int16_t bullet_left = bullet->x + bullet->origin_offset_x;
