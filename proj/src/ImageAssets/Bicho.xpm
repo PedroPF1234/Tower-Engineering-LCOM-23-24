@@ -41,7 +41,7 @@ static char *BichoDown[] = {
 /* columns rows colors chars-per-pixel */
 "32 29 2 1 ",
 "  c #000000",
-". c #FF3300",
+". c #FFFFFF",
 /* pixels */
 "           .........            ",
 "           .........            ",

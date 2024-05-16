@@ -2,6 +2,14 @@
 
 #include "../../../Devices/device_controller.h"
 
+#include "../Enemy/enemy.h"
+
+typedef enum TowerTargetting {
+  FIRST,
+  LAST,
+  CLOSEST
+} TowerTargetting;
+
 typedef struct TowerBase {
   GameObject* base;
   GameObject* turret;
@@ -12,6 +20,7 @@ typedef struct TowerBase {
   int16_t origin_offset_x, origin_offset_y;
   int16_t hit_points;
   uint16_t range;
+  TowerTargetting targetting;
 } TowerBase;
 
 typedef struct TowerArray {
@@ -20,7 +29,7 @@ typedef struct TowerArray {
     uint32_t length;
 } TowerArray;
 
-void initializeDifferentTowerSprited();
+void initializeDifferentTowerSprites();
 TowerBase* initializeTower(int16_t x, int16_t y, int16_t ox, int16_t oy, int16_t hp);
 TowerArray newTowerArray(uint32_t capacity);
 void pushTowerArray(TowerArray* array, TowerBase* tower);
@@ -32,5 +41,5 @@ void setTowerHovered(TowerBase* tower, bool hovered);
 void mountTowers(TowerBase* tower, uint32_t type);
 void hideTowers(TowerArray* array);
 void showTowers(TowerArray* array);
-void rotateTowersTowardsTarget(TowerArray* array, GameObject* target);
+void rotateTowersTowardsTarget(TowerArray* array, EnemyArray* target);
 
