@@ -217,6 +217,7 @@ void initializeGameplay() {
   player1 = initializePlayer(32, 28, -16, -29, 100);
   player2 = initializePlayer(32, 28, -16, -29, 100);
   towers = newTowerArray(20);
+  enemies = newEnemyArray(100);
 
   // Pushing turrets by default method. Supposed to use current_arena to push the turrets later one.
   // So the pushing will be moved to the "enterGame" function.
@@ -247,7 +248,7 @@ void updateGame() {
   if (rtc_time->just_updated) {
     if (to_spawn_enemy) {
       to_spawn_enemy = false;
-      // Spawn enemy
+      pushEnemyArray(&enemies, initializeEnemy((float)current_arena->spawn_x, (float)current_arena->spawn_y, 0, 0, multiplayer ? 150 : 100, current_arena->coordinate_targets, current_arena->num_targets));
     } else {
       to_spawn_enemy = true;
     }
@@ -259,6 +260,7 @@ void updateGame() {
     if (playing) {
       updatePlayerPosition(player1);
       updatePlayerSpriteBasedOnPosition(player1);
+      updateAllEnemyPositions(&enemies);
 
       if (multiplayer) {
         updatePlayerPosition(player2);
@@ -277,6 +279,7 @@ void exitGame() {
   // Should be replaced by the destroyTurretArray function.
   hideTowers(&towers);
   //
+  destroyEnemyArray(&enemies);
   remove_sprite_from_spriteless_gameobject(game_background);
 }
 
@@ -286,4 +289,5 @@ void destroyGame() {
   destroyPlayer(player2);
   destroyTurretArray(&towers);
   destroyArenas(arenas);
+  destroyEnemyArray(&enemies);
 }

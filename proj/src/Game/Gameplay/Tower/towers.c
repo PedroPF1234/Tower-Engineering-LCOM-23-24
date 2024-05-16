@@ -39,16 +39,17 @@ TowerBase* initializeTower(int16_t x, int16_t y, int16_t ox, int16_t oy, int16_t
   return new_tower;
 }
 
+// Set capacity to 0 for default capacity
 TowerArray newTowerArray(uint32_t capacity) {
 
   TowerArray new_array;
   new_array.length = 0;
 
   if (capacity) {
-    new_array.towers = (TowerBase*)malloc(capacity * sizeof(TowerBase));
+    new_array.towers = (TowerBase**)malloc(capacity * sizeof(TowerBase*));
     new_array.capacity = capacity;
   } else { // Default capacity
-    new_array.towers = (TowerBase*)malloc(10 * sizeof(TowerBase));
+    new_array.towers = (TowerBase**)malloc(10 * sizeof(TowerBase*));
     new_array.capacity = 10;
   }
 
@@ -56,49 +57,46 @@ TowerArray newTowerArray(uint32_t capacity) {
 }
 
 void pushTowerArray(TowerArray* array, TowerBase* tower) {
-    if (array->capacity != array->length) {
-        array->towers[array->length] = *tower;
-    } else {
-      uint32_t newCapacity = array->capacity * 2;
-      TowerBase* oldPointer = array->towers;
-      TowerBase* newPointer = (TowerBase*)malloc(newCapacity * sizeof(TowerBase));
-      array->towers = newPointer;
-      for (uint32_t i = 0; i < array->length; i++) {
-        newPointer[i] = oldPointer[i];
-      }
-      free(oldPointer);
-      array->towers[array->length] = *tower;
+  if (array->capacity != array->length) {
+    array->towers[array->length] = tower;
+  } else {
+    uint32_t newCapacity = array->capacity * 2;
+    TowerBase** oldPointer = array->towers;
+    TowerBase** newPointer = (TowerBase**)malloc(newCapacity * sizeof(TowerBase*));
+    array->towers = newPointer;
+    for (uint32_t i = 0; i < array->length; i++) {
+      newPointer[i] = oldPointer[i];
     }
-    array->length++;
+    free(oldPointer);
+    array->towers[array->length] = tower;
+  }
+  array->length++;
 }
 
 TowerBase* getTowerArray(TowerArray* array, uint32_t index) {
-    if (index < array->length) {
-        return &array->towers[index];
-    } else {
-        return NULL;
-    }
+  if (index < array->length) {
+    return array->towers[index];
+  } else {
+    return NULL;
+  }
 }
 
 void removeTowerArray(TowerArray* array, uint32_t index) {
-    if (index < array->length) {
-        destroyTower(&array->towers[index]);
-        for (uint32_t i = index; i < array->length - 1; i++) {
-            array->towers[i] = array->towers[i + 1];
-        }
-        memset(&array->towers[array->length - 1], 0, sizeof(TowerBase));
-        array->length--;
+  if (index < array->length) {
+    destroyTower(array->towers[index]);
+    for (uint32_t i = index; i < array->length - 1; i++) {
+        array->towers[i] = array->towers[i + 1];
     }
+    array->length--;
+  }
 }
 
 void destroyTurretArray(TowerArray* array) {
 
     for (uint32_t i = 0; i < array->length; i++) {
-        destroyTower(&array->towers[i]);
+        destroyTower(array->towers[i]);
     }
     array->length = 0;
-
-    memset(array->towers, 0, array->capacity * sizeof(TowerBase));
 }
 
 void destroyTower(TowerBase* tower) {

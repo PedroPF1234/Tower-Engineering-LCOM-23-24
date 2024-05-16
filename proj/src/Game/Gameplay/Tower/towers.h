@@ -15,7 +15,7 @@ typedef struct TowerBase {
 } TowerBase;
 
 typedef struct TowerArray {
-    TowerBase* towers;
+    TowerBase** towers;
     uint32_t capacity;
     uint32_t length;
 } TowerArray;

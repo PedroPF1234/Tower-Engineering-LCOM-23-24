@@ -210,8 +210,8 @@ int interrupt_handler(uint32_t interrupt_mask) {
 
   if (interrupt_mask & BIT(rtc_hook_id)) {
     rtc_ih();
-    printf("Date: %02d:%02d:%04d\n", rtc_time->day, rtc_time->month, rtc_time->year);
-    printf("Time: %02d:%02d:%02d\n", rtc_time->hour, rtc_time->minute, rtc_time->second);
+    //printf("Date: %02d:%02d:%04d\n", rtc_time->day, rtc_time->month, rtc_time->year);
+    //printf("Time: %02d:%02d:%02d\n", rtc_time->hour, rtc_time->minute, rtc_time->second);
     rtc_time->just_updated = true;
   }
 

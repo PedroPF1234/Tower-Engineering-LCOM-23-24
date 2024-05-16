@@ -17,17 +17,19 @@ typedef struct Enemy {
     float speed[2];
     int16_t origin_offset_x, origin_offset_y;
     int16_t hit_points;
-    int16_t current_target_x, current_target_y;
+    int16_t* targets;
     int16_t targets_hit;
+    int16_t last_target;
+    bool reached_target;
 } Enemy;
 
 typedef struct EnemyArray {
-    Enemy* enemies;
+    Enemy** enemies;
     uint32_t capacity;
     uint32_t length;
 } EnemyArray;
 
-Enemy* initializeEnemy(float x, float y, int16_t ox, int16_t oy, int16_t hp, int16_t target_x, int16_t target_y);
+Enemy* initializeEnemy(float x, float y, int16_t ox, int16_t oy, int16_t hp, int16_t* targets, int16_t last_target);
 void destroyEnemy(Enemy* enemy);
 void updateEnemyPosition(Enemy* enemy);
 void updateEnemySpriteBasedOnPosition(Enemy* enemy);
@@ -37,3 +39,4 @@ void pushEnemyArray(EnemyArray* array, Enemy* enemy);
 Enemy* getEnemyArray(EnemyArray* array, uint32_t index);
 void removeEnemyArray(EnemyArray* array, uint32_t index);
 void destroyEnemyArray(EnemyArray* array);
+void updateAllEnemyPositions(EnemyArray* array);

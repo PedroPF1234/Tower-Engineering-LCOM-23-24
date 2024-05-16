@@ -49,6 +49,9 @@ void destroyPlayer(Player* player) {
 }
 
 void updatePlayerPosition(Player* player) {
+
+  int16_t old_y = (int16_t) player->y;
+
   player->x += player->speed[0];
   player->y += player->speed[1];
 
@@ -57,13 +60,16 @@ void updatePlayerPosition(Player* player) {
   if (player->x > screen.xres) player->x = screen.xres;
   if (player->y > screen.yres) player->y = screen.yres;
 
-  uint16_t new_x = (uint16_t) player->x;
-  uint16_t new_y = (uint16_t) player->y;
+  int16_t new_x = (int16_t) player->x;
+  int16_t new_y = (int16_t) player->y;
 
   player->player->x = new_x;
   player->player->y = new_y;
 
-  updateGameObjectZIndex(player->player, new_y * Z_INDEX_PER_LAYER + LOW_PRIORITY_Z_INDEX);
+  if (old_y != new_y) {
+    if (new_y < 0) new_y = 0;
+    updateGameObjectZIndex(player->player, new_y * Z_INDEX_PER_LAYER + LOW_PRIORITY_Z_INDEX);
+  }
 }
 
 void updatePlayerSpriteBasedOnPosition(Player* player) {

@@ -28,15 +28,16 @@ GameObject* background;
 
 ButtonArray menuButtons;
 
+// Set capacity to 0 for default capacity
 static ButtonArray newButtonArray(uint32_t capacity) {
   ButtonArray array;
   array.length = 0;
 
   if (capacity) {
-    array.buttons = (Button*)malloc(capacity * sizeof(Button));
+    array.buttons = (Button**)malloc(capacity * sizeof(Button*));
     array.capacity = capacity;
   } else {
-    array.buttons = (Button*)malloc(sizeof(Button) * 10);
+    array.buttons = (Button**)malloc(sizeof(Button*) * 10);
     array.capacity = 10;
   }
   return array;
@@ -45,24 +46,24 @@ static ButtonArray newButtonArray(uint32_t capacity) {
 static void pushButtonArray(ButtonArray* array, Button* button) {
 
   if (array->capacity != array->length) {
-        array->buttons[array->length] = *button;
+        array->buttons[array->length] = button;
     } else {
       uint32_t newCapacity = array->capacity * 2;
-      Button* oldPointer = array->buttons;
-      Button* newPointer = (Button*)malloc(newCapacity * sizeof(Button));
+      Button** oldPointer = array->buttons;
+      Button** newPointer = (Button**)malloc(newCapacity * sizeof(Button*));
       array->buttons = newPointer;
       for (uint32_t i = 0; i < array->length; i++) {
         newPointer[i] = oldPointer[i];
       }
       free(oldPointer);
-      array->buttons[array->length] = *button;
+      array->buttons[array->length] = button;
     }
     array->length++;
 }
 
 Button* getButtonArray(ButtonArray* array, uint32_t index) {
     if (index < array->length) {
-        return &array->buttons[index];
+        return array->buttons[index];
     } else {
         return NULL;
     }
@@ -78,7 +79,6 @@ void removeButtonArray(ButtonArray* array, uint32_t index) {
       for (uint32_t i = index; i < array->length - 1; i++) {
           array->buttons[i] = array->buttons[i + 1];
       }
-      memset(&array->buttons[array->length - 1], 0, sizeof(Button));
       array->length--;
     }
 }
@@ -125,7 +125,7 @@ static void checkMenuHovered(ButtonArray* array) {
     case 0:
       state = GAME;
       exitMenu();
-      enterGame(false, 0);
+      enterGame(false, 2);
       break;
 
     case 1:
@@ -198,10 +198,7 @@ static void destroyButtonArray(ButtonArray* array) {
 
     for (int32_t i = 0; i < (int32_t)array->length; i++) {
         Button* button = getButtonArray(array, i);
-        destroy_sprite(button->hovering);
-        destroy_sprite(button->no_hovering);
-        button->button->sprite = NULL;
-        destroy_gameobject(button->button);
+        removeButtonArray(array, i);
         free(button);
     }
 }

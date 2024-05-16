@@ -11,7 +11,7 @@ typedef struct Button {
 } Button;
 
 typedef struct ButtonArray {
-    Button* buttons;
+    Button** buttons;
     uint32_t capacity;
     uint32_t length;
 } ButtonArray;
