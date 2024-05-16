@@ -37,3 +37,5 @@ int interrupt_handler(uint32_t interrupt_mask);
 int update_timer_freq(uint32_t freq);
 
 ScreenInfo getScreenInfo();
+
+void resetDevicesChangingScreens();

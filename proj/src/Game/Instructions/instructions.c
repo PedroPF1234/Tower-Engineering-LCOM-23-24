@@ -66,6 +66,7 @@ void initializeInstructions() {
 }
 
 void enterInstructions() {
+  resetDevicesChangingScreens();
   instructions_background->sprite->is_visible = true;
 }
 

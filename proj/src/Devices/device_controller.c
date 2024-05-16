@@ -236,3 +236,16 @@ ScreenInfo getScreenInfo() {
   
   return info;
 }
+
+void resetDevicesChangingScreens() {
+  mouse_device->left_button_is_pressed = false;
+  mouse_device->left_button_released = false;
+  mouse_device->right_button_is_pressed = false;
+  mouse_device->right_button_released = false;
+  mouse_device->middle_button_is_pressed = false;
+  mouse_device->middle_button_released = false;
+  was_left_button_pressed = true;
+  was_right_button_pressed = true;
+  was_middle_button_pressed = true;
+
+}

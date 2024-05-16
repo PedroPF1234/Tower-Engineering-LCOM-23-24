@@ -30,7 +30,7 @@ static bool pressed_game_button = false;
 static bool selecting_tower_base = false;
 static bool to_spawn_enemy = false;
 
-static bool paused = false;
+static bool first_time_paused = true;
 static bool pressed_pause_button = false;
 
 static int8_t game_current_selection = -1;
@@ -88,7 +88,6 @@ static void checkGameKeyboardInput(KeyPresses** head) {
       case ESC_BREAK:
         if (state == GAME) {
           state = PAUSE;
-          paused = true;
           pause_background->sprite->is_visible = true;
         }
         break;
@@ -233,12 +232,12 @@ static void checkPauseKeyboardInput(KeyPresses** head) {
       
       case UP_ARROW_BREAK:
         pause_current_selection--;
-        if (pause_current_selection < 0) pause_current_selection = 2;
+        if (pause_current_selection < 0) pause_current_selection = 1;
         break;
 
       case DOWN_ARROW_BREAK:
         pause_current_selection++;
-        if (pause_current_selection > 2) pause_current_selection = 0;
+        if (pause_current_selection > 1) pause_current_selection = 0;
         break;
 
       default:
@@ -248,11 +247,9 @@ static void checkPauseKeyboardInput(KeyPresses** head) {
       switch (current->key)
       {
       case ESC_BREAK:
-        if (state == PAUSE) {
-          state = GAME;
-          paused = false;
-          pause_background->sprite->is_visible = false;
-        }
+        printf("Pressed Esc to exit paused menu\n");
+        state = GAME;
+        pause_background->sprite->is_visible = false;
         break;
 
       case S_BREAK:
@@ -305,12 +302,13 @@ static void checkPauseHovered(ButtonArray* array) {
       if (mouse_x > leftMostBound && mouse_x < rightMostBound &&
           mouse_y > upMostBound && mouse_y < downMostBound && last_pressed_was_mouse) {
 
-        if (mouse_device->left_button_is_pressed) {
-          pressed_pause_button = true;
-        }
-
         updateGameObjectSprite(buttonObject, button->hovering);
         pause_current_selection = i;
+
+        if (mouse_device->left_button_is_pressed) {
+          pressed_pause_button = true;
+          break;
+        }
 
       } else if (!last_pressed_was_mouse && pause_current_selection == i) {
         updateGameObjectSprite(buttonObject, button->hovering);
@@ -321,17 +319,15 @@ static void checkPauseHovered(ButtonArray* array) {
   }
 
   if (pressed_pause_button) {
+    pressed_pause_button = false;
     switch (pause_current_selection)
     {
     case -1:
       break;
     
     case 0:
-      if (state == PAUSE) {
-        state = GAME;
-        paused = false;
-        pause_background->sprite->is_visible = false;
-      }
+      state = GAME;
+      pause_background->sprite->is_visible = false;
       break;
 
     case 1:
@@ -339,11 +335,12 @@ static void checkPauseHovered(ButtonArray* array) {
       exitGame();
       enterMenu();
       break;
-      break;
 
     default:
       break;
     }
+
+    pause_current_selection = -1;
   }
 }
 
@@ -360,6 +357,8 @@ void initializeGameplay() {
 
   pushButtonArray(&pause_buttons, initializeButton((xpm_map_t)QuitButtonHovered, (xpm_map_t)QuitButton, screen.xres/2, screen.yres/2 + 100, -50, -25, 0xFFFE, true));
 
+  hideButtons(&pause_buttons);
+
   // Pushing turrets by default method. Supposed to use current_arena to push the turrets later one.
   // So the pushing will be moved to the "enterGame" function.
   pushTowerArray(&towers, initializeTower(128, 128, -55, -55, 100));
@@ -372,6 +371,7 @@ void initializeGameplay() {
 }
 
 void enterGame(bool multi, uint8_t arena) {
+  resetDevicesChangingScreens();
   multiplayer = multi;
   current_arena = &arenas[arena];
   add_sprite_to_spriteless_gameobject(game_background, current_arena->background);
@@ -386,7 +386,7 @@ void enterGame(bool multi, uint8_t arena) {
 
 void updateGame() {
   
-  if (rtc_time->just_updated) {
+  if (rtc_time->just_updated && state == GAME) {
     if (to_spawn_enemy) {
       to_spawn_enemy = false;
       pushEnemyArray(&enemies, initializeEnemy((float)current_arena->spawn_x, (float)current_arena->spawn_y, 0, 0, multiplayer ? 150 : 100, current_arena->coordinate_targets, current_arena->num_targets));
@@ -395,8 +395,12 @@ void updateGame() {
     }
   }
 
-  checkGameKeyboardInput(&keyboard_device->keyPresses);
-  if (!paused) {
+  if (state == GAME) {
+    if (!first_time_paused) {
+      hideButtons(&pause_buttons);
+      first_time_paused = !first_time_paused;
+    }
+    checkGameKeyboardInput(&keyboard_device->keyPresses);
     checkGameHovered(&towers);
     if (playing) {
       updatePlayerPosition(player1);
@@ -407,12 +411,17 @@ void updateGame() {
         updatePlayerPosition(player2);
         updatePlayerSpriteBasedOnPosition(player2);
       }
+
+      rotateTowersTowardsTarget(&towers, &enemies); 
     }
-  } else {
+  } else if (state == PAUSE) {
+    if (first_time_paused) {
+      showButtons(&pause_buttons);
+      first_time_paused = !first_time_paused;
+    }
     checkPauseKeyboardInput(&keyboard_device->keyPresses);
     checkPauseHovered(&pause_buttons);
   }
-  rotateTowersTowardsTarget(&towers, &enemies); 
 }
 
 void exitGame() {
@@ -423,8 +432,10 @@ void exitGame() {
   // Should be replaced by the destroyTurretArray function.
   hideTowers(&towers);
   //
+  hideButtons(&pause_buttons);
   destroyEnemyArray(&enemies);
   remove_sprite_from_spriteless_gameobject(game_background);
+  pause_background->sprite->is_visible = false;
 }
 
 void destroyGame() {

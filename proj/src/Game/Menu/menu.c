@@ -140,18 +140,6 @@ static void checkMenuKeyboardInput(KeyPresses** head) {
   *head = NULL;
 }
 
-static void hideMenuButtons(ButtonArray* array) {
-  for (int32_t i = 0; i < (int32_t)array->length; i++) {
-    getButtonArray(array, i)->button->sprite->is_visible = false;
-  }
-}
-
-static void showMenuButtons(ButtonArray* array) {
-  for (int32_t i = 0; i < (int32_t)array->length; i++) {
-    getButtonArray(array, i)->button->sprite->is_visible = true;
-  }
-}
-
 void initializeMenu() {
   menuButtons = newButtonArray(20);
   background = create_gameobject((xpm_map_t) Background, 0, 0, 0, 0, 0, true, true);
@@ -167,7 +155,8 @@ void initializeMenu() {
 }
 
 void enterMenu() {
-  showMenuButtons(&menuButtons);
+  resetDevicesChangingScreens();
+  showButtons(&menuButtons);
   background->sprite->is_visible = true;
 }
 
@@ -179,7 +168,7 @@ void updateMenu() {
 void exitMenu() {
   pressed_menu_button = false;
   menu_current_selection = -1;
-  hideMenuButtons(&menuButtons);
+  hideButtons(&menuButtons);
   background->sprite->is_visible = false;
 }
 

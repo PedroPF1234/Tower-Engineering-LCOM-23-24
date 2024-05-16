@@ -86,3 +86,15 @@ Button* initializeButton(xpm_map_t hovered, xpm_map_t no_hovered, int16_t x, int
 
   return button;
 }
+
+void hideButtons(ButtonArray* array) {
+  for (int32_t i = 0; i < (int32_t)array->length; i++) {
+    getButtonArray(array, i)->button->sprite->is_visible = false;
+  }
+}
+
+void showButtons(ButtonArray* array) {
+  for (int32_t i = 0; i < (int32_t)array->length; i++) {
+    getButtonArray(array, i)->button->sprite->is_visible = true;
+  }
+}
