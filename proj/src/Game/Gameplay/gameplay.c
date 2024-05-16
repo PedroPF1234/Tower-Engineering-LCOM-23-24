@@ -356,7 +356,7 @@ void initializeGameplay() {
   player2 = initializePlayer(32, 28, -16, -29, 100);
   towers = newTowerArray(20);
   enemies = newEnemyArray(100);
-  bullets = newBulletArray(100);
+  //bullets = newBulletArray(100);
   pause_buttons = newButtonArray(20);
 
   pushButtonArray(&pause_buttons, initializeButton((xpm_map_t)QuitButtonHovered, (xpm_map_t)QuitButton, screen.xres/2, screen.yres/2 - 100, -50, -25, 0xFFFE, true));
@@ -389,6 +389,7 @@ void enterGame(bool multi, uint8_t arena) {
   //
 }
 
+/*
 //I dont know very well where should I put this function
 static bool checkCollision(Bullet* bullet, Enemy* enemy) {
     int16_t bullet_left = bullet->x + bullet->origin_offset_x;
@@ -403,6 +404,7 @@ static bool checkCollision(Bullet* bullet, Enemy* enemy) {
 
     return !(bullet_right < enemy_left || bullet_left > enemy_right || bullet_bottom < enemy_top || bullet_top > enemy_bottom);
 }
+*/
 
 void updateGame() {
   
@@ -422,7 +424,9 @@ void updateGame() {
       updatePlayerPosition(player1);
       updatePlayerSpriteBasedOnPosition(player1);
       updateAllEnemyPositions(&enemies);
+      /*
       updateAllBulletPositions(&bullets);
+
 
       // In case of collisions between bullets and enemies:
       for (uint32_t i = 0; i < bullets.length; i++) {
@@ -436,6 +440,7 @@ void updateGame() {
             }
           }
       }
+      */
 
       if (multiplayer) {
         updatePlayerPosition(player2);
