@@ -3,7 +3,7 @@
 
 #include "enemy.h"
 
-#include "../../../ImageAssets/Bicho.xpm"
+#include "../../../ImageAssets/Enemy.xpm"
 
 extern ScreenInfo screen;
 
@@ -11,17 +11,12 @@ Enemy* initializeEnemy(float x, float y, int16_t ox, int16_t oy, int16_t hp, int
   Enemy* enemy = (Enemy*)malloc(sizeof(Enemy));
 
   //Add the Sprites
-  enemy->up = create_sprite((xpm_map_t)BichoUp, x, y, false, true);
-  enemy->down = create_sprite((xpm_map_t)BichoDown, x, y,  false, true);
-  enemy->left = create_sprite((xpm_map_t)BichoLeft, x, y, false, true);
-  enemy->right = create_sprite((xpm_map_t)BichoRight, x, y, false, true);
-  enemy->up_left = create_sprite((xpm_map_t)BichoUpperLeft, x, y, false, true);
-  enemy->up_right = create_sprite((xpm_map_t)BichoUpperRight, x, y, false, true);
-  enemy->down_left = create_sprite((xpm_map_t)BichoLowerLeft, x, y, false, true);
-  enemy->down_right = create_sprite((xpm_map_t)BichoLowerRight, x, y, false, true);
-  enemy->stationary = create_sprite((xpm_map_t)BichoStationary, x, y, false, true);
+  enemy->up = create_sprite((xpm_map_t)EnemyUp, x, y, false, true);
+  enemy->down = create_sprite((xpm_map_t)EnemyDown, x, y,  false, true);
+  enemy->left = create_sprite((xpm_map_t)EnemyLeft, x, y, false, true);
+  enemy->right = create_sprite((xpm_map_t)EnemyRight, x, y, false, true);
 
-  enemy->enemy = create_gameobject_from_sprite(enemy->stationary, x, y, ox, oy, y * Z_INDEX_PER_LAYER + LOW_PRIORITY_Z_INDEX);
+  enemy->enemy = create_gameobject_from_sprite(enemy->right, x, y, ox, oy, y * Z_INDEX_PER_LAYER + LOW_PRIORITY_Z_INDEX);
 
   enemy->origin_offset_x = ox;
   enemy->origin_offset_y = oy;
@@ -43,11 +38,6 @@ void destroyEnemy(Enemy* enemy) {
   destroy_sprite(enemy->down);
   destroy_sprite(enemy->left);
   destroy_sprite(enemy->right);
-  destroy_sprite(enemy->up_left);
-  destroy_sprite(enemy->up_right);
-  destroy_sprite(enemy->down_left);
-  destroy_sprite(enemy->down_right);
-  destroy_sprite(enemy->stationary);
   enemy->enemy->sprite = NULL;
   destroy_gameobject(enemy->enemy);
   free(enemy);
@@ -107,33 +97,22 @@ void updateEnemySpriteBasedOnPosition(Enemy* enemy) {
   float x = enemy->speed[0];
   float y = enemy->speed[1];
 
-  if (x!=0.0f && y!=0.0f) {
-    if (x > 0.0f) {
-      if (y > 0.0f) {
-        updateGameObjectSprite(enemy->enemy, enemy->down_right);
-      } else if (y < 0.0f) {
-        updateGameObjectSprite(enemy->enemy, enemy->up_right);
-      }
-    } else {
-      if (y > 0.0f) {
-        updateGameObjectSprite(enemy->enemy, enemy->down_left);
-      } else if (y < 0.0f) {
-        updateGameObjectSprite(enemy->enemy, enemy->up_left);
-      }
-    }
-  } else {
+  if (x != 0.0f) {
     if (x > 0.0f) {
       updateGameObjectSprite(enemy->enemy, enemy->right);
     } else if (x < 0.0f) {
       updateGameObjectSprite(enemy->enemy, enemy->left);
-    } else if (y > 0.0f) {
+    }
+  } else if (y != 0.0f) {
+    if (y > 0.0f) {
       updateGameObjectSprite(enemy->enemy, enemy->down);
     } else if (y < 0.0f) {
       updateGameObjectSprite(enemy->enemy, enemy->up);
-    } else {
-      updateGameObjectSprite(enemy->enemy, enemy->stationary);
     }
   }
+
+  enemy->enemy->origin_offset_x = -(enemy->enemy->sprite->width / 2);
+  enemy->enemy->origin_offset_y = -(enemy->enemy->sprite->height / 2);
 }
 
 // Set capacity to 0 for default capacity

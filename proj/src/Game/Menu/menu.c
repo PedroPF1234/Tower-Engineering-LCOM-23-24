@@ -71,7 +71,7 @@ static void checkMenuHovered(ButtonArray* array) {
     case 0:
       state = GAME;
       exitMenu();
-      enterGame(false, 1);
+      enterGame(false, 0);
       break;
 
     case 1:

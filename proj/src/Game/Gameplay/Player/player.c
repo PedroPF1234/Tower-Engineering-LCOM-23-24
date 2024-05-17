@@ -105,5 +105,8 @@ void updatePlayerSpriteBasedOnPosition(Player* player) {
     }
   }
 
+  player->player->origin_offset_x = -(player->player->sprite->width / 2);
+  player->player->origin_offset_y = -(player->player->sprite->height / 2);
+
 }
 

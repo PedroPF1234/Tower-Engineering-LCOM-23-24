@@ -8,11 +8,6 @@ typedef struct Enemy {
     Sprite* down;
     Sprite* left;
     Sprite* right;
-    Sprite* up_left;
-    Sprite* up_right;
-    Sprite* down_left;
-    Sprite* down_right;
-    Sprite* stationary;
     float x, y;
     float speed[2];
     int16_t origin_offset_x, origin_offset_y;
