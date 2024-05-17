@@ -9,6 +9,7 @@
 #include "Arena/arena.h"
 #include "Enemy/enemy.h"
 #include "Bullet/bullet.h"
+#include "PlayerBase/playerbase.h"
 
 #include "../gamestates.h"
 
@@ -59,6 +60,9 @@ TowerArray towers;
 EnemyArray enemies;
 BulletArray bullets;
 
+// PlayerBase
+PlayerBase* player_base;
+
 // Pause Buttons
 ButtonArray pause_buttons;
 
@@ -102,42 +106,42 @@ static void checkGameKeyboardInput(KeyPresses** head) {
 
       case S_MAKE:
         if (player1->speed[1] < 0.0f) player1->speed[1] = 0.0f;
-        else if (player1->speed[0] == 0.3f || player1->speed[0] == -0.3f) {
-          player1->speed[1] = 0.212f;
-          if (player1->speed[0] > 0.0f) player1->speed[0] = 0.212f;
-          else player1->speed[0] = -0.212f;
+        else if (player1->speed[0] == 10.0f || player1->speed[0] == -10.0f) {
+          player1->speed[1] = 7.0f;
+          if (player1->speed[0] > 0.0f) player1->speed[0] = 7.0f;
+          else player1->speed[0] = -7.0f;
         }
-        else player1->speed[1] = 0.3f;
+        else player1->speed[1] = 10.0f;
         break;
 
       case W_MAKE:
         if (player1->speed[1] > 0.0f) player1->speed[1] = 0.0f;
-        else if (player1->speed[0] == 0.3f || player1->speed[0] == -0.3f) {
-          player1->speed[1] = -0.212f;
-          if (player1->speed[0] > 0.0f) player1->speed[0] = 0.212f;
-          else player1->speed[0] = -0.212f;
+        else if (player1->speed[0] == 10.0f || player1->speed[0] == -10.0f) {
+          player1->speed[1] = -7.0f;
+          if (player1->speed[0] > 0.0f) player1->speed[0] = 7.0f;
+          else player1->speed[0] = -7.0f;
         }
-        else player1->speed[1] = -0.3f;
+        else player1->speed[1] = -10.0f;
         break;
 
       case A_MAKE:
         if (player1->speed[0] > 0.0f) player1->speed[0] = 0.0f;
-        else if (player1->speed[1] == 0.3f || player1->speed[1] == -0.3f) {
-          player1->speed[0] = -0.212f;
-          if (player1->speed[1] > 0.0f) player1->speed[1] = 0.212f;
-          else player1->speed[1] = -0.212f;
+        else if (player1->speed[1] == 10.0f || player1->speed[1] == -10.0f) {
+          player1->speed[0] = -7.0f;
+          if (player1->speed[1] > 0.0f) player1->speed[1] = 7.0f;
+          else player1->speed[1] = -7.0f;
         }
-        else player1->speed[0] = -0.3f;
+        else player1->speed[0] = -10.0f;
         break;
 
       case D_MAKE:
         if (player1->speed[0] < 0.0f) player1->speed[0] = 0.0f;
-        else if (player1->speed[1] == 0.3f || player1->speed[1] == -0.3f) {
-          player1->speed[0] = 0.212f;
-          if (player1->speed[1] > 0.0f) player1->speed[1] = 0.212f;
-          else player1->speed[1] = -0.212f;
+        else if (player1->speed[1] == 10.0f || player1->speed[1] == -10.0f) {
+          player1->speed[0] = 7.0f;
+          if (player1->speed[1] > 0.0f) player1->speed[1] = 7.0f;
+          else player1->speed[1] = -7.0f;
         }
-        else player1->speed[0] = 0.3f;
+        else player1->speed[0] = 10.0f;
         break;
 
       case S_BREAK:
@@ -204,7 +208,7 @@ static void checkGameHovered(TowerArray* array) {
 
           if (mouse_device->left_button_is_pressed) {
             pressed_game_button = true;
-            mountTowers(tower, 1);
+            mountTurret(tower, CANNON);
           }
 
           setTowerHovered(tower, true);
@@ -346,6 +350,54 @@ static void checkPauseHovered(ButtonArray* array) {
   }
 }
 
+static void updateGamePlay() {
+  if (!first_time_paused) {
+    hideButtons(&pause_buttons);
+    first_time_paused = !first_time_paused;
+  }
+  checkGameKeyboardInput(&keyboard_device->keyPresses);
+  checkGameHovered(&towers);
+  if (playing) {
+    updatePlayerPosition(player1);
+    updatePlayerSpriteBasedOnPosition(player1);
+    updateAllEnemyPositions(&enemies);
+    updatePlayerBaseHealthBar(player_base);
+    /*
+    updateAllBulletPositions(&bullets);
+
+
+    // In case of collisions between bullets and enemies:
+    for (uint32_t i = 0; i < bullets.length; i++) {
+      Bullet* bullet = getBulletArray(&bullets, i);
+        if (bullet->active) {
+          for (uint32_t j = 0; j < enemies.length; j++) {
+            Enemy* enemy = getEnemyArray(&enemies, j);
+            if (checkCollision(bullet, enemy)) {
+              bullet->active = false;
+            }
+          }
+        }
+    }
+    */
+
+    if (multiplayer) {
+      updatePlayerPosition(player2);
+      updatePlayerSpriteBasedOnPosition(player2);
+    }
+
+    rotateTowersTowardsTarget(&towers, &enemies); 
+  }
+}
+
+static void updatePause() {
+  if (first_time_paused) {
+    showButtons(&pause_buttons);
+    first_time_paused = !first_time_paused;
+  }
+  checkPauseKeyboardInput(&keyboard_device->keyPresses);
+  checkPauseHovered(&pause_buttons);
+}
+
 void initializeGameplay() {
   initializeDifferentTowerSprites();
   arenas = initializeArenas();
@@ -364,9 +416,9 @@ void initializeGameplay() {
 
   // Pushing turrets by default method. Supposed to use current_arena to push the turrets later one.
   // So the pushing will be moved to the "enterGame" function.
-  pushTowerArray(&towers, initializeTower(128, 128, -55, -55, 100));
-  pushTowerArray(&towers, initializeTower(256, 256, -55, -55, 100));
-  pushTowerArray(&towers, initializeTower(384, 384, -55, -55, 100));
+  pushTowerArray(&towers, initializeTower(100, 100, -55, -55, 100));
+  pushTowerArray(&towers, initializeTower(500, 300, -55, -55, 100));
+  pushTowerArray(&towers, initializeTower(1000, 600, -55, -55, 100));
   // 
 
   //Falta inicializar a array das bullets! 
@@ -383,6 +435,8 @@ void enterGame(bool multi, uint8_t arena) {
   playing = true;
   player1->player->sprite->is_visible = true;
   if (multi) player2->player->sprite->is_visible = true;
+
+  player_base = initializePlayerBase(current_arena->coordinate_targets[(current_arena->num_targets - 1) * 2], current_arena->coordinate_targets[(current_arena->num_targets - 1) * 2 + 1], 1000);
 
   // Wont be needed when the pushing of turrets is moved to here.
   showTowers(&towers);
@@ -411,55 +465,16 @@ void updateGame() {
   if (rtc_time->just_updated && state == GAME) {
     if (to_spawn_enemy) {
       to_spawn_enemy = false;
-      pushEnemyArray(&enemies, initializeEnemy((float)current_arena->spawn_x, (float)current_arena->spawn_y, 0, 0, multiplayer ? 150 : 100, current_arena->coordinate_targets, current_arena->num_targets));
+      pushEnemyArray(&enemies, initializeEnemy((float)current_arena->spawn_x, (float)current_arena->spawn_y, 0, 0, multiplayer ? 1500 : 1000, current_arena->coordinate_targets, current_arena->num_targets));
     } else {
       to_spawn_enemy = true;
     }
   }
 
   if (state == GAME) {
-    if (!first_time_paused) {
-      hideButtons(&pause_buttons);
-      first_time_paused = !first_time_paused;
-    }
-    checkGameKeyboardInput(&keyboard_device->keyPresses);
-    checkGameHovered(&towers);
-    if (playing) {
-      updatePlayerPosition(player1);
-      updatePlayerSpriteBasedOnPosition(player1);
-      updateAllEnemyPositions(&enemies);
-      /*
-      updateAllBulletPositions(&bullets);
-
-
-      // In case of collisions between bullets and enemies:
-      for (uint32_t i = 0; i < bullets.length; i++) {
-        Bullet* bullet = getBulletArray(&bullets, i);
-          if (bullet->active) {
-            for (uint32_t j = 0; j < enemies.length; j++) {
-              Enemy* enemy = getEnemyArray(&enemies, j);
-              if (checkCollision(bullet, enemy)) {
-                bullet->active = false;
-              }
-            }
-          }
-      }
-      */
-
-      if (multiplayer) {
-        updatePlayerPosition(player2);
-        updatePlayerSpriteBasedOnPosition(player2);
-      }
-
-      rotateTowersTowardsTarget(&towers, &enemies); 
-    }
+    updateGamePlay();
   } else if (state == PAUSE) {
-    if (first_time_paused) {
-      showButtons(&pause_buttons);
-      first_time_paused = !first_time_paused;
-    }
-    checkPauseKeyboardInput(&keyboard_device->keyPresses);
-    checkPauseHovered(&pause_buttons);
+    updatePause();
   }
 }
 
@@ -473,6 +488,7 @@ void exitGame() {
   //
   hideButtons(&pause_buttons);
   destroyEnemyArray(&enemies);
+  destroyPlayerBase(player_base);
   remove_sprite_from_spriteless_gameobject(game_background);
   pause_background->sprite->is_visible = false;
 }

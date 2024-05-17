@@ -17,6 +17,7 @@ typedef struct Player {
   float speed[2];
   int16_t origin_offset_x, origin_offset_y;
   int16_t hit_points;
+  int16_t max_hit_points;
 } Player;
 
 Player* initializePlayer(float x, float y, int16_t ox, int16_t oy, int16_t hp);

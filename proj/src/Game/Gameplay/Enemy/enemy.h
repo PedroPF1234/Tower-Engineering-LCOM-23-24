@@ -4,6 +4,7 @@
 
 typedef struct Enemy {
     GameObject* enemy; // Default sprite is stationary
+    GameObject* health_bar;
     Sprite* up;
     Sprite* down;
     Sprite* left;
@@ -12,6 +13,7 @@ typedef struct Enemy {
     float speed[2];
     int16_t origin_offset_x, origin_offset_y;
     int16_t hit_points;
+    int16_t max_hit_points;
     int16_t* targets;
     int16_t targets_hit;
     int16_t last_target;

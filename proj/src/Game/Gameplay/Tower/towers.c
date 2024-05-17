@@ -35,7 +35,9 @@ TowerBase* initializeTower(int16_t x, int16_t y, int16_t ox, int16_t oy, int16_t
   new_tower->hit_points = hp;
   new_tower->turretSprite = NULL;
   new_tower->range = 0;
-  new_tower->targetting = LAST;
+  new_tower->targetting = FIRST;
+  new_tower->damage = 0;
+  new_tower->turret_radius = 0;
 
   return new_tower;
 }
@@ -119,33 +121,49 @@ void setTowerHovered(TowerBase* tower, bool hovered) {
   }
 }
 
-void mountTowers(TowerBase* tower, uint32_t type) {
+void mountTurret(TowerBase* tower, TurretType type) {
+
+  printf("Mounting turret on coordinates: %d, %d\n", tower->x, tower->y);
+
   Sprite* temp = NULL;
   int16_t x = tower->x + tower->origin_offset_x;
   int16_t y = tower->y + tower->origin_offset_y;
 
   switch (type) {
-    case 0:
+    case CROSSBOW:
       if (tower->turret->sprite == NULL) {
         temp = create_sprite_from_sprite(crossbowTurret, x, y, true, 360);
         tower->turret->origin_offset_x = -(temp->width / 2);
         tower->turret->origin_offset_y = -(temp->height / 2);
+        tower->range =  temp[0].width*3;
+        tower->turret_radius = ( temp[0].width / 2);
         tower->turretSprite = temp;
       }
       add_sprite_to_spriteless_gameobject(tower->turret, temp);
-      tower->range = 100;
+      tower->damage = 10;
 
       break;
-    case 1:
+
+    case CANNON:
+      printf("Cannon\n");
       if (tower->turret->sprite == NULL) {
         temp = create_sprite_from_sprite(canonTurret, x, y, true, 360);
         tower->turret->origin_offset_x = -(temp->width / 2);
         tower->turret->origin_offset_y = -(temp->height / 2);
+        tower->turret_radius = (temp[0].width / 2);
+        tower->range = temp[0].width*6;
         tower->turretSprite = temp;
       }
       add_sprite_to_spriteless_gameobject(tower->turret, temp);
-      tower->range = 200;
+      tower->damage = 20;
+
+      printf("Here?\n");
+
       break;
+
+    case LASER:
+      break;
+
     default:
       break;
   }

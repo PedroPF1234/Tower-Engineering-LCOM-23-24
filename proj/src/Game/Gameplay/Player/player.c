@@ -29,6 +29,7 @@ Player* initializePlayer(float x, float y, int16_t ox, int16_t oy, int16_t hp) {
   new_player->origin_offset_x = ox;
   new_player->origin_offset_y = oy;
   new_player->hit_points = hp;
+  new_player->max_hit_points = hp;
 
   return new_player;
 }
@@ -52,8 +53,8 @@ void updatePlayerPosition(Player* player) {
 
   int16_t old_y = (int16_t) player->y;
 
-  player->x += player->speed[0];
-  player->y += player->speed[1];
+  player->x += player->speed[0] / 30;
+  player->y += player->speed[1] / 30;
 
   if (player->x < 0) player->x = 0;
   if (player->y < 0) player->y = 0;

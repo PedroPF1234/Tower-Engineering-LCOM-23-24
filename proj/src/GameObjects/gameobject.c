@@ -57,7 +57,7 @@ static void deleteNode(Node **head, GameObject *gameObject) {
     free(temp);
 }
 
-GameObject* create_gameobject(xpm_map_t pic, uint16_t x, uint16_t y, int16_t origin_offset_x, int16_t origin_offset_y, uint16_t z_index, bool square_shape, bool visible) {
+GameObject* create_gameobject(xpm_map_t pic, int16_t x, int16_t y, int16_t origin_offset_x, int16_t origin_offset_y, uint16_t z_index, bool square_shape, bool visible) {
 
   GameObject* gameObject = (GameObject*) malloc(sizeof(GameObject));
   Sprite* sprite = create_sprite(pic, x, y, square_shape, visible);
@@ -74,7 +74,7 @@ GameObject* create_gameobject(xpm_map_t pic, uint16_t x, uint16_t y, int16_t ori
   return gameObject;
 }
 
-GameObject* create_spriteless_gameobject(uint16_t x, uint16_t y, int16_t origin_offset_x, int16_t origin_offset_y, uint16_t z_index) {
+GameObject* create_spriteless_gameobject(int16_t x, int16_t y, int16_t origin_offset_x, int16_t origin_offset_y, uint16_t z_index) {
   GameObject* gameObject = (GameObject*) malloc(sizeof(GameObject));
 
   gameObject->sprite = NULL;
@@ -101,7 +101,7 @@ void remove_sprite_from_spriteless_gameobject(GameObject* gameObject) {
   }
 }
 
-GameObject* create_gameobject_from_sprite(Sprite* sprite, uint16_t x, uint16_t y, int16_t origin_offset_x, int16_t origin_offset_y, uint16_t z_index) {
+GameObject* create_gameobject_from_sprite(Sprite* sprite, int16_t x, int16_t y, int16_t origin_offset_x, int16_t origin_offset_y, uint16_t z_index) {
   GameObject* gameObject = (GameObject*) malloc(sizeof(GameObject));
 
   gameObject->sprite = sprite;

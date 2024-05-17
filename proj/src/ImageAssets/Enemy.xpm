@@ -458,3 +458,19 @@ static char *EnemyDown[] = {
 "  oooooooooooooooooooooooooooooooooooooooooooo  "
 };
 
+/* XPM */
+static char *HealthBar[] = {
+/* columns rows colors chars-per-pixel */
+"70 8 1 1 ",
+"  c #49FF15",
+/* pixels */
+"                                                                      ",
+"                                                                      ",
+"                                                                      ",
+"                                                                      ",
+"                                                                      ",
+"                                                                      ",
+"                                                                      ",
+"                                                                      "
+};
+

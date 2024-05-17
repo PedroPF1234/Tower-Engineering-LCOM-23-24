@@ -12,7 +12,7 @@
 
 static uint32_t createdSprites = 0;
 
-Sprite* create_sprite(xpm_map_t pic, uint16_t x, uint16_t y, bool square_shape, bool is_visible) {
+Sprite* create_sprite(xpm_map_t pic, int16_t x, int16_t y, bool square_shape, bool is_visible) {
   
   Sprite* sp = (Sprite*) malloc(sizeof(Sprite));
   if (sp == NULL) return NULL;
@@ -74,7 +74,7 @@ static uint8_t* rotate_image(uint8_t* original_pixels, uint16_t width, uint16_t 
   return rotated_pixels;
 }
 
-Sprite* create_rotation_abled_sprite(xpm_map_t pic, uint16_t x, uint16_t y, bool square_shape, bool is_visible, int* num_sprites) {
+Sprite* create_rotation_abled_sprite(xpm_map_t pic, int16_t x, int16_t y, bool square_shape, bool is_visible, int* num_sprites) {
 
   xpm_image_t img;
   uint8_t* bytes = xpm_load(pic, XPM_8_8_8, &img);
@@ -110,7 +110,7 @@ Sprite* create_rotation_abled_sprite(xpm_map_t pic, uint16_t x, uint16_t y, bool
   return sprites;
 }
 
-Sprite* create_sprite_from_sprite(Sprite* sprite, uint16_t x, uint16_t y, bool is_visible, int rotations) {
+Sprite* create_sprite_from_sprite(Sprite* sprite, int16_t x, int16_t y, bool is_visible, int rotations) {
   if (sprite == NULL) return NULL;
 
   Sprite* sp = (Sprite*)malloc(sizeof(Sprite) * rotations);

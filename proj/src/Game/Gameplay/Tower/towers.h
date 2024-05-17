@@ -10,6 +10,12 @@ typedef enum TowerTargetting {
   CLOSEST
 } TowerTargetting;
 
+typedef enum TurretType {
+  CROSSBOW,
+  CANNON,
+  LASER
+} TurretType;
+
 typedef struct TowerBase {
   GameObject* base;
   GameObject* turret;
@@ -20,6 +26,8 @@ typedef struct TowerBase {
   int16_t origin_offset_x, origin_offset_y;
   int16_t hit_points;
   uint16_t range;
+  uint16_t turret_radius;
+  uint16_t damage;
   TowerTargetting targetting;
 } TowerBase;
 
@@ -31,14 +39,17 @@ typedef struct TowerArray {
 
 void initializeDifferentTowerSprites();
 TowerBase* initializeTower(int16_t x, int16_t y, int16_t ox, int16_t oy, int16_t hp);
+void destroyTower(TowerBase* tower);
+
 TowerArray newTowerArray(uint32_t capacity);
 void pushTowerArray(TowerArray* array, TowerBase* tower);
 TowerBase* getTowerArray(TowerArray* array, uint32_t index);
 void removeTowerArray(TowerArray* array, uint32_t index);
 void destroyTurretArray(TowerArray* array);
-void destroyTower(TowerBase* tower);
+
+
 void setTowerHovered(TowerBase* tower, bool hovered);
-void mountTowers(TowerBase* tower, uint32_t type);
+void mountTurret(TowerBase* tower, TurretType type);
 void hideTowers(TowerArray* array);
 void showTowers(TowerArray* array);
 void rotateTowersTowardsTarget(TowerArray* array, EnemyArray* target);
