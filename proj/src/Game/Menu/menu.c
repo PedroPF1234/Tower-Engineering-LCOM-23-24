@@ -145,13 +145,13 @@ void initializeMenu() {
   background = create_gameobject((xpm_map_t) Background, 0, 0, 0, 0, 0, true, true);
 
   // Play Button
-  pushButtonArray(&menuButtons, initializeButton((xpm_map_t)QuitButton, (xpm_map_t)QuitButtonHovered, screen.xres/2-1, screen.yres/2-101, -50, -25, 1, true));
+  pushButtonArray(&menuButtons, initializeButton((xpm_map_t)PlayButtonHovered, (xpm_map_t)PlayButton, screen.xres/2-1, screen.yres/2-101, -224, -25, 1, true));
 
   // Instructions Button
-  pushButtonArray(&menuButtons, initializeButton((xpm_map_t)QuitButton, (xpm_map_t)QuitButtonHovered, screen.xres/2-1, screen.yres/2-1, -50, -25, 1, true));
+  pushButtonArray(&menuButtons, initializeButton((xpm_map_t)InstructionsButtonHovered, (xpm_map_t)InstructionsButton, screen.xres/2-1, screen.yres/2-1, -224, -25, 1, true));
 
   // Quit Button
-  pushButtonArray(&menuButtons, initializeButton((xpm_map_t)QuitButton, (xpm_map_t)QuitButtonHovered, screen.xres/2-1, screen.yres/2+99, -50, -25, 1, true));
+  pushButtonArray(&menuButtons, initializeButton((xpm_map_t)QuitButtonHovered, (xpm_map_t)QuitButton, screen.xres/2-1, screen.yres/2+99, -224, -25, 1, true));
 }
 
 void enterMenu() {
