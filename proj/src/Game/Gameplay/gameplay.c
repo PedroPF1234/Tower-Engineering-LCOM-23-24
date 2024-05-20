@@ -408,9 +408,9 @@ void initializeGameplay() {
   //bullets = newBulletArray(100);
   pause_buttons = newButtonArray(20);
 
-  pushButtonArray(&pause_buttons, initializeButton((xpm_map_t)ResumeButtonHovered, (xpm_map_t)ResumeButton, screen.xres/2, screen.yres/2 - 100, -224, -25, 0xFFFE, true));
+  pushButtonArray(&pause_buttons, initializeButton((xpm_map_t)ResumeButtonHovered, (xpm_map_t)ResumeButton, screen.xres/2, screen.yres/2 - 100, -224, -25, 0xFFFE, true, true));
 
-  pushButtonArray(&pause_buttons, initializeButton((xpm_map_t)QuitButtonHovered, (xpm_map_t)QuitButton, screen.xres/2, screen.yres/2 + 100, -225, -25, 0xFFFE, true));
+  pushButtonArray(&pause_buttons, initializeButton((xpm_map_t)QuitButtonHovered, (xpm_map_t)QuitButton, screen.xres/2, screen.yres/2 + 100, -225, -25, 0xFFFE, true, true));
 
   hideButtons(&pause_buttons);
 

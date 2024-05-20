@@ -22,6 +22,7 @@ int game_main_loop() {
 
   switch (state)
   {
+  case SELECT_GAME:
   case MAIN_MENU:
 
     if (!game_booted) {
