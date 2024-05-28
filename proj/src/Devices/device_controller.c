@@ -43,6 +43,8 @@ static uint32_t frequency = 0;
 
 int boot_devices(uint32_t freq, uint16_t framespersecond, uint16_t mode) {
 
+  init_render_pipeline();
+
   FPS = framespersecond;
   frequency = freq;
 

@@ -66,8 +66,6 @@ static void checkSelectGameHovered(ButtonArray* array) {
     }
   }
 
-  printf("Current selection: %d\n", select_game_current_selection);
-
   if (pressed_menu_button) {
     switch (select_game_current_selection)
     {
@@ -75,26 +73,22 @@ static void checkSelectGameHovered(ButtonArray* array) {
       break;
 
     case 0:
-      printf("Selected arena: %d\n", select_game_current_arena);
       select_game_current_arena = 0;
       pressed_menu_button = false;
       break;
 
     case 1:
-      printf("Selected arena: %d\n", select_game_current_arena);
       select_game_current_arena = 1;
       pressed_menu_button = false;
       break;
 
     case 2:
-      printf("Selected arena: %d\n", select_game_current_arena);
       select_game_current_arena = 2;
       pressed_menu_button = false;
       break;
     
     case 4:
       state = GAME;
-      printf("Selected arena: %d\n", select_game_current_arena);
       enterGame(false, select_game_current_arena);
       exitMenu();
       break;

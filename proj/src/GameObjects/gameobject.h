@@ -17,6 +17,8 @@ typedef struct GameObject {
   uint16_t z_index;
 } GameObject;
 
+void init_render_pipeline();
+
 int create_gameobjects();
 int destroy_gameobjects();
 void renderGameObjects();
