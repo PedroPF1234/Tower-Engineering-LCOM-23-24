@@ -4,10 +4,11 @@
 
 typedef struct Arena {
   Sprite* background;
-  int16_t* coordinate_targets;
   uint8_t num_targets;
-  int16_t spawn_x;
-  int16_t spawn_y;
+  int16_t* targert_coordinates;
+  int16_t* tower_coordinates;
+  int16_t spawn_x, spawn_y;
+  int16_t store_x, store_y;
 } Arena;
 
 Arena* initializeArenas();

@@ -12,6 +12,80 @@
 
 static uint32_t createdSprites = 0;
 
+// Sprite array functions
+
+SpriteArray newSpriteArray(uint32_t capacity) {
+  SpriteArray array;
+  array.length = 0;
+
+  if (capacity) {
+    array.sprites = (Sprite**)malloc(capacity * sizeof(Sprite*));
+    array.capacity = capacity;
+  } else {
+    array.sprites = (Sprite**)malloc(sizeof(Sprite*) * 10);
+    array.capacity = 10;
+  }
+  return array;
+}
+
+void pushSpriteArray(SpriteArray* array, Sprite* sprite) {
+
+  if (array->capacity != array->length) {
+      array->sprites[array->length] = sprite;
+  } else {
+    uint32_t newCapacity = array->capacity * 2;
+    Sprite** oldPointer = array->sprites;
+    Sprite** newPointer = (Sprite**)malloc(newCapacity * sizeof(Sprite*));
+    array->sprites = newPointer;
+    for (uint32_t i = 0; i < array->length; i++) {
+      newPointer[i] = oldPointer[i];
+    }
+    free(oldPointer);
+    array->sprites[array->length] = sprite;
+  }
+  array->length++;
+}
+
+Sprite* getSpriteArray(SpriteArray* array, uint32_t index) {
+  if (index < array->length) {
+    return array->sprites[index];
+  } else {
+    return NULL;
+  }
+}
+
+void removeSpriteArray(SpriteArray* array, uint32_t index) {
+  if (index < array->length) {
+    Sprite* sprite = getSpriteArray(array, index);
+    destroy_sprite(sprite);
+    for (uint32_t i = index; i < array->length - 1; i++) {
+      array->sprites[i] = array->sprites[i + 1];
+    }
+    array->length--;
+  }
+}
+
+void destroySpriteArray(SpriteArray* array) {
+  for (uint32_t i = 0; i < array->length; i++) {
+    destroy_sprite(array->sprites[i]);
+  }
+  free(array->sprites);
+}
+
+void hideSprites(SpriteArray* array) {
+  for (uint32_t i = 0; i < array->length; i++) {
+    array->sprites[i]->is_visible = false;
+  }
+}
+
+void showSprites(SpriteArray* array) {
+  for (uint32_t i = 0; i < array->length; i++) {
+    array->sprites[i]->is_visible = true;
+  }
+}
+
+// Individual sprite functions
+
 Sprite* create_sprite(xpm_map_t pic, int16_t x, int16_t y, bool square_shape, bool is_visible) {
   
   Sprite* sp = (Sprite*) malloc(sizeof(Sprite));

@@ -5,56 +5,89 @@
 
 #include "../ImageAssets/MouseCursor.xpm"
 
-typedef struct Node {
-    GameObject *gameObject;
-    struct Node *next;
-} Node;
+typedef struct RenderArrayList {
+    GameObject** gameObjects;
+    uint32_t capacity;
+    uint32_t length;
+} RenderArrayList;
 
-static Node *head = NULL;
+static RenderArrayList renderPipeline;
 
 GameObject* mouse;
 
-static void insertRenderPipeline(Node **head, GameObject *newGameObject) {
-    Node *newNode = (Node *)malloc(sizeof(Node));
-    newNode->gameObject = newGameObject;
-    newNode->next = NULL;
+static RenderArrayList newRenderArray(uint32_t capacity) {
+  RenderArrayList renderArray;
+  renderArray.length = 0;
 
-    if (*head == NULL || (*head)->gameObject->z_index >= newGameObject->z_index) {
-        newNode->next = *head;
-        *head = newNode;
-    } else {
-        Node *current = *head;
-        while (current->next != NULL && current->next->gameObject->z_index < newGameObject->z_index) {
-            current = current->next;
-        }
-        newNode->next = current->next;
-        current->next = newNode;
-    }
+  if (capacity != 0) {
+    renderArray.capacity = capacity;
+    renderArray.gameObjects = (GameObject**) malloc(capacity * sizeof(GameObject*));
+  } else {
+    renderArray.capacity = 10;
+    renderArray.gameObjects = (GameObject**) malloc(10 * sizeof(GameObject*));
+  }
+
+  return renderArray;
 }
 
-static void deleteNode(Node **head, GameObject *gameObject) {
-    Node *temp = *head, *prev = NULL;
+static void insertRenderPipeline(RenderArrayList *array, GameObject *newGameObject) {
+  if (array->length == 0) {
+    array->gameObjects[0] = newGameObject;
+    array->length++;
+  }
 
-    // If the node to be deleted is the head node
-    if (temp != NULL && temp->gameObject == gameObject) {
-        *head = temp->next;
-        free(temp);
-        return;
+  if (array->length >= array->capacity) {
+    uint32_t newCapacity = array->capacity * 2;
+    GameObject** oldPointer = array->gameObjects;
+    GameObject** newPointer = (GameObject**)malloc(newCapacity * sizeof(GameObject*));
+    array->gameObjects = newPointer;
+    for (uint32_t i = 0; i < array->length; i++) {
+      newPointer[i] = oldPointer[i];
     }
+    free(oldPointer);
+  }
 
-    // Find the node to be deleted
-    while (temp != NULL && temp->gameObject != gameObject) {
-        prev = temp;
-        temp = temp->next;
+  for (uint32_t i = 0; i < array->length; i++) {
+    if (array->gameObjects[i]->z_index >= newGameObject->z_index) {
+      array->length++;
+      for (uint32_t j = array->length - 1; j > i; j--) {
+
+        array->gameObjects[j] = array->gameObjects[j - 1];
+
+      }
+
+      array->gameObjects[i] = newGameObject;
+      break;
     }
+    if (i == array->length - 1) {
+      array->gameObjects[i] = newGameObject;
+      array->length++;
+      break;
+    }
+  }
+}
 
-    // If not found
-    if (temp == NULL) return;
+static void removeRenderPipeline(RenderArrayList *array, GameObject *gameObject) {
+  
+  if (array->length == 0) {
+    printf("Array is already empty!\n");
+    return;
+  }
 
-    // Unlink the node from linked list
-    prev->next = temp->next;
+  for (uint32_t i = 0; i < array->length; i++) {
+    if (array->gameObjects[i] == gameObject) {
+      for (uint32_t j = i; j < array->length - 1; j++) {
+        array->gameObjects[j] = array->gameObjects[j + 1]; 
+      }
+      array->gameObjects[array->length - 1] = (GameObject*)0;
+      array->length--;
+      break;
+    }
+  }
+}
 
-    free(temp);
+void init_render_pipeline() {
+  renderPipeline = newRenderArray(200);
 }
 
 GameObject* create_gameobject(xpm_map_t pic, int16_t x, int16_t y, int16_t origin_offset_x, int16_t origin_offset_y, uint16_t z_index, bool square_shape, bool visible) {
@@ -69,7 +102,7 @@ GameObject* create_gameobject(xpm_map_t pic, int16_t x, int16_t y, int16_t origi
   gameObject->origin_offset_y = origin_offset_y;
   gameObject->z_index = z_index;
 
-  insertRenderPipeline(&head, gameObject);
+  insertRenderPipeline(&renderPipeline, gameObject);
 
   return gameObject;
 }
@@ -90,13 +123,13 @@ GameObject* create_spriteless_gameobject(int16_t x, int16_t y, int16_t origin_of
 void add_sprite_to_spriteless_gameobject(GameObject* gameObject, Sprite* sprite) {
   if (gameObject->sprite == NULL) {
     gameObject->sprite = sprite;
-    insertRenderPipeline(&head, gameObject);
+    insertRenderPipeline(&renderPipeline, gameObject);
   }
 }
 
 void remove_sprite_from_spriteless_gameobject(GameObject* gameObject) {
   if (gameObject->sprite != NULL) {
-    deleteNode(&head, gameObject);
+    removeRenderPipeline(&renderPipeline, gameObject);
     gameObject->sprite = NULL;
   }
 }
@@ -111,19 +144,19 @@ GameObject* create_gameobject_from_sprite(Sprite* sprite, int16_t x, int16_t y, 
   gameObject->origin_offset_y = origin_offset_y;
   gameObject->z_index = z_index;
 
-  insertRenderPipeline(&head, gameObject);
+  insertRenderPipeline(&renderPipeline, gameObject);
 
   return gameObject;
 }
 
 void updateGameObjectZIndex(GameObject* gameObject, uint16_t z_index) {
   gameObject->z_index = z_index;
-  deleteNode(&head, gameObject);
-  insertRenderPipeline(&head, gameObject);
+  removeRenderPipeline(&renderPipeline, gameObject);
+  insertRenderPipeline(&renderPipeline, gameObject);
 }
 
 void destroy_gameobject(GameObject* gameObject) {
-  deleteNode(&head, gameObject);
+  removeRenderPipeline(&renderPipeline, gameObject);
   if (gameObject->sprite != NULL) destroy_sprite(gameObject->sprite);
   free(gameObject);
 }
@@ -140,10 +173,9 @@ void updateGameObjectSprite(GameObject* gameObject, Sprite* sprite) {
 }
 
 void renderGameObjects() {
-  Node *current = head;
-  while (current != NULL) {
-    draw_gameObject(current->gameObject);
-    current = current->next;
+
+  for (uint32_t i = 0; i < renderPipeline.length; i++) {
+    draw_gameObject(renderPipeline.gameObjects[i]);
   }
 }
 

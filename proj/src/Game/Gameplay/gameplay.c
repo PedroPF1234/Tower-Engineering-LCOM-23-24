@@ -436,7 +436,7 @@ void enterGame(bool multi, uint8_t arena) {
   player1->player->sprite->is_visible = true;
   if (multi) player2->player->sprite->is_visible = true;
 
-  player_base = initializePlayerBase(current_arena->coordinate_targets[(current_arena->num_targets - 1) * 2], current_arena->coordinate_targets[(current_arena->num_targets - 1) * 2 + 1], 1000);
+  player_base = initializePlayerBase(current_arena->targert_coordinates[(current_arena->num_targets - 1) * 2], current_arena->targert_coordinates[(current_arena->num_targets - 1) * 2 + 1], 1000);
 
   // Wont be needed when the pushing of turrets is moved to here.
   showTowers(&towers);
@@ -465,7 +465,7 @@ void updateGame() {
   if (rtc_time->just_updated && state == GAME) {
     if (to_spawn_enemy) {
       to_spawn_enemy = false;
-      pushEnemyArray(&enemies, initializeEnemy((float)current_arena->spawn_x, (float)current_arena->spawn_y, 0, 0, multiplayer ? 1500 : 1000, current_arena->coordinate_targets, current_arena->num_targets));
+      pushEnemyArray(&enemies, initializeEnemy((float)current_arena->spawn_x, (float)current_arena->spawn_y, 0, 0, multiplayer ? 1500 : 1000, current_arena->targert_coordinates, current_arena->num_targets));
     } else {
       to_spawn_enemy = true;
     }
