@@ -2,8 +2,6 @@
 
 #include "../../../Devices/device_controller.h"
 
-#include "../../DataStructure/spritearray.h"
-
 typedef enum Direction {
   UP,
   DOWN,
@@ -12,8 +10,7 @@ typedef enum Direction {
   UP_LEFT,
   UP_RIGHT,
   DOWN_LEFT,
-  DOWN_RIGHT,
-  STATIONARY
+  DOWN_RIGHT
 } Direction;
 
 typedef struct Player {

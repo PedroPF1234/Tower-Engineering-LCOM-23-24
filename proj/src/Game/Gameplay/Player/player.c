@@ -11,11 +11,11 @@ Player* initializePlayer(float x, float y, int16_t ox, int16_t oy, int16_t hp) {
   Player* new_player = (Player*)malloc(sizeof(Player));
   new_player->sprites = newSpriteArray(9);
 
-  char** playerSprites[] = {BichoUp, BichoDown, BichoLeft, BichoRight, BichoUpperLeft, BichoUpperRight, BichoLowerLeft, BichoLowerRight, BichoStationary};
+  char** playerSprites[] = {PlayerUp, PlayerDown, PlayerLeft, PlayerRight, PlayerUpLeft1, PlayerUpRight1, PlayerDownLeft1, PlayerDownRight1};
 
-  for (uint32_t i = 0; i < 9; i++) {
+  for (uint32_t i = 0; i < 8; i++) {
     Sprite* sprite;
-    if (i == 8) {
+    if (i == DOWN) {
       sprite = create_sprite((xpm_map_t)playerSprites[i], x, y, false, false);
     } else {
       sprite = create_sprite((xpm_map_t)playerSprites[i], x, y, false, true);
@@ -27,7 +27,7 @@ Player* initializePlayer(float x, float y, int16_t ox, int16_t oy, int16_t hp) {
     pushSpriteArray(&new_player->sprites, sprite);
   }
 
-  new_player->player = create_gameobject_from_sprite(getSpriteArray(&new_player->sprites, STATIONARY), x, y, ox, oy, y * Z_INDEX_PER_LAYER + LOW_PRIORITY_Z_INDEX);
+  new_player->player = create_gameobject_from_sprite(getSpriteArray(&new_player->sprites, DOWN), x, y, ox, oy, y * Z_INDEX_PER_LAYER + LOW_PRIORITY_Z_INDEX);
 
   new_player->x = x;
   new_player->y = y;
@@ -100,8 +100,6 @@ void updatePlayerSpriteBasedOnPosition(Player* player) {
       updateGameObjectSprite(player->player, getSpriteArray(&player->sprites, DOWN));
     } else if (y < 0.0f) {
       updateGameObjectSprite(player->player, getSpriteArray(&player->sprites, UP));
-    } else {
-      updateGameObjectSprite(player->player, getSpriteArray(&player->sprites, STATIONARY));
     }
   }
 
