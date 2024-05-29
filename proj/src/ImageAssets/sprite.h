@@ -14,6 +14,45 @@ typedef struct Sprite {
   bool square_shape;
 } Sprite;
 
+typedef struct SpriteArray {
+  Sprite** sprites;
+  uint32_t capacity;
+  uint32_t length;
+} SpriteArray;
+
+typedef struct AnimatedSprite {
+  SpriteArray* sprites;
+  uint8_t current_sprite;
+  uint16_t animation_cooldown;
+  uint16_t cooldown_counter;
+  Sprite* current;
+} AnimatedSprite;
+
+typedef struct AnimatedSpriteArray {
+  AnimatedSprite** sprites;
+  uint32_t capacity;
+  uint32_t length;
+} AnimatedSpriteArray;
+
+// AnimatedSpriteArray functions
+AnimatedSpriteArray newAnimatedSpriteArray(uint32_t capacity);
+void pushAnimatedSpriteArray(AnimatedSpriteArray* array, AnimatedSprite* sprite);
+AnimatedSprite* getAnimatedSpriteArray(AnimatedSpriteArray* array, uint32_t index);
+void removeAnimatedSpriteArray(AnimatedSpriteArray* array, uint32_t index);
+void destroyAnimatedSpriteArray(AnimatedSpriteArray* array);
+
+// AnimatedSprite functions
+
+// SpriteArray functions
+SpriteArray newSpriteArray(uint32_t capacity);
+void pushSpriteArray(SpriteArray* array, Sprite* sprite);
+Sprite* getSpriteArray(SpriteArray* array, uint32_t index);
+void removeSpriteArray(SpriteArray* array, uint32_t index);
+void destroySpriteArray(SpriteArray* array);
+void hideSprites(SpriteArray* array);
+void showSprites(SpriteArray* array);
+
+// Individual sprite functions
 Sprite *create_sprite(xpm_map_t pic, int16_t x, int16_t y, bool square_shape, bool is_visible);
 Sprite* create_rotation_abled_sprite(xpm_map_t pic, int16_t x, int16_t y, bool square_shape, 
   bool is_visible, int* num_sprites);

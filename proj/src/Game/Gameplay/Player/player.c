@@ -9,18 +9,25 @@ extern ScreenInfo screen;
 
 Player* initializePlayer(float x, float y, int16_t ox, int16_t oy, int16_t hp) {
   Player* new_player = (Player*)malloc(sizeof(Player));
+  new_player->sprites = newSpriteArray(9);
 
-  new_player->up = create_sprite((xpm_map_t)BichoUp, x, y, false, true);
-  new_player->down = create_sprite((xpm_map_t)BichoDown, x, y, false, true);
-  new_player->left = create_sprite((xpm_map_t)BichoLeft, x, y, false, true);
-  new_player->right = create_sprite((xpm_map_t)BichoRight, x, y, false, true);
-  new_player->up_left = create_sprite((xpm_map_t)BichoUpperLeft, x, y, false, true);
-  new_player->up_right = create_sprite((xpm_map_t)BichoUpperRight, x, y, false, true);
-  new_player->down_left = create_sprite((xpm_map_t)BichoLowerLeft, x, y, false, true);
-  new_player->down_right = create_sprite((xpm_map_t)BichoLowerRight, x, y, false, true);
-  new_player->stationary = create_sprite((xpm_map_t)BichoStationary, x, y, false, false);
+  char** playerSprites[] = {BichoUp, BichoDown, BichoLeft, BichoRight, BichoUpperLeft, BichoUpperRight, BichoLowerLeft, BichoLowerRight, BichoStationary};
 
-  new_player->player = create_gameobject_from_sprite(new_player->stationary, x, y, ox, oy, y * Z_INDEX_PER_LAYER + LOW_PRIORITY_Z_INDEX);
+  for (uint32_t i = 0; i < 9; i++) {
+    Sprite* sprite;
+    if (i == 8) {
+      sprite = create_sprite((xpm_map_t)playerSprites[i], x, y, false, false);
+    } else {
+      sprite = create_sprite((xpm_map_t)playerSprites[i], x, y, false, true);
+    }
+    if (sprite == NULL) {
+      destroyPlayer(new_player);
+      return NULL;
+    }
+    pushSpriteArray(&new_player->sprites, sprite);
+  }
+
+  new_player->player = create_gameobject_from_sprite(getSpriteArray(&new_player->sprites, STATIONARY), x, y, ox, oy, y * Z_INDEX_PER_LAYER + LOW_PRIORITY_Z_INDEX);
 
   new_player->x = x;
   new_player->y = y;
@@ -35,15 +42,7 @@ Player* initializePlayer(float x, float y, int16_t ox, int16_t oy, int16_t hp) {
 }
 
 void destroyPlayer(Player* player) {
-  destroy_sprite(player->up);
-  destroy_sprite(player->down);
-  destroy_sprite(player->left);
-  destroy_sprite(player->right);
-  destroy_sprite(player->up_left);
-  destroy_sprite(player->up_right);
-  destroy_sprite(player->down_left);
-  destroy_sprite(player->down_right);
-  destroy_sprite(player->stationary);
+  destroySpriteArray(&player->sprites);
   player->player->sprite = NULL;
   destroy_gameobject(player->player);
   free(player);
@@ -81,28 +80,28 @@ void updatePlayerSpriteBasedOnPosition(Player* player) {
   if (x!=0.0f && y!=0.0f) {
     if (x > 0.0f) {
       if (y > 0.0f) {
-        updateGameObjectSprite(player->player, player->down_right);
+        updateGameObjectSprite(player->player, getSpriteArray(&player->sprites, DOWN_RIGHT));
       } else if (y < 0.0f) {
-        updateGameObjectSprite(player->player, player->up_right);
+        updateGameObjectSprite(player->player, getSpriteArray(&player->sprites, UP_RIGHT));
       }
     } else {
       if (y > 0.0f) {
-        updateGameObjectSprite(player->player, player->down_left);
+        updateGameObjectSprite(player->player, getSpriteArray(&player->sprites, DOWN_LEFT));
       } else if (y < 0.0f) {
-        updateGameObjectSprite(player->player, player->up_left);
+        updateGameObjectSprite(player->player, getSpriteArray(&player->sprites, UP_LEFT));
       }
     }
   } else {
     if (x > 0.0f) {
-      updateGameObjectSprite(player->player, player->right);
+      updateGameObjectSprite(player->player, getSpriteArray(&player->sprites, RIGHT));
     } else if (x < 0.0f) {
-      updateGameObjectSprite(player->player, player->left);
+      updateGameObjectSprite(player->player, getSpriteArray(&player->sprites, LEFT));
     } else if (y > 0.0f) {
-      updateGameObjectSprite(player->player, player->down);
+      updateGameObjectSprite(player->player, getSpriteArray(&player->sprites, DOWN));
     } else if (y < 0.0f) {
-      updateGameObjectSprite(player->player, player->up);
+      updateGameObjectSprite(player->player, getSpriteArray(&player->sprites, UP));
     } else {
-      updateGameObjectSprite(player->player, player->stationary);
+      updateGameObjectSprite(player->player, getSpriteArray(&player->sprites, STATIONARY));
     }
   }
 
