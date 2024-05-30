@@ -1,5 +1,7 @@
 #pragma once
 
+#include "../Arena/arena.h"
+
 #include "../../../Devices/device_controller.h"
 
 typedef enum Direction {
@@ -17,6 +19,7 @@ typedef enum Direction {
   RIGHT_IDLE
 } Direction;
 
+
 typedef struct Player {
   AnimatedGameObject* player;
   AnimatedSpriteArray sprites;
@@ -30,5 +33,5 @@ typedef struct Player {
 
 Player* initializePlayer(float x, float y, int16_t ox, int16_t oy, int16_t hp);
 void destroyPlayer(Player* player);
-void updatePlayerPosition(Player* player);
+void updatePlayerPosition(Player* player, Arena arena);
 void updatePlayerSpriteBasedOnPosition(Player* player);

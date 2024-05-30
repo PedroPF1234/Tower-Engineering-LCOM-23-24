@@ -5,6 +5,7 @@
 
 #include "../../../ImageAssets/Player.xpm"
 
+
 extern ScreenInfo screen;
 
 Player* initializePlayer(float x, float y, int16_t ox, int16_t oy, int16_t hp) {
@@ -42,27 +43,42 @@ void destroyPlayer(Player* player) {
   free(player);
 }
 
-void updatePlayerPosition(Player* player) {
+void updatePlayerPosition(Player* player, Arena arena) {
 
   int16_t old_y = (int16_t) player->y;
 
-  player->x += player->speed[0] / 30;
-  player->y += player->speed[1] / 30;
+  bool can_move = true;
 
-  if (player->x < 0) player->x = 0;
-  if (player->y < 0) player->y = 0;
-  if (player->x > screen.xres) player->x = screen.xres;
-  if (player->y > screen.yres) player->y = screen.yres;
+  float new_x = player->x;
+  float new_y = player->y;
 
-  int16_t new_x = (int16_t) player->x;
-  int16_t new_y = (int16_t) player->y;
+  new_x += player->speed[0] / 30;
+  new_y += player->speed[1] / 30;
 
-  player->player->gameObject->x = new_x;
-  player->player->gameObject->y = new_y;
+  if (new_x < 0) player->x = 0;
+  if (new_y < 0) player->y = 0;
+  if (new_x > screen.xres) player->x = screen.xres;
+  if (new_y > screen.yres) player->y = screen.yres;
 
-  if (old_y != new_y) {
-    if (new_y < 0) new_y = 0;
-    updateGameObjectZIndex(player->player->gameObject, new_y * Z_INDEX_PER_LAYER + LOW_PRIORITY_Z_INDEX);
+  // Collision Detection 
+  int16_t shop_left_corner = arena.shop_x - 75;
+  int16_t shop_right_corner = arena.shop_x + 75;
+
+  if (new_x > shop_left_corner && new_x < shop_right_corner && new_y <= arena.shop_y && new_y >= arena.shop_y - 100) {
+    can_move = false;
+  }
+
+  if (can_move) {
+    player->x = new_x;
+    player->y = new_y;
+
+    player->player->gameObject->x = (int16_t) new_x;
+    player->player->gameObject->y = (int16_t) new_y;
+
+    if (old_y != (int16_t) new_y) {
+      if (new_y < 0) new_y = 0;
+      updateGameObjectZIndex(player->player->gameObject, (int16_t) new_y * Z_INDEX_PER_LAYER + MEDIUM_PRIORITY_Z_INDEX);
+    }
   }
 }
 

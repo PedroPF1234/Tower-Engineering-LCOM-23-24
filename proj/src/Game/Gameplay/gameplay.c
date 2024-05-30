@@ -10,6 +10,7 @@
 #include "Enemy/enemy.h"
 #include "Bullet/bullet.h"
 #include "PlayerBase/playerbase.h"
+#include "Shop/shop.h"
 
 #include "../gamestates.h"
 
@@ -38,6 +39,9 @@ static bool pressed_pause_button = false;
 static int8_t game_current_selection = -1;
 static int8_t pause_current_selection = -1;
 
+int16_t shop_y = 200;
+int16_t shop_x = 1100;
+
 bool multiplayer = false;
 
 // Game Objects
@@ -62,6 +66,9 @@ BulletArray bullets;
 
 // PlayerBase
 PlayerBase* player_base;
+
+// Shop
+Shop* shop;
 
 // Pause Buttons
 ButtonArray pause_buttons;
@@ -370,7 +377,7 @@ static void updateGamePlay() {
   checkGameKeyboardInput(&keyboard_device->keyPresses);
   checkGameHovered(&towers);
   if (playing) {
-    updatePlayerPosition(player1);
+    updatePlayerPosition(player1, *current_arena);
     updatePlayerSpriteBasedOnPosition(player1);
     updateAllEnemyPositions(&enemies);
     updatePlayerBaseHealthBar(player_base);
@@ -393,7 +400,7 @@ static void updateGamePlay() {
     */
 
     if (multiplayer) {
-      updatePlayerPosition(player2);
+      updatePlayerPosition(player2, *current_arena);
       updatePlayerSpriteBasedOnPosition(player2);
     }
 
@@ -452,6 +459,12 @@ void enterGame(bool multi, uint8_t arena) {
   if (multi) showSprites(&player2->player->animatedSprite->sprites);
 
   player_base = initializePlayerBase(current_arena->targert_coordinates[(current_arena->num_targets - 1) * 2], current_arena->targert_coordinates[(current_arena->num_targets - 1) * 2 + 1], 1000);
+  
+  shop = initializeShop(current_arena->shop_x, current_arena->shop_y);
+
+  // Wont be needed when the pushing of turrets is moved to here.
+  showTowers(&towers);
+  //
 }
 
 /*
@@ -500,6 +513,7 @@ void exitGame() {
   hideButtons(&pause_buttons);
   destroyEnemyArray(&enemies);
   destroyPlayerBase(player_base);
+  destroyShop(shop);
   remove_sprite_from_spriteless_gameobject(game_background);
   pause_background->sprite->is_visible = false;
 }

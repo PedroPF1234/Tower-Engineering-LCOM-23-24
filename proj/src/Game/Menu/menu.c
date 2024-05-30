@@ -282,7 +282,7 @@ void initializeMenu() {
   menuButtons = newButtonArray(20);
   selectGameArenaButtons = newButtonArray(20);
 
-  background = create_gameobject((xpm_map_t) Background, 0, 0, 0, 0, 0, true, true);
+  background = create_gameobject((xpm_map_t) MenuBackground, 0, 0, 0, 0, 0, true, true);
 
   Sprite* selectBackgound = create_sprite((xpm_map_t) SelectGameBackground, screen.xres/2, screen.yres/2, true, false);
   selectGameBackground = create_gameobject_from_sprite(selectBackgound, screen.xres/2, screen.yres/2, -(selectBackgound->width/2), -(selectBackgound->height/2), 2);
@@ -293,13 +293,13 @@ void initializeMenu() {
   Sprite* playButton = create_sprite((xpm_map_t)PlayButton, screen.xres/2-1, screen.yres/2-101, true, false);
 
   // Play Button
-  pushButtonArray(&menuButtons, initializeButton((xpm_map_t)PlayButtonHovered, (xpm_map_t)PlayButton, screen.xres/2-1, screen.yres/2-101, -(playButton->width/2), -(playButton->height/2), 1, true, true));
+  pushButtonArray(&menuButtons, initializeButton((xpm_map_t)PlayButtonHovered, (xpm_map_t)PlayButton, screen.xres/2-1, screen.yres/2+150, -(playButton->width/2), -(playButton->height/2), 1, true, true));
 
   // Instructions Button
-  pushButtonArray(&menuButtons, initializeButton((xpm_map_t)InstructionsButtonHovered, (xpm_map_t)InstructionsButton, screen.xres/2-1, screen.yres/2-1, -(playButton->width/2), -(playButton->height/2), 1, true, true));
+  pushButtonArray(&menuButtons, initializeButton((xpm_map_t)InstructionsButtonHovered, (xpm_map_t)InstructionsButton, screen.xres/2, screen.yres/2+250, -(playButton->width/2), -(playButton->height/2), 1, true, true));
 
   // Quit Button
-  pushButtonArray(&menuButtons, initializeButton((xpm_map_t)QuitButtonHovered, (xpm_map_t)QuitButton, screen.xres/2-1, screen.yres/2+99, -(playButton->width/2), -(playButton->height/2), 1, true, true));
+  pushButtonArray(&menuButtons, initializeButton((xpm_map_t)QuitButtonHovered, (xpm_map_t)QuitButton, screen.xres/2-1, screen.yres/2+350, -(playButton->width/2), -(playButton->height/2), 1, true, true));
 
   // Select Game Arena Buttons
   // Aux
