@@ -195,9 +195,8 @@ void updateAnimatedGameObjects() {
 
 void switchAnimatedSpriteOfAnimatedGameObject(AnimatedGameObject* animatedGameObject, AnimatedSprite* animatedSprite) {
   animatedGameObject->animatedSprite = animatedSprite;
-  // Should implement these two assignments but they're conflicting with functionallity for now
-  // animatedSprite->cooldown_counter = 0;
-  // animatedSprite->current_sprite = 0;
+  animatedSprite->cooldown_counter = 0;
+  animatedSprite->current_sprite = 0;
   updateGameObjectSprite(animatedGameObject->gameObject, getSpriteArray(&animatedSprite->sprites, animatedSprite->current_sprite));
 }
 

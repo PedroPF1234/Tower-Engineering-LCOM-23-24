@@ -110,7 +110,8 @@ static void checkGameKeyboardInput(KeyPresses** head) {
           player1->speed[1] = 7.0f;
           if (player1->speed[0] > 0.0f) player1->speed[0] = 7.0f;
           else player1->speed[0] = -7.0f;
-        }
+        } else if (player1->speed[0] == 7.0f || player1->speed[0] == -7.0f) 
+          player1->speed[1] = 7.0f;
         else player1->speed[1] = 10.0f;
         break;
 
@@ -120,7 +121,8 @@ static void checkGameKeyboardInput(KeyPresses** head) {
           player1->speed[1] = -7.0f;
           if (player1->speed[0] > 0.0f) player1->speed[0] = 7.0f;
           else player1->speed[0] = -7.0f;
-        }
+        } else if (player1->speed[0] == 7.0f || player1->speed[0] == -7.0f) 
+          player1->speed[1] = -7.0f;
         else player1->speed[1] = -10.0f;
         break;
 
@@ -130,7 +132,8 @@ static void checkGameKeyboardInput(KeyPresses** head) {
           player1->speed[0] = -7.0f;
           if (player1->speed[1] > 0.0f) player1->speed[1] = 7.0f;
           else player1->speed[1] = -7.0f;
-        }
+        } else if (player1->speed[1] == 7.0f || player1->speed[1] == -7.0f) 
+          player1->speed[0] = -7.0f;
         else player1->speed[0] = -10.0f;
         break;
 
@@ -140,24 +143,33 @@ static void checkGameKeyboardInput(KeyPresses** head) {
           player1->speed[0] = 7.0f;
           if (player1->speed[1] > 0.0f) player1->speed[1] = 7.0f;
           else player1->speed[1] = -7.0f;
-        }
+        } else if (player1->speed[1] == 7.0f || player1->speed[1] == -7.0f) 
+          player1->speed[0] = 7.0f;
         else player1->speed[0] = 10.0f;
         break;
 
       case S_BREAK:
         player1->speed[1] = 0.0f;
+        if (player1->speed[0] == 7.0f) player1->speed[0] = 10.0f;
+        else if (player1->speed[0] == -7.0f) player1->speed[0] = -10.0f;
         break;
 
       case W_BREAK:
         player1->speed[1] = 0.0f;
+        if (player1->speed[0] == 7.0f) player1->speed[0] = 10.0f;
+        else if (player1->speed[0] == -7.0f) player1->speed[0] = -10.0f;
         break;
 
       case A_BREAK:
         player1->speed[0] = 0.0f;
+        if (player1->speed[1] == 7.0f) player1->speed[1] = 10.0f;
+        else if (player1->speed[1] == -7.0f) player1->speed[1] = -10.0f;
         break;
 
       case D_BREAK:
         player1->speed[0] = 0.0f;
+        if (player1->speed[1] == 7.0f) player1->speed[1] = 10.0f;
+        else if (player1->speed[1] == -7.0f) player1->speed[1] = -10.0f;
         break;
 
       case SPACE_BREAK:

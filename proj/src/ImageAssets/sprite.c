@@ -122,6 +122,8 @@ void destroy_animated_sprite(AnimatedSprite* as) {
 }
 
 void update_animated_sprite(AnimatedSprite* as) {
+  if (as->animation_cooldown == 0) return;
+
   if (as->cooldown_counter < as->animation_cooldown) {
     as->cooldown_counter++;
   } else {
