@@ -1074,7 +1074,7 @@ static char *info1[] = {
   "932 960",
 
   /*Shop coordinates*/
-  "1100 100"
+  "1100 200"
 };
 
 static char **Arena1Info[] = {

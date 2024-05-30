@@ -63,10 +63,10 @@ void updatePlayerPosition(Player* player, Arena arena) {
   if (new_y > screen.yres) player->y = screen.yres;
 
   // Collision Detection 
-  int16_t shop_left_corner = arena.shop_x - 75;
-  int16_t shop_right_corner = arena.shop_x + 75;
+  int16_t shop_left_corner = arena.shop_x - 95;
+  int16_t shop_right_corner = arena.shop_x + 95;
 
-  if (new_x > shop_left_corner && new_x < shop_right_corner && new_y <= arena.shop_y && new_y >= arena.shop_y - 100) {
+  if (new_x > shop_left_corner && new_x < shop_right_corner && new_y <= arena.shop_y && new_y >= arena.shop_y - 40) {
     can_move = false;
   }
 

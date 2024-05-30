@@ -315,10 +315,10 @@ void initializeMenu() {
   pushButtonArray(&selectGameArenaButtons, initializeButton((xpm_map_t)ThirdMiniMap, (xpm_map_t)ThirdMiniMap, screen.xres/2+299, screen.yres/2-201, -(arena1->width/2), -(arena1->height/2), 3, true, true));
 
   // Back Button
-  pushButtonArray(&selectGameArenaButtons, initializeButton((xpm_map_t)QuitButtonHovered, (xpm_map_t)QuitButton, screen.xres/2-301, screen.yres/2+299, -(playButton->width/2), -(playButton->height/2), 3, false, true));
+  pushButtonArray(&selectGameArenaButtons, initializeButton((xpm_map_t)QuitButtonHovered, (xpm_map_t)QuitButton, screen.xres/2-250, screen.yres/2+299, -(playButton->width/2), -(playButton->height/2), 3, false, true));
 
   // Play Button
-  pushButtonArray(&selectGameArenaButtons, initializeButton((xpm_map_t)PlayButtonHovered, (xpm_map_t)PlayButton, screen.xres/2+299, screen.yres/2+299, -(playButton->width/2), -(playButton->height/2), 3, false, true));
+  pushButtonArray(&selectGameArenaButtons, initializeButton((xpm_map_t)PlayButtonHovered, (xpm_map_t)PlayButton, screen.xres/2+250, screen.yres/2+299, -(playButton->width/2), -(playButton->height/2), 3, false, true));
 
   hideButtons(&selectGameArenaButtons);
   selectGameBackground->sprite->is_visible = false;
