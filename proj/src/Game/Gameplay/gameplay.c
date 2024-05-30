@@ -188,15 +188,20 @@ static void checkGameKeyboardInput(KeyPresses** head) {
           float bullet_speed_y;
           int16_t damage = 10;
           //so the bullet goes horizontal or vertical
-          if(player1->speed[1] < 0 ) {
+          if(player1->current_direction == UP ||player1->current_direction == UP_RIGHT ||
+          player1->current_direction == UP_LEFT ||
+          player1->current_direction == UP_IDLE) {
             bullet_speed_y = -1; 
             bullet_speed_x = 0;
           }
-          else if(player1->speed[1] > 0 ){
+          else if(player1->current_direction == DOWN || 
+          player1->current_direction == DOWN_RIGHT ||
+          player1->current_direction == DOWN_LEFT ||
+          player1->current_direction == DOWN_IDLE){
             bullet_speed_y = 1; 
             bullet_speed_x = 0;
           }
-          else if(player1->speed[0] < 0 ){
+          else if(player1->current_direction == LEFT || player1->current_direction == LEFT_IDLE){
             bullet_speed_y = 0; 
             bullet_speed_x = -1;
           }
@@ -212,7 +217,6 @@ static void checkGameKeyboardInput(KeyPresses** head) {
 
         break;
         
-
       case SPACE_BREAK:
         selecting_tower_base = !selecting_tower_base;
         if (selecting_tower_base) {
@@ -330,7 +334,6 @@ static void checkPauseKeyboardInput(KeyPresses** head) {
         break;
       }
     }
-
     if (current->next == NULL) {
       free(current);
       break;
@@ -403,6 +406,20 @@ static void checkPauseHovered(ButtonArray* array) {
   }
 }
 
+static bool checkCollision(Bullet* bullet, Enemy* enemy) {
+    int16_t bullet_left = bullet->x + bullet->origin_offset_x;
+    int16_t bullet_right = bullet->x + bullet->origin_offset_x + bullet->sprite->width;
+    int16_t bullet_top = bullet->y + bullet->origin_offset_y;
+    int16_t bullet_bottom = bullet->y + bullet->origin_offset_y + bullet->sprite->height;
+
+    int16_t enemy_left = enemy->x + enemy->origin_offset_x;
+    int16_t enemy_right = enemy->x + enemy->origin_offset_x + enemy->enemy->sprite->width;
+    int16_t enemy_top = enemy->y + enemy->origin_offset_y;
+    int16_t enemy_bottom = enemy->y + enemy->origin_offset_y + enemy->enemy->sprite->height;
+
+    return !(bullet_right < enemy_left || bullet_left > enemy_right || bullet_bottom < enemy_top || bullet_top > enemy_bottom);
+}
+
 static void updateGamePlay() {
   if (!first_time_paused) {
     hideButtons(&pause_buttons);
@@ -417,9 +434,6 @@ static void updateGamePlay() {
     updatePlayerBaseHealthBar(player_base);
     updateAllBulletPositions(&bullets);
 
-
-    // In case of collisions between bullets and enemies:
-    /*
     for (uint32_t i = 0; i < bullets.length; i++) {
       Bullet* bullet = getBulletArray(&bullets, i);
         if (bullet->active) {
@@ -427,11 +441,11 @@ static void updateGamePlay() {
             Enemy* enemy = getEnemyArray(&enemies, j);
             if (checkCollision(bullet, enemy)) {
               bullet->active = false;
+              enemy->hit_points -= 1;
             }
           }
         }
     }
-    */
 
     if (multiplayer) {
       updatePlayerPosition(player2, *current_arena);
@@ -467,8 +481,6 @@ void initializeGameplay() {
 
   hideButtons(&pause_buttons);
 
-  //Falta inicializar a array das bullets! 
-
   game_background = create_spriteless_gameobject(0, 0, 0, 0, 0);
   pause_background = create_gameobject((xpm_map_t)PauseBackground, screen.xres/2, screen.yres/2, -300, -300, 0xFFFE, true, false);
 }
@@ -500,23 +512,6 @@ void enterGame(bool multi, uint8_t arena) {
   showTowers(&towers);
   //
 }
-
-/*
-//I dont know very well where should I put this function
-static bool checkCollision(Bullet* bullet, Enemy* enemy) {
-    int16_t bullet_left = bullet->x + bullet->origin_offset_x;
-    int16_t bullet_right = bullet->x + bullet->origin_offset_x + bullet->sprite->width;
-    int16_t bullet_top = bullet->y + bullet->origin_offset_y;
-    int16_t bullet_bottom = bullet->y + bullet->origin_offset_y + bullet->sprite->height;
-
-    int16_t enemy_left = enemy->x + enemy->origin_offset_x;
-    int16_t enemy_right = enemy->x + enemy->origin_offset_x + enemy->enemy->sprite->width;
-    int16_t enemy_top = enemy->y + enemy->origin_offset_y;
-    int16_t enemy_bottom = enemy->y + enemy->origin_offset_y + enemy->enemy->sprite->height;
-
-    return !(bullet_right < enemy_left || bullet_left > enemy_right || bullet_bottom < enemy_top || bullet_top > enemy_bottom);
-}
-*/
 
 void updateGame() {
   
@@ -551,8 +546,6 @@ void exitGame() {
   remove_sprite_from_spriteless_gameobject(game_background);
   pause_background->sprite->is_visible = false;
 }
-
-
 
 void destroyGame() {
   destroy_gameobject(game_background);

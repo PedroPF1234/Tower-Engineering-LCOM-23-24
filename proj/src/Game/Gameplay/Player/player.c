@@ -33,7 +33,8 @@ Player* initializePlayer(float x, float y, int16_t ox, int16_t oy, int16_t hp) {
   new_player->origin_offset_y = oy;
   new_player->hit_points = hp;
   new_player->max_hit_points = hp;
-  new_player->hasWeapon = false;
+  //change - just for testing
+  new_player->hasWeapon = true;
 
   return new_player;
 }
@@ -83,6 +84,7 @@ void updatePlayerPosition(Player* player, Arena arena) {
   }
 }
 
+//update sprite and direction
 void updatePlayerSpriteBasedOnPosition(Player* player) {
 
   float x = player->speed[0];

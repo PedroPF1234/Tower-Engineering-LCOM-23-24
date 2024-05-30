@@ -8,6 +8,7 @@
 //#include "../../../ImageAssets/Bullet.xpm"
 
 extern ScreenInfo screen;
+//para testes
 #include "../../../ImageAssets/Towers.xpm"
 
 Bullet* initializeBullet(float x, float y, int16_t ox, int16_t oy, float speed_x, float speed_y, int16_t damage) {
