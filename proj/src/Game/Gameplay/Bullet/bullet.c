@@ -2,21 +2,21 @@
 #include <lcom/lcf.h>
 #include <stdint.h>
 #include <math.h>
-
 #include "bullet.h"
 
 //Temos de criar um xpm para as bullets
 //#include "../../../ImageAssets/Bullet.xpm"
 
 extern ScreenInfo screen;
+#include "../../../ImageAssets/Towers.xpm"
 
 Bullet* initializeBullet(float x, float y, int16_t ox, int16_t oy, float speed_x, float speed_y, int16_t damage) {
     Bullet* bullet = (Bullet*)malloc(sizeof(Bullet));
 
-    //Add Sprites
+    //Add Sprites - just for test this
     //We need xpm for bullets
-    //bullet->sprite = create_sprite((xpm_map_t)Bullet, x, y, false, true);
-    //bullet->bullet = create_gameobject_from_sprite(bullet->sprite, x, y, 0, 0, y * Z_INDEX_PER_LAYER + MEDIUM_PRIORITY_Z_INDEX);
+    bullet->sprite = create_sprite((xpm_map_t)Cannon, x, y, false, true);
+    bullet->bullet = create_gameobject_from_sprite(bullet->sprite, x, y, 0, 0, y * Z_INDEX_PER_LAYER + MEDIUM_PRIORITY_Z_INDEX);
 
     bullet->x = x;
     bullet->y = y;

@@ -172,6 +172,40 @@ static void checkGameKeyboardInput(KeyPresses** head) {
         else if (player1->speed[1] == -7.0f) player1->speed[1] = -10.0f;
         break;
 
+      case Q_BREAK:
+        // shot- create new bullet
+        if(player1->hasWeapon){
+          float bullet_x = player1->x; 
+          float bullet_y = player1->y; 
+          float bullet_speed_x;
+          float bullet_speed_y;
+          int16_t damage = 10;
+          //so the bullet goes horizontal or vertical
+          if(player1->speed[1] < 0 ) {
+            bullet_speed_y = -1; 
+            bullet_speed_x = 0;
+          }
+          else if(player1->speed[1] > 0 ){
+            bullet_speed_y = 1; 
+            bullet_speed_x = 0;
+          }
+          else if(player1->speed[0] < 0 ){
+            bullet_speed_y = 0; 
+            bullet_speed_x = -1;
+          }
+          else{
+            bullet_speed_y = 0; 
+            bullet_speed_x = 1;
+          }
+
+          Bullet* new_bullet = initializeBullet(bullet_x, bullet_y, 0, 0, bullet_speed_x, bullet_speed_y, damage);
+
+          pushBulletArray(&bullets, new_bullet);
+        }
+
+        break;
+        
+
       case SPACE_BREAK:
         selecting_tower_base = !selecting_tower_base;
         if (selecting_tower_base) {
@@ -374,11 +408,11 @@ static void updateGamePlay() {
     updatePlayerSpriteBasedOnPosition(player1);
     updateAllEnemyPositions(&enemies);
     updatePlayerBaseHealthBar(player_base);
-    /*
     updateAllBulletPositions(&bullets);
 
 
     // In case of collisions between bullets and enemies:
+    /*
     for (uint32_t i = 0; i < bullets.length; i++) {
       Bullet* bullet = getBulletArray(&bullets, i);
         if (bullet->active) {
@@ -417,7 +451,7 @@ void initializeGameplay() {
   player2 = initializePlayer(32, 28, -16, -29, 100);
   towers = newTowerArray(20);
   enemies = newEnemyArray(100);
-  //bullets = newBulletArray(100);
+  bullets = newBulletArray(100);
   pause_buttons = newButtonArray(20);
 
   pushButtonArray(&pause_buttons, initializeButton((xpm_map_t)ResumeButtonHovered, (xpm_map_t)ResumeButton, screen.xres/2, screen.yres/2 - 100, -224, -25, 0xFFFE, true, true));
@@ -432,8 +466,6 @@ void initializeGameplay() {
   pushTowerArray(&towers, initializeTower(500, 300, -55, -55, 100));
   pushTowerArray(&towers, initializeTower(1000, 600, -55, -55, 100));
   // 
-
-  //Falta inicializar a array das bullets! 
 
   game_background = create_spriteless_gameobject(0, 0, 0, 0, 0);
   pause_background = create_gameobject((xpm_map_t)PauseBackground, screen.xres/2, screen.yres/2, -300, -300, 0xFFFE, true, false);
@@ -511,6 +543,8 @@ void exitGame() {
   pause_background->sprite->is_visible = false;
 }
 
+
+
 void destroyGame() {
   destroy_gameobject(game_background);
   destroyPlayer(player1);
@@ -518,4 +552,7 @@ void destroyGame() {
   destroyTurretArray(&towers);
   destroyArenas(arenas);
   destroyEnemyArray(&enemies);
+
+  //destroyBulletArray(&bullets)
 }
+

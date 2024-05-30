@@ -16,13 +16,14 @@ PROG=proj
 .PATH: ${.CURDIR}/Game/Instructions/
 .PATH: ${.CURDIR}/Game/Gameplay/
 .PATH: ${.CURDIR}/Game/Gameplay/Player/
+.PATH: ${.CURDIR}/Game/Gameplay/Bullet/
 .PATH: ${.CURDIR}/Game/Gameplay/Tower/
 .PATH: ${.CURDIR}/Game/Gameplay/Enemy/
 .PATH: ${.CURDIR}/Game/Gameplay/Arena/
 .PATH: ${.CURDIR}/Game/Gameplay/PlayerBase/
 
 # source code files to be compiled
-SRCS = proj.c graphics.c kbc.c mouse.c timer.c rtc.c utils.c device_controller.c sprite.c gameobject.c game.c menu.c keyboardkeys.c player.c instructions.c gameplay.c towers.c enemy.c arena.c button.c playerbase.c
+SRCS = proj.c graphics.c kbc.c mouse.c timer.c rtc.c utils.c device_controller.c sprite.c gameobject.c game.c menu.c keyboardkeys.c player.c instructions.c gameplay.c towers.c enemy.c bullet.c arena.c button.c playerbase.c
 
 # additional compilation flags
 # "-Wall -Wextra -Werror -I . -std=c11 -Wno-unused-parameter" are already set

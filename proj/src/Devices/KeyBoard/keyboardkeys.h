@@ -32,6 +32,8 @@
 #define S_BREAK 0x9F // Break Code for S Key
 #define D_MAKE 0x20 // Make Code for D Key
 #define D_BREAK 0xA0 // Break Code for D Key
+#define Q_MAKE 0x10 // Make Code for Q Key
+#define Q_BREAK 0x90 // Break Code for Q Key
 
 typedef struct KeyPresses {
   uint8_t key;
