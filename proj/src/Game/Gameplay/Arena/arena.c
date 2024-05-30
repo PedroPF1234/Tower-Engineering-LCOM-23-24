@@ -3,73 +3,19 @@
 
 #include "arena.h"
 
-#include "../../../ImageAssets/Background.xpm"
+#include "../../../ImageAssets/Arena.xpm"
+
+static Arena* read_arena_info(char*** arena_info);
 
 Arena* initializeArenas() {
-  Arena* new_arena = (Arena*)malloc(sizeof(Arena) * 3);
+  Arena* new_arenas = (Arena*)malloc(sizeof(Arena) * 3);
 
-  int16_t* first_targets = (int16_t*)malloc(sizeof(int16_t) * 10);
-  int16_t* second_targets = (int16_t*)malloc(sizeof(int16_t) * 4);
-  int16_t* third_targets = (int16_t*)malloc(sizeof(int16_t) * 8);
+  char*** arena1_info[] = {Arena1Info};
+  new_arenas[0] = *read_arena_info(arena1_info[0]);
+  new_arenas[1] = *read_arena_info(arena1_info[0]);
+  new_arenas[2] = *read_arena_info(arena1_info[0]);
 
-  first_targets[0] = 200;
-  first_targets[1] = 900;
-
-  first_targets[2] = 200;
-  first_targets[3] = 200;
-
-  first_targets[4] = 800;
-  first_targets[5] = 200;
-
-  first_targets[6] = 800;
-  first_targets[7] = 900;
-
-  first_targets[8] = 1100;
-  first_targets[9] = 900;
-
-  second_targets[0] = 700;
-  second_targets[1] = 200;
-
-  second_targets[2] = 700;
-  second_targets[3] = 1000;
-
-  third_targets[0] = 500;
-  third_targets[1] = 500;
-
-  third_targets[2] = 500;
-  third_targets[3] = 200;
-
-  third_targets[4] = 900;
-  third_targets[5] = 200;
-
-  third_targets[6] = 900;
-  third_targets[7] = 1000;
-
-  new_arena[0].background = create_sprite((xpm_map_t)MenuBackground, 0, 0, true, true);
-  new_arena[0].targert_coordinates = first_targets;
-  new_arena[0].num_targets = 5;
-  new_arena[0].spawn_x = -50;
-  new_arena[0].spawn_y = 900;
-  new_arena[0].shop_x = 1100;
-  new_arena[0].shop_y = 200;
-
-  new_arena[1].background = create_sprite((xpm_map_t)MenuBackground, 0, 0, true, true);
-  new_arena[1].targert_coordinates = second_targets;
-  new_arena[1].num_targets = 2;
-  new_arena[1].spawn_x = -50;
-  new_arena[1].spawn_y = 200;
-  new_arena[1].shop_x = 1100;
-  new_arena[1].shop_y = 200;
-
-  new_arena[2].background = create_sprite((xpm_map_t)MenuBackground, 0, 0, true, true);
-  new_arena[2].targert_coordinates = third_targets;
-  new_arena[2].num_targets = 4;
-  new_arena[2].spawn_x = -50;
-  new_arena[2].spawn_y = 500;
-  new_arena[2].shop_x = 1100;
-  new_arena[2].shop_y = 200;
-
-  return new_arena;
+  return new_arenas;
 }
 
 void destroyArenas(Arena* arena) {
@@ -79,4 +25,184 @@ void destroyArenas(Arena* arena) {
   }
 
   free(arena);
+}
+
+static Arena* read_arena_info(char*** arena_info) {
+  Arena* new_arena = (Arena*)malloc(sizeof(Arena) * 3);
+  uint16_t target_counter = 0;
+  uint16_t decorations_counter = 0;
+  uint16_t towers_counter = 0;
+
+  Sprite* background = create_sprite((xpm_map_t)arena_info[0], 0, 0, true, true);
+  new_arena->background = background;
+
+  char** info = arena_info[1];
+  uint16_t current_line = 0;
+
+  char* header = info[current_line++];
+
+  uint16_t pseudo_state = 0;
+  uint16_t accumulator = 0;
+  while (*header != '\0') {
+    char character = *header;
+
+    if (character == ' ') {
+      switch (pseudo_state)
+      {
+      case 0:
+        target_counter = accumulator;
+        break;
+
+      case 1:
+        decorations_counter = accumulator;
+        break;
+      
+      default:
+        break;
+      }
+      accumulator = 0;
+      pseudo_state++;
+    } else if (character >= '0' && character <= '9') {
+      accumulator = accumulator * 10 + (character - '0');
+    } else {
+      printf("Invalid character in header\n");
+      return NULL;
+    }
+    header++;
+  }
+
+  towers_counter = accumulator;
+
+  int16_t* target_coordinates = (int16_t*)malloc(sizeof(int16_t) * (target_counter - 1) * 2);
+  int16_t* decorations_coordinates = (int16_t*)malloc(sizeof(int16_t) * decorations_counter * 3);
+  int16_t* towers_coordinates = (int16_t*)malloc(sizeof(int16_t) * towers_counter * 2);
+
+  for (uint16_t i = 0; i < target_counter; i++) {
+    bool negative = false;
+    char* target = info[current_line++];
+    int16_t target_x = 0;
+    int16_t target_y = 0;
+    while (*target != '\0') {
+      char character = *target;
+
+      if (character == ' ') {
+        target_x = target_y;
+        if (negative) {
+          target_x *= -1;
+          negative = false;
+        }
+        target_y = 0;
+      } else if (character >= '0' && character <= '9') {
+        target_y = target_y * 10 + (character - '0');
+      } else if (character == '-') {
+        negative = true;
+      } else {
+        printf("Invalid character in target\n");
+        return NULL;
+      }
+      target++;
+    }
+
+    if (negative) {
+      target_y *= -1;
+      negative = false;
+    }
+
+    if (i != 0) {
+      if (i == target_counter - 1) {
+        new_arena->base_x = target_x;
+        new_arena->base_y = target_y;
+      }
+      target_coordinates[(i - 1) * 2] = target_x;
+      target_coordinates[(i - 1) * 2 + 1] = target_y;
+    } else {
+      new_arena->spawn_x = target_x;
+      new_arena->spawn_y = target_y;
+    }
+  }
+  
+  new_arena->targert_coordinates = target_coordinates;
+  new_arena->num_targets = target_counter - 1;
+
+  for (uint16_t i = 0; i < decorations_counter; i++) {
+    char* decoration = info[current_line++];
+    int16_t decoration_x = 0;
+    int16_t decoration_y = 0;
+    int16_t decoration_id = -1;
+    while (*decoration != '\0') {
+      char character = *decoration;
+
+      if (character == ' ') {
+        if (decoration_id == -1) {
+          decoration_id = decoration_y;
+          decoration_y = 0;
+        } else {
+          decoration_x = decoration_y;
+          decoration_y = 0;
+        }
+      } else if (character >= '0' && character <= '9') {
+        decoration_y = decoration_y * 10 + (character - '0');
+      } else {
+        printf("Invalid character in decoration\n");
+        return NULL;
+      }
+      decoration++;
+    }
+
+    decorations_coordinates[i * 3] = decoration_id;;
+    decorations_coordinates[i * 3 + 1] = decoration_x;
+    decorations_coordinates[i * 3 + 2] = decoration_y;
+  }
+
+  new_arena->decoration_coordinates_and_ids = decorations_coordinates;
+  new_arena->num_decorations = decorations_counter;
+
+  for (uint16_t i = 0; i < towers_counter; i++) {
+    char* tower = info[current_line++];
+    int16_t tower_x = 0;
+    int16_t tower_y = 0;
+    while (*tower != '\0') {
+      char character = *tower;
+
+      if (character == ' ') {
+        tower_x = tower_y;
+        tower_y = 0;
+      } else if (character >= '0' && character <= '9') {
+        tower_y = tower_y * 10 + (character - '0');
+      } else {
+        printf("Invalid character in tower\n");
+        return NULL;
+      }
+      tower++;
+    }
+
+    towers_coordinates[i * 2] = tower_x;
+    towers_coordinates[i * 2 + 1] = tower_y;
+  }
+
+  new_arena->tower_coordinates = towers_coordinates;
+  new_arena->num_towers = towers_counter;
+
+  char* shop_coordinates = info[current_line++];
+  int16_t shop_x = 0;
+  int16_t shop_y = 0;
+
+  while (*shop_coordinates != '\0') {
+    char character = *shop_coordinates;
+
+    if (character == ' ') {
+      shop_x = shop_y;
+      shop_y = 0;
+    } else if (character >= '0' && character <= '9') {
+      shop_y = shop_y * 10 + (character - '0');
+    } else {
+      printf("Invalid character in coordinates\n");
+      return NULL;
+    }
+    shop_coordinates++;
+  }
+  new_arena->shop_x = shop_x;
+  new_arena->shop_y = shop_y;
+
+  return new_arena;
 }
