@@ -10,8 +10,7 @@ typedef enum Direction {
   UP_LEFT,
   UP_RIGHT,
   DOWN_LEFT,
-  DOWN_RIGHT,
-  STATIONARY
+  DOWN_RIGHT
 } Direction;
 
 typedef struct Player {
