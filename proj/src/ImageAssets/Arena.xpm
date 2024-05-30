@@ -1036,15 +1036,15 @@ static char *Arena1_Background[] = {
 
 static char *info1[] = {
   /*Number of target coordinates & Number of decorations & Number of towers*/
-  "6 2 18", //Change the second number to the number of decorations
+  "7 2 18", //Change the second number to the number of decorations
   
   /*Target coordinates*/
+  "-100 96",
   "819 96",
   "819 499",
   "216 499",
   "216 847",
   "1135 847",
-
   /*Base coordinates*/
   "1135 1000",
 
