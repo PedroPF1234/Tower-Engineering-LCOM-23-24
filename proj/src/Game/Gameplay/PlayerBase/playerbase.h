@@ -5,7 +5,7 @@
 
 
 typedef struct PlayerBase {
-  GameObject* base;
+  GameObject* baseObject;
   GameObject* health_bar;
   int16_t hit_points;
   int16_t max_hit_points;

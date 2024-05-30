@@ -12,7 +12,7 @@ PlayerBase* initializePlayerBase(int16_t x, int16_t y,int16_t hp) {
   PlayerBase* new_playerbase = (PlayerBase*)malloc(sizeof(PlayerBase));
 
   Sprite* base = create_sprite((xpm_map_t)Base, x, y, false, true);
-  new_playerbase->base = create_gameobject_from_sprite(base, x, y, -(base->width/2), -(base->height/2), y * Z_INDEX_PER_LAYER + LOW_PRIORITY_Z_INDEX);
+  new_playerbase->baseObject = create_gameobject_from_sprite(base, x, y, -(base->width/2), -(base->height/2), y * Z_INDEX_PER_LAYER + LOW_PRIORITY_Z_INDEX);
 
   Sprite* healthBar = create_sprite((xpm_map_t)BigHealthBar, x, y, false, true);
   new_playerbase->health_bar = create_gameobject_from_sprite(healthBar, x, y, -(healthBar->width/2), -(base->height/2) - (base->height/2) - 20, y * Z_INDEX_PER_LAYER + HIGH_PRIORITY_Z_INDEX);
@@ -24,7 +24,7 @@ PlayerBase* initializePlayerBase(int16_t x, int16_t y,int16_t hp) {
 }
 
 void destroyPlayerBase(PlayerBase* playerbase) {
-  destroy_gameobject(playerbase->base);
+  destroy_gameobject(playerbase->baseObject);
   destroy_gameobject(playerbase->health_bar);
   free(playerbase);
 }

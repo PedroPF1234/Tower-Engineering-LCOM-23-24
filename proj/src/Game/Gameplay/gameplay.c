@@ -65,10 +65,10 @@ EnemyArray enemies;
 BulletArray bullets;
 
 // PlayerBase
-PlayerBase* player_base;
+PlayerBase player_base;
 
 // Shop
-Shop* shop;
+Shop shop;
 
 // Pause Buttons
 ButtonArray pause_buttons;
@@ -380,7 +380,7 @@ static void updateGamePlay() {
     updatePlayerPosition(player1, *current_arena);
     updatePlayerSpriteBasedOnPosition(player1);
     updateAllEnemyPositions(&enemies);
-    updatePlayerBaseHealthBar(player_base);
+    updatePlayerBaseHealthBar(&player_base);
     /*
     updateAllBulletPositions(&bullets);
 
@@ -422,7 +422,6 @@ void initializeGameplay() {
   arenas = initializeArenas();
   player1 = initializePlayer(32, 28, -16, -29, 100);
   player2 = initializePlayer(32, 28, -16, -29, 100);
-  towers = newTowerArray(20);
   enemies = newEnemyArray(100);
   //bullets = newBulletArray(100);
   pause_buttons = newButtonArray(20);
@@ -453,18 +452,13 @@ void enterGame(bool multi, uint8_t arena) {
   playing = true;
   showSprites(&player1->player->animatedSprite->sprites);
 
+  player_base = current_arena->base;
+  shop = current_arena->shop;
   towers = current_arena->towers;
-  showTowers(&towers);
+
+  showArena(current_arena);
 
   if (multi) showSprites(&player2->player->animatedSprite->sprites);
-
-  player_base = initializePlayerBase(current_arena->targert_coordinates[(current_arena->num_targets - 1) * 2], current_arena->targert_coordinates[(current_arena->num_targets - 1) * 2 + 1], 1000);
-  
-  shop = initializeShop(current_arena->shop_x, current_arena->shop_y);
-
-  // Wont be needed when the pushing of turrets is moved to here.
-  showTowers(&towers);
-  //
 }
 
 /*
@@ -489,7 +483,7 @@ void updateGame() {
   if (rtc_time->just_updated && state == GAME) {
     if (to_spawn_enemy) {
       to_spawn_enemy = false;
-      pushEnemyArray(&enemies, initializeEnemy((float)current_arena->spawn_x, (float)current_arena->spawn_y, 0, 0, multiplayer ? 1500 : 1000, current_arena->targert_coordinates, current_arena->num_targets));
+      pushEnemyArray(&enemies, initializeEnemy((float)current_arena->spawn_x, (float)current_arena->spawn_y, 0, 0, multiplayer ? 1500 : 1000, current_arena->target_coordinates, current_arena->num_targets));
     } else {
       to_spawn_enemy = true;
     }
@@ -507,15 +501,16 @@ void exitGame() {
   hideSprites(&player1->player->animatedSprite->sprites);
   hideSprites(&player2->player->animatedSprite->sprites);
 
-  hideTowers(&towers);
-  towers = (TowerArray){NULL, 0, 0};
-
   hideButtons(&pause_buttons);
   destroyEnemyArray(&enemies);
-  destroyPlayerBase(player_base);
-  destroyShop(shop);
+
+  towers = (TowerArray){NULL, 0, 0};
+  player_base = (PlayerBase){NULL, NULL, 0, 0};
+  shop = (Shop){NULL};
   remove_sprite_from_spriteless_gameobject(game_background);
   pause_background->sprite->is_visible = false;
+
+  hideArena(current_arena);
 }
 
 void destroyGame() {
