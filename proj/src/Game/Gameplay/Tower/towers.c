@@ -17,22 +17,25 @@ void initializeDifferentTowerSprites() {
   canonTurret = create_rotation_abled_sprite((xpm_map_t)Cannon, 0, 0, false, false, &rotations);
 }
 
-TowerBase* initializeTower(int16_t x, int16_t y, int16_t ox, int16_t oy, int16_t hp) {
+TowerBase* initializeTower(int16_t x, int16_t y) {
   TowerBase* new_tower = (TowerBase*)malloc(sizeof(TowerBase));
 
   uint16_t z_indexing = y * Z_INDEX_PER_LAYER + MEDIUM_PRIORITY_Z_INDEX;
 
-  new_tower->baseNormal = create_sprite((xpm_map_t)CrossbowBase, x - ox, y - oy, false, false);
-  new_tower->baseHovered = create_sprite((xpm_map_t)CrossbowBaseHovered, x - ox, y - oy, false, true);
+  Sprite* base = create_sprite((xpm_map_t)Base, x, y, false, false);
+  Sprite* baseHovered = create_sprite((xpm_map_t)BaseHovered, x, y, false, true);
 
-  new_tower->base = create_gameobject_from_sprite(new_tower->baseNormal, x, y, ox, oy, z_indexing);
-  new_tower->turret = create_spriteless_gameobject(x, y, ox, oy, z_indexing + 1);
+  new_tower->baseNormal = base;
+  new_tower->baseHovered = baseHovered;
+
+  new_tower->base = create_gameobject_from_sprite(new_tower->baseNormal, x, y, -(base->width/2), 
+  -(base->height/2), z_indexing);
+  new_tower->turret = create_spriteless_gameobject(x, y, -(base->width/2), -(base->height/2), z_indexing + 1);
 
   new_tower->x = x;
   new_tower->y = y;
-  new_tower->origin_offset_x = ox;
-  new_tower->origin_offset_y = oy;
-  new_tower->hit_points = hp;
+  new_tower->origin_offset_x = -(base->width/2);
+  new_tower->origin_offset_y = -(base->height/2);
   new_tower->turretSprite = NULL;
   new_tower->range = 0;
   new_tower->targetting = FIRST;

@@ -5,6 +5,10 @@
 
 #include "../../../ImageAssets/Arena.xpm"
 
+AnimatedSprite decoration1;
+AnimatedSprite decoration2;
+AnimatedSprite decoration3;
+
 static Arena* read_arena_info(char*** arena_info);
 
 Arena* initializeArenas() {
@@ -73,9 +77,12 @@ static Arena* read_arena_info(char*** arena_info) {
 
   towers_counter = accumulator;
 
+  TowerArray towers = newTowerArray(towers_counter);
+  new_arena->towers = towers;
+
   int16_t* target_coordinates = (int16_t*)malloc(sizeof(int16_t) * (target_counter - 1) * 2);
-  int16_t* decorations_coordinates = (int16_t*)malloc(sizeof(int16_t) * decorations_counter * 3);
-  int16_t* towers_coordinates = (int16_t*)malloc(sizeof(int16_t) * towers_counter * 2);
+
+  new_arena->decorations = (AnimatedGameObject**)malloc(sizeof(AnimatedGameObject*) * decorations_counter);
 
   for (uint16_t i = 0; i < target_counter; i++) {
     bool negative = false;
@@ -149,12 +156,27 @@ static Arena* read_arena_info(char*** arena_info) {
       decoration++;
     }
 
-    decorations_coordinates[i * 3] = decoration_id;;
-    decorations_coordinates[i * 3 + 1] = decoration_x;
-    decorations_coordinates[i * 3 + 2] = decoration_y;
+    /*
+    switch (decoration_id)
+    {
+    case 0:
+      new_arena->decorations[i] = create_animated_gameobject(&decoration1, decoration_x, decoration_y, decoration_y * Z_INDEX_PER_LAYER + LOW_PRIORITY_Z_INDEX);
+      break;
+
+    case 1:
+      new_arena->decorations[i] = create_animated_gameobject(&decoration2, decoration_x, decoration_y, decoration_y * Z_INDEX_PER_LAYER + LOW_PRIORITY_Z_INDEX);
+      break;
+
+    case 2:
+      new_arena->decorations[i] = create_animated_gameobject(&decoration3, decoration_x, decoration_y, decoration_y * Z_INDEX_PER_LAYER + LOW_PRIORITY_Z_INDEX);
+      break;
+    
+    default:
+      break;
+    }
+    */
   }
 
-  new_arena->decoration_coordinates_and_ids = decorations_coordinates;
   new_arena->num_decorations = decorations_counter;
 
   for (uint16_t i = 0; i < towers_counter; i++) {
@@ -176,11 +198,12 @@ static Arena* read_arena_info(char*** arena_info) {
       tower++;
     }
 
-    towers_coordinates[i * 2] = tower_x;
-    towers_coordinates[i * 2 + 1] = tower_y;
+    TowerBase* new_tower = initializeTower(tower_x, tower_y);
+    pushTowerArray(&new_arena->towers, new_tower);
   }
 
-  new_arena->tower_coordinates = towers_coordinates;
+  hideTowers(&new_arena->towers);
+
   new_arena->num_towers = towers_counter;
 
   char* shop_coordinates = info[current_line++];

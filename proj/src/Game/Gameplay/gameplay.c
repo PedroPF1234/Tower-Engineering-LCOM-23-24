@@ -426,13 +426,6 @@ void initializeGameplay() {
 
   hideButtons(&pause_buttons);
 
-  // Pushing turrets by default method. Supposed to use current_arena to push the turrets later one.
-  // So the pushing will be moved to the "enterGame" function.
-  pushTowerArray(&towers, initializeTower(100, 100, -55, -55, 100));
-  pushTowerArray(&towers, initializeTower(500, 300, -55, -55, 100));
-  pushTowerArray(&towers, initializeTower(1000, 600, -55, -55, 100));
-  // 
-
   //Falta inicializar a array das bullets! 
 
   game_background = create_spriteless_gameobject(0, 0, 0, 0, 0);
@@ -452,13 +445,13 @@ void enterGame(bool multi, uint8_t arena) {
   add_sprite_to_spriteless_gameobject(game_background, current_arena->background);
   playing = true;
   showSprites(&player1->player->animatedSprite->sprites);
+
+  towers = current_arena->towers;
+  showTowers(&towers);
+
   if (multi) showSprites(&player2->player->animatedSprite->sprites);
 
   player_base = initializePlayerBase(current_arena->targert_coordinates[(current_arena->num_targets - 1) * 2], current_arena->targert_coordinates[(current_arena->num_targets - 1) * 2 + 1], 1000);
-
-  // Wont be needed when the pushing of turrets is moved to here.
-  showTowers(&towers);
-  //
 }
 
 /*
@@ -501,9 +494,9 @@ void exitGame() {
   hideSprites(&player1->player->animatedSprite->sprites);
   hideSprites(&player2->player->animatedSprite->sprites);
 
-  // Should be replaced by the destroyTurretArray function.
   hideTowers(&towers);
-  //
+  towers = (TowerArray){NULL, 0, 0};
+
   hideButtons(&pause_buttons);
   destroyEnemyArray(&enemies);
   destroyPlayerBase(player_base);

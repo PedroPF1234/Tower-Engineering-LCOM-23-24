@@ -24,7 +24,6 @@ typedef struct TowerBase {
   Sprite* turretSprite;
   int16_t x, y;
   int16_t origin_offset_x, origin_offset_y;
-  int16_t hit_points;
   uint16_t range;
   uint16_t turret_radius;
   uint16_t damage;
@@ -38,7 +37,7 @@ typedef struct TowerArray {
 } TowerArray;
 
 void initializeDifferentTowerSprites();
-TowerBase* initializeTower(int16_t x, int16_t y, int16_t ox, int16_t oy, int16_t hp);
+TowerBase* initializeTower(int16_t x, int16_t y);
 void destroyTower(TowerBase* tower);
 
 TowerArray newTowerArray(uint32_t capacity);
