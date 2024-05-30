@@ -6,11 +6,18 @@
 #include "../ImageAssets/MouseCursor.xpm"
 
 typedef struct RenderArrayList {
-    GameObject** gameObjects;
-    uint32_t capacity;
-    uint32_t length;
+  GameObject** gameObjects;
+  uint32_t capacity;
+  uint32_t length;
 } RenderArrayList;
 
+typedef struct AnimatedGameObjectArray {
+  AnimatedGameObject** animatedGameObjects;
+  uint32_t capacity;
+  uint32_t length;
+} AnimatedGameObjectArray;
+
+static AnimatedGameObjectArray animatedSprites;
 static RenderArrayList renderPipeline;
 
 GameObject* mouse;
@@ -86,8 +93,112 @@ static void removeRenderPipeline(RenderArrayList *array, GameObject *gameObject)
   }
 }
 
+static AnimatedGameObjectArray newAnimatedGameObjectArray(uint32_t capacity) {
+  AnimatedGameObjectArray animatedGameObjectArray;
+  animatedGameObjectArray.length = 0;
+
+  if (capacity != 0) {
+    animatedGameObjectArray.capacity = capacity;
+    animatedGameObjectArray.animatedGameObjects = (AnimatedGameObject**) malloc(capacity * sizeof(AnimatedGameObject*));
+  } else {
+    animatedGameObjectArray.capacity = 10;
+    animatedGameObjectArray.animatedGameObjects = (AnimatedGameObject**) malloc(10 * sizeof(AnimatedGameObject*));
+  }
+
+  return animatedGameObjectArray;
+}
+
+static void insertAnimatedObjectArray(AnimatedGameObjectArray *array, AnimatedGameObject *newAnimatedGameObject) {
+  if (array->capacity != array->length) {
+    array->animatedGameObjects[array->length] = newAnimatedGameObject;
+  } else {
+    uint32_t newCapacity = array->capacity * 2;
+    AnimatedGameObject** oldPointer = array->animatedGameObjects;
+    AnimatedGameObject** newPointer = (AnimatedGameObject**)malloc(newCapacity * sizeof(AnimatedGameObject*));
+    array->animatedGameObjects = newPointer;
+    for (uint32_t i = 0; i < array->length; i++) {
+      newPointer[i] = oldPointer[i];
+    }
+    free(oldPointer);
+  }
+
+  array->length++;
+}
+
+static AnimatedGameObject* getAnimatedObjectArray(AnimatedGameObjectArray *array, uint32_t index) {
+  if (index < array->length) {
+    return array->animatedGameObjects[index];
+  } else {
+    return NULL;
+  }
+}
+
+static void removeAnimatedObjectArray(AnimatedGameObjectArray *array, AnimatedGameObject *animatedGameObject) {
+  if (array->length == 0) {
+    printf("Array is already empty!\n");
+    return;
+  }
+
+  for (uint32_t i = 0; i < array->length; i++) {
+    if (array->animatedGameObjects[i] == animatedGameObject) {
+      for (uint32_t j = i; j < array->length - 1; j++) {
+        array->animatedGameObjects[j] = array->animatedGameObjects[j + 1];
+      }
+      array->animatedGameObjects[array->length - 1] = (AnimatedGameObject*)0;
+      array->length--;
+      break;
+    }
+  }
+}
+
+static void destroyAnimatedGameObjectArray(AnimatedGameObjectArray *array) {
+  for (int32_t i = 0; i < (int32_t)array->length; i++) {
+    AnimatedGameObject* animatedGameObject = getAnimatedObjectArray(array, i);
+    removeAnimatedObjectArray(array, animatedGameObject);
+    free(animatedGameObject);
+  }
+}
+
 void init_render_pipeline() {
   renderPipeline = newRenderArray(200);
+  animatedSprites = newAnimatedGameObjectArray(200);
+}
+
+AnimatedGameObject* create_animated_gameobject(AnimatedSprite* animatedSprite, int16_t x, int16_t y, uint16_t z_index) {
+  AnimatedGameObject* animatedGameObject = (AnimatedGameObject*) malloc(sizeof(AnimatedGameObject));
+
+  Sprite* sprite = getSpriteArray(&animatedSprite->sprites, 0);
+
+  animatedGameObject->gameObject = create_gameobject_from_sprite(getSpriteArray(&animatedSprite->sprites, 0), x, y, -(sprite->width)/2, -(sprite->height/2), z_index);
+  animatedGameObject->animatedSprite = animatedSprite;
+
+  insertAnimatedObjectArray(&animatedSprites, animatedGameObject);
+
+  return animatedGameObject;
+}
+
+void destroy_animated_gameobject(AnimatedGameObject* animatedGameObject) {
+  destroy_gameobject(animatedGameObject->gameObject);
+  removeAnimatedObjectArray(&animatedSprites, animatedGameObject);
+  free(animatedGameObject);
+}
+
+void updateAnimatedGameObjects() {
+  for (uint32_t i = 0; i < animatedSprites.length; i++) {
+    AnimatedGameObject* animatedGameObject = getAnimatedObjectArray(&animatedSprites, i);
+    AnimatedSprite* animatedSprite = animatedGameObject->animatedSprite;
+    update_animated_sprite(animatedSprite);
+    Sprite* sprite = getSpriteArray(&animatedSprite->sprites, animatedSprite->current_sprite);
+    updateGameObjectSprite(animatedGameObject->gameObject, sprite);
+  }
+}
+
+void switchAnimatedSpriteOfAnimatedGameObject(AnimatedGameObject* animatedGameObject, AnimatedSprite* animatedSprite) {
+  animatedGameObject->animatedSprite = animatedSprite;
+  // Should implement these two assignments but they're conflicting with functionallity for now
+  // animatedSprite->cooldown_counter = 0;
+  // animatedSprite->current_sprite = 0;
+  updateGameObjectSprite(animatedGameObject->gameObject, getSpriteArray(&animatedSprite->sprites, animatedSprite->current_sprite));
 }
 
 GameObject* create_gameobject(xpm_map_t pic, int16_t x, int16_t y, int16_t origin_offset_x, int16_t origin_offset_y, uint16_t z_index, bool square_shape, bool visible) {
@@ -187,8 +298,6 @@ int create_gameobjects() {
 
 int destroy_gameobjects() {
   destroy_gameobject(mouse);
-
+  destroyAnimatedGameObjectArray(&animatedSprites);
   return 0;
 }
-
-

@@ -20,6 +20,8 @@ bool playing = false;
 
 int game_main_loop() {
 
+  updateAnimatedGameObjects();
+
   switch (state)
   {
   case SELECT_GAME:

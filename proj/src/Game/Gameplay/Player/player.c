@@ -3,31 +3,18 @@
 
 #include "player.h"
 
-#include "../../../ImageAssets/Bicho.xpm"
+#include "../../../ImageAssets/Player.xpm"
 
 extern ScreenInfo screen;
 
 Player* initializePlayer(float x, float y, int16_t ox, int16_t oy, int16_t hp) {
   Player* new_player = (Player*)malloc(sizeof(Player));
-  new_player->sprites = newSpriteArray(9);
 
-  char** playerSprites[] = {BichoUp, BichoDown, BichoLeft, BichoRight, BichoUpperLeft, BichoUpperRight, BichoLowerLeft, BichoLowerRight, BichoStationary};
+  char** playerSprites[] = {PlayerUp1, PlayerUp2, PlayerDown1, PlayerDown2, PlayerLeft1, PlayerLeft2, PlayerRight1, PlayerRight2, PlayerUpLeft1, PlayerUpLeft2, PlayerUpRight1, PlayerUpRight2, PlayerDownLeft1, PlayerDownLeft2, PlayerDownRight1, PlayerDownRight2};
 
-  for (uint32_t i = 0; i < 9; i++) {
-    Sprite* sprite;
-    if (i == 8) {
-      sprite = create_sprite((xpm_map_t)playerSprites[i], x, y, false, false);
-    } else {
-      sprite = create_sprite((xpm_map_t)playerSprites[i], x, y, false, true);
-    }
-    if (sprite == NULL) {
-      destroyPlayer(new_player);
-      return NULL;
-    }
-    pushSpriteArray(&new_player->sprites, sprite);
-  }
+  new_player->sprites = newAnimatedSpriteArrayFromSprites(playerSprites, 2, 8, 166);
 
-  new_player->player = create_gameobject_from_sprite(getSpriteArray(&new_player->sprites, STATIONARY), x, y, ox, oy, y * Z_INDEX_PER_LAYER + LOW_PRIORITY_Z_INDEX);
+  new_player->player = create_animated_gameobject(getAnimatedSpriteArray(&new_player->sprites, DOWN), x, y, 0);
 
   new_player->x = x;
   new_player->y = y;
@@ -42,9 +29,8 @@ Player* initializePlayer(float x, float y, int16_t ox, int16_t oy, int16_t hp) {
 }
 
 void destroyPlayer(Player* player) {
-  destroySpriteArray(&player->sprites);
-  player->player->sprite = NULL;
-  destroy_gameobject(player->player);
+  destroyAnimatedSpriteArray(&player->sprites);
+  destroy_animated_gameobject(player->player);
   free(player);
 }
 
@@ -63,12 +49,12 @@ void updatePlayerPosition(Player* player) {
   int16_t new_x = (int16_t) player->x;
   int16_t new_y = (int16_t) player->y;
 
-  player->player->x = new_x;
-  player->player->y = new_y;
+  player->player->gameObject->x = new_x;
+  player->player->gameObject->y = new_y;
 
   if (old_y != new_y) {
     if (new_y < 0) new_y = 0;
-    updateGameObjectZIndex(player->player, new_y * Z_INDEX_PER_LAYER + LOW_PRIORITY_Z_INDEX);
+    updateGameObjectZIndex(player->player->gameObject, new_y * Z_INDEX_PER_LAYER + LOW_PRIORITY_Z_INDEX);
   }
 }
 
@@ -80,33 +66,31 @@ void updatePlayerSpriteBasedOnPosition(Player* player) {
   if (x!=0.0f && y!=0.0f) {
     if (x > 0.0f) {
       if (y > 0.0f) {
-        updateGameObjectSprite(player->player, getSpriteArray(&player->sprites, DOWN_RIGHT));
+        switchAnimatedSpriteOfAnimatedGameObject(player->player, getAnimatedSpriteArray(&player->sprites, DOWN_RIGHT));
       } else if (y < 0.0f) {
-        updateGameObjectSprite(player->player, getSpriteArray(&player->sprites, UP_RIGHT));
+        switchAnimatedSpriteOfAnimatedGameObject(player->player, getAnimatedSpriteArray(&player->sprites, UP_RIGHT));
       }
     } else {
       if (y > 0.0f) {
-        updateGameObjectSprite(player->player, getSpriteArray(&player->sprites, DOWN_LEFT));
+        switchAnimatedSpriteOfAnimatedGameObject(player->player, getAnimatedSpriteArray(&player->sprites, DOWN_LEFT));
       } else if (y < 0.0f) {
-        updateGameObjectSprite(player->player, getSpriteArray(&player->sprites, UP_LEFT));
+        switchAnimatedSpriteOfAnimatedGameObject(player->player, getAnimatedSpriteArray(&player->sprites, UP_LEFT));
       }
     }
   } else {
     if (x > 0.0f) {
-      updateGameObjectSprite(player->player, getSpriteArray(&player->sprites, RIGHT));
+      switchAnimatedSpriteOfAnimatedGameObject(player->player, getAnimatedSpriteArray(&player->sprites, RIGHT));
     } else if (x < 0.0f) {
-      updateGameObjectSprite(player->player, getSpriteArray(&player->sprites, LEFT));
+      switchAnimatedSpriteOfAnimatedGameObject(player->player, getAnimatedSpriteArray(&player->sprites, LEFT));
     } else if (y > 0.0f) {
-      updateGameObjectSprite(player->player, getSpriteArray(&player->sprites, DOWN));
+      switchAnimatedSpriteOfAnimatedGameObject(player->player, getAnimatedSpriteArray(&player->sprites, DOWN));
     } else if (y < 0.0f) {
-      updateGameObjectSprite(player->player, getSpriteArray(&player->sprites, UP));
-    } else {
-      updateGameObjectSprite(player->player, getSpriteArray(&player->sprites, STATIONARY));
+      switchAnimatedSpriteOfAnimatedGameObject(player->player, getAnimatedSpriteArray(&player->sprites, UP));
     }
   }
 
-  player->player->origin_offset_x = -(player->player->sprite->width / 2);
-  player->player->origin_offset_y = -(player->player->sprite->height / 2);
+  player->player->gameObject->origin_offset_x = -(player->player->gameObject->sprite->width / 2);
+  player->player->gameObject->origin_offset_y = -(player->player->gameObject->sprite->height / 2);
 
 }
 

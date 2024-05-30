@@ -21,11 +21,10 @@ typedef struct SpriteArray {
 } SpriteArray;
 
 typedef struct AnimatedSprite {
-  SpriteArray* sprites;
+  SpriteArray sprites;
   uint8_t current_sprite;
   uint16_t animation_cooldown;
   uint16_t cooldown_counter;
-  Sprite* current;
 } AnimatedSprite;
 
 typedef struct AnimatedSpriteArray {
@@ -40,8 +39,12 @@ void pushAnimatedSpriteArray(AnimatedSpriteArray* array, AnimatedSprite* sprite)
 AnimatedSprite* getAnimatedSpriteArray(AnimatedSpriteArray* array, uint32_t index);
 void removeAnimatedSpriteArray(AnimatedSpriteArray* array, uint32_t index);
 void destroyAnimatedSpriteArray(AnimatedSpriteArray* array);
+AnimatedSpriteArray newAnimatedSpriteArrayFromSprites(char*** sprites, uint8_t sprites_per_animated, uint8_t num_of_sprites, uint16_t cooldown);
 
 // AnimatedSprite functions
+AnimatedSprite* create_animated_sprite(char*** sprites, uint8_t num_of_sprites, uint16_t cooldown);
+void destroy_animated_sprite(AnimatedSprite* sprite);
+void update_animated_sprite(AnimatedSprite* sprite);
 
 // SpriteArray functions
 SpriteArray newSpriteArray(uint32_t capacity);

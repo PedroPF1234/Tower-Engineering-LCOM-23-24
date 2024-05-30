@@ -429,12 +429,18 @@ void initializeGameplay() {
 
 void enterGame(bool multi, uint8_t arena) {
   resetDevicesChangingScreens();
+
+  // Temporary but efficient fix. Should be replaced but works for now
+  hideSprites(&player1->player->animatedSprite->sprites);
+  hideSprites(&player2->player->animatedSprite->sprites);
+  //
+
   multiplayer = multi;
   current_arena = &arenas[arena];
   add_sprite_to_spriteless_gameobject(game_background, current_arena->background);
   playing = true;
-  player1->player->sprite->is_visible = true;
-  if (multi) player2->player->sprite->is_visible = true;
+  showSprites(&player1->player->animatedSprite->sprites);
+  if (multi) showSprites(&player2->player->animatedSprite->sprites);
 
   player_base = initializePlayerBase(current_arena->targert_coordinates[(current_arena->num_targets - 1) * 2], current_arena->targert_coordinates[(current_arena->num_targets - 1) * 2 + 1], 1000);
 
@@ -480,8 +486,8 @@ void updateGame() {
 
 void exitGame() {
   playing = false;
-  player1->player->sprite->is_visible = false;
-  player2->player->sprite->is_visible = false;
+  hideSprites(&player1->player->animatedSprite->sprites);
+  hideSprites(&player2->player->animatedSprite->sprites);
 
   // Should be replaced by the destroyTurretArray function.
   hideTowers(&towers);

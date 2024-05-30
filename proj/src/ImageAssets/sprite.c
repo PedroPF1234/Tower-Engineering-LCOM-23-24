@@ -12,8 +12,128 @@
 
 static uint32_t createdSprites = 0;
 
-// Sprite array functions
+// AnimatedSpriteArray functions
+AnimatedSpriteArray newAnimatedSpriteArray(uint32_t capacity) {
+  AnimatedSpriteArray array;
+  array.length = 0;
 
+  if (capacity) {
+    array.sprites = (AnimatedSprite**)malloc(capacity * sizeof(AnimatedSprite*));
+    array.capacity = capacity;
+  } else {
+    array.sprites = (AnimatedSprite**)malloc(sizeof(AnimatedSprite*) * 10);
+    array.capacity = 10;
+  }
+  return array;
+}
+
+void pushAnimatedSpriteArray(AnimatedSpriteArray* array, AnimatedSprite* sprite) {
+
+  if (array->capacity != array->length) {
+    array->sprites[array->length] = sprite;
+  } else {
+    uint32_t newCapacity = array->capacity * 2;
+    AnimatedSprite** oldPointer = array->sprites;
+    AnimatedSprite** newPointer = (AnimatedSprite**)malloc(newCapacity * sizeof(AnimatedSprite*));
+    array->sprites = newPointer;
+    for (uint32_t i = 0; i < array->length; i++) {
+      newPointer[i] = oldPointer[i];
+    }
+    free(oldPointer);
+    array->sprites[array->length] = sprite;
+  }
+  array->length++;
+}
+
+AnimatedSprite* getAnimatedSpriteArray(AnimatedSpriteArray* array, uint32_t index) {
+  if (index < array->length) {
+    return array->sprites[index];
+  } else {
+    return NULL;
+  }
+}
+
+void removeAnimatedSpriteArray(AnimatedSpriteArray* array, uint32_t index) {
+  if (index < array->length) {
+    AnimatedSprite* sprite = getAnimatedSpriteArray(array, index);
+    destroy_animated_sprite(sprite);
+    for (uint32_t i = index; i < array->length - 1; i++) {
+      array->sprites[i] = array->sprites[i + 1];
+    }
+    array->length--;
+  }
+}
+
+void destroyAnimatedSpriteArray(AnimatedSpriteArray* array) {
+  for (uint32_t i = 0; i < array->length; i++) {
+    destroy_animated_sprite(array->sprites[i]);
+  }
+  free(array->sprites);
+}
+
+AnimatedSpriteArray newAnimatedSpriteArrayFromSprites(char*** sprites, uint8_t sprites_per_animated, uint8_t num_of_sprites, uint16_t cooldown) {
+  AnimatedSpriteArray array = newAnimatedSpriteArray(0);
+
+  for (uint32_t i = 0; i < num_of_sprites*sprites_per_animated; i += sprites_per_animated) {
+    AnimatedSprite* as = create_animated_sprite(sprites + i, sprites_per_animated, cooldown);
+    if (as == NULL) {
+      destroyAnimatedSpriteArray(&array);
+      return array;
+    }
+    pushAnimatedSpriteArray(&array, as);
+  }
+  
+  return array;
+}
+
+// AnimatedSprite functions
+AnimatedSprite* create_animated_sprite(char*** sprite, uint8_t num_of_sprites, uint16_t cooldown) {
+  AnimatedSprite* as = (AnimatedSprite*)malloc(sizeof(AnimatedSprite));
+  if (as == NULL) return NULL;
+
+  as->sprites = newSpriteArray(0);
+  as->current_sprite = 0;
+  as->animation_cooldown = cooldown;
+  as->cooldown_counter = 0;
+
+  for (uint32_t i = 0; i < num_of_sprites; i++) {
+    Sprite* sp = create_sprite((xpm_map_t)sprite[i], 0, 0, false, true);
+    if (sp == NULL) {
+      destroy_animated_sprite(as);
+      return NULL;
+    }
+    pushSpriteArray(&as->sprites, sp);
+  }
+
+  if (as->sprites.length != num_of_sprites) {
+    destroy_animated_sprite(as);
+    return NULL;
+  }
+
+  return as;
+}
+
+void destroy_animated_sprite(AnimatedSprite* as) {
+  for (uint32_t i = 0; i < as->sprites.length; i++) {
+    destroy_sprite(getSpriteArray(&as->sprites, i));
+  }
+  destroySpriteArray(&as->sprites);
+  free(as);
+}
+
+void update_animated_sprite(AnimatedSprite* as) {
+  if (as->cooldown_counter < as->animation_cooldown) {
+    as->cooldown_counter++;
+  } else {
+    as->cooldown_counter = 0;
+    as->current_sprite++;
+    if (as->current_sprite >= as->sprites.length) {
+      as->current_sprite = 0;
+    }
+  }
+}
+
+// Sprite array functions
 SpriteArray newSpriteArray(uint32_t capacity) {
   SpriteArray array;
   array.length = 0;
@@ -85,7 +205,6 @@ void showSprites(SpriteArray* array) {
 }
 
 // Individual sprite functions
-
 Sprite* create_sprite(xpm_map_t pic, int16_t x, int16_t y, bool square_shape, bool is_visible) {
   
   Sprite* sp = (Sprite*) malloc(sizeof(Sprite));

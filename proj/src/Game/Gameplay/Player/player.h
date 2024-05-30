@@ -2,8 +2,6 @@
 
 #include "../../../Devices/device_controller.h"
 
-#include "../../DataStructure/spritearray.h"
-
 typedef enum Direction {
   UP,
   DOWN,
@@ -17,8 +15,8 @@ typedef enum Direction {
 } Direction;
 
 typedef struct Player {
-  GameObject* player; // Default sprite is stationary
-  SpriteArray sprites;
+  AnimatedGameObject* player;
+  AnimatedSpriteArray sprites;
   float x, y;
   float speed[2];
   int16_t origin_offset_x, origin_offset_y;
