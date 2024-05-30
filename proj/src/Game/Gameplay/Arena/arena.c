@@ -45,29 +45,29 @@ Arena* initializeArenas() {
   third_targets[6] = 900;
   third_targets[7] = 1000;
 
-  new_arena[0].background = create_sprite((xpm_map_t)Background, 0, 0, true, true);
+  new_arena[0].background = create_sprite((xpm_map_t)MenuBackground, 0, 0, true, true);
   new_arena[0].targert_coordinates = first_targets;
   new_arena[0].num_targets = 5;
   new_arena[0].spawn_x = -50;
   new_arena[0].spawn_y = 900;
-  new_arena[0].store_x = 900;
-  new_arena[0].store_y = 900;
+  new_arena[0].shop_x = 1100;
+  new_arena[0].shop_y = 200;
 
-  new_arena[1].background = create_sprite((xpm_map_t)Background, 0, 0, true, true);
+  new_arena[1].background = create_sprite((xpm_map_t)MenuBackground, 0, 0, true, true);
   new_arena[1].targert_coordinates = second_targets;
   new_arena[1].num_targets = 2;
   new_arena[1].spawn_x = -50;
   new_arena[1].spawn_y = 200;
-  new_arena[1].store_x = 900;
-  new_arena[1].store_y = 900;
+  new_arena[1].shop_x = 1100;
+  new_arena[1].shop_y = 200;
 
-  new_arena[2].background = create_sprite((xpm_map_t)Background, 0, 0, true, true);
+  new_arena[2].background = create_sprite((xpm_map_t)MenuBackground, 0, 0, true, true);
   new_arena[2].targert_coordinates = third_targets;
   new_arena[2].num_targets = 4;
   new_arena[2].spawn_x = -50;
   new_arena[2].spawn_y = 500;
-  new_arena[2].store_x = 900;
-  new_arena[2].store_y = 900;
+  new_arena[2].shop_x = 1100;
+  new_arena[2].shop_y = 200;
 
   return new_arena;
 }
