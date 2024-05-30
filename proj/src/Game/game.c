@@ -37,6 +37,9 @@ int game_main_loop() {
     updateMenu();
     break;
   
+  case SHOP_MENU:
+  case BASE_MENU:
+  case TOWER_MENU:
   case PAUSE:
   case GAME:
 

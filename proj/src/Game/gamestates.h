@@ -5,6 +5,8 @@ typedef enum GameState {
   SELECT_GAME,
   INSTRUCTIONS,
   GAME,
+  BASE_MENU,
+  TOWER_MENU,
   SHOP_MENU,
   GAME_OVER,
   PAUSE,
