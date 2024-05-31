@@ -1036,7 +1036,7 @@ static char *Arena1_Background[] = {
 
 static char *info1[] = {
   /*Number of target coordinates & Number of decorations & Number of towers*/
-  "7 2 18", //Change the second number to the number of decorations
+  "7 3 18", //Change the second number to the number of decorations
   
   /*Target coordinates*/
   "-100 96",
@@ -1049,9 +1049,9 @@ static char *info1[] = {
   "1135 1000",
 
   /*Decoration coordinates*/
-  "0 550 674", //Furnace
-  "1 380 256", //Drill
-  /*"2 x y" //Factory*/
+  "0 380 272", //Furnace
+  "1 550 763", //Drill
+  "2 1080 676", //Factory
 
   /*Tower coordinates*/
   "68 208",

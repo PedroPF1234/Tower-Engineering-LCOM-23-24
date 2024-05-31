@@ -169,7 +169,7 @@ AnimatedGameObject* create_animated_gameobject(AnimatedSprite* animatedSprite, i
 
   Sprite* sprite = getSpriteArray(&animatedSprite->sprites, 0);
 
-  animatedGameObject->gameObject = create_gameobject_from_sprite(getSpriteArray(&animatedSprite->sprites, 0), x, y, -(sprite->width)/2, -(sprite->height/2), z_index);
+  animatedGameObject->gameObject = create_gameobject_from_sprite(getSpriteArray(&animatedSprite->sprites, 0), x, y, -(sprite->width)/2, -(sprite->height), z_index);
   animatedGameObject->animatedSprite = animatedSprite;
 
   insertAnimatedObjectArray(&animatedSprites, animatedGameObject);
