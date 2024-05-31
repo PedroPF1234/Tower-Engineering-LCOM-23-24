@@ -33,9 +33,9 @@ Arena* initializeArenas() {
 
   Arena* new_arenas = (Arena*)malloc(sizeof(Arena) * 3);
 
-  char*** arena1_info[] = {Arena1Info};
+  char*** arena1_info[] = {Arena1Info, Arena2Info};
   new_arenas[0] = *read_arena_info(arena1_info[0]);
-  new_arenas[1] = *read_arena_info(arena1_info[0]);
+  new_arenas[1] = *read_arena_info(arena1_info[1]);
   new_arenas[2] = *read_arena_info(arena1_info[0]);
 
   hideArena(&new_arenas[0]);

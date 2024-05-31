@@ -167,7 +167,7 @@ void init_render_pipeline() {
 AnimatedGameObject* create_animated_gameobject(AnimatedSprite* animatedSprite, int16_t x, int16_t y, uint16_t z_index) {
   AnimatedGameObject* animatedGameObject = (AnimatedGameObject*) malloc(sizeof(AnimatedGameObject));
 
-  Sprite* sprite = getSpriteArray(&animatedSprite->sprites, 0);
+  Sprite* sprite = create_sprite_from_sprite(getSpriteArray(&animatedSprite->sprites, 0), x, y, false, true);
 
   animatedGameObject->gameObject = create_gameobject_from_sprite(getSpriteArray(&animatedSprite->sprites, 0), x, y, -(sprite->width)/2, -(sprite->height), z_index);
   animatedGameObject->animatedSprite = animatedSprite;
