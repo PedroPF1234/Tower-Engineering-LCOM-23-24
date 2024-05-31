@@ -245,7 +245,7 @@ void init_render_pipeline() {
 AnimatedGameObject* create_animated_gameobject(AnimatedSprite* animatedSprite, int16_t x, int16_t y, uint16_t z_index) {
   AnimatedGameObject* animatedGameObject = (AnimatedGameObject*) malloc(sizeof(AnimatedGameObject));
 
-  Sprite* sprite = create_sprite_from_sprite(getSpriteArray(&animatedSprite->sprites, 0), x, y, false, true);
+  Sprite* sprite = getSpriteArray(&animatedSprite->sprites, 0);
 
   animatedGameObject->gameObject = create_gameobject_from_sprite(getSpriteArray(&animatedSprite->sprites, 0), x, y, -(sprite->width)/2, -(sprite->height), z_index);
   animatedGameObject->animatedSprite = animatedSprite;
@@ -276,6 +276,14 @@ void switchAnimatedSpriteOfAnimatedGameObject(AnimatedGameObject* animatedGameOb
   animatedSprite->cooldown_counter = 0;
   animatedSprite->current_sprite = 0;
   updateGameObjectSprite(animatedGameObject->gameObject, getSpriteArray(&animatedSprite->sprites, animatedSprite->current_sprite));
+}
+
+void hideAnimatedGameObject(AnimatedGameObject* animatedGameObject) {
+  removeRenderPipeline(&renderPipeline, animatedGameObject->gameObject);
+}
+
+void showAnimatedGameObject(AnimatedGameObject* animatedGameObject) {
+  insertRenderPipeline(&renderPipeline, animatedGameObject->gameObject);
 }
 
 GameObject* create_gameobject(xpm_map_t pic, int16_t x, int16_t y, int16_t origin_offset_x, int16_t origin_offset_y, uint16_t z_index, bool square_shape, bool visible) {
