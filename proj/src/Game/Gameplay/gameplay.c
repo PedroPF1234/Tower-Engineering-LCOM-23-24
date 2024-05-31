@@ -752,13 +752,18 @@ static void checkTowerMenuHovered(ButtonArray* array) {
           break;
 
         case 1:
-          mountTurret(selected_tower_base, CANNON);
-          to_exit = true;
+          if (unlocked_turrets[1])
+          {
+            mountTurret(selected_tower_base, CANNON);
+            to_exit = true;
+          }
           break;
 
         case 2:
-          mountTurret(selected_tower_base, LASER);
-          to_exit = true;
+          if (unlocked_turrets[2])
+            mountTurret(selected_tower_base, LASER);
+            to_exit = true;
+          {
           break;
         default:
           break;
@@ -782,7 +787,7 @@ static void checkTowerMenuHovered(ButtonArray* array) {
 
     shop_current_selection = -1;
   }
-
+  }
 }
 
 
