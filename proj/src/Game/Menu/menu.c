@@ -118,12 +118,14 @@ static void checkSelectGameKeyboardInput(KeyPresses** head) {
       {
       case DOWN_ARROW_MAKE:
         select_game_current_selection++;
-        if (select_game_current_selection > 4) select_game_current_selection = 0;
+        if (select_game_current_selection > (int8_t)selectGameArenaButtons.length - 1)
+          select_game_current_selection = 0;
         break;
 
       case UP_ARROW_MAKE:
         select_game_current_selection--;
-        if (select_game_current_selection < 0) select_game_current_selection = 4;
+        if (select_game_current_selection < 0) 
+          select_game_current_selection = (int8_t)selectGameArenaButtons.length - 1;
         break;
 
       default:
@@ -238,12 +240,12 @@ static void checkMenuKeyboardInput(KeyPresses** head) {
       {
       case DOWN_ARROW_MAKE:
         menu_current_selection++;
-        if (menu_current_selection > 2) menu_current_selection = 0;
+        if (menu_current_selection > (int8_t)menuButtons.length -1) menu_current_selection = 0;
         break;
 
       case UP_ARROW_MAKE:
         menu_current_selection--;
-        if (menu_current_selection < 0) menu_current_selection = 2;
+        if (menu_current_selection < 0) menu_current_selection = (int8_t)menuButtons.length -1;
         break;
 
       default:

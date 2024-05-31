@@ -1,6 +1,7 @@
 #include <lcom/lcf.h>
 #include <stdint.h>
 
+
 #include "gameplay.h"
 #include "../DataStructure/button.h"
 #include "../Menu/menu.h"
@@ -31,6 +32,9 @@ extern bool last_pressed_was_mouse;
 extern bool playing;
 
 extern bool can_shop;
+extern bool can_tower;
+
+extern int16_t tower_index;
 
 TurretType current_turret = CROSSBOW;
 
@@ -44,9 +48,16 @@ static bool pressed_pause_button = false;
 static bool first_time_shop = true;
 static bool pressed_shop_button = false;
 
+static bool first_time_tower = true;
+static bool pressed_tower_button = false;
+static bool type_tower_menu = false; // false for base, true for tower
+TowerBase* selected_tower_base = NULL;
+int8_t selected_tower_index = -1;
+
 static int8_t game_current_selection = -1;
 static int8_t pause_current_selection = -1;
 static int8_t shop_current_selection = -1;
+static int8_t tower_current_selection = -1;
 
 bool multiplayer = false;
 
@@ -61,6 +72,7 @@ Arena* current_arena;
 GameObject* game_background;
 GameObject* pause_background;
 GameObject* shop_background;
+GameObject* tower_background;
 
 // Players
 Player* player1;
@@ -79,9 +91,10 @@ PlayerBase player_base;
 // Shop
 Shop shop;
 
-// Pause Buttons
+// Buttons
 ButtonArray pause_buttons;
 ButtonArray shop_buttons;
+ButtonArray tower_buttons;
 
 static void checkGameKeyboardInput(KeyPresses** head) {
 
@@ -112,6 +125,9 @@ static void checkGameKeyboardInput(KeyPresses** head) {
         if(state == GAME && can_shop) {
           state = SHOP_MENU;
           shop_background->sprite->is_visible = true;
+        } else if (state == GAME && can_tower) {
+          state = TOWER_MENU;
+          tower_background->sprite->is_visible = true;
         }
         break;
 
@@ -312,12 +328,12 @@ static void checkPauseKeyboardInput(KeyPresses** head) {
       
       case UP_ARROW_BREAK:
         pause_current_selection--;
-        if (pause_current_selection < 0) pause_current_selection = 1;
+        if (pause_current_selection < 0) pause_current_selection = (int8_t)pause_buttons.length -1;
         break;
 
       case DOWN_ARROW_BREAK:
         pause_current_selection++;
-        if (pause_current_selection > 1) pause_current_selection = 0;
+        if (pause_current_selection > (int8_t)pause_buttons.length -1) pause_current_selection = 0;
         break;
 
       default:
@@ -334,12 +350,12 @@ static void checkPauseKeyboardInput(KeyPresses** head) {
 
       case S_BREAK:
         pause_current_selection++;
-        if (pause_current_selection > 2) pause_current_selection = 0;
+        if (pause_current_selection > (int8_t)pause_buttons.length -1) pause_current_selection = 0;
         break;
 
       case W_BREAK:
         pause_current_selection--;
-        if (pause_current_selection < 0) pause_current_selection = 2;
+        if (pause_current_selection < 0) pause_current_selection = (int8_t)pause_buttons.length -1;
         break;
 
       case ENTER_BREAK:
@@ -547,6 +563,226 @@ static void checkShopHovered(ButtonArray* array) {
   }
 }
 
+static void checkTowerMenuKeyboardInput(KeyPresses** head) {
+  KeyPresses* current = *head;
+
+  while (current != NULL) {
+    if (current->special) {
+      switch (current->key)
+      {
+      case UP_ARROW_BREAK:
+        tower_current_selection--;
+        if (tower_current_selection < 0) tower_current_selection = (int8_t)tower_buttons.length - 1;
+        break;
+
+      case DOWN_ARROW_BREAK:
+        tower_current_selection++;
+        if (tower_current_selection > (int8_t)tower_buttons.length - 1) tower_current_selection = 0;
+        break;
+
+        default:
+        break;
+      }
+    } else {
+      switch (current->key)
+      {
+        case ESC_BREAK:
+          printf("Pressed Esc to exit tower menu\n");
+          state = GAME;
+          tower_background->sprite->is_visible = false;
+          selected_tower_base = NULL;
+          selected_tower_index = -1;
+          tower_current_selection = -1;
+          pressed_tower_button = false;
+          type_tower_menu = false;
+          break;
+
+        case S_BREAK:
+          tower_current_selection++;
+          if (tower_current_selection > (int8_t)tower_buttons.length-1) tower_current_selection = 0;
+          break;
+
+        case W_BREAK:
+          tower_current_selection--;
+          if (tower_current_selection < 0) tower_current_selection = (int8_t)tower_buttons.length-1;
+          break;
+
+        default:
+        break;
+      }
+    }
+    if (current->next == NULL) {
+      free(current);
+      break;
+    } else {
+      KeyPresses* next = current->next;
+      free(current);
+      current = next;
+    }
+  }
+
+  *head = NULL;
+}
+
+static void checkTowerMenuHovered(ButtonArray* array) {
+  for (int32_t i = 0; i < (int32_t)array->length; i++) {
+
+    Button* button = getButtonArray(array, i);
+    GameObject* buttonObject = button->button;
+
+    int16_t mouse_x = mouse_device->mouse->x;
+    int16_t mouse_y = mouse_device->mouse->y;
+    int16_t leftMostBound = button->x + button->origin_offset_x;
+    int16_t rightMostBound = button->x + button->origin_offset_x + button->button->sprite->width;
+    int16_t upMostBound = button->y + button->origin_offset_y;
+    int16_t downMostBound = button->y + button->origin_offset_y + button->button->sprite->height;
+
+    if (!pressed_shop_button) {
+      if (mouse_x > leftMostBound && mouse_x < rightMostBound &&
+          mouse_y > upMostBound && mouse_y < downMostBound && last_pressed_was_mouse) {
+
+        updateGameObjectSprite(buttonObject, button->hovering);
+        tower_current_selection = i;
+
+        if (mouse_device->left_button_is_pressed) {
+          pressed_tower_button = true;
+          break;
+        }
+
+      } else if (!last_pressed_was_mouse && tower_current_selection == i) {
+        updateGameObjectSprite(buttonObject, button->hovering);
+      } else {
+        updateGameObjectSprite(buttonObject, button->no_hovering);
+      }
+    }
+  }
+
+  if (pressed_tower_button) {
+    pressed_tower_button = false;
+    bool to_exit = false;
+    switch (tower_current_selection)
+    {
+    case -1:
+      break;
+    
+    case 0:
+      state = GAME;
+      tower_background->sprite->is_visible = false;
+      selected_tower_base = NULL;
+      selected_tower_index = -1;
+      tower_current_selection = -1;
+      pressed_tower_button = false;
+      type_tower_menu = false;
+      break;
+
+    case 1:
+      if (type_tower_menu) {
+        // Switching tower target type to previous
+        switch (selected_tower_base->targetting)
+        {
+        case FIRST:
+          selected_tower_base->targetting = LAST;
+          break;
+
+        case CLOSEST:
+          selected_tower_base->targetting = FIRST;
+          break;
+
+        case LAST:
+          selected_tower_base->targetting = CLOSEST;
+          break;
+        
+        default:
+          break;
+        }
+      } else {
+        selected_tower_index = 0;
+      }
+      break;
+
+    case 2:
+      if (type_tower_menu) {
+        // Switching tower target type to next
+        switch (selected_tower_base->targetting)
+        {
+        case FIRST:
+          selected_tower_base->targetting = CLOSEST;
+          break;
+
+        case CLOSEST:
+          selected_tower_base->targetting = LAST;
+          break;
+
+        case LAST:
+          selected_tower_base->targetting = FIRST;
+          break;
+        
+        default:
+          break;
+        }
+      } else {
+        selected_tower_index = 1;
+      }
+      break;
+
+    case 3: 
+      if (type_tower_menu) {
+        // Upgrade turret damage
+        selected_tower_base->damage *= 1.1;
+      } else {
+        selected_tower_index = 2;
+      }
+      break;  
+
+    case 4:
+  
+      if (type_tower_menu) {
+        // Unmount turret
+        unmountTurret(selected_tower_base);
+        to_exit = true;
+      } else {
+        switch (selected_tower_index)
+        {
+        case 0:
+          mountTurret(selected_tower_base, CROSSBOW);
+          to_exit = true;
+          break;
+
+        case 1:
+          mountTurret(selected_tower_base, CANNON);
+          to_exit = true;
+          break;
+
+        case 2:
+          mountTurret(selected_tower_base, LASER);
+          to_exit = true;
+          break;
+        default:
+          break;
+        }
+      }
+
+      if (to_exit) {
+        state = GAME;
+        tower_background->sprite->is_visible = false;
+        selected_tower_base = NULL;
+        selected_tower_index = -1;
+        tower_current_selection = -1;
+        pressed_tower_button = false;
+        type_tower_menu = false;
+      }
+      break;
+
+    default:
+      break;
+    }
+
+    shop_current_selection = -1;
+  }
+
+}
+
+
 static bool checkCollision(Bullet* bullet, Enemy* enemy) {
     int16_t bullet_left = bullet->x + bullet->origin_offset_x;
     int16_t bullet_right = bullet->x + bullet->origin_offset_x + bullet->sprite->width;
@@ -570,6 +806,13 @@ static void updateGamePlay() {
   if(!first_time_shop) {
     hideButtons(&shop_buttons);
     first_time_shop = !first_time_shop;
+  }
+
+  if (!first_time_tower) {
+    destroyButtonArray(&tower_buttons);
+    printf("Destroyed tower buttons\n");
+    printf("Tower buttons length: %d\n", tower_buttons.length);
+    first_time_tower = !first_time_tower;
   }
 
   if (can_shop) {
@@ -627,6 +870,40 @@ static void updateShop() {
   checkShopHovered(&shop_buttons);
 }
 
+static void updateTowerMenu() {
+
+  if (first_time_tower) {
+
+    selected_tower_base = getTowerArray(&towers, tower_index);
+
+    printf("Tower Array length: %d\n", towers.length);
+
+    pushButtonArray(&tower_buttons, initializeButton((xpm_map_t)QuitButtonHovered, (xpm_map_t)QuitButton, screen.xres/2, screen.yres/2 + 300, 0xFFFE, false, true));
+    
+    if (getTowerArray(&towers, tower_index)->turret->sprite == NULL) {
+      type_tower_menu = false;
+
+      pushButtonArray(&tower_buttons, initializeButton((xpm_map_t)ResumeButtonHovered, (xpm_map_t)ResumeButton, screen.xres/2 - 300, screen.yres/2 - 250, 0xFFFE, false, true));
+      pushButtonArray(&tower_buttons, initializeButton((xpm_map_t)ResumeButtonHovered, (xpm_map_t)ResumeButton, screen.xres/2 - 300, screen.yres/2 - 100, 0xFFFE, false, true));
+      pushButtonArray(&tower_buttons, initializeButton((xpm_map_t)ResumeButtonHovered, (xpm_map_t)ResumeButton, screen.xres/2 - 300, screen.yres/2 + 50, 0xFFFE, false, true));
+      pushButtonArray(&tower_buttons, initializeButton((xpm_map_t)PlayButtonHovered, (xpm_map_t)PlayButton, screen.xres/2 - 300, screen.yres/2 + 200, 0xFFFE, false, true));
+
+    } else {
+      type_tower_menu = true;
+
+      pushButtonArray(&tower_buttons, initializeButton((xpm_map_t)InstructionsButtonHovered, (xpm_map_t)InstructionsButton, screen.xres/2 - 300, screen.yres/2 - 250, 0xFFFE, false, true));
+      pushButtonArray(&tower_buttons, initializeButton((xpm_map_t)InstructionsButtonHovered, (xpm_map_t)InstructionsButton, screen.xres/2 - 300, screen.yres/2 - 100, 0xFFFE, false, true));
+      pushButtonArray(&tower_buttons, initializeButton((xpm_map_t)InstructionsButtonHovered, (xpm_map_t)InstructionsButton, screen.xres/2 - 300, screen.yres/2 + 50, 0xFFFE, false, true));
+      pushButtonArray(&tower_buttons, initializeButton((xpm_map_t)PlayButtonHovered, (xpm_map_t)PlayButton, screen.xres/2 - 300, screen.yres/2 + 200, 0xFFFE, false, true));
+    }
+
+    first_time_tower = !first_time_tower;
+  }
+
+  checkTowerMenuKeyboardInput(&keyboard_device->keyPresses);
+  checkTowerMenuHovered(&tower_buttons);
+}
+
 void initializeGameplay() {
   initializeDifferentTowerSprites();
   arenas = initializeArenas();
@@ -636,6 +913,7 @@ void initializeGameplay() {
   bullets = newBulletArray(100);
   pause_buttons = newButtonArray(20);
   shop_buttons = newButtonArray(20);
+  tower_buttons = newButtonArray(20);
 
   pushButtonArray(&pause_buttons, initializeButton((xpm_map_t)ResumeButtonHovered, (xpm_map_t)ResumeButton, screen.xres/2, screen.yres/2 - 100, 0xFFFE, false, true));
 
@@ -651,16 +929,21 @@ void initializeGameplay() {
   hideButtons(&shop_buttons);
 
   game_background = create_spriteless_gameobject(0, 0, 0, 0, 0);
-  pause_background = create_gameobject((xpm_map_t)PauseBackground, screen.xres/2, screen.yres/2, -300, -300, 0xFFFE, true, false);
+  pause_background = create_gameobject((xpm_map_t)PauseBackground, screen.xres/2, screen.yres/2, -300, -300, 0xFFF0, true, false);
 
   Sprite* shop_background_sprite = create_sprite((xpm_map_t)SelectGameBackground, screen.xres/2, screen.yres/2, true, false);
 
-  shop_background = create_gameobject_from_sprite(shop_background_sprite, screen.xres/2, screen.yres/2, -(shop_background_sprite->width/2), -(shop_background_sprite->height/2), 0xFFFE);
+  shop_background = create_gameobject_from_sprite(shop_background_sprite, screen.xres/2, screen.yres/2, -(shop_background_sprite->width/2), -(shop_background_sprite->height/2), 0xFFF0);
 
+  Sprite* tower_background_sprite = create_sprite((xpm_map_t)SelectGameBackground, screen.xres/2, screen.yres/2, true, false);
+
+  tower_background = create_gameobject_from_sprite(tower_background_sprite, screen.xres/2, screen.yres/2, -(tower_background_sprite->width/2), -(tower_background_sprite->height/2), 0xFFF0);
 }
 
 void enterGame(bool multi, uint8_t arena) {
   resetDevicesChangingScreens();
+
+  memcpy(unlocked_turrets, (uint8_t[]){1, 0, 0}, sizeof(unlocked_turrets));
 
   // Temporary but efficient fix. Should be replaced but works for now
   hideSprites(&player1->player->animatedSprite->sprites);
@@ -699,6 +982,8 @@ void updateGame() {
     updatePause();
   } else if (state == SHOP_MENU) {
     updateShop();
+  } else if (state == TOWER_MENU) {
+    updateTowerMenu();
   }
 }
 
@@ -726,6 +1011,9 @@ void destroyGame() {
   destroyTurretArray(&towers);
   destroyArenas(arenas);
   destroyEnemyArray(&enemies);
+  destroyButtonArray(&pause_buttons);
+  destroyButtonArray(&shop_buttons);
+  destroyButtonArray(&tower_buttons);
 
   //destroyBulletArray(&bullets)
 }

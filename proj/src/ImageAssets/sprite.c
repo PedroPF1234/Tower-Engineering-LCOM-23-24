@@ -336,6 +336,8 @@ Sprite* create_sprite_from_sprite(Sprite* sprite, int16_t x, int16_t y, bool is_
 }
 
 void destroy_sprite(Sprite *sp) {
+
+  // Memory leak if sprite is a series of rotated sprites, needs fixing
   if (sp == NULL) return;
   free(sp->map);
   free(sp);

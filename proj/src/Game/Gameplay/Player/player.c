@@ -1,5 +1,6 @@
 #include <lcom/lcf.h>
 #include <stdint.h>
+#include <math.h>
 
 #include "player.h"
 
@@ -8,6 +9,8 @@
 
 extern ScreenInfo screen;
 bool can_shop = false;
+bool can_tower = false;
+int16_t tower_index = -1;
 
 Player* initializePlayer(float x, float y, int16_t ox, int16_t oy, int16_t hp) {
   Player* new_player = (Player*)malloc(sizeof(Player));
@@ -70,11 +73,32 @@ void updatePlayerPosition(Player* player, Arena arena) {
     can_move = false;
   }
 
-  if (new_x >= shop_left_corner-30 && new_x <= shop_right_corner+30 && new_y <= arena.shop.shopObject->y+70 && new_y >= arena.shop.shopObject->y) {
+  // calculate distance from player to shop
+  float shop_distance = sqrt(pow(new_x - (arena.shop.shopObject->x), 2) + pow(new_y - (arena.shop.shopObject->y), 2));
+
+  float turret_distance = 1000.0f;
+  tower_index = -1;
+
+  for (uint32_t i = 0; i < arena.towers.length; i++) {
+    TowerBase* tower = getTowerArray(&arena.towers, i);
+    float tempDistance = sqrt(pow(new_x - (tower->x), 2) + pow(new_y - (tower->y), 2));
+    if (tempDistance < 130 && tempDistance < turret_distance) {
+      tower_index = i;
+      turret_distance = tempDistance;
+      break;
+    }
+  }
+
+  if (shop_distance < 130 && shop_distance < turret_distance) {
     can_shop = true;
+  } else if (tower_index != -1) {
+    can_shop = false;
+    can_tower = true;
   } else {
     can_shop = false;
+    can_tower = false;
   }
+
 
   if (can_move) {
     player->x = new_x;

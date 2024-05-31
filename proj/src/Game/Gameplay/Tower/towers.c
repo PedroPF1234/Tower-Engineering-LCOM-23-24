@@ -43,6 +43,7 @@ TowerBase* initializeTower(int16_t x, int16_t y) {
   new_tower->targetting = FIRST;
   new_tower->damage = 0;
   new_tower->turret_radius = 0;
+  new_tower->level = 0;
 
   return new_tower;
 }
@@ -182,6 +183,13 @@ void mountTurret(TowerBase* tower, TurretType type) {
 
     default:
       break;
+  }
+}
+
+void unmountTurret(TowerBase* tower) {
+  if (tower->turret->sprite != NULL) {
+    destroy_sprite(tower->turret->sprite);
+    remove_sprite_from_spriteless_gameobject(tower->turret);
   }
 }
 

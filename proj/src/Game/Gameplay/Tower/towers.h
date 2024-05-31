@@ -7,7 +7,7 @@
 typedef enum TowerTargetting {
   FIRST,
   LAST,
-  CLOSEST
+  CLOSEST,
 } TowerTargetting;
 
 typedef enum TurretType {
@@ -27,6 +27,7 @@ typedef struct TowerBase {
   uint16_t range;
   uint16_t turret_radius;
   uint16_t damage;
+  uint8_t level;
   TowerTargetting targetting;
 } TowerBase;
 
@@ -49,6 +50,7 @@ void destroyTurretArray(TowerArray* array);
 
 void setTowerHovered(TowerBase* tower, bool hovered);
 void mountTurret(TowerBase* tower, TurretType type);
+void unmountTurret(TowerBase* tower);
 void hideTowers(TowerArray* array);
 void showTowers(TowerArray* array);
 void rotateTowersTowardsTarget(TowerArray* array, EnemyArray* target);
