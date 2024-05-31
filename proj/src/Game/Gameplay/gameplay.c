@@ -29,6 +29,8 @@ extern bool last_pressed_was_mouse;
 
 extern bool playing;
 
+extern bool can_shop;
+
 static bool pressed_game_button = false;
 static bool selecting_tower_base = false;
 static bool to_spawn_enemy = false;
@@ -101,12 +103,13 @@ static void checkGameKeyboardInput(KeyPresses** head) {
     } else {
       switch (current->key)
       {
-        
       case E_BREAK:
-        if(state == GAME) {
+        if(state == GAME && can_shop) {
           state = SHOP_MENU;
           shop_background->sprite->is_visible = true;
         }
+        break;
+
       case ESC_BREAK:
         if (state == GAME) {
           state = PAUSE;
@@ -497,6 +500,12 @@ static void updateGamePlay() {
     first_time_shop = !first_time_shop;
   }
 
+  if (can_shop) {
+    current_arena->shop.shopButton->sprite->is_visible = true;
+  } else {
+    current_arena->shop.shopButton->sprite->is_visible = false;
+  }
+
   checkGameKeyboardInput(&keyboard_device->keyPresses);
   checkGameHovered(&towers);
   if (playing) {
@@ -626,7 +635,7 @@ void exitGame() {
 
   towers = (TowerArray){NULL, 0, 0};
   player_base = (PlayerBase){NULL, NULL, 0, 0};
-  shop = (Shop){NULL};
+  shop = (Shop){NULL, NULL};
   remove_sprite_from_spriteless_gameobject(game_background);
   pause_background->sprite->is_visible = false;
 

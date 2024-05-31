@@ -199,3 +199,61 @@ static char *ShopSprite[] = {
 "                ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;                ",
 "                ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;                "
 };
+
+/* XPM */
+static char *EKey[] = {
+/* columns rows colors chars-per-pixel */
+"44 44 5 1 ",
+"  c #000000",
+". c #000001",
+"X c #3C3C3C",
+"o c #606060",
+"O c #FBFBFB",
+/* pixels */
+"  ........................................  ",
+"  ........................................  ",
+"..XX..oooooooooooooooooooooooooooooooo..XX..",
+"..XX..oooooooooooooooooooooooooooooooo..XX..",
+"..XX..oooooooooooooooooooooooooooooooo..XX..",
+"..XX..oooooooooooooooooooooooooooooooo..XX..",
+"..XX..oooooooooo............oooooooooo..XX..",
+"..XX..oooooooooo............oooooooooo..XX..",
+"..XX..oooooooo..OOOOOOOOOOOO..oooooooo..XX..",
+"..XX..oooooooo..OOOOOOOOOOOO..oooooooo..XX..",
+"..XX..oooooooo..OO..........oooooooooo..XX..",
+"..XX..oooooooo..OO..........oooooooooo..XX..",
+"..XX..oooooooo..OO....oooooooooooooooo..XX..",
+"..XX..oooooooo..OO....oooooooooooooooo..XX..",
+"..XX..oooooooo..OO....oooooooooooooooo..XX..",
+"..XX..oooooooo..OO....oooooooooooooooo..XX..",
+"..XX..oooooooo..OO........oooooooooooo..XX..",
+"..XX..oooooooo..OO........oooooooooooo..XX..",
+"..XX..oooooooo..OOOOOOOO..oooooooooooo..XX..",
+"..XX..oooooooo..OOOOOOOO..oooooooooooo..XX..",
+"..XX..oooooooo..OO........oooooooooooo..XX..",
+"..XX..oooooooo..OO........oooooooooooo..XX..",
+"..XX..oooooooo..OO....oooooooooooooooo..XX..",
+"..XX..oooooooo..OO....oooooooooooooooo..XX..",
+"..XX..oooooooo..OO....oooooooooooooooo..XX..",
+"..XX..oooooooo..OO....oooooooooooooooo..XX..",
+"..XX..oooooooo..OO..........oooooooooo..XX..",
+"..XX..oooooooo..OO..........oooooooooo..XX..",
+"..XX..oooooooo..OOOOOOOOOOOO..oooooooo..XX..",
+"..XX..oooooooo..OOOOOOOOOOOO..oooooooo..XX..",
+"..XX..oooooooooo............oooooooooo..XX..",
+"..XX..oooooooooo............oooooooooo..XX..",
+"..XX..oooooooooooooooooooooooooooooooo..XX..",
+"..XX..oooooooooooooooooooooooooooooooo..XX..",
+"..XX..oooooooooooooooooooooooooooooooo..XX..",
+"..XX..oooooooooooooooooooooooooooooooo..XX..",
+"..XX....................................XX..",
+"..XX....................................XX..",
+"....XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX....",
+"....XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX....",
+"..XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX..",
+"..XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX..",
+"............................................",
+"............................................"
+};
+
+

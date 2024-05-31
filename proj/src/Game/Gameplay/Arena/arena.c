@@ -39,6 +39,7 @@ void hideArena(Arena* arena) {
   arena->background->is_visible = false;
   hideTowers(&arena->towers);
   arena->shop.shopObject->sprite->is_visible = false;
+  arena->shop.shopButton->sprite->is_visible = false;
   arena->base.baseObject->sprite->is_visible = false;
   arena->base.health_bar->sprite->is_visible = false;
 }
