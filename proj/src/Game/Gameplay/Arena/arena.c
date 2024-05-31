@@ -4,14 +4,30 @@
 #include "arena.h"
 
 #include "../../../ImageAssets/Arena.xpm"
+#include "../../../ImageAssets/Decorations/Drill_Decor.xpm"
+#include "../../../ImageAssets/Decorations/Factory_Decor.xpm"
+#include "../../../ImageAssets/Decorations/Furnace_Decor.xpm"
 
-AnimatedSprite decoration1;
-AnimatedSprite decoration2;
-AnimatedSprite decoration3;
+AnimatedSprite furnaceDecor;
+AnimatedSprite drillDecor;
+AnimatedSprite factoryDecor;
 
 static Arena* read_arena_info(char*** arena_info);
 
 Arena* initializeArenas() {
+  AnimatedSprite* temp1 = create_animated_sprite(Furnace_Decor, 5, 300);
+  furnaceDecor = *temp1;
+  
+  AnimatedSprite* temp2 = create_animated_sprite(Drill_Decor, 3, 300);
+  drillDecor = *temp2;
+
+  AnimatedSprite* temp3 = create_animated_sprite(Factory_Decor, 4, 284);
+  factoryDecor = *temp3;
+  
+  free(temp1);
+  free(temp2);
+  free(temp3);
+
   Arena* new_arenas = (Arena*)malloc(sizeof(Arena) * 3);
 
   char*** arena1_info[] = {Arena1Info};
@@ -156,25 +172,23 @@ static Arena* read_arena_info(char*** arena_info) {
       decoration++;
     }
 
-    /*
     switch (decoration_id)
     {
     case 0:
-      new_arena->decorations[i] = create_animated_gameobject(&decoration1, decoration_x, decoration_y, decoration_y * Z_INDEX_PER_LAYER + LOW_PRIORITY_Z_INDEX);
+      new_arena->decorations[i] = create_animated_gameobject(&furnaceDecor, decoration_x, decoration_y, decoration_y * Z_INDEX_PER_LAYER + LOW_PRIORITY_Z_INDEX);
       break;
 
     case 1:
-      new_arena->decorations[i] = create_animated_gameobject(&decoration2, decoration_x, decoration_y, decoration_y * Z_INDEX_PER_LAYER + LOW_PRIORITY_Z_INDEX);
+      new_arena->decorations[i] = create_animated_gameobject(&drillDecor, decoration_x, decoration_y, decoration_y * Z_INDEX_PER_LAYER + LOW_PRIORITY_Z_INDEX);
       break;
 
     case 2:
-      new_arena->decorations[i] = create_animated_gameobject(&decoration3, decoration_x, decoration_y, decoration_y * Z_INDEX_PER_LAYER + LOW_PRIORITY_Z_INDEX);
+      new_arena->decorations[i] = create_animated_gameobject(&factoryDecor, decoration_x, decoration_y, decoration_y * Z_INDEX_PER_LAYER + LOW_PRIORITY_Z_INDEX);
       break;
     
     default:
       break;
     }
-    */
   }
 
   new_arena->num_decorations = decorations_counter;
