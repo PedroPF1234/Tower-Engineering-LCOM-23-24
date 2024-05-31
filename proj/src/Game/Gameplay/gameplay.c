@@ -17,6 +17,7 @@
 #include "../../ImageAssets/Background.xpm"
 #include "../../ImageAssets/Pause.xpm"
 #include "../../ImageAssets/Button.xpm"
+#include "../../ImageAssets/Towers.xpm"
 
 extern GameState state;
 
@@ -30,6 +31,8 @@ extern bool last_pressed_was_mouse;
 extern bool playing;
 
 extern bool can_shop;
+
+TurretType current_turret = CROSSBOW;
 
 static bool pressed_game_button = false;
 static bool selecting_tower_base = false;
@@ -46,6 +49,8 @@ static int8_t pause_current_selection = -1;
 static int8_t shop_current_selection = -1;
 
 bool multiplayer = false;
+
+static int8_t unlocked_turrets[] = {1, 0, 0};
 
 // Game Objects
 // Arena
@@ -277,7 +282,7 @@ static void checkGameHovered(TowerArray* array) {
 
           if (mouse_device->left_button_is_pressed) {
             pressed_game_button = true;
-            mountTurret(tower, CANNON);
+            mountTurret(tower, current_turret);
           }
 
           setTowerHovered(tower, true);
@@ -418,7 +423,67 @@ static void checkPauseHovered(ButtonArray* array) {
   }
 }
 
-//static void checkShopKeyboardInput(KeyPresses** head) {}
+static void checkShopKeyboardInput(KeyPresses** head) {
+  KeyPresses* current = *head;
+
+  while (current != NULL) {
+    if (current->special) {
+      switch (current->key)
+      {
+      
+      case UP_ARROW_BREAK:
+        shop_current_selection--;
+        if (shop_current_selection < 0) shop_current_selection = 1;
+        break;
+
+      case DOWN_ARROW_BREAK:
+        shop_current_selection++;
+        if (shop_current_selection > 1) shop_current_selection = 0;
+        break;
+
+      default:
+        break;
+      }
+    } else {
+      switch (current->key)
+      {
+      case ESC_BREAK:
+        printf("Pressed Esc to exit shop menu\n");
+        state = GAME;
+        shop_background->sprite->is_visible = false;
+        break;
+
+      case S_BREAK:
+        shop_current_selection++;
+        if (shop_current_selection > 1) shop_current_selection = 0;
+        break;
+
+      case W_BREAK:
+        shop_current_selection--;
+        if (shop_current_selection < 0) shop_current_selection = 1;
+        break;
+
+      case ENTER_BREAK:
+      case SPACE_BREAK:
+        pressed_shop_button = true;
+        break;
+
+      default:
+        break;
+      }
+    }
+    if (current->next == NULL) {
+      free(current);
+      break;
+    } else {
+      KeyPresses* next = current->next;
+      free(current);
+      current = next;
+    }
+  }
+
+  *head = NULL;
+}
 
 static void checkShopHovered(ButtonArray* array) {
     for (int32_t i = 0; i < (int32_t)array->length; i++) {
@@ -464,6 +529,16 @@ static void checkShopHovered(ButtonArray* array) {
       state = GAME;
       shop_background->sprite->is_visible = false;
       break;
+
+    case 1:
+      current_turret = CANNON;
+      unlocked_turrets[1]=1;
+      break;
+
+    case 2:
+      current_turret = LASER;
+      unlocked_turrets[2]=1;
+      break;    
 
     default:
       break;
@@ -548,12 +623,12 @@ static void updatePause() {
   checkPauseHovered(&pause_buttons);
 }
 
-void updateShop() {
+static void updateShop() {
   if(first_time_shop) {
     showButtons(&shop_buttons);
     first_time_shop = !first_time_shop;
   }
-  //checkShopKeyboardInput(&keyboard_device->keyPresses);
+  checkShopKeyboardInput(&keyboard_device->keyPresses);
   checkShopHovered(&shop_buttons);
 }
 
@@ -571,14 +646,21 @@ void initializeGameplay() {
 
   pushButtonArray(&pause_buttons, initializeButton((xpm_map_t)QuitButtonHovered, (xpm_map_t)QuitButton, screen.xres/2, screen.yres/2 + 100, 0xFFFE, false, true));
 
-  pushButtonArray(&shop_buttons, initializeButton((xpm_map_t)QuitButtonHovered, (xpm_map_t)QuitButton, screen.xres/2, screen.yres/2, 0xFFFE, false, true));
+  pushButtonArray(&shop_buttons, initializeButton((xpm_map_t)QuitButtonHovered, (xpm_map_t)QuitButton, screen.xres/2, screen.yres/2 +300, 0xFFFE, false, true));
+
+  pushButtonArray(&shop_buttons, initializeButton((xpm_map_t)Cannon, (xpm_map_t)Cannon, screen.xres/2 -300, screen.yres/2 -250, 0xFFFE, false, true));
+
+  pushButtonArray(&shop_buttons, initializeButton((xpm_map_t)LaserGun, (xpm_map_t)LaserGun, screen.xres/2 -300, screen.yres/2 -100, 0xFFFE, false, true));
 
   hideButtons(&pause_buttons);
   hideButtons(&shop_buttons);
 
   game_background = create_spriteless_gameobject(0, 0, 0, 0, 0);
   pause_background = create_gameobject((xpm_map_t)PauseBackground, screen.xres/2, screen.yres/2, -300, -300, 0xFFFE, true, false);
-  shop_background = create_gameobject((xpm_map_t)PauseBackground, screen.xres/2, screen.yres/2, -300, -300, 0xFFFE, true, false);
+
+  Sprite* shop_background_sprite = create_sprite((xpm_map_t)SelectGameBackground, screen.xres/2, screen.yres/2, true, false);
+
+  shop_background = create_gameobject_from_sprite(shop_background_sprite, screen.xres/2, screen.yres/2, -(shop_background_sprite->width/2), -(shop_background_sprite->height/2), 0xFFFE);
 
 }
 
