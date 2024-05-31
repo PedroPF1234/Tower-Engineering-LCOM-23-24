@@ -22,6 +22,6 @@ Button* getButtonArray(ButtonArray* array, uint32_t index);
 void removeButtonArray(ButtonArray* array, uint32_t index);
 void destroyButtonArray(ButtonArray* array);
 Button* initializeButton(xpm_map_t hovered, xpm_map_t no_hovered, int16_t x, int16_t y,
-                             int16_t ox, int16_t oy, uint16_t z, bool square, bool visible);
+                              uint16_t z, bool square, bool visible);
 void hideButtons(ButtonArray* array);
 void showButtons(ButtonArray* array);

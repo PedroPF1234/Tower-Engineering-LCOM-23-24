@@ -289,42 +289,35 @@ void initializeMenu() {
   
   // Menu Buttons
 
-  // Aux
-  Sprite* playButton = create_sprite((xpm_map_t)PlayButton, screen.xres/2-1, screen.yres/2-101, true, false);
-
   // Play Button
-  pushButtonArray(&menuButtons, initializeButton((xpm_map_t)PlayButtonHovered, (xpm_map_t)PlayButton, screen.xres/2-1, screen.yres/2+150, -(playButton->width/2), -(playButton->height/2), 1, true, true));
+  pushButtonArray(&menuButtons, initializeButton((xpm_map_t)PlayButtonHovered, (xpm_map_t)PlayButton, screen.xres/2-1, screen.yres/2+150, 1, true, true));
 
   // Instructions Button
-  pushButtonArray(&menuButtons, initializeButton((xpm_map_t)InstructionsButtonHovered, (xpm_map_t)InstructionsButton, screen.xres/2, screen.yres/2+250, -(playButton->width/2), -(playButton->height/2), 1, true, true));
+  pushButtonArray(&menuButtons, initializeButton((xpm_map_t)InstructionsButtonHovered, (xpm_map_t)InstructionsButton, screen.xres/2, screen.yres/2+250, 1, true, true));
 
   // Quit Button
-  pushButtonArray(&menuButtons, initializeButton((xpm_map_t)QuitButtonHovered, (xpm_map_t)QuitButton, screen.xres/2-1, screen.yres/2+350, -(playButton->width/2), -(playButton->height/2), 1, true, true));
+  pushButtonArray(&menuButtons, initializeButton((xpm_map_t)QuitButtonHovered, (xpm_map_t)QuitButton, screen.xres/2-1, screen.yres/2+350, 1, true, true));
 
   // Select Game Arena Buttons
-  // Aux
-  Sprite* arena1 = create_sprite((xpm_map_t)FirstMiniMap, screen.xres/2-1, screen.yres/2-101, true, false);
 
   // Arena 1
-  pushButtonArray(&selectGameArenaButtons, initializeButton((xpm_map_t)FirstMiniMap, (xpm_map_t)FirstMiniMap, screen.xres/2-301, screen.yres/2-201, -(arena1->width/2), -(arena1->height/2), 3, true, true));
+  pushButtonArray(&selectGameArenaButtons, initializeButton((xpm_map_t)FirstMiniMap, (xpm_map_t)FirstMiniMap, screen.xres/2-301, screen.yres/2-201, 3, true, true));
 
   // Arena 2
-  pushButtonArray(&selectGameArenaButtons, initializeButton((xpm_map_t)SecondMiniMap, (xpm_map_t)SecondMiniMap, screen.xres/2-1, screen.yres/2-201, -(arena1->width/2), -(arena1->height/2), 3, true, true));
+  pushButtonArray(&selectGameArenaButtons, initializeButton((xpm_map_t)SecondMiniMap, (xpm_map_t)SecondMiniMap, screen.xres/2-1, screen.yres/2-201, 3, true, true));
 
   // Arena 3
-  pushButtonArray(&selectGameArenaButtons, initializeButton((xpm_map_t)ThirdMiniMap, (xpm_map_t)ThirdMiniMap, screen.xres/2+299, screen.yres/2-201, -(arena1->width/2), -(arena1->height/2), 3, true, true));
+  pushButtonArray(&selectGameArenaButtons, initializeButton((xpm_map_t)ThirdMiniMap, (xpm_map_t)ThirdMiniMap, screen.xres/2+299, screen.yres/2-201, 3, true, true));
 
   // Back Button
-  pushButtonArray(&selectGameArenaButtons, initializeButton((xpm_map_t)QuitButtonHovered, (xpm_map_t)QuitButton, screen.xres/2-250, screen.yres/2+299, -(playButton->width/2), -(playButton->height/2), 3, false, true));
+  pushButtonArray(&selectGameArenaButtons, initializeButton((xpm_map_t)QuitButtonHovered, (xpm_map_t)QuitButton, screen.xres/2-250, screen.yres/2+299, 3, false, true));
 
   // Play Button
-  pushButtonArray(&selectGameArenaButtons, initializeButton((xpm_map_t)PlayButtonHovered, (xpm_map_t)PlayButton, screen.xres/2+250, screen.yres/2+299, -(playButton->width/2), -(playButton->height/2), 3, false, true));
+  pushButtonArray(&selectGameArenaButtons, initializeButton((xpm_map_t)PlayButtonHovered, (xpm_map_t)PlayButton, screen.xres/2+250, screen.yres/2+299, 3, false, true));
 
   hideButtons(&selectGameArenaButtons);
   selectGameBackground->sprite->is_visible = false;
 
-  destroy_sprite(playButton);
-  destroy_sprite(arena1);
 }
 
 void enterMenu() {
