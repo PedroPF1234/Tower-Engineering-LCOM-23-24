@@ -43,6 +43,9 @@ TowerBase* initializeTower(int16_t x, int16_t y) {
   new_tower->targetting = FIRST;
   new_tower->damage = 0;
   new_tower->turret_radius = 0;
+  new_tower->target = NULL;
+  new_tower->timeWithoutShooting = 0;
+  new_tower->cooldown = 3; // test for cooldown
 
   return new_tower;
 }
@@ -224,16 +227,19 @@ void rotateTowersTowardsTarget(TowerArray* array, EnemyArray* enemies) {
         } else {
           if (closest == NULL) {
             closest = temp;
+            tower->target = temp;
             distance_to_closest = distance;
           } else {
             if (tower->targetting == FIRST) {
               break;
             } else if (tower->targetting == LAST) {
               closest = temp;
+               tower->target = temp;
               distance_to_closest = distance;
             } else if (tower->targetting == CLOSEST) {
               if (distance < distance_to_closest) {
                 closest = temp;
+                tower->target = temp;
                 distance_to_closest = distance;
               }
             }
