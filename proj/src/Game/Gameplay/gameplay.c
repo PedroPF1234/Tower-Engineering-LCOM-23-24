@@ -587,18 +587,23 @@ static void updateGamePlay() {
     updatePlayerBaseHealthBar(&player_base);
     updateAllBulletPositions(&bullets);
 
-  //Collision with the bullet - monster
-    for (uint32_t i = 0; i < bullets.length; i++) {
-      Bullet* bullet = getBulletArray(&bullets, i);
-        if (bullet->active) {
-          for (uint32_t j = 0; j < enemies.length; j++) {
-            Enemy* enemy = getEnemyArray(&enemies, j);
-            if (checkCollision(bullet, enemy)) {
-              bullet->active = false;
-              enemy->hit_points -= bullet->damage;
-            }
-          }
+    //Update enemy array
+    for (uint32_t j = 0; j < enemies.length; j++) {
+      Enemy* enemy = getEnemyArray(&enemies, j);
+      //Collision with the bullet
+      for (uint32_t i = 0; i < bullets.length; i++) {
+        Bullet* bullet = getBulletArray(&bullets, i);
+        if (bullet->active != false && checkCollision(bullet, enemy)) {
+          bullet->active = false;
+          enemy->hit_points -= bullet->damage;
         }
+      }
+
+      if(enemy->hit_points <= 0){
+        removeEnemyArray(&enemies, j);
+        j--;
+      }
+      break;
     }
 
     if (multiplayer) {
@@ -727,6 +732,6 @@ void destroyGame() {
   destroyTurretArray(&towers);
   destroyArenas(arenas);
   destroyEnemyArray(&enemies);
-  destroyBulletArray(&bullets)
+  destroyBulletArray(&bullets);
 }
 
