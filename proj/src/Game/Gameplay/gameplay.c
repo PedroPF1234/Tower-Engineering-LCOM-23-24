@@ -83,6 +83,9 @@ Shop shop;
 ButtonArray pause_buttons;
 ButtonArray shop_buttons;
 
+//money money money
+int guita; 
+
 static void checkGameKeyboardInput(KeyPresses** head) {
 
   KeyPresses* current = *head;
@@ -590,6 +593,7 @@ static void updateGamePlay() {
     //Update enemy array
     for (uint32_t j = 0; j < enemies.length; j++) {
       Enemy* enemy = getEnemyArray(&enemies, j);
+
       //Collision with the bullet
       for (uint32_t i = 0; i < bullets.length; i++) {
         Bullet* bullet = getBulletArray(&bullets, i);
@@ -599,8 +603,10 @@ static void updateGamePlay() {
         }
       }
 
+      //death of enemy
       if(enemy->hit_points <= 0){
         removeEnemyArray(&enemies, j);
+        guita += 10;
         j--;
       }
       break;
@@ -642,6 +648,7 @@ void initializeGameplay() {
   bullets = newBulletArray(100);
   pause_buttons = newButtonArray(20);
   shop_buttons = newButtonArray(20);
+  guita = 100;
 
   pushButtonArray(&pause_buttons, initializeButton((xpm_map_t)ResumeButtonHovered, (xpm_map_t)ResumeButton, screen.xres/2, screen.yres/2 - 100, 0xFFFE, false, true));
 
