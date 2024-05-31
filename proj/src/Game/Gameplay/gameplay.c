@@ -67,10 +67,10 @@ EnemyArray enemies;
 BulletArray bullets;
 
 // PlayerBase
-PlayerBase* player_base;
+PlayerBase player_base;
 
 // Shop
-Shop* shop;
+Shop shop;
 
 // Pause Buttons
 ButtonArray pause_buttons;
@@ -188,6 +188,44 @@ static void checkGameKeyboardInput(KeyPresses** head) {
         else if (player1->speed[1] == -7.0f) player1->speed[1] = -10.0f;
         break;
 
+      case Q_BREAK:
+        // shot- create new bullet
+        if(player1->hasWeapon){
+          float bullet_x = player1->x; 
+          float bullet_y = player1->y; 
+          float bullet_speed_x;
+          float bullet_speed_y;
+          int16_t damage = 10;
+          //so the bullet goes horizontal or vertical
+          if(player1->current_direction == UP ||player1->current_direction == UP_RIGHT ||
+          player1->current_direction == UP_LEFT ||
+          player1->current_direction == UP_IDLE) {
+            bullet_speed_y = -1; 
+            bullet_speed_x = 0;
+          }
+          else if(player1->current_direction == DOWN || 
+          player1->current_direction == DOWN_RIGHT ||
+          player1->current_direction == DOWN_LEFT ||
+          player1->current_direction == DOWN_IDLE){
+            bullet_speed_y = 1; 
+            bullet_speed_x = 0;
+          }
+          else if(player1->current_direction == LEFT || player1->current_direction == LEFT_IDLE){
+            bullet_speed_y = 0; 
+            bullet_speed_x = -1;
+          }
+          else{
+            bullet_speed_y = 0; 
+            bullet_speed_x = 1;
+          }
+
+          Bullet* new_bullet = initializeBullet(bullet_x, bullet_y, 0, 0, bullet_speed_x, bullet_speed_y, damage);
+
+          pushBulletArray(&bullets, new_bullet);
+        }
+
+        break;
+        
       case SPACE_BREAK:
         selecting_tower_base = !selecting_tower_base;
         if (selecting_tower_base) {
@@ -305,7 +343,6 @@ static void checkPauseKeyboardInput(KeyPresses** head) {
         break;
       }
     }
-
     if (current->next == NULL) {
       free(current);
       break;
@@ -433,6 +470,21 @@ static void checkShopHovered(ButtonArray* array) {
   }
 }
 
+/*
+static bool checkCollision(Bullet* bullet, Enemy* enemy) {
+    int16_t bullet_left = bullet->x + bullet->origin_offset_x;
+    int16_t bullet_right = bullet->x + bullet->origin_offset_x + bullet->sprite->width;
+    int16_t bullet_top = bullet->y + bullet->origin_offset_y;
+    int16_t bullet_bottom = bullet->y + bullet->origin_offset_y + bullet->sprite->height;
+
+    int16_t enemy_left = enemy->x + enemy->origin_offset_x;
+    int16_t enemy_right = enemy->x + enemy->origin_offset_x + enemy->enemy->sprite->width;
+    int16_t enemy_top = enemy->y + enemy->origin_offset_y;
+    int16_t enemy_bottom = enemy->y + enemy->origin_offset_y + enemy->enemy->sprite->height;
+
+    return !(bullet_right < enemy_left || bullet_left > enemy_right || bullet_bottom < enemy_top || bullet_top > enemy_bottom);
+}
+*/
 
 static void updateGamePlay() {
   if (!first_time_paused) {
@@ -451,12 +503,10 @@ static void updateGamePlay() {
     updatePlayerPosition(player1, *current_arena);
     updatePlayerSpriteBasedOnPosition(player1);
     updateAllEnemyPositions(&enemies);
-    updatePlayerBaseHealthBar(player_base);
+    updatePlayerBaseHealthBar(&player_base);
     /*
     updateAllBulletPositions(&bullets);
 
-
-    // In case of collisions between bullets and enemies:
     for (uint32_t i = 0; i < bullets.length; i++) {
       Bullet* bullet = getBulletArray(&bullets, i);
         if (bullet->active) {
@@ -464,6 +514,7 @@ static void updateGamePlay() {
             Enemy* enemy = getEnemyArray(&enemies, j);
             if (checkCollision(bullet, enemy)) {
               bullet->active = false;
+              enemy->hit_points -= 1;
             }
           }
         }
@@ -494,7 +545,7 @@ void updateShop() {
     first_time_shop = !first_time_shop;
   }
   //checkShopKeyboardInput(&keyboard_device->keyPresses);
-  checkShopHovered(&pause_buttons);
+  checkShopHovered(&shop_buttons);
 }
 
 void initializeGameplay() {
@@ -502,9 +553,8 @@ void initializeGameplay() {
   arenas = initializeArenas();
   player1 = initializePlayer(32, 28, -16, -29, 100);
   player2 = initializePlayer(32, 28, -16, -29, 100);
-  towers = newTowerArray(20);
   enemies = newEnemyArray(100);
-  //bullets = newBulletArray(100);
+  bullets = newBulletArray(100);
   pause_buttons = newButtonArray(20);
   shop_buttons = newButtonArray(20);
 
@@ -516,8 +566,6 @@ void initializeGameplay() {
 
   hideButtons(&pause_buttons);
   hideButtons(&shop_buttons);
-
-  //Falta inicializar a array das bullets! 
 
   game_background = create_spriteless_gameobject(0, 0, 0, 0, 0);
   pause_background = create_gameobject((xpm_map_t)PauseBackground, screen.xres/2, screen.yres/2, -300, -300, 0xFFFE, true, false);
@@ -539,43 +587,21 @@ void enterGame(bool multi, uint8_t arena) {
   playing = true;
   showSprites(&player1->player->animatedSprite->sprites);
 
+  player_base = current_arena->base;
+  shop = current_arena->shop;
   towers = current_arena->towers;
-  showTowers(&towers);
+
+  showArena(current_arena);
 
   if (multi) showSprites(&player2->player->animatedSprite->sprites);
-
-  player_base = initializePlayerBase(current_arena->targert_coordinates[(current_arena->num_targets - 1) * 2], current_arena->targert_coordinates[(current_arena->num_targets - 1) * 2 + 1], 1000);
-  
-  shop = initializeShop(current_arena->shop_x, current_arena->shop_y);
-
-  // Wont be needed when the pushing of turrets is moved to here.
-  showTowers(&towers);
-  //
 }
-
-/*
-//I dont know very well where should I put this function
-static bool checkCollision(Bullet* bullet, Enemy* enemy) {
-    int16_t bullet_left = bullet->x + bullet->origin_offset_x;
-    int16_t bullet_right = bullet->x + bullet->origin_offset_x + bullet->sprite->width;
-    int16_t bullet_top = bullet->y + bullet->origin_offset_y;
-    int16_t bullet_bottom = bullet->y + bullet->origin_offset_y + bullet->sprite->height;
-
-    int16_t enemy_left = enemy->x + enemy->origin_offset_x;
-    int16_t enemy_right = enemy->x + enemy->origin_offset_x + enemy->enemy->sprite->width;
-    int16_t enemy_top = enemy->y + enemy->origin_offset_y;
-    int16_t enemy_bottom = enemy->y + enemy->origin_offset_y + enemy->enemy->sprite->height;
-
-    return !(bullet_right < enemy_left || bullet_left > enemy_right || bullet_bottom < enemy_top || bullet_top > enemy_bottom);
-}
-*/
 
 void updateGame() {
   
   if (rtc_time->just_updated && state == GAME) {
     if (to_spawn_enemy) {
       to_spawn_enemy = false;
-      pushEnemyArray(&enemies, initializeEnemy((float)current_arena->spawn_x, (float)current_arena->spawn_y, 0, 0, multiplayer ? 1500 : 1000, current_arena->targert_coordinates, current_arena->num_targets));
+      pushEnemyArray(&enemies, initializeEnemy((float)current_arena->spawn_x, (float)current_arena->spawn_y, 0, 0, multiplayer ? 1500 : 1000, current_arena->target_coordinates, current_arena->num_targets));
     } else {
       to_spawn_enemy = true;
     }
@@ -595,15 +621,16 @@ void exitGame() {
   hideSprites(&player1->player->animatedSprite->sprites);
   hideSprites(&player2->player->animatedSprite->sprites);
 
-  hideTowers(&towers);
-  towers = (TowerArray){NULL, 0, 0};
-
   hideButtons(&pause_buttons);
   destroyEnemyArray(&enemies);
-  destroyPlayerBase(player_base);
-  destroyShop(shop);
+
+  towers = (TowerArray){NULL, 0, 0};
+  player_base = (PlayerBase){NULL, NULL, 0, 0};
+  shop = (Shop){NULL};
   remove_sprite_from_spriteless_gameobject(game_background);
   pause_background->sprite->is_visible = false;
+
+  hideArena(current_arena);
 }
 
 void destroyGame() {
@@ -613,4 +640,7 @@ void destroyGame() {
   destroyTurretArray(&towers);
   destroyArenas(arenas);
   destroyEnemyArray(&enemies);
+
+  //destroyBulletArray(&bullets)
 }
+

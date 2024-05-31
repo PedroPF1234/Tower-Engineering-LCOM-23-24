@@ -3,7 +3,7 @@
 #include "../../../Devices/device_controller.h"
 
 typedef struct Shop {
-  GameObject* shop;
+  GameObject* shopObject;
 } Shop;
 
 Shop* initializeShop(int16_t x, int16_t y);
