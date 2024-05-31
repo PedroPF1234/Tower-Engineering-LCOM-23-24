@@ -9,12 +9,14 @@
 
 Sprite* crossbowTurret;
 Sprite* canonTurret;
+Sprite* laserTurret;
 int rotations = 0;
 
 void initializeDifferentTowerSprites() {
   crossbowTurret = create_rotation_abled_sprite((xpm_map_t)Crossbow, 0, 0, false, false, 
   &rotations);
   canonTurret = create_rotation_abled_sprite((xpm_map_t)Cannon, 0, 0, false, false, &rotations);
+  laserTurret = create_rotation_abled_sprite((xpm_map_t)LaserGun, 0, 0, false, false, &rotations);
 }
 
 TowerBase* initializeTower(int16_t x, int16_t y) {
@@ -165,6 +167,17 @@ void mountTurret(TowerBase* tower, TurretType type) {
       break;
 
     case LASER:
+      if (tower->turret->sprite == NULL) {
+        temp = create_sprite_from_sprite(laserTurret, x, y, true, 360);
+        tower->turret->origin_offset_x = -(temp->width / 2);
+        tower->turret->origin_offset_y = -(temp->height / 2);
+        tower->turret_radius = (temp[0].width / 2);
+        tower->range = temp[0].width*6;
+        tower->turretSprite = temp;
+      }
+      add_sprite_to_spriteless_gameobject(tower->turret, temp);
+      tower->damage = 20;
+
       break;
 
     default:
