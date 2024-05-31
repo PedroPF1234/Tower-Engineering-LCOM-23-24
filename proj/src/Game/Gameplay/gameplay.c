@@ -366,7 +366,6 @@ static void checkPauseKeyboardInput(KeyPresses** head) {
 
 static void checkPauseHovered(ButtonArray* array) {
   for (int32_t i = 0; i < (int32_t)array->length; i++) {
-
     Button* button = getButtonArray(array, i);
     GameObject* buttonObject = button->button;
 
@@ -548,7 +547,6 @@ static void checkShopHovered(ButtonArray* array) {
   }
 }
 
-/*
 static bool checkCollision(Bullet* bullet, Enemy* enemy) {
     int16_t bullet_left = bullet->x + bullet->origin_offset_x;
     int16_t bullet_right = bullet->x + bullet->origin_offset_x + bullet->sprite->width;
@@ -562,7 +560,6 @@ static bool checkCollision(Bullet* bullet, Enemy* enemy) {
 
     return !(bullet_right < enemy_left || bullet_left > enemy_right || bullet_bottom < enemy_top || bullet_top > enemy_bottom);
 }
-*/
 
 static void updateGamePlay() {
   if (!first_time_paused) {
@@ -588,7 +585,6 @@ static void updateGamePlay() {
     updatePlayerSpriteBasedOnPosition(player1);
     updateAllEnemyPositions(&enemies);
     updatePlayerBaseHealthBar(&player_base);
-    /*
     updateAllBulletPositions(&bullets);
 
     for (uint32_t i = 0; i < bullets.length; i++) {
@@ -603,7 +599,6 @@ static void updateGamePlay() {
           }
         }
     }
-    */
 
     if (multiplayer) {
       updatePlayerPosition(player2, *current_arena);
@@ -688,7 +683,6 @@ void enterGame(bool multi, uint8_t arena) {
 }
 
 void updateGame() {
-  
   if (rtc_time->just_updated && state == GAME) {
     if (to_spawn_enemy) {
       to_spawn_enemy = false;
