@@ -1,0 +1,17 @@
+/* XPM */
+static char *BulletPlayer[] = {
+/* columns rows colors chars-per-pixel */
+"14 6 5 1 ",
+"  c #000001",
+". c #222222",
+"X c #FF9D00",
+"o c #FFF0D8",
+"O c #000000",
+/* pixels */
+"    ....XXooOO",
+"    ....XXooOO",
+"        ..XXoo",
+"        ..XXoo",
+"        XXXXOO",
+"        XXXXOO"
+};

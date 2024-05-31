@@ -12,6 +12,7 @@
 #include "Bullet/bullet.h"
 #include "PlayerBase/playerbase.h"
 #include "Shop/shop.h"
+#include "Money/money.h"
 
 #include "../gamestates.h"
 
@@ -96,8 +97,8 @@ ButtonArray pause_buttons;
 ButtonArray shop_buttons;
 ButtonArray tower_buttons;
 
-//money money money
-int guita; 
+// Money
+Money* money;
 
 static void checkGameKeyboardInput(KeyPresses** head) {
 
@@ -219,7 +220,7 @@ static void checkGameKeyboardInput(KeyPresses** head) {
         // shot- create new bullet
         if(player1->hasWeapon){
           float bullet_x = player1->x; 
-          float bullet_y = player1->y; 
+          float bullet_y = player1->y+player1->origin_offset_y; 
           float bullet_speed_x;
           float bullet_speed_y;
           int16_t damage = 200;
@@ -802,7 +803,7 @@ static bool checkCollision(Bullet* bullet, Enemy* enemy) {
     int16_t enemy_top = enemy->y + enemy->origin_offset_y;
     int16_t enemy_bottom = enemy->y + enemy->origin_offset_y + enemy->enemy->sprite->height;
 
-    return !(bullet_right < enemy_left || bullet_left > enemy_right || bullet_bottom < enemy_top || bullet_top > enemy_bottom);
+    return !((bullet_right < enemy_left || bullet_left > enemy_right) && (bullet_bottom < enemy_top || bullet_top > enemy_bottom));
 }
 
 static void updateGamePlay() {
@@ -854,7 +855,8 @@ static void updateGamePlay() {
       //death of enemy
       if(enemy->hit_points <= 0){
         removeEnemyArray(&enemies, j);
-        guita += 10;
+        money->money_amount += 10;
+        updateGameObjectSprites(money, 0);
         j--;
       }
       break;
@@ -926,6 +928,10 @@ void initializeGameplay() {
   arenas = initializeArenas();
   player1 = initializePlayer(32, 28, -16, -29, 100);
   player2 = initializePlayer(32, 28, -16, -29, 100);
+  
+  money = initializeMoney();
+  hideGameObjects(&money->moneyDigitsGameObjects);
+
   enemies = newEnemyArray(100);
   bullets = newBulletArray(100);
   pause_buttons = newButtonArray(20);
@@ -967,11 +973,19 @@ void enterGame(bool multi, uint8_t arena) {
   hideSprites(&player2->player->animatedSprite->sprites);
   //
 
+  showGameObjects(&money->moneyDigitsGameObjects);
+
+  money->money_amount = 500;
+
   multiplayer = multi;
   current_arena = &arenas[arena];
   add_sprite_to_spriteless_gameobject(game_background, current_arena->background);
   playing = true;
   showSprites(&player1->player->animatedSprite->sprites);
+
+  money->coin->sprite->is_visible = true;
+  updateGameObjectSprites(money, 0);
+  //showSprites(&money->moneyDigits);
 
   player_base = current_arena->base;
   shop = current_arena->shop;
@@ -992,6 +1006,8 @@ void updateGame() {
     }
   }
 
+  printf("ma: %d, go: %d\n",money->money_amount, money->moneyDigitsGameObjects.length);
+
   if (state == GAME) {
     updateGamePlay();
     updateAnimatedGameObjects();
@@ -1011,6 +1027,10 @@ void exitGame() {
 
   hideButtons(&pause_buttons);
   destroyEnemyArray(&enemies);
+
+  money->coin->sprite->is_visible = false;
+  hideGameObjects(&money->moneyDigitsGameObjects);
+  //updateGameObjectSprites(money);
 
   towers = (TowerArray){NULL, 0, 0};
   player_base = (PlayerBase){NULL, NULL, 0, 0};
