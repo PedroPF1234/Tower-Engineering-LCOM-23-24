@@ -618,6 +618,7 @@ void updateGame() {
 
   if (state == GAME) {
     updateGamePlay();
+    updateAnimatedGameObjects();
   } else if (state == PAUSE) {
     updatePause();
   } else if (state == SHOP_MENU) {

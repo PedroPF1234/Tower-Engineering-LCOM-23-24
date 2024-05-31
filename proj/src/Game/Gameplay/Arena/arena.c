@@ -16,12 +16,15 @@ static Arena* read_arena_info(char*** arena_info);
 
 Arena* initializeArenas() {
   AnimatedSprite* temp1 = create_animated_sprite(Furnace_Decor, 5, 300);
+  hideSprites(&temp1->sprites);
   furnaceDecor = *temp1;
   
   AnimatedSprite* temp2 = create_animated_sprite(Drill_Decor, 3, 300);
+  hideSprites(&temp2->sprites);
   drillDecor = *temp2;
 
   AnimatedSprite* temp3 = create_animated_sprite(Factory_Decor, 4, 284);
+  hideSprites(&temp3->sprites);
   factoryDecor = *temp3;
   
   free(temp1);
@@ -58,6 +61,9 @@ void hideArena(Arena* arena) {
   arena->shop.shopButton->sprite->is_visible = false;
   arena->base.baseObject->sprite->is_visible = false;
   arena->base.health_bar->sprite->is_visible = false;
+  for (int i = 0; i < arena->num_decorations; i++) {
+    hideSprites(&arena->decorations[i]->animatedSprite->sprites);
+  }
 }
 
 void showArena(Arena* arena) {
@@ -66,6 +72,9 @@ void showArena(Arena* arena) {
   arena->shop.shopObject->sprite->is_visible = true;
   arena->base.baseObject->sprite->is_visible = true;
   arena->base.health_bar->sprite->is_visible = true;
+  for (int i = 0; i < arena->num_decorations; i++) {
+    showSprites(&arena->decorations[i]->animatedSprite->sprites);
+  }
 }
 
 static Arena* read_arena_info(char*** arena_info) {
