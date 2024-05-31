@@ -349,7 +349,6 @@ static void checkPauseKeyboardInput(KeyPresses** head) {
 
 static void checkPauseHovered(ButtonArray* array) {
   for (int32_t i = 0; i < (int32_t)array->length; i++) {
-
     Button* button = getButtonArray(array, i);
     GameObject* buttonObject = button->button;
 
@@ -514,7 +513,6 @@ void enterGame(bool multi, uint8_t arena) {
 }
 
 void updateGame() {
-  
   if (rtc_time->just_updated && state == GAME) {
     if (to_spawn_enemy) {
       to_spawn_enemy = false;
