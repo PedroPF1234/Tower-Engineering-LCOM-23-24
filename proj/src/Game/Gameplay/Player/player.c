@@ -7,6 +7,7 @@
 
 
 extern ScreenInfo screen;
+bool can_shop = false;
 
 Player* initializePlayer(float x, float y, int16_t ox, int16_t oy, int16_t hp) {
   Player* new_player = (Player*)malloc(sizeof(Player));
@@ -33,8 +34,6 @@ Player* initializePlayer(float x, float y, int16_t ox, int16_t oy, int16_t hp) {
   new_player->origin_offset_y = oy;
   new_player->hit_points = hp;
   new_player->max_hit_points = hp;
-  //change - just for testing
-  new_player->hasWeapon = true;
 
   return new_player;
 }
@@ -63,11 +62,17 @@ void updatePlayerPosition(Player* player, Arena arena) {
   if (new_y > screen.yres) player->y = screen.yres;
 
   // Collision Detection 
-  int16_t shop_left_corner = arena.shop_x - 95;
-  int16_t shop_right_corner = arena.shop_x + 95;
+  int16_t shop_left_corner = arena.shop.shopObject->x - 95;
+  int16_t shop_right_corner = arena.shop.shopObject->x + 95;
 
-  if (new_x > shop_left_corner && new_x < shop_right_corner && new_y <= arena.shop_y && new_y >= arena.shop_y - 40) {
+  if (new_x > shop_left_corner && new_x < shop_right_corner && new_y <= arena.shop.shopObject->y && new_y >= arena.shop.shopObject->y - 40) {
     can_move = false;
+  }
+
+  if (new_x >= shop_left_corner-30 && new_x <= shop_right_corner+30 && new_y <= arena.shop.shopObject->y+70 && new_y >= arena.shop.shopObject->y) {
+    can_shop = true;
+  } else {
+    can_shop = false;
   }
 
   if (can_move) {
@@ -84,7 +89,6 @@ void updatePlayerPosition(Player* player, Arena arena) {
   }
 }
 
-//update sprite and direction
 void updatePlayerSpriteBasedOnPosition(Player* player) {
 
   float x = player->speed[0];
@@ -149,3 +153,4 @@ void updatePlayerSpriteBasedOnPosition(Player* player) {
   player->player->gameObject->origin_offset_y = -(player->player->gameObject->sprite->height);
 
 }
+

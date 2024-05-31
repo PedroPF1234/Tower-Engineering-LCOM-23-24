@@ -29,6 +29,8 @@ extern bool last_pressed_was_mouse;
 
 extern bool playing;
 
+extern bool can_shop;
+
 static bool pressed_game_button = false;
 static bool selecting_tower_base = false;
 static bool to_spawn_enemy = false;
@@ -36,11 +38,12 @@ static bool to_spawn_enemy = false;
 static bool first_time_paused = true;
 static bool pressed_pause_button = false;
 
+static bool first_time_shop = true;
+static bool pressed_shop_button = false;
+
 static int8_t game_current_selection = -1;
 static int8_t pause_current_selection = -1;
-
-int16_t shop_y = 200;
-int16_t shop_x = 1100;
+static int8_t shop_current_selection = -1;
 
 bool multiplayer = false;
 
@@ -52,6 +55,7 @@ Arena* current_arena;
 // Backgrounds
 GameObject* game_background;
 GameObject* pause_background;
+GameObject* shop_background;
 
 // Players
 Player* player1;
@@ -65,13 +69,14 @@ EnemyArray enemies;
 BulletArray bullets;
 
 // PlayerBase
-PlayerBase* player_base;
+PlayerBase player_base;
 
 // Shop
-Shop* shop;
+Shop shop;
 
 // Pause Buttons
 ButtonArray pause_buttons;
+ButtonArray shop_buttons;
 
 static void checkGameKeyboardInput(KeyPresses** head) {
 
@@ -98,6 +103,13 @@ static void checkGameKeyboardInput(KeyPresses** head) {
     } else {
       switch (current->key)
       {
+      case E_BREAK:
+        if(state == GAME && can_shop) {
+          state = SHOP_MENU;
+          shop_background->sprite->is_visible = true;
+        }
+        break;
+
       case ESC_BREAK:
         if (state == GAME) {
           state = PAUSE;
@@ -405,6 +417,62 @@ static void checkPauseHovered(ButtonArray* array) {
   }
 }
 
+//static void checkShopKeyboardInput(KeyPresses** head) {}
+
+static void checkShopHovered(ButtonArray* array) {
+    for (int32_t i = 0; i < (int32_t)array->length; i++) {
+
+    Button* button = getButtonArray(array, i);
+    GameObject* buttonObject = button->button;
+
+    int16_t mouse_x = mouse_device->mouse->x;
+    int16_t mouse_y = mouse_device->mouse->y;
+    int16_t leftMostBound = button->x + button->origin_offset_x;
+    int16_t rightMostBound = button->x + button->origin_offset_x + button->button->sprite->width;
+    int16_t upMostBound = button->y + button->origin_offset_y;
+    int16_t downMostBound = button->y + button->origin_offset_y + button->button->sprite->height;
+
+    if (!pressed_shop_button) {
+      if (mouse_x > leftMostBound && mouse_x < rightMostBound &&
+          mouse_y > upMostBound && mouse_y < downMostBound && last_pressed_was_mouse) {
+
+        updateGameObjectSprite(buttonObject, button->hovering);
+        shop_current_selection = i;
+
+        if (mouse_device->left_button_is_pressed) {
+          pressed_shop_button = true;
+          break;
+        }
+
+      } else if (!last_pressed_was_mouse && shop_current_selection == i) {
+        updateGameObjectSprite(buttonObject, button->hovering);
+      } else {
+        updateGameObjectSprite(buttonObject, button->no_hovering);
+      }
+    }
+  }
+
+  if (pressed_shop_button) {
+    pressed_shop_button = false;
+    switch (shop_current_selection)
+    {
+    case -1:
+      break;
+    
+    case 0:
+      state = GAME;
+      shop_background->sprite->is_visible = false;
+      break;
+
+    default:
+      break;
+    }
+
+    shop_current_selection = -1;
+  }
+}
+
+/*
 static bool checkCollision(Bullet* bullet, Enemy* enemy) {
     int16_t bullet_left = bullet->x + bullet->origin_offset_x;
     int16_t bullet_right = bullet->x + bullet->origin_offset_x + bullet->sprite->width;
@@ -418,19 +486,33 @@ static bool checkCollision(Bullet* bullet, Enemy* enemy) {
 
     return !(bullet_right < enemy_left || bullet_left > enemy_right || bullet_bottom < enemy_top || bullet_top > enemy_bottom);
 }
+*/
 
 static void updateGamePlay() {
   if (!first_time_paused) {
     hideButtons(&pause_buttons);
     first_time_paused = !first_time_paused;
   }
+
+  if(!first_time_shop) {
+    hideButtons(&shop_buttons);
+    first_time_shop = !first_time_shop;
+  }
+
+  if (can_shop) {
+    current_arena->shop.shopButton->sprite->is_visible = true;
+  } else {
+    current_arena->shop.shopButton->sprite->is_visible = false;
+  }
+
   checkGameKeyboardInput(&keyboard_device->keyPresses);
   checkGameHovered(&towers);
   if (playing) {
     updatePlayerPosition(player1, *current_arena);
     updatePlayerSpriteBasedOnPosition(player1);
     updateAllEnemyPositions(&enemies);
-    updatePlayerBaseHealthBar(player_base);
+    updatePlayerBaseHealthBar(&player_base);
+    /*
     updateAllBulletPositions(&bullets);
 
     for (uint32_t i = 0; i < bullets.length; i++) {
@@ -445,6 +527,7 @@ static void updateGamePlay() {
           }
         }
     }
+    */
 
     if (multiplayer) {
       updatePlayerPosition(player2, *current_arena);
@@ -464,24 +547,38 @@ static void updatePause() {
   checkPauseHovered(&pause_buttons);
 }
 
+void updateShop() {
+  if(first_time_shop) {
+    showButtons(&shop_buttons);
+    first_time_shop = !first_time_shop;
+  }
+  //checkShopKeyboardInput(&keyboard_device->keyPresses);
+  checkShopHovered(&shop_buttons);
+}
+
 void initializeGameplay() {
   initializeDifferentTowerSprites();
   arenas = initializeArenas();
   player1 = initializePlayer(32, 28, -16, -29, 100);
   player2 = initializePlayer(32, 28, -16, -29, 100);
-  towers = newTowerArray(20);
   enemies = newEnemyArray(100);
   bullets = newBulletArray(100);
   pause_buttons = newButtonArray(20);
+  shop_buttons = newButtonArray(20);
 
-  pushButtonArray(&pause_buttons, initializeButton((xpm_map_t)ResumeButtonHovered, (xpm_map_t)ResumeButton, screen.xres/2, screen.yres/2 - 100, -224, -25, 0xFFFE, true, true));
+  pushButtonArray(&pause_buttons, initializeButton((xpm_map_t)ResumeButtonHovered, (xpm_map_t)ResumeButton, screen.xres/2, screen.yres/2 - 100, 0xFFFE, false, true));
 
-  pushButtonArray(&pause_buttons, initializeButton((xpm_map_t)QuitButtonHovered, (xpm_map_t)QuitButton, screen.xres/2, screen.yres/2 + 100, -225, -25, 0xFFFE, true, true));
+  pushButtonArray(&pause_buttons, initializeButton((xpm_map_t)QuitButtonHovered, (xpm_map_t)QuitButton, screen.xres/2, screen.yres/2 + 100, 0xFFFE, false, true));
+
+  pushButtonArray(&shop_buttons, initializeButton((xpm_map_t)QuitButtonHovered, (xpm_map_t)QuitButton, screen.xres/2, screen.yres/2, 0xFFFE, false, true));
 
   hideButtons(&pause_buttons);
+  hideButtons(&shop_buttons);
 
   game_background = create_spriteless_gameobject(0, 0, 0, 0, 0);
   pause_background = create_gameobject((xpm_map_t)PauseBackground, screen.xres/2, screen.yres/2, -300, -300, 0xFFFE, true, false);
+  shop_background = create_gameobject((xpm_map_t)PauseBackground, screen.xres/2, screen.yres/2, -300, -300, 0xFFFE, true, false);
+
 }
 
 void enterGame(bool multi, uint8_t arena) {
@@ -498,25 +595,20 @@ void enterGame(bool multi, uint8_t arena) {
   playing = true;
   showSprites(&player1->player->animatedSprite->sprites);
 
+  player_base = current_arena->base;
+  shop = current_arena->shop;
   towers = current_arena->towers;
-  showTowers(&towers);
+
+  showArena(current_arena);
 
   if (multi) showSprites(&player2->player->animatedSprite->sprites);
-
-  player_base = initializePlayerBase(current_arena->targert_coordinates[(current_arena->num_targets - 1) * 2], current_arena->targert_coordinates[(current_arena->num_targets - 1) * 2 + 1], 1000);
-  
-  shop = initializeShop(current_arena->shop_x, current_arena->shop_y);
-
-  // Wont be needed when the pushing of turrets is moved to here.
-  showTowers(&towers);
-  //
 }
 
 void updateGame() {
   if (rtc_time->just_updated && state == GAME) {
     if (to_spawn_enemy) {
       to_spawn_enemy = false;
-      pushEnemyArray(&enemies, initializeEnemy((float)current_arena->spawn_x, (float)current_arena->spawn_y, 0, 0, multiplayer ? 1500 : 1000, current_arena->targert_coordinates, current_arena->num_targets));
+      pushEnemyArray(&enemies, initializeEnemy((float)current_arena->spawn_x, (float)current_arena->spawn_y, 0, 0, multiplayer ? 1500 : 1000, current_arena->target_coordinates, current_arena->num_targets));
     } else {
       to_spawn_enemy = true;
     }
@@ -524,8 +616,11 @@ void updateGame() {
 
   if (state == GAME) {
     updateGamePlay();
+    updateAnimatedGameObjects();
   } else if (state == PAUSE) {
     updatePause();
+  } else if (state == SHOP_MENU) {
+    updateShop();
   }
 }
 
@@ -534,15 +629,16 @@ void exitGame() {
   hideSprites(&player1->player->animatedSprite->sprites);
   hideSprites(&player2->player->animatedSprite->sprites);
 
-  hideTowers(&towers);
-  towers = (TowerArray){NULL, 0, 0};
-
   hideButtons(&pause_buttons);
   destroyEnemyArray(&enemies);
-  destroyPlayerBase(player_base);
-  destroyShop(shop);
+
+  towers = (TowerArray){NULL, 0, 0};
+  player_base = (PlayerBase){NULL, NULL, 0, 0};
+  shop = (Shop){NULL, NULL};
   remove_sprite_from_spriteless_gameobject(game_background);
   pause_background->sprite->is_visible = false;
+
+  hideArena(current_arena);
 }
 
 void destroyGame() {

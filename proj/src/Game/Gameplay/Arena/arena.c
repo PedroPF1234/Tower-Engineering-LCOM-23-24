@@ -4,14 +4,33 @@
 #include "arena.h"
 
 #include "../../../ImageAssets/Arena.xpm"
+#include "../../../ImageAssets/Decorations/Drill_Decor.xpm"
+#include "../../../ImageAssets/Decorations/Factory_Decor.xpm"
+#include "../../../ImageAssets/Decorations/Furnace_Decor.xpm"
 
-AnimatedSprite decoration1;
-AnimatedSprite decoration2;
-AnimatedSprite decoration3;
+AnimatedSprite furnaceDecor;
+AnimatedSprite drillDecor;
+AnimatedSprite factoryDecor;
 
 static Arena* read_arena_info(char*** arena_info);
 
 Arena* initializeArenas() {
+  AnimatedSprite* temp1 = create_animated_sprite(Furnace_Decor, 5, 300);
+  hideSprites(&temp1->sprites);
+  furnaceDecor = *temp1;
+  
+  AnimatedSprite* temp2 = create_animated_sprite(Drill_Decor, 3, 300);
+  hideSprites(&temp2->sprites);
+  drillDecor = *temp2;
+
+  AnimatedSprite* temp3 = create_animated_sprite(Factory_Decor, 4, 284);
+  hideSprites(&temp3->sprites);
+  factoryDecor = *temp3;
+  
+  free(temp1);
+  free(temp2);
+  free(temp3);
+
   Arena* new_arenas = (Arena*)malloc(sizeof(Arena) * 3);
 
   char*** arena1_info[] = {Arena1Info};
@@ -19,20 +38,48 @@ Arena* initializeArenas() {
   new_arenas[1] = *read_arena_info(arena1_info[0]);
   new_arenas[2] = *read_arena_info(arena1_info[0]);
 
+  hideArena(&new_arenas[0]);
+  hideArena(&new_arenas[1]);
+  hideArena(&new_arenas[2]);
+
   return new_arenas;
 }
 
 void destroyArenas(Arena* arena) {
   for (int i = 0; i < 3; i++) {
     destroy_sprite(arena[i].background);
-    free(arena[i].targert_coordinates);
+    free(arena[i].target_coordinates);
   }
 
   free(arena);
 }
 
+void hideArena(Arena* arena) {
+  arena->background->is_visible = false;
+  hideTowers(&arena->towers);
+  arena->shop.shopObject->sprite->is_visible = false;
+  arena->shop.shopButton->sprite->is_visible = false;
+  arena->base.baseObject->sprite->is_visible = false;
+  arena->base.health_bar->sprite->is_visible = false;
+  for (int i = 0; i < arena->num_decorations; i++) {
+    hideSprites(&arena->decorations[i]->animatedSprite->sprites);
+  }
+}
+
+void showArena(Arena* arena) {
+  arena->background->is_visible = true;
+  showTowers(&arena->towers);
+  arena->shop.shopObject->sprite->is_visible = true;
+  arena->base.baseObject->sprite->is_visible = true;
+  arena->base.health_bar->sprite->is_visible = true;
+  for (int i = 0; i < arena->num_decorations; i++) {
+    showSprites(&arena->decorations[i]->animatedSprite->sprites);
+  }
+}
+
 static Arena* read_arena_info(char*** arena_info) {
   Arena* new_arena = (Arena*)malloc(sizeof(Arena) * 3);
+
   uint16_t target_counter = 0;
   uint16_t decorations_counter = 0;
   uint16_t towers_counter = 0;
@@ -84,6 +131,8 @@ static Arena* read_arena_info(char*** arena_info) {
 
   new_arena->decorations = (AnimatedGameObject**)malloc(sizeof(AnimatedGameObject*) * decorations_counter);
 
+  int16_t base_x = 0;
+  int16_t base_y = 0;
   for (uint16_t i = 0; i < target_counter; i++) {
     bool negative = false;
     char* target = info[current_line++];
@@ -117,8 +166,8 @@ static Arena* read_arena_info(char*** arena_info) {
 
     if (i != 0) {
       if (i == target_counter - 1) {
-        new_arena->base_x = target_x;
-        new_arena->base_y = target_y;
+        base_x = target_x;
+        base_y = target_y;
       }
       target_coordinates[(i - 1) * 2] = target_x;
       target_coordinates[(i - 1) * 2 + 1] = target_y;
@@ -128,7 +177,7 @@ static Arena* read_arena_info(char*** arena_info) {
     }
   }
   
-  new_arena->targert_coordinates = target_coordinates;
+  new_arena->target_coordinates = target_coordinates;
   new_arena->num_targets = target_counter - 1;
 
   for (uint16_t i = 0; i < decorations_counter; i++) {
@@ -156,25 +205,23 @@ static Arena* read_arena_info(char*** arena_info) {
       decoration++;
     }
 
-    /*
     switch (decoration_id)
     {
     case 0:
-      new_arena->decorations[i] = create_animated_gameobject(&decoration1, decoration_x, decoration_y, decoration_y * Z_INDEX_PER_LAYER + LOW_PRIORITY_Z_INDEX);
+      new_arena->decorations[i] = create_animated_gameobject(&furnaceDecor, decoration_x, decoration_y, decoration_y * Z_INDEX_PER_LAYER + LOW_PRIORITY_Z_INDEX);
       break;
 
     case 1:
-      new_arena->decorations[i] = create_animated_gameobject(&decoration2, decoration_x, decoration_y, decoration_y * Z_INDEX_PER_LAYER + LOW_PRIORITY_Z_INDEX);
+      new_arena->decorations[i] = create_animated_gameobject(&drillDecor, decoration_x, decoration_y, decoration_y * Z_INDEX_PER_LAYER + LOW_PRIORITY_Z_INDEX);
       break;
 
     case 2:
-      new_arena->decorations[i] = create_animated_gameobject(&decoration3, decoration_x, decoration_y, decoration_y * Z_INDEX_PER_LAYER + LOW_PRIORITY_Z_INDEX);
+      new_arena->decorations[i] = create_animated_gameobject(&factoryDecor, decoration_x, decoration_y, decoration_y * Z_INDEX_PER_LAYER + LOW_PRIORITY_Z_INDEX);
       break;
     
     default:
       break;
     }
-    */
   }
 
   new_arena->num_decorations = decorations_counter;
@@ -204,8 +251,6 @@ static Arena* read_arena_info(char*** arena_info) {
 
   hideTowers(&new_arena->towers);
 
-  new_arena->num_towers = towers_counter;
-
   char* shop_coordinates = info[current_line++];
   int16_t shop_x = 0;
   int16_t shop_y = 0;
@@ -224,8 +269,15 @@ static Arena* read_arena_info(char*** arena_info) {
     }
     shop_coordinates++;
   }
-  new_arena->shop_x = shop_x;
-  new_arena->shop_y = shop_y;
+
+  PlayerBase* playerBase = initializePlayerBase(base_x, base_y, 1000);
+  new_arena->base = *playerBase;
+
+  Shop* shop = initializeShop(shop_x, shop_y);
+  new_arena->shop = *shop;
+
+  free(playerBase);
+  free(shop);
 
   return new_arena;
 }
