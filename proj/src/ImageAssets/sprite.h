@@ -48,12 +48,15 @@ void update_animated_sprite(AnimatedSprite* sprite);
 
 // SpriteArray functions
 SpriteArray newSpriteArray(uint32_t capacity);
+SpriteArray newApriteFromCharArray(char*** sprites, uint32_t sprite_count);
 void pushSpriteArray(SpriteArray* array, Sprite* sprite);
 Sprite* getSpriteArray(SpriteArray* array, uint32_t index);
 void removeSpriteArray(SpriteArray* array, uint32_t index);
 void destroySpriteArray(SpriteArray* array);
 void hideSprites(SpriteArray* array);
 void showSprites(SpriteArray* array);
+void cleanSpriteArray(SpriteArray* array);
+
 
 // Individual sprite functions
 Sprite *create_sprite(xpm_map_t pic, int16_t x, int16_t y, bool square_shape, bool is_visible);

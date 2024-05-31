@@ -150,6 +150,21 @@ SpriteArray newSpriteArray(uint32_t capacity) {
   return array;
 }
 
+SpriteArray newApriteFromCharArray(char*** sprites, uint32_t sprite_count) {
+  SpriteArray array;
+  array.length = 0;
+  array.capacity = sprite_count;
+
+  array.sprites = (Sprite**)malloc(sprite_count * sizeof(Sprite*));
+
+  for (uint32_t i = 0; i < sprite_count; i++) {
+    Sprite* temp = create_sprite((xpm_map_t)sprites[i], 0, 0, false, true);
+    pushSpriteArray(&array, temp);
+  }
+
+  return array;
+}
+
 void pushSpriteArray(SpriteArray* array, Sprite* sprite) {
 
   if (array->capacity != array->length) {
@@ -188,10 +203,15 @@ void removeSpriteArray(SpriteArray* array, uint32_t index) {
 }
 
 void destroySpriteArray(SpriteArray* array) {
+  
   for (uint32_t i = 0; i < array->length; i++) {
     destroy_sprite(array->sprites[i]);
   }
   free(array->sprites);
+}
+
+void cleanSpriteArray(SpriteArray* array) {
+  array->length = 0;
 }
 
 void hideSprites(SpriteArray* array) {

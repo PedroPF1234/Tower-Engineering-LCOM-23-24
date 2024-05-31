@@ -22,6 +22,12 @@ typedef struct AnimatedGameObject {
   AnimatedSprite* animatedSprite;
 } AnimatedGameObject;
 
+typedef struct GameObjectArray {
+  GameObject** gameObjects;
+  uint32_t capacity;
+  uint32_t length;
+} GameObjectArray;
+
 void init_render_pipeline();
 
 int create_gameobjects();
@@ -40,4 +46,13 @@ void add_sprite_to_spriteless_gameobject(GameObject* gameObject, Sprite* sprite)
 void remove_sprite_from_spriteless_gameobject(GameObject* gameObject);
 void updateGameObjectZIndex(GameObject* gameObject, uint16_t z_index);
 void destroy_gameobject(GameObject* gameObject);
+void destroy_gameobject_safe_sprite(GameObject* gameObject);
 void updateGameObjectSprite(GameObject* gameObject, Sprite* sprite);
+
+GameObjectArray newGameObjectArray(uint32_t capacity);
+void insertGameObjectArray(GameObjectArray *array, GameObject *newGameObject);
+GameObject* getGameObjectArray(GameObjectArray *array, uint32_t index);
+void removeGameObjectArray(GameObjectArray *array, GameObject *gameObject);
+void destroyGameObjectArray(GameObjectArray *array);
+void showGameObjects(GameObjectArray* gameObjects);
+void hideGameObjects(GameObjectArray* gameObjects);
