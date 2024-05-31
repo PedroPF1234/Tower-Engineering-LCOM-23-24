@@ -198,7 +198,7 @@ static void checkGameKeyboardInput(KeyPresses** head) {
           float bullet_y = player1->y; 
           float bullet_speed_x;
           float bullet_speed_y;
-          int16_t damage = 10;
+          int16_t damage = 200;
           //so the bullet goes horizontal or vertical
           if(player1->current_direction == UP ||player1->current_direction == UP_RIGHT ||
           player1->current_direction == UP_LEFT ||
@@ -512,6 +512,7 @@ static void updateGamePlay() {
     updatePlayerBaseHealthBar(&player_base);
     updateAllBulletPositions(&bullets);
 
+  //Collision with the bullet - monster
     for (uint32_t i = 0; i < bullets.length; i++) {
       Bullet* bullet = getBulletArray(&bullets, i);
         if (bullet->active) {
@@ -519,7 +520,7 @@ static void updateGamePlay() {
             Enemy* enemy = getEnemyArray(&enemies, j);
             if (checkCollision(bullet, enemy)) {
               bullet->active = false;
-              enemy->hit_points -= 1;
+              enemy->hit_points -= bullet->damage;
             }
           }
         }
@@ -644,7 +645,6 @@ void destroyGame() {
   destroyTurretArray(&towers);
   destroyArenas(arenas);
   destroyEnemyArray(&enemies);
-
-  //destroyBulletArray(&bullets)
+  destroyBulletArray(&bullets)
 }
 
