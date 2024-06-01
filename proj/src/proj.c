@@ -16,7 +16,7 @@ int main(int argc, char *argv[]) {
 
   // enables to save the output of printf function calls on a file
   // [comment this out if you don't want/need it]
-  lcf_log_output("/home/lcom/labs/proj/src/output.txt");
+  //lcf_log_output("/home/lcom/labs/proj/src/output.txt");
 
   // handles control over to LCF
   // [LCF handles command line arguments and invokes the right function]

@@ -263,7 +263,7 @@ static void checkGameHovered(TowerArray* array) {
     pressed_game_button = false;
     if(player1->hasWeapon){
       float bullet_x = player1->x; 
-      float bullet_y = player1->y+player1->origin_offset_y; 
+      float bullet_y = player1->y+player1->origin_offset_y - 10; 
       int16_t damage = 200;
 
       Bullet* new_bullet = initializeBullet(bullet_x, bullet_y, mouse_x, mouse_y, damage);
@@ -916,6 +916,7 @@ void initializeGameplay() {
   player1 = initializePlayer(32, 28, -16, -29, 100);
   player2 = initializePlayer(32, 28, -16, -29, 100);
   player_weapon = initializeWeapon(32, 28);
+  hideWeapon(player_weapon);
   
   money = initializeMoney();
   hideGameObjects(&money->moneyDigitsGameObjects);
@@ -1020,6 +1021,8 @@ void exitGame() {
   money->coin->sprite->is_visible = false;
   hideGameObjects(&money->moneyDigitsGameObjects);
   //updateGameObjectSprites(money);
+
+  hideWeapon(player_weapon);
 
   towers = (TowerArray){NULL, 0, 0};
   player_base = (PlayerBase){NULL, NULL, 0, 0};
