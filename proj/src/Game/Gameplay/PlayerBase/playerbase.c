@@ -30,27 +30,27 @@ void destroyPlayerBase(PlayerBase* playerbase) {
 }
 
 void updatePlayerBaseHealthBar(PlayerBase* playerbase) {
-  if (playerbase->hit_points != playerbase->max_hit_points) {
-    if (playerbase->hit_points < 0) playerbase->hit_points = 0;
-    int16_t healt_width = playerbase->health_bar->sprite->width;
-    int16_t health_height = playerbase->health_bar->sprite->height;
+  
+  if (playerbase->hit_points < 0) playerbase->hit_points = 0;
+  int16_t healt_width = playerbase->health_bar->sprite->width;
+  int16_t health_height = playerbase->health_bar->sprite->height;
 
-    int16_t health_current_width = (healt_width * playerbase->hit_points) / playerbase->max_hit_points;
+  int16_t health_current_width = (healt_width * playerbase->hit_points) / playerbase->max_hit_points;
 
-    Sprite* health_bar = playerbase->health_bar->sprite;
+  Sprite* health_bar = playerbase->health_bar->sprite;
 
-    for (int i = 0; i < health_current_width; i++) {
-      for (int j = 0; j < health_height; j++) {
-        uint8_t color[3] = BASE_GREEN_HEALTH_COLOR;
-        memcpy(health_bar->map + (i + j * healt_width) * 3, &color, 3);
-      }
-    }
-
-    for (int i = health_current_width; i < healt_width; i++) {
-      for (int j = 0; j < health_height; j++) {
-        uint8_t color[3] = BASE_RED_HEALTH_COLOR;
-        memcpy(health_bar->map + (i + j * healt_width) * 3, color, 3);
-      }
+  for (int i = 0; i < health_current_width; i++) {
+    for (int j = 0; j < health_height; j++) {
+      uint8_t color[3] = BASE_GREEN_HEALTH_COLOR;
+      memcpy(health_bar->map + (i + j * healt_width) * 3, &color, 3);
     }
   }
+
+  for (int i = health_current_width; i < healt_width; i++) {
+    for (int j = 0; j < health_height; j++) {
+      uint8_t color[3] = BASE_RED_HEALTH_COLOR;
+      memcpy(health_bar->map + (i + j * healt_width) * 3, color, 3);
+    }
+  }
+  
 }

@@ -75,6 +75,7 @@ static void checkGameOverHovered(ButtonArray* array) {
     case 1:
       state = MAIN_MENU;
       hideButtons(&gameoverButtons);
+      exitGameOver();
       enterMenu();
       break;
 
@@ -85,7 +86,52 @@ static void checkGameOverHovered(ButtonArray* array) {
 }
 
 static void checkGameOverKeyboardInput(KeyPresses** head) {
+  KeyPresses* current = *head;
 
+  while (current != NULL) {
+    if (current->special) {
+      switch (current->key)
+      {
+      case DOWN_ARROW_MAKE:
+        gameover_current_selection++;
+        if (gameover_current_selection > (int8_t)gameoverButtons.length -1) gameover_current_selection = 0;
+        break;
+
+      case UP_ARROW_MAKE:
+        gameover_current_selection--;
+        if (gameover_current_selection < 0) gameover_current_selection = (int8_t)gameoverButtons.length -1;
+        break;
+
+      default:
+        break;
+      }
+    } else {
+      switch (current->key)
+      {
+      case ESC_BREAK:
+        state = QUIT;
+        break;
+
+      case ENTER_MAKE:
+        pressed_gameover_button = true;
+        break;    
+      
+      default:
+        break;
+      }
+    }
+
+    if (current->next == NULL) {
+      free(current);
+      break;
+    } else {
+      KeyPresses* next = current->next;
+      free(current);
+      current = next;
+    }
+  }
+
+  *head = NULL;
 }
 
 

@@ -19,7 +19,10 @@ typedef struct BulletArray {
     uint32_t length;
 } BulletArray;
 
-Bullet* initializeBullet(float x, float y, int16_t ox, int16_t oy, float speed_x, float speed_y, int16_t damage);
+void initializeBulletSprites();
+
+
+Bullet* initializeBullet(float x, float y, float target_x, float target_y, int16_t damage);
 void destroyBullet(Bullet* bullet);
 void updateBulletPosition(Bullet* bullet);
 
