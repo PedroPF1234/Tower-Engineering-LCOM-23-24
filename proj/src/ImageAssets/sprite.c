@@ -376,3 +376,28 @@ int draw_sprite(Sprite *sp) {
   }
   return 0;
 }
+
+Sprite* getSpriteFromAngle(Sprite* sprite, int angle) {
+  
+  if (angle < 0) {
+    angle = 360 - abs(angle);
+  }
+
+  return sprite + angle;
+}
+
+int calculate_angle(float x, float y, float x2, float y2) {
+  float angle = atan2(y2 - y, x2 - x) * 180 / M_PI;
+  return (int)angle;
+}
+
+float* normalize_vector(float x, float y, float x2, float y2) {
+  float* vector = (float*)malloc(2 * sizeof(float));
+  if (vector == NULL) return NULL;
+
+  float magnitude = sqrt(pow(x2 - x, 2) + pow(y2 - y, 2));
+  vector[0] = (x2 - x) / magnitude;
+  vector[1] = (y2 - y) / magnitude;
+
+  return vector;
+}

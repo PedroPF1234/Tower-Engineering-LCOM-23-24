@@ -43,7 +43,6 @@ extern int16_t tower_index;
 TurretType current_turret = CROSSBOW;
 
 static bool pressed_game_button = false;
-static bool selecting_tower_base = false;
 static bool to_spawn_enemy = false;
 
 static bool first_time_paused = true;
@@ -222,51 +221,9 @@ static void checkGameKeyboardInput(KeyPresses** head) {
         break;
 
       case Q_BREAK:
-        // shot- create new bullet
-        if(player1->hasWeapon){
-          float bullet_x = player1->x; 
-          float bullet_y = player1->y+player1->origin_offset_y; 
-          float bullet_speed_x;
-          float bullet_speed_y;
-          int16_t damage = 200;
-          //so the bullet goes horizontal or vertical
-          if(player1->current_direction == UP ||player1->current_direction == UP_RIGHT ||
-          player1->current_direction == UP_LEFT ||
-          player1->current_direction == UP_IDLE) {
-            bullet_speed_y = -1; 
-            bullet_speed_x = 0;
-          }
-          else if(player1->current_direction == DOWN || 
-          player1->current_direction == DOWN_RIGHT ||
-          player1->current_direction == DOWN_LEFT ||
-          player1->current_direction == DOWN_IDLE){
-            bullet_speed_y = 1; 
-            bullet_speed_x = 0;
-          }
-          else if(player1->current_direction == LEFT || player1->current_direction == LEFT_IDLE){
-            bullet_speed_y = 0; 
-            bullet_speed_x = -1;
-          }
-          else{
-            bullet_speed_y = 0; 
-            bullet_speed_x = 1;
-          }
-
-          Bullet* new_bullet = initializeBullet(bullet_x, bullet_y, 0, 0, bullet_speed_x, bullet_speed_y, damage);
-
-          pushBulletArray(&bullets, new_bullet);
-        }
-
         break;
         
       case SPACE_BREAK:
-        selecting_tower_base = !selecting_tower_base;
-        if (selecting_tower_base) {
-          game_current_selection = 0;
-        } else {
-          setTowerHovered(getTowerArray(&towers, game_current_selection), false);
-          game_current_selection = -1;
-        }
         break;
       
       default:
@@ -288,41 +245,26 @@ static void checkGameKeyboardInput(KeyPresses** head) {
 }
 
 static void checkGameHovered(TowerArray* array) {
-  if (selecting_tower_base) {
 
-    for (int32_t i = 0; i < (int32_t)array->length; i++) {
+  int16_t mouse_x = mouse_device->mouse->x;
+  int16_t mouse_y = mouse_device->mouse->y;
 
-      TowerBase* tower = getTowerArray(array, i);
-
-      int16_t mouse_x = mouse_device->mouse->x;
-      int16_t mouse_y = mouse_device->mouse->y;
-      int16_t leftMostBound = tower->x + tower->origin_offset_x;
-      int16_t rightMostBound = tower->x + tower->origin_offset_x + tower->base->sprite->width;
-      int16_t upMostBound = tower->y + tower->origin_offset_y;
-      int16_t downMostBound = tower->y + tower->origin_offset_y + tower->base->sprite->height;
-
-      if (!pressed_game_button) {
-        if (mouse_x > leftMostBound && mouse_x < rightMostBound &&
-            mouse_y > upMostBound && mouse_y < downMostBound && last_pressed_was_mouse) {
-
-          if (mouse_device->left_button_is_pressed) {
-            pressed_game_button = true;
-            mountTurret(tower, current_turret);
-          }
-
-          setTowerHovered(tower, true);
-          game_current_selection = i;
-
-        } else if (!last_pressed_was_mouse && game_current_selection == i) {
-          setTowerHovered(tower, true);
-        } else {
-          setTowerHovered(tower, false);
-        }
-      }
+  if (!pressed_game_button) {
+    if (mouse_device->left_button_is_pressed) {
+          pressed_game_button = true;
     }
+  }
 
-    if (pressed_game_button) {
-      pressed_game_button = false;
+  if (pressed_game_button) {
+    pressed_game_button = false;
+    if(player1->hasWeapon){
+      float bullet_x = player1->x; 
+      float bullet_y = player1->y+player1->origin_offset_y; 
+      int16_t damage = 200;
+
+      Bullet* new_bullet = initializeBullet(bullet_x, bullet_y, mouse_x, mouse_y, damage);
+
+      pushBulletArray(&bullets, new_bullet);
     }
   }
 }
@@ -866,18 +808,9 @@ static void updateGamePlay() {
         if (tower->target != NULL && tower->cooldown <= tower->timeWithoutShooting) {
             float bullet_x = tower->x;
             float bullet_y = tower->y;
-            float bullet_speed_x;
-            float bullet_speed_y;
             int16_t damage = tower->damage;
 
-            float dir_x = tower->target->x - tower->x;
-            float dir_y = tower->target->y - tower->y;
-            
-            float magnitude = sqrt(dir_x * dir_x + dir_y * dir_y);
-            bullet_speed_x = (dir_x / magnitude);
-            bullet_speed_y = (dir_y / magnitude);
-
-            Bullet* new_bullet = initializeBullet(bullet_x, bullet_y, 0, 0, bullet_speed_x, bullet_speed_y, damage);
+            Bullet* new_bullet = initializeBullet(bullet_x, bullet_y, tower->target->x, tower->target->y, damage);
 
             pushBulletArray(&bullets, new_bullet);
 
@@ -971,6 +904,7 @@ static void updateTowerMenu() {
 
 void initializeGameplay() {
   initializeDifferentTowerSprites();
+  initializeBulletSprites();
   economy = read_prices_info(Prices);
   arenas = initializeArenas();
   player1 = initializePlayer(32, 28, -16, -29, 100);
@@ -1053,8 +987,6 @@ void updateGame() {
       to_spawn_enemy = true;
     }
   }
-
-  printf("ma: %d, go: %d\n",money->money_amount, money->moneyDigitsGameObjects.length);
 
   if (state == GAME) {
     updateGamePlay();
