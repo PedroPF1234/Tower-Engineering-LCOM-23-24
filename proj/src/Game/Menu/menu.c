@@ -88,6 +88,7 @@ static void checkSelectGameHovered(ButtonArray* array) {
       break;
     
     case 4:
+      if (select_game_current_arena == -1) break;
       state = GAME;
       enterGame(false, select_game_current_arena);
       exitMenu();

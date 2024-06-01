@@ -36,4 +36,4 @@ void pushEnemyArray(EnemyArray* array, Enemy* enemy);
 Enemy* getEnemyArray(EnemyArray* array, uint32_t index);
 void removeEnemyArray(EnemyArray* array, uint32_t index);
 void destroyEnemyArray(EnemyArray* array);
-void updateAllEnemyPositions(EnemyArray* array);
+uint32_t updateAllEnemyPositions(EnemyArray* array);

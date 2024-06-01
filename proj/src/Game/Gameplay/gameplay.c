@@ -775,8 +775,13 @@ static void checkTowerMenuHovered(ButtonArray* array) {
           break;
         }
       }
+      break;
 
-      if (to_exit) {
+    default:
+      break;
+    }
+
+    if (to_exit) {
         state = GAME;
         tower_background->sprite->is_visible = false;
         selected_tower_base = NULL;
@@ -785,11 +790,6 @@ static void checkTowerMenuHovered(ButtonArray* array) {
         pressed_tower_button = false;
         type_tower_menu = false;
       }
-      break;
-
-    default:
-      break;
-    }
 
     shop_current_selection = -1;
   }
@@ -798,17 +798,19 @@ static void checkTowerMenuHovered(ButtonArray* array) {
 
 
 static bool checkCollision(Bullet* bullet, Enemy* enemy) {
+    int16_t bullet_right = bullet->x + bullet->origin_offset_x + bullet->bullet->sprite->width;
     int16_t bullet_left = bullet->x + bullet->origin_offset_x;
-    int16_t bullet_right = bullet->x + bullet->origin_offset_x + bullet->sprite->width;
     int16_t bullet_top = bullet->y + bullet->origin_offset_y;
-    int16_t bullet_bottom = bullet->y + bullet->origin_offset_y + bullet->sprite->height;
+    int16_t bullet_bottom = bullet->y + bullet->origin_offset_y + bullet->bullet->sprite->height;
+ 
 
     int16_t enemy_left = enemy->x + enemy->origin_offset_x;
     int16_t enemy_right = enemy->x + enemy->origin_offset_x + enemy->enemy->sprite->width;
     int16_t enemy_top = enemy->y + enemy->origin_offset_y;
     int16_t enemy_bottom = enemy->y + enemy->origin_offset_y + enemy->enemy->sprite->height;
 
-  return !((bullet_right < enemy_left || bullet_left > enemy_right) && (bullet_bottom < enemy_top || bullet_top > enemy_bottom));
+  return bullet_right >= enemy_left && bullet_left <= enemy_right && 
+  bullet_top <= enemy_bottom && bullet_bottom >= enemy_top;
 
 }
 
@@ -841,9 +843,15 @@ static void updateGamePlay() {
   if (playing) {
     updatePlayerPosition(player1, *current_arena);
     updatePlayerSpriteBasedOnPosition(player1);
-    updateAllEnemyPositions(&enemies);
+    player_base.hit_points -= updateAllEnemyPositions(&enemies);
     updatePlayerBaseHealthBar(&player_base);
     updateAllBulletPositions(&bullets);
+
+    if (player_base.hit_points <= 0) {
+      state = MAIN_MENU;
+      exitGame();
+      enterMenu();
+    }
 
     //Towers Shot Update
     if (towers.length != 0) {
@@ -875,8 +883,8 @@ static void updateGamePlay() {
 
             tower->timeWithoutShooting = 0;
         }
+      }
     }
-  }
 
     //Update enemy array
     for (uint32_t j = 0; j < enemies.length; j++) {
@@ -898,7 +906,6 @@ static void updateGamePlay() {
         updateGameObjectSprites(money, 0);
         j--;
       }
-      break;
     }
 
     if (multiplayer) {
@@ -1028,6 +1035,7 @@ void enterGame(bool multi, uint8_t arena) {
   //showSprites(&money->moneyDigits);
 
   player_base = current_arena->base;
+  updatePlayerBaseHealthBar(&player_base);
   shop = current_arena->shop;
   towers = current_arena->towers;
 

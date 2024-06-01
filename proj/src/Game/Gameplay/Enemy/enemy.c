@@ -103,11 +103,11 @@ void updateEnemyPosition(Enemy* enemy) {
   }
 
   // Temp section to test health bar
-  if (enemy->hit_points > 0) {
-    enemy->hit_points--;
-  } else {
-    enemy->hit_points = enemy->max_hit_points;
-  }
+  //if (enemy->hit_points > 0) {
+  //  enemy->hit_points--;
+  //} else {
+  //  enemy->hit_points = enemy->max_hit_points;
+  //}
 
 }
 
@@ -219,7 +219,10 @@ void destroyEnemyArray(EnemyArray* array) {
   array->length = 0;
 }
 
-void updateAllEnemyPositions(EnemyArray* array) {
+uint32_t updateAllEnemyPositions(EnemyArray* array) {
+
+  uint32_t damage = 0;
+
   for (uint32_t i = 0; i < array->length; i++) {
     updateEnemyPosition(array->enemies[i]);
     updateEnemySpriteBasedOnPosition(array->enemies[i]);
@@ -228,7 +231,10 @@ void updateAllEnemyPositions(EnemyArray* array) {
   if (getEnemyArray(array, 0) != NULL) {
     if (getEnemyArray(array, 0)->reached_target) {
       removeEnemyArray(array, 0);
+      damage += 300;
     }
   }
+
+  return damage;
 
 }
