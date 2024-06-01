@@ -61,9 +61,10 @@ void removeButtonArray(ButtonArray* array, uint32_t index) {
 
 void destroyButtonArray(ButtonArray* array) {
 
-    for (int32_t i = 0; i < (int32_t)array->length; i++) {
-        Button* button = getButtonArray(array, i);
-        removeButtonArray(array, i);
+    uint32_t length = array->length;
+    for (uint32_t i = 0; i < length; i++) {
+        Button* button = getButtonArray(array, 0);
+        removeButtonArray(array, 0);
         free(button);
     }
 }

@@ -108,6 +108,21 @@ static AnimatedGameObjectArray newAnimatedGameObjectArray(uint32_t capacity) {
   return animatedGameObjectArray;
 }
 
+GameObjectArray newGameObjectArray(uint32_t capacity) {
+  GameObjectArray gameObjectArray;
+  gameObjectArray.length = 0;
+
+  if (capacity != 0) {
+    gameObjectArray.capacity = capacity;
+    gameObjectArray.gameObjects = (GameObject**) malloc(capacity * sizeof(GameObject*));
+  } else {
+    gameObjectArray.capacity = 10;
+    gameObjectArray.gameObjects = (GameObject**) malloc(10 * sizeof(GameObject*));
+  }
+
+  return gameObjectArray;
+}
+
 static void insertAnimatedObjectArray(AnimatedGameObjectArray *array, AnimatedGameObject *newAnimatedGameObject) {
   if (array->capacity != array->length) {
     array->animatedGameObjects[array->length] = newAnimatedGameObject;
@@ -125,9 +140,34 @@ static void insertAnimatedObjectArray(AnimatedGameObjectArray *array, AnimatedGa
   array->length++;
 }
 
+void insertGameObjectArray(GameObjectArray *array, GameObject *newGameObject) {
+  if (array->capacity != array->length) {
+    array->gameObjects[array->length] = newGameObject;
+  } else {
+    uint32_t newCapacity = array->capacity * 2;
+    GameObject** oldPointer = array->gameObjects;
+    GameObject** newPointer = (GameObject**)malloc(newCapacity * sizeof(GameObject*));
+    array->gameObjects = newPointer;
+    for (uint32_t i = 0; i < array->length; i++) {
+      newPointer[i] = oldPointer[i];
+    }
+    free(oldPointer);
+  }
+
+  array->length++;
+}
+
 static AnimatedGameObject* getAnimatedObjectArray(AnimatedGameObjectArray *array, uint32_t index) {
   if (index < array->length) {
     return array->animatedGameObjects[index];
+  } else {
+    return NULL;
+  }
+}
+
+GameObject* getGameObjectArray(GameObjectArray *array, uint32_t index) {
+  if (index < array->length) {
+    return array->gameObjects[index];
   } else {
     return NULL;
   }
@@ -151,11 +191,49 @@ static void removeAnimatedObjectArray(AnimatedGameObjectArray *array, AnimatedGa
   }
 }
 
+void removeGameObjectArray(GameObjectArray *array, GameObject *gameObject) {
+  if (array->length == 0) {
+    printf("Array is already empty!\n");
+    return;
+  }
+
+  for (uint32_t i = 0; i < array->length; i++) {
+    if (array->gameObjects[i] == gameObject) {
+      for (uint32_t j = i; j < array->length - 1; j++) {
+        array->gameObjects[j] = array->gameObjects[j + 1];
+      }
+      array->gameObjects[array->length - 1] = (GameObject*)0;
+      array->length--;
+      break;
+    }
+  }
+}
+
 static void destroyAnimatedGameObjectArray(AnimatedGameObjectArray *array) {
   for (int32_t i = 0; i < (int32_t)array->length; i++) {
     AnimatedGameObject* animatedGameObject = getAnimatedObjectArray(array, i);
     removeAnimatedObjectArray(array, animatedGameObject);
     free(animatedGameObject);
+  }
+}
+
+void destroyGameObjectArray(GameObjectArray *array) {
+  for (int32_t i = 0; i < (int32_t)array->length; i++) {
+    GameObject* gameObject = getGameObjectArray(array, i);
+    removeGameObjectArray(array, gameObject);
+    free(gameObject);
+  }
+}
+
+void showGameObjects(GameObjectArray* gameObjects) {
+  for (uint32_t i = 0; i < gameObjects->length; i++) {
+    getGameObjectArray(gameObjects, i)->sprite->is_visible = true;
+  }
+}
+
+void hideGameObjects(GameObjectArray* gameObjects) {
+  for (uint32_t i = 0; i < gameObjects->length; i++) {
+    getGameObjectArray(gameObjects, i)->sprite->is_visible = false;
   }
 }
 
@@ -198,6 +276,14 @@ void switchAnimatedSpriteOfAnimatedGameObject(AnimatedGameObject* animatedGameOb
   animatedSprite->cooldown_counter = 0;
   animatedSprite->current_sprite = 0;
   updateGameObjectSprite(animatedGameObject->gameObject, getSpriteArray(&animatedSprite->sprites, animatedSprite->current_sprite));
+}
+
+void hideAnimatedGameObject(AnimatedGameObject* animatedGameObject) {
+  removeRenderPipeline(&renderPipeline, animatedGameObject->gameObject);
+}
+
+void showAnimatedGameObject(AnimatedGameObject* animatedGameObject) {
+  insertRenderPipeline(&renderPipeline, animatedGameObject->gameObject);
 }
 
 GameObject* create_gameobject(xpm_map_t pic, int16_t x, int16_t y, int16_t origin_offset_x, int16_t origin_offset_y, uint16_t z_index, bool square_shape, bool visible) {
@@ -268,6 +354,11 @@ void updateGameObjectZIndex(GameObject* gameObject, uint16_t z_index) {
 void destroy_gameobject(GameObject* gameObject) {
   removeRenderPipeline(&renderPipeline, gameObject);
   if (gameObject->sprite != NULL) destroy_sprite(gameObject->sprite);
+  free(gameObject);
+}
+
+void destroy_gameobject_safe_sprite(GameObject* gameObject) {
+  removeRenderPipeline(&renderPipeline, gameObject);
   free(gameObject);
 }
 
