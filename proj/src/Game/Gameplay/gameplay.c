@@ -7,6 +7,7 @@
 #include "economy.h"
 #include "../DataStructure/button.h"
 #include "../Menu/menu.h"
+#include "../GameOver/gameover.h"
 #include "Player/player.h"
 #include "Tower/towers.h"
 #include "Arena/arena.h"
@@ -62,6 +63,7 @@ static int8_t game_current_selection = -1;
 static int8_t pause_current_selection = -1;
 static int8_t shop_current_selection = -1;
 static int8_t tower_current_selection = -1;
+static int8_t select_game_current_arena = -1;
 
 bool multiplayer = false;
 
@@ -848,9 +850,9 @@ static void updateGamePlay() {
     updateAllBulletPositions(&bullets);
 
     if (player_base.hit_points <= 0) {
-      state = MAIN_MENU;
+      state = GAME_OVER;
       exitGame();
-      enterMenu();
+      enterGameOver(select_game_current_arena);
     }
 
     //Towers Shot Update
@@ -1011,6 +1013,9 @@ void initializeGameplay() {
 }
 
 void enterGame(bool multi, uint8_t arena) {
+
+  select_game_current_arena = arena;
+
   resetDevicesChangingScreens();
 
   memcpy(unlocked_turrets, (uint8_t[]){1, 0, 0}, sizeof(unlocked_turrets));
