@@ -562,7 +562,7 @@ static bool checkCollision(Bullet* bullet, Enemy* enemy) {
     int16_t enemy_top = enemy->y + enemy->origin_offset_y;
     int16_t enemy_bottom = enemy->y + enemy->origin_offset_y + enemy->enemy->sprite->height;
 
-    return !(bullet_right < enemy_left || bullet_left > enemy_right || bullet_bottom < enemy_top || bullet_top > enemy_bottom);
+  return !((bullet_right < enemy_left || bullet_left > enemy_right) && (bullet_bottom < enemy_top || bullet_top > enemy_bottom));
 }
 
 static void updateGamePlay() {
