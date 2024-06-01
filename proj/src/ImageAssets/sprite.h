@@ -66,3 +66,6 @@ Sprite* create_sprite_from_sprite(Sprite* sprite, int16_t x, int16_t y, bool is_
 void destroy_sprite(Sprite *sp);
 void update_sprite_visibility(Sprite *sp, bool is_visible);
 int draw_sprite(Sprite *sp);
+Sprite* getSpriteFromAngle(Sprite* sprite, int angle);
+int calculate_angle(float x, float y, float x2, float y2);
+float* normalize_vector(float x, float y, float x2, float y2);

@@ -26,6 +26,8 @@ typedef struct BulletArray {
     uint32_t length;             /**< The current number of bullets in the array. */
 } BulletArray;
 
+void initializeBulletSprites();
+
 /**
  * @brief Initializes a new bullet.
  *
@@ -38,8 +40,7 @@ typedef struct BulletArray {
  * @param damage The damage of the bullet
  * @return A pointer to the newly initialized Bullet.
  */
-Bullet* initializeBullet(float x, float y, int16_t ox, int16_t oy, float speed_x, float speed_y, int16_t damage);
-
+Bullet* initializeBullet(float x, float y, float target_x, float target_y, int16_t damage);
 /**
  * @brief Destroys a bullet and frees associated memory.
  *

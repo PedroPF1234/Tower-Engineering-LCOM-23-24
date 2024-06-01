@@ -105,9 +105,4 @@ void removeEnemyArray(EnemyArray* array, uint32_t index);
  */
 void destroyEnemyArray(EnemyArray* array);
 
-/**
- * @brief Updates the positions of all enemies in the EnemyArray and removes any enemies that have reached their final target.
- *
- * @param array A pointer to the EnemyArray.
- */
-void updateAllEnemyPositions(EnemyArray* array);
+uint32_t updateAllEnemyPositions(EnemyArray* array);
