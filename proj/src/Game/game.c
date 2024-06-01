@@ -2,6 +2,7 @@
 #include <stdint.h>
 
 #include "Menu/menu.h"
+#include "GameOver/gameover.h"
 #include "Gameplay/gameplay.h"
 #include "Instructions/instructions.h"
 
@@ -28,6 +29,7 @@ int game_main_loop() {
     if (!game_booted) {
       initializeMenu();
       initializeGameplay();
+      initializeGameOver();
       initializeInstructions();
       game_booted = true;
     }
@@ -35,6 +37,10 @@ int game_main_loop() {
     updateMenu();
     break;
   
+  case GAME_OVER:
+    updateGameOver();
+    break;
+
   case SHOP_MENU:
   case BASE_MENU:
   case TOWER_MENU:
@@ -52,6 +58,7 @@ int game_main_loop() {
   case QUIT:
     destroyMenu();
     destroyGame();
+    destroyGameOver();
     destroyInstructions();
     return 1;
 

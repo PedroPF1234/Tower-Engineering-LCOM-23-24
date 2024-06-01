@@ -7,6 +7,7 @@
 #include "economy.h"
 #include "../DataStructure/button.h"
 #include "../Menu/menu.h"
+#include "../GameOver/gameover.h"
 #include "Player/player.h"
 #include "Tower/towers.h"
 #include "Arena/arena.h"
@@ -62,6 +63,7 @@ static int8_t game_current_selection = -1;
 static int8_t pause_current_selection = -1;
 static int8_t shop_current_selection = -1;
 static int8_t tower_current_selection = -1;
+static int8_t select_game_current_arena = -1;
 
 bool multiplayer = false;
 
@@ -96,6 +98,10 @@ PlayerBase player_base;
 
 // Shop
 Shop shop;
+
+// Prices
+GameObjectArray cannon_price;
+GameObjectArray laser_price;
 
 // Buttons
 ButtonArray pause_buttons;
@@ -794,9 +800,9 @@ static void updateGamePlay() {
     updateAllBulletPositions(&bullets);
 
     if (player_base.hit_points <= 0) {
-      state = MAIN_MENU;
+      state = GAME_OVER;
       exitGame();
-      enterMenu();
+      enterGameOver(select_game_current_arena);
     }
 
     //Towers Shot Update
@@ -926,6 +932,8 @@ void initializeGameplay() {
   pause_buttons = newButtonArray(20);
   shop_buttons = newButtonArray(20);
   tower_buttons = newButtonArray(20);
+  laser_price = newGameObjectArray(20);
+  cannon_price = newGameObjectArray(20);
 
   pushButtonArray(&pause_buttons, initializeButton((xpm_map_t)ResumeButtonHovered, (xpm_map_t)ResumeButton, screen.xres/2, screen.yres/2 - 100, 0xFFFE, false, true));
 
@@ -953,6 +961,9 @@ void initializeGameplay() {
 }
 
 void enterGame(bool multi, uint8_t arena) {
+
+  select_game_current_arena = arena;
+
   resetDevicesChangingScreens();
 
   memcpy(unlocked_turrets, (uint8_t[]){1, 0, 0}, sizeof(unlocked_turrets));
@@ -979,7 +990,6 @@ void enterGame(bool multi, uint8_t arena) {
   //showSprites(&money->moneyDigits);
 
   player_base = current_arena->base;
-  updatePlayerBaseHealthBar(&player_base);
   shop = current_arena->shop;
   towers = current_arena->towers;
 
