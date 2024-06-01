@@ -10,7 +10,7 @@ extern ScreenInfo screen;
 
 Bullet* initializeBullet(float x, float y, int16_t ox, int16_t oy, float speed_x, float speed_y, int16_t damage) {
     Bullet* bullet = (Bullet*)malloc(sizeof(Bullet));
-    
+
     bullet->sprite = create_sprite((xpm_map_t)BulletPlayer, x, y, false, true);
     bullet->bullet = create_gameobject_from_sprite(bullet->sprite, x, y, 0, 0, y * Z_INDEX_PER_LAYER + MEDIUM_PRIORITY_Z_INDEX);
 
