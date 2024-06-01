@@ -79,7 +79,7 @@ void createMoneyDigitsGameObjects(Money* money) {
 }
 
 void updateGameObjectSprites(Money* money, uint8_t type) {
-  // Type hardcoded to 0 for now
+  
   if(money->money_amount <= 0) money->money_amount = 0;
 
   int size_ = countDigits(money->money_amount);
