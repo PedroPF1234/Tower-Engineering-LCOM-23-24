@@ -41,9 +41,13 @@ TowerBase* initializeTower(int16_t x, int16_t y) {
   new_tower->turretSprite = NULL;
   new_tower->range = 0;
   new_tower->targetting = FIRST;
-  new_tower->damage = 0;
+  new_tower->damage = 100;
   new_tower->turret_radius = 0;
+  new_tower->target = NULL;
+  new_tower->timeWithoutShooting = 0;
+  new_tower->cooldown = 1; // test for cooldown
   new_tower->level = 0;
+
 
   return new_tower;
 }
@@ -190,6 +194,7 @@ void unmountTurret(TowerBase* tower) {
   if (tower->turret->sprite != NULL) {
     destroy_sprite(tower->turret->sprite);
     remove_sprite_from_spriteless_gameobject(tower->turret);
+    tower->target = NULL;
   }
 }
 
@@ -249,6 +254,8 @@ void rotateTowersTowardsTarget(TowerArray* array, EnemyArray* enemies) {
         }
       }
 
+      tower->target = closest;
+
       if (closest == NULL) {
         continue;
       }
@@ -258,16 +265,10 @@ void rotateTowersTowardsTarget(TowerArray* array, EnemyArray* enemies) {
       int16_t turret_center_y = tower->y;
       int16_t x_target = closest->x;
       int16_t y_target = closest->y;
-      int16_t x_diff = x_target - turret_center_x;
-      int16_t y_diff = y_target - turret_center_y;
 
-      int angle = (int)((atan2(y_diff, x_diff) * 180 / M_PI));
-      
-      if (angle < 0) {
-        angle = 360 - abs(angle);
-      }
-      
-      tower->turret->sprite = &tower->turretSprite[angle];
+      int angle = calculate_angle(turret_center_x, turret_center_y, x_target, y_target);
+
+      tower->turret->sprite = getSpriteFromAngle(tower->turretSprite, angle);
       tower->turret->origin_offset_x = -(tower->turret->sprite->width / 2);
       tower->turret->origin_offset_y = -(tower->turret->sprite->height / 2);
     }

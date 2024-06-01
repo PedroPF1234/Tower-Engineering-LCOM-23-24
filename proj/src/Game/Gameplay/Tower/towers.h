@@ -29,6 +29,9 @@ typedef struct TowerBase {
   uint16_t damage;
   uint8_t level;
   TowerTargetting targetting;
+  Enemy* target;
+  int cooldown; // specific for each type of tower
+  int timeWithoutShooting;
 } TowerBase;
 
 typedef struct TowerArray {

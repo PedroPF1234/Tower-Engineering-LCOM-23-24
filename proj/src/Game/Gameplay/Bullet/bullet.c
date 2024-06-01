@@ -4,35 +4,44 @@
 #include <math.h>
 #include "bullet.h"
 
-
-extern ScreenInfo screen;
-//para testes
 #include "../../../ImageAssets/Bullet.xpm"
 
-Bullet* initializeBullet(float x, float y, int16_t ox, int16_t oy, float speed_x, float speed_y, int16_t damage) {
+extern ScreenInfo screen;
+
+Sprite* rotationAbledBullet;
+static int rotations = 0;
+
+void initializeBulletSprites() {
+    rotationAbledBullet = create_rotation_abled_sprite((xpm_map_t)BulletPlayer, 0, 0, false, true, 
+    &rotations);
+}
+
+Bullet* initializeBullet(float x, float y, float target_x, float target_y, int16_t damage) {
     Bullet* bullet = (Bullet*)malloc(sizeof(Bullet));
 
-    //Add Sprites - just for test this
-    //We need xpm for bullets
-    bullet->sprite = create_sprite((xpm_map_t)BulletPlayer, x, y, false, true);
+    int angle = calculate_angle(x, y, target_x, target_y);
+    
+    bullet->sprite = getSpriteFromAngle(rotationAbledBullet, angle);
     bullet->bullet = create_gameobject_from_sprite(bullet->sprite, x, y, 0, 0, y * Z_INDEX_PER_LAYER + MEDIUM_PRIORITY_Z_INDEX);
+
+    float* speed_vector = normalize_vector(x, y, target_x, target_y);
 
     bullet->x = x;
     bullet->y = y;
-    bullet->speed[0] = speed_x;
-    bullet->speed[1] = speed_y;
-    bullet->origin_offset_x = ox;
-    bullet->origin_offset_y = oy;
+    bullet->speed[0] = speed_vector[0] * 10;
+    bullet->speed[1] = speed_vector[1] * 10;
+    bullet->origin_offset_x = 0;
+    bullet->origin_offset_y = 0;
     bullet->damage = damage;
     bullet->active = true;
+
+    free(speed_vector);
 
     return bullet;
 }
 
 void destroyBullet(Bullet* bullet) {
-    destroy_sprite(bullet->sprite);
-    bullet->bullet->sprite = NULL;
-    destroy_gameobject(bullet->bullet);
+    destroy_gameobject_safe_sprite(bullet->bullet);
     free(bullet);
 }
 
@@ -109,7 +118,7 @@ void destroyBulletArray(BulletArray* array) {
 void updateAllBulletPositions(BulletArray* array) {
     for (uint32_t i = 0; i < array->length; i++) {
         updateBulletPosition(array->bullets[i]);
-        if (!array->bullets[i]->active) {
+        if (!getBulletArray(array, i)->active) {
             removeBulletArray(array, i);
             i--; 
         }
