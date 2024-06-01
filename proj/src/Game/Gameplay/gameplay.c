@@ -1,5 +1,6 @@
 #include <lcom/lcf.h>
 #include <stdint.h>
+#include <math.h>
 
 
 #include "gameplay.h"
@@ -807,7 +808,8 @@ static bool checkCollision(Bullet* bullet, Enemy* enemy) {
     int16_t enemy_top = enemy->y + enemy->origin_offset_y;
     int16_t enemy_bottom = enemy->y + enemy->origin_offset_y + enemy->enemy->sprite->height;
 
-    return !((bullet_right < enemy_left || bullet_left > enemy_right) && (bullet_bottom < enemy_top || bullet_top > enemy_bottom));
+  return !((bullet_right < enemy_left || bullet_left > enemy_right) && (bullet_bottom < enemy_top || bullet_top > enemy_bottom));
+
 }
 
 static void updateGamePlay() {
@@ -842,6 +844,39 @@ static void updateGamePlay() {
     updateAllEnemyPositions(&enemies);
     updatePlayerBaseHealthBar(&player_base);
     updateAllBulletPositions(&bullets);
+
+    //Towers Shot Update
+    if (towers.length != 0) {
+      for (uint32_t towerNum = 0; towerNum < towers.length; towerNum++) {
+        TowerBase* tower = getTowerArray(&towers, towerNum);
+
+        //1 second of time added
+        if (rtc_time->just_updated) {
+          tower->timeWithoutShooting++;
+        }
+        
+        if (tower->target != NULL && tower->cooldown <= tower->timeWithoutShooting) {
+            float bullet_x = tower->x;
+            float bullet_y = tower->y;
+            float bullet_speed_x;
+            float bullet_speed_y;
+            int16_t damage = tower->damage;
+
+            float dir_x = tower->target->x - tower->x;
+            float dir_y = tower->target->y - tower->y;
+            
+            float magnitude = sqrt(dir_x * dir_x + dir_y * dir_y);
+            bullet_speed_x = (dir_x / magnitude);
+            bullet_speed_y = (dir_y / magnitude);
+
+            Bullet* new_bullet = initializeBullet(bullet_x, bullet_y, 0, 0, bullet_speed_x, bullet_speed_y, damage);
+
+            pushBulletArray(&bullets, new_bullet);
+
+            tower->timeWithoutShooting = 0;
+        }
+    }
+  }
 
     //Update enemy array
     for (uint32_t j = 0; j < enemies.length; j++) {

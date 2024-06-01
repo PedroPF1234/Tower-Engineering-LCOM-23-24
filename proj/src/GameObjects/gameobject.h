@@ -38,6 +38,8 @@ AnimatedGameObject* create_animated_gameobject(AnimatedSprite* animatedSprite, i
 void destroy_animated_gameobject(AnimatedGameObject* animatedGameObject);
 void updateAnimatedGameObjects();
 void switchAnimatedSpriteOfAnimatedGameObject(AnimatedGameObject* animatedGameObject, AnimatedSprite* animatedSprite);
+void hideAnimatedGameObject(AnimatedGameObject* animatedGameObject);
+void showAnimatedGameObject(AnimatedGameObject* animatedGameObject);
 
 GameObject* create_gameobject(xpm_map_t pic, int16_t x, int16_t y, int16_t origin_offset_x, int16_t origin_offset_y, uint16_t z_index, bool square_shape, bool visible);
 GameObject* create_gameobject_from_sprite(Sprite* sprite, int16_t x, int16_t y, int16_t origin_offset_x, int16_t origin_offset_y, uint16_t z_index);

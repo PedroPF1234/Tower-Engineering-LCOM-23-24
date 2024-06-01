@@ -278,6 +278,14 @@ void switchAnimatedSpriteOfAnimatedGameObject(AnimatedGameObject* animatedGameOb
   updateGameObjectSprite(animatedGameObject->gameObject, getSpriteArray(&animatedSprite->sprites, animatedSprite->current_sprite));
 }
 
+void hideAnimatedGameObject(AnimatedGameObject* animatedGameObject) {
+  removeRenderPipeline(&renderPipeline, animatedGameObject->gameObject);
+}
+
+void showAnimatedGameObject(AnimatedGameObject* animatedGameObject) {
+  insertRenderPipeline(&renderPipeline, animatedGameObject->gameObject);
+}
+
 GameObject* create_gameobject(xpm_map_t pic, int16_t x, int16_t y, int16_t origin_offset_x, int16_t origin_offset_y, uint16_t z_index, bool square_shape, bool visible) {
 
   GameObject* gameObject = (GameObject*) malloc(sizeof(GameObject));
