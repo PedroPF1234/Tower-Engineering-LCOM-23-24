@@ -1,3 +1,13 @@
+
+static char *Prices[] = {
+  "2 3 5 5 5 ", // number of entries in following strings
+  "750 1000 ", //desbloquear canhão e desbloquear laser
+  "200 400 600 ", // construir besta, construir canhão, construir laser
+  "50 100 150 200 300 ", //upgrade besta
+  "150 200 300 450 600 ", //upgrade canhão
+  "250 400 600 750 1000 " //upgrade laser
+};
+
 /* XPM */
 static char *Coin[] = {
 /* columns rows colors chars-per-pixel */

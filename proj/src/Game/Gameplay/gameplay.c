@@ -3,6 +3,7 @@
 
 
 #include "gameplay.h"
+#include "economy.h"
 #include "../DataStructure/button.h"
 #include "../Menu/menu.h"
 #include "Player/player.h"
@@ -20,6 +21,7 @@
 #include "../../ImageAssets/Pause.xpm"
 #include "../../ImageAssets/Button.xpm"
 #include "../../ImageAssets/Towers.xpm"
+#include "../../ImageAssets/Money.xpm"
 
 extern GameState state;
 
@@ -63,6 +65,8 @@ static int8_t tower_current_selection = -1;
 bool multiplayer = false;
 
 static int8_t unlocked_turrets[] = {1, 0, 0};
+
+Economy* economy;
 
 // Game Objects
 // Arena
@@ -897,7 +901,7 @@ static void updateTowerMenu() {
 
     printf("Tower Array length: %d\n", towers.length);
 
-    pushButtonArray(&tower_buttons, initializeButton((xpm_map_t)QuitButtonHovered, (xpm_map_t)QuitButton, screen.xres/2, screen.yres/2 + 300, 0xFFFE, false, true));
+    pushButtonArray(&tower_buttons, initializeButton((xpm_map_t)ExitButtonHovered, (xpm_map_t)ExitButton, screen.xres/2 + 300, screen.yres/2 - 300, 0xFFFE, false, true));
     
     if (getTowerArray(&towers, tower_index)->turret->sprite == NULL) {
       type_tower_menu = false;
@@ -905,15 +909,15 @@ static void updateTowerMenu() {
       pushButtonArray(&tower_buttons, initializeButton((xpm_map_t)ResumeButtonHovered, (xpm_map_t)ResumeButton, screen.xres/2 - 300, screen.yres/2 - 250, 0xFFFE, false, true));
       pushButtonArray(&tower_buttons, initializeButton((xpm_map_t)ResumeButtonHovered, (xpm_map_t)ResumeButton, screen.xres/2 - 300, screen.yres/2 - 100, 0xFFFE, false, true));
       pushButtonArray(&tower_buttons, initializeButton((xpm_map_t)ResumeButtonHovered, (xpm_map_t)ResumeButton, screen.xres/2 - 300, screen.yres/2 + 50, 0xFFFE, false, true));
-      pushButtonArray(&tower_buttons, initializeButton((xpm_map_t)PlayButtonHovered, (xpm_map_t)PlayButton, screen.xres/2 - 300, screen.yres/2 + 200, 0xFFFE, false, true));
+      pushButtonArray(&tower_buttons, initializeButton((xpm_map_t)MountButtonHovered, (xpm_map_t)MountButton, screen.xres/2 - 300, screen.yres/2 + 200, 0xFFFE, false, true));
 
     } else {
       type_tower_menu = true;
 
-      pushButtonArray(&tower_buttons, initializeButton((xpm_map_t)InstructionsButtonHovered, (xpm_map_t)InstructionsButton, screen.xres/2 - 300, screen.yres/2 - 250, 0xFFFE, false, true));
-      pushButtonArray(&tower_buttons, initializeButton((xpm_map_t)InstructionsButtonHovered, (xpm_map_t)InstructionsButton, screen.xres/2 - 300, screen.yres/2 - 100, 0xFFFE, false, true));
-      pushButtonArray(&tower_buttons, initializeButton((xpm_map_t)InstructionsButtonHovered, (xpm_map_t)InstructionsButton, screen.xres/2 - 300, screen.yres/2 + 50, 0xFFFE, false, true));
-      pushButtonArray(&tower_buttons, initializeButton((xpm_map_t)PlayButtonHovered, (xpm_map_t)PlayButton, screen.xres/2 - 300, screen.yres/2 + 200, 0xFFFE, false, true));
+      pushButtonArray(&tower_buttons, initializeButton((xpm_map_t)LeftButton, (xpm_map_t) LeftButton, screen.xres/2 - 300, screen.yres/2 - 250, 0xFFFE, false, true));
+      pushButtonArray(&tower_buttons, initializeButton((xpm_map_t)RightButton, (xpm_map_t)RightButton, screen.xres/2 - 300, screen.yres/2 - 100, 0xFFFE, false, true));
+      pushButtonArray(&tower_buttons, initializeButton((xpm_map_t)UpgradeButtonHovered, (xpm_map_t)UpgradeButton, screen.xres/2 - 300, screen.yres/2 + 50, 0xFFFE, false, true));
+      pushButtonArray(&tower_buttons, initializeButton((xpm_map_t)UnmountButtonHovered, (xpm_map_t)UnmountButton, screen.xres/2 - 300, screen.yres/2 + 200, 0xFFFE, false, true));
     }
 
     first_time_tower = !first_time_tower;
@@ -925,6 +929,7 @@ static void updateTowerMenu() {
 
 void initializeGameplay() {
   initializeDifferentTowerSprites();
+  economy = read_prices_info(Prices);
   arenas = initializeArenas();
   player1 = initializePlayer(32, 28, -16, -29, 100);
   player2 = initializePlayer(32, 28, -16, -29, 100);
