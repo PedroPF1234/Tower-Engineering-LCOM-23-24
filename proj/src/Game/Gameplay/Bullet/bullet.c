@@ -22,6 +22,7 @@ Bullet* initializeBullet(float x, float y, float target_x, float target_y, int16
     int angle = calculate_angle(x, y, target_x, target_y);
     
     bullet->sprite = getSpriteFromAngle(rotationAbledBullet, angle);
+    
     bullet->bullet = create_gameobject_from_sprite(bullet->sprite, x, y, 0, 0, y * Z_INDEX_PER_LAYER + MEDIUM_PRIORITY_Z_INDEX);
 
     float* speed_vector = normalize_vector(x, y, target_x, target_y);

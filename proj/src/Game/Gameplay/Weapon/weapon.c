@@ -61,7 +61,7 @@ void updateWeapon(Weapon* weapon, Player* player, int16_t mouse_x, int16_t mouse
       //angle = -90 degrees
     }
   } else {
-    double angle = atan2((double) mouse_y - player->y, (double) mouse_x - player->x);
+    //double angle = atan2((double) mouse_y - player->y, (double) mouse_x - player->x);
   }
 
   //Rotate the weapon sprite
