@@ -13,6 +13,7 @@
 #include "PlayerBase/playerbase.h"
 #include "Shop/shop.h"
 #include "Money/money.h"
+#include "Weapon/weapon.h"
 
 #include "../gamestates.h"
 
@@ -99,6 +100,9 @@ ButtonArray tower_buttons;
 
 // Money
 Money* money;
+
+// Weapons
+Weapon* player_weapon;
 
 static void checkGameKeyboardInput(KeyPresses** head) {
 
@@ -867,7 +871,9 @@ static void updateGamePlay() {
       updatePlayerSpriteBasedOnPosition(player2);
     }
 
-    rotateTowersTowardsTarget(&towers, &enemies); 
+    rotateTowersTowardsTarget(&towers, &enemies);
+
+    updateWeapon(player_weapon, player1, mouse_device->mouse->x, mouse_device->mouse->y);
   }
 }
 
@@ -928,6 +934,7 @@ void initializeGameplay() {
   arenas = initializeArenas();
   player1 = initializePlayer(32, 28, -16, -29, 100);
   player2 = initializePlayer(32, 28, -16, -29, 100);
+  player_weapon = initializeWeapon(32, 28);
   
   money = initializeMoney();
   hideGameObjects(&money->moneyDigitsGameObjects);
@@ -974,6 +981,8 @@ void enterGame(bool multi, uint8_t arena) {
   //
 
   showGameObjects(&money->moneyDigitsGameObjects);
+
+  showWeapon(player_weapon);
 
   money->money_amount = 500;
 
