@@ -4,7 +4,7 @@
 #include "money.h"
 #include "../../../ImageAssets/Money.xpm"
 
-Money* initializeMoney(int32_t money_amount,int8_t type) {
+Money* initializeMoney(int32_t money_amount, int8_t type) {
   Money* new_money = (Money*)malloc(sizeof(Money));
 
   Sprite* coin = create_sprite((xpm_map_t)Coin, 0, 0, false, false);
@@ -18,7 +18,6 @@ Money* initializeMoney(int32_t money_amount,int8_t type) {
 
   digits = newApriteFromCharArray(digitsXPM, 30);
 
-  //type is 0 for now, introduce type changing logic
   int size = 0;
   associateSprites(new_money, new_money->money_amount, size, type);
   createMoneyDigitsGameObjects(new_money);
@@ -141,8 +140,7 @@ void updateGameObjectSprites(Money* money, uint8_t type, int16_t x, int16_t y) {
 
 void destroyMoney(Money* money) {
   destroy_gameobject(money->coin);
-  destroySpriteArray(&money->moneyDigits);
-  destroySpriteArray(&digits);
+  destroyGameObjectArray(&money->moneyDigitsGameObjects);
   free(money);
 }
 
@@ -208,10 +206,11 @@ Money* getMoneyArray(MoneyArray *moneyArray, uint32_t index) {
 }
 
 void destroyMoneyArray(MoneyArray *moneyArray) {
-  for (int32_t i = 0; i < (int32_t)moneyArray->length; i++) {
-    Money* money = getMoneyArray(moneyArray, i);
+  uint32_t length = moneyArray->length;
+  for (uint32_t i = 0; i < length; i++) {
+    Money* money = getMoneyArray(moneyArray, 0);
     removeMoneyArray(moneyArray, money);
-    free(money);
+    destroyMoney(money);
   }
 }
 

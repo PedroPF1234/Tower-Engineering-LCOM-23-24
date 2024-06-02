@@ -105,6 +105,9 @@ ButtonArray pause_buttons;
 ButtonArray shop_buttons;
 ButtonArray tower_buttons;
 
+// Tower Menu money array
+MoneyArray tower_money;
+
 // Money
 Money* money;
 
@@ -733,10 +736,28 @@ static void checkTowerMenuHovered(ButtonArray* array) {
 
       case 3: 
         if (type_tower_menu) {
-          // Upgrade turret damage
-          if (selected_tower_base->level < 5) {
+          int32_t* upgrade_price = NULL;
+          switch (selected_tower_base->turretType) {
+            case CROSSBOW:
+              upgrade_price = economy->upgrade_crossbow_prices;
+              break;
+
+            case CANNON:
+              upgrade_price = economy->upgrade_cannon_prices;
+              break;
+
+            case LASER:
+              upgrade_price = economy->upgrade_laser_prices;
+              break;
+            
+            default:
+              break;
+          }
+          if (selected_tower_base->level < 5 && money->money_amount >= upgrade_price[selected_tower_base->level]) {
             selected_tower_base->damage *= 1.1;
             selected_tower_base->level++;
+            money->money_amount -= upgrade_price[selected_tower_base->level];
+            updateGameObjectSprites(money, 0,0,0);
           }
         } else {
           if (unlocked_turrets[2]) {
@@ -757,25 +778,35 @@ static void checkTowerMenuHovered(ButtonArray* array) {
           // Unmount turret
           unmountTurret(selected_tower_base);
           to_exit = true;
+          money->money_amount += economy->build_prices[selected_tower_base->turretType]/2;
+          updateGameObjectSprites(money, 0,0,0);
         } else {
           bool mounted = false;
           switch (selected_tower_index) {
             case 0:
-              mountTurret(selected_tower_base, CROSSBOW);
-              mounted = true;
+              if (unlocked_turrets[0] && money->money_amount >= economy->build_prices[0]) {
+                mountTurret(selected_tower_base, CROSSBOW);
+                mounted = true;
+                money->money_amount -= economy->build_prices[0];
+                updateGameObjectSprites(money, 0,0,0);
+              }
               break;
 
             case 1:
-              if (unlocked_turrets[1]) {
+              if (unlocked_turrets[1] && money->money_amount >= economy->build_prices[1]) {
                 mountTurret(selected_tower_base, CANNON);
                 mounted = true;
+                money->money_amount -= economy->build_prices[1];
+                updateGameObjectSprites(money, 0,0,0);
               }
               break;
 
             case 2:
-              if (unlocked_turrets[2]) {
+              if (unlocked_turrets[2] && money->money_amount >= economy->build_prices[2]) {
                 mountTurret(selected_tower_base, LASER);
                 mounted = true;
+                money->money_amount -= economy->build_prices[2];
+                updateGameObjectSprites(money, 0,0,0);
               }
               break;
             default:
@@ -859,6 +890,7 @@ static void updateGamePlay() {
 
   if (!first_time_tower) {
     destroyButtonArray(&tower_buttons);
+    destroyMoneyArray(&tower_money);
     printf("Destroyed tower buttons\n");
     printf("Tower buttons length: %d\n", tower_buttons.length);
     first_time_tower = !first_time_tower;
@@ -871,6 +903,10 @@ static void updateGamePlay() {
     current_arena->shop.shopButton->sprite->is_visible = false;
   }
 
+  mouse_device->mouse->sprite = aim_mouse;
+  mouse_device->mouse->origin_offset_x = -(aim_mouse->width/2-2);
+  mouse_device->mouse->origin_offset_y = -(aim_mouse->height/2-2);
+
   checkGameKeyboardInput(&keyboard_device->keyPresses);
   checkGameHovered(&towers);
   if (playing) {
@@ -879,12 +915,6 @@ static void updateGamePlay() {
     player_base.hit_points -= updateAllEnemyPositions(&enemies);
     updatePlayerBaseHealthBar(&player_base);
     updateAllBulletPositions(&bullets);
-
-    if (player_base.hit_points <= 0) {
-      state = GAME_OVER;
-      exitGame();
-      enterGameOver(select_game_current_arena);
-    }
 
     //Towers Shot Update
     if (towers.length != 0) {
@@ -940,6 +970,12 @@ static void updateGamePlay() {
     rotateTowersTowardsTarget(&towers, &enemies);
 
     updateWeapon(player_weapon, player1, mouse_device->mouse->x, mouse_device->mouse->y);
+
+    if (player_base.hit_points <= 0) {
+      state = GAME_OVER;
+      exitGame();
+      enterGameOver(select_game_current_arena);
+    }
   }
 }
 
@@ -1015,6 +1051,30 @@ static void updateTowerMenu() {
 
       pushButtonArray(&tower_buttons, initializeButton((xpm_map_t)MountButtonUnclickable, (xpm_map_t)MountButtonUnclickable, screen.xres/2, screen.yres/2 + 120, 0xFFFE, false, true));
 
+      Money* tower_prince1 = initializeMoney(200, 2);
+      Money* tower_prince2 = initializeMoney(400, 2);
+      Money* tower_prince3 = initializeMoney(600, 2);
+
+      updateGameObjectSprites(tower_prince1, 2, screen.xres/2 - 200, screen.yres/2 + 200);
+      updateGameObjectSprites(tower_prince2, 2, screen.xres/2, screen.yres/2 + 200);
+      updateGameObjectSprites(tower_prince3, 2, screen.xres/2 + 200, screen.yres/2 + 200);
+
+      tower_prince1->coin->sprite->is_visible = true;
+      tower_prince2->coin->sprite->is_visible = true;
+      tower_prince3->coin->sprite->is_visible = true;
+
+      updateGameObjectZIndex(tower_prince1->coin, 0xFFF0);
+      updateGameObjectZIndex(tower_prince2->coin, 0xFFF0);
+      updateGameObjectZIndex(tower_prince3->coin, 0xFFF0);
+
+      showGameObjects(&tower_prince1->moneyDigitsGameObjects);
+      showGameObjects(&tower_prince2->moneyDigitsGameObjects);
+      showGameObjects(&tower_prince3->moneyDigitsGameObjects);
+
+      insertMoneyArray(&tower_money, tower_prince1);
+      insertMoneyArray(&tower_money, tower_prince2);
+      insertMoneyArray(&tower_money, tower_prince3);
+
     } else {
       type_tower_menu = true;
 
@@ -1026,6 +1086,54 @@ static void updateTowerMenu() {
         pushButtonArray(&tower_buttons, initializeButton((xpm_map_t)UpgradeButtonUnclickable, (xpm_map_t)UpgradeButtonUnclickable, screen.xres/2 - 300, screen.yres/2 + 50, 0xFFFE, false, true));
       }
       pushButtonArray(&tower_buttons, initializeButton((xpm_map_t)UnmountButtonHovered, (xpm_map_t)UnmountButton, screen.xres/2 - 300, screen.yres/2 + 200, 0xFFFE, false, true));
+
+      int32_t* upgrade_price = NULL;
+      switch (selected_tower_base->turretType) {
+        case CROSSBOW:
+          upgrade_price = economy->upgrade_crossbow_prices;
+          break;
+
+        case CANNON:
+          upgrade_price = economy->upgrade_cannon_prices;
+          break;
+
+        case LASER:
+          upgrade_price = economy->upgrade_laser_prices;
+          break;
+        
+        default:
+          break;
+      }
+
+      Money* upgrade_money = initializeMoney(upgrade_price[selected_tower_base->level], 2);
+
+      Money* unmount_money = initializeMoney(economy->build_prices[selected_tower_base->turretType]/2, 1);
+
+      Money* damage_money = initializeMoney(selected_tower_base->damage, 0); // Using money object to display damage
+
+      Money* level_money = initializeMoney(selected_tower_base->level, 0); // Using money object to display level
+
+      updateGameObjectSprites(upgrade_money, 2, screen.xres/2 + 300, screen.yres/2 + 100);
+      updateGameObjectSprites(unmount_money, 1, screen.xres/2 + 300, screen.yres/2 + 200);
+      updateGameObjectSprites(damage_money, 0, screen.xres/2 + 300, screen.yres/2 - 200);
+      updateGameObjectSprites(level_money, 0, screen.xres/2 + 300, screen.yres/2 - 100);
+
+      upgrade_money->coin->sprite->is_visible = true;
+      unmount_money->coin->sprite->is_visible = true;
+
+      updateGameObjectZIndex(upgrade_money->coin, 0xFFF0);
+      updateGameObjectZIndex(unmount_money->coin, 0xFFF0);
+
+      showGameObjects(&upgrade_money->moneyDigitsGameObjects);
+      showGameObjects(&unmount_money->moneyDigitsGameObjects);
+      showGameObjects(&damage_money->moneyDigitsGameObjects);
+      showGameObjects(&level_money->moneyDigitsGameObjects);
+
+      insertMoneyArray(&tower_money, upgrade_money);
+      insertMoneyArray(&tower_money, unmount_money);
+      insertMoneyArray(&tower_money, damage_money);
+      insertMoneyArray(&tower_money, level_money);
+
     }
 
     first_time_tower = !first_time_tower;
@@ -1074,6 +1182,8 @@ void initializeGameplay() {
   hideButtons(&pause_buttons);
   hideButtons(&shop_buttons);
 
+  tower_money = newMoneyArray(3);
+
   game_background = create_spriteless_gameobject(0, 0, 0, 0, 0);
 
   Sprite* pause_background_sprite = create_sprite((xpm_map_t)PauseBackground, screen.xres/2, screen.yres/2, true, false);
@@ -1086,7 +1196,7 @@ void initializeGameplay() {
 
   Sprite* tower_background_sprite = create_sprite((xpm_map_t)SelectGameBackground, screen.xres/2, screen.yres/2, true, false);
 
-  tower_background = create_gameobject_from_sprite(tower_background_sprite, screen.xres/2, screen.yres/2, -(tower_background_sprite->width/2), -(tower_background_sprite->height/2), 0xFFF0);
+  tower_background = create_gameobject_from_sprite(tower_background_sprite, screen.xres/2, screen.yres/2, -(tower_background_sprite->width/2), -(tower_background_sprite->height/2), 0xDFFF);
 }
 
 void enterGame(bool multi, uint8_t arena) {
@@ -1098,6 +1208,12 @@ void enterGame(bool multi, uint8_t arena) {
   select_game_current_arena = arena;
 
   resetDevicesChangingScreens();
+
+  player1->x = 32;
+  player1->y = 28;
+
+  player2->x = 32;
+  player2->y = 28;
 
   memcpy(unlocked_turrets, (uint8_t[]){1, 0, 0}, sizeof(unlocked_turrets));
 
@@ -1156,6 +1272,8 @@ void updateGame() {
 void exitGame() {
 
   mouse_device->mouse->sprite = normal_mouse;
+  mouse_device->mouse->origin_offset_x = 0;
+  mouse_device->mouse->origin_offset_y = 0;
 
   playing = false;
   hideSprites(&player1->player->animatedSprite->sprites);

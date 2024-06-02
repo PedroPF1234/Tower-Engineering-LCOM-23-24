@@ -380,11 +380,28 @@ void updateMenu() {
 
 void exitMenu() {
   pressed_menu_button = false;
+  printf("Exiting Menu\n");
+  Button* temp = getButtonArray(&selectGameArenaButtons, 4);
+  destroy_sprite(temp->hovering);
+  destroy_sprite(temp->no_hovering);
+  temp->hovering = create_sprite((xpm_map_t)PlayButtonUnclickable, 0, 0, false, true);
+  temp->no_hovering = create_sprite((xpm_map_t)PlayButtonUnclickable, 0, 0, false, true);  
+  temp->button->sprite = temp->no_hovering;
+  printf("Destroyed Play Button\n");
+  printf("And replaced it\n");
+  temp = getButtonArray(&selectGameArenaButtons, select_game_current_arena);  
+  destroy_sprite(temp->hovering);
+  destroy_sprite(temp->no_hovering);
+  temp->hovering = create_sprite(select_game_current_arena == 0 ? (xpm_map_t)FirstMiniMapHovered : select_game_current_arena == 1 ? (xpm_map_t)SecondMiniMapHovered : (xpm_map_t)ThirdMiniMapHovered, 0, 0, false, true);
+  temp->no_hovering = create_sprite(select_game_current_arena == 0 ? (xpm_map_t)FirstMiniMap : select_game_current_arena == 1 ? (xpm_map_t)SecondMiniMap : (xpm_map_t)ThirdMiniMap, 0, 0, false, true);
+  temp->button->sprite = temp->no_hovering;
+  printf("Destroyed Arena Button\n");
+  printf("And replaced it\n");
+  hideButtons(&menuButtons);
+  hideButtons(&selectGameArenaButtons);
   menu_current_selection = -1;
   select_game_current_selection = -1;
   select_game_current_arena = -1;
-  hideButtons(&menuButtons);
-  hideButtons(&selectGameArenaButtons);
   background->sprite->is_visible = false;
   selectGameBackground->sprite->is_visible = false;
 }
