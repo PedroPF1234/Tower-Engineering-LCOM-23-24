@@ -64,6 +64,7 @@ static int8_t pause_current_selection = -1;
 static int8_t shop_current_selection = -1;
 static int8_t tower_current_selection = -1;
 static int8_t select_game_current_arena = -1;
+//static bool just_changed_selection = false;
 
 bool multiplayer = false;
 
@@ -99,10 +100,6 @@ PlayerBase player_base;
 // Shop
 Shop shop;
 
-// Prices
-GameObjectArray cannon_price;
-GameObjectArray laser_price;
-
 // Buttons
 ButtonArray pause_buttons;
 ButtonArray shop_buttons;
@@ -113,6 +110,22 @@ Money* money;
 
 // Weapons
 Weapon* player_weapon;
+
+// Sprites mouse
+Sprite* normal_mouse;
+Sprite* aim_mouse;
+
+static void swapMouseSprites() {
+  if (mouse_device->mouse->sprite == normal_mouse) {
+    mouse_device->mouse->sprite = aim_mouse;
+    mouse_device->mouse->origin_offset_x = -(aim_mouse->width/2-2);
+    mouse_device->mouse->origin_offset_y = -(aim_mouse->height/2-2);
+  } else {
+    mouse_device->mouse->sprite = normal_mouse;
+    mouse_device->mouse->origin_offset_x = 0;
+    mouse_device->mouse->origin_offset_y = 0;
+  }
+}   
 
 static void checkGameKeyboardInput(KeyPresses** head) {
 
@@ -508,12 +521,30 @@ static void checkShopHovered(ButtonArray* array) {
 
     case 1:
       current_turret = CANNON;
-      unlocked_turrets[1]=1;
+      if (money->money_amount >= 750 && unlocked_turrets[1] == 0) {
+        unlocked_turrets[1]=1;
+        money->money_amount -= 750;
+        updateGameObjectSprites(money, 0,0,0);
+        destroy_sprite(getButtonArray(&shop_buttons, 1)->hovering);
+        destroy_sprite(getButtonArray(&shop_buttons, 1)->no_hovering);
+        Sprite* new_cannonButton = create_sprite((xpm_map_t)CannonButtonUnclickable, screen.xres/2 -150, screen.yres/2 -150, false, true);
+        getButtonArray(&shop_buttons, 1)->hovering = new_cannonButton;
+        getButtonArray(&shop_buttons, 1)->no_hovering = new_cannonButton;
+      }
       break;
 
     case 2:
       current_turret = LASER;
-      unlocked_turrets[2]=1;
+      if (money->money_amount >= 1000 && unlocked_turrets[2] == 0) {
+        unlocked_turrets[2]=1;
+        money->money_amount -= 1000;
+        updateGameObjectSprites(money, 0,0,0);
+        destroy_sprite(getButtonArray(&shop_buttons, 2)->hovering);
+        destroy_sprite(getButtonArray(&shop_buttons, 2)->no_hovering);
+        Sprite* new_laserButton = create_sprite((xpm_map_t)LaserButtonUnclickable, screen.xres/2 -150, screen.yres/2 + 100, false, true);
+        getButtonArray(&shop_buttons, 2)->hovering = new_laserButton;
+        getButtonArray(&shop_buttons, 2)->no_hovering = new_laserButton;
+      }  
       break;    
 
     default:
@@ -598,7 +629,7 @@ static void checkTowerMenuHovered(ButtonArray* array) {
     int16_t upMostBound = button->y + button->origin_offset_y;
     int16_t downMostBound = button->y + button->origin_offset_y + button->button->sprite->height;
 
-    if (!pressed_shop_button) {
+    if (!pressed_tower_button) {
       if (mouse_x > leftMostBound && mouse_x < rightMostBound &&
           mouse_y > upMostBound && mouse_y < downMostBound && last_pressed_was_mouse) {
 
@@ -621,119 +652,12 @@ static void checkTowerMenuHovered(ButtonArray* array) {
   if (pressed_tower_button) {
     pressed_tower_button = false;
     bool to_exit = false;
-    switch (tower_current_selection)
-    {
-    case -1:
-      break;
-    
-    case 0:
-      state = GAME;
-      tower_background->sprite->is_visible = false;
-      selected_tower_base = NULL;
-      selected_tower_index = -1;
-      tower_current_selection = -1;
-      pressed_tower_button = false;
-      type_tower_menu = false;
-      break;
 
-    case 1:
-      if (type_tower_menu) {
-        // Switching tower target type to previous
-        switch (selected_tower_base->targetting)
-        {
-        case FIRST:
-          selected_tower_base->targetting = LAST;
-          break;
-
-        case CLOSEST:
-          selected_tower_base->targetting = FIRST;
-          break;
-
-        case LAST:
-          selected_tower_base->targetting = CLOSEST;
-          break;
-        
-        default:
-          break;
-        }
-      } else {
-        selected_tower_index = 0;
-      }
-      break;
-
-    case 2:
-      if (type_tower_menu) {
-        // Switching tower target type to next
-        switch (selected_tower_base->targetting)
-        {
-        case FIRST:
-          selected_tower_base->targetting = CLOSEST;
-          break;
-
-        case CLOSEST:
-          selected_tower_base->targetting = LAST;
-          break;
-
-        case LAST:
-          selected_tower_base->targetting = FIRST;
-          break;
-        
-        default:
-          break;
-        }
-      } else {
-        selected_tower_index = 1;
-      }
-      break;
-
-    case 3: 
-      if (type_tower_menu) {
-        // Upgrade turret damage
-        selected_tower_base->damage *= 1.1;
-      } else {
-        selected_tower_index = 2;
-      }
-      break;  
-
-    case 4:
-  
-      if (type_tower_menu) {
-        // Unmount turret
-        unmountTurret(selected_tower_base);
-        to_exit = true;
-      } else {
-        switch (selected_tower_index)
-        {
-        case 0:
-          mountTurret(selected_tower_base, CROSSBOW);
-          to_exit = true;
-          break;
-
-        case 1:
-          if (unlocked_turrets[1])
-          {
-            mountTurret(selected_tower_base, CANNON);
-            to_exit = true;
-          }
-          break;
-
-        case 2:
-          if (unlocked_turrets[2])
-            mountTurret(selected_tower_base, LASER);
-            to_exit = true;
-          {
-          break;
-        default:
-          break;
-        }
-      }
-      break;
-
-    default:
-      break;
-    }
-
-    if (to_exit) {
+    switch (tower_current_selection) {
+      case -1:
+        break;
+      
+      case 0:
         state = GAME;
         tower_background->sprite->is_visible = false;
         selected_tower_base = NULL;
@@ -741,10 +665,149 @@ static void checkTowerMenuHovered(ButtonArray* array) {
         tower_current_selection = -1;
         pressed_tower_button = false;
         type_tower_menu = false;
-      }
+        break;
 
-    shop_current_selection = -1;
+      case 1:
+        if (type_tower_menu) {
+          // Switching tower target type to previous
+          switch (selected_tower_base->targetting)
+          {
+          case FIRST:
+            selected_tower_base->targetting = LAST;
+            break;
+
+          case CLOSEST:
+            selected_tower_base->targetting = FIRST;
+            break;
+
+          case LAST:
+            selected_tower_base->targetting = CLOSEST;
+            break;
+          
+          default:
+            break;
+          }
+        } else {
+          selected_tower_index = 0;
+          Button* button = getButtonArray(&tower_buttons, selected_tower_index + 1);
+          destroy_sprite(button->hovering);
+          destroy_sprite(button->no_hovering);
+          button->hovering = create_sprite((xpm_map_t)CrossbowButtonSelected, 0, 0, false, true);
+          button->no_hovering = create_sprite((xpm_map_t)CrossbowButtonSelected, 0, 0, false, true);
+        }
+        break;
+
+      case 2:
+        if (type_tower_menu) {
+          // Switching tower target type to next
+          switch (selected_tower_base->targetting) {
+            case FIRST:
+              selected_tower_base->targetting = CLOSEST;
+              break;
+
+            case CLOSEST:
+              selected_tower_base->targetting = LAST;
+              break;
+
+            case LAST:
+              selected_tower_base->targetting = FIRST;
+              break;
+            
+            default:
+              break;
+          }
+        } else {
+          selected_tower_index = 1;
+          Button* button = getButtonArray(&tower_buttons, selected_tower_index + 1);
+          destroy_sprite(button->hovering);
+          destroy_sprite(button->no_hovering);
+          button->hovering = create_sprite((xpm_map_t)CannonButtonSelected, 0, 0, false, true);
+          button->no_hovering = create_sprite((xpm_map_t)CannonButtonSelected, 0, 0, false, true);
+          
+        }
+        break;
+
+      case 3: 
+        if (type_tower_menu) {
+          // Upgrade turret damage
+          selected_tower_base->damage *= 1.1;
+        } else {
+          selected_tower_index = 2;
+          Button* button = getButtonArray(&tower_buttons, selected_tower_index + 1);
+          destroy_sprite(button->hovering);
+          destroy_sprite(button->no_hovering);
+          button->hovering = create_sprite((xpm_map_t)LaserButtonSelected, 0, 0, false, true);
+          button->no_hovering = create_sprite((xpm_map_t)LaserButtonSelected, 0, 0, false, true);
+        }
+        break;  
+
+      case 4:
+    
+        if (type_tower_menu) {
+          // Unmount turret
+          unmountTurret(selected_tower_base);
+          to_exit = true;
+        } else {
+          bool mounted = false;
+          switch (selected_tower_index) {
+            case 0:
+              mountTurret(selected_tower_base, CROSSBOW);
+              mounted = true;
+              break;
+
+            case 1:
+              if (unlocked_turrets[1]) {
+                mountTurret(selected_tower_base, CANNON);
+                mounted = true;
+              }
+              break;
+
+            case 2:
+              if (unlocked_turrets[2]) {
+                mountTurret(selected_tower_base, LASER);
+                mounted = true;
+              }
+              break;
+            default:
+              break;
+          }
+          if (mounted) to_exit = true;
+        }
+        break;
+
+      default:
+        break;
+    }
+
+    if (to_exit) {
+      state = GAME;
+      tower_background->sprite->is_visible = false;
+      selected_tower_base = NULL;
+      selected_tower_index = -1;
+      tower_current_selection = -1;
+      pressed_tower_button = false;
+      type_tower_menu = false;
+    }
   }
+
+  if (!type_tower_menu && selected_tower_index >= 0 && selected_tower_index <= 2) {
+    Button* button = getButtonArray(&tower_buttons, 4);
+    destroy_sprite(button->hovering);
+    destroy_sprite(button->no_hovering);
+    button->hovering = create_sprite((xpm_map_t)MountButtonHovered, 0, 0, false, true);
+    button->no_hovering = create_sprite((xpm_map_t)MountButton, 0, 0, false, true);      
+  }
+  
+  if (!type_tower_menu) {
+    for (int i = 0; i < 2; i++) {
+      if (i != selected_tower_index) {
+        Button* button = getButtonArray(&tower_buttons, i+1);
+        destroy_sprite(button->hovering);
+        destroy_sprite(button->no_hovering);
+        button->hovering = create_sprite(i == 0 ? (xpm_map_t)CrossbowButtonHovered : i == 1 ? (xpm_map_t)CannonButtonHovered : (xpm_map_t)LaserButtonHovered, 0, 0, false, true);
+        button->no_hovering = create_sprite(i == 0 ? (xpm_map_t)CrossbowButton : i == 1 ? (xpm_map_t)CannonButton : (xpm_map_t)LaserButton, 0, 0, false, true);
+      }
+    }
   }
 }
 
@@ -770,11 +833,17 @@ static void updateGamePlay() {
   if (!first_time_paused) {
     hideButtons(&pause_buttons);
     first_time_paused = !first_time_paused;
+    swapMouseSprites();
   }
 
   if(!first_time_shop) {
+    for (uint32_t i = 0; i < shop.prices.length; i++) {
+      hideGameObjects(&getMoneyArray(&shop.prices, i)->moneyDigitsGameObjects);
+      getMoneyArray(&shop.prices, i)->coin->sprite->is_visible = false;
+    }
     hideButtons(&shop_buttons);
     first_time_shop = !first_time_shop;
+    swapMouseSprites();
   }
 
   if (!first_time_tower) {
@@ -782,6 +851,7 @@ static void updateGamePlay() {
     printf("Destroyed tower buttons\n");
     printf("Tower buttons length: %d\n", tower_buttons.length);
     first_time_tower = !first_time_tower;
+    swapMouseSprites();
   }
 
   if (can_shop) {
@@ -846,7 +916,7 @@ static void updateGamePlay() {
       if(enemy->hit_points <= 0){
         removeEnemyArray(&enemies, j);
         money->money_amount += 10;
-        updateGameObjectSprites(money, 0);
+        updateGameObjectSprites(money, 0,0,0);
         j--;
       }
     }
@@ -866,16 +936,37 @@ static void updatePause() {
   if (first_time_paused) {
     showButtons(&pause_buttons);
     first_time_paused = !first_time_paused;
+    swapMouseSprites();
   }
   checkPauseKeyboardInput(&keyboard_device->keyPresses);
   checkPauseHovered(&pause_buttons);
 }
 
 static void updateShop() {
+
+  
   if(first_time_shop) {
+
+    for (uint32_t i = 0; i < shop.prices.length; i++) {
+      Button* tmp = getButtonArray(&shop_buttons, i + 1);
+
+      Money* temp_money = getMoneyArray(&shop.prices, i);
+
+      updateGameObjectSprites(temp_money, 2, tmp->x+200, tmp->y);
+
+      showGameObjects(&temp_money->moneyDigitsGameObjects);
+      
+      temp_money->coin->sprite->is_visible = true;
+
+      updateGameObjectZIndex(temp_money->coin, 0xFFF0);
+    }
+    
+    
     showButtons(&shop_buttons);
     first_time_shop = !first_time_shop;
+    swapMouseSprites();
   }
+
   checkShopKeyboardInput(&keyboard_device->keyPresses);
   checkShopHovered(&shop_buttons);
 }
@@ -893,10 +984,21 @@ static void updateTowerMenu() {
     if (getTowerArray(&towers, tower_index)->turret->sprite == NULL) {
       type_tower_menu = false;
 
-      pushButtonArray(&tower_buttons, initializeButton((xpm_map_t)ResumeButtonHovered, (xpm_map_t)ResumeButton, screen.xres/2 - 300, screen.yres/2 - 250, 0xFFFE, false, true));
-      pushButtonArray(&tower_buttons, initializeButton((xpm_map_t)ResumeButtonHovered, (xpm_map_t)ResumeButton, screen.xres/2 - 300, screen.yres/2 - 100, 0xFFFE, false, true));
-      pushButtonArray(&tower_buttons, initializeButton((xpm_map_t)ResumeButtonHovered, (xpm_map_t)ResumeButton, screen.xres/2 - 300, screen.yres/2 + 50, 0xFFFE, false, true));
-      pushButtonArray(&tower_buttons, initializeButton((xpm_map_t)MountButtonHovered, (xpm_map_t)MountButton, screen.xres/2 - 300, screen.yres/2 + 200, 0xFFFE, false, true));
+      pushButtonArray(&tower_buttons, initializeButton((xpm_map_t)CrossbowButtonHovered, (xpm_map_t)CrossbowButton, screen.xres/2 - 300, screen.yres/2 - 250, 0xFFFE, false, true));
+
+      if (unlocked_turrets[1]) {
+        pushButtonArray(&tower_buttons, initializeButton((xpm_map_t)CannonButtonHovered, (xpm_map_t)CannonButton, screen.xres/2 - 300, screen.yres/2 - 100, 0xFFFE, false, true));
+      } else {
+        pushButtonArray(&tower_buttons, initializeButton((xpm_map_t)CannonLocked, (xpm_map_t)CannonLocked, screen.xres/2 - 300, screen.yres/2 - 100, 0xFFFE, false, true));
+      }
+
+      if (unlocked_turrets[2]) {
+        pushButtonArray(&tower_buttons, initializeButton((xpm_map_t)LaserButtonHovered, (xpm_map_t)LaserButton, screen.xres/2 - 300, screen.yres/2 + 50, 0xFFFE, false, true));
+      } else {
+        pushButtonArray(&tower_buttons, initializeButton((xpm_map_t)LaserLocked, (xpm_map_t)LaserLocked, screen.xres/2 - 300, screen.yres/2 + 50, 0xFFFE, false, true));
+      }
+
+      pushButtonArray(&tower_buttons, initializeButton((xpm_map_t)MountButtonUnclickable, (xpm_map_t)MountButtonUnclickable, screen.xres/2 - 300, screen.yres/2 + 200, 0xFFFE, false, true));
 
     } else {
       type_tower_menu = true;
@@ -908,6 +1010,7 @@ static void updateTowerMenu() {
     }
 
     first_time_tower = !first_time_tower;
+    swapMouseSprites();
   }
 
   checkTowerMenuKeyboardInput(&keyboard_device->keyPresses);
@@ -915,6 +1018,11 @@ static void updateTowerMenu() {
 }
 
 void initializeGameplay() {
+
+  normal_mouse = create_sprite((xpm_map_t) MouseCursor, 0, 0, false, true);
+  aim_mouse = create_sprite((xpm_map_t) Crossair, 0, 0, false, true);
+  updateGameObjectSprite(mouse_device->mouse, normal_mouse);
+
   initializeDifferentTowerSprites();
   initializeBulletSprites();
   economy = read_prices_info(Prices);
@@ -924,7 +1032,7 @@ void initializeGameplay() {
   player_weapon = initializeWeapon(32, 28);
   hideWeapon(player_weapon);
   
-  money = initializeMoney();
+  money = initializeMoney(500,0);
   hideGameObjects(&money->moneyDigitsGameObjects);
 
   enemies = newEnemyArray(100);
@@ -932,28 +1040,30 @@ void initializeGameplay() {
   pause_buttons = newButtonArray(20);
   shop_buttons = newButtonArray(20);
   tower_buttons = newButtonArray(20);
-  laser_price = newGameObjectArray(20);
-  cannon_price = newGameObjectArray(20);
 
-  pushButtonArray(&pause_buttons, initializeButton((xpm_map_t)ResumeButtonHovered, (xpm_map_t)ResumeButton, screen.xres/2, screen.yres/2 - 100, 0xFFFE, false, true));
+  pushButtonArray(&pause_buttons, initializeButton((xpm_map_t)ResumeButtonHovered, (xpm_map_t)ResumeButton, screen.xres/2, screen.yres/2, 0xFFFE, false, true));
 
   pushButtonArray(&pause_buttons, initializeButton((xpm_map_t)QuitButtonHovered, (xpm_map_t)QuitButton, screen.xres/2, screen.yres/2 + 100, 0xFFFE, false, true));
 
-  pushButtonArray(&shop_buttons, initializeButton((xpm_map_t)QuitButtonHovered, (xpm_map_t)QuitButton, screen.xres/2, screen.yres/2 +300, 0xFFFE, false, true));
+  pushButtonArray(&shop_buttons, initializeButton((xpm_map_t)ExitButtonHovered, (xpm_map_t)ExitButton, screen.xres/2+400, screen.yres/2 -300, 0xFFFE, false, true));
 
-  pushButtonArray(&shop_buttons, initializeButton((xpm_map_t)Cannon, (xpm_map_t)Cannon, screen.xres/2 -300, screen.yres/2 -250, 0xFFFE, false, true));
+  pushButtonArray(&shop_buttons, initializeButton((xpm_map_t)CannonButtonHovered, (xpm_map_t)CannonButton, screen.xres/2 -150, screen.yres/2 -150, 0xF000, false, true));
 
-  pushButtonArray(&shop_buttons, initializeButton((xpm_map_t)LaserGun, (xpm_map_t)LaserGun, screen.xres/2 -300, screen.yres/2 -100, 0xFFFE, false, true));
+  pushButtonArray(&shop_buttons, initializeButton((xpm_map_t)LaserButtonHovered, (xpm_map_t)LaserButton, screen.xres/2 -150, screen.yres/2 + 100, 0xF000, false, true));
+
 
   hideButtons(&pause_buttons);
   hideButtons(&shop_buttons);
 
   game_background = create_spriteless_gameobject(0, 0, 0, 0, 0);
-  pause_background = create_gameobject((xpm_map_t)PauseBackground, screen.xres/2, screen.yres/2, -300, -300, 0xFFF0, true, false);
+
+  Sprite* pause_background_sprite = create_sprite((xpm_map_t)PauseBackground, screen.xres/2, screen.yres/2, true, false);
+
+  pause_background = create_gameobject_from_sprite(pause_background_sprite, screen.xres/2, screen.yres/2, -(pause_background_sprite->width/2), -(pause_background_sprite->height/2), 0xFFFE);
 
   Sprite* shop_background_sprite = create_sprite((xpm_map_t)SelectGameBackground, screen.xres/2, screen.yres/2, true, false);
 
-  shop_background = create_gameobject_from_sprite(shop_background_sprite, screen.xres/2, screen.yres/2, -(shop_background_sprite->width/2), -(shop_background_sprite->height/2), 0xFFF0);
+  shop_background = create_gameobject_from_sprite(shop_background_sprite, screen.xres/2, screen.yres/2, -(shop_background_sprite->width/2), -(shop_background_sprite->height/2), 0xDFFF);
 
   Sprite* tower_background_sprite = create_sprite((xpm_map_t)SelectGameBackground, screen.xres/2, screen.yres/2, true, false);
 
@@ -961,6 +1071,10 @@ void initializeGameplay() {
 }
 
 void enterGame(bool multi, uint8_t arena) {
+
+  mouse_device->mouse->sprite = aim_mouse;
+  mouse_device->mouse->origin_offset_x = -(aim_mouse->width/2-2);
+  mouse_device->mouse->origin_offset_y = -(aim_mouse->height/2-2);
 
   select_game_current_arena = arena;
 
@@ -986,8 +1100,8 @@ void enterGame(bool multi, uint8_t arena) {
   showSprites(&player1->player->animatedSprite->sprites);
 
   money->coin->sprite->is_visible = true;
-  updateGameObjectSprites(money, 0);
-  //showSprites(&money->moneyDigits);
+  showGameObjects(&money->moneyDigitsGameObjects);
+  updateGameObjectSprites(money, 0,0,0);
 
   player_base = current_arena->base;
   shop = current_arena->shop;
@@ -1021,6 +1135,9 @@ void updateGame() {
 }
 
 void exitGame() {
+
+  mouse_device->mouse->sprite = normal_mouse;
+
   playing = false;
   hideSprites(&player1->player->animatedSprite->sprites);
   hideSprites(&player2->player->animatedSprite->sprites);
@@ -1036,7 +1153,7 @@ void exitGame() {
 
   towers = (TowerArray){NULL, 0, 0};
   player_base = (PlayerBase){NULL, NULL, 0, 0};
-  shop = (Shop){NULL, NULL};
+  shop = (Shop){NULL, NULL, (MoneyArray){NULL, 0, 0}};
   remove_sprite_from_spriteless_gameobject(game_background);
   pause_background->sprite->is_visible = false;
 
