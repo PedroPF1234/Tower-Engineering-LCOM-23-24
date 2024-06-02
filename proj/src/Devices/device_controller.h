@@ -18,6 +18,7 @@ typedef struct MouseDevice {
   bool right_button_released;
   bool middle_button_is_pressed;
   bool middle_button_released;
+  bool mouse_just_updated;
 } MouseDevice;
 
 typedef struct KeyboardDevice {

@@ -276,8 +276,9 @@ static void checkGameHovered(TowerArray* array) {
   int16_t mouse_y = mouse_device->mouse->y;
 
   if (!pressed_game_button) {
-    if (mouse_device->left_button_is_pressed) {
+    if (mouse_device->left_button_is_pressed && mouse_device->mouse_just_updated) {
           pressed_game_button = true;
+          mouse_device->mouse_just_updated = false;
     }
   }
 
@@ -376,8 +377,9 @@ static void checkPauseHovered(ButtonArray* array) {
         updateGameObjectSprite(buttonObject, button->hovering);
         pause_current_selection = i;
 
-        if (mouse_device->left_button_is_pressed) {
+        if (mouse_device->left_button_is_pressed && mouse_device->mouse_just_updated) {
           pressed_pause_button = true;
+          mouse_device->mouse_just_updated = false;
           break;
         }
 
@@ -497,8 +499,9 @@ static void checkShopHovered(ButtonArray* array) {
         updateGameObjectSprite(buttonObject, button->hovering);
         shop_current_selection = i;
 
-        if (mouse_device->left_button_is_pressed) {
+        if (mouse_device->left_button_is_pressed && mouse_device->mouse_just_updated) {
           pressed_shop_button = true;
+          mouse_device->mouse_just_updated = false;
           break;
         }
 
@@ -639,8 +642,9 @@ static void checkTowerMenuHovered(ButtonArray* array) {
         updateGameObjectSprite(buttonObject, button->hovering);
         tower_current_selection = i;
 
-        if (mouse_device->left_button_is_pressed) {
+        if (mouse_device->left_button_is_pressed && mouse_device->mouse_just_updated) {
           pressed_tower_button = true;
+          mouse_device->mouse_just_updated = false;
           break;
         }
 
@@ -754,10 +758,27 @@ static void checkTowerMenuHovered(ButtonArray* array) {
               break;
           }
           if (selected_tower_base->level < 5 && money->money_amount >= upgrade_price[selected_tower_base->level]) {
-            selected_tower_base->damage *= 1.1;
-            selected_tower_base->level++;
             money->money_amount -= upgrade_price[selected_tower_base->level];
             updateGameObjectSprites(money, 0,0,0);
+            selected_tower_base->damage *= 1.1;
+            selected_tower_base->level++;
+            printf("Upgraded tower to level %d\n", selected_tower_base->level);
+
+            Money* upgrade_money = getMoneyArray(&tower_money, 0);
+            upgrade_money->money_amount = upgrade_price[selected_tower_base->level];
+            printf("New upgrade money: %d\n", upgrade_price[selected_tower_base->level]);
+
+            Money* damage_money = getMoneyArray(&tower_money, 2);
+            damage_money->money_amount = selected_tower_base->damage;
+
+            Money* level_money = getMoneyArray(&tower_money, 3);
+            level_money->money_amount = selected_tower_base->level;
+
+            updateGameObjectSprites(upgrade_money, 2, 0, 0);
+            updateGameObjectSprites(damage_money, 0, 0, 0);
+            updateGameObjectSprites(level_money, 0, 0, 0);
+            
+
           }
         } else {
           if (unlocked_turrets[2]) {
@@ -890,9 +911,7 @@ static void updateGamePlay() {
 
   if (!first_time_tower) {
     destroyButtonArray(&tower_buttons);
-    destroyMoneyArray(&tower_money);
-    printf("Destroyed tower buttons\n");
-    printf("Tower buttons length: %d\n", tower_buttons.length);
+    destroyMoneyArray(&tower_money);    
     first_time_tower = !first_time_tower;
     swapMouseSprites();
   }
@@ -1024,8 +1043,6 @@ static void updateTowerMenu() {
 
     selected_tower_base = getTowerArray(&towers, tower_index);
 
-    printf("Tower Array length: %d\n", towers.length);
-
     // Exit button
     pushButtonArray(&tower_buttons, initializeButton((xpm_map_t)ExitButtonHovered, (xpm_map_t)ExitButton, screen.xres/2 + 400, screen.yres/2 - 300, 0xFFFE, false, true));
     
@@ -1109,9 +1126,11 @@ static void updateTowerMenu() {
 
       Money* unmount_money = initializeMoney(economy->build_prices[selected_tower_base->turretType]/2, 1);
 
-      Money* damage_money = initializeMoney(selected_tower_base->damage, 0); // Using money object to display damage
+      // Using money object to display damage
+      Money* damage_money = initializeMoney(selected_tower_base->damage, 0);
 
-      Money* level_money = initializeMoney(selected_tower_base->level, 0); // Using money object to display level
+      // Using money object to display level
+      Money* level_money = initializeMoney(selected_tower_base->level, 0); 
 
       updateGameObjectSprites(upgrade_money, 2, screen.xres/2 + 300, screen.yres/2 + 100);
       updateGameObjectSprites(unmount_money, 1, screen.xres/2 + 300, screen.yres/2 + 200);
@@ -1133,7 +1152,6 @@ static void updateTowerMenu() {
       insertMoneyArray(&tower_money, unmount_money);
       insertMoneyArray(&tower_money, damage_money);
       insertMoneyArray(&tower_money, level_money);
-
     }
 
     first_time_tower = !first_time_tower;
@@ -1159,7 +1177,7 @@ void initializeGameplay() {
   player_weapon = initializeWeapon(32, 28);
   hideWeapon(player_weapon);
   
-  money = initializeMoney(1750,0);
+  money = initializeMoney(17500,0);
   hideGameObjects(&money->moneyDigitsGameObjects);
 
   enemies = newEnemyArray(100);
@@ -1226,7 +1244,7 @@ void enterGame(bool multi, uint8_t arena) {
 
   showWeapon(player_weapon);
 
-  money->money_amount = 1750;
+  money->money_amount = 17500;
 
   multiplayer = multi;
   current_arena = &arenas[arena];

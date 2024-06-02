@@ -134,8 +134,6 @@ void setTowerHovered(TowerBase* tower, bool hovered) {
 
 void mountTurret(TowerBase* tower, TurretType type) {
 
-  printf("Mounting turret on coordinates: %d, %d\n", tower->x, tower->y);
-
   Sprite* temp = NULL;
   int16_t x = tower->x + tower->origin_offset_x;
   int16_t y = tower->y + tower->origin_offset_y;
@@ -152,7 +150,7 @@ void mountTurret(TowerBase* tower, TurretType type) {
         tower->turretType = CROSSBOW;
       }
       add_sprite_to_spriteless_gameobject(tower->turret, temp);
-      tower->damage = 10;
+      tower->damage = 50;
 
       break;
 
@@ -168,9 +166,7 @@ void mountTurret(TowerBase* tower, TurretType type) {
         tower->turretType = CANNON;
       }
       add_sprite_to_spriteless_gameobject(tower->turret, temp);
-      tower->damage = 20;
-
-      printf("Here?\n");
+      tower->damage = 100;
 
       break;
 
@@ -185,7 +181,8 @@ void mountTurret(TowerBase* tower, TurretType type) {
         tower->turretType = LASER;
       }
       add_sprite_to_spriteless_gameobject(tower->turret, temp);
-      tower->damage = 20;
+      tower->damage = 200;
+      tower->cooldown = 1;
 
       break;
 
@@ -199,6 +196,8 @@ void unmountTurret(TowerBase* tower) {
     destroy_sprite(tower->turret->sprite);
     remove_sprite_from_spriteless_gameobject(tower->turret);
     tower->target = NULL;
+    tower->level = 0;
+    tower->damage = 0;
   }
 }
 

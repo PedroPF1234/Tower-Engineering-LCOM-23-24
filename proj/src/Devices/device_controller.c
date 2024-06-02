@@ -117,30 +117,36 @@ static int kbc_interrupt() {
         mouse_ih();
         if (mouse_get_info(&pp)) {
           if (!was_left_button_pressed && pp.lb) {
+            mouse_device->mouse_just_updated = true;
             mouse_device->left_button_is_pressed = true;
             mouse_device->left_button_released = false;
             was_left_button_pressed = true;
           } else if (was_left_button_pressed && !pp.lb) {
+            mouse_device->mouse_just_updated = true;
             mouse_device->left_button_released = true;
             mouse_device->left_button_is_pressed = false;
             was_left_button_pressed = false;
           }
 
           if (!was_right_button_pressed && pp.rb) {
+            mouse_device->mouse_just_updated = true;
             mouse_device->right_button_is_pressed = true;
             mouse_device->right_button_released = false;
             was_right_button_pressed = true;
           } else if (was_right_button_pressed && !pp.rb) {
+            mouse_device->mouse_just_updated = true;
             mouse_device->right_button_released = true;
             mouse_device->right_button_is_pressed = false;
             was_right_button_pressed = false;
           }
 
           if (!was_middle_button_pressed && pp.mb) {
+            mouse_device->mouse_just_updated = true;
             mouse_device->middle_button_is_pressed = true;
             mouse_device->middle_button_released = false;
             was_middle_button_pressed = true;
           } else if (was_middle_button_pressed && !pp.mb) {
+            mouse_device->mouse_just_updated = true;
             mouse_device->middle_button_released = true;
             mouse_device->middle_button_is_pressed = false;
             was_middle_button_pressed = false;
