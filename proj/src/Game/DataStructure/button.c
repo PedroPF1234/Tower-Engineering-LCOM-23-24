@@ -24,9 +24,9 @@ void pushButtonArray(ButtonArray* array, Button* button) {
   if (array->capacity != array->length) {
         array->buttons[array->length] = button;
     } else {
-      uint32_t newCapacity = array->capacity * 2;
+      array->capacity = array->capacity * 2;
       Button** oldPointer = array->buttons;
-      Button** newPointer = (Button**)malloc(newCapacity * sizeof(Button*));
+      Button** newPointer = (Button**)malloc(array->capacity * sizeof(Button*));
       array->buttons = newPointer;
       for (uint32_t i = 0; i < array->length; i++) {
         newPointer[i] = oldPointer[i];

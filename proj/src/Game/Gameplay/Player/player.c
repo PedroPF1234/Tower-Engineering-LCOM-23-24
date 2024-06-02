@@ -10,6 +10,7 @@
 extern ScreenInfo screen;
 bool can_shop = false;
 bool can_tower = false;
+bool can_base = false;
 int16_t tower_index = -1;
 
 Player* initializePlayer(float x, float y, int16_t ox, int16_t oy, int16_t hp) {
@@ -37,7 +38,7 @@ Player* initializePlayer(float x, float y, int16_t ox, int16_t oy, int16_t hp) {
   new_player->origin_offset_y = oy;
   new_player->hit_points = hp;
   new_player->max_hit_points = hp;
-  new_player->hasWeapon = true;
+  new_player->hasWeapon = false;
 
   return new_player;
 }
@@ -76,6 +77,8 @@ void updatePlayerPosition(Player* player, Arena arena) {
   // calculate distance from player to shop
   float shop_distance = sqrt(pow(new_x - (arena.shop.shopObject->x), 2) + pow(new_y - (arena.shop.shopObject->y), 2));
 
+  float base_distance = sqrt(pow(new_x - (arena.base.baseObject->x), 2) + pow(new_y - (arena.base.baseObject->x), 2));
+
   float turret_distance = 1000.0f;
   tower_index = -1;
 
@@ -99,6 +102,15 @@ void updatePlayerPosition(Player* player, Arena arena) {
     can_tower = false;
   }
 
+  if (base_distance < 130 && base_distance < turret_distance) {
+    can_base = true;
+  } else if (tower_index != -1) {
+    can_base = false;
+    can_tower = true;
+  } else {
+    can_base = false;
+    can_tower = false;
+  }
 
   if (can_move) {
     player->x = new_x;

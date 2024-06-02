@@ -188,6 +188,36 @@ void removeMoneyArray(MoneyArray* moneyArray, Money* money) {
   }
 }
 
+void hideMoneyArray(MoneyArray* moneyArray) {
+  for (uint32_t i = 0; i < moneyArray->length; i++) {
+    Money* tmp = getMoneyArray(moneyArray, i);
+    for (uint32_t j = 0; j < tmp->moneyDigitsGameObjects.length; j++) {
+      hideGameObject(getGameObjectArray(&tmp->moneyDigitsGameObjects, j));
+    }
+  }
+}
+
+void showMoneyArray(MoneyArray* moneyArray) {
+  for (uint32_t i = 0; i < moneyArray->length; i++) {
+    Money* tmp = getMoneyArray(moneyArray, i);
+    for (uint32_t j = 0; j < tmp->moneyDigitsGameObjects.length; j++) {
+      showGameObject(getGameObjectArray(&tmp->moneyDigitsGameObjects, j));
+    }
+  }
+}
+
+void hideMoney(Money* money) {
+  for (uint32_t i = 0; i < money->moneyDigitsGameObjects.length; i++) {
+    hideGameObject(getGameObjectArray(&money->moneyDigitsGameObjects, i));
+  }
+}
+
+void showMoney(Money* money) {
+  for (uint32_t i = 0; i < money->moneyDigitsGameObjects.length; i++) {
+    showGameObject(getGameObjectArray(&money->moneyDigitsGameObjects, i));
+  }
+}
+
 Money* getMoneyArray(MoneyArray *moneyArray, uint32_t index) {
   if (index < moneyArray->length) {
     return moneyArray->money[index];

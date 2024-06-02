@@ -39,6 +39,9 @@ typedef struct Economy
 
   int32_t* upgrade_laser_prices;
   uint8_t upgrade_laser_count;
+
+  int32_t weapon_price;
+
 } Economy;
 
 /**

@@ -170,9 +170,9 @@ void pushSpriteArray(SpriteArray* array, Sprite* sprite) {
   if (array->capacity != array->length) {
       array->sprites[array->length] = sprite;
   } else {
-    uint32_t newCapacity = array->capacity * 2;
+    array->capacity = array->capacity * 2;
     Sprite** oldPointer = array->sprites;
-    Sprite** newPointer = (Sprite**)malloc(newCapacity * sizeof(Sprite*));
+    Sprite** newPointer = (Sprite**)malloc(array->capacity * sizeof(Sprite*));
     array->sprites = newPointer;
     for (uint32_t i = 0; i < array->length; i++) {
       newPointer[i] = oldPointer[i];
@@ -203,6 +203,7 @@ void removeSpriteArray(SpriteArray* array, uint32_t index) {
 }
 
 void destroySpriteArray(SpriteArray* array) {
+  
   
   for (uint32_t i = 0; i < array->length; i++) {
     destroy_sprite(array->sprites[i]);
