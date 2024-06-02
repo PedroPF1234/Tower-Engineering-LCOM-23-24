@@ -387,6 +387,7 @@ Sprite* getSpriteFromAngle(Sprite* sprite, int angle) {
 }
 
 int calculate_angle(float x, float y, float x2, float y2) {
+  if (x == x2 && y == y2) return 0;
   float angle = atan2(y2 - y, x2 - x) * 180 / M_PI;
   return (int)angle;
 }

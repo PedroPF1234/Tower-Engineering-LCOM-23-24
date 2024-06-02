@@ -64,7 +64,7 @@ static int8_t pause_current_selection = -1;
 static int8_t shop_current_selection = -1;
 static int8_t tower_current_selection = -1;
 static int8_t select_game_current_arena = -1;
-//static bool just_changed_selection = false;
+static bool just_changed_selection = false;
 
 bool multiplayer = false;
 
@@ -281,8 +281,8 @@ static void checkGameHovered(TowerArray* array) {
   if (pressed_game_button) {
     pressed_game_button = false;
     if(player1->hasWeapon){
-      float bullet_x = player1->x; 
-      float bullet_y = player1->y+player1->origin_offset_y - 10; 
+      float bullet_x = (float)player1->player->gameObject->x; 
+      float bullet_y = (float)player1->player->gameObject->y+player1->origin_offset_y; 
       int16_t damage = 200;
 
       Bullet* new_bullet = initializeBullet(bullet_x, bullet_y, mouse_x, mouse_y, damage);
@@ -689,6 +689,7 @@ static void checkTowerMenuHovered(ButtonArray* array) {
           }
         } else {
           selected_tower_index = 0;
+          just_changed_selection = true;
           Button* button = getButtonArray(&tower_buttons, selected_tower_index + 1);
           destroy_sprite(button->hovering);
           destroy_sprite(button->no_hovering);
@@ -717,12 +718,15 @@ static void checkTowerMenuHovered(ButtonArray* array) {
               break;
           }
         } else {
-          selected_tower_index = 1;
-          Button* button = getButtonArray(&tower_buttons, selected_tower_index + 1);
-          destroy_sprite(button->hovering);
-          destroy_sprite(button->no_hovering);
-          button->hovering = create_sprite((xpm_map_t)CannonButtonSelected, 0, 0, false, true);
-          button->no_hovering = create_sprite((xpm_map_t)CannonButtonSelected, 0, 0, false, true);
+          if (unlocked_turrets[1]) {
+            selected_tower_index = 1;
+            just_changed_selection = true;
+            Button* button = getButtonArray(&tower_buttons, selected_tower_index + 1);
+            destroy_sprite(button->hovering);
+            destroy_sprite(button->no_hovering);
+            button->hovering = create_sprite((xpm_map_t)CannonButtonSelected, 0, 0, false, true);
+            button->no_hovering = create_sprite((xpm_map_t)CannonButtonSelected, 0, 0, false, true);
+          }
           
         }
         break;
@@ -730,14 +734,20 @@ static void checkTowerMenuHovered(ButtonArray* array) {
       case 3: 
         if (type_tower_menu) {
           // Upgrade turret damage
-          selected_tower_base->damage *= 1.1;
+          if (selected_tower_base->level < 5) {
+            selected_tower_base->damage *= 1.1;
+            selected_tower_base->level++;
+          }
         } else {
-          selected_tower_index = 2;
-          Button* button = getButtonArray(&tower_buttons, selected_tower_index + 1);
-          destroy_sprite(button->hovering);
-          destroy_sprite(button->no_hovering);
-          button->hovering = create_sprite((xpm_map_t)LaserButtonSelected, 0, 0, false, true);
-          button->no_hovering = create_sprite((xpm_map_t)LaserButtonSelected, 0, 0, false, true);
+          if (unlocked_turrets[2]) {
+            selected_tower_index = 2;
+            just_changed_selection = true;
+            Button* button = getButtonArray(&tower_buttons, selected_tower_index + 1);
+            destroy_sprite(button->hovering);
+            destroy_sprite(button->no_hovering);
+            button->hovering = create_sprite((xpm_map_t)LaserButtonSelected, 0, 0, false, true);
+            button->no_hovering = create_sprite((xpm_map_t)LaserButtonSelected, 0, 0, false, true);
+          }
         }
         break;  
 
@@ -790,7 +800,7 @@ static void checkTowerMenuHovered(ButtonArray* array) {
     }
   }
 
-  if (!type_tower_menu && selected_tower_index >= 0 && selected_tower_index <= 2) {
+  if (!type_tower_menu && selected_tower_index >= 0 && selected_tower_index <= 2 && just_changed_selection) {
     Button* button = getButtonArray(&tower_buttons, 4);
     destroy_sprite(button->hovering);
     destroy_sprite(button->no_hovering);
@@ -798,9 +808,10 @@ static void checkTowerMenuHovered(ButtonArray* array) {
     button->no_hovering = create_sprite((xpm_map_t)MountButton, 0, 0, false, true);      
   }
   
-  if (!type_tower_menu) {
-    for (int i = 0; i < 2; i++) {
-      if (i != selected_tower_index) {
+  if (!type_tower_menu && just_changed_selection) {
+    just_changed_selection = false;
+    for (int i = 0; i < 3; i++) {
+      if (i != selected_tower_index && unlocked_turrets[i] == 1) {
         Button* button = getButtonArray(&tower_buttons, i+1);
         destroy_sprite(button->hovering);
         destroy_sprite(button->no_hovering);
@@ -979,33 +990,41 @@ static void updateTowerMenu() {
 
     printf("Tower Array length: %d\n", towers.length);
 
-    pushButtonArray(&tower_buttons, initializeButton((xpm_map_t)ExitButtonHovered, (xpm_map_t)ExitButton, screen.xres/2 + 300, screen.yres/2 - 300, 0xFFFE, false, true));
+    // Exit button
+    pushButtonArray(&tower_buttons, initializeButton((xpm_map_t)ExitButtonHovered, (xpm_map_t)ExitButton, screen.xres/2 + 400, screen.yres/2 - 300, 0xFFFE, false, true));
     
     if (getTowerArray(&towers, tower_index)->turret->sprite == NULL) {
       type_tower_menu = false;
 
-      pushButtonArray(&tower_buttons, initializeButton((xpm_map_t)CrossbowButtonHovered, (xpm_map_t)CrossbowButton, screen.xres/2 - 300, screen.yres/2 - 250, 0xFFFE, false, true));
+      // Crossbow button (always unlocked)
+      pushButtonArray(&tower_buttons, initializeButton((xpm_map_t)CrossbowButtonHovered, (xpm_map_t)CrossbowButton, screen.xres/2 - 200, screen.yres/2 - 200, 0xFFFE, false, true));
 
+      // Cannon button
       if (unlocked_turrets[1]) {
-        pushButtonArray(&tower_buttons, initializeButton((xpm_map_t)CannonButtonHovered, (xpm_map_t)CannonButton, screen.xres/2 - 300, screen.yres/2 - 100, 0xFFFE, false, true));
+        pushButtonArray(&tower_buttons, initializeButton((xpm_map_t)CannonButtonHovered, (xpm_map_t)CannonButton, screen.xres/2, screen.yres/2 - 200, 0xFFFE, false, true));
       } else {
-        pushButtonArray(&tower_buttons, initializeButton((xpm_map_t)CannonLocked, (xpm_map_t)CannonLocked, screen.xres/2 - 300, screen.yres/2 - 100, 0xFFFE, false, true));
+        pushButtonArray(&tower_buttons, initializeButton((xpm_map_t)CannonLocked, (xpm_map_t)CannonLocked, screen.xres/2, screen.yres/2 - 200, 0xFFFE, false, true));
       }
 
+      // Laser button
       if (unlocked_turrets[2]) {
-        pushButtonArray(&tower_buttons, initializeButton((xpm_map_t)LaserButtonHovered, (xpm_map_t)LaserButton, screen.xres/2 - 300, screen.yres/2 + 50, 0xFFFE, false, true));
+        pushButtonArray(&tower_buttons, initializeButton((xpm_map_t)LaserButtonHovered, (xpm_map_t)LaserButton, screen.xres/2 + 200, screen.yres/2 - 200, 0xFFFE, false, true));
       } else {
-        pushButtonArray(&tower_buttons, initializeButton((xpm_map_t)LaserLocked, (xpm_map_t)LaserLocked, screen.xres/2 - 300, screen.yres/2 + 50, 0xFFFE, false, true));
+        pushButtonArray(&tower_buttons, initializeButton((xpm_map_t)LaserLocked, (xpm_map_t)LaserLocked, screen.xres/2 + 200, screen.yres/2 - 200, 0xFFFE, false, true));
       }
 
-      pushButtonArray(&tower_buttons, initializeButton((xpm_map_t)MountButtonUnclickable, (xpm_map_t)MountButtonUnclickable, screen.xres/2 - 300, screen.yres/2 + 200, 0xFFFE, false, true));
+      pushButtonArray(&tower_buttons, initializeButton((xpm_map_t)MountButtonUnclickable, (xpm_map_t)MountButtonUnclickable, screen.xres/2, screen.yres/2 + 120, 0xFFFE, false, true));
 
     } else {
       type_tower_menu = true;
 
       pushButtonArray(&tower_buttons, initializeButton((xpm_map_t)LeftButton, (xpm_map_t) LeftButton, screen.xres/2 - 300, screen.yres/2 - 250, 0xFFFE, false, true));
       pushButtonArray(&tower_buttons, initializeButton((xpm_map_t)RightButton, (xpm_map_t)RightButton, screen.xres/2 - 300, screen.yres/2 - 100, 0xFFFE, false, true));
-      pushButtonArray(&tower_buttons, initializeButton((xpm_map_t)UpgradeButtonHovered, (xpm_map_t)UpgradeButton, screen.xres/2 - 300, screen.yres/2 + 50, 0xFFFE, false, true));
+      if (selected_tower_base->level < 5) {
+        pushButtonArray(&tower_buttons, initializeButton((xpm_map_t)UpgradeButtonHovered, (xpm_map_t)UpgradeButton, screen.xres/2 - 300, screen.yres/2 + 50, 0xFFFE, false, true));
+      } else {
+        pushButtonArray(&tower_buttons, initializeButton((xpm_map_t)UpgradeButtonUnclickable, (xpm_map_t)UpgradeButtonUnclickable, screen.xres/2 - 300, screen.yres/2 + 50, 0xFFFE, false, true));
+      }
       pushButtonArray(&tower_buttons, initializeButton((xpm_map_t)UnmountButtonHovered, (xpm_map_t)UnmountButton, screen.xres/2 - 300, screen.yres/2 + 200, 0xFFFE, false, true));
     }
 
@@ -1032,7 +1051,7 @@ void initializeGameplay() {
   player_weapon = initializeWeapon(32, 28);
   hideWeapon(player_weapon);
   
-  money = initializeMoney(500,0);
+  money = initializeMoney(1750,0);
   hideGameObjects(&money->moneyDigitsGameObjects);
 
   enemies = newEnemyArray(100);
@@ -1091,7 +1110,7 @@ void enterGame(bool multi, uint8_t arena) {
 
   showWeapon(player_weapon);
 
-  money->money_amount = 500;
+  money->money_amount = 1750;
 
   multiplayer = multi;
   current_arena = &arenas[arena];
