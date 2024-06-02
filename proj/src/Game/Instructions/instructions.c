@@ -86,9 +86,8 @@ static void checkInstructionHovered(ButtonArray* array) {
       if (mouse_x > leftMostBound && mouse_x < rightMostBound &&
           mouse_y > upMostBound && mouse_y < downMostBound && last_pressed_was_mouse) {
 
-        if (mouse_device->left_button_is_pressed && mouse_device->mouse_just_updated) {
+        if (mouse_device->left_button_is_pressed) {
           pressed_inst_button = true;
-          mouse_device->mouse_just_updated = false;
         }
 
         updateGameObjectSprite(buttonObject, button->hovering);
@@ -126,7 +125,7 @@ void initializeInstructions() {
   instructions_background = create_gameobject((xpm_map_t)InstructionBackground, 0, 0, 0, 0, 0, true, false);
 
   // Go back Button
-  pushButtonArray(&instButtons, initializeButton((xpm_map_t)QuitButtonHovered, (xpm_map_t)QuitButton, screen.xres/2-1, screen.yres/2+350, 1, false, false));
+  pushButtonArray(&instButtons, initializeButton((xpm_map_t)QuitButtonHovered, (xpm_map_t)QuitButton, screen.xres/2-1, screen.yres/2+350, 1, true, true));
 }
 
 void enterInstructions() {
