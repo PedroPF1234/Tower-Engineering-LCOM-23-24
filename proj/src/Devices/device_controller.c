@@ -249,5 +249,4 @@ void resetDevicesChangingScreens() {
   was_left_button_pressed = true;
   was_right_button_pressed = true;
   was_middle_button_pressed = true;
-
 }
