@@ -58,7 +58,8 @@
     "lcf.h": "c",
     "instructions.h": "c",
     "button.h": "c",
-    "gamestates.h": "c"
+    "gamestates.h": "c",
+    "economy.h": "c"
   },
   "C_Cpp_Runner.msvcBatchPath": "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Auxiliary/Build/vcvarsall.bat",
   "C_Cpp_Runner.cCompilerPath": "gcc",
