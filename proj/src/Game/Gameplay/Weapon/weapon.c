@@ -26,6 +26,8 @@ Weapon* initializeWeapon(int16_t x, int16_t y) {
 
   new_weapon->weaponR = create_gameobject_from_sprite(spriteR, x, y, -(spriteR->width/2), -(spriteR->height/2), HIGH_PRIORITY_Z_INDEX);
 
+  hideWeapon(new_weapon);
+
   return new_weapon;
 }
 
@@ -36,13 +38,13 @@ void destroyWeapon(Weapon* weapon) {
 }
 
 void showWeapon(Weapon* weapon) {
-  weapon->weaponL->sprite->is_visible = true;
-  weapon->weaponR->sprite->is_visible = true;
+  showGameObject(weapon->weaponL);
+  showGameObject(weapon->weaponR);
 }
 
 void hideWeapon(Weapon* weapon) {
-  weapon->weaponL->sprite->is_visible = false;
-  weapon->weaponR->sprite->is_visible = false;
+  hideGameObject(weapon->weaponL);
+  hideGameObject(weapon->weaponR);
 }
 
 void updateWeapon(Weapon* weapon, Player* player, int16_t mouse_x, int16_t mouse_y) {

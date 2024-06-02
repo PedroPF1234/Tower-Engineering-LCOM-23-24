@@ -34,6 +34,7 @@ TowerBase* initializeTower(int16_t x, int16_t y) {
   -(base->height/2), z_indexing);
   new_tower->turret = create_spriteless_gameobject(x, y, -(base->width/2), -(base->height/2), z_indexing + 1);
 
+  new_tower->turretType = -1;
   new_tower->x = x;
   new_tower->y = y;
   new_tower->origin_offset_x = -(base->width/2);
@@ -148,6 +149,7 @@ void mountTurret(TowerBase* tower, TurretType type) {
         tower->range =  temp[0].width*3;
         tower->turret_radius = ( temp[0].width / 2);
         tower->turretSprite = temp;
+        tower->turretType = CROSSBOW;
       }
       add_sprite_to_spriteless_gameobject(tower->turret, temp);
       tower->damage = 10;
@@ -163,6 +165,7 @@ void mountTurret(TowerBase* tower, TurretType type) {
         tower->turret_radius = (temp[0].width / 2);
         tower->range = temp[0].width*6;
         tower->turretSprite = temp;
+        tower->turretType = CANNON;
       }
       add_sprite_to_spriteless_gameobject(tower->turret, temp);
       tower->damage = 20;
@@ -179,6 +182,7 @@ void mountTurret(TowerBase* tower, TurretType type) {
         tower->turret_radius = (temp[0].width / 2);
         tower->range = temp[0].width*6;
         tower->turretSprite = temp;
+        tower->turretType = LASER;
       }
       add_sprite_to_spriteless_gameobject(tower->turret, temp);
       tower->damage = 20;

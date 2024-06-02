@@ -50,6 +50,8 @@ void updateGameObjectZIndex(GameObject* gameObject, uint16_t z_index);
 void destroy_gameobject(GameObject* gameObject);
 void destroy_gameobject_safe_sprite(GameObject* gameObject);
 void updateGameObjectSprite(GameObject* gameObject, Sprite* sprite);
+void hideGameObject(GameObject* gameObject);
+void showGameObject(GameObject* gameObject);
 
 GameObjectArray newGameObjectArray(uint32_t capacity);
 void insertGameObjectArray(GameObjectArray *array, GameObject *newGameObject);

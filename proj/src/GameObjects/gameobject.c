@@ -218,10 +218,11 @@ static void destroyAnimatedGameObjectArray(AnimatedGameObjectArray *array) {
 }
 
 void destroyGameObjectArray(GameObjectArray *array) {
-  for (int32_t i = 0; i < (int32_t)array->length; i++) {
-    GameObject* gameObject = getGameObjectArray(array, i);
+  uint32_t length = array->length;
+  for (uint32_t i = 0; i < length; i++) {
+    GameObject* gameObject = getGameObjectArray(array, 0);
     removeGameObjectArray(array, gameObject);
-    free(gameObject);
+    destroy_gameobject_safe_sprite(gameObject);
   }
 }
 
@@ -360,6 +361,14 @@ void destroy_gameobject(GameObject* gameObject) {
 void destroy_gameobject_safe_sprite(GameObject* gameObject) {
   removeRenderPipeline(&renderPipeline, gameObject);
   free(gameObject);
+}
+
+void hideGameObject(GameObject* gameObject) {
+  removeRenderPipeline(&renderPipeline, gameObject);
+}
+
+void showGameObject(GameObject* gameObject) {
+  insertRenderPipeline(&renderPipeline, gameObject);
 }
 
 static int draw_gameObject(GameObject* gameObject) {
