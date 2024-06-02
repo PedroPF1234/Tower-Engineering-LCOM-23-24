@@ -1,0 +1,7 @@
+<map id="hideWeapon" name="hideWeapon">
+<area shape="rect" id="Node000001" title="Hides the weapon by making the associated sprite invisible." alt="" coords="5,5,98,31"/>
+<area shape="rect" id="Node000002" href="$gameobject_8c.html#aed2b525f6703cd35381c0cc9e7397a63" title="Hides a game object by removing it from the render pipeline." alt="" coords="146,5,264,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="98,16,130,16,130,21,98,21"/>
+<area shape="rect" id="Node000003" href="$gameobject_8c.html#a11caa0bf998b9de720cc858c6d02274b" title=" " alt="" coords="312,5,464,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="264,16,296,16,296,21,264,21"/>
+</map>

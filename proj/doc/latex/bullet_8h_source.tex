@@ -1,0 +1,46 @@
+\doxysection{bullet.\+h}
+\hypertarget{bullet_8h_source}{}\label{bullet_8h_source}\index{src/Game/Gameplay/Bullet/bullet.h@{src/Game/Gameplay/Bullet/bullet.h}}
+\mbox{\hyperlink{bullet_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//\ bullets.h}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{device__controller_8h}{../../../Devices/device\_controller.h}}"{}}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_bullet}{Bullet}}\ \{}
+\DoxyCodeLine{00010\ \ \ \mbox{\hyperlink{struct_game_object}{GameObject}}*\ \mbox{\hyperlink{struct_bullet_a4fb90fe37c7d0029791d752e24334b01}{bullet}};\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00011\ \ \ \ \ \mbox{\hyperlink{struct_sprite}{Sprite}}*\ \mbox{\hyperlink{struct_bullet_a040bbfdb4d8e38dbd347309230e7bb50}{sprite}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00012\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{struct_bullet_acffaa6c3c8136695229d341c5e6da56a}{x}},\ \mbox{\hyperlink{struct_bullet_a32300c127a7b59a55608a2d949c156c1}{y}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{struct_bullet_a6b8d75d4ff37b66b153383c47bcae3a7}{speed}}[2];\ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00014\ \ \ \ \ int16\_t\ \mbox{\hyperlink{struct_bullet_a9d82af2426edbbf70e32690b3b6ec99e}{origin\_offset\_x}};\ \ \ \ \ }
+\DoxyCodeLine{00015\ \ \ \ \ int16\_t\ \mbox{\hyperlink{struct_bullet_a1ad6a6cc315a33822df37a4b70d90d75}{origin\_offset\_y}};\ \ \ \ \ }
+\DoxyCodeLine{00016\ \ \ \ \ int16\_t\ \mbox{\hyperlink{struct_bullet_af58ee2b7c04c4ca711f336e6542adf6e}{damage}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{struct_bullet_af049bb84d3cafeb49adbcc65939e111f}{active}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00018\ \}\ \mbox{\hyperlink{bullet_8h_a16081eacbd30caf76f1b04a97eee39b9}{Bullet}};}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00023\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_bullet_array}{BulletArray}}\ \{}
+\DoxyCodeLine{00024\ \ \ \ \ \mbox{\hyperlink{struct_bullet}{Bullet}}**\ \mbox{\hyperlink{struct_bullet_array_a9c9fc734dee31a5315055a6eed76f39c}{bullets}};\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00025\ \ \ \ \ uint32\_t\ \mbox{\hyperlink{struct_bullet_array_ac8e44dd4f103368e74104473bac9a696}{capacity}};\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00026\ \ \ \ \ uint32\_t\ \mbox{\hyperlink{struct_bullet_array_a36a3b11b2d01de4afd63822d2a1001b1}{length}};\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00027\ \}\ \mbox{\hyperlink{bullet_8h_a2251170776daae1e1f2958a6565e1463}{BulletArray}};}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{bullet_8h_ae78713688ef82350c35afbd7e7cc6fe4}{initializeBulletSprites}}();}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00043\ \mbox{\hyperlink{struct_bullet}{Bullet}}*\ \mbox{\hyperlink{bullet_8h_a12b5d1f194ec83643db73246d3e09c19}{initializeBullet}}(\textcolor{keywordtype}{float}\ x,\ \textcolor{keywordtype}{float}\ y,\ \textcolor{keywordtype}{float}\ target\_x,\ \textcolor{keywordtype}{float}\ target\_y,\ int16\_t\ damage);}
+\DoxyCodeLine{00049\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{bullet_8h_a0c942f6cd5c1a4616e2287a8652609a0}{destroyBullet}}(\mbox{\hyperlink{struct_bullet}{Bullet}}*\ bullet);}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00056\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{bullet_8h_aacbebff259601895663305ab5570fdf2}{updateBulletPosition}}(\mbox{\hyperlink{struct_bullet}{Bullet}}*\ bullet);}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00064\ \mbox{\hyperlink{struct_bullet_array}{BulletArray}}\ \mbox{\hyperlink{bullet_8h_a0b67bea1c6759bd251974f4269999f9c}{newBulletArray}}(uint32\_t\ capacity);}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00072\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{bullet_8h_a1a60dd0672c1beb20d1f934cfebc47a8}{pushBulletArray}}(\mbox{\hyperlink{struct_bullet_array}{BulletArray}}*\ array,\ \mbox{\hyperlink{struct_bullet}{Bullet}}*\ bullet);}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00081\ \mbox{\hyperlink{struct_bullet}{Bullet}}*\ \mbox{\hyperlink{bullet_8h_a9c687cdcc5c4801f5124b606e95f50ff}{getBulletArray}}(\mbox{\hyperlink{struct_bullet_array}{BulletArray}}*\ array,\ uint32\_t\ index);}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00089\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{bullet_8h_a7d310b405371fac77841b91acac0be24}{removeBulletArray}}(\mbox{\hyperlink{struct_bullet_array}{BulletArray}}*\ array,\ uint32\_t\ index);}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00096\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{bullet_8h_ac13a6f1d0846248f93bb3cd76a73ede7}{destroyBulletArray}}(\mbox{\hyperlink{struct_bullet_array}{BulletArray}}*\ array);}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00103\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{bullet_8h_ac40527fcf49856a5faeb22b62f7ca5be}{updateAllBulletPositions}}(\mbox{\hyperlink{struct_bullet_array}{BulletArray}}*\ array);}
+
+\end{DoxyCode}

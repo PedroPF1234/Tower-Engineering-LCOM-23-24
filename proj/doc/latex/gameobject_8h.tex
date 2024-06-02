@@ -1,0 +1,1058 @@
+\doxysection{src/\+Game\+Objects/gameobject.h File Reference}
+\hypertarget{gameobject_8h}{}\label{gameobject_8h}\index{src/GameObjects/gameobject.h@{src/GameObjects/gameobject.h}}
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include "{}../\+Image\+Assets/sprite.\+h"{}}\newline
+Include dependency graph for gameobject.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=340pt]{gameobject_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gameobject_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_game_object}{Game\+Object}}
+\begin{DoxyCompactList}\small\item\em Represents a game object in the game. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_animated_game_object}{Animated\+Game\+Object}}
+\begin{DoxyCompactList}\small\item\em Represents an Animated Game Object in the game. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_game_object_array}{Game\+Object\+Array}}
+\begin{DoxyCompactList}\small\item\em Represents an array of Game\+Objects. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{gameobject_8h_a3c12c6d36ad0aa481a3436923d21f4f8}{BIT\+\_\+\+MASK}}(n)~((1 $<$$<$ n) -\/ 1)
+\item 
+\#define \mbox{\hyperlink{gameobject_8h_ae9c814a11164377abfaf563a9ee1fbbc}{Z\+\_\+\+INDEX\+\_\+\+PER\+\_\+\+LAYER}}~3
+\item 
+\#define \mbox{\hyperlink{gameobject_8h_acf69d2b80236ba34fdf204f8bc2026ff}{LOW\+\_\+\+PRIORITY\+\_\+\+Z\+\_\+\+INDEX}}~1
+\item 
+\#define \mbox{\hyperlink{gameobject_8h_a6175c643dc582c963152a3b53ae8c4b5}{MEDIUM\+\_\+\+PRIORITY\+\_\+\+Z\+\_\+\+INDEX}}~2
+\item 
+\#define \mbox{\hyperlink{gameobject_8h_ab8a1dc4f73728d10ce2153157bbd4b9b}{HIGH\+\_\+\+PRIORITY\+\_\+\+Z\+\_\+\+INDEX}}~3
+\item 
+\#define \mbox{\hyperlink{gameobject_8h_a0f06d0c196ffc1f7a4220c4bd82e5dfa}{MAX\+\_\+\+PRIORITY\+\_\+\+Z\+\_\+\+INDEX}}~4
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct Game\+Object \mbox{\hyperlink{gameobject_8h_ab0fb707a835e2853e4ab457d743d9640}{Game\+Object}}
+\begin{DoxyCompactList}\small\item\em Represents a game object in the game. \end{DoxyCompactList}\item 
+typedef struct Animated\+Game\+Object \mbox{\hyperlink{gameobject_8h_a542766943e92d05a11772d662f7f7f8c}{Animated\+Game\+Object}}
+\begin{DoxyCompactList}\small\item\em Represents an Animated Game Object in the game. \end{DoxyCompactList}\item 
+typedef struct Game\+Object\+Array \mbox{\hyperlink{gameobject_8h_aff6963e2e2c5c9e8640e12278e50ba7e}{Game\+Object\+Array}}
+\begin{DoxyCompactList}\small\item\em Represents an array of Game\+Objects. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{gameobject_8h_a03dd7b28fd3736e7b0af48f86e255d80}{init\+\_\+render\+\_\+pipeline}} ()
+\begin{DoxyCompactList}\small\item\em Initializes a render pipeline. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{gameobject_8h_afe4e080a1ff00501b175e20909434f7c}{create\+\_\+gameobjects}} ()
+\begin{DoxyCompactList}\small\item\em Creates the game objects. Creates the object and adds it to the render pipeline. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{gameobject_8h_a39bd26a5aa1cd2b9da4075369233f25a}{destroy\+\_\+gameobjects}} ()
+\begin{DoxyCompactList}\small\item\em Destroys the game objects. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{gameobject_8h_a2b3a693827aa9ff61460e24fec22aa71}{render\+Game\+Objects}} ()
+\begin{DoxyCompactList}\small\item\em Renders the game objects. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_animated_game_object}{Animated\+Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{gameobject_8h_a1d8da9b1924ec9c58604bfa022e40f6d}{create\+\_\+animated\+\_\+gameobject}} (\mbox{\hyperlink{struct_animated_sprite}{Animated\+Sprite}} \texorpdfstring{$\ast$}{*}animated\+Sprite, int16\+\_\+t x, int16\+\_\+t y, uint16\+\_\+t z\+\_\+index)
+\begin{DoxyCompactList}\small\item\em Creates an animated game object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{gameobject_8h_a0d4c98c4920a02bc46351ab1f13facc0}{destroy\+\_\+animated\+\_\+gameobject}} (\mbox{\hyperlink{struct_animated_game_object}{Animated\+Game\+Object}} \texorpdfstring{$\ast$}{*}animated\+Game\+Object)
+\begin{DoxyCompactList}\small\item\em Destroys an animated game object and frees associated memory. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{gameobject_8h_a3abb3c71d593255afaa381d680171133}{update\+Animated\+Game\+Objects}} ()
+\begin{DoxyCompactList}\small\item\em Updates the animated game objects. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{gameobject_8h_a44ed0b7fab59aede47332f554edd2d9e}{switch\+Animated\+Sprite\+Of\+Animated\+Game\+Object}} (\mbox{\hyperlink{struct_animated_game_object}{Animated\+Game\+Object}} \texorpdfstring{$\ast$}{*}animated\+Game\+Object, \mbox{\hyperlink{struct_animated_sprite}{Animated\+Sprite}} \texorpdfstring{$\ast$}{*}animated\+Sprite)
+\begin{DoxyCompactList}\small\item\em Switches sprites of an animated game object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{gameobject_8h_a90ff45e7b7576b7b1c88255466ac2ff5}{hide\+Animated\+Game\+Object}} (\mbox{\hyperlink{struct_animated_game_object}{Animated\+Game\+Object}} \texorpdfstring{$\ast$}{*}animated\+Game\+Object)
+\begin{DoxyCompactList}\small\item\em Hides an animated game object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{gameobject_8h_ab164cdb57764aace4144eb99d699a227}{show\+Animated\+Game\+Object}} (\mbox{\hyperlink{struct_animated_game_object}{Animated\+Game\+Object}} \texorpdfstring{$\ast$}{*}animated\+Game\+Object)
+\begin{DoxyCompactList}\small\item\em Shows an animated game object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{gameobject_8h_a9d06de2eac7bee1218b90ee9a232ae25}{create\+\_\+gameobject}} (xpm\+\_\+map\+\_\+t pic, int16\+\_\+t x, int16\+\_\+t y, int16\+\_\+t origin\+\_\+offset\+\_\+x, int16\+\_\+t origin\+\_\+offset\+\_\+y, uint16\+\_\+t z\+\_\+index, bool square\+\_\+shape, bool visible)
+\begin{DoxyCompactList}\small\item\em Creates a game object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{gameobject_8h_a3e3995c85445e5e632c02ce335f6d43a}{create\+\_\+gameobject\+\_\+from\+\_\+sprite}} (\mbox{\hyperlink{struct_sprite}{Sprite}} \texorpdfstring{$\ast$}{*}sprite, int16\+\_\+t x, int16\+\_\+t y, int16\+\_\+t origin\+\_\+offset\+\_\+x, int16\+\_\+t origin\+\_\+offset\+\_\+y, uint16\+\_\+t z\+\_\+index)
+\begin{DoxyCompactList}\small\item\em Creates a game object from a sprite. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{gameobject_8h_a533ac6c940eb9983e2e8776ea14c9347}{create\+\_\+spriteless\+\_\+gameobject}} (int16\+\_\+t x, int16\+\_\+t y, int16\+\_\+t origin\+\_\+offset\+\_\+x, int16\+\_\+t origin\+\_\+offset\+\_\+y, uint16\+\_\+t z\+\_\+index)
+\begin{DoxyCompactList}\small\item\em Creates a game object without a sprite. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{gameobject_8h_ab0bb9964dbe83fac1b9a0e456721caef}{add\+\_\+sprite\+\_\+to\+\_\+spriteless\+\_\+gameobject}} (\mbox{\hyperlink{struct_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*}game\+Object, \mbox{\hyperlink{struct_sprite}{Sprite}} \texorpdfstring{$\ast$}{*}sprite)
+\begin{DoxyCompactList}\small\item\em Adds a sprite to a spriteless game object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{gameobject_8h_a5450390b74149c8e80f882c397d7bafb}{remove\+\_\+sprite\+\_\+from\+\_\+spriteless\+\_\+gameobject}} (\mbox{\hyperlink{struct_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*}game\+Object)
+\begin{DoxyCompactList}\small\item\em Removes a sprite from a spriteless game object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{gameobject_8h_a832b9e6a931a02ff0a4f6ac692229350}{update\+Game\+Object\+ZIndex}} (\mbox{\hyperlink{struct_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*}game\+Object, uint16\+\_\+t z\+\_\+index)
+\begin{DoxyCompactList}\small\item\em Updates the z index of a game object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{gameobject_8h_ab2ca8f1feaafcb93216e911798e96b40}{destroy\+\_\+gameobject}} (\mbox{\hyperlink{struct_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*}game\+Object)
+\begin{DoxyCompactList}\small\item\em Destroys a game object, removes it from the render pipeline and frees associated memory. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{gameobject_8h_af963650b4f59cf45e19e0825bdc90ac4}{destroy\+\_\+gameobject\+\_\+safe\+\_\+sprite}} (\mbox{\hyperlink{struct_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*}game\+Object)
+\begin{DoxyCompactList}\small\item\em Destroys a game object without erasing its associated sprite. Removes Game Object from the render pipeline and frees associated memory. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{gameobject_8h_aaab2489d023b98f5089e354979662252}{update\+Game\+Object\+Sprite}} (\mbox{\hyperlink{struct_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*}game\+Object, \mbox{\hyperlink{struct_sprite}{Sprite}} \texorpdfstring{$\ast$}{*}sprite)
+\begin{DoxyCompactList}\small\item\em Updates the sprite of a game object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{gameobject_8h_aed2b525f6703cd35381c0cc9e7397a63}{hide\+Game\+Object}} (\mbox{\hyperlink{struct_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*}game\+Object)
+\begin{DoxyCompactList}\small\item\em Hides a game object by removing it from the render pipeline. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{gameobject_8h_a89b6a2cd7e246e117f7bce4db556a09d}{show\+Game\+Object}} (\mbox{\hyperlink{struct_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*}game\+Object)
+\begin{DoxyCompactList}\small\item\em Shows a game object by inserting in the render pipeline. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_game_object_array}{Game\+Object\+Array}} \mbox{\hyperlink{gameobject_8h_a0959c953a619002f3a0cadb4d4542318}{new\+Game\+Object\+Array}} (uint32\+\_\+t capacity)
+\begin{DoxyCompactList}\small\item\em Creates a new \doxylink{struct_game_object_array}{Game\+Object\+Array} with a specified capacity. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{gameobject_8h_a7814e4774ca4e96cdf37aaf01e2bd08d}{insert\+Game\+Object\+Array}} (\mbox{\hyperlink{struct_game_object_array}{Game\+Object\+Array}} \texorpdfstring{$\ast$}{*}array, \mbox{\hyperlink{struct_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*}new\+Game\+Object)
+\begin{DoxyCompactList}\small\item\em Adds a \doxylink{struct_game_object}{Game\+Object} to a \doxylink{struct_game_object_array}{Game\+Object\+Array}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{gameobject_8h_ad8cd8916d4c5dab325a599b2385122f0}{get\+Game\+Object\+Array}} (\mbox{\hyperlink{struct_game_object_array}{Game\+Object\+Array}} \texorpdfstring{$\ast$}{*}array, uint32\+\_\+t index)
+\begin{DoxyCompactList}\small\item\em Retrieves a \doxylink{struct_game_object}{Game\+Object} from a \doxylink{struct_game_object_array}{Game\+Object\+Array} at a specified index. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{gameobject_8h_a65d6eb0f17a112b9fd1f1876bdbc3e6a}{remove\+Game\+Object\+Array}} (\mbox{\hyperlink{struct_game_object_array}{Game\+Object\+Array}} \texorpdfstring{$\ast$}{*}array, \mbox{\hyperlink{struct_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*}game\+Object)
+\begin{DoxyCompactList}\small\item\em Removes a \doxylink{struct_game_object}{Game\+Object} from a \doxylink{struct_game_object_array}{Game\+Object\+Array}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{gameobject_8h_a83d07b90adf6e222c3977c163b9b5a91}{destroy\+Game\+Object\+Array}} (\mbox{\hyperlink{struct_game_object_array}{Game\+Object\+Array}} \texorpdfstring{$\ast$}{*}array)
+\begin{DoxyCompactList}\small\item\em Destroys a \doxylink{struct_game_object_array}{Game\+Object\+Array} and frees associated memory. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{gameobject_8h_ac85711fae9e1cd853098ae6efada6a7c}{show\+Game\+Objects}} (\mbox{\hyperlink{struct_game_object_array}{Game\+Object\+Array}} \texorpdfstring{$\ast$}{*}game\+Objects)
+\begin{DoxyCompactList}\small\item\em Shows all the Game\+Objects in the \doxylink{struct_game_object_array}{Game\+Object\+Array}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{gameobject_8h_a64b60833d4cca1b443b1804d5bc7c2ac}{hide\+Game\+Objects}} (\mbox{\hyperlink{struct_game_object_array}{Game\+Object\+Array}} \texorpdfstring{$\ast$}{*}game\+Objects)
+\begin{DoxyCompactList}\small\item\em Hides all the Game\+Objects in the \doxylink{struct_game_object_array}{Game\+Object\+Array}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{gameobject_8h_a3c12c6d36ad0aa481a3436923d21f4f8}\index{gameobject.h@{gameobject.h}!BIT\_MASK@{BIT\_MASK}}
+\index{BIT\_MASK@{BIT\_MASK}!gameobject.h@{gameobject.h}}
+\doxysubsubsection{\texorpdfstring{BIT\_MASK}{BIT\_MASK}}
+{\footnotesize\ttfamily \label{gameobject_8h_a3c12c6d36ad0aa481a3436923d21f4f8} 
+\#define BIT\+\_\+\+MASK(\begin{DoxyParamCaption}\item[{}]{n}{}\end{DoxyParamCaption})~((1 $<$$<$ n) -\/ 1)}
+
+\Hypertarget{gameobject_8h_ab8a1dc4f73728d10ce2153157bbd4b9b}\index{gameobject.h@{gameobject.h}!HIGH\_PRIORITY\_Z\_INDEX@{HIGH\_PRIORITY\_Z\_INDEX}}
+\index{HIGH\_PRIORITY\_Z\_INDEX@{HIGH\_PRIORITY\_Z\_INDEX}!gameobject.h@{gameobject.h}}
+\doxysubsubsection{\texorpdfstring{HIGH\_PRIORITY\_Z\_INDEX}{HIGH\_PRIORITY\_Z\_INDEX}}
+{\footnotesize\ttfamily \label{gameobject_8h_ab8a1dc4f73728d10ce2153157bbd4b9b} 
+\#define HIGH\+\_\+\+PRIORITY\+\_\+\+Z\+\_\+\+INDEX~3}
+
+\Hypertarget{gameobject_8h_acf69d2b80236ba34fdf204f8bc2026ff}\index{gameobject.h@{gameobject.h}!LOW\_PRIORITY\_Z\_INDEX@{LOW\_PRIORITY\_Z\_INDEX}}
+\index{LOW\_PRIORITY\_Z\_INDEX@{LOW\_PRIORITY\_Z\_INDEX}!gameobject.h@{gameobject.h}}
+\doxysubsubsection{\texorpdfstring{LOW\_PRIORITY\_Z\_INDEX}{LOW\_PRIORITY\_Z\_INDEX}}
+{\footnotesize\ttfamily \label{gameobject_8h_acf69d2b80236ba34fdf204f8bc2026ff} 
+\#define LOW\+\_\+\+PRIORITY\+\_\+\+Z\+\_\+\+INDEX~1}
+
+\Hypertarget{gameobject_8h_a0f06d0c196ffc1f7a4220c4bd82e5dfa}\index{gameobject.h@{gameobject.h}!MAX\_PRIORITY\_Z\_INDEX@{MAX\_PRIORITY\_Z\_INDEX}}
+\index{MAX\_PRIORITY\_Z\_INDEX@{MAX\_PRIORITY\_Z\_INDEX}!gameobject.h@{gameobject.h}}
+\doxysubsubsection{\texorpdfstring{MAX\_PRIORITY\_Z\_INDEX}{MAX\_PRIORITY\_Z\_INDEX}}
+{\footnotesize\ttfamily \label{gameobject_8h_a0f06d0c196ffc1f7a4220c4bd82e5dfa} 
+\#define MAX\+\_\+\+PRIORITY\+\_\+\+Z\+\_\+\+INDEX~4}
+
+\Hypertarget{gameobject_8h_a6175c643dc582c963152a3b53ae8c4b5}\index{gameobject.h@{gameobject.h}!MEDIUM\_PRIORITY\_Z\_INDEX@{MEDIUM\_PRIORITY\_Z\_INDEX}}
+\index{MEDIUM\_PRIORITY\_Z\_INDEX@{MEDIUM\_PRIORITY\_Z\_INDEX}!gameobject.h@{gameobject.h}}
+\doxysubsubsection{\texorpdfstring{MEDIUM\_PRIORITY\_Z\_INDEX}{MEDIUM\_PRIORITY\_Z\_INDEX}}
+{\footnotesize\ttfamily \label{gameobject_8h_a6175c643dc582c963152a3b53ae8c4b5} 
+\#define MEDIUM\+\_\+\+PRIORITY\+\_\+\+Z\+\_\+\+INDEX~2}
+
+\Hypertarget{gameobject_8h_ae9c814a11164377abfaf563a9ee1fbbc}\index{gameobject.h@{gameobject.h}!Z\_INDEX\_PER\_LAYER@{Z\_INDEX\_PER\_LAYER}}
+\index{Z\_INDEX\_PER\_LAYER@{Z\_INDEX\_PER\_LAYER}!gameobject.h@{gameobject.h}}
+\doxysubsubsection{\texorpdfstring{Z\_INDEX\_PER\_LAYER}{Z\_INDEX\_PER\_LAYER}}
+{\footnotesize\ttfamily \label{gameobject_8h_ae9c814a11164377abfaf563a9ee1fbbc} 
+\#define Z\+\_\+\+INDEX\+\_\+\+PER\+\_\+\+LAYER~3}
+
+
+
+\doxysubsection{Typedef Documentation}
+\Hypertarget{gameobject_8h_a542766943e92d05a11772d662f7f7f8c}\index{gameobject.h@{gameobject.h}!AnimatedGameObject@{AnimatedGameObject}}
+\index{AnimatedGameObject@{AnimatedGameObject}!gameobject.h@{gameobject.h}}
+\doxysubsubsection{\texorpdfstring{AnimatedGameObject}{AnimatedGameObject}}
+{\footnotesize\ttfamily \label{gameobject_8h_a542766943e92d05a11772d662f7f7f8c} 
+typedef struct Animated\+Game\+Object Animated\+Game\+Object}
+
+
+
+Represents an Animated Game Object in the game. 
+
+\Hypertarget{gameobject_8h_ab0fb707a835e2853e4ab457d743d9640}\index{gameobject.h@{gameobject.h}!GameObject@{GameObject}}
+\index{GameObject@{GameObject}!gameobject.h@{gameobject.h}}
+\doxysubsubsection{\texorpdfstring{GameObject}{GameObject}}
+{\footnotesize\ttfamily \label{gameobject_8h_ab0fb707a835e2853e4ab457d743d9640} 
+typedef struct Game\+Object Game\+Object}
+
+
+
+Represents a game object in the game. 
+
+\Hypertarget{gameobject_8h_aff6963e2e2c5c9e8640e12278e50ba7e}\index{gameobject.h@{gameobject.h}!GameObjectArray@{GameObjectArray}}
+\index{GameObjectArray@{GameObjectArray}!gameobject.h@{gameobject.h}}
+\doxysubsubsection{\texorpdfstring{GameObjectArray}{GameObjectArray}}
+{\footnotesize\ttfamily \label{gameobject_8h_aff6963e2e2c5c9e8640e12278e50ba7e} 
+typedef struct Game\+Object\+Array Game\+Object\+Array}
+
+
+
+Represents an array of Game\+Objects. 
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{gameobject_8h_ab0bb9964dbe83fac1b9a0e456721caef}\index{gameobject.h@{gameobject.h}!add\_sprite\_to\_spriteless\_gameobject@{add\_sprite\_to\_spriteless\_gameobject}}
+\index{add\_sprite\_to\_spriteless\_gameobject@{add\_sprite\_to\_spriteless\_gameobject}!gameobject.h@{gameobject.h}}
+\doxysubsubsection{\texorpdfstring{add\_sprite\_to\_spriteless\_gameobject()}{add\_sprite\_to\_spriteless\_gameobject()}}
+{\footnotesize\ttfamily \label{gameobject_8h_ab0bb9964dbe83fac1b9a0e456721caef} 
+void add\+\_\+sprite\+\_\+to\+\_\+spriteless\+\_\+gameobject (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*}}]{game\+Object}{, }\item[{\mbox{\hyperlink{struct_sprite}{Sprite}} \texorpdfstring{$\ast$}{*}}]{sprite}{}\end{DoxyParamCaption})}
+
+
+
+Adds a sprite to a spriteless game object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em game\+Object} & The pointer to the game object to add the sprite to. \\
+\hline
+{\em sprite} & The pointer to the sprite to add. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=344pt]{gameobject_8h_ab0bb9964dbe83fac1b9a0e456721caef_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gameobject_8h_ab0bb9964dbe83fac1b9a0e456721caef_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{gameobject_8h_a1d8da9b1924ec9c58604bfa022e40f6d}\index{gameobject.h@{gameobject.h}!create\_animated\_gameobject@{create\_animated\_gameobject}}
+\index{create\_animated\_gameobject@{create\_animated\_gameobject}!gameobject.h@{gameobject.h}}
+\doxysubsubsection{\texorpdfstring{create\_animated\_gameobject()}{create\_animated\_gameobject()}}
+{\footnotesize\ttfamily \label{gameobject_8h_a1d8da9b1924ec9c58604bfa022e40f6d} 
+\mbox{\hyperlink{struct_animated_game_object}{Animated\+Game\+Object}} \texorpdfstring{$\ast$}{*} create\+\_\+animated\+\_\+gameobject (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_animated_sprite}{Animated\+Sprite}} \texorpdfstring{$\ast$}{*}}]{animated\+Sprite}{, }\item[{int16\+\_\+t}]{x}{, }\item[{int16\+\_\+t}]{y}{, }\item[{uint16\+\_\+t}]{z\+\_\+index}{}\end{DoxyParamCaption})}
+
+
+
+Creates an animated game object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em animated\+Sprite} & The animated sprite of the animated game object. \\
+\hline
+{\em x} & The initial x position of the animated game object. \\
+\hline
+{\em y} & The initial y position of the animated game object. \\
+\hline
+{\em z\+\_\+index} & The z index of the animated game object. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The pointer to the newly created animated game object. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gameobject_8h_a1d8da9b1924ec9c58604bfa022e40f6d_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gameobject_8h_a1d8da9b1924ec9c58604bfa022e40f6d_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{gameobject_8h_a9d06de2eac7bee1218b90ee9a232ae25}\index{gameobject.h@{gameobject.h}!create\_gameobject@{create\_gameobject}}
+\index{create\_gameobject@{create\_gameobject}!gameobject.h@{gameobject.h}}
+\doxysubsubsection{\texorpdfstring{create\_gameobject()}{create\_gameobject()}}
+{\footnotesize\ttfamily \label{gameobject_8h_a9d06de2eac7bee1218b90ee9a232ae25} 
+\mbox{\hyperlink{struct_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*} create\+\_\+gameobject (\begin{DoxyParamCaption}\item[{xpm\+\_\+map\+\_\+t}]{pic}{, }\item[{int16\+\_\+t}]{x}{, }\item[{int16\+\_\+t}]{y}{, }\item[{int16\+\_\+t}]{origin\+\_\+offset\+\_\+x}{, }\item[{int16\+\_\+t}]{origin\+\_\+offset\+\_\+y}{, }\item[{uint16\+\_\+t}]{z\+\_\+index}{, }\item[{bool}]{square\+\_\+shape}{, }\item[{bool}]{visible}{}\end{DoxyParamCaption})}
+
+
+
+Creates a game object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pic} & The xpm map of the game object. \\
+\hline
+{\em x} & The initial x position of the game object. \\
+\hline
+{\em y} & The initial y position of the game object. \\
+\hline
+{\em origin\+\_\+offset\+\_\+x} & The x offset of the game object\textquotesingle{}s origin. \\
+\hline
+{\em origin\+\_\+offset\+\_\+y} & The y offset of the game object\textquotesingle{}s origin. \\
+\hline
+{\em z\+\_\+index} & The z index of the game object. \\
+\hline
+{\em square\+\_\+shape} & Whether the game object is square shaped. \\
+\hline
+{\em visible} & Whether the game object is visible. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The pointer to the newly created game object. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=321pt]{gameobject_8h_a9d06de2eac7bee1218b90ee9a232ae25_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gameobject_8h_a9d06de2eac7bee1218b90ee9a232ae25_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{gameobject_8h_a3e3995c85445e5e632c02ce335f6d43a}\index{gameobject.h@{gameobject.h}!create\_gameobject\_from\_sprite@{create\_gameobject\_from\_sprite}}
+\index{create\_gameobject\_from\_sprite@{create\_gameobject\_from\_sprite}!gameobject.h@{gameobject.h}}
+\doxysubsubsection{\texorpdfstring{create\_gameobject\_from\_sprite()}{create\_gameobject\_from\_sprite()}}
+{\footnotesize\ttfamily \label{gameobject_8h_a3e3995c85445e5e632c02ce335f6d43a} 
+\mbox{\hyperlink{struct_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*} create\+\_\+gameobject\+\_\+from\+\_\+sprite (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_sprite}{Sprite}} \texorpdfstring{$\ast$}{*}}]{sprite}{, }\item[{int16\+\_\+t}]{x}{, }\item[{int16\+\_\+t}]{y}{, }\item[{int16\+\_\+t}]{origin\+\_\+offset\+\_\+x}{, }\item[{int16\+\_\+t}]{origin\+\_\+offset\+\_\+y}{, }\item[{uint16\+\_\+t}]{z\+\_\+index}{}\end{DoxyParamCaption})}
+
+
+
+Creates a game object from a sprite. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sprite} & The sprite of the game object. \\
+\hline
+{\em x} & The initial x position of the game object. \\
+\hline
+{\em y} & The initial y position of the game object. \\
+\hline
+{\em origin\+\_\+offset\+\_\+x} & The x offset of the game object\textquotesingle{}s origin. \\
+\hline
+{\em origin\+\_\+offset\+\_\+y} & The y offset of the game object\textquotesingle{}s origin. \\
+\hline
+{\em z\+\_\+index} & The z index of the game object. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The pointer to the newly created game object. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=345pt]{gameobject_8h_a3e3995c85445e5e632c02ce335f6d43a_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gameobject_8h_a3e3995c85445e5e632c02ce335f6d43a_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{gameobject_8h_afe4e080a1ff00501b175e20909434f7c}\index{gameobject.h@{gameobject.h}!create\_gameobjects@{create\_gameobjects}}
+\index{create\_gameobjects@{create\_gameobjects}!gameobject.h@{gameobject.h}}
+\doxysubsubsection{\texorpdfstring{create\_gameobjects()}{create\_gameobjects()}}
+{\footnotesize\ttfamily \label{gameobject_8h_afe4e080a1ff00501b175e20909434f7c} 
+int create\+\_\+gameobjects (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Creates the game objects. Creates the object and adds it to the render pipeline. 
+
+\begin{DoxyReturn}{Returns}
+0 upon success 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gameobject_8h_afe4e080a1ff00501b175e20909434f7c_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gameobject_8h_afe4e080a1ff00501b175e20909434f7c_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{gameobject_8h_a533ac6c940eb9983e2e8776ea14c9347}\index{gameobject.h@{gameobject.h}!create\_spriteless\_gameobject@{create\_spriteless\_gameobject}}
+\index{create\_spriteless\_gameobject@{create\_spriteless\_gameobject}!gameobject.h@{gameobject.h}}
+\doxysubsubsection{\texorpdfstring{create\_spriteless\_gameobject()}{create\_spriteless\_gameobject()}}
+{\footnotesize\ttfamily \label{gameobject_8h_a533ac6c940eb9983e2e8776ea14c9347} 
+\mbox{\hyperlink{struct_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*} create\+\_\+spriteless\+\_\+gameobject (\begin{DoxyParamCaption}\item[{int16\+\_\+t}]{x}{, }\item[{int16\+\_\+t}]{y}{, }\item[{int16\+\_\+t}]{origin\+\_\+offset\+\_\+x}{, }\item[{int16\+\_\+t}]{origin\+\_\+offset\+\_\+y}{, }\item[{uint16\+\_\+t}]{z\+\_\+index}{}\end{DoxyParamCaption})}
+
+
+
+Creates a game object without a sprite. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & The initial x position of the game object. \\
+\hline
+{\em y} & The initial y position of the game object. \\
+\hline
+{\em origin\+\_\+offset\+\_\+x} & The x offset of the game object\textquotesingle{}s origin. \\
+\hline
+{\em origin\+\_\+offset\+\_\+y} & The y offset of the game object\textquotesingle{}s origin. \\
+\hline
+{\em z\+\_\+index} & The z index of the game object. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The pointer to the newly created game object. 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gameobject_8h_a533ac6c940eb9983e2e8776ea14c9347_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{gameobject_8h_a0d4c98c4920a02bc46351ab1f13facc0}\index{gameobject.h@{gameobject.h}!destroy\_animated\_gameobject@{destroy\_animated\_gameobject}}
+\index{destroy\_animated\_gameobject@{destroy\_animated\_gameobject}!gameobject.h@{gameobject.h}}
+\doxysubsubsection{\texorpdfstring{destroy\_animated\_gameobject()}{destroy\_animated\_gameobject()}}
+{\footnotesize\ttfamily \label{gameobject_8h_a0d4c98c4920a02bc46351ab1f13facc0} 
+void destroy\+\_\+animated\+\_\+gameobject (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_animated_game_object}{Animated\+Game\+Object}} \texorpdfstring{$\ast$}{*}}]{animated\+Game\+Object}{}\end{DoxyParamCaption})}
+
+
+
+Destroys an animated game object and frees associated memory. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em animated\+Game\+Object} & The pointer to the animated game object to be destroyed. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gameobject_8h_a0d4c98c4920a02bc46351ab1f13facc0_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gameobject_8h_a0d4c98c4920a02bc46351ab1f13facc0_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{gameobject_8h_ab2ca8f1feaafcb93216e911798e96b40}\index{gameobject.h@{gameobject.h}!destroy\_gameobject@{destroy\_gameobject}}
+\index{destroy\_gameobject@{destroy\_gameobject}!gameobject.h@{gameobject.h}}
+\doxysubsubsection{\texorpdfstring{destroy\_gameobject()}{destroy\_gameobject()}}
+{\footnotesize\ttfamily \label{gameobject_8h_ab2ca8f1feaafcb93216e911798e96b40} 
+void destroy\+\_\+gameobject (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*}}]{game\+Object}{}\end{DoxyParamCaption})}
+
+
+
+Destroys a game object, removes it from the render pipeline and frees associated memory. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em game\+Object} & The pointer to the game object to be destroyed. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=334pt]{gameobject_8h_ab2ca8f1feaafcb93216e911798e96b40_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gameobject_8h_ab2ca8f1feaafcb93216e911798e96b40_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{gameobject_8h_af963650b4f59cf45e19e0825bdc90ac4}\index{gameobject.h@{gameobject.h}!destroy\_gameobject\_safe\_sprite@{destroy\_gameobject\_safe\_sprite}}
+\index{destroy\_gameobject\_safe\_sprite@{destroy\_gameobject\_safe\_sprite}!gameobject.h@{gameobject.h}}
+\doxysubsubsection{\texorpdfstring{destroy\_gameobject\_safe\_sprite()}{destroy\_gameobject\_safe\_sprite()}}
+{\footnotesize\ttfamily \label{gameobject_8h_af963650b4f59cf45e19e0825bdc90ac4} 
+void destroy\+\_\+gameobject\+\_\+safe\+\_\+sprite (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*}}]{game\+Object}{}\end{DoxyParamCaption})}
+
+
+
+Destroys a game object without erasing its associated sprite. Removes Game Object from the render pipeline and frees associated memory. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em game\+Object} & The pointer to the game object to be destroyed. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=334pt]{gameobject_8h_af963650b4f59cf45e19e0825bdc90ac4_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gameobject_8h_af963650b4f59cf45e19e0825bdc90ac4_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{gameobject_8h_a39bd26a5aa1cd2b9da4075369233f25a}\index{gameobject.h@{gameobject.h}!destroy\_gameobjects@{destroy\_gameobjects}}
+\index{destroy\_gameobjects@{destroy\_gameobjects}!gameobject.h@{gameobject.h}}
+\doxysubsubsection{\texorpdfstring{destroy\_gameobjects()}{destroy\_gameobjects()}}
+{\footnotesize\ttfamily \label{gameobject_8h_a39bd26a5aa1cd2b9da4075369233f25a} 
+int destroy\+\_\+gameobjects (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Destroys the game objects. 
+
+\begin{DoxyReturn}{Returns}
+0 upon success 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gameobject_8h_a39bd26a5aa1cd2b9da4075369233f25a_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gameobject_8h_a39bd26a5aa1cd2b9da4075369233f25a_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{gameobject_8h_a83d07b90adf6e222c3977c163b9b5a91}\index{gameobject.h@{gameobject.h}!destroyGameObjectArray@{destroyGameObjectArray}}
+\index{destroyGameObjectArray@{destroyGameObjectArray}!gameobject.h@{gameobject.h}}
+\doxysubsubsection{\texorpdfstring{destroyGameObjectArray()}{destroyGameObjectArray()}}
+{\footnotesize\ttfamily \label{gameobject_8h_a83d07b90adf6e222c3977c163b9b5a91} 
+void destroy\+Game\+Object\+Array (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_game_object_array}{Game\+Object\+Array}} \texorpdfstring{$\ast$}{*}}]{array}{}\end{DoxyParamCaption})}
+
+
+
+Destroys a \doxylink{struct_game_object_array}{Game\+Object\+Array} and frees associated memory. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em array} & A pointer to the \doxylink{struct_game_object_array}{Game\+Object\+Array} to be destroyed. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gameobject_8h_a83d07b90adf6e222c3977c163b9b5a91_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gameobject_8h_a83d07b90adf6e222c3977c163b9b5a91_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{gameobject_8h_ad8cd8916d4c5dab325a599b2385122f0}\index{gameobject.h@{gameobject.h}!getGameObjectArray@{getGameObjectArray}}
+\index{getGameObjectArray@{getGameObjectArray}!gameobject.h@{gameobject.h}}
+\doxysubsubsection{\texorpdfstring{getGameObjectArray()}{getGameObjectArray()}}
+{\footnotesize\ttfamily \label{gameobject_8h_ad8cd8916d4c5dab325a599b2385122f0} 
+\mbox{\hyperlink{struct_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*} get\+Game\+Object\+Array (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_game_object_array}{Game\+Object\+Array}} \texorpdfstring{$\ast$}{*}}]{array}{, }\item[{uint32\+\_\+t}]{index}{}\end{DoxyParamCaption})}
+
+
+
+Retrieves a \doxylink{struct_game_object}{Game\+Object} from a \doxylink{struct_game_object_array}{Game\+Object\+Array} at a specified index. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em array} & A pointer to the \doxylink{struct_game_object_array}{Game\+Object\+Array}. \\
+\hline
+{\em index} & The index of the \doxylink{struct_game_object}{Game\+Object} to retrieve. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the \doxylink{struct_game_object}{Game\+Object} at the specified index, or NULL if the index is out of bounds. 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gameobject_8h_ad8cd8916d4c5dab325a599b2385122f0_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{gameobject_8h_a90ff45e7b7576b7b1c88255466ac2ff5}\index{gameobject.h@{gameobject.h}!hideAnimatedGameObject@{hideAnimatedGameObject}}
+\index{hideAnimatedGameObject@{hideAnimatedGameObject}!gameobject.h@{gameobject.h}}
+\doxysubsubsection{\texorpdfstring{hideAnimatedGameObject()}{hideAnimatedGameObject()}}
+{\footnotesize\ttfamily \label{gameobject_8h_a90ff45e7b7576b7b1c88255466ac2ff5} 
+void hide\+Animated\+Game\+Object (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_animated_game_object}{Animated\+Game\+Object}} \texorpdfstring{$\ast$}{*}}]{animated\+Game\+Object}{}\end{DoxyParamCaption})}
+
+
+
+Hides an animated game object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em animated\+Game\+Object} & The pointer to the animated game object to hide. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gameobject_8h_a90ff45e7b7576b7b1c88255466ac2ff5_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gameobject_8h_a90ff45e7b7576b7b1c88255466ac2ff5_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{gameobject_8h_aed2b525f6703cd35381c0cc9e7397a63}\index{gameobject.h@{gameobject.h}!hideGameObject@{hideGameObject}}
+\index{hideGameObject@{hideGameObject}!gameobject.h@{gameobject.h}}
+\doxysubsubsection{\texorpdfstring{hideGameObject()}{hideGameObject()}}
+{\footnotesize\ttfamily \label{gameobject_8h_aed2b525f6703cd35381c0cc9e7397a63} 
+void hide\+Game\+Object (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*}}]{game\+Object}{}\end{DoxyParamCaption})}
+
+
+
+Hides a game object by removing it from the render pipeline. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em game\+Object} & The pointer to the game object to hide. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=319pt]{gameobject_8h_aed2b525f6703cd35381c0cc9e7397a63_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gameobject_8h_aed2b525f6703cd35381c0cc9e7397a63_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{gameobject_8h_a64b60833d4cca1b443b1804d5bc7c2ac}\index{gameobject.h@{gameobject.h}!hideGameObjects@{hideGameObjects}}
+\index{hideGameObjects@{hideGameObjects}!gameobject.h@{gameobject.h}}
+\doxysubsubsection{\texorpdfstring{hideGameObjects()}{hideGameObjects()}}
+{\footnotesize\ttfamily \label{gameobject_8h_a64b60833d4cca1b443b1804d5bc7c2ac} 
+void hide\+Game\+Objects (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_game_object_array}{Game\+Object\+Array}} \texorpdfstring{$\ast$}{*}}]{game\+Objects}{}\end{DoxyParamCaption})}
+
+
+
+Hides all the Game\+Objects in the \doxylink{struct_game_object_array}{Game\+Object\+Array}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em game\+Objects} & A pointer to the \doxylink{struct_game_object}{Game\+Object} Array. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gameobject_8h_a64b60833d4cca1b443b1804d5bc7c2ac_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gameobject_8h_a64b60833d4cca1b443b1804d5bc7c2ac_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{gameobject_8h_a03dd7b28fd3736e7b0af48f86e255d80}\index{gameobject.h@{gameobject.h}!init\_render\_pipeline@{init\_render\_pipeline}}
+\index{init\_render\_pipeline@{init\_render\_pipeline}!gameobject.h@{gameobject.h}}
+\doxysubsubsection{\texorpdfstring{init\_render\_pipeline()}{init\_render\_pipeline()}}
+{\footnotesize\ttfamily \label{gameobject_8h_a03dd7b28fd3736e7b0af48f86e255d80} 
+void init\+\_\+render\+\_\+pipeline (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Initializes a render pipeline. 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gameobject_8h_a03dd7b28fd3736e7b0af48f86e255d80_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gameobject_8h_a03dd7b28fd3736e7b0af48f86e255d80_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{gameobject_8h_a7814e4774ca4e96cdf37aaf01e2bd08d}\index{gameobject.h@{gameobject.h}!insertGameObjectArray@{insertGameObjectArray}}
+\index{insertGameObjectArray@{insertGameObjectArray}!gameobject.h@{gameobject.h}}
+\doxysubsubsection{\texorpdfstring{insertGameObjectArray()}{insertGameObjectArray()}}
+{\footnotesize\ttfamily \label{gameobject_8h_a7814e4774ca4e96cdf37aaf01e2bd08d} 
+void insert\+Game\+Object\+Array (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_game_object_array}{Game\+Object\+Array}} \texorpdfstring{$\ast$}{*}}]{array}{, }\item[{\mbox{\hyperlink{struct_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*}}]{new\+Game\+Object}{}\end{DoxyParamCaption})}
+
+
+
+Adds a \doxylink{struct_game_object}{Game\+Object} to a \doxylink{struct_game_object_array}{Game\+Object\+Array}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em array} & A pointer to the \doxylink{struct_game_object_array}{Game\+Object\+Array}. \\
+\hline
+{\em new\+Game\+Object} & A pointer to the \doxylink{struct_game_object}{Game\+Object} to be added. \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gameobject_8h_a7814e4774ca4e96cdf37aaf01e2bd08d_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{gameobject_8h_a0959c953a619002f3a0cadb4d4542318}\index{gameobject.h@{gameobject.h}!newGameObjectArray@{newGameObjectArray}}
+\index{newGameObjectArray@{newGameObjectArray}!gameobject.h@{gameobject.h}}
+\doxysubsubsection{\texorpdfstring{newGameObjectArray()}{newGameObjectArray()}}
+{\footnotesize\ttfamily \label{gameobject_8h_a0959c953a619002f3a0cadb4d4542318} 
+\mbox{\hyperlink{struct_game_object_array}{Game\+Object\+Array}} new\+Game\+Object\+Array (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{capacity}{}\end{DoxyParamCaption})}
+
+
+
+Creates a new \doxylink{struct_game_object_array}{Game\+Object\+Array} with a specified capacity. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em capacity} & The initial capacity of the \doxylink{struct_game_object_array}{Game\+Object\+Array}. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A new \doxylink{struct_game_object_array}{Game\+Object\+Array}. 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gameobject_8h_a0959c953a619002f3a0cadb4d4542318_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{gameobject_8h_a5450390b74149c8e80f882c397d7bafb}\index{gameobject.h@{gameobject.h}!remove\_sprite\_from\_spriteless\_gameobject@{remove\_sprite\_from\_spriteless\_gameobject}}
+\index{remove\_sprite\_from\_spriteless\_gameobject@{remove\_sprite\_from\_spriteless\_gameobject}!gameobject.h@{gameobject.h}}
+\doxysubsubsection{\texorpdfstring{remove\_sprite\_from\_spriteless\_gameobject()}{remove\_sprite\_from\_spriteless\_gameobject()}}
+{\footnotesize\ttfamily \label{gameobject_8h_a5450390b74149c8e80f882c397d7bafb} 
+void remove\+\_\+sprite\+\_\+from\+\_\+spriteless\+\_\+gameobject (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*}}]{game\+Object}{}\end{DoxyParamCaption})}
+
+
+
+Removes a sprite from a spriteless game object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em game\+Object} & The pointer to the game object to remove the sprite from. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=349pt]{gameobject_8h_a5450390b74149c8e80f882c397d7bafb_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gameobject_8h_a5450390b74149c8e80f882c397d7bafb_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{gameobject_8h_a65d6eb0f17a112b9fd1f1876bdbc3e6a}\index{gameobject.h@{gameobject.h}!removeGameObjectArray@{removeGameObjectArray}}
+\index{removeGameObjectArray@{removeGameObjectArray}!gameobject.h@{gameobject.h}}
+\doxysubsubsection{\texorpdfstring{removeGameObjectArray()}{removeGameObjectArray()}}
+{\footnotesize\ttfamily \label{gameobject_8h_a65d6eb0f17a112b9fd1f1876bdbc3e6a} 
+void remove\+Game\+Object\+Array (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_game_object_array}{Game\+Object\+Array}} \texorpdfstring{$\ast$}{*}}]{array}{, }\item[{\mbox{\hyperlink{struct_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*}}]{game\+Object}{}\end{DoxyParamCaption})}
+
+
+
+Removes a \doxylink{struct_game_object}{Game\+Object} from a \doxylink{struct_game_object_array}{Game\+Object\+Array}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em array} & A pointer to the \doxylink{struct_game_object_array}{Game\+Object\+Array}. \\
+\hline
+{\em game\+Object} & A pointer to the \doxylink{struct_game_object}{Game\+Object} to be removed. \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gameobject_8h_a65d6eb0f17a112b9fd1f1876bdbc3e6a_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{gameobject_8h_a2b3a693827aa9ff61460e24fec22aa71}\index{gameobject.h@{gameobject.h}!renderGameObjects@{renderGameObjects}}
+\index{renderGameObjects@{renderGameObjects}!gameobject.h@{gameobject.h}}
+\doxysubsubsection{\texorpdfstring{renderGameObjects()}{renderGameObjects()}}
+{\footnotesize\ttfamily \label{gameobject_8h_a2b3a693827aa9ff61460e24fec22aa71} 
+void render\+Game\+Objects (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Renders the game objects. 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gameobject_8h_a2b3a693827aa9ff61460e24fec22aa71_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gameobject_8h_a2b3a693827aa9ff61460e24fec22aa71_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{gameobject_8h_ab164cdb57764aace4144eb99d699a227}\index{gameobject.h@{gameobject.h}!showAnimatedGameObject@{showAnimatedGameObject}}
+\index{showAnimatedGameObject@{showAnimatedGameObject}!gameobject.h@{gameobject.h}}
+\doxysubsubsection{\texorpdfstring{showAnimatedGameObject()}{showAnimatedGameObject()}}
+{\footnotesize\ttfamily \label{gameobject_8h_ab164cdb57764aace4144eb99d699a227} 
+void show\+Animated\+Game\+Object (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_animated_game_object}{Animated\+Game\+Object}} \texorpdfstring{$\ast$}{*}}]{animated\+Game\+Object}{}\end{DoxyParamCaption})}
+
+
+
+Shows an animated game object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em animated\+Game\+Object} & The pointer to the animated game object to show. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gameobject_8h_ab164cdb57764aace4144eb99d699a227_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gameobject_8h_ab164cdb57764aace4144eb99d699a227_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{gameobject_8h_a89b6a2cd7e246e117f7bce4db556a09d}\index{gameobject.h@{gameobject.h}!showGameObject@{showGameObject}}
+\index{showGameObject@{showGameObject}!gameobject.h@{gameobject.h}}
+\doxysubsubsection{\texorpdfstring{showGameObject()}{showGameObject()}}
+{\footnotesize\ttfamily \label{gameobject_8h_a89b6a2cd7e246e117f7bce4db556a09d} 
+void show\+Game\+Object (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*}}]{game\+Object}{}\end{DoxyParamCaption})}
+
+
+
+Shows a game object by inserting in the render pipeline. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em game\+Object} & The pointer to the game object to show. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=316pt]{gameobject_8h_a89b6a2cd7e246e117f7bce4db556a09d_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gameobject_8h_a89b6a2cd7e246e117f7bce4db556a09d_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{gameobject_8h_ac85711fae9e1cd853098ae6efada6a7c}\index{gameobject.h@{gameobject.h}!showGameObjects@{showGameObjects}}
+\index{showGameObjects@{showGameObjects}!gameobject.h@{gameobject.h}}
+\doxysubsubsection{\texorpdfstring{showGameObjects()}{showGameObjects()}}
+{\footnotesize\ttfamily \label{gameobject_8h_ac85711fae9e1cd853098ae6efada6a7c} 
+void show\+Game\+Objects (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_game_object_array}{Game\+Object\+Array}} \texorpdfstring{$\ast$}{*}}]{game\+Objects}{}\end{DoxyParamCaption})}
+
+
+
+Shows all the Game\+Objects in the \doxylink{struct_game_object_array}{Game\+Object\+Array}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em game\+Objects} & A pointer to the \doxylink{struct_game_object}{Game\+Object} Array. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gameobject_8h_ac85711fae9e1cd853098ae6efada6a7c_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gameobject_8h_ac85711fae9e1cd853098ae6efada6a7c_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{gameobject_8h_a44ed0b7fab59aede47332f554edd2d9e}\index{gameobject.h@{gameobject.h}!switchAnimatedSpriteOfAnimatedGameObject@{switchAnimatedSpriteOfAnimatedGameObject}}
+\index{switchAnimatedSpriteOfAnimatedGameObject@{switchAnimatedSpriteOfAnimatedGameObject}!gameobject.h@{gameobject.h}}
+\doxysubsubsection{\texorpdfstring{switchAnimatedSpriteOfAnimatedGameObject()}{switchAnimatedSpriteOfAnimatedGameObject()}}
+{\footnotesize\ttfamily \label{gameobject_8h_a44ed0b7fab59aede47332f554edd2d9e} 
+void switch\+Animated\+Sprite\+Of\+Animated\+Game\+Object (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_animated_game_object}{Animated\+Game\+Object}} \texorpdfstring{$\ast$}{*}}]{animated\+Game\+Object}{, }\item[{\mbox{\hyperlink{struct_animated_sprite}{Animated\+Sprite}} \texorpdfstring{$\ast$}{*}}]{animated\+Sprite}{}\end{DoxyParamCaption})}
+
+
+
+Switches sprites of an animated game object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em animated\+Game\+Object} & The pointer to the animated game object to update. \\
+\hline
+{\em animated\+Sprite} & The pointer to the animated sprite to use. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gameobject_8h_a44ed0b7fab59aede47332f554edd2d9e_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gameobject_8h_a44ed0b7fab59aede47332f554edd2d9e_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{gameobject_8h_a3abb3c71d593255afaa381d680171133}\index{gameobject.h@{gameobject.h}!updateAnimatedGameObjects@{updateAnimatedGameObjects}}
+\index{updateAnimatedGameObjects@{updateAnimatedGameObjects}!gameobject.h@{gameobject.h}}
+\doxysubsubsection{\texorpdfstring{updateAnimatedGameObjects()}{updateAnimatedGameObjects()}}
+{\footnotesize\ttfamily \label{gameobject_8h_a3abb3c71d593255afaa381d680171133} 
+void update\+Animated\+Game\+Objects (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Updates the animated game objects. 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gameobject_8h_a3abb3c71d593255afaa381d680171133_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gameobject_8h_a3abb3c71d593255afaa381d680171133_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{gameobject_8h_aaab2489d023b98f5089e354979662252}\index{gameobject.h@{gameobject.h}!updateGameObjectSprite@{updateGameObjectSprite}}
+\index{updateGameObjectSprite@{updateGameObjectSprite}!gameobject.h@{gameobject.h}}
+\doxysubsubsection{\texorpdfstring{updateGameObjectSprite()}{updateGameObjectSprite()}}
+{\footnotesize\ttfamily \label{gameobject_8h_aaab2489d023b98f5089e354979662252} 
+void update\+Game\+Object\+Sprite (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*}}]{game\+Object}{, }\item[{\mbox{\hyperlink{struct_sprite}{Sprite}} \texorpdfstring{$\ast$}{*}}]{sprite}{}\end{DoxyParamCaption})}
+
+
+
+Updates the sprite of a game object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em game\+Object} & The pointer to the game object to update. \\
+\hline
+{\em sprite} & The pointer to the sprite to use. \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gameobject_8h_aaab2489d023b98f5089e354979662252_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{gameobject_8h_a832b9e6a931a02ff0a4f6ac692229350}\index{gameobject.h@{gameobject.h}!updateGameObjectZIndex@{updateGameObjectZIndex}}
+\index{updateGameObjectZIndex@{updateGameObjectZIndex}!gameobject.h@{gameobject.h}}
+\doxysubsubsection{\texorpdfstring{updateGameObjectZIndex()}{updateGameObjectZIndex()}}
+{\footnotesize\ttfamily \label{gameobject_8h_a832b9e6a931a02ff0a4f6ac692229350} 
+void update\+Game\+Object\+ZIndex (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*}}]{game\+Object}{, }\item[{uint16\+\_\+t}]{z\+\_\+index}{}\end{DoxyParamCaption})}
+
+
+
+Updates the z index of a game object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em game\+Object} & The pointer to the game object to update. \\
+\hline
+{\em z\+\_\+index} & The new z index of the game object. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gameobject_8h_a832b9e6a931a02ff0a4f6ac692229350_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gameobject_8h_a832b9e6a931a02ff0a4f6ac692229350_icgraph}
+\end{center}
+\end{figure}

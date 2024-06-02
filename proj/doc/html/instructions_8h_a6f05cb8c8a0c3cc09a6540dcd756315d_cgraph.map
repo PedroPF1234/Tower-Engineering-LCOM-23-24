@@ -1,0 +1,9 @@
+<map id="enterInstructions" name="enterInstructions">
+<area shape="rect" id="Node000001" title="Enters the instructions screen." alt="" coords="5,31,124,56"/>
+<area shape="rect" id="Node000002" href="$device__controller_8c.html#aaf75393bbaa328c2011c3cd3bf57c1ab" title="Resets the devices when changing screens." alt="" coords="172,5,373,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="124,34,156,30,156,35,124,39"/>
+<area shape="rect" id="Node000003" href="$button_8c.html#a847e1a5abfc2fe5a7f2e8fa3dc85675f" title="Turns on the visibility of all the Button&#39;s Sprites in a ButtonArray." alt="" coords="224,55,321,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="124,48,208,57,208,63,124,53"/>
+<area shape="rect" id="Node000004" href="$button_8c.html#ac3e1fa5a312e4690dd8b5d14db4bdd0f" title="Retrieves a Button from a ButtonArray." alt="" coords="421,55,529,80"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="322,65,405,65,405,70,322,70"/>
+</map>

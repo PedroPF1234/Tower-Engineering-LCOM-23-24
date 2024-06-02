@@ -1,0 +1,7 @@
+<map id="init_render_pipeline" name="init_render_pipeline">
+<area shape="rect" id="Node000001" title="Initializes a render pipeline." alt="" coords="308,5,440,31"/>
+<area shape="rect" id="Node000002" href="$device__controller_8c.html#a47e74a2f7a5edae37287b8bcfbb30562" title="Encapsulates the initialization of all the devices." alt="" coords="162,5,260,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="293,21,260,21,260,16,293,16"/>
+<area shape="rect" id="Node000003" href="$proj_8c.html#af244d65e69677cf312af1950452ec256" title=" " alt="" coords="5,5,114,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="146,21,114,21,114,16,146,16"/>
+</map>

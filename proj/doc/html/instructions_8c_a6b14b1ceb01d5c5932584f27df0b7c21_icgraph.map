@@ -1,0 +1,16 @@
+<map id="exitInstructions" name="exitInstructions">
+<area shape="rect" id="Node000001" title="Exits the instructions screen." alt="" coords="898,35,1008,60"/>
+<area shape="rect" id="Node000002" href="$instructions_8c.html#a1eec854c195cd560085e72eec69b26b9" title=" " alt="" coords="677,5,844,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="882,39,843,33,844,28,883,34"/>
+<area shape="rect" id="Node000007" href="$instructions_8c.html#a072021e1d5880206149b5323f33f649e" title=" " alt="" coords="671,55,850,96"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="883,60,851,65,850,60,882,55"/>
+<area shape="rect" id="Node000003" href="$instructions_8c.html#a5fd1505f1f7d8fbb4d0a447fb4ba4539" title="Updates the instructions screen." alt="" coords="494,35,623,60"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="662,35,623,41,623,36,662,30"/>
+<area shape="rect" id="Node000004" href="$game_8c.html#a315e950a7e6bb500fe11c37ee1122577" title="Encapsulates the whole game logic." alt="" coords="327,35,446,60"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="479,50,447,50,447,45,479,45"/>
+<area shape="rect" id="Node000005" href="$device__controller_8c.html#a4d10f01a84e9e24f18682c0bca48dca6" title="Calls all device&#39;s interrupt handlers." alt="" coords="162,35,279,60"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="312,50,279,50,279,45,312,45"/>
+<area shape="rect" id="Node000006" href="$proj_8c.html#af244d65e69677cf312af1950452ec256" title=" " alt="" coords="5,35,114,60"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="146,50,114,50,114,45,146,45"/>
+<area shape="poly" id="edge7_Node000007_Node000003" title=" " alt="" coords="655,64,623,59,623,54,656,58"/>
+</map>

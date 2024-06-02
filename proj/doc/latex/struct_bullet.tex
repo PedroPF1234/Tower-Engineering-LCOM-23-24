@@ -1,0 +1,107 @@
+\doxysection{Bullet Struct Reference}
+\hypertarget{struct_bullet}{}\label{struct_bullet}\index{Bullet@{Bullet}}
+
+
+Represents a bullet in the game.  
+
+
+
+
+{\ttfamily \#include $<$bullet.\+h$>$}
+
+
+
+Collaboration diagram for Bullet\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=200pt]{struct_bullet__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct_bullet_a4fb90fe37c7d0029791d752e24334b01}{bullet}}
+\item 
+\mbox{\hyperlink{struct_sprite}{Sprite}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct_bullet_a040bbfdb4d8e38dbd347309230e7bb50}{sprite}}
+\item 
+float \mbox{\hyperlink{struct_bullet_acffaa6c3c8136695229d341c5e6da56a}{x}}
+\item 
+float \mbox{\hyperlink{struct_bullet_a32300c127a7b59a55608a2d949c156c1}{y}}
+\item 
+float \mbox{\hyperlink{struct_bullet_a6b8d75d4ff37b66b153383c47bcae3a7}{speed}} \mbox{[}2\mbox{]}
+\item 
+int16\+\_\+t \mbox{\hyperlink{struct_bullet_a9d82af2426edbbf70e32690b3b6ec99e}{origin\+\_\+offset\+\_\+x}}
+\item 
+int16\+\_\+t \mbox{\hyperlink{struct_bullet_a1ad6a6cc315a33822df37a4b70d90d75}{origin\+\_\+offset\+\_\+y}}
+\item 
+int16\+\_\+t \mbox{\hyperlink{struct_bullet_af58ee2b7c04c4ca711f336e6542adf6e}{damage}}
+\item 
+bool \mbox{\hyperlink{struct_bullet_af049bb84d3cafeb49adbcc65939e111f}{active}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents a bullet in the game. 
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{struct_bullet_af049bb84d3cafeb49adbcc65939e111f}\index{Bullet@{Bullet}!active@{active}}
+\index{active@{active}!Bullet@{Bullet}}
+\doxysubsubsection{\texorpdfstring{active}{active}}
+{\footnotesize\ttfamily \label{struct_bullet_af049bb84d3cafeb49adbcc65939e111f} 
+bool Bullet\+::active}
+
+Indicates whether the bullet is active. \Hypertarget{struct_bullet_a4fb90fe37c7d0029791d752e24334b01}\index{Bullet@{Bullet}!bullet@{bullet}}
+\index{bullet@{bullet}!Bullet@{Bullet}}
+\doxysubsubsection{\texorpdfstring{bullet}{bullet}}
+{\footnotesize\ttfamily \label{struct_bullet_a4fb90fe37c7d0029791d752e24334b01} 
+\mbox{\hyperlink{struct_game_object}{Game\+Object}}\texorpdfstring{$\ast$}{*} Bullet\+::bullet}
+
+The game object associated with the bullet. \Hypertarget{struct_bullet_af58ee2b7c04c4ca711f336e6542adf6e}\index{Bullet@{Bullet}!damage@{damage}}
+\index{damage@{damage}!Bullet@{Bullet}}
+\doxysubsubsection{\texorpdfstring{damage}{damage}}
+{\footnotesize\ttfamily \label{struct_bullet_af58ee2b7c04c4ca711f336e6542adf6e} 
+int16\+\_\+t Bullet\+::damage}
+
+The damage of the bullet. \Hypertarget{struct_bullet_a9d82af2426edbbf70e32690b3b6ec99e}\index{Bullet@{Bullet}!origin\_offset\_x@{origin\_offset\_x}}
+\index{origin\_offset\_x@{origin\_offset\_x}!Bullet@{Bullet}}
+\doxysubsubsection{\texorpdfstring{origin\_offset\_x}{origin\_offset\_x}}
+{\footnotesize\ttfamily \label{struct_bullet_a9d82af2426edbbf70e32690b3b6ec99e} 
+int16\+\_\+t Bullet\+::origin\+\_\+offset\+\_\+x}
+
+The x offset of the bullet\textquotesingle{}s origin. \Hypertarget{struct_bullet_a1ad6a6cc315a33822df37a4b70d90d75}\index{Bullet@{Bullet}!origin\_offset\_y@{origin\_offset\_y}}
+\index{origin\_offset\_y@{origin\_offset\_y}!Bullet@{Bullet}}
+\doxysubsubsection{\texorpdfstring{origin\_offset\_y}{origin\_offset\_y}}
+{\footnotesize\ttfamily \label{struct_bullet_a1ad6a6cc315a33822df37a4b70d90d75} 
+int16\+\_\+t Bullet\+::origin\+\_\+offset\+\_\+y}
+
+The y offset of the bullet\textquotesingle{}s origin. \Hypertarget{struct_bullet_a6b8d75d4ff37b66b153383c47bcae3a7}\index{Bullet@{Bullet}!speed@{speed}}
+\index{speed@{speed}!Bullet@{Bullet}}
+\doxysubsubsection{\texorpdfstring{speed}{speed}}
+{\footnotesize\ttfamily \label{struct_bullet_a6b8d75d4ff37b66b153383c47bcae3a7} 
+float Bullet\+::speed\mbox{[}2\mbox{]}}
+
+The speed of the bullet in the x and y directions. \Hypertarget{struct_bullet_a040bbfdb4d8e38dbd347309230e7bb50}\index{Bullet@{Bullet}!sprite@{sprite}}
+\index{sprite@{sprite}!Bullet@{Bullet}}
+\doxysubsubsection{\texorpdfstring{sprite}{sprite}}
+{\footnotesize\ttfamily \label{struct_bullet_a040bbfdb4d8e38dbd347309230e7bb50} 
+\mbox{\hyperlink{struct_sprite}{Sprite}}\texorpdfstring{$\ast$}{*} Bullet\+::sprite}
+
+The sprite associated with the bullet. \Hypertarget{struct_bullet_acffaa6c3c8136695229d341c5e6da56a}\index{Bullet@{Bullet}!x@{x}}
+\index{x@{x}!Bullet@{Bullet}}
+\doxysubsubsection{\texorpdfstring{x}{x}}
+{\footnotesize\ttfamily \label{struct_bullet_acffaa6c3c8136695229d341c5e6da56a} 
+float Bullet\+::x}
+
+\Hypertarget{struct_bullet_a32300c127a7b59a55608a2d949c156c1}\index{Bullet@{Bullet}!y@{y}}
+\index{y@{y}!Bullet@{Bullet}}
+\doxysubsubsection{\texorpdfstring{y}{y}}
+{\footnotesize\ttfamily \label{struct_bullet_a32300c127a7b59a55608a2d949c156c1} 
+float Bullet\+::y}
+
+The current x and y positions of the bullet. 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/\+Game/\+Gameplay/\+Bullet/\mbox{\hyperlink{bullet_8h}{bullet.\+h}}\end{DoxyCompactItemize}

@@ -1,0 +1,26 @@
+var rtc_8c =
+[
+    [ "bcd_to_binary", "rtc_8c.html#a54132448f4c6180439d80dfcba256e39", null ],
+    [ "rtc_await_valid_state", "rtc_8c.html#a9dac2b0a9f8d5312959534768d4b7498", null ],
+    [ "rtc_disable_all_ints", "rtc_8c.html#a3c40f97c04701fc6ac45a19bb92be181", null ],
+    [ "rtc_disable_and_unsubscribe", "rtc_8c.html#a6a46d7dad3841ae858c249d42081f9ac", null ],
+    [ "rtc_get_current_time", "rtc_8c.html#acb430fd58d2e4da3a685d42cf2f3594a", null ],
+    [ "rtc_get_day", "rtc_8c.html#ac90c5c86ddb921afe41656dfe342b439", null ],
+    [ "rtc_get_hour", "rtc_8c.html#a2234482295bce9f2db6991decd3f54d4", null ],
+    [ "rtc_get_minutes", "rtc_8c.html#aef1214ca4144380fb1f9cf3039e6927d", null ],
+    [ "rtc_get_month", "rtc_8c.html#a864a96d3106cfb03f9fad91cfd294e3f", null ],
+    [ "rtc_get_seconds", "rtc_8c.html#ab629781c4168a835c2ab2548e2711ae7", null ],
+    [ "rtc_get_year", "rtc_8c.html#ac0854496e8e86ee49e049a58cc9eff5d", null ],
+    [ "rtc_ih", "rtc_8c.html#a75dad42881d64cf07cf1bdc2979a7056", null ],
+    [ "rtc_initialize_and_subscribe", "rtc_8c.html#af086192448abc551b618e1856d661926", null ],
+    [ "rtc_read", "rtc_8c.html#ac8b0ed21f98fd3ada932e232c253b92b", null ],
+    [ "rtc_set_alarm_every_second", "rtc_8c.html#a2190c057929ef6fbff940998492aa4ec", null ],
+    [ "rtc_subscribe_int", "rtc_8c.html#a5171a9c0f54940fe60f7500896afcc86", null ],
+    [ "rtc_toggle_alarm_int", "rtc_8c.html#ae1ad1cb6ae417786d227c4ede4d586fd", null ],
+    [ "rtc_toggle_periodic_int", "rtc_8c.html#aadf5ab2196aa22ca0ae6679fe388e270", null ],
+    [ "rtc_toggle_update_int", "rtc_8c.html#a43ab2676911c7b2d91ee739cbe3af372", null ],
+    [ "rtc_unsubscribe_int", "rtc_8c.html#ab8f17bf5280c908c8b199a90fefcc758", null ],
+    [ "rtc_write", "rtc_8c.html#a88bc7fc547c8c1296e2e42d246e5e23e", null ],
+    [ "rtc_hook_id", "rtc_8c.html#a6c52a1d32571a429369253ce7c3a3d7a", null ],
+    [ "rtc_time", "rtc_8c.html#a5071c1013d2ba777107338794f9696f3", null ]
+];

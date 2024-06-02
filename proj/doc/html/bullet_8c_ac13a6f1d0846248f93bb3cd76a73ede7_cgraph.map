@@ -1,0 +1,9 @@
+<map id="destroyBulletArray" name="destroyBulletArray">
+<area shape="rect" id="Node000001" title="Destroys a BulletArray and frees associated memory." alt="" coords="5,13,134,39"/>
+<area shape="rect" id="Node000002" href="$bullet_8c.html#a0c942f6cd5c1a4616e2287a8652609a0" title="Destroys a bullet and frees associated memory." alt="" coords="182,13,279,39"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="134,23,166,23,166,28,134,28"/>
+<area shape="rect" id="Node000003" href="$gameobject_8c.html#af963650b4f59cf45e19e0825bdc90ac4" title="Destroys a game object without erasing its associated sprite. Removes Game Object from the render pip..." alt="" coords="327,5,465,46"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="279,23,312,23,312,28,279,28"/>
+<area shape="rect" id="Node000004" href="$gameobject_8c.html#a11caa0bf998b9de720cc858c6d02274b" title=" " alt="" coords="513,13,666,39"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="466,23,498,23,498,28,466,28"/>
+</map>

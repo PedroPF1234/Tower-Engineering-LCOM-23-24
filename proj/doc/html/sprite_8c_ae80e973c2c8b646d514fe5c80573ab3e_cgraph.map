@@ -1,0 +1,12 @@
+<map id="destroyAnimatedSpriteArray" name="destroyAnimatedSpriteArray">
+<area shape="rect" id="Node000001" title="Destroys a animated sprite array and frees associated memory." alt="" coords="5,31,190,56"/>
+<area shape="rect" id="Node000002" href="$sprite_8c.html#a6c750482d331a7ed8df472082e4d8cea" title="Destroys a animated sprite and frees associated memory." alt="" coords="238,31,401,56"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="190,41,222,41,222,46,190,46"/>
+<area shape="rect" id="Node000003" href="$sprite_8c.html#af16c6befaac9ffb673b9e3c798d542ed" title="Destroys a sprite and frees associated memory." alt="" coords="626,5,730,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="376,27,449,16,533,11,611,12,611,17,533,17,449,21,377,33"/>
+<area shape="rect" id="Node000004" href="$sprite_8c.html#a2e02ad1a9c90d6c39dccb793df2299ec" title="Destroys a sprite array and frees associated memory." alt="" coords="449,31,578,56"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="401,41,433,41,433,46,401,46"/>
+<area shape="rect" id="Node000005" href="$sprite_8c.html#a4ed5b9becd1df00c68f6348b54b01191" title="Gets a sprite from a given sprite array." alt="" coords="462,80,566,106"/>
+<area shape="poly" id="edge5_Node000002_Node000005" title=" " alt="" coords="374,54,447,73,446,79,372,60"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="578,31,610,26,611,31,579,36"/>
+</map>

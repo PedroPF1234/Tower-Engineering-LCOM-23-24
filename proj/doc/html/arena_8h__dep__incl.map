@@ -1,0 +1,17 @@
+<map id="src/Game/Gameplay/Arena/arena.h" name="src/Game/Gameplay/Arena/arena.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="247,5,426,46"/>
+<area shape="rect" id="Node000002" href="$arena_8c.html" title=" " alt="" coords="42,94,221,135"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="277,55,179,96,177,91,275,50"/>
+<area shape="rect" id="Node000003" href="$player_8h.html" title=" " alt="" coords="245,94,428,135"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="339,62,339,94,334,94,334,62"/>
+<area shape="rect" id="Node000007" href="$gameplay_8c.html" title=" " alt="" coords="362,279,572,305"/>
+<area shape="poly" id="edge8_Node000001_Node000007" title=" " alt="" coords="398,52,422,70,441,93,454,117,463,143,472,197,474,245,471,279,466,278,468,245,467,197,458,144,449,119,437,95,418,74,395,56"/>
+<area shape="rect" id="Node000004" href="$player_8c.html" title=" " alt="" coords="5,183,188,223"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="269,143,152,185,150,180,267,138"/>
+<area shape="rect" id="Node000005" href="$weapon_8h.html" title=" " alt="" coords="212,183,405,223"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="328,150,317,183,312,181,323,149"/>
+<area shape="poly" id="edge7_Node000003_Node000007" title=" " alt="" coords="379,143,419,181,449,233,466,278,461,280,444,236,414,184,376,146"/>
+<area shape="rect" id="Node000006" href="$weapon_8c.html" title=" " alt="" coords="146,271,338,312"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="286,238,259,273,255,269,282,234"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="359,229,446,276,444,281,357,233"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="updateEnemySpriteBasedOnPosition" name="updateEnemySpriteBasedOnPosition">
+<area shape="rect" id="Node000001" title="Updates the sprite of an enemy based on its current position and direction." alt="" coords="5,5,195,46"/>
+<area shape="rect" id="Node000002" href="$gameobject_8c.html#aaab2489d023b98f5089e354979662252" title="Updates the sprite of a game object." alt="" coords="243,13,410,39"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="195,23,227,23,227,28,195,28"/>
+</map>

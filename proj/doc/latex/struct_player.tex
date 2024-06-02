@@ -1,0 +1,152 @@
+\doxysection{Player Struct Reference}
+\hypertarget{struct_player}{}\label{struct_player}\index{Player@{Player}}
+
+
+Struct that represents the player.  
+
+
+
+
+{\ttfamily \#include $<$player.\+h$>$}
+
+
+
+Collaboration diagram for Player\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=316pt]{struct_player__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_animated_game_object}{Animated\+Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct_player_a5a1667f884863351b3cbfbf99fa104aa}{player}}
+\item 
+\mbox{\hyperlink{struct_animated_sprite_array}{Animated\+Sprite\+Array}} \mbox{\hyperlink{struct_player_a0da3bc9f93100a5be3148da33c91d3e8}{sprites}}
+\item 
+\mbox{\hyperlink{player_8h_a224b9163917ac32fc95a60d8c1eec3aa}{Direction}} \mbox{\hyperlink{struct_player_a57e8632b1b25e4a770a83f0b566b9ddf}{current\+\_\+direction}}
+\item 
+float \mbox{\hyperlink{struct_player_a59eec29c87225f768b3767451ceb84da}{x}}
+\item 
+float \mbox{\hyperlink{struct_player_a28c357b9a2636f8bf9c5377de8245c80}{y}}
+\item 
+float \mbox{\hyperlink{struct_player_aea43aae0002e2d327cb0a373d38fd2ab}{speed}} \mbox{[}2\mbox{]}
+\item 
+int16\+\_\+t \mbox{\hyperlink{struct_player_a175b5432791e60b7dd68f733e3615c67}{origin\+\_\+offset\+\_\+x}}
+\item 
+int16\+\_\+t \mbox{\hyperlink{struct_player_a281ea75f53487c5f469d9a06dbf63764}{origin\+\_\+offset\+\_\+y}}
+\item 
+int16\+\_\+t \mbox{\hyperlink{struct_player_a83a5e7bb5fa9e661b024c509f27c728b}{hit\+\_\+points}}
+\item 
+int16\+\_\+t \mbox{\hyperlink{struct_player_af087c814cadea090d7bc9187f54cbf17}{max\+\_\+hit\+\_\+points}}
+\item 
+bool \mbox{\hyperlink{struct_player_ab9880ca5643cc308eb92f79bd009f90a}{has\+Weapon}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Struct that represents the player. 
+
+Struct that contains the player game object, the sprites, the current direction, the position, the speed, the origin offset, the hit points and the weapon status.
+
+
+\begin{DoxyParams}{Parameters}
+{\em player} & The player game object. \\
+\hline
+{\em sprites} & The array of Animated\+Sprites that represent the player walking in different directions. \\
+\hline
+{\em current\+\_\+direction} & The current direction of the player. \\
+\hline
+{\em x} & The x position of the player. \\
+\hline
+{\em y} & The y position of the player. \\
+\hline
+{\em speed} & The array representing speed of the player in the x and y directions. \\
+\hline
+{\em origin\+\_\+offset\+\_\+x} & The offset of the origin of the player sprite in the x direction. \\
+\hline
+{\em origin\+\_\+offset\+\_\+y} & The offset of the origin of the player sprite in the y direction. \\
+\hline
+{\em hit\+\_\+points} & The current hit points of the player. \\
+\hline
+{\em max\+\_\+hit\+\_\+points} & The maximum hit points of the player. \\
+\hline
+{\em has\+Weapon} & A boolean that represents if the player has a weapon. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{struct_player_a57e8632b1b25e4a770a83f0b566b9ddf}\index{Player@{Player}!current\_direction@{current\_direction}}
+\index{current\_direction@{current\_direction}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{current\_direction}{current\_direction}}
+{\footnotesize\ttfamily \label{struct_player_a57e8632b1b25e4a770a83f0b566b9ddf} 
+\mbox{\hyperlink{player_8h_a224b9163917ac32fc95a60d8c1eec3aa}{Direction}} Player\+::current\+\_\+direction}
+
+\Hypertarget{struct_player_ab9880ca5643cc308eb92f79bd009f90a}\index{Player@{Player}!hasWeapon@{hasWeapon}}
+\index{hasWeapon@{hasWeapon}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{hasWeapon}{hasWeapon}}
+{\footnotesize\ttfamily \label{struct_player_ab9880ca5643cc308eb92f79bd009f90a} 
+bool Player\+::has\+Weapon}
+
+\Hypertarget{struct_player_a83a5e7bb5fa9e661b024c509f27c728b}\index{Player@{Player}!hit\_points@{hit\_points}}
+\index{hit\_points@{hit\_points}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{hit\_points}{hit\_points}}
+{\footnotesize\ttfamily \label{struct_player_a83a5e7bb5fa9e661b024c509f27c728b} 
+int16\+\_\+t Player\+::hit\+\_\+points}
+
+\Hypertarget{struct_player_af087c814cadea090d7bc9187f54cbf17}\index{Player@{Player}!max\_hit\_points@{max\_hit\_points}}
+\index{max\_hit\_points@{max\_hit\_points}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{max\_hit\_points}{max\_hit\_points}}
+{\footnotesize\ttfamily \label{struct_player_af087c814cadea090d7bc9187f54cbf17} 
+int16\+\_\+t Player\+::max\+\_\+hit\+\_\+points}
+
+\Hypertarget{struct_player_a175b5432791e60b7dd68f733e3615c67}\index{Player@{Player}!origin\_offset\_x@{origin\_offset\_x}}
+\index{origin\_offset\_x@{origin\_offset\_x}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{origin\_offset\_x}{origin\_offset\_x}}
+{\footnotesize\ttfamily \label{struct_player_a175b5432791e60b7dd68f733e3615c67} 
+int16\+\_\+t Player\+::origin\+\_\+offset\+\_\+x}
+
+\Hypertarget{struct_player_a281ea75f53487c5f469d9a06dbf63764}\index{Player@{Player}!origin\_offset\_y@{origin\_offset\_y}}
+\index{origin\_offset\_y@{origin\_offset\_y}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{origin\_offset\_y}{origin\_offset\_y}}
+{\footnotesize\ttfamily \label{struct_player_a281ea75f53487c5f469d9a06dbf63764} 
+int16\+\_\+t Player\+::origin\+\_\+offset\+\_\+y}
+
+\Hypertarget{struct_player_a5a1667f884863351b3cbfbf99fa104aa}\index{Player@{Player}!player@{player}}
+\index{player@{player}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{player}{player}}
+{\footnotesize\ttfamily \label{struct_player_a5a1667f884863351b3cbfbf99fa104aa} 
+\mbox{\hyperlink{struct_animated_game_object}{Animated\+Game\+Object}}\texorpdfstring{$\ast$}{*} Player\+::player}
+
+\Hypertarget{struct_player_aea43aae0002e2d327cb0a373d38fd2ab}\index{Player@{Player}!speed@{speed}}
+\index{speed@{speed}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{speed}{speed}}
+{\footnotesize\ttfamily \label{struct_player_aea43aae0002e2d327cb0a373d38fd2ab} 
+float Player\+::speed\mbox{[}2\mbox{]}}
+
+\Hypertarget{struct_player_a0da3bc9f93100a5be3148da33c91d3e8}\index{Player@{Player}!sprites@{sprites}}
+\index{sprites@{sprites}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{sprites}{sprites}}
+{\footnotesize\ttfamily \label{struct_player_a0da3bc9f93100a5be3148da33c91d3e8} 
+\mbox{\hyperlink{struct_animated_sprite_array}{Animated\+Sprite\+Array}} Player\+::sprites}
+
+\Hypertarget{struct_player_a59eec29c87225f768b3767451ceb84da}\index{Player@{Player}!x@{x}}
+\index{x@{x}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{x}{x}}
+{\footnotesize\ttfamily \label{struct_player_a59eec29c87225f768b3767451ceb84da} 
+float Player\+::x}
+
+\Hypertarget{struct_player_a28c357b9a2636f8bf9c5377de8245c80}\index{Player@{Player}!y@{y}}
+\index{y@{y}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{y}{y}}
+{\footnotesize\ttfamily \label{struct_player_a28c357b9a2636f8bf9c5377de8245c80} 
+float Player\+::y}
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/\+Game/\+Gameplay/\+Player/\mbox{\hyperlink{player_8h}{player.\+h}}\end{DoxyCompactItemize}

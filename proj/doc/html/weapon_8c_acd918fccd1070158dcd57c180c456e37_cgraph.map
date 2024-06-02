@@ -1,0 +1,13 @@
+<map id="updateWeapon" name="updateWeapon">
+<area shape="rect" id="Node000001" title="Updates the position/angle of the weapon based on the player&#39;s and the mouse&#39;s positions." alt="" coords="5,55,113,80"/>
+<area shape="rect" id="Node000002" href="$sprite_8c.html#a311fa58d9959113bb14be3676e0ed8c5" title="Calculates the angle between a line connecting two points and the x&#45;axis." alt="" coords="192,5,303,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="110,51,180,33,181,38,112,57"/>
+<area shape="rect" id="Node000003" href="$sprite_8c.html#a0c722ac2dbcd401373c21e8b33679945" title="Gets a sprite from a given sprite with the intended angle." alt="" coords="179,55,316,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="113,65,164,65,164,70,113,70"/>
+<area shape="rect" id="Node000004" href="$gameobject_8c.html#a832b9e6a931a02ff0a4f6ac692229350" title="Updates the z index of a game object." alt="" coords="161,104,334,130"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="112,78,181,97,180,102,110,84"/>
+<area shape="rect" id="Node000005" href="$gameobject_8c.html#a6a1ebecd29c69ded46970bd41c3097f0" title=" " alt="" coords="388,79,529,104"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="334,104,372,99,372,104,335,109"/>
+<area shape="rect" id="Node000006" href="$gameobject_8c.html#a11caa0bf998b9de720cc858c6d02274b" title=" " alt="" coords="382,128,534,154"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="335,124,367,128,367,133,334,129"/>
+</map>

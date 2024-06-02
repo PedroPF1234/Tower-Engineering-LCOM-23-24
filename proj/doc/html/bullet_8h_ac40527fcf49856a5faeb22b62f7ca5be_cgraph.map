@@ -1,0 +1,15 @@
+<map id="updateAllBulletPositions" name="updateAllBulletPositions">
+<area shape="rect" id="Node000001" title="Updates the positions of all bullets in the BulletArray and removes any bullets that are no longer ac..." alt="" coords="5,55,168,80"/>
+<area shape="rect" id="Node000002" href="$bullet_8c.html#a9c687cdcc5c4801f5124b606e95f50ff" title="Retrieves a bullet from the BulletArray at a specified index." alt="" coords="234,5,338,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="141,51,218,32,219,37,142,57"/>
+<area shape="rect" id="Node000003" href="$bullet_8c.html#a7d310b405371fac77841b91acac0be24" title="Removes a bullet from the BulletArray at a specified index and destroys it." alt="" coords="222,55,350,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="168,65,206,65,206,70,168,70"/>
+<area shape="rect" id="Node000007" href="$bullet_8c.html#aacbebff259601895663305ab5570fdf2" title="Updates the position of a bullet based on its speed." alt="" coords="216,104,356,130"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="142,78,217,97,215,102,141,84"/>
+<area shape="rect" id="Node000004" href="$bullet_8c.html#a0c942f6cd5c1a4616e2287a8652609a0" title="Destroys a bullet and frees associated memory." alt="" coords="404,55,501,80"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="351,65,389,65,389,70,351,70"/>
+<area shape="rect" id="Node000005" href="$gameobject_8c.html#af963650b4f59cf45e19e0825bdc90ac4" title="Destroys a game object without erasing its associated sprite. Removes Game Object from the render pip..." alt="" coords="549,47,688,88"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="502,65,534,65,534,70,502,70"/>
+<area shape="rect" id="Node000006" href="$gameobject_8c.html#a11caa0bf998b9de720cc858c6d02274b" title=" " alt="" coords="736,55,888,80"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="688,65,720,65,720,70,688,70"/>
+</map>

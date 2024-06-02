@@ -1,0 +1,17 @@
+<map id="kbc_interrupt" name="kbc_interrupt">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,104,102,130"/>
+<area shape="rect" id="Node000002" href="$keyboardkeys_8c.html#a1694c3560e3c24c372f2da32af1dae1b" title=" " alt="" coords="150,5,285,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="67,102,102,71,148,40,158,35,160,40,151,44,106,75,70,106"/>
+<area shape="rect" id="Node000003" href="$kbc_8c.html#ab9e6ed7960d60aa4834f2038247d4536" title="KBC Interrupt Handler." alt="" coords="188,55,247,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="98,101,172,78,174,83,100,106"/>
+<area shape="rect" id="Node000005" href="$kbc_8c.html#aa4c58a11cd49c54cc0eb02a79010a9cc" title="Reads the status of the KBC." alt="" coords="159,104,276,130"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="102,114,143,114,143,120,102,120"/>
+<area shape="rect" id="Node000006" href="$mouse_8c.html#a9415728f5cf77eaf3b9b49d80dae7bdf" title="Fetches the information of the mouse." alt="" coords="161,153,274,179"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="100,128,158,146,157,151,98,133"/>
+<area shape="rect" id="Node000007" href="$mouse_8c.html#a834b6d7efe311484d6da234db333cb97" title="Mouse Interrupt Handler." alt="" coords="179,203,256,228"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="70,128,106,158,151,189,165,196,163,201,148,194,102,162,67,132"/>
+<area shape="rect" id="Node000004" href="$utils_8c.html#a2b56f50ba159e9d5115ed1a75eff15d9" title=" " alt="" coords="333,104,423,130"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="248,74,320,96,319,102,247,79"/>
+<area shape="poly" id="edge5_Node000005_Node000004" title=" " alt="" coords="277,114,318,114,318,120,277,120"/>
+<area shape="poly" id="edge8_Node000007_Node000004" title=" " alt="" coords="255,202,284,189,320,165,351,138,354,142,323,169,286,194,258,207"/>
+</map>

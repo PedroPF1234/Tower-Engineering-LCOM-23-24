@@ -1,0 +1,32 @@
+{
+  "env": {
+    "minix.include": "${workspaceFolder}/../.minix-src/include"
+  },
+  "configurations": [
+    {
+      "name": "windows-gcc-x86",
+      "compilerPath": "C:/MinGW/bin/gcc.exe",
+      "cStandard": "${default}",
+      "defines": [
+        "__minix",
+        "_MINIX",
+        "_NETBSD_SOURCE",
+        "__i386__"
+      ],
+      "includePath": [
+        "${workspaceFolder}/**"
+      ],
+      "browse": {
+        "path": [
+          "${workspaceFolder}",
+          "${env:minix.include}"
+        ],
+        "limitSymbolsToIncludedHeaders": false,
+        "databaseFilename": ""
+      },
+      "cppStandard": "${default}",
+      "intelliSenseMode": "windows-gcc-x86"
+    }
+  ],
+  "version": 4
+}

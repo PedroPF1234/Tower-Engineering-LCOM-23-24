@@ -1,0 +1,995 @@
+\doxysection{src/\+Image\+Assets/sprite.h File Reference}
+\hypertarget{sprite_8h}{}\label{sprite_8h}\index{src/ImageAssets/sprite.h@{src/ImageAssets/sprite.h}}
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include "{}Mouse\+Cursor.\+xpm"{}}\newline
+Include dependency graph for sprite.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=319pt]{sprite_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sprite_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_sprite}{Sprite}}
+\begin{DoxyCompactList}\small\item\em Struct that represents a sprite. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_sprite_array}{Sprite\+Array}}
+\begin{DoxyCompactList}\small\item\em Struct that represents an array of sprites. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_animated_sprite}{Animated\+Sprite}}
+\begin{DoxyCompactList}\small\item\em Struct that represents an animated sprite. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_animated_sprite_array}{Animated\+Sprite\+Array}}
+\begin{DoxyCompactList}\small\item\em Struct that represents an array of animated sprites. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct Sprite \mbox{\hyperlink{sprite_8h_abb1060e0b7ecf8b4eba2c1bb55cfe5e2}{Sprite}}
+\begin{DoxyCompactList}\small\item\em Struct that represents a sprite. \end{DoxyCompactList}\item 
+typedef struct Sprite\+Array \mbox{\hyperlink{sprite_8h_af17b1d8dfab4c497bcbd46567c1348d5}{Sprite\+Array}}
+\begin{DoxyCompactList}\small\item\em Struct that represents an array of sprites. \end{DoxyCompactList}\item 
+typedef struct Animated\+Sprite \mbox{\hyperlink{sprite_8h_a1957bfe95fd71999c9ae20ec7d93b0e6}{Animated\+Sprite}}
+\begin{DoxyCompactList}\small\item\em Struct that represents an animated sprite. \end{DoxyCompactList}\item 
+typedef struct Animated\+Sprite\+Array \mbox{\hyperlink{sprite_8h_afaa4c180362af3e40b6f142afad43f8a}{Animated\+Sprite\+Array}}
+\begin{DoxyCompactList}\small\item\em Struct that represents an array of animated sprites. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_animated_sprite_array}{Animated\+Sprite\+Array}} \mbox{\hyperlink{sprite_8h_a8178c2df422832dd1552ba70e8d4f52d}{new\+Animated\+Sprite\+Array}} (uint32\+\_\+t capacity)
+\begin{DoxyCompactList}\small\item\em Initializes a new array of animated sprites. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{sprite_8h_acf87d2670fccbda1a6c1be73af22dfe3}{push\+Animated\+Sprite\+Array}} (\mbox{\hyperlink{struct_animated_sprite_array}{Animated\+Sprite\+Array}} \texorpdfstring{$\ast$}{*}array, \mbox{\hyperlink{struct_animated_sprite}{Animated\+Sprite}} \texorpdfstring{$\ast$}{*}sprite)
+\begin{DoxyCompactList}\small\item\em Pushes a animated sprite to a given animated sprite array. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_animated_sprite}{Animated\+Sprite}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{sprite_8h_a191ec31167a0279ed387aae479b829b3}{get\+Animated\+Sprite\+Array}} (\mbox{\hyperlink{struct_animated_sprite_array}{Animated\+Sprite\+Array}} \texorpdfstring{$\ast$}{*}array, uint32\+\_\+t index)
+\begin{DoxyCompactList}\small\item\em Gets a animated sprite from a given animated sprite array. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{sprite_8h_acfc64a629d58494bbc3473c599531ac1}{remove\+Animated\+Sprite\+Array}} (\mbox{\hyperlink{struct_animated_sprite_array}{Animated\+Sprite\+Array}} \texorpdfstring{$\ast$}{*}array, uint32\+\_\+t index)
+\begin{DoxyCompactList}\small\item\em Removes a animated sprite from a given animated sprite array. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{sprite_8h_ae80e973c2c8b646d514fe5c80573ab3e}{destroy\+Animated\+Sprite\+Array}} (\mbox{\hyperlink{struct_animated_sprite_array}{Animated\+Sprite\+Array}} \texorpdfstring{$\ast$}{*}array)
+\begin{DoxyCompactList}\small\item\em Destroys a animated sprite array and frees associated memory. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_animated_sprite_array}{Animated\+Sprite\+Array}} \mbox{\hyperlink{sprite_8h_afc4dd6f8235181ecf069684ba7e0eada}{new\+Animated\+Sprite\+Array\+From\+Sprites}} (char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}sprites, uint8\+\_\+t sprites\+\_\+per\+\_\+animated, uint8\+\_\+t num\+\_\+of\+\_\+sprites, uint16\+\_\+t cooldown)
+\begin{DoxyCompactList}\small\item\em Initializes a new array of animated sprites from a given array of animated sprites. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_animated_sprite}{Animated\+Sprite}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{sprite_8h_a5e5b6ebe8dcacf46491d60bcc459cc6d}{create\+\_\+animated\+\_\+sprite}} (char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}sprites, uint8\+\_\+t num\+\_\+of\+\_\+sprites, uint16\+\_\+t cooldown)
+\begin{DoxyCompactList}\small\item\em Initializes a new animated sprite. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{sprite_8h_a10d7eba151f72da7f2e64a396fadfd89}{destroy\+\_\+animated\+\_\+sprite}} (\mbox{\hyperlink{struct_animated_sprite}{Animated\+Sprite}} \texorpdfstring{$\ast$}{*}sprite)
+\begin{DoxyCompactList}\small\item\em Destroys a animated sprite and frees associated memory. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{sprite_8h_a853d085992c4a6477ecbfb1f9426552c}{update\+\_\+animated\+\_\+sprite}} (\mbox{\hyperlink{struct_animated_sprite}{Animated\+Sprite}} \texorpdfstring{$\ast$}{*}sprite)
+\begin{DoxyCompactList}\small\item\em Updates a animated sprite. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_sprite_array}{Sprite\+Array}} \mbox{\hyperlink{sprite_8h_a2750de6808d67159c97628cb24c2b183}{new\+Sprite\+Array}} (uint32\+\_\+t capacity)
+\begin{DoxyCompactList}\small\item\em Initializes a new array of sprites. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_sprite_array}{Sprite\+Array}} \mbox{\hyperlink{sprite_8h_aa8ab201875f868ad409d4039fa59240b}{new\+Aprite\+From\+Char\+Array}} (char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}sprites, uint32\+\_\+t sprite\+\_\+count)
+\begin{DoxyCompactList}\small\item\em Initializes a new array of sprites from a given array of sprites. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{sprite_8h_a3397d0a7355254facaec13fcf99efe53}{push\+Sprite\+Array}} (\mbox{\hyperlink{struct_sprite_array}{Sprite\+Array}} \texorpdfstring{$\ast$}{*}array, \mbox{\hyperlink{struct_sprite}{Sprite}} \texorpdfstring{$\ast$}{*}sprite)
+\begin{DoxyCompactList}\small\item\em Pushes a sprite to a given sprite array. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_sprite}{Sprite}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{sprite_8h_a4ed5b9becd1df00c68f6348b54b01191}{get\+Sprite\+Array}} (\mbox{\hyperlink{struct_sprite_array}{Sprite\+Array}} \texorpdfstring{$\ast$}{*}array, uint32\+\_\+t index)
+\begin{DoxyCompactList}\small\item\em Gets a sprite from a given sprite array. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{sprite_8h_ad10f59426b477a031f223a0108781927}{remove\+Sprite\+Array}} (\mbox{\hyperlink{struct_sprite_array}{Sprite\+Array}} \texorpdfstring{$\ast$}{*}array, uint32\+\_\+t index)
+\begin{DoxyCompactList}\small\item\em Removes a sprite from a given sprite array. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{sprite_8h_a2e02ad1a9c90d6c39dccb793df2299ec}{destroy\+Sprite\+Array}} (\mbox{\hyperlink{struct_sprite_array}{Sprite\+Array}} \texorpdfstring{$\ast$}{*}array)
+\begin{DoxyCompactList}\small\item\em Destroys a sprite array and frees associated memory. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{sprite_8h_a19f3014843720f3932dd5a25b1c0cd12}{hide\+Sprites}} (\mbox{\hyperlink{struct_sprite_array}{Sprite\+Array}} \texorpdfstring{$\ast$}{*}array)
+\begin{DoxyCompactList}\small\item\em Hides all sprites in a given sprite array. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{sprite_8h_a6663bf197a01b85b22e21cde98c4c132}{show\+Sprites}} (\mbox{\hyperlink{struct_sprite_array}{Sprite\+Array}} \texorpdfstring{$\ast$}{*}array)
+\begin{DoxyCompactList}\small\item\em Shows all sprites in a given sprite array. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{sprite_8h_acd845b3c70b705b5a6a9e351a6616510}{clean\+Sprite\+Array}} (\mbox{\hyperlink{struct_sprite_array}{Sprite\+Array}} \texorpdfstring{$\ast$}{*}array)
+\begin{DoxyCompactList}\small\item\em Cleans a sprite array. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_sprite}{Sprite}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{sprite_8h_a06170cd082bf54a5bbb4fda040c83a0a}{create\+\_\+sprite}} (xpm\+\_\+map\+\_\+t pic, int16\+\_\+t x, int16\+\_\+t y, bool square\+\_\+shape, bool is\+\_\+visible)
+\begin{DoxyCompactList}\small\item\em Initializes a new sprite. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_sprite}{Sprite}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{sprite_8h_a9c312f1843a2af5c03fafd92cda3d8a3}{create\+\_\+rotation\+\_\+abled\+\_\+sprite}} (xpm\+\_\+map\+\_\+t pic, int16\+\_\+t x, int16\+\_\+t y, bool square\+\_\+shape, bool is\+\_\+visible, int \texorpdfstring{$\ast$}{*}num\+\_\+sprites)
+\begin{DoxyCompactList}\small\item\em Initializes a new sprite with the ability to be rotated. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_sprite}{Sprite}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{sprite_8h_a86dac8b19d8c34c469b2df0e0e29489e}{create\+\_\+sprite\+\_\+from\+\_\+sprite}} (\mbox{\hyperlink{struct_sprite}{Sprite}} \texorpdfstring{$\ast$}{*}sprite, int16\+\_\+t x, int16\+\_\+t y, bool is\+\_\+visible, int \mbox{\hyperlink{bullet_8c_a7ea545c3470ec259a6b23116258c5530}{rotations}})
+\begin{DoxyCompactList}\small\item\em Initializes a new rotated sprite from a given sprite. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{sprite_8h_af16c6befaac9ffb673b9e3c798d542ed}{destroy\+\_\+sprite}} (\mbox{\hyperlink{struct_sprite}{Sprite}} \texorpdfstring{$\ast$}{*}sp)
+\begin{DoxyCompactList}\small\item\em Destroys a sprite and frees associated memory. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{sprite_8h_ac8d1cbaf86dc7524aad57925bdf3e2cd}{update\+\_\+sprite\+\_\+visibility}} (\mbox{\hyperlink{struct_sprite}{Sprite}} \texorpdfstring{$\ast$}{*}sp, bool is\+\_\+visible)
+\begin{DoxyCompactList}\small\item\em Updates the visibility of a sprite. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{sprite_8h_a6c75fbf31230126d2f19b29deaf24b2f}{draw\+\_\+sprite}} (\mbox{\hyperlink{struct_sprite}{Sprite}} \texorpdfstring{$\ast$}{*}sp)
+\begin{DoxyCompactList}\small\item\em Draws a sprite. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_sprite}{Sprite}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{sprite_8h_a0c722ac2dbcd401373c21e8b33679945}{get\+Sprite\+From\+Angle}} (\mbox{\hyperlink{struct_sprite}{Sprite}} \texorpdfstring{$\ast$}{*}sprite, int angle)
+\begin{DoxyCompactList}\small\item\em Gets a sprite from a given sprite with the intended angle. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{sprite_8h_a311fa58d9959113bb14be3676e0ed8c5}{calculate\+\_\+angle}} (float x, float y, float x2, float y2)
+\begin{DoxyCompactList}\small\item\em Calculates the angle between a line connecting two points and the x-\/axis. \end{DoxyCompactList}\item 
+float \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{sprite_8h_a9c8b55bb5d5f980a3806fa95c391f8ae}{normalize\+\_\+vector}} (float x, float y, float x2, float y2)
+\begin{DoxyCompactList}\small\item\em Normalizes a vector defined by two points. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Typedef Documentation}
+\Hypertarget{sprite_8h_a1957bfe95fd71999c9ae20ec7d93b0e6}\index{sprite.h@{sprite.h}!AnimatedSprite@{AnimatedSprite}}
+\index{AnimatedSprite@{AnimatedSprite}!sprite.h@{sprite.h}}
+\doxysubsubsection{\texorpdfstring{AnimatedSprite}{AnimatedSprite}}
+{\footnotesize\ttfamily \label{sprite_8h_a1957bfe95fd71999c9ae20ec7d93b0e6} 
+typedef struct Animated\+Sprite Animated\+Sprite}
+
+
+
+Struct that represents an animated sprite. 
+
+Struct that contains an array of sprites, the current sprite, the animation cooldown and the cooldown counter.
+
+
+\begin{DoxyParams}{Parameters}
+{\em sprites} & The array of sprites. \\
+\hline
+{\em current\+\_\+sprite} & The index of the current sprite. \\
+\hline
+{\em animation\+\_\+cooldown} & The ammount of time between each sprite change (in milliseconds, ms). \\
+\hline
+{\em cooldown\+\_\+counter} & The counter of the cooldown. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{sprite_8h_afaa4c180362af3e40b6f142afad43f8a}\index{sprite.h@{sprite.h}!AnimatedSpriteArray@{AnimatedSpriteArray}}
+\index{AnimatedSpriteArray@{AnimatedSpriteArray}!sprite.h@{sprite.h}}
+\doxysubsubsection{\texorpdfstring{AnimatedSpriteArray}{AnimatedSpriteArray}}
+{\footnotesize\ttfamily \label{sprite_8h_afaa4c180362af3e40b6f142afad43f8a} 
+typedef struct Animated\+Sprite\+Array Animated\+Sprite\+Array}
+
+
+
+Struct that represents an array of animated sprites. 
+
+Struct that contains an array of animated sprites, the capacity and the length of the array.
+
+
+\begin{DoxyParams}{Parameters}
+{\em sprites} & The array of animated sprites. \\
+\hline
+{\em capacity} & The capacity of the array. \\
+\hline
+{\em length} & The length of the array. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{sprite_8h_abb1060e0b7ecf8b4eba2c1bb55cfe5e2}\index{sprite.h@{sprite.h}!Sprite@{Sprite}}
+\index{Sprite@{Sprite}!sprite.h@{sprite.h}}
+\doxysubsubsection{\texorpdfstring{Sprite}{Sprite}}
+{\footnotesize\ttfamily \label{sprite_8h_abb1060e0b7ecf8b4eba2c1bb55cfe5e2} 
+typedef struct Sprite Sprite}
+
+
+
+Struct that represents a sprite. 
+
+Struct that contains the x and y position, the width and height, the map of pixels of the sprite, the visibility and the shape of the sprite.
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & The x position of the sprite. \\
+\hline
+{\em y} & The y position of the sprite. \\
+\hline
+{\em width} & The width of the sprite. \\
+\hline
+{\em height} & The height of the sprite. \\
+\hline
+{\em map} & The map of pixels of the sprite. \\
+\hline
+{\em is\+\_\+visible} & A boolean that represents if the sprite is visible. \\
+\hline
+{\em square\+\_\+shape} & A boolean that represents if the sprite is squared. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{sprite_8h_af17b1d8dfab4c497bcbd46567c1348d5}\index{sprite.h@{sprite.h}!SpriteArray@{SpriteArray}}
+\index{SpriteArray@{SpriteArray}!sprite.h@{sprite.h}}
+\doxysubsubsection{\texorpdfstring{SpriteArray}{SpriteArray}}
+{\footnotesize\ttfamily \label{sprite_8h_af17b1d8dfab4c497bcbd46567c1348d5} 
+typedef struct Sprite\+Array Sprite\+Array}
+
+
+
+Struct that represents an array of sprites. 
+
+Struct that contains an array of sprites, the capacity and the length of the array.
+
+
+\begin{DoxyParams}{Parameters}
+{\em sprites} & The array of sprites. \\
+\hline
+{\em capacity} & The capacity of the array. \\
+\hline
+{\em length} & The length of the array. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{sprite_8h_a311fa58d9959113bb14be3676e0ed8c5}\index{sprite.h@{sprite.h}!calculate\_angle@{calculate\_angle}}
+\index{calculate\_angle@{calculate\_angle}!sprite.h@{sprite.h}}
+\doxysubsubsection{\texorpdfstring{calculate\_angle()}{calculate\_angle()}}
+{\footnotesize\ttfamily \label{sprite_8h_a311fa58d9959113bb14be3676e0ed8c5} 
+int calculate\+\_\+angle (\begin{DoxyParamCaption}\item[{float}]{x}{, }\item[{float}]{y}{, }\item[{float}]{x2}{, }\item[{float}]{y2}{}\end{DoxyParamCaption})}
+
+
+
+Calculates the angle between a line connecting two points and the x-\/axis. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & The x position of the first point. \\
+\hline
+{\em y} & The y position of the first point. \\
+\hline
+{\em x2} & The x position of the second point. \\
+\hline
+{\em y2} & The y position of the second point. \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sprite_8h_a311fa58d9959113bb14be3676e0ed8c5_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{sprite_8h_acd845b3c70b705b5a6a9e351a6616510}\index{sprite.h@{sprite.h}!cleanSpriteArray@{cleanSpriteArray}}
+\index{cleanSpriteArray@{cleanSpriteArray}!sprite.h@{sprite.h}}
+\doxysubsubsection{\texorpdfstring{cleanSpriteArray()}{cleanSpriteArray()}}
+{\footnotesize\ttfamily \label{sprite_8h_acd845b3c70b705b5a6a9e351a6616510} 
+void clean\+Sprite\+Array (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_sprite_array}{Sprite\+Array}} \texorpdfstring{$\ast$}{*}}]{array}{}\end{DoxyParamCaption})}
+
+
+
+Cleans a sprite array. 
+
+Cleans a sprite array by setting its length to 0.
+
+
+\begin{DoxyParams}{Parameters}
+{\em array} & The array of sprites to be cleaned. \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sprite_8h_acd845b3c70b705b5a6a9e351a6616510_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{sprite_8h_a5e5b6ebe8dcacf46491d60bcc459cc6d}\index{sprite.h@{sprite.h}!create\_animated\_sprite@{create\_animated\_sprite}}
+\index{create\_animated\_sprite@{create\_animated\_sprite}!sprite.h@{sprite.h}}
+\doxysubsubsection{\texorpdfstring{create\_animated\_sprite()}{create\_animated\_sprite()}}
+{\footnotesize\ttfamily \label{sprite_8h_a5e5b6ebe8dcacf46491d60bcc459cc6d} 
+\mbox{\hyperlink{struct_animated_sprite}{Animated\+Sprite}} \texorpdfstring{$\ast$}{*} create\+\_\+animated\+\_\+sprite (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{sprites}{, }\item[{uint8\+\_\+t}]{num\+\_\+of\+\_\+sprites}{, }\item[{uint16\+\_\+t}]{cooldown}{}\end{DoxyParamCaption})}
+
+
+
+Initializes a new animated sprite. 
+
+Initializes a new animated sprite with the given array of sprites and the animation cooldown.
+
+
+\begin{DoxyParams}{Parameters}
+{\em sprites} & The array of sprites. \\
+\hline
+{\em num\+\_\+of\+\_\+sprites} & The number of sprites. \\
+\hline
+{\em cooldown} & The ammount of time between each sprite change (in milliseconds, ms). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A new \doxylink{struct_animated_sprite}{Animated\+Sprite} object. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sprite_8h_a5e5b6ebe8dcacf46491d60bcc459cc6d_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sprite_8h_a5e5b6ebe8dcacf46491d60bcc459cc6d_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{sprite_8h_a9c312f1843a2af5c03fafd92cda3d8a3}\index{sprite.h@{sprite.h}!create\_rotation\_abled\_sprite@{create\_rotation\_abled\_sprite}}
+\index{create\_rotation\_abled\_sprite@{create\_rotation\_abled\_sprite}!sprite.h@{sprite.h}}
+\doxysubsubsection{\texorpdfstring{create\_rotation\_abled\_sprite()}{create\_rotation\_abled\_sprite()}}
+{\footnotesize\ttfamily \label{sprite_8h_a9c312f1843a2af5c03fafd92cda3d8a3} 
+\mbox{\hyperlink{struct_sprite}{Sprite}} \texorpdfstring{$\ast$}{*} create\+\_\+rotation\+\_\+abled\+\_\+sprite (\begin{DoxyParamCaption}\item[{xpm\+\_\+map\+\_\+t}]{pic}{, }\item[{int16\+\_\+t}]{x}{, }\item[{int16\+\_\+t}]{y}{, }\item[{bool}]{square\+\_\+shape}{, }\item[{bool}]{is\+\_\+visible}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{num\+\_\+sprites}{}\end{DoxyParamCaption})}
+
+
+
+Initializes a new sprite with the ability to be rotated. 
+
+Initializes a new rotating sprite with the given x and y position, the map of pixels, the shape and the visibility.
+
+
+\begin{DoxyParams}{Parameters}
+{\em pic} & The map of pixels of the sprite. \\
+\hline
+{\em x} & The x position of the sprite. \\
+\hline
+{\em y} & The y position of the sprite. \\
+\hline
+{\em square\+\_\+shape} & A boolean that represents if the sprite is squared. \\
+\hline
+{\em is\+\_\+visible} & A boolean that represents if the sprite is visible. \\
+\hline
+{\em num\+\_\+sprites} & The number of different rotating sprites. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A new \doxylink{struct_sprite}{Sprite} object. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=297pt]{sprite_8h_a9c312f1843a2af5c03fafd92cda3d8a3_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sprite_8h_a9c312f1843a2af5c03fafd92cda3d8a3_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{sprite_8h_a06170cd082bf54a5bbb4fda040c83a0a}\index{sprite.h@{sprite.h}!create\_sprite@{create\_sprite}}
+\index{create\_sprite@{create\_sprite}!sprite.h@{sprite.h}}
+\doxysubsubsection{\texorpdfstring{create\_sprite()}{create\_sprite()}}
+{\footnotesize\ttfamily \label{sprite_8h_a06170cd082bf54a5bbb4fda040c83a0a} 
+\mbox{\hyperlink{struct_sprite}{Sprite}} \texorpdfstring{$\ast$}{*} create\+\_\+sprite (\begin{DoxyParamCaption}\item[{xpm\+\_\+map\+\_\+t}]{pic}{, }\item[{int16\+\_\+t}]{x}{, }\item[{int16\+\_\+t}]{y}{, }\item[{bool}]{square\+\_\+shape}{, }\item[{bool}]{is\+\_\+visible}{}\end{DoxyParamCaption})}
+
+
+
+Initializes a new sprite. 
+
+Initializes a new sprite with the given x and y position, the map of pixels, the shape and the visibility.
+
+
+\begin{DoxyParams}{Parameters}
+{\em pic} & The map of pixels of the sprite. \\
+\hline
+{\em x} & The x position of the sprite. \\
+\hline
+{\em y} & The y position of the sprite. \\
+\hline
+{\em square\+\_\+shape} & A boolean that represents if the sprite is squared. \\
+\hline
+{\em is\+\_\+visible} & A boolean that represents if the sprite is visible. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A new \doxylink{struct_sprite}{Sprite} object. 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sprite_8h_a06170cd082bf54a5bbb4fda040c83a0a_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{sprite_8h_a86dac8b19d8c34c469b2df0e0e29489e}\index{sprite.h@{sprite.h}!create\_sprite\_from\_sprite@{create\_sprite\_from\_sprite}}
+\index{create\_sprite\_from\_sprite@{create\_sprite\_from\_sprite}!sprite.h@{sprite.h}}
+\doxysubsubsection{\texorpdfstring{create\_sprite\_from\_sprite()}{create\_sprite\_from\_sprite()}}
+{\footnotesize\ttfamily \label{sprite_8h_a86dac8b19d8c34c469b2df0e0e29489e} 
+\mbox{\hyperlink{struct_sprite}{Sprite}} \texorpdfstring{$\ast$}{*} create\+\_\+sprite\+\_\+from\+\_\+sprite (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_sprite}{Sprite}} \texorpdfstring{$\ast$}{*}}]{sprite}{, }\item[{int16\+\_\+t}]{x}{, }\item[{int16\+\_\+t}]{y}{, }\item[{bool}]{is\+\_\+visible}{, }\item[{int}]{rotations}{}\end{DoxyParamCaption})}
+
+
+
+Initializes a new rotated sprite from a given sprite. 
+
+Initializes a new rotated sprite from a given sprite with the given x and y position, the visibility and the number of rotations.
+
+
+\begin{DoxyParams}{Parameters}
+{\em sprite} & The sprite to be rotated. \\
+\hline
+{\em x} & The x position of the sprite. \\
+\hline
+{\em y} & The y position of the sprite. \\
+\hline
+{\em is\+\_\+visible} & A boolean that represents if the sprite is visible. \\
+\hline
+{\em rotations} & The index corresponding to the intended rotation angle of the sprite. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A new \doxylink{struct_sprite}{Sprite} object rotated to the intended rotation/angle. 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sprite_8h_a86dac8b19d8c34c469b2df0e0e29489e_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{sprite_8h_a10d7eba151f72da7f2e64a396fadfd89}\index{sprite.h@{sprite.h}!destroy\_animated\_sprite@{destroy\_animated\_sprite}}
+\index{destroy\_animated\_sprite@{destroy\_animated\_sprite}!sprite.h@{sprite.h}}
+\doxysubsubsection{\texorpdfstring{destroy\_animated\_sprite()}{destroy\_animated\_sprite()}}
+{\footnotesize\ttfamily \label{sprite_8h_a10d7eba151f72da7f2e64a396fadfd89} 
+void destroy\+\_\+animated\+\_\+sprite (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_animated_sprite}{Animated\+Sprite}} \texorpdfstring{$\ast$}{*}}]{sprite}{}\end{DoxyParamCaption})}
+
+
+
+Destroys a animated sprite and frees associated memory. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sprite} & The animated sprite to be destroyed. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sprite_8h_a10d7eba151f72da7f2e64a396fadfd89_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sprite_8h_a10d7eba151f72da7f2e64a396fadfd89_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{sprite_8h_af16c6befaac9ffb673b9e3c798d542ed}\index{sprite.h@{sprite.h}!destroy\_sprite@{destroy\_sprite}}
+\index{destroy\_sprite@{destroy\_sprite}!sprite.h@{sprite.h}}
+\doxysubsubsection{\texorpdfstring{destroy\_sprite()}{destroy\_sprite()}}
+{\footnotesize\ttfamily \label{sprite_8h_af16c6befaac9ffb673b9e3c798d542ed} 
+void destroy\+\_\+sprite (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_sprite}{Sprite}} \texorpdfstring{$\ast$}{*}}]{sp}{}\end{DoxyParamCaption})}
+
+
+
+Destroys a sprite and frees associated memory. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sp} & The sprite to be destroyed. \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sprite_8h_af16c6befaac9ffb673b9e3c798d542ed_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{sprite_8h_ae80e973c2c8b646d514fe5c80573ab3e}\index{sprite.h@{sprite.h}!destroyAnimatedSpriteArray@{destroyAnimatedSpriteArray}}
+\index{destroyAnimatedSpriteArray@{destroyAnimatedSpriteArray}!sprite.h@{sprite.h}}
+\doxysubsubsection{\texorpdfstring{destroyAnimatedSpriteArray()}{destroyAnimatedSpriteArray()}}
+{\footnotesize\ttfamily \label{sprite_8h_ae80e973c2c8b646d514fe5c80573ab3e} 
+void destroy\+Animated\+Sprite\+Array (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_animated_sprite_array}{Animated\+Sprite\+Array}} \texorpdfstring{$\ast$}{*}}]{array}{}\end{DoxyParamCaption})}
+
+
+
+Destroys a animated sprite array and frees associated memory. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em array} & The array of animated sprites to be destroyed. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sprite_8h_ae80e973c2c8b646d514fe5c80573ab3e_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sprite_8h_ae80e973c2c8b646d514fe5c80573ab3e_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{sprite_8h_a2e02ad1a9c90d6c39dccb793df2299ec}\index{sprite.h@{sprite.h}!destroySpriteArray@{destroySpriteArray}}
+\index{destroySpriteArray@{destroySpriteArray}!sprite.h@{sprite.h}}
+\doxysubsubsection{\texorpdfstring{destroySpriteArray()}{destroySpriteArray()}}
+{\footnotesize\ttfamily \label{sprite_8h_a2e02ad1a9c90d6c39dccb793df2299ec} 
+void destroy\+Sprite\+Array (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_sprite_array}{Sprite\+Array}} \texorpdfstring{$\ast$}{*}}]{array}{}\end{DoxyParamCaption})}
+
+
+
+Destroys a sprite array and frees associated memory. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em array} & The array of sprites to be destroyed. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=291pt]{sprite_8h_a2e02ad1a9c90d6c39dccb793df2299ec_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sprite_8h_a2e02ad1a9c90d6c39dccb793df2299ec_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{sprite_8h_a6c75fbf31230126d2f19b29deaf24b2f}\index{sprite.h@{sprite.h}!draw\_sprite@{draw\_sprite}}
+\index{draw\_sprite@{draw\_sprite}!sprite.h@{sprite.h}}
+\doxysubsubsection{\texorpdfstring{draw\_sprite()}{draw\_sprite()}}
+{\footnotesize\ttfamily \label{sprite_8h_a6c75fbf31230126d2f19b29deaf24b2f} 
+int draw\+\_\+sprite (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_sprite}{Sprite}} \texorpdfstring{$\ast$}{*}}]{sp}{}\end{DoxyParamCaption})}
+
+
+
+Draws a sprite. 
+
+Draws a given sprite on the screen.
+
+
+\begin{DoxyParams}{Parameters}
+{\em sp} & The sprite to be drawn. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=259pt]{sprite_8h_a6c75fbf31230126d2f19b29deaf24b2f_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sprite_8h_a6c75fbf31230126d2f19b29deaf24b2f_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{sprite_8h_a191ec31167a0279ed387aae479b829b3}\index{sprite.h@{sprite.h}!getAnimatedSpriteArray@{getAnimatedSpriteArray}}
+\index{getAnimatedSpriteArray@{getAnimatedSpriteArray}!sprite.h@{sprite.h}}
+\doxysubsubsection{\texorpdfstring{getAnimatedSpriteArray()}{getAnimatedSpriteArray()}}
+{\footnotesize\ttfamily \label{sprite_8h_a191ec31167a0279ed387aae479b829b3} 
+\mbox{\hyperlink{struct_animated_sprite}{Animated\+Sprite}} \texorpdfstring{$\ast$}{*} get\+Animated\+Sprite\+Array (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_animated_sprite_array}{Animated\+Sprite\+Array}} \texorpdfstring{$\ast$}{*}}]{array}{, }\item[{uint32\+\_\+t}]{index}{}\end{DoxyParamCaption})}
+
+
+
+Gets a animated sprite from a given animated sprite array. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em array} & The array of animated sprites. \\
+\hline
+{\em index} & The index of the animated sprite to be retrieved. \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sprite_8h_a191ec31167a0279ed387aae479b829b3_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{sprite_8h_a4ed5b9becd1df00c68f6348b54b01191}\index{sprite.h@{sprite.h}!getSpriteArray@{getSpriteArray}}
+\index{getSpriteArray@{getSpriteArray}!sprite.h@{sprite.h}}
+\doxysubsubsection{\texorpdfstring{getSpriteArray()}{getSpriteArray()}}
+{\footnotesize\ttfamily \label{sprite_8h_a4ed5b9becd1df00c68f6348b54b01191} 
+\mbox{\hyperlink{struct_sprite}{Sprite}} \texorpdfstring{$\ast$}{*} get\+Sprite\+Array (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_sprite_array}{Sprite\+Array}} \texorpdfstring{$\ast$}{*}}]{array}{, }\item[{uint32\+\_\+t}]{index}{}\end{DoxyParamCaption})}
+
+
+
+Gets a sprite from a given sprite array. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em array} & The array of sprites. \\
+\hline
+{\em index} & The index of the sprite to be retrieved. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The sprite at the given index. 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sprite_8h_a4ed5b9becd1df00c68f6348b54b01191_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{sprite_8h_a0c722ac2dbcd401373c21e8b33679945}\index{sprite.h@{sprite.h}!getSpriteFromAngle@{getSpriteFromAngle}}
+\index{getSpriteFromAngle@{getSpriteFromAngle}!sprite.h@{sprite.h}}
+\doxysubsubsection{\texorpdfstring{getSpriteFromAngle()}{getSpriteFromAngle()}}
+{\footnotesize\ttfamily \label{sprite_8h_a0c722ac2dbcd401373c21e8b33679945} 
+\mbox{\hyperlink{struct_sprite}{Sprite}} \texorpdfstring{$\ast$}{*} get\+Sprite\+From\+Angle (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_sprite}{Sprite}} \texorpdfstring{$\ast$}{*}}]{sprite}{, }\item[{int}]{angle}{}\end{DoxyParamCaption})}
+
+
+
+Gets a sprite from a given sprite with the intended angle. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sprite} & The sprite to be rotated. \\
+\hline
+{\em angle} & The intended angle of the sprite. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A \doxylink{struct_sprite}{Sprite} object rotated to the intended angle. 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sprite_8h_a0c722ac2dbcd401373c21e8b33679945_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{sprite_8h_a19f3014843720f3932dd5a25b1c0cd12}\index{sprite.h@{sprite.h}!hideSprites@{hideSprites}}
+\index{hideSprites@{hideSprites}!sprite.h@{sprite.h}}
+\doxysubsubsection{\texorpdfstring{hideSprites()}{hideSprites()}}
+{\footnotesize\ttfamily \label{sprite_8h_a19f3014843720f3932dd5a25b1c0cd12} 
+void hide\+Sprites (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_sprite_array}{Sprite\+Array}} \texorpdfstring{$\ast$}{*}}]{array}{}\end{DoxyParamCaption})}
+
+
+
+Hides all sprites in a given sprite array. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em array} & The array of sprites. \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sprite_8h_a19f3014843720f3932dd5a25b1c0cd12_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{sprite_8h_a8178c2df422832dd1552ba70e8d4f52d}\index{sprite.h@{sprite.h}!newAnimatedSpriteArray@{newAnimatedSpriteArray}}
+\index{newAnimatedSpriteArray@{newAnimatedSpriteArray}!sprite.h@{sprite.h}}
+\doxysubsubsection{\texorpdfstring{newAnimatedSpriteArray()}{newAnimatedSpriteArray()}}
+{\footnotesize\ttfamily \label{sprite_8h_a8178c2df422832dd1552ba70e8d4f52d} 
+\mbox{\hyperlink{struct_animated_sprite_array}{Animated\+Sprite\+Array}} new\+Animated\+Sprite\+Array (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{capacity}{}\end{DoxyParamCaption})}
+
+
+
+Initializes a new array of animated sprites. 
+
+Initializes a new array of animated sprites with the given capacity.
+
+
+\begin{DoxyParams}{Parameters}
+{\em capacity} & The capacity of the array. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A new \doxylink{struct_animated_sprite_array}{Animated\+Sprite\+Array} object. 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sprite_8h_a8178c2df422832dd1552ba70e8d4f52d_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{sprite_8h_afc4dd6f8235181ecf069684ba7e0eada}\index{sprite.h@{sprite.h}!newAnimatedSpriteArrayFromSprites@{newAnimatedSpriteArrayFromSprites}}
+\index{newAnimatedSpriteArrayFromSprites@{newAnimatedSpriteArrayFromSprites}!sprite.h@{sprite.h}}
+\doxysubsubsection{\texorpdfstring{newAnimatedSpriteArrayFromSprites()}{newAnimatedSpriteArrayFromSprites()}}
+{\footnotesize\ttfamily \label{sprite_8h_afc4dd6f8235181ecf069684ba7e0eada} 
+\mbox{\hyperlink{struct_animated_sprite_array}{Animated\+Sprite\+Array}} new\+Animated\+Sprite\+Array\+From\+Sprites (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{sprites}{, }\item[{uint8\+\_\+t}]{sprites\+\_\+per\+\_\+animated}{, }\item[{uint8\+\_\+t}]{num\+\_\+of\+\_\+sprites}{, }\item[{uint16\+\_\+t}]{cooldown}{}\end{DoxyParamCaption})}
+
+
+
+Initializes a new array of animated sprites from a given array of animated sprites. 
+
+Initializes a new array of animated sprites from a given array of animated sprites.
+
+
+\begin{DoxyParams}{Parameters}
+{\em sprites} & The array of animated sprites. \\
+\hline
+{\em sprites\+\_\+per\+\_\+animated} & The number of sprites per animated sprite. \\
+\hline
+{\em num\+\_\+of\+\_\+sprites} & The number of animated sprites. \\
+\hline
+{\em cooldown} & The ammount of time between each sprite change (in milliseconds, ms). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A new \doxylink{struct_animated_sprite_array}{Animated\+Sprite\+Array} object. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sprite_8h_afc4dd6f8235181ecf069684ba7e0eada_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sprite_8h_afc4dd6f8235181ecf069684ba7e0eada_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{sprite_8h_aa8ab201875f868ad409d4039fa59240b}\index{sprite.h@{sprite.h}!newApriteFromCharArray@{newApriteFromCharArray}}
+\index{newApriteFromCharArray@{newApriteFromCharArray}!sprite.h@{sprite.h}}
+\doxysubsubsection{\texorpdfstring{newApriteFromCharArray()}{newApriteFromCharArray()}}
+{\footnotesize\ttfamily \label{sprite_8h_aa8ab201875f868ad409d4039fa59240b} 
+\mbox{\hyperlink{struct_sprite_array}{Sprite\+Array}} new\+Aprite\+From\+Char\+Array (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{sprites}{, }\item[{uint32\+\_\+t}]{sprite\+\_\+count}{}\end{DoxyParamCaption})}
+
+
+
+Initializes a new array of sprites from a given array of sprites. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sprites} & The array of sprites. \\
+\hline
+{\em sprite\+\_\+count} & The number of sprites. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A new \doxylink{struct_sprite_array}{Sprite\+Array} object. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=328pt]{sprite_8h_aa8ab201875f868ad409d4039fa59240b_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sprite_8h_aa8ab201875f868ad409d4039fa59240b_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{sprite_8h_a2750de6808d67159c97628cb24c2b183}\index{sprite.h@{sprite.h}!newSpriteArray@{newSpriteArray}}
+\index{newSpriteArray@{newSpriteArray}!sprite.h@{sprite.h}}
+\doxysubsubsection{\texorpdfstring{newSpriteArray()}{newSpriteArray()}}
+{\footnotesize\ttfamily \label{sprite_8h_a2750de6808d67159c97628cb24c2b183} 
+\mbox{\hyperlink{struct_sprite_array}{Sprite\+Array}} new\+Sprite\+Array (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{capacity}{}\end{DoxyParamCaption})}
+
+
+
+Initializes a new array of sprites. 
+
+Initializes a new array of sprites with the given capacity.
+
+
+\begin{DoxyParams}{Parameters}
+{\em capacity} & The capacity of the array. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A new \doxylink{struct_sprite_array}{Sprite\+Array} object. 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sprite_8h_a2750de6808d67159c97628cb24c2b183_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{sprite_8h_a9c8b55bb5d5f980a3806fa95c391f8ae}\index{sprite.h@{sprite.h}!normalize\_vector@{normalize\_vector}}
+\index{normalize\_vector@{normalize\_vector}!sprite.h@{sprite.h}}
+\doxysubsubsection{\texorpdfstring{normalize\_vector()}{normalize\_vector()}}
+{\footnotesize\ttfamily \label{sprite_8h_a9c8b55bb5d5f980a3806fa95c391f8ae} 
+float \texorpdfstring{$\ast$}{*} normalize\+\_\+vector (\begin{DoxyParamCaption}\item[{float}]{x}{, }\item[{float}]{y}{, }\item[{float}]{x2}{, }\item[{float}]{y2}{}\end{DoxyParamCaption})}
+
+
+
+Normalizes a vector defined by two points. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & The x position of the first point. \\
+\hline
+{\em y} & The y position of the first point. \\
+\hline
+{\em x2} & The x position of the second point. \\
+\hline
+{\em y2} & The y position of the second point. \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sprite_8h_a9c8b55bb5d5f980a3806fa95c391f8ae_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{sprite_8h_acf87d2670fccbda1a6c1be73af22dfe3}\index{sprite.h@{sprite.h}!pushAnimatedSpriteArray@{pushAnimatedSpriteArray}}
+\index{pushAnimatedSpriteArray@{pushAnimatedSpriteArray}!sprite.h@{sprite.h}}
+\doxysubsubsection{\texorpdfstring{pushAnimatedSpriteArray()}{pushAnimatedSpriteArray()}}
+{\footnotesize\ttfamily \label{sprite_8h_acf87d2670fccbda1a6c1be73af22dfe3} 
+void push\+Animated\+Sprite\+Array (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_animated_sprite_array}{Animated\+Sprite\+Array}} \texorpdfstring{$\ast$}{*}}]{array}{, }\item[{\mbox{\hyperlink{struct_animated_sprite}{Animated\+Sprite}} \texorpdfstring{$\ast$}{*}}]{sprite}{}\end{DoxyParamCaption})}
+
+
+
+Pushes a animated sprite to a given animated sprite array. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em array} & The array of animated sprites. \\
+\hline
+{\em sprite} & The animated sprite to be pushed to the array. \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sprite_8h_acf87d2670fccbda1a6c1be73af22dfe3_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{sprite_8h_a3397d0a7355254facaec13fcf99efe53}\index{sprite.h@{sprite.h}!pushSpriteArray@{pushSpriteArray}}
+\index{pushSpriteArray@{pushSpriteArray}!sprite.h@{sprite.h}}
+\doxysubsubsection{\texorpdfstring{pushSpriteArray()}{pushSpriteArray()}}
+{\footnotesize\ttfamily \label{sprite_8h_a3397d0a7355254facaec13fcf99efe53} 
+void push\+Sprite\+Array (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_sprite_array}{Sprite\+Array}} \texorpdfstring{$\ast$}{*}}]{array}{, }\item[{\mbox{\hyperlink{struct_sprite}{Sprite}} \texorpdfstring{$\ast$}{*}}]{sprite}{}\end{DoxyParamCaption})}
+
+
+
+Pushes a sprite to a given sprite array. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em array} & The array of sprites. \\
+\hline
+{\em sprite} & The sprite to be pushed to the array. \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sprite_8h_a3397d0a7355254facaec13fcf99efe53_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{sprite_8h_acfc64a629d58494bbc3473c599531ac1}\index{sprite.h@{sprite.h}!removeAnimatedSpriteArray@{removeAnimatedSpriteArray}}
+\index{removeAnimatedSpriteArray@{removeAnimatedSpriteArray}!sprite.h@{sprite.h}}
+\doxysubsubsection{\texorpdfstring{removeAnimatedSpriteArray()}{removeAnimatedSpriteArray()}}
+{\footnotesize\ttfamily \label{sprite_8h_acfc64a629d58494bbc3473c599531ac1} 
+void remove\+Animated\+Sprite\+Array (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_animated_sprite_array}{Animated\+Sprite\+Array}} \texorpdfstring{$\ast$}{*}}]{array}{, }\item[{uint32\+\_\+t}]{index}{}\end{DoxyParamCaption})}
+
+
+
+Removes a animated sprite from a given animated sprite array. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em array} & The array of animated sprites. \\
+\hline
+{\em index} & The index of the animated sprite to be removed. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sprite_8h_acfc64a629d58494bbc3473c599531ac1_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{sprite_8h_ad10f59426b477a031f223a0108781927}\index{sprite.h@{sprite.h}!removeSpriteArray@{removeSpriteArray}}
+\index{removeSpriteArray@{removeSpriteArray}!sprite.h@{sprite.h}}
+\doxysubsubsection{\texorpdfstring{removeSpriteArray()}{removeSpriteArray()}}
+{\footnotesize\ttfamily \label{sprite_8h_ad10f59426b477a031f223a0108781927} 
+void remove\+Sprite\+Array (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_sprite_array}{Sprite\+Array}} \texorpdfstring{$\ast$}{*}}]{array}{, }\item[{uint32\+\_\+t}]{index}{}\end{DoxyParamCaption})}
+
+
+
+Removes a sprite from a given sprite array. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em array} & The array of sprites. \\
+\hline
+{\em index} & The index of the sprite to be removed. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=291pt]{sprite_8h_ad10f59426b477a031f223a0108781927_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{sprite_8h_a6663bf197a01b85b22e21cde98c4c132}\index{sprite.h@{sprite.h}!showSprites@{showSprites}}
+\index{showSprites@{showSprites}!sprite.h@{sprite.h}}
+\doxysubsubsection{\texorpdfstring{showSprites()}{showSprites()}}
+{\footnotesize\ttfamily \label{sprite_8h_a6663bf197a01b85b22e21cde98c4c132} 
+void show\+Sprites (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_sprite_array}{Sprite\+Array}} \texorpdfstring{$\ast$}{*}}]{array}{}\end{DoxyParamCaption})}
+
+
+
+Shows all sprites in a given sprite array. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em array} & The array of sprites. \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sprite_8h_a6663bf197a01b85b22e21cde98c4c132_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{sprite_8h_a853d085992c4a6477ecbfb1f9426552c}\index{sprite.h@{sprite.h}!update\_animated\_sprite@{update\_animated\_sprite}}
+\index{update\_animated\_sprite@{update\_animated\_sprite}!sprite.h@{sprite.h}}
+\doxysubsubsection{\texorpdfstring{update\_animated\_sprite()}{update\_animated\_sprite()}}
+{\footnotesize\ttfamily \label{sprite_8h_a853d085992c4a6477ecbfb1f9426552c} 
+void update\+\_\+animated\+\_\+sprite (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_animated_sprite}{Animated\+Sprite}} \texorpdfstring{$\ast$}{*}}]{sprite}{}\end{DoxyParamCaption})}
+
+
+
+Updates a animated sprite. 
+
+Updates a animated sprite by changing the current sprite based on the cooldown.
+
+
+\begin{DoxyParams}{Parameters}
+{\em sprite} & The animated sprite to be updated. \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sprite_8h_a853d085992c4a6477ecbfb1f9426552c_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{sprite_8h_ac8d1cbaf86dc7524aad57925bdf3e2cd}\index{sprite.h@{sprite.h}!update\_sprite\_visibility@{update\_sprite\_visibility}}
+\index{update\_sprite\_visibility@{update\_sprite\_visibility}!sprite.h@{sprite.h}}
+\doxysubsubsection{\texorpdfstring{update\_sprite\_visibility()}{update\_sprite\_visibility()}}
+{\footnotesize\ttfamily \label{sprite_8h_ac8d1cbaf86dc7524aad57925bdf3e2cd} 
+void update\+\_\+sprite\+\_\+visibility (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_sprite}{Sprite}} \texorpdfstring{$\ast$}{*}}]{sp}{, }\item[{bool}]{is\+\_\+visible}{}\end{DoxyParamCaption})}
+
+
+
+Updates the visibility of a sprite. 
+
+Updates the visibility of a sprite based on the given boolean.
+
+
+\begin{DoxyParams}{Parameters}
+{\em sp} & The sprite to be updated. \\
+\hline
+{\em is\+\_\+visible} & A boolean that represents if the sprite is visible. \\
+\hline
+\end{DoxyParams}

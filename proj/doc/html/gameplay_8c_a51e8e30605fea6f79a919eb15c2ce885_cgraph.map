@@ -1,0 +1,133 @@
+<map id="updateGamePlay" name="updateGamePlay">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,773,127,799"/>
+<area shape="rect" id="Node000002" href="$gameplay_8c.html#a3ec5ab15c9cb253f6e1b88be979f50c8" title=" " alt="" coords="214,13,321,39"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="65,773,69,640,83,425,97,311,115,205,140,117,155,83,173,56,198,38,201,42,177,60,160,85,145,119,121,206,102,312,89,426,74,640,70,773"/>
+<area shape="rect" id="Node000003" href="$gameplay_8c.html#a6bb5d43c322be45f0ee0f89ab7c9ef1b" title=" " alt="" coords="197,773,338,799"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="127,784,181,784,181,789,127,789"/>
+<area shape="rect" id="Node000004" href="$bullet_8c.html#a12b5d1f194ec83643db73246d3e09c19" title="Initializes a new bullet." alt="" coords="445,821,546,847"/>
+<area shape="poly" id="edge53_Node000001_Node000004" title=" " alt="" coords="117,797,175,809,311,824,429,830,429,835,310,829,174,814,116,802"/>
+<area shape="rect" id="Node000010" href="$bullet_8c.html#a1a60dd0672c1beb20d1f934cfebc47a8" title="Adds a bullet to the BulletArray." alt="" coords="439,772,552,798"/>
+<area shape="poly" id="edge54_Node000001_Node000010" title=" " alt="" coords="113,770,174,758,267,752,360,758,423,767,423,772,360,763,267,757,175,763,114,775"/>
+<area shape="rect" id="Node000011" href="$gameplay_8c.html#a8ab7c3f15457e7b1d05182d33a9fbea6" title=" " alt="" coords="180,267,355,292"/>
+<area shape="poly" id="edge9_Node000001_Node000011" title=" " alt="" coords="66,773,76,681,98,543,112,470,129,403,150,348,173,310,186,298,189,302,177,313,154,350,135,405,117,471,103,544,82,682,71,773"/>
+<area shape="rect" id="Node000013" href="$button_8c.html#a4d66a0f1c519e7e4ab43d96d3286db4f" title="Turns off the visibility of all the Button&#39;s Sprites in a ButtonArray." alt="" coords="686,107,776,132"/>
+<area shape="poly" id="edge44_Node000001_Node000013" title=" " alt="" coords="66,773,75,672,96,517,110,435,128,360,148,297,173,253,197,226,224,203,286,165,353,139,424,122,494,112,560,108,670,110,670,116,561,113,494,117,425,127,355,144,288,170,228,207,201,230,177,256,153,299,133,361,115,436,101,518,81,673,71,773"/>
+<area shape="rect" id="Node000017" href="$gameplay_8c.html#a8d079dbe8fe6897f8930a45bacac842f" title="Exits the game." alt="" coords="457,271,534,296"/>
+<area shape="poly" id="edge39_Node000001_Node000017" title=" " alt="" coords="64,773,66,708,78,610,91,555,111,501,137,449,173,404,195,385,218,375,261,367,307,364,332,358,359,347,373,337,382,326,392,316,407,305,440,292,442,297,409,310,395,320,386,330,376,340,361,351,334,363,308,369,262,373,219,380,198,390,177,408,142,452,115,503,96,556,83,610,71,708,70,773"/>
+<area shape="rect" id="Node000028" href="$gameobject_8c.html#a64b60833d4cca1b443b1804d5bc7c2ac" title="Hides all the GameObjects in the GameObjectArray." alt="" coords="668,520,794,546"/>
+<area shape="poly" id="edge45_Node000001_Node000028" title=" " alt="" coords="73,771,111,718,140,688,173,663,233,630,297,604,362,582,428,565,551,544,652,533,653,539,552,549,429,571,364,587,298,609,235,635,176,667,144,692,116,722,77,774"/>
+<area shape="rect" id="Node000033" href="$button_8c.html#ae83833e8f93bcfa29c8c8370f101db0f" title="Destroys a ButtonArray and frees associated memory." alt="" coords="429,56,562,82"/>
+<area shape="poly" id="edge28_Node000001_Node000033" title=" " alt="" coords="65,773,68,647,81,445,94,338,113,241,139,161,155,130,173,107,190,96,213,87,275,74,345,68,413,66,413,71,345,73,275,80,215,92,192,100,176,111,159,133,144,163,119,242,100,339,86,445,73,647,70,773"/>
+<area shape="rect" id="Node000035" href="$money_8c.html#a33c893fc07f6c35942107d0e1bc00e4c" title="Destroys a MoneyArray and frees associated memory." alt="" coords="200,419,335,444"/>
+<area shape="poly" id="edge32_Node000001_Node000035" title=" " alt="" coords="65,772,70,716,86,634,99,588,118,542,142,500,173,462,188,450,191,454,177,465,147,503,123,545,104,590,91,635,75,717,70,773"/>
+<area shape="rect" id="Node000040" href="$money_8c.html#a36b53e03c59c66e854e3552a1e45c058" title="Retrieves a Money from the MoneyArray at a specified index." alt="" coords="441,419,550,444"/>
+<area shape="poly" id="edge42_Node000001_Node000040" title=" " alt="" coords="66,773,72,723,89,651,102,611,121,573,144,537,173,505,209,491,274,473,425,442,426,447,275,479,210,496,176,510,148,540,125,575,107,613,94,652,77,724,71,774"/>
+<area shape="rect" id="Node000042" href="$gameover_8c.html#acc8a351ab85e72deab2be432019f11c7" title="Enters the game over screen." alt="" coords="439,215,552,240"/>
+<area shape="poly" id="edge36_Node000001_Node000042" title=" " alt="" coords="66,773,78,689,100,565,131,440,151,391,173,358,195,339,217,328,240,324,262,323,308,320,332,315,359,303,373,292,382,280,392,268,407,256,429,244,432,249,409,260,395,272,386,283,377,295,361,307,334,320,309,326,262,328,240,329,219,333,198,343,177,361,156,394,137,442,105,566,83,690,72,773"/>
+<area shape="rect" id="Node000043" href="$bullet_8c.html#a9c687cdcc5c4801f5124b606e95f50ff" title="Retrieves a bullet from the BulletArray at a specified index." alt="" coords="444,1177,547,1203"/>
+<area shape="poly" id="edge40_Node000001_Node000043" title=" " alt="" coords="72,799,84,874,106,983,137,1089,156,1130,176,1156,204,1175,235,1189,268,1198,302,1204,368,1206,428,1201,428,1206,369,1211,301,1209,267,1204,233,1194,202,1180,173,1160,152,1133,132,1091,101,984,79,875,67,800"/>
+<area shape="rect" id="Node000044" href="$enemy_8c.html#af7c331e4cc55f8daeb2a6027fff5c0c9" title="Retrieves an enemy from the EnemyArray at a specified index." alt="" coords="675,1164,787,1190"/>
+<area shape="poly" id="edge41_Node000001_Node000044" title=" " alt="" coords="70,799,72,858,85,944,98,991,117,1036,143,1077,176,1112,196,1118,238,1125,370,1141,660,1168,660,1174,370,1146,238,1130,194,1123,173,1116,139,1081,113,1038,93,992,80,945,67,859,64,800"/>
+<area shape="rect" id="Node000026" href="$towers_8c.html#a23d2d6181fcd8d6fedd8308045a16810" title="Retrieves a TowerBase from a TowerArray." alt="" coords="443,1073,548,1099"/>
+<area shape="poly" id="edge43_Node000001_Node000026" title=" " alt="" coords="74,798,86,831,107,876,137,922,176,961,200,976,223,984,266,989,310,992,335,999,361,1012,377,1025,386,1039,395,1052,409,1064,429,1073,427,1077,407,1068,391,1055,382,1042,373,1029,359,1016,333,1004,309,997,265,994,222,989,198,981,173,966,133,925,103,878,81,834,69,800"/>
+<area shape="rect" id="Node000045" href="$money_8c.html#ad185379e3b998bc2290c578fcde4c173" title="Removes Money Sprites from Render Pipeline." alt="" coords="689,569,773,595"/>
+<area shape="poly" id="edge46_Node000001_Node000045" title=" " alt="" coords="82,771,122,741,174,712,241,685,310,662,450,626,576,601,673,586,674,591,577,606,451,631,312,667,242,690,176,717,125,745,85,775"/>
+<area shape="rect" id="Node000046" href="$money_8c.html#addf41816eba02486252ebe2eba35ec1f" title="Removes all the Money Sprites in MoneyArray from Render Pipeline." alt="" coords="210,520,325,546"/>
+<area shape="poly" id="edge49_Node000001_Node000046" title=" " alt="" coords="67,772,78,732,98,676,129,616,149,588,173,563,194,549,197,553,176,567,153,591,134,619,103,678,83,734,73,774"/>
+<area shape="rect" id="Node000047" href="$enemy_8c.html#a22c30bd02e9fbe4aa5939af2db9a9474" title="Removes an enemy from the EnemyArray at a specified index and destroys it." alt="" coords="427,1327,563,1352"/>
+<area shape="poly" id="edge55_Node000001_Node000047" title=" " alt="" coords="71,799,77,901,95,1058,109,1140,127,1214,149,1275,162,1297,176,1314,203,1333,234,1347,266,1356,299,1360,366,1361,426,1353,427,1358,367,1366,299,1366,265,1361,232,1352,201,1337,173,1317,158,1300,145,1277,122,1216,104,1141,90,1059,72,902,65,799"/>
+<area shape="rect" id="Node000048" href="$towers_8c.html#a8f185fdcdf1f60b5984da277f9d918e3" title="Rotate the turrets of all the towers in a TowerArray towards their targets." alt="" coords="177,925,358,951"/>
+<area shape="poly" id="edge58_Node000001_Node000048" title=" " alt="" coords="78,798,117,849,144,878,176,904,201,917,198,922,173,908,141,882,113,852,74,801"/>
+<area shape="rect" id="Node000049" href="$gameplay_8c.html#a6d1c23daae92b4fbcf3b33669b4e5f12" title=" " alt="" coords="201,1076,334,1102"/>
+<area shape="poly" id="edge63_Node000001_Node000049" title=" " alt="" coords="71,799,78,849,94,920,108,959,126,997,149,1032,176,1063,188,1071,185,1076,173,1067,144,1036,121,1000,103,961,89,922,72,850,66,800"/>
+<area shape="rect" id="Node000050" href="$bullet_8c.html#ac40527fcf49856a5faeb22b62f7ca5be" title="Updates the positions of all bullets in the BulletArray and removes any bullets that are no longer ac..." alt="" coords="186,1228,349,1254"/>
+<area shape="poly" id="edge64_Node000001_Node000050" title=" " alt="" coords="72,799,84,882,106,1004,138,1127,156,1175,177,1207,190,1218,187,1222,173,1211,152,1177,132,1128,101,1006,78,883,66,800"/>
+<area shape="rect" id="Node000054" href="$enemy_8c.html#afdd983e5750453c75934d601bb3f0cf8" title=" " alt="" coords="182,1443,353,1468"/>
+<area shape="poly" id="edge68_Node000001_Node000054" title=" " alt="" coords="70,799,76,919,92,1109,105,1209,124,1301,147,1377,161,1407,177,1428,180,1431,176,1435,173,1432,157,1409,142,1379,119,1303,100,1210,86,1110,70,920,65,800"/>
+<area shape="rect" id="Node000059" href="$money_8c.html#a7310c4878fa529ca9780b122ab305566" title="Updates the Money Game Objects. Used when the money amount changes / is moved." alt="" coords="408,720,582,746"/>
+<area shape="poly" id="edge72_Node000001_Node000059" title=" " alt="" coords="90,770,128,752,174,737,230,728,286,723,392,722,392,728,287,728,230,733,175,742,130,757,92,775"/>
+<area shape="rect" id="Node000064" href="$playerbase_8c.html#a9f2dd9531f5a0a67d5baae332423e8d5" title="Updates the displayed health of the health bar of a player base." alt="" coords="175,1277,360,1303"/>
+<area shape="poly" id="edge75_Node000001_Node000064" title=" " alt="" coords="71,799,81,892,101,1033,116,1106,133,1173,153,1228,177,1264,179,1266,175,1270,173,1268,149,1230,128,1174,110,1107,96,1033,76,893,66,800"/>
+<area shape="rect" id="Node000065" href="$player_8c.html#a38c616b7fb3b91f791a9bd2829cc5f60" title="Updates the position of the player based on the input and the current arena, checking for collisions ..." alt="" coords="195,1027,340,1052"/>
+<area shape="poly" id="edge76_Node000001_Node000065" title=" " alt="" coords="73,799,83,839,103,894,134,954,153,981,176,1005,194,1018,191,1022,173,1010,149,985,129,957,98,896,78,840,67,800"/>
+<area shape="rect" id="Node000066" href="$player_8c.html#a8a34b70d828ebf602f2473f7d4e69319" title="Updates the player sprite based on the input and current position of the player." alt="" coords="175,1378,360,1419"/>
+<area shape="poly" id="edge78_Node000001_Node000066" title=" " alt="" coords="71,799,79,906,98,1074,113,1162,130,1244,152,1311,177,1358,186,1367,182,1371,173,1361,147,1314,125,1245,107,1163,93,1075,74,907,65,800"/>
+<area shape="rect" id="Node000069" href="$weapon_8c.html#acd918fccd1070158dcd57c180c456e37" title="Updates the position/angle of the weapon based on the player&#39;s and the mouse&#39;s positions." alt="" coords="442,871,549,896"/>
+<area shape="poly" id="edge79_Node000001_Node000069" title=" " alt="" coords="92,797,131,816,175,833,241,849,308,862,426,876,426,881,307,867,240,855,174,838,129,821,90,802"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="333,797,430,818,429,823,331,802"/>
+<area shape="poly" id="edge8_Node000003_Node000010" title=" " alt="" coords="338,783,423,783,423,788,338,788"/>
+<area shape="rect" id="Node000005" href="$sprite_8c.html#a311fa58d9959113bb14be3676e0ed8c5" title="Calculates the angle between a line connecting two points and the x&#45;axis." alt="" coords="675,933,787,959"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="547,840,584,856,600,872,609,889,617,905,632,920,661,933,659,938,629,924,612,908,604,892,596,875,581,860,545,845"/>
+<area shape="rect" id="Node000006" href="$gameobject_8c.html#a3e3995c85445e5e632c02ce335f6d43a" title="Creates a game object from a sprite." alt="" coords="649,770,813,811"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="545,822,633,806,634,811,546,827"/>
+<area shape="rect" id="Node000008" href="$sprite_8c.html#a0c722ac2dbcd401373c21e8b33679945" title="Gets a sprite from a given sprite with the intended angle." alt="" coords="663,884,799,910"/>
+<area shape="poly" id="edge6_Node000004_Node000008" title=" " alt="" coords="546,845,583,856,631,870,658,877,657,883,630,875,582,861,544,850"/>
+<area shape="rect" id="Node000009" href="$sprite_8c.html#a9c8b55bb5d5f980a3806fa95c391f8ae" title="Normalizes a vector defined by two points." alt="" coords="671,835,791,860"/>
+<area shape="poly" id="edge7_Node000004_Node000009" title=" " alt="" coords="546,834,656,841,655,846,546,840"/>
+<area shape="rect" id="Node000012" href="$menu_8c.html#ae6e92687b29bdd4db2f1a8e89f500777" title="Enters the menu." alt="" coords="454,165,536,191"/>
+<area shape="poly" id="edge10_Node000011_Node000012" title=" " alt="" coords="288,264,341,232,407,200,438,189,440,194,409,205,343,237,291,268"/>
+<area shape="poly" id="edge16_Node000011_Node000017" title=" " alt="" coords="355,278,441,280,441,285,355,284"/>
+<area shape="poly" id="edge11_Node000012_Node000013" title=" " alt="" coords="536,165,630,141,670,131,672,136,631,146,538,170"/>
+<area shape="rect" id="Node000015" href="$device__controller_8c.html#aaf75393bbaa328c2011c3cd3bf57c1ab" title="Resets the devices when changing screens." alt="" coords="630,156,832,182"/>
+<area shape="poly" id="edge13_Node000012_Node000015" title=" " alt="" coords="536,174,615,171,615,176,537,179"/>
+<area shape="rect" id="Node000016" href="$button_8c.html#a847e1a5abfc2fe5a7f2e8fa3dc85675f" title="Turns on the visibility of all the Button&#39;s Sprites in a ButtonArray." alt="" coords="682,205,780,231"/>
+<area shape="poly" id="edge14_Node000012_Node000016" title=" " alt="" coords="537,182,668,205,667,210,536,188"/>
+<area shape="rect" id="Node000014" href="$button_8c.html#ac3e1fa5a312e4690dd8b5d14db4bdd0f" title="Retrieves a Button from a ButtonArray." alt="" coords="897,81,1006,107"/>
+<area shape="poly" id="edge12_Node000013_Node000014" title=" " alt="" coords="776,112,882,99,882,105,777,117"/>
+<area shape="poly" id="edge15_Node000016_Node000014" title=" " alt="" coords="779,209,830,192,884,156,926,116,930,120,887,160,833,197,781,214"/>
+<area shape="poly" id="edge20_Node000017_Node000013" title=" " alt="" coords="533,275,558,265,581,251,592,238,598,224,603,197,609,169,616,155,629,141,648,129,670,122,671,127,650,134,632,146,620,158,614,171,608,198,603,226,596,241,584,255,561,270,535,280"/>
+<area shape="rect" id="Node000018" href="$enemy_8c.html#ab25f3d1f4b2e71a0e588f4e44cd96fe8" title="Destroys an EnemyArray and frees associated memory." alt="" coords="663,619,799,644"/>
+<area shape="poly" id="edge17_Node000017_Node000018" title=" " alt="" coords="535,283,561,290,584,306,599,325,609,344,618,383,615,421,608,459,601,496,599,533,608,569,618,587,632,606,650,619,647,623,628,609,613,590,603,571,594,533,596,495,603,458,610,420,612,383,604,346,594,328,580,309,559,295,534,288"/>
+<area shape="rect" id="Node000023" href="$arena_8c.html#a12ee16feb1183e7af2ca83f904398922" title="Hides the arena by making the associated sprites invisible." alt="" coords="691,320,771,346"/>
+<area shape="poly" id="edge19_Node000017_Node000023" title=" " alt="" coords="535,289,677,319,676,324,534,294"/>
+<area shape="poly" id="edge21_Node000017_Node000028" title=" " alt="" coords="535,284,561,291,584,305,599,324,608,342,613,379,616,416,621,435,632,455,661,486,693,509,690,514,657,490,628,458,616,437,610,417,607,379,603,344,595,327,581,310,559,296,534,289"/>
+<area shape="rect" id="Node000031" href="$sprite_8c.html#a19f3014843720f3932dd5a25b1c0cd12" title="Hides all sprites in a given sprite array." alt="" coords="688,369,774,395"/>
+<area shape="poly" id="edge24_Node000017_Node000031" title=" " alt="" coords="535,287,560,294,584,305,599,318,608,331,617,344,632,356,674,372,672,377,629,360,613,348,604,335,595,322,581,310,558,299,533,292"/>
+<area shape="rect" id="Node000032" href="$weapon_8c.html#ae5e46be3e9f65ef3450c21bb7a47e7a7" title="Hides the weapon by making the associated sprite invisible." alt="" coords="685,419,777,444"/>
+<area shape="poly" id="edge25_Node000017_Node000032" title=" " alt="" coords="535,285,560,292,584,305,596,318,603,331,609,357,614,382,621,394,632,405,650,416,670,423,669,428,648,421,629,410,617,397,609,384,604,358,598,333,592,321,581,310,558,297,534,290"/>
+<area shape="rect" id="Node000027" href="$gameobject_8c.html#a5450390b74149c8e80f882c397d7bafb" title="Removes a sprite from a spriteless game object." alt="" coords="652,255,810,296"/>
+<area shape="poly" id="edge27_Node000017_Node000027" title=" " alt="" coords="534,280,636,276,637,281,535,285"/>
+<area shape="rect" id="Node000019" href="$enemy_8c.html#ade21f14f9d1e80dd3e6c893fb9fc61b2" title="Destroys an enemy and frees associated memory." alt="" coords="899,936,1004,962"/>
+<area shape="poly" id="edge18_Node000018_Node000019" title=" " alt="" coords="746,643,834,757,892,846,937,921,933,924,888,849,829,760,741,646"/>
+<area shape="rect" id="Node000029" href="$gameobject_8c.html#ad8cd8916d4c5dab325a599b2385122f0" title="Retrieves a GameObject from a GameObjectArray at a specified index." alt="" coords="880,620,1023,646"/>
+<area shape="poly" id="edge22_Node000028_Node000029" title=" " alt="" coords="795,542,833,554,881,580,923,608,920,613,879,585,831,559,793,547"/>
+<area shape="rect" id="Node000030" href="$gameobject_8c.html#aed2b525f6703cd35381c0cc9e7397a63" title="Hides a game object by removing it from the render pipeline." alt="" coords="892,495,1011,520"/>
+<area shape="poly" id="edge23_Node000028_Node000030" title=" " alt="" coords="794,523,877,513,877,519,794,528"/>
+<area shape="poly" id="edge26_Node000032_Node000030" title=" " alt="" coords="776,442,833,461,902,486,901,491,831,466,775,447"/>
+<area shape="poly" id="edge29_Node000033_Node000014" title=" " alt="" coords="563,70,882,88,882,93,562,75"/>
+<area shape="rect" id="Node000034" href="$button_8c.html#aacbbbe3d77b1d2d52abfeb7605420e1e" title="Removes a Button from a ButtonArray." alt="" coords="664,5,798,31"/>
+<area shape="poly" id="edge30_Node000033_Node000034" title=" " alt="" coords="558,53,653,32,654,37,559,58"/>
+<area shape="poly" id="edge31_Node000034_Node000014" title=" " alt="" coords="776,29,833,48,902,73,901,78,831,53,775,34"/>
+<area shape="rect" id="Node000036" href="$money_8c.html#aeb6a933a77066dcc2560e6d6716aad16" title="Destroys a Money and frees associated memory." alt="" coords="444,320,547,346"/>
+<area shape="poly" id="edge33_Node000035_Node000036" title=" " alt="" coords="317,416,359,397,373,387,382,376,392,365,407,355,427,345,429,350,409,359,395,369,386,380,376,391,361,402,319,421"/>
+<area shape="poly" id="edge34_Node000035_Node000040" title=" " alt="" coords="335,429,425,429,425,434,335,434"/>
+<area shape="rect" id="Node000041" href="$money_8c.html#a31dba917ea802ff43ed83c1afe470d1b" title="Removes a Money from the MoneyArray." alt="" coords="428,369,562,395"/>
+<area shape="poly" id="edge35_Node000035_Node000041" title=" " alt="" coords="330,415,417,396,418,402,331,421"/>
+<area shape="poly" id="edge37_Node000042_Node000015" title=" " alt="" coords="547,212,630,190,658,183,659,188,631,195,548,217"/>
+<area shape="poly" id="edge38_Node000042_Node000016" title=" " alt="" coords="552,223,666,218,667,223,552,228"/>
+<area shape="poly" id="edge47_Node000045_Node000029" title=" " alt="" coords="774,589,878,613,877,619,773,594"/>
+<area shape="poly" id="edge48_Node000045_Node000030" title=" " alt="" coords="773,571,831,556,908,525,910,530,833,561,774,576"/>
+<area shape="poly" id="edge50_Node000046_Node000029" title=" " alt="" coords="298,544,439,601,533,632,631,654,687,662,731,663,831,654,880,647,881,652,832,659,731,668,686,667,630,659,532,637,437,606,296,549"/>
+<area shape="poly" id="edge52_Node000046_Node000030" title=" " alt="" coords="325,521,408,512,537,504,666,501,876,503,876,508,666,506,537,509,408,517,326,527"/>
+<area shape="poly" id="edge51_Node000046_Node000040" title=" " alt="" coords="315,517,359,499,382,480,407,461,435,448,437,453,409,466,386,484,361,503,317,522"/>
+<area shape="poly" id="edge56_Node000047_Node000019" title=" " alt="" coords="563,1325,626,1309,697,1284,768,1248,800,1226,830,1200,853,1174,873,1145,905,1083,928,1023,941,976,946,977,933,1025,910,1085,878,1148,857,1177,834,1204,804,1230,770,1253,699,1289,627,1314,564,1330"/>
+<area shape="poly" id="edge57_Node000047_Node000044" title=" " alt="" coords="557,1324,581,1313,619,1287,654,1257,708,1200,712,1203,658,1261,623,1292,584,1318,560,1329"/>
+<area shape="poly" id="edge59_Node000048_Node000005" title=" " alt="" coords="359,946,408,950,542,952,660,948,660,953,542,957,408,955,358,952"/>
+<area shape="poly" id="edge61_Node000048_Node000008" title=" " alt="" coords="358,927,647,902,647,907,359,933"/>
+<area shape="poly" id="edge60_Node000048_Node000044" title=" " alt="" coords="309,949,361,968,475,1007,524,1027,584,1059,652,1106,706,1151,703,1155,649,1110,581,1063,522,1032,473,1012,359,973,307,954"/>
+<area shape="poly" id="edge62_Node000048_Node000026" title=" " alt="" coords="328,949,362,968,379,990,387,1011,394,1032,410,1052,430,1065,427,1070,406,1056,389,1034,382,1013,374,992,358,972,326,954"/>
+<area shape="poly" id="edge65_Node000050_Node000043" title=" " alt="" coords="328,1225,427,1202,429,1208,329,1230"/>
+<area shape="rect" id="Node000051" href="$bullet_8c.html#a7d310b405371fac77841b91acac0be24" title="Removes a bullet from the BulletArray at a specified index and destroys it." alt="" coords="431,1277,559,1303"/>
+<area shape="poly" id="edge66_Node000050_Node000051" title=" " alt="" coords="331,1252,418,1271,417,1276,330,1257"/>
+<area shape="rect" id="Node000053" href="$bullet_8c.html#aacbebff259601895663305ab5570fdf2" title="Updates the position of a bullet based on its speed." alt="" coords="425,1228,565,1254"/>
+<area shape="poly" id="edge67_Node000050_Node000053" title=" " alt="" coords="349,1238,410,1238,410,1244,349,1244"/>
+<area shape="poly" id="edge69_Node000054_Node000044" title=" " alt="" coords="331,1439,471,1405,536,1384,581,1363,625,1325,662,1282,692,1238,714,1202,718,1205,697,1241,667,1285,629,1329,584,1367,538,1389,472,1410,333,1445"/>
+<area shape="poly" id="edge70_Node000054_Node000047" title=" " alt="" coords="333,1440,359,1428,373,1416,382,1403,391,1390,406,1376,440,1357,443,1361,410,1380,396,1393,387,1406,377,1420,361,1432,336,1444"/>
+<area shape="rect" id="Node000055" href="$enemy_8c.html#a3629b4aff742f5680afb68b73733bb23" title="Updates the position of an enemy based on its speed." alt="" coords="421,1443,569,1468"/>
+<area shape="poly" id="edge71_Node000054_Node000055" title=" " alt="" coords="353,1453,406,1453,406,1458,353,1458"/>
+<area shape="poly" id="edge73_Node000059_Node000006" title=" " alt="" coords="552,744,634,764,633,769,551,749"/>
+<area shape="poly" id="edge74_Node000059_Node000029" title=" " alt="" coords="583,732,702,724,767,714,831,698,878,678,919,653,921,657,881,682,833,703,769,720,703,730,583,737"/>
+<area shape="poly" id="edge77_Node000065_Node000026" title=" " alt="" coords="334,1050,428,1070,427,1075,333,1056"/>
+<area shape="poly" id="edge80_Node000069_Node000005" title=" " alt="" coords="542,894,631,920,661,927,660,932,630,925,540,899"/>
+<area shape="poly" id="edge81_Node000069_Node000008" title=" " alt="" coords="550,884,647,889,647,895,549,889"/>
+</map>

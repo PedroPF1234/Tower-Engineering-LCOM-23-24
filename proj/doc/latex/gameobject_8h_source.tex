@@ -1,0 +1,96 @@
+\doxysection{gameobject.\+h}
+\hypertarget{gameobject_8h_source}{}\label{gameobject_8h_source}\index{src/GameObjects/gameobject.h@{src/GameObjects/gameobject.h}}
+\mbox{\hyperlink{gameobject_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{sprite_8h}{../ImageAssets/sprite.h}}"{}}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#define\ BIT\_MASK(n)\ ((1\ <<\ n)\ -\/\ 1)\ }\textcolor{comment}{//\ bit\ mask\ with\ n\ bits\ set\ to\ 1}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#define\ Z\_INDEX\_PER\_LAYER\ 3\ }\textcolor{comment}{//\ y\ level\ weight\ for\ z\ index}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#define\ LOW\_PRIORITY\_Z\_INDEX\ 1\ }\textcolor{comment}{//\ lowest\ priority\ z\ index}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ MEDIUM\_PRIORITY\_Z\_INDEX\ 2\ }\textcolor{comment}{//\ medium\ priority\ z\ index}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#define\ HIGH\_PRIORITY\_Z\_INDEX\ 3\ }\textcolor{comment}{//\ highest\ priority\ z\ index}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#define\ MAX\_PRIORITY\_Z\_INDEX\ 4\ }\textcolor{comment}{//\ maximum\ priority\ z\ index}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_game_object}{GameObject}}\ \{}
+\DoxyCodeLine{00018\ \ \ \mbox{\hyperlink{struct_sprite}{Sprite}}*\ \mbox{\hyperlink{struct_game_object_a00fecd21a33c990c4132f6f8e886135f}{sprite}};\ \textcolor{comment}{//\ sprite\ of\ the\ game\ object}}
+\DoxyCodeLine{00019\ \ \ int16\_t\ \mbox{\hyperlink{struct_game_object_aba67d453f306c06546f157f9bcc359cf}{x}},\ \mbox{\hyperlink{struct_game_object_a7546aa6d9242eef0fd5eae3ff58e18c0}{y}};\ \textcolor{comment}{//\ x\ and\ y\ positions\ of\ the\ game\ object}}
+\DoxyCodeLine{00020\ \ \ int16\_t\ \mbox{\hyperlink{struct_game_object_a1ded1225debac7ecf15a7b20e8a3dbc3}{origin\_offset\_x}},\ \mbox{\hyperlink{struct_game_object_a8dd24eb593f234e987f65f2e8351f13b}{origin\_offset\_y}};\ \textcolor{comment}{//\ x\ and\ y\ offsets\ of\ the\ game\ object's\ origin}}
+\DoxyCodeLine{00021\ \ \ uint16\_t\ \mbox{\hyperlink{struct_game_object_a69ab54f96521fdac9da4d7f1380bf225}{z\_index}};\ \textcolor{comment}{//\ z\ index\ of\ the\ game\ object}}
+\DoxyCodeLine{00022\ \}\ \mbox{\hyperlink{gameobject_8h_ab0fb707a835e2853e4ab457d743d9640}{GameObject}};}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00028\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_animated_game_object}{AnimatedGameObject}}\ \{}
+\DoxyCodeLine{00029\ \ \ \mbox{\hyperlink{struct_game_object}{GameObject}}*\ \mbox{\hyperlink{struct_animated_game_object_a7e2219cdd53c152688932624db821c1d}{gameObject}};\ \textcolor{comment}{//\ game\ object\ of\ the\ animated\ game\ object}}
+\DoxyCodeLine{00030\ \ \ \mbox{\hyperlink{struct_animated_sprite}{AnimatedSprite}}*\ \mbox{\hyperlink{struct_animated_game_object_a290dcdb8858fd65ebce70cb0ab0442dd}{animatedSprite}};\ \textcolor{comment}{//\ animated\ sprite\ of\ the\ animated\ game\ object}}
+\DoxyCodeLine{00031\ \}\ \mbox{\hyperlink{gameobject_8h_a542766943e92d05a11772d662f7f7f8c}{AnimatedGameObject}};}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00036\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_game_object_array}{GameObjectArray}}\ \{}
+\DoxyCodeLine{00037\ \ \ \mbox{\hyperlink{struct_game_object}{GameObject}}**\ \mbox{\hyperlink{struct_game_object_array_a50f73ddcba832f0cb615feb5b5ce81d0}{gameObjects}};\ \textcolor{comment}{//\ pointer\ to\ an\ array\ of\ game\ object\ pointers}}
+\DoxyCodeLine{00038\ \ \ uint32\_t\ \mbox{\hyperlink{struct_game_object_array_ae6923e006c9f32fa8f4fc33f0cd23c30}{capacity}};\ \textcolor{comment}{//\ total\ capacity\ of\ the\ array}}
+\DoxyCodeLine{00039\ \ \ uint32\_t\ \mbox{\hyperlink{struct_game_object_array_aa9d67ccdd80a5ae0f7c52e1a2ebda12b}{length}};\ \textcolor{comment}{//\ current\ number\ of\ game\ objects\ in\ the\ array}}
+\DoxyCodeLine{00040\ \}\ \mbox{\hyperlink{gameobject_8h_aff6963e2e2c5c9e8640e12278e50ba7e}{GameObjectArray}};}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00046\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{gameobject_8h_a03dd7b28fd3736e7b0af48f86e255d80}{init\_render\_pipeline}}();}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00053\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{gameobject_8h_afe4e080a1ff00501b175e20909434f7c}{create\_gameobjects}}();}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00060\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{gameobject_8h_a39bd26a5aa1cd2b9da4075369233f25a}{destroy\_gameobjects}}();}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00065\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{gameobject_8h_a2b3a693827aa9ff61460e24fec22aa71}{renderGameObjects}}();}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00077\ \mbox{\hyperlink{struct_animated_game_object}{AnimatedGameObject}}*\ \mbox{\hyperlink{gameobject_8h_a1d8da9b1924ec9c58604bfa022e40f6d}{create\_animated\_gameobject}}(\mbox{\hyperlink{struct_animated_sprite}{AnimatedSprite}}*\ animatedSprite,\ int16\_t\ x,\ int16\_t\ y,\ uint16\_t\ z\_index);}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00084\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{gameobject_8h_a0d4c98c4920a02bc46351ab1f13facc0}{destroy\_animated\_gameobject}}(\mbox{\hyperlink{struct_animated_game_object}{AnimatedGameObject}}*\ animatedGameObject);}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00089\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{gameobject_8h_a3abb3c71d593255afaa381d680171133}{updateAnimatedGameObjects}}();}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00097\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{gameobject_8h_a44ed0b7fab59aede47332f554edd2d9e}{switchAnimatedSpriteOfAnimatedGameObject}}(\mbox{\hyperlink{struct_animated_game_object}{AnimatedGameObject}}*\ animatedGameObject,\ \mbox{\hyperlink{struct_animated_sprite}{AnimatedSprite}}*\ animatedSprite);}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00104\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{gameobject_8h_a90ff45e7b7576b7b1c88255466ac2ff5}{hideAnimatedGameObject}}(\mbox{\hyperlink{struct_animated_game_object}{AnimatedGameObject}}*\ animatedGameObject);}
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00111\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{gameobject_8h_ab164cdb57764aace4144eb99d699a227}{showAnimatedGameObject}}(\mbox{\hyperlink{struct_animated_game_object}{AnimatedGameObject}}*\ animatedGameObject);}
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00126\ \mbox{\hyperlink{struct_game_object}{GameObject}}*\ \mbox{\hyperlink{gameobject_8h_a9d06de2eac7bee1218b90ee9a232ae25}{create\_gameobject}}(xpm\_map\_t\ pic,\ int16\_t\ x,\ int16\_t\ y,\ int16\_t\ origin\_offset\_x,\ int16\_t\ origin\_offset\_y,\ uint16\_t\ z\_index,\ \textcolor{keywordtype}{bool}\ square\_shape,\ \textcolor{keywordtype}{bool}\ visible);}
+\DoxyCodeLine{00127\ }
+\DoxyCodeLine{00139\ \mbox{\hyperlink{struct_game_object}{GameObject}}*\ \mbox{\hyperlink{gameobject_8h_a3e3995c85445e5e632c02ce335f6d43a}{create\_gameobject\_from\_sprite}}(\mbox{\hyperlink{struct_sprite}{Sprite}}*\ sprite,\ int16\_t\ x,\ int16\_t\ y,\ int16\_t\ origin\_offset\_x,\ int16\_t\ origin\_offset\_y,\ uint16\_t\ z\_index);}
+\DoxyCodeLine{00140\ }
+\DoxyCodeLine{00151\ \mbox{\hyperlink{struct_game_object}{GameObject}}*\ \mbox{\hyperlink{gameobject_8h_a533ac6c940eb9983e2e8776ea14c9347}{create\_spriteless\_gameobject}}(int16\_t\ x,\ int16\_t\ y,\ int16\_t\ origin\_offset\_x,\ int16\_t\ origin\_offset\_y,\ uint16\_t\ z\_index);}
+\DoxyCodeLine{00152\ }
+\DoxyCodeLine{00159\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{gameobject_8h_ab0bb9964dbe83fac1b9a0e456721caef}{add\_sprite\_to\_spriteless\_gameobject}}(\mbox{\hyperlink{struct_game_object}{GameObject}}*\ gameObject,\ \mbox{\hyperlink{struct_sprite}{Sprite}}*\ sprite);}
+\DoxyCodeLine{00160\ }
+\DoxyCodeLine{00166\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{gameobject_8h_a5450390b74149c8e80f882c397d7bafb}{remove\_sprite\_from\_spriteless\_gameobject}}(\mbox{\hyperlink{struct_game_object}{GameObject}}*\ gameObject);}
+\DoxyCodeLine{00167\ }
+\DoxyCodeLine{00174\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{gameobject_8h_a832b9e6a931a02ff0a4f6ac692229350}{updateGameObjectZIndex}}(\mbox{\hyperlink{struct_game_object}{GameObject}}*\ gameObject,\ uint16\_t\ z\_index);}
+\DoxyCodeLine{00175\ }
+\DoxyCodeLine{00181\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{gameobject_8h_ab2ca8f1feaafcb93216e911798e96b40}{destroy\_gameobject}}(\mbox{\hyperlink{struct_game_object}{GameObject}}*\ gameObject);}
+\DoxyCodeLine{00182\ }
+\DoxyCodeLine{00188\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{gameobject_8h_af963650b4f59cf45e19e0825bdc90ac4}{destroy\_gameobject\_safe\_sprite}}(\mbox{\hyperlink{struct_game_object}{GameObject}}*\ gameObject);}
+\DoxyCodeLine{00189\ }
+\DoxyCodeLine{00196\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{gameobject_8h_aaab2489d023b98f5089e354979662252}{updateGameObjectSprite}}(\mbox{\hyperlink{struct_game_object}{GameObject}}*\ gameObject,\ \mbox{\hyperlink{struct_sprite}{Sprite}}*\ sprite);}
+\DoxyCodeLine{00197\ }
+\DoxyCodeLine{00203\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{gameobject_8h_aed2b525f6703cd35381c0cc9e7397a63}{hideGameObject}}(\mbox{\hyperlink{struct_game_object}{GameObject}}*\ gameObject);}
+\DoxyCodeLine{00204\ }
+\DoxyCodeLine{00210\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{gameobject_8h_a89b6a2cd7e246e117f7bce4db556a09d}{showGameObject}}(\mbox{\hyperlink{struct_game_object}{GameObject}}*\ gameObject);}
+\DoxyCodeLine{00211\ }
+\DoxyCodeLine{00212\ }
+\DoxyCodeLine{00219\ \mbox{\hyperlink{struct_game_object_array}{GameObjectArray}}\ \mbox{\hyperlink{gameobject_8h_a0959c953a619002f3a0cadb4d4542318}{newGameObjectArray}}(uint32\_t\ capacity);}
+\DoxyCodeLine{00220\ }
+\DoxyCodeLine{00227\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{gameobject_8h_a7814e4774ca4e96cdf37aaf01e2bd08d}{insertGameObjectArray}}(\mbox{\hyperlink{struct_game_object_array}{GameObjectArray}}\ *array,\ \mbox{\hyperlink{struct_game_object}{GameObject}}\ *newGameObject);}
+\DoxyCodeLine{00228\ }
+\DoxyCodeLine{00236\ \mbox{\hyperlink{struct_game_object}{GameObject}}*\ \mbox{\hyperlink{gameobject_8h_ad8cd8916d4c5dab325a599b2385122f0}{getGameObjectArray}}(\mbox{\hyperlink{struct_game_object_array}{GameObjectArray}}\ *array,\ uint32\_t\ index);}
+\DoxyCodeLine{00237\ }
+\DoxyCodeLine{00244\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{gameobject_8h_a65d6eb0f17a112b9fd1f1876bdbc3e6a}{removeGameObjectArray}}(\mbox{\hyperlink{struct_game_object_array}{GameObjectArray}}\ *array,\ \mbox{\hyperlink{struct_game_object}{GameObject}}\ *gameObject);}
+\DoxyCodeLine{00245\ }
+\DoxyCodeLine{00251\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{gameobject_8h_a83d07b90adf6e222c3977c163b9b5a91}{destroyGameObjectArray}}(\mbox{\hyperlink{struct_game_object_array}{GameObjectArray}}\ *array);}
+\DoxyCodeLine{00252\ }
+\DoxyCodeLine{00258\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{gameobject_8h_ac85711fae9e1cd853098ae6efada6a7c}{showGameObjects}}(\mbox{\hyperlink{struct_game_object_array}{GameObjectArray}}*\ gameObjects);}
+\DoxyCodeLine{00259\ }
+\DoxyCodeLine{00265\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{gameobject_8h_a64b60833d4cca1b443b1804d5bc7c2ac}{hideGameObjects}}(\mbox{\hyperlink{struct_game_object_array}{GameObjectArray}}*\ gameObjects);}
+\DoxyCodeLine{00266\ }
+
+\end{DoxyCode}

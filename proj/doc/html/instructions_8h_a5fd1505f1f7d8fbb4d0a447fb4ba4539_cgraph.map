@@ -1,0 +1,26 @@
+<map id="updateInstructions" name="updateInstructions">
+<area shape="rect" id="Node000001" title="Updates the instructions screen." alt="" coords="5,107,134,132"/>
+<area shape="rect" id="Node000002" href="$instructions_8c.html#a1eec854c195cd560085e72eec69b26b9" title=" " alt="" coords="188,77,355,103"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="133,108,172,102,173,107,134,113"/>
+<area shape="rect" id="Node000010" href="$instructions_8c.html#a072021e1d5880206149b5323f33f649e" title=" " alt="" coords="182,127,361,168"/>
+<area shape="poly" id="edge12_Node000001_Node000010" title=" " alt="" coords="134,126,167,130,166,136,133,131"/>
+<area shape="rect" id="Node000003" href="$menu_8c.html#ae6e92687b29bdd4db2f1a8e89f500777" title="Enters the menu." alt="" coords="452,156,534,182"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="329,101,362,113,386,128,410,142,438,153,436,158,408,147,384,132,360,118,327,106"/>
+<area shape="rect" id="Node000005" href="$button_8c.html#ac3e1fa5a312e4690dd8b5d14db4bdd0f" title="Retrieves a Button from a ButtonArray." alt="" coords="874,107,982,132"/>
+<area shape="poly" id="edge10_Node000002_Node000005" title=" " alt="" coords="355,82,569,77,698,80,826,92,869,100,868,105,825,97,697,86,569,82,355,87"/>
+<area shape="rect" id="Node000008" href="$instructions_8c.html#a6b14b1ceb01d5c5932584f27df0b7c21" title="Exits the instructions screen." alt="" coords="438,107,548,132"/>
+<area shape="poly" id="edge8_Node000002_Node000008" title=" " alt="" coords="355,99,423,108,422,113,354,104"/>
+<area shape="rect" id="Node000009" href="$gameobject_8c.html#aaab2489d023b98f5089e354979662252" title="Updates the sprite of a game object." alt="" coords="409,5,576,31"/>
+<area shape="poly" id="edge11_Node000002_Node000009" title=" " alt="" coords="312,74,435,34,437,39,314,79"/>
+<area shape="rect" id="Node000004" href="$button_8c.html#a4d66a0f1c519e7e4ab43d96d3286db4f" title="Turns off the visibility of all the Button&#39;s Sprites in a ButtonArray." alt="" coords="680,107,770,132"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="533,158,664,130,665,135,535,163"/>
+<area shape="rect" id="Node000006" href="$device__controller_8c.html#aaf75393bbaa328c2011c3cd3bf57c1ab" title="Resets the devices when changing screens." alt="" coords="624,156,826,182"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="534,166,609,166,609,172,534,172"/>
+<area shape="rect" id="Node000007" href="$button_8c.html#a847e1a5abfc2fe5a7f2e8fa3dc85675f" title="Turns on the visibility of all the Button&#39;s Sprites in a ButtonArray." alt="" coords="676,205,774,231"/>
+<area shape="poly" id="edge6_Node000003_Node000007" title=" " alt="" coords="535,175,661,202,660,207,533,180"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="771,117,858,117,858,122,771,122"/>
+<area shape="poly" id="edge7_Node000007_Node000005" title=" " alt="" coords="773,208,825,192,865,168,900,141,903,145,868,172,827,197,775,213"/>
+<area shape="poly" id="edge9_Node000008_Node000004" title=" " alt="" coords="548,117,664,117,664,122,548,122"/>
+<area shape="poly" id="edge13_Node000010_Node000003" title=" " alt="" coords="362,154,436,161,436,166,361,159"/>
+<area shape="poly" id="edge14_Node000010_Node000008" title=" " alt="" coords="361,133,422,126,422,131,362,139"/>
+</map>

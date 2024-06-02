@@ -1,0 +1,25 @@
+<map id="rtc_initialize_and_subscribe" name="rtc_initialize_and_subscribe">
+<area shape="rect" id="Node000001" title="Encapsulates the RTC initialization and subscription." alt="" coords="5,49,124,89"/>
+<area shape="rect" id="Node000002" href="$rtc_8c.html#a3c40f97c04701fc6ac45a19bb92be181" title="Disables all RTC interrupts." alt="" coords="172,56,304,82"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="124,66,156,66,156,72,124,72"/>
+<area shape="rect" id="Node000007" href="$rtc_8c.html#aadf5ab2196aa22ca0ae6679fe388e270" title="Enables or disables RTC periodic interrupts." alt="" coords="352,5,503,31"/>
+<area shape="poly" id="edge14_Node000001_Node000007" title=" " alt="" coords="124,51,171,41,256,29,337,21,337,27,257,34,172,46,125,56"/>
+<area shape="rect" id="Node000009" href="$rtc_8c.html#a5171a9c0f54940fe60f7500896afcc86" title="Subscribes and enables RTC interrupts." alt="" coords="178,129,298,155"/>
+<area shape="poly" id="edge12_Node000001_Node000009" title=" " alt="" coords="115,87,192,120,190,125,113,92"/>
+<area shape="rect" id="Node000003" href="$rtc_8c.html#ae1ad1cb6ae417786d227c4ede4d586fd" title="Enables or disables RTC alarm interrupts." alt="" coords="359,104,497,130"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="292,80,360,97,359,102,291,85"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="288,53,362,33,363,38,290,58"/>
+<area shape="rect" id="Node000008" href="$rtc_8c.html#a43ab2676911c7b2d91ee739cbe3af372" title="Enables or disables RTC update ended interrupts." alt="" coords="355,55,500,80"/>
+<area shape="poly" id="edge9_Node000002_Node000008" title=" " alt="" coords="305,66,340,65,340,71,305,71"/>
+<area shape="rect" id="Node000004" href="$rtc_8c.html#ac8b0ed21f98fd3ada932e232c253b92b" title="Reads a byte from the RTC." alt="" coords="553,104,621,130"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="497,114,537,114,537,120,497,120"/>
+<area shape="rect" id="Node000006" href="$rtc_8c.html#a88bc7fc547c8c1296e2e42d246e5e23e" title="Writes a byte to the RTC." alt="" coords="551,55,623,80"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="471,101,536,80,537,86,473,106"/>
+<area shape="rect" id="Node000005" href="$utils_8c.html#a2b56f50ba159e9d5115ed1a75eff15d9" title=" " alt="" coords="671,104,761,130"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="621,114,655,114,655,120,621,120"/>
+<area shape="poly" id="edge7_Node000007_Node000004" title=" " alt="" coords="483,29,505,40,520,52,530,64,553,91,555,93,552,97,549,95,526,68,517,56,502,44,481,34"/>
+<area shape="poly" id="edge8_Node000007_Node000006" title=" " alt="" coords="473,29,537,49,536,55,471,34"/>
+<area shape="poly" id="edge10_Node000008_Node000004" title=" " alt="" coords="473,78,539,99,537,104,471,84"/>
+<area shape="poly" id="edge11_Node000008_Node000006" title=" " alt="" coords="501,65,536,65,536,70,501,70"/>
+<area shape="poly" id="edge13_Node000009_Node000004" title=" " alt="" coords="298,145,395,147,449,145,503,140,538,131,539,137,504,145,450,151,395,153,298,150"/>
+</map>

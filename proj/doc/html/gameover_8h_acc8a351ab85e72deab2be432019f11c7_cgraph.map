@@ -1,0 +1,9 @@
+<map id="enterGameOver" name="enterGameOver">
+<area shape="rect" id="Node000001" title="Enters the game over screen." alt="" coords="5,31,119,56"/>
+<area shape="rect" id="Node000002" href="$device__controller_8c.html#aaf75393bbaa328c2011c3cd3bf57c1ab" title="Resets the devices when changing screens." alt="" coords="167,5,368,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="119,34,151,30,152,35,120,39"/>
+<area shape="rect" id="Node000003" href="$button_8c.html#a847e1a5abfc2fe5a7f2e8fa3dc85675f" title="Turns on the visibility of all the Button&#39;s Sprites in a ButtonArray." alt="" coords="219,55,316,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="120,47,203,57,203,63,119,53"/>
+<area shape="rect" id="Node000004" href="$button_8c.html#ac3e1fa5a312e4690dd8b5d14db4bdd0f" title="Retrieves a Button from a ButtonArray." alt="" coords="416,55,524,80"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="317,65,400,65,400,70,317,70"/>
+</map>

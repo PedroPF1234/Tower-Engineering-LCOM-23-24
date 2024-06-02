@@ -1,0 +1,6 @@
+<map id="KeyboardDevice" name="KeyboardDevice">
+<area shape="rect" id="Node000001" title="Struct that represents the Keyboard device." alt="" coords="5,94,123,120"/>
+<area shape="rect" id="Node000002" href="$struct_key_presses.html" title=" " alt="" coords="18,5,110,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="67,47,67,94,61,94,61,47"/>
+<area shape="poly" id="edge2_Node000002_Node000002" title=" " alt="" coords="127,10,137,18,128,27,111,29,110,24,126,22,132,18,124,14"/>
+</map>

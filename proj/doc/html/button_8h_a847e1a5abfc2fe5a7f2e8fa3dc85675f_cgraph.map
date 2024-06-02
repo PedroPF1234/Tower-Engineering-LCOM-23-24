@@ -1,0 +1,5 @@
+<map id="showButtons" name="showButtons">
+<area shape="rect" id="Node000001" title="Turns on the visibility of all the Button&#39;s Sprites in a ButtonArray." alt="" coords="5,5,103,31"/>
+<area shape="rect" id="Node000002" href="$button_8c.html#ac3e1fa5a312e4690dd8b5d14db4bdd0f" title="Retrieves a Button from a ButtonArray." alt="" coords="151,5,259,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="103,16,135,16,135,21,103,21"/>
+</map>

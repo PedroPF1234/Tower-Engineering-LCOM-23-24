@@ -1,0 +1,7 @@
+<map id="src/Devices/KeyBoard/kbc.h" name="src/Devices/KeyBoard/kbc.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="115,5,268,46"/>
+<area shape="rect" id="Node000002" href="$mouse_8c.html" title=" " alt="" coords="5,102,194,127"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="162,59,114,103,110,99,158,55"/>
+<area shape="rect" id="Node000003" href="$device__controller_8c.html" title=" " alt="" coords="218,94,352,135"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="226,55,266,92,262,96,222,59"/>
+</map>

@@ -1,0 +1,73 @@
+<map id="boot_devices" name="boot_devices">
+<area shape="rect" id="Node000001" title="Encapsulates the initialization of all the devices." alt="" coords="5,252,104,278"/>
+<area shape="rect" id="Node000002" href="$gameobject_8c.html#afe4e080a1ff00501b175e20909434f7c" title="Creates the game objects. Creates the object and adds it to the render pipeline." alt="" coords="152,43,290,68"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="58,250,89,177,116,131,150,90,170,74,174,78,154,93,120,134,94,179,63,252"/>
+<area shape="rect" id="Node000006" href="$device__controller_8c.html#a3735a9afedcfaf5472fa1c650e74d1dd" title="Fetches the screen resolution and stores that information in the ScreenInfo struct." alt="" coords="170,104,272,130"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="65,250,101,210,150,163,184,137,188,141,153,167,105,213,69,254"/>
+<area shape="rect" id="Node000008" href="$gameobject_8c.html#a03dd7b28fd3736e7b0af48f86e255d80" title="Initializes a render pipeline." alt="" coords="155,177,287,203"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="78,249,151,212,164,206,166,211,153,217,80,254"/>
+<area shape="rect" id="Node000011" href="$kbc_8c.html#a18c596b224bba98ca524a0bfa9730609" title="Subscribes and enables KBC interrupts." alt="" coords="158,227,284,252"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="104,255,142,249,142,254,104,260"/>
+<area shape="rect" id="Node000012" href="$mouse_8c.html#a4cc83f82d3baf0f2c63ae52ecae8aa9f" title="Encapsulates the subscription and initialization of the mouse." alt="" coords="168,276,274,302"/>
+<area shape="poly" id="edge11_Node000001_Node000012" title=" " alt="" coords="104,269,153,276,153,282,104,275"/>
+<area shape="rect" id="Node000017" href="$rtc_8c.html#af086192448abc551b618e1856d661926" title="Encapsulates the RTC initialization and subscription." alt="" coords="162,347,280,388"/>
+<area shape="poly" id="edge16_Node000001_Node000017" title=" " alt="" coords="79,276,175,336,172,341,76,281"/>
+<area shape="rect" id="Node000025" href="$timer_8c.html#acaf7742ecd9e34865122cde30749e54f" title="Subscribes and enables Timer 0 interrupts with a given frequency." alt="" coords="159,506,283,547"/>
+<area shape="poly" id="edge31_Node000001_Node000025" title=" " alt="" coords="66,277,201,491,196,494,62,280"/>
+<area shape="rect" id="Node000031" href="$graphics_8c.html#acc11b311c479b1904fd45e8c6da5fcc3" title="Initializes the graphics in the given mode." alt="" coords="191,591,251,616"/>
+<area shape="poly" id="edge38_Node000001_Node000031" title=" " alt="" coords="60,278,67,327,83,399,111,481,130,520,154,556,180,581,177,585,150,560,125,523,106,483,77,401,61,328,54,278"/>
+<area shape="rect" id="Node000003" href="$gameobject_8c.html#a9d06de2eac7bee1218b90ee9a232ae25" title="Creates a game object." alt="" coords="375,29,506,55"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="290,49,359,44,359,50,290,54"/>
+<area shape="rect" id="Node000004" href="$sprite_8c.html#a06170cd082bf54a5bbb4fda040c83a0a" title="Initializes a new sprite." alt="" coords="618,5,714,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="506,33,602,22,602,28,506,38"/>
+<area shape="rect" id="Node000005" href="$gameobject_8c.html#a6a1ebecd29c69ded46970bd41c3097f0" title=" " alt="" coords="595,55,737,80"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="506,47,580,55,580,61,506,52"/>
+<area shape="rect" id="Node000007" href="$graphics_8c.html#a09114e97b1fe0ce6964764143e760cf2" title="Gets the screen information of the graphics." alt="" coords="410,79,471,104"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="272,108,393,94,394,99,273,114"/>
+<area shape="rect" id="Node000009" href="$gameobject_8c.html#a7d0c1a0dd005df040cc05565d27e5e13" title=" " alt="" coords="338,128,542,154"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="281,174,364,155,366,160,282,179"/>
+<area shape="rect" id="Node000010" href="$gameobject_8c.html#a84aced79002334c0053bf3a94ab4e947" title=" " alt="" coords="381,177,499,203"/>
+<area shape="poly" id="edge9_Node000008_Node000010" title=" " alt="" coords="287,188,365,188,365,193,287,193"/>
+<area shape="rect" id="Node000013" href="$mouse_8c.html#a9da18257ff113b686bb826d154bfaa87" title="Subscribes and enables Mouse interrupts." alt="" coords="368,227,512,252"/>
+<area shape="poly" id="edge12_Node000012_Node000013" title=" " alt="" coords="273,274,364,254,366,259,275,280"/>
+<area shape="rect" id="Node000014" href="$mouse_8c.html#add3f28e5b936cfe39057eea4d30284f2" title="Writes a command to the Mouse." alt="" coords="373,276,507,302"/>
+<area shape="poly" id="edge13_Node000012_Node000014" title=" " alt="" coords="274,286,357,286,357,292,274,292"/>
+<area shape="rect" id="Node000015" href="$kbc_8c.html#a07566fc9da24f69ede678ea644744195" title="Writes a command to the KBC." alt="" coords="790,289,906,315"/>
+<area shape="poly" id="edge14_Node000014_Node000015" title=" " alt="" coords="508,288,774,297,774,302,508,294"/>
+<area shape="rect" id="Node000016" href="$utils_8c.html#a2b56f50ba159e9d5115ed1a75eff15d9" title=" " alt="" coords="954,413,1044,439"/>
+<area shape="poly" id="edge15_Node000015_Node000016" title=" " alt="" coords="867,313,972,401,969,405,863,317"/>
+<area shape="rect" id="Node000018" href="$rtc_8c.html#a3c40f97c04701fc6ac45a19bb92be181" title="Disables all RTC interrupts." alt="" coords="374,377,506,403"/>
+<area shape="poly" id="edge17_Node000017_Node000018" title=" " alt="" coords="281,371,359,379,358,384,280,376"/>
+<area shape="rect" id="Node000022" href="$rtc_8c.html#aadf5ab2196aa22ca0ae6679fe388e270" title="Enables or disables RTC periodic interrupts." alt="" coords="590,315,742,340"/>
+<area shape="poly" id="edge30_Node000017_Node000022" title=" " alt="" coords="280,360,575,333,575,338,281,365"/>
+<area shape="rect" id="Node000024" href="$rtc_8c.html#a5171a9c0f54940fe60f7500896afcc86" title="Subscribes and enables RTC interrupts." alt="" coords="606,463,726,488"/>
+<area shape="poly" id="edge28_Node000017_Node000024" title=" " alt="" coords="267,386,339,413,471,444,591,464,590,469,470,450,337,418,266,391"/>
+<area shape="rect" id="Node000019" href="$rtc_8c.html#ae1ad1cb6ae417786d227c4ede4d586fd" title="Enables or disables RTC alarm interrupts." alt="" coords="597,364,735,390"/>
+<area shape="poly" id="edge18_Node000018_Node000019" title=" " alt="" coords="506,384,581,379,581,384,507,389"/>
+<area shape="poly" id="edge22_Node000018_Node000022" title=" " alt="" coords="489,374,601,342,603,348,490,379"/>
+<area shape="rect" id="Node000023" href="$rtc_8c.html#a43ab2676911c7b2d91ee739cbe3af372" title="Enables or disables RTC update ended interrupts." alt="" coords="593,413,739,439"/>
+<area shape="poly" id="edge25_Node000018_Node000023" title=" " alt="" coords="507,398,578,410,577,415,506,403"/>
+<area shape="rect" id="Node000020" href="$rtc_8c.html#ac8b0ed21f98fd3ada932e232c253b92b" title="Reads a byte from the RTC." alt="" coords="814,413,882,439"/>
+<area shape="poly" id="edge19_Node000019_Node000020" title=" " alt="" coords="717,388,800,410,798,416,716,393"/>
+<area shape="rect" id="Node000021" href="$rtc_8c.html#a88bc7fc547c8c1296e2e42d246e5e23e" title="Writes a byte to the RTC." alt="" coords="812,364,884,390"/>
+<area shape="poly" id="edge21_Node000019_Node000021" title=" " alt="" coords="736,374,796,374,796,380,736,380"/>
+<area shape="poly" id="edge20_Node000020_Node000016" title=" " alt="" coords="883,424,939,424,939,429,883,429"/>
+<area shape="poly" id="edge23_Node000022_Node000020" title=" " alt="" coords="722,339,743,349,759,362,768,375,777,387,791,400,801,406,798,411,788,404,773,391,764,378,755,366,740,354,719,343"/>
+<area shape="poly" id="edge24_Node000022_Node000021" title=" " alt="" coords="717,338,798,361,797,366,716,344"/>
+<area shape="poly" id="edge26_Node000023_Node000020" title=" " alt="" coords="739,424,798,424,798,429,739,429"/>
+<area shape="poly" id="edge27_Node000023_Node000021" title=" " alt="" coords="716,410,797,388,798,393,717,415"/>
+<area shape="poly" id="edge29_Node000024_Node000020" title=" " alt="" coords="716,459,798,437,800,442,717,465"/>
+<area shape="rect" id="Node000026" href="$timer_8c.html#aca1506be74dfc71c6f90772ca269c619" title=" " alt="" coords="371,513,510,539"/>
+<area shape="poly" id="edge32_Node000025_Node000026" title=" " alt="" coords="283,524,355,524,355,529,283,529"/>
+<area shape="rect" id="Node000030" href="$timer_8c.html#a6f786481e80308348d629d605ffa2d84" title=" " alt="" coords="373,563,507,588"/>
+<area shape="poly" id="edge37_Node000025_Node000030" title=" " alt="" coords="284,537,366,556,364,561,283,543"/>
+<area shape="rect" id="Node000027" href="$timer_8c.html#afafc1891c876602d55b894103b1841a7" title=" " alt="" coords="794,488,902,514"/>
+<area shape="poly" id="edge33_Node000026_Node000027" title=" " alt="" coords="510,519,778,502,779,508,510,525"/>
+<area shape="rect" id="Node000028" href="$utils_8c.html#a31ab374573517f8a5ba31c52a49a8606" title=" " alt="" coords="618,613,714,639"/>
+<area shape="poly" id="edge35_Node000026_Node000028" title=" " alt="" coords="511,534,544,548,560,561,569,574,577,587,592,600,605,607,602,612,589,604,573,591,564,577,556,564,541,552,509,539"/>
+<area shape="rect" id="Node000029" href="$utils_8c.html#afc6ca7a9a39943ff1792d206da514a59" title=" " alt="" coords="616,564,716,590"/>
+<area shape="poly" id="edge36_Node000026_Node000029" title=" " alt="" coords="501,537,601,560,600,565,500,542"/>
+<area shape="poly" id="edge34_Node000027_Node000016" title=" " alt="" coords="875,485,956,444,959,449,877,490"/>
+<area shape="rect" id="Node000032" href="$graphics_8c.html#af1de4190f93a72f3597a76e0b1131501" title=" " alt="" coords="352,612,529,638"/>
+<area shape="poly" id="edge39_Node000031_Node000032" title=" " alt="" coords="251,604,336,612,335,617,251,609"/>
+</map>

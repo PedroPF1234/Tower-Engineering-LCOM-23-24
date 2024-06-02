@@ -1,0 +1,18 @@
+<map id="kbc_write_cmdb" name="kbc_write_cmdb">
+<area shape="rect" id="Node000001" title="Writes a command to the KBC." alt="" coords="685,31,801,56"/>
+<area shape="rect" id="Node000002" href="$kbc_8c.html#a0abccaf1a5e334eb50194f3490355c50" title="Reenables KBC interrupts." alt="" coords="477,5,637,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="669,36,637,32,637,26,669,31"/>
+<area shape="rect" id="Node000003" href="$mouse_8c.html#add3f28e5b936cfe39057eea4d30284f2" title="Writes a command to the Mouse." alt="" coords="490,55,624,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="669,56,625,61,624,56,669,50"/>
+<area shape="rect" id="Node000004" href="$mouse_8c.html#a4cc83f82d3baf0f2c63ae52ecae8aa9f" title="Encapsulates the subscription and initialization of the mouse." alt="" coords="316,29,421,55"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="474,59,421,52,422,47,475,54"/>
+<area shape="rect" id="Node000007" href="$mouse_8c.html#ae4a3f8afb4bb0f324a4c1f2e87932eed" title="Encapsulates the unsubscription and termination of the mouse." alt="" coords="308,79,429,104"/>
+<area shape="poly" id="edge6_Node000003_Node000007" title=" " alt="" coords="475,81,430,86,429,81,474,75"/>
+<area shape="rect" id="Node000005" href="$device__controller_8c.html#a47e74a2f7a5edae37287b8bcfbb30562" title="Encapsulates the initialization of all the devices." alt="" coords="162,29,260,55"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="301,45,260,45,260,40,301,40"/>
+<area shape="rect" id="Node000006" href="$proj_8c.html#af244d65e69677cf312af1950452ec256" title=" " alt="" coords="5,55,114,80"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="147,56,114,61,114,56,146,50"/>
+<area shape="rect" id="Node000008" href="$device__controller_8c.html#ab1bc69df0c7a23951179c8258d9ac75c" title="Encapsulates the termination of all the devices." alt="" coords="162,79,260,104"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="292,94,260,94,260,89,292,89"/>
+<area shape="poly" id="edge8_Node000008_Node000006" title=" " alt="" coords="146,84,114,79,114,73,147,79"/>
+</map>

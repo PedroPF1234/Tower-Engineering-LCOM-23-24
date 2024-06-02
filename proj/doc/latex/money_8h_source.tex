@@ -1,0 +1,60 @@
+\doxysection{money.\+h}
+\hypertarget{money_8h_source}{}\label{money_8h_source}\index{src/Game/Gameplay/Money/money.h@{src/Game/Gameplay/Money/money.h}}
+\mbox{\hyperlink{money_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{device__controller_8h}{../../../Devices/device\_controller.h}}"{}}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \mbox{\hyperlink{struct_sprite_array}{SpriteArray}}\ \mbox{\hyperlink{money_8h_a73764bf1cb460e9d1879bd0a0024ace2}{digits}};}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00011\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_money}{Money}}\ \{}
+\DoxyCodeLine{00012\ \ \ \mbox{\hyperlink{struct_game_object}{GameObject}}*\ \mbox{\hyperlink{struct_money_a0e238c0daaeb94421c0407309e4424ed}{coin}};\ \ \textcolor{comment}{/*The\ game\ object\ that\ represents\ the\ golden\ coin\ icon*/}}
+\DoxyCodeLine{00013\ \ \ \mbox{\hyperlink{struct_sprite_array}{SpriteArray}}\ \mbox{\hyperlink{struct_money_ab1b3b12d6fa8574f18a2a7b276374f4c}{moneyDigits}};\ \textcolor{comment}{/*The\ sprites\ that\ represent\ the\ digits\ of\ the\ money\ amount*/}}
+\DoxyCodeLine{00014\ \ \ \mbox{\hyperlink{struct_game_object_array}{GameObjectArray}}\ \mbox{\hyperlink{struct_money_aac4b35922e1837d2b9974419744b55dc}{moneyDigitsGameObjects}};\ \textcolor{comment}{/*The\ game\ objects\ that\ represent\ the\ digits\ of\ the\ money\ amount*/}}
+\DoxyCodeLine{00015\ \ \ int32\_t\ \mbox{\hyperlink{struct_money_acdbd1bb32af349e304c5a9972b3523e8}{money\_amount}};\ \textcolor{comment}{/*The\ amount\ of\ money\ a\ player\ has*/}}
+\DoxyCodeLine{00016\ \}\ \mbox{\hyperlink{money_8h_a55dbfc591068277d2b65a974490487ec}{Money}};}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00022\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_money_array}{MoneyArray}}\ \{\ }
+\DoxyCodeLine{00023\ \ \ \mbox{\hyperlink{struct_money}{Money}}**\ \mbox{\hyperlink{struct_money_array_ab0db0c4f0e0e4d0ad73000af1f71e9e7}{money}};\ \textcolor{comment}{/*Pointer\ to\ an\ array\ of\ Money\ pointers*/}}
+\DoxyCodeLine{00024\ \ \ uint32\_t\ \mbox{\hyperlink{struct_money_array_ae1959c0b979790c43a3797b172caae77}{length}};\ \textcolor{comment}{/*The\ current\ number\ of\ Money\ in\ the\ array*/}}
+\DoxyCodeLine{00025\ \ \ uint32\_t\ \mbox{\hyperlink{struct_money_array_adab31eff2aa415aa67fa04a87360b7ac}{capacity}};\ \textcolor{comment}{/*The\ total\ capacity\ of\ the\ array*/}}
+\DoxyCodeLine{00026\ \}\ \mbox{\hyperlink{money_8h_a06126c17c6659cfc72731486e53c4273}{MoneyArray}};}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00036\ \mbox{\hyperlink{struct_money}{Money}}*\ \mbox{\hyperlink{money_8h_a93e5d98cb7a8773ebef138857bf1ab7d}{initializeMoney}}(int32\_t\ money\_amount,\ int8\_t\ type);}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00044\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{money_8h_abe887ed57c273909bed050b92681df6c}{countDigits}}(\textcolor{keywordtype}{int}\ num);}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00053\ \textcolor{keywordtype}{int}*\ \mbox{\hyperlink{money_8h_a36a4298f30848abcfc57a6f4d218341a}{getDigits}}(\textcolor{keywordtype}{int}\ num,\ \textcolor{keywordtype}{int}*\ size);}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00063\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{money_8h_a87d35b98c1c3726e998963dec76e1f83}{associateSprites}}(\mbox{\hyperlink{struct_money}{Money}}*\ \mbox{\hyperlink{gameplay_8c_a2f1d20fe71e2a2721b25bd83c274425a}{money}},\ \textcolor{keywordtype}{int}\ money\_amount,\ \textcolor{keywordtype}{int}\ size,\ int8\_t\ type);}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00070\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{money_8h_aeb6a933a77066dcc2560e6d6716aad16}{destroyMoney}}(\mbox{\hyperlink{struct_money}{Money}}*\ \mbox{\hyperlink{gameplay_8c_a2f1d20fe71e2a2721b25bd83c274425a}{money}});}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00077\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{money_8h_afa1608f2c9910af4c7f038888d03b7d8}{createMoneyDigitsGameObjects}}(\mbox{\hyperlink{struct_money}{Money}}*\ \mbox{\hyperlink{gameplay_8c_a2f1d20fe71e2a2721b25bd83c274425a}{money}});}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00087\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{money_8h_a7310c4878fa529ca9780b122ab305566}{updateGameObjectSprites}}(\mbox{\hyperlink{struct_money}{Money}}*\ \mbox{\hyperlink{gameplay_8c_a2f1d20fe71e2a2721b25bd83c274425a}{money}},\ uint8\_t\ type,\ int16\_t\ x,\ int16\_t\ y);}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00096\ \mbox{\hyperlink{struct_money_array}{MoneyArray}}\ \mbox{\hyperlink{money_8h_ac2cab6ebcd9d6585bb463b7f563c3e6d}{newMoneyArray}}(uint32\_t\ capacity);}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00104\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{money_8h_a0f9b2b0e545f05e706f113d3b9655d69}{insertMoneyArray}}(\mbox{\hyperlink{struct_money_array}{MoneyArray}}*\ moneyArray,\ \mbox{\hyperlink{struct_money}{Money}}*\ \mbox{\hyperlink{gameplay_8c_a2f1d20fe71e2a2721b25bd83c274425a}{money}});}
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00112\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{money_8h_a31dba917ea802ff43ed83c1afe470d1b}{removeMoneyArray}}(\mbox{\hyperlink{struct_money_array}{MoneyArray}}*\ moneyArray,\ \mbox{\hyperlink{struct_money}{Money}}*\ \mbox{\hyperlink{gameplay_8c_a2f1d20fe71e2a2721b25bd83c274425a}{money}});}
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00121\ \mbox{\hyperlink{struct_money}{Money}}*\ \mbox{\hyperlink{money_8h_a36b53e03c59c66e854e3552a1e45c058}{getMoneyArray}}(\mbox{\hyperlink{struct_money_array}{MoneyArray}}\ *moneyArray,\ uint32\_t\ index);}
+\DoxyCodeLine{00122\ }
+\DoxyCodeLine{00128\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{money_8h_a33c893fc07f6c35942107d0e1bc00e4c}{destroyMoneyArray}}(\mbox{\hyperlink{struct_money_array}{MoneyArray}}\ *moneyArray);}
+\DoxyCodeLine{00129\ }
+\DoxyCodeLine{00135\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{money_8h_ad185379e3b998bc2290c578fcde4c173}{hideMoney}}(\mbox{\hyperlink{struct_money}{Money}}*\ \mbox{\hyperlink{gameplay_8c_a2f1d20fe71e2a2721b25bd83c274425a}{money}});}
+\DoxyCodeLine{00136\ }
+\DoxyCodeLine{00142\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{money_8h_a736fbac5effbd08e499cb49779492981}{showMoney}}(\mbox{\hyperlink{struct_money}{Money}}*\ \mbox{\hyperlink{gameplay_8c_a2f1d20fe71e2a2721b25bd83c274425a}{money}});}
+\DoxyCodeLine{00143\ }
+\DoxyCodeLine{00149\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{money_8h_addf41816eba02486252ebe2eba35ec1f}{hideMoneyArray}}(\mbox{\hyperlink{struct_money_array}{MoneyArray}}*\ moneyArray);}
+\DoxyCodeLine{00150\ }
+\DoxyCodeLine{00156\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{money_8h_a2bf3776bcea0a4e5918e95e736825592}{showMoneyArray}}(\mbox{\hyperlink{struct_money_array}{MoneyArray}}*\ moneyArray);}
+\DoxyCodeLine{00157\ }
+
+\end{DoxyCode}

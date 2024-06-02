@@ -1,0 +1,26 @@
+\doxysection{playerbase.\+h}
+\hypertarget{playerbase_8h_source}{}\label{playerbase_8h_source}\index{src/Game/Gameplay/PlayerBase/playerbase.h@{src/Game/Gameplay/PlayerBase/playerbase.h}}
+\mbox{\hyperlink{playerbase_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{device__controller_8h}{../../../Devices/device\_controller.h}}"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{money_8h}{../Money/money.h}}"{}}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00010\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_player_base}{PlayerBase}}\ \{}
+\DoxyCodeLine{00011\ \ \ \mbox{\hyperlink{struct_game_object}{GameObject}}*\ \mbox{\hyperlink{struct_player_base_a4ba3d925fa540d162c99e7f7aaf3b07e}{baseObject}};\ }
+\DoxyCodeLine{00012\ \ \ \mbox{\hyperlink{struct_game_object}{GameObject}}*\ \mbox{\hyperlink{struct_player_base_af0da21e9362c6843ee4852f08100e70f}{health\_bar}};\ }
+\DoxyCodeLine{00013\ \ \ \mbox{\hyperlink{struct_game_object}{GameObject}}*\ \mbox{\hyperlink{struct_player_base_adb94732eb1ba09cf5097805d89e7dca6}{baseButton}};\ }
+\DoxyCodeLine{00014\ \ \ int16\_t\ \mbox{\hyperlink{struct_player_base_a57f49f6a05dbc928dc3461ad2f0b3c7c}{hit\_points}};\ }
+\DoxyCodeLine{00015\ \ \ int16\_t\ \mbox{\hyperlink{struct_player_base_a54d19170c758ad400333151e2deaa5fa}{max\_hit\_points}};\ }
+\DoxyCodeLine{00016\ \ \ \mbox{\hyperlink{struct_money}{Money}}*\ \mbox{\hyperlink{struct_player_base_a97224090f6ccc942476d49cdb65329ce}{price}};\ }
+\DoxyCodeLine{00017\ \}\ \mbox{\hyperlink{playerbase_8h_a12d60285f698a7eefe1d438069664269}{PlayerBase}};}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00027\ \mbox{\hyperlink{struct_player_base}{PlayerBase}}*\ \mbox{\hyperlink{playerbase_8h_ac6cd2a8de8bf7122bea7bfacf2aa6d7e}{initializePlayerBase}}(int16\_t\ x,\ int16\_t\ y,\ int16\_t\ hp);}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00034\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{playerbase_8h_a547b7702d9da3b582ab6be7ebe09b3f5}{destroyPlayerBase}}(\mbox{\hyperlink{struct_player_base}{PlayerBase}}*\ playerbase);}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00041\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{playerbase_8h_a9f2dd9531f5a0a67d5baae332423e8d5}{updatePlayerBaseHealthBar}}(\mbox{\hyperlink{struct_player_base}{PlayerBase}}*\ playerbase);}
+
+\end{DoxyCode}

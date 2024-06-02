@@ -1,0 +1,7 @@
+<map id="GameObjectArray" name="GameObjectArray">
+<area shape="rect" id="Node000001" title="Represents an array of GameObjects." alt="" coords="5,183,131,208"/>
+<area shape="rect" id="Node000002" href="$struct_game_object.html" title="Represents a game object in the game." alt="" coords="21,94,115,120"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="71,135,71,182,65,182,65,135"/>
+<area shape="rect" id="Node000003" href="$struct_sprite.html" title="Struct that represents a sprite." alt="" coords="40,5,96,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="71,47,71,94,65,94,65,47"/>
+</map>

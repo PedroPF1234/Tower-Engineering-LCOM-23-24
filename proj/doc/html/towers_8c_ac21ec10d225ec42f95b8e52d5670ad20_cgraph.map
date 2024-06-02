@@ -1,0 +1,9 @@
+<map id="unmountTurret" name="unmountTurret">
+<area shape="rect" id="Node000001" title="Unmounts a turret from a tower." alt="" coords="5,35,111,60"/>
+<area shape="rect" id="Node000002" href="$sprite_8c.html#af16c6befaac9ffb673b9e3c798d542ed" title="Destroys a sprite and frees associated memory." alt="" coords="186,5,290,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="111,36,170,26,171,32,111,42"/>
+<area shape="rect" id="Node000003" href="$gameobject_8c.html#a5450390b74149c8e80f882c397d7bafb" title="Removes a sprite from a spriteless game object." alt="" coords="159,55,317,96"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="111,53,143,58,143,63,111,58"/>
+<area shape="rect" id="Node000004" href="$gameobject_8c.html#a11caa0bf998b9de720cc858c6d02274b" title=" " alt="" coords="365,63,517,88"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="317,73,350,73,350,78,317,78"/>
+</map>

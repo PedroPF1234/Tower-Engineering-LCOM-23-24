@@ -1,0 +1,7 @@
+<map id="rtc_subscribe_int" name="rtc_subscribe_int">
+<area shape="rect" id="Node000001" title="Subscribes and enables RTC interrupts." alt="" coords="5,5,126,31"/>
+<area shape="rect" id="Node000002" href="$rtc_8c.html#ac8b0ed21f98fd3ada932e232c253b92b" title="Reads a byte from the RTC." alt="" coords="174,5,242,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="126,16,158,16,158,21,126,21"/>
+<area shape="rect" id="Node000003" href="$utils_8c.html#a2b56f50ba159e9d5115ed1a75eff15d9" title=" " alt="" coords="290,5,380,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="243,16,274,16,274,21,243,21"/>
+</map>

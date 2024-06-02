@@ -1,0 +1,265 @@
+\doxysection{src/\+Devices/\+Key\+Board/kbc.c File Reference}
+\hypertarget{kbc_8c}{}\label{kbc_8c}\index{src/Devices/KeyBoard/kbc.c@{src/Devices/KeyBoard/kbc.c}}
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include "{}i8042.\+h"{}}\newline
+Include dependency graph for kbc.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=271pt]{kbc_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{kbc_8c_a18c596b224bba98ca524a0bfa9730609}{kbc\+\_\+subscribe\+\_\+int}} (uint8\+\_\+t \texorpdfstring{$\ast$}{*}bit\+\_\+no)
+\begin{DoxyCompactList}\small\item\em Subscribes and enables KBC interrupts. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{kbc_8c_a0e945987c2233f1c30a645ec5fc750c1}{kbc\+\_\+unsubscribe\+\_\+int}} ()
+\begin{DoxyCompactList}\small\item\em Unsubscribes KBC interrupts. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{kbc_8c_a07566fc9da24f69ede678ea644744195}{kbc\+\_\+write\+\_\+cmdb}} (uint8\+\_\+t port, uint8\+\_\+t cmd, bool is\+\_\+mouse\+\_\+cmd)
+\begin{DoxyCompactList}\small\item\em Writes a command to the KBC. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{kbc_8c_abc18ea628a0ac94eeabd7422e544d94d}{kbc\+\_\+read\+\_\+cmdb}} (uint8\+\_\+t \texorpdfstring{$\ast$}{*}cmd, bool is\+\_\+mouse\+\_\+cmd)
+\begin{DoxyCompactList}\small\item\em Reads a command from the KBC. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{kbc_8c_a0abccaf1a5e334eb50194f3490355c50}{kbd\+\_\+reenable\+\_\+interrupts}} ()
+\begin{DoxyCompactList}\small\item\em Reenables KBC interrupts. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{kbc_8c_ab9e6ed7960d60aa4834f2038247d4536}{kbc\+\_\+ih}} ()
+\begin{DoxyCompactList}\small\item\em KBC Interrupt Handler. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{kbc_8c_aa4c58a11cd49c54cc0eb02a79010a9cc}{kbc\+\_\+read\+\_\+status}} (uint8\+\_\+t \texorpdfstring{$\ast$}{*}status)
+\begin{DoxyCompactList}\small\item\em Reads the status of the KBC. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static int \mbox{\hyperlink{kbc_8c_a66950d98786a9b087f74991e4b6794e3}{kbc\+\_\+hook\+\_\+id}} = \mbox{\hyperlink{_key_board_2i8042_8h_a16c5827f043d82f87c726c2d4369c11d}{KBC\+\_\+\+IRQ}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{kbc_8c_a01577ed8d3646775ae6a8e00d24c1d94}{scancode}} \mbox{[}2\mbox{]} = \{0, 0\}
+\item 
+gid\+\_\+t \mbox{\hyperlink{kbc_8c_ae5a6b5527cccfd9715db511bcaa08b2c}{ctr}} = 0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{kbc_8c_ab9e6ed7960d60aa4834f2038247d4536}\index{kbc.c@{kbc.c}!kbc\_ih@{kbc\_ih}}
+\index{kbc\_ih@{kbc\_ih}!kbc.c@{kbc.c}}
+\doxysubsubsection{\texorpdfstring{kbc\_ih()}{kbc\_ih()}}
+{\footnotesize\ttfamily \label{kbc_8c_ab9e6ed7960d60aa4834f2038247d4536} 
+void kbc\+\_\+ih (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+KBC Interrupt Handler. 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=228pt]{kbc_8c_ab9e6ed7960d60aa4834f2038247d4536_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{kbc_8c_ab9e6ed7960d60aa4834f2038247d4536_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{kbc_8c_abc18ea628a0ac94eeabd7422e544d94d}\index{kbc.c@{kbc.c}!kbc\_read\_cmdb@{kbc\_read\_cmdb}}
+\index{kbc\_read\_cmdb@{kbc\_read\_cmdb}!kbc.c@{kbc.c}}
+\doxysubsubsection{\texorpdfstring{kbc\_read\_cmdb()}{kbc\_read\_cmdb()}}
+{\footnotesize\ttfamily \label{kbc_8c_abc18ea628a0ac94eeabd7422e544d94d} 
+int kbc\+\_\+read\+\_\+cmdb (\begin{DoxyParamCaption}\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{cmd}{, }\item[{bool}]{is\+\_\+mouse\+\_\+cmd}{}\end{DoxyParamCaption})}
+
+
+
+Reads a command from the KBC. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cmd} & address of memory to be initialized with the command read \\
+\hline
+{\em is\+\_\+mouse\+\_\+cmd} & if the command is a mouse command \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 if successful, 1 otherwise 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=269pt]{kbc_8c_abc18ea628a0ac94eeabd7422e544d94d_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=321pt]{kbc_8c_abc18ea628a0ac94eeabd7422e544d94d_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{kbc_8c_aa4c58a11cd49c54cc0eb02a79010a9cc}\index{kbc.c@{kbc.c}!kbc\_read\_status@{kbc\_read\_status}}
+\index{kbc\_read\_status@{kbc\_read\_status}!kbc.c@{kbc.c}}
+\doxysubsubsection{\texorpdfstring{kbc\_read\_status()}{kbc\_read\_status()}}
+{\footnotesize\ttfamily \label{kbc_8c_aa4c58a11cd49c54cc0eb02a79010a9cc} 
+int kbc\+\_\+read\+\_\+status (\begin{DoxyParamCaption}\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{status}{}\end{DoxyParamCaption})}
+
+
+
+Reads the status of the KBC. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em status} & address of memory to be initialized with the status read \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 if successful, 1 otherwise 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=272pt]{kbc_8c_aa4c58a11cd49c54cc0eb02a79010a9cc_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{kbc_8c_aa4c58a11cd49c54cc0eb02a79010a9cc_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{kbc_8c_a18c596b224bba98ca524a0bfa9730609}\index{kbc.c@{kbc.c}!kbc\_subscribe\_int@{kbc\_subscribe\_int}}
+\index{kbc\_subscribe\_int@{kbc\_subscribe\_int}!kbc.c@{kbc.c}}
+\doxysubsubsection{\texorpdfstring{kbc\_subscribe\_int()}{kbc\_subscribe\_int()}}
+{\footnotesize\ttfamily \label{kbc_8c_a18c596b224bba98ca524a0bfa9730609} 
+int kbc\+\_\+subscribe\+\_\+int (\begin{DoxyParamCaption}\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{bit\+\_\+no}{}\end{DoxyParamCaption})}
+
+
+
+Subscribes and enables KBC interrupts. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em bit\+\_\+no} & address of memory to be initialized with the bit number to be set in the mask returned upon an interrupt \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 if successful, 1 otherwise 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{kbc_8c_a18c596b224bba98ca524a0bfa9730609_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{kbc_8c_a0e945987c2233f1c30a645ec5fc750c1}\index{kbc.c@{kbc.c}!kbc\_unsubscribe\_int@{kbc\_unsubscribe\_int}}
+\index{kbc\_unsubscribe\_int@{kbc\_unsubscribe\_int}!kbc.c@{kbc.c}}
+\doxysubsubsection{\texorpdfstring{kbc\_unsubscribe\_int()}{kbc\_unsubscribe\_int()}}
+{\footnotesize\ttfamily \label{kbc_8c_a0e945987c2233f1c30a645ec5fc750c1} 
+int kbc\+\_\+unsubscribe\+\_\+int (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Unsubscribes KBC interrupts. 
+
+\begin{DoxyReturn}{Returns}
+0 if successful, 1 otherwise 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{kbc_8c_a0e945987c2233f1c30a645ec5fc750c1_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{kbc_8c_a07566fc9da24f69ede678ea644744195}\index{kbc.c@{kbc.c}!kbc\_write\_cmdb@{kbc\_write\_cmdb}}
+\index{kbc\_write\_cmdb@{kbc\_write\_cmdb}!kbc.c@{kbc.c}}
+\doxysubsubsection{\texorpdfstring{kbc\_write\_cmdb()}{kbc\_write\_cmdb()}}
+{\footnotesize\ttfamily \label{kbc_8c_a07566fc9da24f69ede678ea644744195} 
+int kbc\+\_\+write\+\_\+cmdb (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{port}{, }\item[{uint8\+\_\+t}]{cmd}{, }\item[{bool}]{is\+\_\+mouse\+\_\+cmd}{}\end{DoxyParamCaption})}
+
+
+
+Writes a command to the KBC. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em port} & port to write the command to \\
+\hline
+{\em cmd} & command to write \\
+\hline
+{\em is\+\_\+mouse\+\_\+cmd} & if the command is a mouse command \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 if successful, 1 otherwise 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=271pt]{kbc_8c_a07566fc9da24f69ede678ea644744195_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{kbc_8c_a07566fc9da24f69ede678ea644744195_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{kbc_8c_a0abccaf1a5e334eb50194f3490355c50}\index{kbc.c@{kbc.c}!kbd\_reenable\_interrupts@{kbd\_reenable\_interrupts}}
+\index{kbd\_reenable\_interrupts@{kbd\_reenable\_interrupts}!kbc.c@{kbc.c}}
+\doxysubsubsection{\texorpdfstring{kbd\_reenable\_interrupts()}{kbd\_reenable\_interrupts()}}
+{\footnotesize\ttfamily \label{kbc_8c_a0abccaf1a5e334eb50194f3490355c50} 
+int kbd\+\_\+reenable\+\_\+interrupts (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Reenables KBC interrupts. 
+
+\begin{DoxyReturn}{Returns}
+0 if successful, 1 otherwise 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{kbc_8c_a0abccaf1a5e334eb50194f3490355c50_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{kbc_8c_ae5a6b5527cccfd9715db511bcaa08b2c}\index{kbc.c@{kbc.c}!ctr@{ctr}}
+\index{ctr@{ctr}!kbc.c@{kbc.c}}
+\doxysubsubsection{\texorpdfstring{ctr}{ctr}}
+{\footnotesize\ttfamily \label{kbc_8c_ae5a6b5527cccfd9715db511bcaa08b2c} 
+gid\+\_\+t ctr = 0}
+
+\Hypertarget{kbc_8c_a66950d98786a9b087f74991e4b6794e3}\index{kbc.c@{kbc.c}!kbc\_hook\_id@{kbc\_hook\_id}}
+\index{kbc\_hook\_id@{kbc\_hook\_id}!kbc.c@{kbc.c}}
+\doxysubsubsection{\texorpdfstring{kbc\_hook\_id}{kbc\_hook\_id}}
+{\footnotesize\ttfamily \label{kbc_8c_a66950d98786a9b087f74991e4b6794e3} 
+int kbc\+\_\+hook\+\_\+id = \mbox{\hyperlink{_key_board_2i8042_8h_a16c5827f043d82f87c726c2d4369c11d}{KBC\+\_\+\+IRQ}}\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{kbc_8c_a01577ed8d3646775ae6a8e00d24c1d94}\index{kbc.c@{kbc.c}!scancode@{scancode}}
+\index{scancode@{scancode}!kbc.c@{kbc.c}}
+\doxysubsubsection{\texorpdfstring{scancode}{scancode}}
+{\footnotesize\ttfamily \label{kbc_8c_a01577ed8d3646775ae6a8e00d24c1d94} 
+uint8\+\_\+t scancode\mbox{[}2\mbox{]} = \{0, 0\}}
+

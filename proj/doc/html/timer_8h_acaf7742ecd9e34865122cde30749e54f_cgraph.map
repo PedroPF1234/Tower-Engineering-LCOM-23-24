@@ -1,0 +1,15 @@
+<map id="timer_initiate_and_subscribe" name="timer_initiate_and_subscribe">
+<area shape="rect" id="Node000001" title="Subscribes and enables Timer 0 interrupts with a given frequency." alt="" coords="5,73,129,113"/>
+<area shape="rect" id="Node000002" href="$timer_8c.html#aca1506be74dfc71c6f90772ca269c619" title=" " alt="" coords="177,55,316,80"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="129,81,161,77,161,82,130,87"/>
+<area shape="rect" id="Node000007" href="$timer_8c.html#a6f786481e80308348d629d605ffa2d84" title=" " alt="" coords="179,104,314,130"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="129,98,164,103,163,108,129,104"/>
+<area shape="rect" id="Node000003" href="$timer_8c.html#afafc1891c876602d55b894103b1841a7" title=" " alt="" coords="364,5,471,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="293,51,355,33,357,38,295,57"/>
+<area shape="rect" id="Node000005" href="$utils_8c.html#a31ab374573517f8a5ba31c52a49a8606" title=" " alt="" coords="370,55,465,80"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="316,65,354,65,354,70,316,70"/>
+<area shape="rect" id="Node000006" href="$utils_8c.html#afc6ca7a9a39943ff1792d206da514a59" title=" " alt="" coords="368,104,467,130"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="295,78,357,97,355,102,293,84"/>
+<area shape="rect" id="Node000004" href="$utils_8c.html#a2b56f50ba159e9d5115ed1a75eff15d9" title=" " alt="" coords="519,5,610,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="472,16,504,16,504,21,472,21"/>
+</map>

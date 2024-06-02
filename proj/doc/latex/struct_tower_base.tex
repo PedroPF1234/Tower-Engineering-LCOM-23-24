@@ -1,0 +1,179 @@
+\doxysection{Tower\+Base Struct Reference}
+\hypertarget{struct_tower_base}{}\label{struct_tower_base}\index{TowerBase@{TowerBase}}
+
+
+Represents a tower placeholder in the game.  
+
+
+
+
+{\ttfamily \#include $<$towers.\+h$>$}
+
+
+
+Collaboration diagram for Tower\+Base\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=241pt]{struct_tower_base__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct_tower_base_ad056c16a27796e54c48c888c30b2f9e2}{base}}
+\item 
+\mbox{\hyperlink{struct_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct_tower_base_af2aabf353a5f4e0a2bc3bfffbe0a2da2}{turret}}
+\item 
+\mbox{\hyperlink{struct_sprite}{Sprite}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct_tower_base_af820c262fc3a0cd8e0b4741e57942e67}{base\+Normal}}
+\item 
+\mbox{\hyperlink{struct_sprite}{Sprite}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct_tower_base_a8ab99a3b525628b1eab689eeb20ccda0}{base\+Hovered}}
+\item 
+\mbox{\hyperlink{struct_sprite}{Sprite}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct_tower_base_a75a454f0126f3a260b0485efbf8e524b}{turret\+Sprite}}
+\item 
+int8\+\_\+t \mbox{\hyperlink{struct_tower_base_a7a5b9940363d129ef3eabe8487b51738}{turret\+Type}}
+\item 
+int16\+\_\+t \mbox{\hyperlink{struct_tower_base_afd5f38c905583e3e03ced78196e7a26d}{x}}
+\item 
+int16\+\_\+t \mbox{\hyperlink{struct_tower_base_a677beef50adb1a259c6f0b0fe5c4ca74}{y}}
+\item 
+int16\+\_\+t \mbox{\hyperlink{struct_tower_base_a1ea798ea0eb94ee6fdf0eb8210a0fe19}{origin\+\_\+offset\+\_\+x}}
+\item 
+int16\+\_\+t \mbox{\hyperlink{struct_tower_base_a159d3e9c07b9e3c4a61952d8aae1c2ef}{origin\+\_\+offset\+\_\+y}}
+\item 
+uint16\+\_\+t \mbox{\hyperlink{struct_tower_base_a927335e2eb2d85109032795f940df2b7}{range}}
+\item 
+uint16\+\_\+t \mbox{\hyperlink{struct_tower_base_a76eb4bc51641c7a4ef62b7d614b56cc4}{turret\+\_\+radius}}
+\item 
+uint16\+\_\+t \mbox{\hyperlink{struct_tower_base_a443bface16cd2f17431b88a55bd92719}{damage}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{struct_tower_base_a1accc85a2de68835840071cacb3589fb}{level}}
+\item 
+\mbox{\hyperlink{towers_8h_aaa6d848f865ac38a442ca88e57ea2167}{Tower\+Targetting}} \mbox{\hyperlink{struct_tower_base_af2a365c3a9e7d9c0411a979887606eb3}{targetting}}
+\item 
+\mbox{\hyperlink{struct_enemy}{Enemy}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct_tower_base_ab4e062f09ca7d0f077120e6856a654f6}{target}}
+\item 
+int \mbox{\hyperlink{struct_tower_base_aeca11fd17f4b8e4d2561d4ab287e3440}{cooldown}}
+\item 
+int \mbox{\hyperlink{struct_tower_base_a1c0843dd247f644669685d6a17d6107b}{time\+Without\+Shooting}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents a tower placeholder in the game. 
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{struct_tower_base_ad056c16a27796e54c48c888c30b2f9e2}\index{TowerBase@{TowerBase}!base@{base}}
+\index{base@{base}!TowerBase@{TowerBase}}
+\doxysubsubsection{\texorpdfstring{base}{base}}
+{\footnotesize\ttfamily \label{struct_tower_base_ad056c16a27796e54c48c888c30b2f9e2} 
+\mbox{\hyperlink{struct_game_object}{Game\+Object}}\texorpdfstring{$\ast$}{*} Tower\+Base\+::base}
+
+\Hypertarget{struct_tower_base_a8ab99a3b525628b1eab689eeb20ccda0}\index{TowerBase@{TowerBase}!baseHovered@{baseHovered}}
+\index{baseHovered@{baseHovered}!TowerBase@{TowerBase}}
+\doxysubsubsection{\texorpdfstring{baseHovered}{baseHovered}}
+{\footnotesize\ttfamily \label{struct_tower_base_a8ab99a3b525628b1eab689eeb20ccda0} 
+\mbox{\hyperlink{struct_sprite}{Sprite}}\texorpdfstring{$\ast$}{*} Tower\+Base\+::base\+Hovered}
+
+\Hypertarget{struct_tower_base_af820c262fc3a0cd8e0b4741e57942e67}\index{TowerBase@{TowerBase}!baseNormal@{baseNormal}}
+\index{baseNormal@{baseNormal}!TowerBase@{TowerBase}}
+\doxysubsubsection{\texorpdfstring{baseNormal}{baseNormal}}
+{\footnotesize\ttfamily \label{struct_tower_base_af820c262fc3a0cd8e0b4741e57942e67} 
+\mbox{\hyperlink{struct_sprite}{Sprite}}\texorpdfstring{$\ast$}{*} Tower\+Base\+::base\+Normal}
+
+\Hypertarget{struct_tower_base_aeca11fd17f4b8e4d2561d4ab287e3440}\index{TowerBase@{TowerBase}!cooldown@{cooldown}}
+\index{cooldown@{cooldown}!TowerBase@{TowerBase}}
+\doxysubsubsection{\texorpdfstring{cooldown}{cooldown}}
+{\footnotesize\ttfamily \label{struct_tower_base_aeca11fd17f4b8e4d2561d4ab287e3440} 
+int Tower\+Base\+::cooldown}
+
+\Hypertarget{struct_tower_base_a443bface16cd2f17431b88a55bd92719}\index{TowerBase@{TowerBase}!damage@{damage}}
+\index{damage@{damage}!TowerBase@{TowerBase}}
+\doxysubsubsection{\texorpdfstring{damage}{damage}}
+{\footnotesize\ttfamily \label{struct_tower_base_a443bface16cd2f17431b88a55bd92719} 
+uint16\+\_\+t Tower\+Base\+::damage}
+
+\Hypertarget{struct_tower_base_a1accc85a2de68835840071cacb3589fb}\index{TowerBase@{TowerBase}!level@{level}}
+\index{level@{level}!TowerBase@{TowerBase}}
+\doxysubsubsection{\texorpdfstring{level}{level}}
+{\footnotesize\ttfamily \label{struct_tower_base_a1accc85a2de68835840071cacb3589fb} 
+uint8\+\_\+t Tower\+Base\+::level}
+
+\Hypertarget{struct_tower_base_a1ea798ea0eb94ee6fdf0eb8210a0fe19}\index{TowerBase@{TowerBase}!origin\_offset\_x@{origin\_offset\_x}}
+\index{origin\_offset\_x@{origin\_offset\_x}!TowerBase@{TowerBase}}
+\doxysubsubsection{\texorpdfstring{origin\_offset\_x}{origin\_offset\_x}}
+{\footnotesize\ttfamily \label{struct_tower_base_a1ea798ea0eb94ee6fdf0eb8210a0fe19} 
+int16\+\_\+t Tower\+Base\+::origin\+\_\+offset\+\_\+x}
+
+\Hypertarget{struct_tower_base_a159d3e9c07b9e3c4a61952d8aae1c2ef}\index{TowerBase@{TowerBase}!origin\_offset\_y@{origin\_offset\_y}}
+\index{origin\_offset\_y@{origin\_offset\_y}!TowerBase@{TowerBase}}
+\doxysubsubsection{\texorpdfstring{origin\_offset\_y}{origin\_offset\_y}}
+{\footnotesize\ttfamily \label{struct_tower_base_a159d3e9c07b9e3c4a61952d8aae1c2ef} 
+int16\+\_\+t Tower\+Base\+::origin\+\_\+offset\+\_\+y}
+
+\Hypertarget{struct_tower_base_a927335e2eb2d85109032795f940df2b7}\index{TowerBase@{TowerBase}!range@{range}}
+\index{range@{range}!TowerBase@{TowerBase}}
+\doxysubsubsection{\texorpdfstring{range}{range}}
+{\footnotesize\ttfamily \label{struct_tower_base_a927335e2eb2d85109032795f940df2b7} 
+uint16\+\_\+t Tower\+Base\+::range}
+
+\Hypertarget{struct_tower_base_ab4e062f09ca7d0f077120e6856a654f6}\index{TowerBase@{TowerBase}!target@{target}}
+\index{target@{target}!TowerBase@{TowerBase}}
+\doxysubsubsection{\texorpdfstring{target}{target}}
+{\footnotesize\ttfamily \label{struct_tower_base_ab4e062f09ca7d0f077120e6856a654f6} 
+\mbox{\hyperlink{struct_enemy}{Enemy}}\texorpdfstring{$\ast$}{*} Tower\+Base\+::target}
+
+\Hypertarget{struct_tower_base_af2a365c3a9e7d9c0411a979887606eb3}\index{TowerBase@{TowerBase}!targetting@{targetting}}
+\index{targetting@{targetting}!TowerBase@{TowerBase}}
+\doxysubsubsection{\texorpdfstring{targetting}{targetting}}
+{\footnotesize\ttfamily \label{struct_tower_base_af2a365c3a9e7d9c0411a979887606eb3} 
+\mbox{\hyperlink{towers_8h_aaa6d848f865ac38a442ca88e57ea2167}{Tower\+Targetting}} Tower\+Base\+::targetting}
+
+\Hypertarget{struct_tower_base_a1c0843dd247f644669685d6a17d6107b}\index{TowerBase@{TowerBase}!timeWithoutShooting@{timeWithoutShooting}}
+\index{timeWithoutShooting@{timeWithoutShooting}!TowerBase@{TowerBase}}
+\doxysubsubsection{\texorpdfstring{timeWithoutShooting}{timeWithoutShooting}}
+{\footnotesize\ttfamily \label{struct_tower_base_a1c0843dd247f644669685d6a17d6107b} 
+int Tower\+Base\+::time\+Without\+Shooting}
+
+\Hypertarget{struct_tower_base_af2aabf353a5f4e0a2bc3bfffbe0a2da2}\index{TowerBase@{TowerBase}!turret@{turret}}
+\index{turret@{turret}!TowerBase@{TowerBase}}
+\doxysubsubsection{\texorpdfstring{turret}{turret}}
+{\footnotesize\ttfamily \label{struct_tower_base_af2aabf353a5f4e0a2bc3bfffbe0a2da2} 
+\mbox{\hyperlink{struct_game_object}{Game\+Object}}\texorpdfstring{$\ast$}{*} Tower\+Base\+::turret}
+
+\Hypertarget{struct_tower_base_a76eb4bc51641c7a4ef62b7d614b56cc4}\index{TowerBase@{TowerBase}!turret\_radius@{turret\_radius}}
+\index{turret\_radius@{turret\_radius}!TowerBase@{TowerBase}}
+\doxysubsubsection{\texorpdfstring{turret\_radius}{turret\_radius}}
+{\footnotesize\ttfamily \label{struct_tower_base_a76eb4bc51641c7a4ef62b7d614b56cc4} 
+uint16\+\_\+t Tower\+Base\+::turret\+\_\+radius}
+
+\Hypertarget{struct_tower_base_a75a454f0126f3a260b0485efbf8e524b}\index{TowerBase@{TowerBase}!turretSprite@{turretSprite}}
+\index{turretSprite@{turretSprite}!TowerBase@{TowerBase}}
+\doxysubsubsection{\texorpdfstring{turretSprite}{turretSprite}}
+{\footnotesize\ttfamily \label{struct_tower_base_a75a454f0126f3a260b0485efbf8e524b} 
+\mbox{\hyperlink{struct_sprite}{Sprite}}\texorpdfstring{$\ast$}{*} Tower\+Base\+::turret\+Sprite}
+
+\Hypertarget{struct_tower_base_a7a5b9940363d129ef3eabe8487b51738}\index{TowerBase@{TowerBase}!turretType@{turretType}}
+\index{turretType@{turretType}!TowerBase@{TowerBase}}
+\doxysubsubsection{\texorpdfstring{turretType}{turretType}}
+{\footnotesize\ttfamily \label{struct_tower_base_a7a5b9940363d129ef3eabe8487b51738} 
+int8\+\_\+t Tower\+Base\+::turret\+Type}
+
+\Hypertarget{struct_tower_base_afd5f38c905583e3e03ced78196e7a26d}\index{TowerBase@{TowerBase}!x@{x}}
+\index{x@{x}!TowerBase@{TowerBase}}
+\doxysubsubsection{\texorpdfstring{x}{x}}
+{\footnotesize\ttfamily \label{struct_tower_base_afd5f38c905583e3e03ced78196e7a26d} 
+int16\+\_\+t Tower\+Base\+::x}
+
+\Hypertarget{struct_tower_base_a677beef50adb1a259c6f0b0fe5c4ca74}\index{TowerBase@{TowerBase}!y@{y}}
+\index{y@{y}!TowerBase@{TowerBase}}
+\doxysubsubsection{\texorpdfstring{y}{y}}
+{\footnotesize\ttfamily \label{struct_tower_base_a677beef50adb1a259c6f0b0fe5c4ca74} 
+int16\+\_\+t Tower\+Base\+::y}
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/\+Game/\+Gameplay/\+Tower/\mbox{\hyperlink{towers_8h}{towers.\+h}}\end{DoxyCompactItemize}

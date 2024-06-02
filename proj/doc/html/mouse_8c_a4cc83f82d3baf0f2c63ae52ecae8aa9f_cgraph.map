@@ -1,0 +1,11 @@
+<map id="mouse_initiate" name="mouse_initiate">
+<area shape="rect" id="Node000001" title="Encapsulates the subscription and initialization of the mouse." alt="" coords="5,31,111,56"/>
+<area shape="rect" id="Node000002" href="$mouse_8c.html#a9da18257ff113b686bb826d154bfaa87" title="Subscribes and enables Mouse interrupts." alt="" coords="159,5,303,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="111,33,143,28,144,34,112,38"/>
+<area shape="rect" id="Node000003" href="$mouse_8c.html#add3f28e5b936cfe39057eea4d30284f2" title="Writes a command to the Mouse." alt="" coords="164,55,298,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="112,48,149,53,148,59,111,53"/>
+<area shape="rect" id="Node000004" href="$kbc_8c.html#a07566fc9da24f69ede678ea644744195" title="Writes a command to the KBC." alt="" coords="351,55,467,80"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="299,65,335,65,335,70,299,70"/>
+<area shape="rect" id="Node000005" href="$utils_8c.html#a2b56f50ba159e9d5115ed1a75eff15d9" title=" " alt="" coords="515,55,606,80"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="468,65,499,65,499,70,468,70"/>
+</map>

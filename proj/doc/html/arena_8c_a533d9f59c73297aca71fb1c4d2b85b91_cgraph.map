@@ -1,0 +1,11 @@
+<map id="showArena" name="showArena">
+<area shape="rect" id="Node000001" title="Shows the arena by making the associated sprites visible." alt="" coords="5,31,92,56"/>
+<area shape="rect" id="Node000002" href="$gameobject_8c.html#ab164cdb57764aace4144eb99d699a227" title="Shows an animated game object." alt="" coords="140,5,320,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="92,35,124,30,125,36,93,40"/>
+<area shape="rect" id="Node000004" href="$towers_8c.html#acac69dca8944180bf112a43ff27da703" title="Show the sprites of all the towers in a TowerArray." alt="" coords="183,55,277,80"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="93,47,168,57,167,62,92,52"/>
+<area shape="rect" id="Node000003" href="$gameobject_8c.html#a6a1ebecd29c69ded46970bd41c3097f0" title=" " alt="" coords="368,5,509,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="320,16,353,16,353,21,320,21"/>
+<area shape="rect" id="Node000005" href="$towers_8c.html#a23d2d6181fcd8d6fedd8308045a16810" title="Retrieves a TowerBase from a TowerArray." alt="" coords="386,55,491,80"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="277,65,370,65,370,70,277,70"/>
+</map>

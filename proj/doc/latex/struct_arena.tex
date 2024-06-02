@@ -1,0 +1,142 @@
+\doxysection{Arena Struct Reference}
+\hypertarget{struct_arena}{}\label{struct_arena}\index{Arena@{Arena}}
+
+
+Struct that represents an \doxylink{struct_arena}{Arena}.  
+
+
+
+
+{\ttfamily \#include $<$arena.\+h$>$}
+
+
+
+Collaboration diagram for Arena\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{struct_arena__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_sprite}{Sprite}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct_arena_a5f064d9b95cf68964648e5ce0db56f8f}{background}}
+\item 
+\mbox{\hyperlink{struct_animated_game_object}{Animated\+Game\+Object}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct_arena_a677a4edb2f81951df1dae9973438c2a7}{decorations}}
+\item 
+\mbox{\hyperlink{struct_tower_array}{Tower\+Array}} \mbox{\hyperlink{struct_arena_a8300d270045ccdeb8fb322ddc6b17e7b}{towers}}
+\item 
+\mbox{\hyperlink{struct_shop}{Shop}} \mbox{\hyperlink{struct_arena_aadf58bce040b6abe8ee2d11eeacb28d0}{shop}}
+\item 
+\mbox{\hyperlink{struct_player_base}{Player\+Base}} \mbox{\hyperlink{struct_arena_a1738f30b5a396977ba929074792b956f}{base}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{struct_arena_a96d797988f9d22165b017d5f8ffa1e8e}{num\+\_\+targets}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{struct_arena_a7d74d4c6b81d7da42331f4dfe01f3298}{num\+\_\+decorations}}
+\item 
+int16\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct_arena_a274d641e1b3557cae308943dff8312a2}{target\+\_\+coordinates}}
+\item 
+int16\+\_\+t \mbox{\hyperlink{struct_arena_aedd1b1458eec370a0aa69e141c78ed29}{spawn\+\_\+x}}
+\item 
+int16\+\_\+t \mbox{\hyperlink{struct_arena_aa79521aa21aa3c3e46d403eef14020e3}{spawn\+\_\+y}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Struct that represents an \doxylink{struct_arena}{Arena}. 
+
+Struct that contains the background sprite, the decorations, the towers, the shop and the player base.
+
+
+\begin{DoxyParams}{Parameters}
+{\em background} & The background sprite of the arena. \\
+\hline
+{\em decorations} & An array of \doxylink{struct_animated_game_object}{Animated\+Game\+Object} pointers that represent the animated decorations on the arena. \\
+\hline
+{\em towers} & The array of Tower objects that are present in the arena. \\
+\hline
+{\em shop} & The shop object that is present in the arena. \\
+\hline
+{\em base} & The player base object that is present in the arena. \\
+\hline
+{\em num\+\_\+targets} & The number of target coordinates that the enemies will follow. \\
+\hline
+{\em num\+\_\+decorations} & The number of decorations in the arena (Although variable, it is always 3). \\
+\hline
+{\em target\+\_\+coordinates} & The array of the coordinates that the enemies will follow. \\
+\hline
+{\em spawn\+\_\+x} & The x coordinate of the spawn point of the enemies. \\
+\hline
+{\em spawn\+\_\+y} & The y coordinate of the spawn point of the enemies. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{struct_arena_a5f064d9b95cf68964648e5ce0db56f8f}\index{Arena@{Arena}!background@{background}}
+\index{background@{background}!Arena@{Arena}}
+\doxysubsubsection{\texorpdfstring{background}{background}}
+{\footnotesize\ttfamily \label{struct_arena_a5f064d9b95cf68964648e5ce0db56f8f} 
+\mbox{\hyperlink{struct_sprite}{Sprite}}\texorpdfstring{$\ast$}{*} Arena\+::background}
+
+\Hypertarget{struct_arena_a1738f30b5a396977ba929074792b956f}\index{Arena@{Arena}!base@{base}}
+\index{base@{base}!Arena@{Arena}}
+\doxysubsubsection{\texorpdfstring{base}{base}}
+{\footnotesize\ttfamily \label{struct_arena_a1738f30b5a396977ba929074792b956f} 
+\mbox{\hyperlink{struct_player_base}{Player\+Base}} Arena\+::base}
+
+\Hypertarget{struct_arena_a677a4edb2f81951df1dae9973438c2a7}\index{Arena@{Arena}!decorations@{decorations}}
+\index{decorations@{decorations}!Arena@{Arena}}
+\doxysubsubsection{\texorpdfstring{decorations}{decorations}}
+{\footnotesize\ttfamily \label{struct_arena_a677a4edb2f81951df1dae9973438c2a7} 
+\mbox{\hyperlink{struct_animated_game_object}{Animated\+Game\+Object}}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} Arena\+::decorations}
+
+\Hypertarget{struct_arena_a7d74d4c6b81d7da42331f4dfe01f3298}\index{Arena@{Arena}!num\_decorations@{num\_decorations}}
+\index{num\_decorations@{num\_decorations}!Arena@{Arena}}
+\doxysubsubsection{\texorpdfstring{num\_decorations}{num\_decorations}}
+{\footnotesize\ttfamily \label{struct_arena_a7d74d4c6b81d7da42331f4dfe01f3298} 
+uint8\+\_\+t Arena\+::num\+\_\+decorations}
+
+\Hypertarget{struct_arena_a96d797988f9d22165b017d5f8ffa1e8e}\index{Arena@{Arena}!num\_targets@{num\_targets}}
+\index{num\_targets@{num\_targets}!Arena@{Arena}}
+\doxysubsubsection{\texorpdfstring{num\_targets}{num\_targets}}
+{\footnotesize\ttfamily \label{struct_arena_a96d797988f9d22165b017d5f8ffa1e8e} 
+uint8\+\_\+t Arena\+::num\+\_\+targets}
+
+\Hypertarget{struct_arena_aadf58bce040b6abe8ee2d11eeacb28d0}\index{Arena@{Arena}!shop@{shop}}
+\index{shop@{shop}!Arena@{Arena}}
+\doxysubsubsection{\texorpdfstring{shop}{shop}}
+{\footnotesize\ttfamily \label{struct_arena_aadf58bce040b6abe8ee2d11eeacb28d0} 
+\mbox{\hyperlink{struct_shop}{Shop}} Arena\+::shop}
+
+\Hypertarget{struct_arena_aedd1b1458eec370a0aa69e141c78ed29}\index{Arena@{Arena}!spawn\_x@{spawn\_x}}
+\index{spawn\_x@{spawn\_x}!Arena@{Arena}}
+\doxysubsubsection{\texorpdfstring{spawn\_x}{spawn\_x}}
+{\footnotesize\ttfamily \label{struct_arena_aedd1b1458eec370a0aa69e141c78ed29} 
+int16\+\_\+t Arena\+::spawn\+\_\+x}
+
+\Hypertarget{struct_arena_aa79521aa21aa3c3e46d403eef14020e3}\index{Arena@{Arena}!spawn\_y@{spawn\_y}}
+\index{spawn\_y@{spawn\_y}!Arena@{Arena}}
+\doxysubsubsection{\texorpdfstring{spawn\_y}{spawn\_y}}
+{\footnotesize\ttfamily \label{struct_arena_aa79521aa21aa3c3e46d403eef14020e3} 
+int16\+\_\+t Arena\+::spawn\+\_\+y}
+
+\Hypertarget{struct_arena_a274d641e1b3557cae308943dff8312a2}\index{Arena@{Arena}!target\_coordinates@{target\_coordinates}}
+\index{target\_coordinates@{target\_coordinates}!Arena@{Arena}}
+\doxysubsubsection{\texorpdfstring{target\_coordinates}{target\_coordinates}}
+{\footnotesize\ttfamily \label{struct_arena_a274d641e1b3557cae308943dff8312a2} 
+int16\+\_\+t\texorpdfstring{$\ast$}{*} Arena\+::target\+\_\+coordinates}
+
+\Hypertarget{struct_arena_a8300d270045ccdeb8fb322ddc6b17e7b}\index{Arena@{Arena}!towers@{towers}}
+\index{towers@{towers}!Arena@{Arena}}
+\doxysubsubsection{\texorpdfstring{towers}{towers}}
+{\footnotesize\ttfamily \label{struct_arena_a8300d270045ccdeb8fb322ddc6b17e7b} 
+\mbox{\hyperlink{struct_tower_array}{Tower\+Array}} Arena\+::towers}
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/\+Game/\+Gameplay/\+Arena/\mbox{\hyperlink{arena_8h}{arena.\+h}}\end{DoxyCompactItemize}

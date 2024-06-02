@@ -1,0 +1,27 @@
+var menu_8c =
+[
+    [ "checkMenuHovered", "menu_8c.html#a5f25a30f03f43519b25739e422f9ee8a", null ],
+    [ "checkMenuKeyboardInput", "menu_8c.html#a70edb9207ce9f7f7081becf3f631b6cf", null ],
+    [ "checkSelectGameHovered", "menu_8c.html#aa318138e879f960abd1e233898a5b046", null ],
+    [ "checkSelectGameKeyboardInput", "menu_8c.html#a8dfba72b959b2e041a45ad96fe66e6af", null ],
+    [ "destroyMenu", "menu_8c.html#a30272fb9821d26ec7192066292c430ea", null ],
+    [ "enterMenu", "menu_8c.html#ae6e92687b29bdd4db2f1a8e89f500777", null ],
+    [ "exitMenu", "menu_8c.html#a5a27e6d313d05fc5ae3d138287934b9e", null ],
+    [ "initializeMenu", "menu_8c.html#a9ef48306effe0e201f1a3ca7b2f2221f", null ],
+    [ "updateMenu", "menu_8c.html#ac05247c60977ff8e8674fef3132618c3", null ],
+    [ "background", "menu_8c.html#a53bc38bb2834dab4890ae797fe93023a", null ],
+    [ "just_changed", "menu_8c.html#af6d1b6728d2e3b21a84a008aaac194bf", null ],
+    [ "keyboard_device", "menu_8c.html#aaaee12ef170dce59e90a53ecb0c75172", null ],
+    [ "last_pressed_was_mouse", "menu_8c.html#a189e4b3cf5d30c8f132982577142f27f", null ],
+    [ "menu_current_selection", "menu_8c.html#a338dbba00f5b413a0240cd8958cb7cf4", null ],
+    [ "menuButtons", "menu_8c.html#a7d5b79f1a5dd743e26fb616220cb5390", null ],
+    [ "mouse_device", "menu_8c.html#af690dfd2cb895a02795e3ee3c10792cc", null ],
+    [ "playing", "menu_8c.html#a0448fec049217e428b9ec21c03e51d52", null ],
+    [ "pressed_menu_button", "menu_8c.html#a660655389f2d13a7e14caaf5e26620e4", null ],
+    [ "screen", "menu_8c.html#a1636c5f52c5c798d9a14ec91cc0b577d", null ],
+    [ "select_game_current_arena", "menu_8c.html#a4c71bc021c13ee6ab3272aab138d7f45", null ],
+    [ "select_game_current_selection", "menu_8c.html#a9195e6134d131406c71a066ef88063dd", null ],
+    [ "selectGameArenaButtons", "menu_8c.html#a30c828068e22f45d8da627cfd45774ec", null ],
+    [ "selectGameBackground", "menu_8c.html#a72236874ee5930ee0dde5cb31303082c", null ],
+    [ "state", "menu_8c.html#a25362b33bad9ff6222dc40646c411649", null ]
+];

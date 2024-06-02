@@ -1,0 +1,7 @@
+<map id="draw_gameObject" name="draw_gameObject">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,132,31"/>
+<area shape="rect" id="Node000002" href="$sprite_8c.html#a6c75fbf31230126d2f19b29deaf24b2f" title="Draws a sprite." alt="" coords="180,5,268,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="132,16,164,16,164,21,132,21"/>
+<area shape="rect" id="Node000003" href="$graphics_8c.html#aab5127afe1cbcbe617438adc9805eb5d" title="Draws a sprite." alt="" coords="316,5,418,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="269,16,300,16,300,21,269,21"/>
+</map>

@@ -1,0 +1,13 @@
+<map id="util_get_MSB" name="util_get_MSB">
+<area shape="rect" id="Node000001" title=" " alt="" coords="694,31,793,56"/>
+<area shape="rect" id="Node000002" href="$timer_8c.html#aca1506be74dfc71c6f90772ca269c619" title=" " alt="" coords="506,31,646,56"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="678,46,646,46,646,41,678,41"/>
+<area shape="rect" id="Node000003" href="$timer_8c.html#acaf7742ecd9e34865122cde30749e54f" title="Subscribes and enables Timer 0 interrupts with a given frequency." alt="" coords="335,23,458,64"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="491,46,459,46,459,41,491,41"/>
+<area shape="rect" id="Node000004" href="$device__controller_8c.html#a47e74a2f7a5edae37287b8bcfbb30562" title="Encapsulates the initialization of all the devices." alt="" coords="175,5,274,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="319,35,273,28,274,23,320,30"/>
+<area shape="rect" id="Node000006" href="$device__controller_8c.html#a441744c4b348eb70ad06ef25cedbb7cc" title="Updates the frequency of the timer." alt="" coords="162,55,287,80"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="320,57,288,61,287,56,319,52"/>
+<area shape="rect" id="Node000005" href="$proj_8c.html#af244d65e69677cf312af1950452ec256" title=" " alt="" coords="5,5,114,31"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="160,21,114,21,114,16,160,16"/>
+</map>

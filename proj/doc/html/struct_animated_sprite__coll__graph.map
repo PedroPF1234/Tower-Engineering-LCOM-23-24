@@ -1,0 +1,7 @@
+<map id="AnimatedSprite" name="AnimatedSprite">
+<area shape="rect" id="Node000001" title="Struct that represents an animated sprite." alt="" coords="5,183,116,208"/>
+<area shape="rect" id="Node000002" href="$struct_sprite_array.html" title="Struct that represents an array of sprites." alt="" coords="17,94,104,120"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="63,135,63,182,58,182,58,135"/>
+<area shape="rect" id="Node000003" href="$struct_sprite.html" title="Struct that represents a sprite." alt="" coords="33,5,88,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="63,47,63,94,58,94,58,47"/>
+</map>

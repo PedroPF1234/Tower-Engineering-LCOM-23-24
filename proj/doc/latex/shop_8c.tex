@@ -1,0 +1,99 @@
+\doxysection{src/\+Game/\+Gameplay/shop/shop.c File Reference}
+\hypertarget{shop_8c}{}\label{shop_8c}\index{src/Game/Gameplay/shop/shop.c@{src/Game/Gameplay/shop/shop.c}}
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include "{}shop.\+h"{}}\newline
+{\ttfamily \#include "{}../../../\+Image\+Assets/\+Shop.\+xpm"{}}\newline
+{\ttfamily \#include "{}../\+Money/money.\+h"{}}\newline
+{\ttfamily \#include "{}../economy.\+h"{}}\newline
+Include dependency graph for shop.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{shop_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_shop}{Shop}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{shop_8c_ad36f8a5dda0b38c6eb273f89abae4e8c}{initialize\+Shop}} (int16\+\_\+t x, int16\+\_\+t y)
+\begin{DoxyCompactList}\small\item\em Initializes a new shop. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{shop_8c_a2274170d80dbc72e18e64f77eaba1cec}{destroy\+Shop}} (\mbox{\hyperlink{struct_shop}{Shop}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{gameplay_8c_a8a3e333f14a0758ccc5b075b2b640aa4}{shop}})
+\begin{DoxyCompactList}\small\item\em Destroys all the Game Objects associated with a \doxylink{struct_shop}{Shop} and frees their associated memory. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_economy}{Economy}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{shop_8c_a4fab3e2ea30a7587a700aaec37671bea}{economy}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{shop_8c_a2274170d80dbc72e18e64f77eaba1cec}\index{shop.c@{shop.c}!destroyShop@{destroyShop}}
+\index{destroyShop@{destroyShop}!shop.c@{shop.c}}
+\doxysubsubsection{\texorpdfstring{destroyShop()}{destroyShop()}}
+{\footnotesize\ttfamily \label{shop_8c_a2274170d80dbc72e18e64f77eaba1cec} 
+void destroy\+Shop (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_shop}{Shop}} \texorpdfstring{$\ast$}{*}}]{shop}{}\end{DoxyParamCaption})}
+
+
+
+Destroys all the Game Objects associated with a \doxylink{struct_shop}{Shop} and frees their associated memory. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em shop} & A pointer to the \doxylink{struct_shop}{Shop} to be destroyed. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{shop_8c_a2274170d80dbc72e18e64f77eaba1cec_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{shop_8c_ad36f8a5dda0b38c6eb273f89abae4e8c}\index{shop.c@{shop.c}!initializeShop@{initializeShop}}
+\index{initializeShop@{initializeShop}!shop.c@{shop.c}}
+\doxysubsubsection{\texorpdfstring{initializeShop()}{initializeShop()}}
+{\footnotesize\ttfamily \label{shop_8c_ad36f8a5dda0b38c6eb273f89abae4e8c} 
+\mbox{\hyperlink{struct_shop}{Shop}} \texorpdfstring{$\ast$}{*} initialize\+Shop (\begin{DoxyParamCaption}\item[{int16\+\_\+t}]{x}{, }\item[{int16\+\_\+t}]{y}{}\end{DoxyParamCaption})}
+
+
+
+Initializes a new shop. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & The initial x position of the shop. \\
+\hline
+{\em y} & The initial y position of the shop. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the newly initialized \doxylink{struct_shop}{Shop}. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{shop_8c_ad36f8a5dda0b38c6eb273f89abae4e8c_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{shop_8c_ad36f8a5dda0b38c6eb273f89abae4e8c_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{shop_8c_a4fab3e2ea30a7587a700aaec37671bea}\index{shop.c@{shop.c}!economy@{economy}}
+\index{economy@{economy}!shop.c@{shop.c}}
+\doxysubsubsection{\texorpdfstring{economy}{economy}}
+{\footnotesize\ttfamily \label{shop_8c_a4fab3e2ea30a7587a700aaec37671bea} 
+\mbox{\hyperlink{struct_economy}{Economy}}\texorpdfstring{$\ast$}{*} economy\hspace{0.3cm}{\ttfamily [extern]}}
+

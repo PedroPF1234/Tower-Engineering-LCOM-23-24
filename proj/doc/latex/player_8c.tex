@@ -1,0 +1,214 @@
+\doxysection{src/\+Game/\+Gameplay/\+Player/player.c File Reference}
+\hypertarget{player_8c}{}\label{player_8c}\index{src/Game/Gameplay/Player/player.c@{src/Game/Gameplay/Player/player.c}}
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include $<$math.\+h$>$}\newline
+{\ttfamily \#include "{}player.\+h"{}}\newline
+{\ttfamily \#include "{}../../../\+Image\+Assets/\+Player.\+xpm"{}}\newline
+Include dependency graph for player.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{player_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_player}{Player}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{player_8c_a1896161c4f39a705b5e60096e2e48994}{initialize\+Player}} (float x, float y, int16\+\_\+t ox, int16\+\_\+t oy, int16\+\_\+t hp)
+\begin{DoxyCompactList}\small\item\em Initializes a new player. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{player_8c_aeaca5c627e5599b60cc71af248c0f98e}{destroy\+Player}} (\mbox{\hyperlink{struct_player}{Player}} \texorpdfstring{$\ast$}{*}player)
+\begin{DoxyCompactList}\small\item\em Destroys a player and frees associated memory. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{player_8c_a38c616b7fb3b91f791a9bd2829cc5f60}{update\+Player\+Position}} (\mbox{\hyperlink{struct_player}{Player}} \texorpdfstring{$\ast$}{*}player, \mbox{\hyperlink{struct_arena}{Arena}} \mbox{\hyperlink{gameover_8c_af5a57582e3f2a42749711036c767fe64}{arena}})
+\begin{DoxyCompactList}\small\item\em Updates the position of the player based on the input and the current arena, checking for collisions with the arena\textquotesingle{}s objects. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{player_8c_a8a34b70d828ebf602f2473f7d4e69319}{update\+Player\+Sprite\+Based\+On\+Position}} (\mbox{\hyperlink{struct_player}{Player}} \texorpdfstring{$\ast$}{*}player)
+\begin{DoxyCompactList}\small\item\em Updates the player sprite based on the input and current position of the player. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_screen_info}{Screen\+Info}} \mbox{\hyperlink{player_8c_a1636c5f52c5c798d9a14ec91cc0b577d}{screen}}
+\item 
+bool \mbox{\hyperlink{player_8c_af2265234a5aa467e7d8abe326f759469}{can\+\_\+shop}} = false
+\item 
+bool \mbox{\hyperlink{player_8c_aaa338f436776c483ca66f54be811cacf}{can\+\_\+tower}} = false
+\item 
+bool \mbox{\hyperlink{player_8c_a53b83467d6131ed391f6a28d2290fdc1}{can\+\_\+base}} = false
+\item 
+int16\+\_\+t \mbox{\hyperlink{player_8c_aad846dc0f923a198aec8edd23f558683}{tower\+\_\+index}} = -\/1
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{player_8c_aeaca5c627e5599b60cc71af248c0f98e}\index{player.c@{player.c}!destroyPlayer@{destroyPlayer}}
+\index{destroyPlayer@{destroyPlayer}!player.c@{player.c}}
+\doxysubsubsection{\texorpdfstring{destroyPlayer()}{destroyPlayer()}}
+{\footnotesize\ttfamily \label{player_8c_aeaca5c627e5599b60cc71af248c0f98e} 
+void destroy\+Player (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_player}{Player}} \texorpdfstring{$\ast$}{*}}]{player}{}\end{DoxyParamCaption})}
+
+
+
+Destroys a player and frees associated memory. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em player} & A pointer to the \doxylink{struct_player}{Player} to be destroyed. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{player_8c_aeaca5c627e5599b60cc71af248c0f98e_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{player_8c_aeaca5c627e5599b60cc71af248c0f98e_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{player_8c_a1896161c4f39a705b5e60096e2e48994}\index{player.c@{player.c}!initializePlayer@{initializePlayer}}
+\index{initializePlayer@{initializePlayer}!player.c@{player.c}}
+\doxysubsubsection{\texorpdfstring{initializePlayer()}{initializePlayer()}}
+{\footnotesize\ttfamily \label{player_8c_a1896161c4f39a705b5e60096e2e48994} 
+\mbox{\hyperlink{struct_player}{Player}} \texorpdfstring{$\ast$}{*} initialize\+Player (\begin{DoxyParamCaption}\item[{float}]{x}{, }\item[{float}]{y}{, }\item[{int16\+\_\+t}]{ox}{, }\item[{int16\+\_\+t}]{oy}{, }\item[{int16\+\_\+t}]{hp}{}\end{DoxyParamCaption})}
+
+
+
+Initializes a new player. 
+
+Initializes a new player by creating the player game object, the sprites, setting the initial position, the origin offset, the hit points and the weapon status.
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & The initial x position of the player. \\
+\hline
+{\em y} & The initial y position of the player. \\
+\hline
+{\em ox} & The offset of the origin of the player sprite in the x direction. \\
+\hline
+{\em oy} & The offset of the origin of the player sprite in the y direction. \\
+\hline
+{\em hp} & The initial hit points of the player. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the newly initialized \doxylink{struct_player}{Player} object. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{player_8c_a1896161c4f39a705b5e60096e2e48994_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{player_8c_a1896161c4f39a705b5e60096e2e48994_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{player_8c_a38c616b7fb3b91f791a9bd2829cc5f60}\index{player.c@{player.c}!updatePlayerPosition@{updatePlayerPosition}}
+\index{updatePlayerPosition@{updatePlayerPosition}!player.c@{player.c}}
+\doxysubsubsection{\texorpdfstring{updatePlayerPosition()}{updatePlayerPosition()}}
+{\footnotesize\ttfamily \label{player_8c_a38c616b7fb3b91f791a9bd2829cc5f60} 
+void update\+Player\+Position (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_player}{Player}} \texorpdfstring{$\ast$}{*}}]{player}{, }\item[{\mbox{\hyperlink{struct_arena}{Arena}}}]{arena}{}\end{DoxyParamCaption})}
+
+
+
+Updates the position of the player based on the input and the current arena, checking for collisions with the arena\textquotesingle{}s objects. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em player} & A pointer to the \doxylink{struct_player}{Player} to be updated. \\
+\hline
+{\em arena} & The current arena. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{player_8c_a38c616b7fb3b91f791a9bd2829cc5f60_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{player_8c_a38c616b7fb3b91f791a9bd2829cc5f60_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{player_8c_a8a34b70d828ebf602f2473f7d4e69319}\index{player.c@{player.c}!updatePlayerSpriteBasedOnPosition@{updatePlayerSpriteBasedOnPosition}}
+\index{updatePlayerSpriteBasedOnPosition@{updatePlayerSpriteBasedOnPosition}!player.c@{player.c}}
+\doxysubsubsection{\texorpdfstring{updatePlayerSpriteBasedOnPosition()}{updatePlayerSpriteBasedOnPosition()}}
+{\footnotesize\ttfamily \label{player_8c_a8a34b70d828ebf602f2473f7d4e69319} 
+void update\+Player\+Sprite\+Based\+On\+Position (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_player}{Player}} \texorpdfstring{$\ast$}{*}}]{player}{}\end{DoxyParamCaption})}
+
+
+
+Updates the player sprite based on the input and current position of the player. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em player} & A pointer to the \doxylink{struct_player}{Player} to be updated. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{player_8c_a8a34b70d828ebf602f2473f7d4e69319_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{player_8c_a8a34b70d828ebf602f2473f7d4e69319_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{player_8c_a53b83467d6131ed391f6a28d2290fdc1}\index{player.c@{player.c}!can\_base@{can\_base}}
+\index{can\_base@{can\_base}!player.c@{player.c}}
+\doxysubsubsection{\texorpdfstring{can\_base}{can\_base}}
+{\footnotesize\ttfamily \label{player_8c_a53b83467d6131ed391f6a28d2290fdc1} 
+bool can\+\_\+base = false}
+
+\Hypertarget{player_8c_af2265234a5aa467e7d8abe326f759469}\index{player.c@{player.c}!can\_shop@{can\_shop}}
+\index{can\_shop@{can\_shop}!player.c@{player.c}}
+\doxysubsubsection{\texorpdfstring{can\_shop}{can\_shop}}
+{\footnotesize\ttfamily \label{player_8c_af2265234a5aa467e7d8abe326f759469} 
+bool can\+\_\+shop = false}
+
+\Hypertarget{player_8c_aaa338f436776c483ca66f54be811cacf}\index{player.c@{player.c}!can\_tower@{can\_tower}}
+\index{can\_tower@{can\_tower}!player.c@{player.c}}
+\doxysubsubsection{\texorpdfstring{can\_tower}{can\_tower}}
+{\footnotesize\ttfamily \label{player_8c_aaa338f436776c483ca66f54be811cacf} 
+bool can\+\_\+tower = false}
+
+\Hypertarget{player_8c_a1636c5f52c5c798d9a14ec91cc0b577d}\index{player.c@{player.c}!screen@{screen}}
+\index{screen@{screen}!player.c@{player.c}}
+\doxysubsubsection{\texorpdfstring{screen}{screen}}
+{\footnotesize\ttfamily \label{player_8c_a1636c5f52c5c798d9a14ec91cc0b577d} 
+\mbox{\hyperlink{struct_screen_info}{Screen\+Info}} screen\hspace{0.3cm}{\ttfamily [extern]}}
+
+\Hypertarget{player_8c_aad846dc0f923a198aec8edd23f558683}\index{player.c@{player.c}!tower\_index@{tower\_index}}
+\index{tower\_index@{tower\_index}!player.c@{player.c}}
+\doxysubsubsection{\texorpdfstring{tower\_index}{tower\_index}}
+{\footnotesize\ttfamily \label{player_8c_aad846dc0f923a198aec8edd23f558683} 
+int16\+\_\+t tower\+\_\+index = -\/1}
+

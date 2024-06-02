@@ -1,0 +1,16 @@
+<map id="exitMenu" name="exitMenu">
+<area shape="rect" id="Node000001" title="Exits the menu." alt="" coords="860,31,934,56"/>
+<area shape="rect" id="Node000002" href="$menu_8c.html#a5f25a30f03f43519b25739e422f9ee8a" title=" " alt="" coords="655,5,792,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="844,39,792,31,793,26,845,33"/>
+<area shape="rect" id="Node000007" href="$menu_8c.html#aa318138e879f960abd1e233898a5b046" title=" " alt="" coords="635,55,812,80"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="845,53,813,58,812,53,844,48"/>
+<area shape="rect" id="Node000003" href="$menu_8c.html#ac05247c60977ff8e8674fef3132618c3" title="Updates the menu." alt="" coords="494,31,587,56"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="640,32,587,40,586,35,639,27"/>
+<area shape="rect" id="Node000004" href="$game_8c.html#a315e950a7e6bb500fe11c37ee1122577" title="Encapsulates the whole game logic." alt="" coords="327,31,446,56"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="479,46,447,46,447,41,479,41"/>
+<area shape="rect" id="Node000005" href="$device__controller_8c.html#a4d10f01a84e9e24f18682c0bca48dca6" title="Calls all device&#39;s interrupt handlers." alt="" coords="162,31,279,56"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="312,46,279,46,279,41,312,41"/>
+<area shape="rect" id="Node000006" href="$proj_8c.html#af244d65e69677cf312af1950452ec256" title=" " alt="" coords="5,31,114,56"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="146,46,114,46,114,41,146,41"/>
+<area shape="poly" id="edge7_Node000007_Node000003" title=" " alt="" coords="618,56,587,52,587,47,619,51"/>
+</map>

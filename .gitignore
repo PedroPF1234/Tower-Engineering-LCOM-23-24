@@ -1,0 +1,6 @@
+*.o
+*.rar
+*.gdbinit
+.vscode/
+.minix-src/
+*.txt

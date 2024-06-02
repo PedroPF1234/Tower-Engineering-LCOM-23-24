@@ -1,0 +1,9 @@
+<map id="rtc_get_hour" name="rtc_get_hour">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,31,99,56"/>
+<area shape="rect" id="Node000002" href="$rtc_8c.html#a54132448f4c6180439d80dfcba256e39" title=" " alt="" coords="147,5,249,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="99,33,131,27,132,32,99,38"/>
+<area shape="rect" id="Node000003" href="$rtc_8c.html#ac8b0ed21f98fd3ada932e232c253b92b" title="Reads a byte from the RTC." alt="" coords="164,55,232,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="99,49,148,57,147,62,99,54"/>
+<area shape="rect" id="Node000004" href="$utils_8c.html#a2b56f50ba159e9d5115ed1a75eff15d9" title=" " alt="" coords="297,55,387,80"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="232,65,282,65,282,70,232,70"/>
+</map>

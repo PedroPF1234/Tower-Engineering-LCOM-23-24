@@ -1,0 +1,97 @@
+\doxysection{rtc.\+h}
+\hypertarget{rtc_8h_source}{}\label{rtc_8h_source}\index{src/Devices/RTC/rtc.h@{src/Devices/RTC/rtc.h}}
+\mbox{\hyperlink{rtc_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <lcom/lcf.h>}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#define\ RTC\_IRQ\ 8\ }\textcolor{comment}{//\ RTC\ IRQ\ line}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ RTC\ Ports}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#define\ RTC\_ADDRESS\_REGISTER\ 0x70\ }\textcolor{comment}{//\ RTC\ Address\ Register}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ RTC\_DATA\_REGISTER\ 0x71\ }\textcolor{comment}{//\ RTC\ Data\ Register}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{comment}{//\ RTC\ Constants}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#define\ RTC\_DELAY\_MICROSECONDS\ 20000\ }\textcolor{comment}{//\ RTC\ Delay\ in\ microseconds}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#define\ RTC\_IGNORE\_VALUE\ BIT(7)\ |\ BIT(6)\ }\textcolor{comment}{//\ RTC\ Ignore\ Value}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#define\ RTC\_YEAR\_ADD\ 2000\ }\textcolor{comment}{//\ RTC\ Year\ Addition}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{comment}{//\ RTC\ Addresses}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#define\ RTC\_ADDRESS\_SECONDS\ 0\ }\textcolor{comment}{//\ RTC\ Address\ Seconds}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#define\ RTC\_ADDRESS\_SEC\_INTERRUPT\ 1\ }\textcolor{comment}{//\ RTC\ Address\ Seconds\ Interrupt}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#define\ RTC\_ADDRESS\_MINUTES\ 2\ }\textcolor{comment}{//\ RTC\ Address\ Minutes}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#define\ RTC\_ADDRESS\_MIN\_INTERRUPT\ 3\ }\textcolor{comment}{//\ RTC\ Address\ Minutes\ Interrupt}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#define\ RTC\_ADDRESS\_HOUR\ 4\ }\textcolor{comment}{//\ RTC\ Address\ Hour}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#define\ RTC\_ADDRESS\_HOUR\_INTERRUPT\ 5\ }\textcolor{comment}{//\ RTC\ Address\ Hour\ Interrupt}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#define\ RTC\_ADDRESS\_DAY\_WEEK\ 6\ }\textcolor{comment}{//\ RTC\ Address\ Day\ of\ Week\ }}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#define\ RTC\_ADDRESS\_DAY\_MONTH\ 7\ }\textcolor{comment}{//\ RTC\ Address\ Day\ of\ Month}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#define\ RTC\_ADDRESS\_MONTH\ 8\ }\textcolor{comment}{//\ RTC\ Address\ Month}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#define\ RTC\_ADDRESS\_YEAR\ 9\ }\textcolor{comment}{//\ RTC\ Address\ Year}}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \textcolor{comment}{//\ RTC\ Registers}}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#define\ RTC\_REGISTER\_A\ 10\ }\textcolor{comment}{//\ RTC\ Register\ A}}
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#define\ RTC\_REGISTER\_B\ 11\ }\textcolor{comment}{//\ RTC\ Register\ B}}
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#define\ RTC\_REGISTER\_C\ 12\ }\textcolor{comment}{//\ RTC\ Register\ C}}
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#define\ RTC\_REGISTER\_D\ 13\ }\textcolor{comment}{//\ RTC\ Register\ D}}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \textcolor{comment}{//\ Register\ A\ bits}}
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#define\ RTC\_REGISTER\_A\_UIP\ BIT(7)\ }\textcolor{comment}{//\ RTC\ Register\ A\ Update\ In\ Progress}}
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#define\ RTC\_RS3\ BIT(3)\ }\textcolor{comment}{//\ RTC\ Register\ A\ Rate\ Select\ 3}}
+\DoxyCodeLine{00037\ \textcolor{preprocessor}{\#define\ RTC\_RS2\ BIT(2)\ }\textcolor{comment}{//\ RTC\ Register\ A\ Rate\ Select\ 2}}
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#define\ RTC\_RS1\ BIT(1)\ }\textcolor{comment}{//\ RTC\ Register\ A\ Rate\ Select\ 1}}
+\DoxyCodeLine{00039\ \textcolor{preprocessor}{\#define\ RTC\_RS0\ BIT(0)\ }\textcolor{comment}{//\ RTC\ Register\ A\ Rate\ Select\ 0}}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \textcolor{comment}{//\ Register\ B\ bits}}
+\DoxyCodeLine{00042\ \textcolor{preprocessor}{\#define\ RTC\_REGISTER\_B\_INHIBIT\_UPDATES\ BIT(7)\ }\textcolor{comment}{//\ RTC\ Register\ B\ Inhibit\ Updates}}
+\DoxyCodeLine{00043\ \textcolor{preprocessor}{\#define\ RTC\_REGISTER\_B\_SET\_PERIODIC\ BIT(6)\ }\textcolor{comment}{//\ RTC\ Register\ B\ Set\ Periodic\ Interruptions}}
+\DoxyCodeLine{00044\ \textcolor{preprocessor}{\#define\ RTC\_REGISTER\_B\_SET\_ALARM\ BIT(5)\ }\textcolor{comment}{//\ RTC\ Register\ B\ Set\ Alarm\ Interruptions}}
+\DoxyCodeLine{00045\ \textcolor{preprocessor}{\#define\ RTC\_REGISTER\_B\_SET\_UPDATE\ BIT(4)\ }\textcolor{comment}{//\ RTC\ Register\ B\ Set\ Update\ Ended\ Interruptions}}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \textcolor{comment}{//\ Register\ C\ bits}}
+\DoxyCodeLine{00048\ \textcolor{preprocessor}{\#define\ RTC\_REGISTER\_C\_GENERAL\_INTERRUPT\ BIT(7)\ }\textcolor{comment}{//\ RTC\ Register\ C\ General\ Interrupt\ Flag}}
+\DoxyCodeLine{00049\ \textcolor{preprocessor}{\#define\ RTC\_REGISTER\_C\_PERIODIC\_INTERRUPT\ BIT(6)\ }\textcolor{comment}{//\ RTC\ Register\ C\ Periodic\ Interrupt}}
+\DoxyCodeLine{00050\ \textcolor{preprocessor}{\#define\ RTC\_REGISTER\_C\_ALARM\_INTERRUPT\ BIT(5)\ }\textcolor{comment}{//\ RTC\ Register\ C\ Alarm\ Interrupt}}
+\DoxyCodeLine{00051\ \textcolor{preprocessor}{\#define\ RTC\_REGISTER\_C\_UPDATE\_INTERRUPT\ BIT(4)\ }\textcolor{comment}{//\ RTC\ Register\ C\ Update\ Ended\ Interrupt}}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \textcolor{comment}{//\ Periodic\ Interrupts\ Values}}
+\DoxyCodeLine{00054\ \textcolor{preprocessor}{\#define\ RTC\_RATE\_NONE\ 0\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{//\ RTC\ Periodic\ Interrupt\ Rate\ None}}
+\DoxyCodeLine{00055\ \textcolor{preprocessor}{\#define\ RTC\_RATE\_122US\ (RTC\_RS1\ |\ RTC\_RS0)\ \ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{//\ RTC\ Periodic\ Interrupt\ Rate\ 122us}}
+\DoxyCodeLine{00056\ \textcolor{preprocessor}{\#define\ RTC\_RATE\_244US\ RTC\_RS2\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{//\ RTC\ Periodic\ Interrupt\ Rate\ 244us}}
+\DoxyCodeLine{00057\ \textcolor{preprocessor}{\#define\ RTC\_RATE\_488US\ (RTC\_RS2\ |\ RTC\_RS0)\ \ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{//\ RTC\ Periodic\ Interrupt\ Rate\ 244us}}
+\DoxyCodeLine{00058\ \textcolor{preprocessor}{\#define\ RTC\_RATE\_976US\ (RTC\_RS2\ |\ RTC\_RS1)\ \ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{//\ RTC\ Periodic\ Interrupt\ Rate\ 976us}}
+\DoxyCodeLine{00059\ \textcolor{preprocessor}{\#define\ RTC\_RATE\_1\_95MS\ (RTC\_RS2\ |\ RTC\_RS1\ |\ RTC\_RS0)\ }\textcolor{comment}{//\ RTC\ Periodic\ Interrupt\ Rate\ 1.95ms}}
+\DoxyCodeLine{00060\ \textcolor{preprocessor}{\#define\ RTC\_RATE\_3\_9MS\ (RTC\_RS3)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{//\ RTC\ Periodic\ Interrupt\ Rate\ 3.9ms}}
+\DoxyCodeLine{00061\ \textcolor{preprocessor}{\#define\ RTC\_RATE\_7\_8MS\ (RTC\_RS3\ |\ RTC\_RS0)\ \ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{//\ RTC\ Periodic\ Interrupt\ Rate\ 7.8ms}}
+\DoxyCodeLine{00062\ \textcolor{preprocessor}{\#define\ RTC\_RATE\_15\_6MS\ (RTC\_RS3\ |\ RTC\_RS1)\ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{//\ RTC\ Periodic\ Interrupt\ Rate\ 15.6ms}}
+\DoxyCodeLine{00063\ \textcolor{preprocessor}{\#define\ RTC\_RATE\_31\_2MS\ (RTC\_RS3\ |\ RTC\_RS1\ |\ RTC\_RS0)\ }\textcolor{comment}{//\ RTC\ Periodic\ Interrupt\ Rate\ 31.2ms}}
+\DoxyCodeLine{00064\ \textcolor{preprocessor}{\#define\ RTC\_RATE\_62\_5MS\ (RTC\_RS3\ |\ RTC\_RS2)\ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{//\ RTC\ Periodic\ Interrupt\ Rate\ 62.5ms}}
+\DoxyCodeLine{00065\ \textcolor{preprocessor}{\#define\ RTC\_RATE\_125MS\ (RTC\_RS3\ |\ RTC\_RS2\ |\ RTC\_RS0)\ \ \ }\textcolor{comment}{//\ RTC\ Periodic\ Interrupt\ Rate\ 125ms}}
+\DoxyCodeLine{00066\ \textcolor{preprocessor}{\#define\ RTC\_RATE\_250MS\ (RTC\_RS3\ |\ RTC\_RS2\ |\ RTC\_RS1)\ \ \ }\textcolor{comment}{//\ RTC\ Periodic\ Interrupt\ Rate\ 250ms}}
+\DoxyCodeLine{00067\ \textcolor{preprocessor}{\#define\ RTC\_RATE\_500MS\ (RTC\_RS3\ |\ RTC\_RS2\ |\ RTC\_RS1\ |\ RTC\_RS0)\ }\textcolor{comment}{//\ RTC\ Periodic\ Interrupt\ Rate\ 500ms}}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00076\ int\ (\mbox{\hyperlink{rtc_8h_ac8b0ed21f98fd3ada932e232c253b92b}{rtc\_read}})(uint8\_t\ reg,\ uint8\_t\ *byte);}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00085\ int\ (\mbox{\hyperlink{rtc_8h_a88bc7fc547c8c1296e2e42d246e5e23e}{rtc\_write}})(uint8\_t\ reg,\ uint8\_t\ byte);}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00093\ int\ (\mbox{\hyperlink{rtc_8h_a5171a9c0f54940fe60f7500896afcc86}{rtc\_subscribe\_int}})(uint8\_t\ *bit\_no);}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00100\ int\ (\mbox{\hyperlink{rtc_8h_ab8f17bf5280c908c8b199a90fefcc758}{rtc\_unsubscribe\_int}})();}
+\DoxyCodeLine{00101\ }
+\DoxyCodeLine{00109\ int\ (\mbox{\hyperlink{rtc_8h_aadf5ab2196aa22ca0ae6679fe388e270}{rtc\_toggle\_periodic\_int}})(\textcolor{keywordtype}{bool}\ enable,\ uint8\_t\ rate);}
+\DoxyCodeLine{00110\ }
+\DoxyCodeLine{00117\ int\ (\mbox{\hyperlink{rtc_8h_ae1ad1cb6ae417786d227c4ede4d586fd}{rtc\_toggle\_alarm\_int}})(\textcolor{keywordtype}{bool}\ enable);}
+\DoxyCodeLine{00118\ }
+\DoxyCodeLine{00125\ int\ (\mbox{\hyperlink{rtc_8h_a43ab2676911c7b2d91ee739cbe3af372}{rtc\_toggle\_update\_int}})(\textcolor{keywordtype}{bool}\ enable);}
+\DoxyCodeLine{00126\ }
+\DoxyCodeLine{00132\ int\ (\mbox{\hyperlink{rtc_8h_a3c40f97c04701fc6ac45a19bb92be181}{rtc\_disable\_all\_ints}})();}
+\DoxyCodeLine{00133\ }
+\DoxyCodeLine{00140\ void(\mbox{\hyperlink{rtc_8h_a2190c057929ef6fbff940998492aa4ec}{rtc\_set\_alarm\_every\_second}})();}
+\DoxyCodeLine{00141\ }
+\DoxyCodeLine{00148\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{rtc_8h_af086192448abc551b618e1856d661926}{rtc\_initialize\_and\_subscribe}}(uint8\_t\ *bit\_no);}
+\DoxyCodeLine{00149\ }
+\DoxyCodeLine{00155\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{rtc_8h_a6a46d7dad3841ae858c249d42081f9ac}{rtc\_disable\_and\_unsubscribe}}();}
+\DoxyCodeLine{00156\ }
+\DoxyCodeLine{00161\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{rtc_8h_a75dad42881d64cf07cf1bdc2979a7056}{rtc\_ih}}();}
+
+\end{DoxyCode}

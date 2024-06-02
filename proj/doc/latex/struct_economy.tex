@@ -1,0 +1,140 @@
+\doxysection{Economy Struct Reference}
+\hypertarget{struct_economy}{}\label{struct_economy}\index{Economy@{Economy}}
+
+
+Struct that represents the prices of towers and upgrades of the game.  
+
+
+
+
+{\ttfamily \#include $<$economy.\+h$>$}
+
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int32\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct_economy_a988d2e51d5ff439c393a41d9912c61b1}{unlock\+\_\+prices}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{struct_economy_a810ebe6996d7667278124f9d66fb59b3}{unlock\+\_\+count}}
+\item 
+int32\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct_economy_afe69a0796f6d3aeb714bb6db1db672ae}{build\+\_\+prices}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{struct_economy_a3cb331afa56e5fb99ebabb5017d6dc83}{build\+\_\+count}}
+\item 
+int32\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct_economy_ae46015991a5db6250802d92d1d320574}{upgrade\+\_\+crossbow\+\_\+prices}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{struct_economy_aa752d8a0db6d65d680b59845def7c5bd}{upgrade\+\_\+crossbow\+\_\+count}}
+\item 
+int32\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct_economy_a53faf53120725a58d821a22b20e6d86f}{upgrade\+\_\+cannon\+\_\+prices}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{struct_economy_a21d3ca63e5f262a7c58f70dcb02f7cf0}{upgrade\+\_\+cannon\+\_\+count}}
+\item 
+int32\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct_economy_aec0d8422a144744e7eb38011c702a4a5}{upgrade\+\_\+laser\+\_\+prices}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{struct_economy_ac9e42ea1939f4a0aa3de15c56f7b620d}{upgrade\+\_\+laser\+\_\+count}}
+\item 
+int32\+\_\+t \mbox{\hyperlink{struct_economy_a181389166703daaac2c9c15c23ad3b71}{weapon\+\_\+price}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Struct that represents the prices of towers and upgrades of the game. 
+
+Contains the prices of unlocking, building and upgrading the towers.
+
+
+\begin{DoxyParams}{Parameters}
+{\em unlock\+\_\+prices} & An array of integers that represent the prices to unlock each tower. \\
+\hline
+{\em unlock\+\_\+count} & The size of the array of unlock prices.\\
+\hline
+{\em build\+\_\+prices} & An array of integers that represent the prices to build each tower. \\
+\hline
+{\em build\+\_\+count} & The size of the array of build prices.\\
+\hline
+{\em upgrade\+\_\+crossbow\+\_\+prices} & An array of integers that represent the prices to upgrade the crossbow tower. \\
+\hline
+{\em upgrade\+\_\+crossbow\+\_\+count} & The size of the array of upgrade crossbow prices.\\
+\hline
+{\em upgrade\+\_\+cannon\+\_\+prices} & An array of integers that represent the prices to upgrade the cannon tower. \\
+\hline
+{\em upgrade\+\_\+cannon\+\_\+count} & The size of the array of upgrade cannon prices.\\
+\hline
+{\em upgrade\+\_\+laser\+\_\+prices} & An array of integers that represent the prices to upgrade the laser tower. \\
+\hline
+{\em upgrade\+\_\+laser\+\_\+count} & The size of the array of upgrade laser prices. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{struct_economy_a3cb331afa56e5fb99ebabb5017d6dc83}\index{Economy@{Economy}!build\_count@{build\_count}}
+\index{build\_count@{build\_count}!Economy@{Economy}}
+\doxysubsubsection{\texorpdfstring{build\_count}{build\_count}}
+{\footnotesize\ttfamily \label{struct_economy_a3cb331afa56e5fb99ebabb5017d6dc83} 
+uint8\+\_\+t Economy\+::build\+\_\+count}
+
+\Hypertarget{struct_economy_afe69a0796f6d3aeb714bb6db1db672ae}\index{Economy@{Economy}!build\_prices@{build\_prices}}
+\index{build\_prices@{build\_prices}!Economy@{Economy}}
+\doxysubsubsection{\texorpdfstring{build\_prices}{build\_prices}}
+{\footnotesize\ttfamily \label{struct_economy_afe69a0796f6d3aeb714bb6db1db672ae} 
+int32\+\_\+t\texorpdfstring{$\ast$}{*} Economy\+::build\+\_\+prices}
+
+\Hypertarget{struct_economy_a810ebe6996d7667278124f9d66fb59b3}\index{Economy@{Economy}!unlock\_count@{unlock\_count}}
+\index{unlock\_count@{unlock\_count}!Economy@{Economy}}
+\doxysubsubsection{\texorpdfstring{unlock\_count}{unlock\_count}}
+{\footnotesize\ttfamily \label{struct_economy_a810ebe6996d7667278124f9d66fb59b3} 
+uint8\+\_\+t Economy\+::unlock\+\_\+count}
+
+\Hypertarget{struct_economy_a988d2e51d5ff439c393a41d9912c61b1}\index{Economy@{Economy}!unlock\_prices@{unlock\_prices}}
+\index{unlock\_prices@{unlock\_prices}!Economy@{Economy}}
+\doxysubsubsection{\texorpdfstring{unlock\_prices}{unlock\_prices}}
+{\footnotesize\ttfamily \label{struct_economy_a988d2e51d5ff439c393a41d9912c61b1} 
+int32\+\_\+t\texorpdfstring{$\ast$}{*} Economy\+::unlock\+\_\+prices}
+
+\Hypertarget{struct_economy_a21d3ca63e5f262a7c58f70dcb02f7cf0}\index{Economy@{Economy}!upgrade\_cannon\_count@{upgrade\_cannon\_count}}
+\index{upgrade\_cannon\_count@{upgrade\_cannon\_count}!Economy@{Economy}}
+\doxysubsubsection{\texorpdfstring{upgrade\_cannon\_count}{upgrade\_cannon\_count}}
+{\footnotesize\ttfamily \label{struct_economy_a21d3ca63e5f262a7c58f70dcb02f7cf0} 
+uint8\+\_\+t Economy\+::upgrade\+\_\+cannon\+\_\+count}
+
+\Hypertarget{struct_economy_a53faf53120725a58d821a22b20e6d86f}\index{Economy@{Economy}!upgrade\_cannon\_prices@{upgrade\_cannon\_prices}}
+\index{upgrade\_cannon\_prices@{upgrade\_cannon\_prices}!Economy@{Economy}}
+\doxysubsubsection{\texorpdfstring{upgrade\_cannon\_prices}{upgrade\_cannon\_prices}}
+{\footnotesize\ttfamily \label{struct_economy_a53faf53120725a58d821a22b20e6d86f} 
+int32\+\_\+t\texorpdfstring{$\ast$}{*} Economy\+::upgrade\+\_\+cannon\+\_\+prices}
+
+\Hypertarget{struct_economy_aa752d8a0db6d65d680b59845def7c5bd}\index{Economy@{Economy}!upgrade\_crossbow\_count@{upgrade\_crossbow\_count}}
+\index{upgrade\_crossbow\_count@{upgrade\_crossbow\_count}!Economy@{Economy}}
+\doxysubsubsection{\texorpdfstring{upgrade\_crossbow\_count}{upgrade\_crossbow\_count}}
+{\footnotesize\ttfamily \label{struct_economy_aa752d8a0db6d65d680b59845def7c5bd} 
+uint8\+\_\+t Economy\+::upgrade\+\_\+crossbow\+\_\+count}
+
+\Hypertarget{struct_economy_ae46015991a5db6250802d92d1d320574}\index{Economy@{Economy}!upgrade\_crossbow\_prices@{upgrade\_crossbow\_prices}}
+\index{upgrade\_crossbow\_prices@{upgrade\_crossbow\_prices}!Economy@{Economy}}
+\doxysubsubsection{\texorpdfstring{upgrade\_crossbow\_prices}{upgrade\_crossbow\_prices}}
+{\footnotesize\ttfamily \label{struct_economy_ae46015991a5db6250802d92d1d320574} 
+int32\+\_\+t\texorpdfstring{$\ast$}{*} Economy\+::upgrade\+\_\+crossbow\+\_\+prices}
+
+\Hypertarget{struct_economy_ac9e42ea1939f4a0aa3de15c56f7b620d}\index{Economy@{Economy}!upgrade\_laser\_count@{upgrade\_laser\_count}}
+\index{upgrade\_laser\_count@{upgrade\_laser\_count}!Economy@{Economy}}
+\doxysubsubsection{\texorpdfstring{upgrade\_laser\_count}{upgrade\_laser\_count}}
+{\footnotesize\ttfamily \label{struct_economy_ac9e42ea1939f4a0aa3de15c56f7b620d} 
+uint8\+\_\+t Economy\+::upgrade\+\_\+laser\+\_\+count}
+
+\Hypertarget{struct_economy_aec0d8422a144744e7eb38011c702a4a5}\index{Economy@{Economy}!upgrade\_laser\_prices@{upgrade\_laser\_prices}}
+\index{upgrade\_laser\_prices@{upgrade\_laser\_prices}!Economy@{Economy}}
+\doxysubsubsection{\texorpdfstring{upgrade\_laser\_prices}{upgrade\_laser\_prices}}
+{\footnotesize\ttfamily \label{struct_economy_aec0d8422a144744e7eb38011c702a4a5} 
+int32\+\_\+t\texorpdfstring{$\ast$}{*} Economy\+::upgrade\+\_\+laser\+\_\+prices}
+
+\Hypertarget{struct_economy_a181389166703daaac2c9c15c23ad3b71}\index{Economy@{Economy}!weapon\_price@{weapon\_price}}
+\index{weapon\_price@{weapon\_price}!Economy@{Economy}}
+\doxysubsubsection{\texorpdfstring{weapon\_price}{weapon\_price}}
+{\footnotesize\ttfamily \label{struct_economy_a181389166703daaac2c9c15c23ad3b71} 
+int32\+\_\+t Economy\+::weapon\+\_\+price}
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/\+Game/\+Gameplay/\mbox{\hyperlink{economy_8h}{economy.\+h}}\end{DoxyCompactItemize}

@@ -1,0 +1,13 @@
+<map id="newAnimatedSpriteArrayFromSprites" name="newAnimatedSpriteArrayFromSprites">
+<area shape="rect" id="Node000001" title="Initializes a new array of animated sprites from a given array of animated sprites." alt="" coords="823,5,1018,46"/>
+<area shape="rect" id="Node000002" href="$player_8c.html#a1896161c4f39a705b5e60096e2e48994" title="Initializes a new player." alt="" coords="670,13,775,39"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="807,28,775,28,775,23,807,23"/>
+<area shape="rect" id="Node000003" href="$gameplay_8c.html#a91bd3234380a02ca10ddc23b13cfc521" title="Includes all things related to the gameplay of the game." alt="" coords="494,13,622,39"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="654,28,622,28,622,23,654,23"/>
+<area shape="rect" id="Node000004" href="$game_8c.html#a315e950a7e6bb500fe11c37ee1122577" title="Encapsulates the whole game logic." alt="" coords="327,13,446,39"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="479,28,447,28,447,23,479,23"/>
+<area shape="rect" id="Node000005" href="$device__controller_8c.html#a4d10f01a84e9e24f18682c0bca48dca6" title="Calls all device&#39;s interrupt handlers." alt="" coords="162,13,279,39"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="312,28,279,28,279,23,312,23"/>
+<area shape="rect" id="Node000006" href="$proj_8c.html#af244d65e69677cf312af1950452ec256" title=" " alt="" coords="5,13,114,39"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="146,28,114,28,114,23,146,23"/>
+</map>

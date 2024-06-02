@@ -1,0 +1,380 @@
+\doxysection{src/\+Game/\+Menu/menu.c File Reference}
+\hypertarget{menu_8c}{}\label{menu_8c}\index{src/Game/Menu/menu.c@{src/Game/Menu/menu.c}}
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include "{}menu.\+h"{}}\newline
+{\ttfamily \#include "{}../\+Gameplay/gameplay.\+h"{}}\newline
+{\ttfamily \#include "{}../\+Instructions/instructions.\+h"{}}\newline
+{\ttfamily \#include "{}../gamestates.\+h"{}}\newline
+{\ttfamily \#include "{}../\+Data\+Structure/button.\+h"{}}\newline
+{\ttfamily \#include "{}../../\+Image\+Assets/\+Button.\+xpm"{}}\newline
+{\ttfamily \#include "{}../../\+Image\+Assets/\+Background.\+xpm"{}}\newline
+{\ttfamily \#include "{}../../\+Image\+Assets/\+Mini\+Maps.\+xpm"{}}\newline
+Include dependency graph for menu.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{menu_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{menu_8c_aa318138e879f960abd1e233898a5b046}{check\+Select\+Game\+Hovered}} (\mbox{\hyperlink{struct_button_array}{Button\+Array}} \texorpdfstring{$\ast$}{*}array)
+\item 
+static void \mbox{\hyperlink{menu_8c_a8dfba72b959b2e041a45ad96fe66e6af}{check\+Select\+Game\+Keyboard\+Input}} (\mbox{\hyperlink{struct_key_presses}{Key\+Presses}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}head)
+\item 
+static void \mbox{\hyperlink{menu_8c_a5f25a30f03f43519b25739e422f9ee8a}{check\+Menu\+Hovered}} (\mbox{\hyperlink{struct_button_array}{Button\+Array}} \texorpdfstring{$\ast$}{*}array)
+\item 
+static void \mbox{\hyperlink{menu_8c_a70edb9207ce9f7f7081becf3f631b6cf}{check\+Menu\+Keyboard\+Input}} (\mbox{\hyperlink{struct_key_presses}{Key\+Presses}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}head)
+\item 
+void \mbox{\hyperlink{menu_8c_a9ef48306effe0e201f1a3ca7b2f2221f}{initialize\+Menu}} ()
+\begin{DoxyCompactList}\small\item\em Represents the Main Menu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{menu_8c_ae6e92687b29bdd4db2f1a8e89f500777}{enter\+Menu}} ()
+\begin{DoxyCompactList}\small\item\em Enters the menu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{menu_8c_ac05247c60977ff8e8674fef3132618c3}{update\+Menu}} ()
+\begin{DoxyCompactList}\small\item\em Updates the menu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{menu_8c_a5a27e6d313d05fc5ae3d138287934b9e}{exit\+Menu}} ()
+\begin{DoxyCompactList}\small\item\em Exits the menu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{menu_8c_a30272fb9821d26ec7192066292c430ea}{destroy\+Menu}} ()
+\begin{DoxyCompactList}\small\item\em Destroys the menu\textquotesingle{}s associated Game\+Objects and Buttons, freeing their memory. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{gamestates_8h_a7899b65f1ea0f655e4bbf8d2a5714285}{Game\+State}} \mbox{\hyperlink{menu_8c_a25362b33bad9ff6222dc40646c411649}{state}}
+\item 
+\mbox{\hyperlink{struct_screen_info}{Screen\+Info}} \mbox{\hyperlink{menu_8c_a1636c5f52c5c798d9a14ec91cc0b577d}{screen}}
+\item 
+\mbox{\hyperlink{struct_mouse_device}{Mouse\+Device}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{menu_8c_af690dfd2cb895a02795e3ee3c10792cc}{mouse\+\_\+device}}
+\item 
+\mbox{\hyperlink{struct_keyboard_device}{Keyboard\+Device}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{menu_8c_aaaee12ef170dce59e90a53ecb0c75172}{keyboard\+\_\+device}}
+\item 
+bool \mbox{\hyperlink{menu_8c_a189e4b3cf5d30c8f132982577142f27f}{last\+\_\+pressed\+\_\+was\+\_\+mouse}}
+\item 
+bool \mbox{\hyperlink{menu_8c_a0448fec049217e428b9ec21c03e51d52}{playing}}
+\item 
+static bool \mbox{\hyperlink{menu_8c_a660655389f2d13a7e14caaf5e26620e4}{pressed\+\_\+menu\+\_\+button}} = false
+\item 
+static int8\+\_\+t \mbox{\hyperlink{menu_8c_a338dbba00f5b413a0240cd8958cb7cf4}{menu\+\_\+current\+\_\+selection}} = -\/1
+\item 
+static int8\+\_\+t \mbox{\hyperlink{menu_8c_a9195e6134d131406c71a066ef88063dd}{select\+\_\+game\+\_\+current\+\_\+selection}} = -\/1
+\item 
+static int8\+\_\+t \mbox{\hyperlink{menu_8c_a4c71bc021c13ee6ab3272aab138d7f45}{select\+\_\+game\+\_\+current\+\_\+arena}} = -\/1
+\item 
+static bool \mbox{\hyperlink{menu_8c_af6d1b6728d2e3b21a84a008aaac194bf}{just\+\_\+changed}} = false
+\item 
+\mbox{\hyperlink{struct_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{menu_8c_a53bc38bb2834dab4890ae797fe93023a}{background}}
+\item 
+\mbox{\hyperlink{struct_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{menu_8c_a72236874ee5930ee0dde5cb31303082c}{select\+Game\+Background}}
+\item 
+\mbox{\hyperlink{struct_button_array}{Button\+Array}} \mbox{\hyperlink{menu_8c_a7d5b79f1a5dd743e26fb616220cb5390}{menu\+Buttons}}
+\item 
+\mbox{\hyperlink{struct_button_array}{Button\+Array}} \mbox{\hyperlink{menu_8c_a30c828068e22f45d8da627cfd45774ec}{select\+Game\+Arena\+Buttons}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{menu_8c_a5f25a30f03f43519b25739e422f9ee8a}\index{menu.c@{menu.c}!checkMenuHovered@{checkMenuHovered}}
+\index{checkMenuHovered@{checkMenuHovered}!menu.c@{menu.c}}
+\doxysubsubsection{\texorpdfstring{checkMenuHovered()}{checkMenuHovered()}}
+{\footnotesize\ttfamily \label{menu_8c_a5f25a30f03f43519b25739e422f9ee8a} 
+static void check\+Menu\+Hovered (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_button_array}{Button\+Array}} \texorpdfstring{$\ast$}{*}}]{array}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{menu_8c_a5f25a30f03f43519b25739e422f9ee8a_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{menu_8c_a5f25a30f03f43519b25739e422f9ee8a_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{menu_8c_a70edb9207ce9f7f7081becf3f631b6cf}\index{menu.c@{menu.c}!checkMenuKeyboardInput@{checkMenuKeyboardInput}}
+\index{checkMenuKeyboardInput@{checkMenuKeyboardInput}!menu.c@{menu.c}}
+\doxysubsubsection{\texorpdfstring{checkMenuKeyboardInput()}{checkMenuKeyboardInput()}}
+{\footnotesize\ttfamily \label{menu_8c_a70edb9207ce9f7f7081becf3f631b6cf} 
+static void check\+Menu\+Keyboard\+Input (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_key_presses}{Key\+Presses}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{head}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{menu_8c_a70edb9207ce9f7f7081becf3f631b6cf_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{menu_8c_aa318138e879f960abd1e233898a5b046}\index{menu.c@{menu.c}!checkSelectGameHovered@{checkSelectGameHovered}}
+\index{checkSelectGameHovered@{checkSelectGameHovered}!menu.c@{menu.c}}
+\doxysubsubsection{\texorpdfstring{checkSelectGameHovered()}{checkSelectGameHovered()}}
+{\footnotesize\ttfamily \label{menu_8c_aa318138e879f960abd1e233898a5b046} 
+static void check\+Select\+Game\+Hovered (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_button_array}{Button\+Array}} \texorpdfstring{$\ast$}{*}}]{array}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{menu_8c_aa318138e879f960abd1e233898a5b046_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{menu_8c_aa318138e879f960abd1e233898a5b046_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{menu_8c_a8dfba72b959b2e041a45ad96fe66e6af}\index{menu.c@{menu.c}!checkSelectGameKeyboardInput@{checkSelectGameKeyboardInput}}
+\index{checkSelectGameKeyboardInput@{checkSelectGameKeyboardInput}!menu.c@{menu.c}}
+\doxysubsubsection{\texorpdfstring{checkSelectGameKeyboardInput()}{checkSelectGameKeyboardInput()}}
+{\footnotesize\ttfamily \label{menu_8c_a8dfba72b959b2e041a45ad96fe66e6af} 
+static void check\+Select\+Game\+Keyboard\+Input (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_key_presses}{Key\+Presses}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{head}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{menu_8c_a8dfba72b959b2e041a45ad96fe66e6af_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{menu_8c_a8dfba72b959b2e041a45ad96fe66e6af_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{menu_8c_a30272fb9821d26ec7192066292c430ea}\index{menu.c@{menu.c}!destroyMenu@{destroyMenu}}
+\index{destroyMenu@{destroyMenu}!menu.c@{menu.c}}
+\doxysubsubsection{\texorpdfstring{destroyMenu()}{destroyMenu()}}
+{\footnotesize\ttfamily \label{menu_8c_a30272fb9821d26ec7192066292c430ea} 
+void destroy\+Menu (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Destroys the menu\textquotesingle{}s associated Game\+Objects and Buttons, freeing their memory. 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{menu_8c_a30272fb9821d26ec7192066292c430ea_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{menu_8c_a30272fb9821d26ec7192066292c430ea_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{menu_8c_ae6e92687b29bdd4db2f1a8e89f500777}\index{menu.c@{menu.c}!enterMenu@{enterMenu}}
+\index{enterMenu@{enterMenu}!menu.c@{menu.c}}
+\doxysubsubsection{\texorpdfstring{enterMenu()}{enterMenu()}}
+{\footnotesize\ttfamily \label{menu_8c_ae6e92687b29bdd4db2f1a8e89f500777} 
+void enter\+Menu (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Enters the menu. 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{menu_8c_ae6e92687b29bdd4db2f1a8e89f500777_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{menu_8c_ae6e92687b29bdd4db2f1a8e89f500777_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{menu_8c_a5a27e6d313d05fc5ae3d138287934b9e}\index{menu.c@{menu.c}!exitMenu@{exitMenu}}
+\index{exitMenu@{exitMenu}!menu.c@{menu.c}}
+\doxysubsubsection{\texorpdfstring{exitMenu()}{exitMenu()}}
+{\footnotesize\ttfamily \label{menu_8c_a5a27e6d313d05fc5ae3d138287934b9e} 
+void exit\+Menu (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Exits the menu. 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{menu_8c_a5a27e6d313d05fc5ae3d138287934b9e_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{menu_8c_a5a27e6d313d05fc5ae3d138287934b9e_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{menu_8c_a9ef48306effe0e201f1a3ca7b2f2221f}\index{menu.c@{menu.c}!initializeMenu@{initializeMenu}}
+\index{initializeMenu@{initializeMenu}!menu.c@{menu.c}}
+\doxysubsubsection{\texorpdfstring{initializeMenu()}{initializeMenu()}}
+{\footnotesize\ttfamily \label{menu_8c_a9ef48306effe0e201f1a3ca7b2f2221f} 
+void initialize\+Menu (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Represents the Main Menu. 
+
+Initializes the menu. Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{menu_8c_a9ef48306effe0e201f1a3ca7b2f2221f_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{menu_8c_a9ef48306effe0e201f1a3ca7b2f2221f_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{menu_8c_ac05247c60977ff8e8674fef3132618c3}\index{menu.c@{menu.c}!updateMenu@{updateMenu}}
+\index{updateMenu@{updateMenu}!menu.c@{menu.c}}
+\doxysubsubsection{\texorpdfstring{updateMenu()}{updateMenu()}}
+{\footnotesize\ttfamily \label{menu_8c_ac05247c60977ff8e8674fef3132618c3} 
+void update\+Menu (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Updates the menu. 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{menu_8c_ac05247c60977ff8e8674fef3132618c3_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{menu_8c_ac05247c60977ff8e8674fef3132618c3_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{menu_8c_a53bc38bb2834dab4890ae797fe93023a}\index{menu.c@{menu.c}!background@{background}}
+\index{background@{background}!menu.c@{menu.c}}
+\doxysubsubsection{\texorpdfstring{background}{background}}
+{\footnotesize\ttfamily \label{menu_8c_a53bc38bb2834dab4890ae797fe93023a} 
+\mbox{\hyperlink{struct_game_object}{Game\+Object}}\texorpdfstring{$\ast$}{*} background}
+
+\Hypertarget{menu_8c_af6d1b6728d2e3b21a84a008aaac194bf}\index{menu.c@{menu.c}!just\_changed@{just\_changed}}
+\index{just\_changed@{just\_changed}!menu.c@{menu.c}}
+\doxysubsubsection{\texorpdfstring{just\_changed}{just\_changed}}
+{\footnotesize\ttfamily \label{menu_8c_af6d1b6728d2e3b21a84a008aaac194bf} 
+bool just\+\_\+changed = false\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{menu_8c_aaaee12ef170dce59e90a53ecb0c75172}\index{menu.c@{menu.c}!keyboard\_device@{keyboard\_device}}
+\index{keyboard\_device@{keyboard\_device}!menu.c@{menu.c}}
+\doxysubsubsection{\texorpdfstring{keyboard\_device}{keyboard\_device}}
+{\footnotesize\ttfamily \label{menu_8c_aaaee12ef170dce59e90a53ecb0c75172} 
+\mbox{\hyperlink{struct_keyboard_device}{Keyboard\+Device}}\texorpdfstring{$\ast$}{*} keyboard\+\_\+device\hspace{0.3cm}{\ttfamily [extern]}}
+
+\Hypertarget{menu_8c_a189e4b3cf5d30c8f132982577142f27f}\index{menu.c@{menu.c}!last\_pressed\_was\_mouse@{last\_pressed\_was\_mouse}}
+\index{last\_pressed\_was\_mouse@{last\_pressed\_was\_mouse}!menu.c@{menu.c}}
+\doxysubsubsection{\texorpdfstring{last\_pressed\_was\_mouse}{last\_pressed\_was\_mouse}}
+{\footnotesize\ttfamily \label{menu_8c_a189e4b3cf5d30c8f132982577142f27f} 
+bool last\+\_\+pressed\+\_\+was\+\_\+mouse\hspace{0.3cm}{\ttfamily [extern]}}
+
+\Hypertarget{menu_8c_a338dbba00f5b413a0240cd8958cb7cf4}\index{menu.c@{menu.c}!menu\_current\_selection@{menu\_current\_selection}}
+\index{menu\_current\_selection@{menu\_current\_selection}!menu.c@{menu.c}}
+\doxysubsubsection{\texorpdfstring{menu\_current\_selection}{menu\_current\_selection}}
+{\footnotesize\ttfamily \label{menu_8c_a338dbba00f5b413a0240cd8958cb7cf4} 
+int8\+\_\+t menu\+\_\+current\+\_\+selection = -\/1\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{menu_8c_a7d5b79f1a5dd743e26fb616220cb5390}\index{menu.c@{menu.c}!menuButtons@{menuButtons}}
+\index{menuButtons@{menuButtons}!menu.c@{menu.c}}
+\doxysubsubsection{\texorpdfstring{menuButtons}{menuButtons}}
+{\footnotesize\ttfamily \label{menu_8c_a7d5b79f1a5dd743e26fb616220cb5390} 
+\mbox{\hyperlink{struct_button_array}{Button\+Array}} menu\+Buttons}
+
+\Hypertarget{menu_8c_af690dfd2cb895a02795e3ee3c10792cc}\index{menu.c@{menu.c}!mouse\_device@{mouse\_device}}
+\index{mouse\_device@{mouse\_device}!menu.c@{menu.c}}
+\doxysubsubsection{\texorpdfstring{mouse\_device}{mouse\_device}}
+{\footnotesize\ttfamily \label{menu_8c_af690dfd2cb895a02795e3ee3c10792cc} 
+\mbox{\hyperlink{struct_mouse_device}{Mouse\+Device}}\texorpdfstring{$\ast$}{*} mouse\+\_\+device\hspace{0.3cm}{\ttfamily [extern]}}
+
+\Hypertarget{menu_8c_a0448fec049217e428b9ec21c03e51d52}\index{menu.c@{menu.c}!playing@{playing}}
+\index{playing@{playing}!menu.c@{menu.c}}
+\doxysubsubsection{\texorpdfstring{playing}{playing}}
+{\footnotesize\ttfamily \label{menu_8c_a0448fec049217e428b9ec21c03e51d52} 
+bool playing\hspace{0.3cm}{\ttfamily [extern]}}
+
+\Hypertarget{menu_8c_a660655389f2d13a7e14caaf5e26620e4}\index{menu.c@{menu.c}!pressed\_menu\_button@{pressed\_menu\_button}}
+\index{pressed\_menu\_button@{pressed\_menu\_button}!menu.c@{menu.c}}
+\doxysubsubsection{\texorpdfstring{pressed\_menu\_button}{pressed\_menu\_button}}
+{\footnotesize\ttfamily \label{menu_8c_a660655389f2d13a7e14caaf5e26620e4} 
+bool pressed\+\_\+menu\+\_\+button = false\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{menu_8c_a1636c5f52c5c798d9a14ec91cc0b577d}\index{menu.c@{menu.c}!screen@{screen}}
+\index{screen@{screen}!menu.c@{menu.c}}
+\doxysubsubsection{\texorpdfstring{screen}{screen}}
+{\footnotesize\ttfamily \label{menu_8c_a1636c5f52c5c798d9a14ec91cc0b577d} 
+\mbox{\hyperlink{struct_screen_info}{Screen\+Info}} screen\hspace{0.3cm}{\ttfamily [extern]}}
+
+\Hypertarget{menu_8c_a4c71bc021c13ee6ab3272aab138d7f45}\index{menu.c@{menu.c}!select\_game\_current\_arena@{select\_game\_current\_arena}}
+\index{select\_game\_current\_arena@{select\_game\_current\_arena}!menu.c@{menu.c}}
+\doxysubsubsection{\texorpdfstring{select\_game\_current\_arena}{select\_game\_current\_arena}}
+{\footnotesize\ttfamily \label{menu_8c_a4c71bc021c13ee6ab3272aab138d7f45} 
+int8\+\_\+t select\+\_\+game\+\_\+current\+\_\+arena = -\/1\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{menu_8c_a9195e6134d131406c71a066ef88063dd}\index{menu.c@{menu.c}!select\_game\_current\_selection@{select\_game\_current\_selection}}
+\index{select\_game\_current\_selection@{select\_game\_current\_selection}!menu.c@{menu.c}}
+\doxysubsubsection{\texorpdfstring{select\_game\_current\_selection}{select\_game\_current\_selection}}
+{\footnotesize\ttfamily \label{menu_8c_a9195e6134d131406c71a066ef88063dd} 
+int8\+\_\+t select\+\_\+game\+\_\+current\+\_\+selection = -\/1\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{menu_8c_a30c828068e22f45d8da627cfd45774ec}\index{menu.c@{menu.c}!selectGameArenaButtons@{selectGameArenaButtons}}
+\index{selectGameArenaButtons@{selectGameArenaButtons}!menu.c@{menu.c}}
+\doxysubsubsection{\texorpdfstring{selectGameArenaButtons}{selectGameArenaButtons}}
+{\footnotesize\ttfamily \label{menu_8c_a30c828068e22f45d8da627cfd45774ec} 
+\mbox{\hyperlink{struct_button_array}{Button\+Array}} select\+Game\+Arena\+Buttons}
+
+\Hypertarget{menu_8c_a72236874ee5930ee0dde5cb31303082c}\index{menu.c@{menu.c}!selectGameBackground@{selectGameBackground}}
+\index{selectGameBackground@{selectGameBackground}!menu.c@{menu.c}}
+\doxysubsubsection{\texorpdfstring{selectGameBackground}{selectGameBackground}}
+{\footnotesize\ttfamily \label{menu_8c_a72236874ee5930ee0dde5cb31303082c} 
+\mbox{\hyperlink{struct_game_object}{Game\+Object}}\texorpdfstring{$\ast$}{*} select\+Game\+Background}
+
+\Hypertarget{menu_8c_a25362b33bad9ff6222dc40646c411649}\index{menu.c@{menu.c}!state@{state}}
+\index{state@{state}!menu.c@{menu.c}}
+\doxysubsubsection{\texorpdfstring{state}{state}}
+{\footnotesize\ttfamily \label{menu_8c_a25362b33bad9ff6222dc40646c411649} 
+\mbox{\hyperlink{gamestates_8h_a7899b65f1ea0f655e4bbf8d2a5714285}{Game\+State}} state\hspace{0.3cm}{\ttfamily [extern]}}
+

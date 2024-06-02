@@ -1,0 +1,82 @@
+\doxysection{Animated\+Sprite Struct Reference}
+\hypertarget{struct_animated_sprite}{}\label{struct_animated_sprite}\index{AnimatedSprite@{AnimatedSprite}}
+
+
+Struct that represents an animated sprite.  
+
+
+
+
+{\ttfamily \#include $<$sprite.\+h$>$}
+
+
+
+Collaboration diagram for Animated\+Sprite\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=163pt]{struct_animated_sprite__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_sprite_array}{Sprite\+Array}} \mbox{\hyperlink{struct_animated_sprite_a565ede5f3e5670173e03d4eded599d53}{sprites}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{struct_animated_sprite_ac8e92de87de615b38759e11710a505f2}{current\+\_\+sprite}}
+\item 
+uint16\+\_\+t \mbox{\hyperlink{struct_animated_sprite_a66bf7e185ac0b1f63cf0717c7d54f2ef}{animation\+\_\+cooldown}}
+\item 
+uint16\+\_\+t \mbox{\hyperlink{struct_animated_sprite_a55dc0fe26ec2b34bd7b762fece7d30c4}{cooldown\+\_\+counter}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Struct that represents an animated sprite. 
+
+Struct that contains an array of sprites, the current sprite, the animation cooldown and the cooldown counter.
+
+
+\begin{DoxyParams}{Parameters}
+{\em sprites} & The array of sprites. \\
+\hline
+{\em current\+\_\+sprite} & The index of the current sprite. \\
+\hline
+{\em animation\+\_\+cooldown} & The ammount of time between each sprite change (in milliseconds, ms). \\
+\hline
+{\em cooldown\+\_\+counter} & The counter of the cooldown. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{struct_animated_sprite_a66bf7e185ac0b1f63cf0717c7d54f2ef}\index{AnimatedSprite@{AnimatedSprite}!animation\_cooldown@{animation\_cooldown}}
+\index{animation\_cooldown@{animation\_cooldown}!AnimatedSprite@{AnimatedSprite}}
+\doxysubsubsection{\texorpdfstring{animation\_cooldown}{animation\_cooldown}}
+{\footnotesize\ttfamily \label{struct_animated_sprite_a66bf7e185ac0b1f63cf0717c7d54f2ef} 
+uint16\+\_\+t Animated\+Sprite\+::animation\+\_\+cooldown}
+
+\Hypertarget{struct_animated_sprite_a55dc0fe26ec2b34bd7b762fece7d30c4}\index{AnimatedSprite@{AnimatedSprite}!cooldown\_counter@{cooldown\_counter}}
+\index{cooldown\_counter@{cooldown\_counter}!AnimatedSprite@{AnimatedSprite}}
+\doxysubsubsection{\texorpdfstring{cooldown\_counter}{cooldown\_counter}}
+{\footnotesize\ttfamily \label{struct_animated_sprite_a55dc0fe26ec2b34bd7b762fece7d30c4} 
+uint16\+\_\+t Animated\+Sprite\+::cooldown\+\_\+counter}
+
+\Hypertarget{struct_animated_sprite_ac8e92de87de615b38759e11710a505f2}\index{AnimatedSprite@{AnimatedSprite}!current\_sprite@{current\_sprite}}
+\index{current\_sprite@{current\_sprite}!AnimatedSprite@{AnimatedSprite}}
+\doxysubsubsection{\texorpdfstring{current\_sprite}{current\_sprite}}
+{\footnotesize\ttfamily \label{struct_animated_sprite_ac8e92de87de615b38759e11710a505f2} 
+uint8\+\_\+t Animated\+Sprite\+::current\+\_\+sprite}
+
+\Hypertarget{struct_animated_sprite_a565ede5f3e5670173e03d4eded599d53}\index{AnimatedSprite@{AnimatedSprite}!sprites@{sprites}}
+\index{sprites@{sprites}!AnimatedSprite@{AnimatedSprite}}
+\doxysubsubsection{\texorpdfstring{sprites}{sprites}}
+{\footnotesize\ttfamily \label{struct_animated_sprite_a565ede5f3e5670173e03d4eded599d53} 
+\mbox{\hyperlink{struct_sprite_array}{Sprite\+Array}} Animated\+Sprite\+::sprites}
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/\+Image\+Assets/\mbox{\hyperlink{sprite_8h}{sprite.\+h}}\end{DoxyCompactItemize}

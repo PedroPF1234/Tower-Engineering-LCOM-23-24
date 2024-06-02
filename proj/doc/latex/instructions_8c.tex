@@ -1,0 +1,299 @@
+\doxysection{src/\+Game/\+Instructions/instructions.c File Reference}
+\hypertarget{instructions_8c}{}\label{instructions_8c}\index{src/Game/Instructions/instructions.c@{src/Game/Instructions/instructions.c}}
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include "{}instructions.\+h"{}}\newline
+{\ttfamily \#include "{}../\+Menu/menu.\+h"{}}\newline
+{\ttfamily \#include "{}../../\+Devices/device\+\_\+controller.\+h"{}}\newline
+{\ttfamily \#include "{}../\+Data\+Structure/button.\+h"{}}\newline
+{\ttfamily \#include "{}../../\+Image\+Assets/\+Button.\+xpm"{}}\newline
+{\ttfamily \#include "{}../../\+Image\+Assets/\+Instruction\+Background.\+xpm"{}}\newline
+{\ttfamily \#include "{}../gamestates.\+h"{}}\newline
+Include dependency graph for instructions.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{instructions_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{instructions_8c_a072021e1d5880206149b5323f33f649e}{check\+Instructions\+Keyboard\+Input}} (\mbox{\hyperlink{struct_key_presses}{Key\+Presses}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}head)
+\item 
+static void \mbox{\hyperlink{instructions_8c_a1eec854c195cd560085e72eec69b26b9}{check\+Instruction\+Hovered}} (\mbox{\hyperlink{struct_button_array}{Button\+Array}} \texorpdfstring{$\ast$}{*}array)
+\item 
+void \mbox{\hyperlink{instructions_8c_a70db37a60995613420ddba77919eaddd}{initialize\+Instructions}} ()
+\begin{DoxyCompactList}\small\item\em Initializes the instructions. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{instructions_8c_a6f05cb8c8a0c3cc09a6540dcd756315d}{enter\+Instructions}} ()
+\begin{DoxyCompactList}\small\item\em Enters the instructions screen. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{instructions_8c_a5fd1505f1f7d8fbb4d0a447fb4ba4539}{update\+Instructions}} ()
+\begin{DoxyCompactList}\small\item\em Updates the instructions screen. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{instructions_8c_a6b14b1ceb01d5c5932584f27df0b7c21}{exit\+Instructions}} ()
+\begin{DoxyCompactList}\small\item\em Exits the instructions screen. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{instructions_8c_abfd984c9d7e60fa321cf273ec6c4173f}{destroy\+Instructions}} ()
+\begin{DoxyCompactList}\small\item\em Destroys the instructions. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{gamestates_8h_a7899b65f1ea0f655e4bbf8d2a5714285}{Game\+State}} \mbox{\hyperlink{instructions_8c_a25362b33bad9ff6222dc40646c411649}{state}}
+\item 
+\mbox{\hyperlink{struct_screen_info}{Screen\+Info}} \mbox{\hyperlink{instructions_8c_a1636c5f52c5c798d9a14ec91cc0b577d}{screen}}
+\item 
+\mbox{\hyperlink{struct_mouse_device}{Mouse\+Device}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{instructions_8c_af690dfd2cb895a02795e3ee3c10792cc}{mouse\+\_\+device}}
+\item 
+\mbox{\hyperlink{struct_keyboard_device}{Keyboard\+Device}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{instructions_8c_aaaee12ef170dce59e90a53ecb0c75172}{keyboard\+\_\+device}}
+\item 
+bool \mbox{\hyperlink{instructions_8c_a189e4b3cf5d30c8f132982577142f27f}{last\+\_\+pressed\+\_\+was\+\_\+mouse}}
+\item 
+bool \mbox{\hyperlink{instructions_8c_a0448fec049217e428b9ec21c03e51d52}{playing}}
+\item 
+static bool \mbox{\hyperlink{instructions_8c_a10bd506b06a7d1d184ba492d5fd37e91}{pressed\+\_\+inst\+\_\+button}} = false
+\item 
+static int8\+\_\+t \mbox{\hyperlink{instructions_8c_a87159393c4b2a0ff50456c296d09ce5d}{inst\+\_\+current\+\_\+selection}} = -\/1
+\item 
+\mbox{\hyperlink{struct_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{instructions_8c_a6ab0cef62d07167ff218e9d1ab5845a7}{instructions\+\_\+background}}
+\item 
+\mbox{\hyperlink{struct_button_array}{Button\+Array}} \mbox{\hyperlink{instructions_8c_a6b4d9badc60718f0cb673324b37e47da}{inst\+Buttons}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{instructions_8c_a1eec854c195cd560085e72eec69b26b9}\index{instructions.c@{instructions.c}!checkInstructionHovered@{checkInstructionHovered}}
+\index{checkInstructionHovered@{checkInstructionHovered}!instructions.c@{instructions.c}}
+\doxysubsubsection{\texorpdfstring{checkInstructionHovered()}{checkInstructionHovered()}}
+{\footnotesize\ttfamily \label{instructions_8c_a1eec854c195cd560085e72eec69b26b9} 
+static void check\+Instruction\+Hovered (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_button_array}{Button\+Array}} \texorpdfstring{$\ast$}{*}}]{array}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{instructions_8c_a1eec854c195cd560085e72eec69b26b9_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{instructions_8c_a1eec854c195cd560085e72eec69b26b9_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{instructions_8c_a072021e1d5880206149b5323f33f649e}\index{instructions.c@{instructions.c}!checkInstructionsKeyboardInput@{checkInstructionsKeyboardInput}}
+\index{checkInstructionsKeyboardInput@{checkInstructionsKeyboardInput}!instructions.c@{instructions.c}}
+\doxysubsubsection{\texorpdfstring{checkInstructionsKeyboardInput()}{checkInstructionsKeyboardInput()}}
+{\footnotesize\ttfamily \label{instructions_8c_a072021e1d5880206149b5323f33f649e} 
+static void check\+Instructions\+Keyboard\+Input (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_key_presses}{Key\+Presses}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{head}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{instructions_8c_a072021e1d5880206149b5323f33f649e_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{instructions_8c_a072021e1d5880206149b5323f33f649e_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{instructions_8c_abfd984c9d7e60fa321cf273ec6c4173f}\index{instructions.c@{instructions.c}!destroyInstructions@{destroyInstructions}}
+\index{destroyInstructions@{destroyInstructions}!instructions.c@{instructions.c}}
+\doxysubsubsection{\texorpdfstring{destroyInstructions()}{destroyInstructions()}}
+{\footnotesize\ttfamily \label{instructions_8c_abfd984c9d7e60fa321cf273ec6c4173f} 
+void destroy\+Instructions (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Destroys the instructions. 
+
+This function frees memory and resources allocated for the instructions screen. Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{instructions_8c_abfd984c9d7e60fa321cf273ec6c4173f_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{instructions_8c_abfd984c9d7e60fa321cf273ec6c4173f_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{instructions_8c_a6f05cb8c8a0c3cc09a6540dcd756315d}\index{instructions.c@{instructions.c}!enterInstructions@{enterInstructions}}
+\index{enterInstructions@{enterInstructions}!instructions.c@{instructions.c}}
+\doxysubsubsection{\texorpdfstring{enterInstructions()}{enterInstructions()}}
+{\footnotesize\ttfamily \label{instructions_8c_a6f05cb8c8a0c3cc09a6540dcd756315d} 
+void enter\+Instructions (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Enters the instructions screen. 
+
+This function resets device states and makes the instruction screen elements visible. Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{instructions_8c_a6f05cb8c8a0c3cc09a6540dcd756315d_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{instructions_8c_a6f05cb8c8a0c3cc09a6540dcd756315d_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{instructions_8c_a6b14b1ceb01d5c5932584f27df0b7c21}\index{instructions.c@{instructions.c}!exitInstructions@{exitInstructions}}
+\index{exitInstructions@{exitInstructions}!instructions.c@{instructions.c}}
+\doxysubsubsection{\texorpdfstring{exitInstructions()}{exitInstructions()}}
+{\footnotesize\ttfamily \label{instructions_8c_a6b14b1ceb01d5c5932584f27df0b7c21} 
+void exit\+Instructions (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Exits the instructions screen. 
+
+This function hides the instructions screen elements and resets related variables. Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{instructions_8c_a6b14b1ceb01d5c5932584f27df0b7c21_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{instructions_8c_a6b14b1ceb01d5c5932584f27df0b7c21_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{instructions_8c_a70db37a60995613420ddba77919eaddd}\index{instructions.c@{instructions.c}!initializeInstructions@{initializeInstructions}}
+\index{initializeInstructions@{initializeInstructions}!instructions.c@{instructions.c}}
+\doxysubsubsection{\texorpdfstring{initializeInstructions()}{initializeInstructions()}}
+{\footnotesize\ttfamily \label{instructions_8c_a70db37a60995613420ddba77919eaddd} 
+void initialize\+Instructions (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Initializes the instructions. 
+
+This function sets up the necessary buttons and background for the instructions screen. Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{instructions_8c_a70db37a60995613420ddba77919eaddd_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{instructions_8c_a70db37a60995613420ddba77919eaddd_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{instructions_8c_a5fd1505f1f7d8fbb4d0a447fb4ba4539}\index{instructions.c@{instructions.c}!updateInstructions@{updateInstructions}}
+\index{updateInstructions@{updateInstructions}!instructions.c@{instructions.c}}
+\doxysubsubsection{\texorpdfstring{updateInstructions()}{updateInstructions()}}
+{\footnotesize\ttfamily \label{instructions_8c_a5fd1505f1f7d8fbb4d0a447fb4ba4539} 
+void update\+Instructions (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Updates the instructions screen. 
+
+This function checks for hovered buttons and keyboard inputs, updating the instructions screen accordingly. Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{instructions_8c_a5fd1505f1f7d8fbb4d0a447fb4ba4539_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{instructions_8c_a5fd1505f1f7d8fbb4d0a447fb4ba4539_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{instructions_8c_a87159393c4b2a0ff50456c296d09ce5d}\index{instructions.c@{instructions.c}!inst\_current\_selection@{inst\_current\_selection}}
+\index{inst\_current\_selection@{inst\_current\_selection}!instructions.c@{instructions.c}}
+\doxysubsubsection{\texorpdfstring{inst\_current\_selection}{inst\_current\_selection}}
+{\footnotesize\ttfamily \label{instructions_8c_a87159393c4b2a0ff50456c296d09ce5d} 
+int8\+\_\+t inst\+\_\+current\+\_\+selection = -\/1\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{instructions_8c_a6b4d9badc60718f0cb673324b37e47da}\index{instructions.c@{instructions.c}!instButtons@{instButtons}}
+\index{instButtons@{instButtons}!instructions.c@{instructions.c}}
+\doxysubsubsection{\texorpdfstring{instButtons}{instButtons}}
+{\footnotesize\ttfamily \label{instructions_8c_a6b4d9badc60718f0cb673324b37e47da} 
+\mbox{\hyperlink{struct_button_array}{Button\+Array}} inst\+Buttons}
+
+\Hypertarget{instructions_8c_a6ab0cef62d07167ff218e9d1ab5845a7}\index{instructions.c@{instructions.c}!instructions\_background@{instructions\_background}}
+\index{instructions\_background@{instructions\_background}!instructions.c@{instructions.c}}
+\doxysubsubsection{\texorpdfstring{instructions\_background}{instructions\_background}}
+{\footnotesize\ttfamily \label{instructions_8c_a6ab0cef62d07167ff218e9d1ab5845a7} 
+\mbox{\hyperlink{struct_game_object}{Game\+Object}}\texorpdfstring{$\ast$}{*} instructions\+\_\+background}
+
+\Hypertarget{instructions_8c_aaaee12ef170dce59e90a53ecb0c75172}\index{instructions.c@{instructions.c}!keyboard\_device@{keyboard\_device}}
+\index{keyboard\_device@{keyboard\_device}!instructions.c@{instructions.c}}
+\doxysubsubsection{\texorpdfstring{keyboard\_device}{keyboard\_device}}
+{\footnotesize\ttfamily \label{instructions_8c_aaaee12ef170dce59e90a53ecb0c75172} 
+\mbox{\hyperlink{struct_keyboard_device}{Keyboard\+Device}}\texorpdfstring{$\ast$}{*} keyboard\+\_\+device\hspace{0.3cm}{\ttfamily [extern]}}
+
+\Hypertarget{instructions_8c_a189e4b3cf5d30c8f132982577142f27f}\index{instructions.c@{instructions.c}!last\_pressed\_was\_mouse@{last\_pressed\_was\_mouse}}
+\index{last\_pressed\_was\_mouse@{last\_pressed\_was\_mouse}!instructions.c@{instructions.c}}
+\doxysubsubsection{\texorpdfstring{last\_pressed\_was\_mouse}{last\_pressed\_was\_mouse}}
+{\footnotesize\ttfamily \label{instructions_8c_a189e4b3cf5d30c8f132982577142f27f} 
+bool last\+\_\+pressed\+\_\+was\+\_\+mouse\hspace{0.3cm}{\ttfamily [extern]}}
+
+\Hypertarget{instructions_8c_af690dfd2cb895a02795e3ee3c10792cc}\index{instructions.c@{instructions.c}!mouse\_device@{mouse\_device}}
+\index{mouse\_device@{mouse\_device}!instructions.c@{instructions.c}}
+\doxysubsubsection{\texorpdfstring{mouse\_device}{mouse\_device}}
+{\footnotesize\ttfamily \label{instructions_8c_af690dfd2cb895a02795e3ee3c10792cc} 
+\mbox{\hyperlink{struct_mouse_device}{Mouse\+Device}}\texorpdfstring{$\ast$}{*} mouse\+\_\+device\hspace{0.3cm}{\ttfamily [extern]}}
+
+\Hypertarget{instructions_8c_a0448fec049217e428b9ec21c03e51d52}\index{instructions.c@{instructions.c}!playing@{playing}}
+\index{playing@{playing}!instructions.c@{instructions.c}}
+\doxysubsubsection{\texorpdfstring{playing}{playing}}
+{\footnotesize\ttfamily \label{instructions_8c_a0448fec049217e428b9ec21c03e51d52} 
+bool playing\hspace{0.3cm}{\ttfamily [extern]}}
+
+\Hypertarget{instructions_8c_a10bd506b06a7d1d184ba492d5fd37e91}\index{instructions.c@{instructions.c}!pressed\_inst\_button@{pressed\_inst\_button}}
+\index{pressed\_inst\_button@{pressed\_inst\_button}!instructions.c@{instructions.c}}
+\doxysubsubsection{\texorpdfstring{pressed\_inst\_button}{pressed\_inst\_button}}
+{\footnotesize\ttfamily \label{instructions_8c_a10bd506b06a7d1d184ba492d5fd37e91} 
+bool pressed\+\_\+inst\+\_\+button = false\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{instructions_8c_a1636c5f52c5c798d9a14ec91cc0b577d}\index{instructions.c@{instructions.c}!screen@{screen}}
+\index{screen@{screen}!instructions.c@{instructions.c}}
+\doxysubsubsection{\texorpdfstring{screen}{screen}}
+{\footnotesize\ttfamily \label{instructions_8c_a1636c5f52c5c798d9a14ec91cc0b577d} 
+\mbox{\hyperlink{struct_screen_info}{Screen\+Info}} screen\hspace{0.3cm}{\ttfamily [extern]}}
+
+\Hypertarget{instructions_8c_a25362b33bad9ff6222dc40646c411649}\index{instructions.c@{instructions.c}!state@{state}}
+\index{state@{state}!instructions.c@{instructions.c}}
+\doxysubsubsection{\texorpdfstring{state}{state}}
+{\footnotesize\ttfamily \label{instructions_8c_a25362b33bad9ff6222dc40646c411649} 
+\mbox{\hyperlink{gamestates_8h_a7899b65f1ea0f655e4bbf8d2a5714285}{Game\+State}} state\hspace{0.3cm}{\ttfamily [extern]}}
+

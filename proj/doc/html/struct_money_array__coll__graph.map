@@ -1,0 +1,15 @@
+<map id="MoneyArray" name="MoneyArray">
+<area shape="rect" id="Node000001" title="Represents an array of Money." alt="" coords="9,371,101,396"/>
+<area shape="rect" id="Node000002" href="$struct_money.html" title="Represents the money in the game." alt="" coords="25,282,85,308"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="58,323,58,370,52,370,52,323"/>
+<area shape="rect" id="Node000003" href="$struct_game_object.html" title="Represents a game object in the game." alt="" coords="54,94,149,120"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="70,131,37,158,23,175,12,194,9,218,17,242,30,263,45,280,41,284,26,266,12,244,4,218,7,192,19,172,34,155,66,127"/>
+<area shape="rect" id="Node000006" href="$struct_game_object_array.html" title="Represents an array of GameObjects." alt="" coords="50,193,175,219"/>
+<area shape="poly" id="edge7_Node000006_Node000003" title=" " alt="" coords="99,135,99,169,108,192,103,194,94,170,93,135"/>
+<area shape="rect" id="Node000004" href="$struct_sprite.html" title="Struct that represents a sprite." alt="" coords="139,5,195,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="151,45,113,95,109,92,147,42"/>
+<area shape="rect" id="Node000005" href="$struct_sprite_array.html" title="Struct that represents an array of sprites." alt="" coords="189,144,275,169"/>
+<area shape="poly" id="edge5_Node000005_Node000004" title=" " alt="" coords="182,44,229,142,224,145,177,46"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="237,185,234,223,227,243,215,260,193,273,159,282,86,293,85,288,158,277,191,268,212,256,222,240,229,222,232,184"/>
+<area shape="poly" id="edge6_Node000002_Node000006" title=" " alt="" coords="72,230,59,244,54,263,55,281,50,282,49,262,54,242,68,226"/>
+</map>

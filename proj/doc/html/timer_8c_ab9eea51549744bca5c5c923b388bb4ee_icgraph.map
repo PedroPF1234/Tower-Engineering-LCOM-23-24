@@ -1,0 +1,9 @@
+<map id="timer_unsubscribe_int" name="timer_unsubscribe_int">
+<area shape="rect" id="Node000001" title=" " alt="" coords="335,31,483,56"/>
+<area shape="rect" id="Node000002" href="$device__controller_8c.html#ab1bc69df0c7a23951179c8258d9ac75c" title="Encapsulates the termination of all the devices." alt="" coords="175,5,274,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="319,34,274,28,275,22,320,29"/>
+<area shape="rect" id="Node000004" href="$device__controller_8c.html#a441744c4b348eb70ad06ef25cedbb7cc" title="Updates the frequency of the timer." alt="" coords="162,55,287,80"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="320,58,288,62,287,57,319,52"/>
+<area shape="rect" id="Node000003" href="$proj_8c.html#af244d65e69677cf312af1950452ec256" title=" " alt="" coords="5,5,114,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="160,21,114,21,114,16,160,16"/>
+</map>

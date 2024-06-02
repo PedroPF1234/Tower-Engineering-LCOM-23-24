@@ -1,0 +1,33 @@
+<map id="enterMenu" name="enterMenu">
+<area shape="rect" id="Node000001" title="Enters the menu." alt="" coords="1069,105,1152,131"/>
+<area shape="rect" id="Node000002" href="$gameplay_8c.html#a8ab7c3f15457e7b1d05182d33a9fbea6" title=" " alt="" coords="844,105,1019,131"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1054,121,1020,121,1020,116,1054,116"/>
+<area shape="rect" id="Node000008" href="$gameover_8c.html#a20563f1d3e320df15dfbf0c7d99b069d" title=" " alt="" coords="848,5,1016,31"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="1085,96,1055,70,1020,46,992,34,994,29,1023,41,1059,66,1088,92"/>
+<area shape="rect" id="Node000010" href="$instructions_8c.html#a1eec854c195cd560085e72eec69b26b9" title=" " alt="" coords="849,155,1015,180"/>
+<area shape="poly" id="edge10_Node000001_Node000010" title=" " alt="" coords="1055,137,1022,146,984,157,982,151,1021,141,1054,132"/>
+<area shape="rect" id="Node000012" href="$instructions_8c.html#a072021e1d5880206149b5323f33f649e" title=" " alt="" coords="842,205,1021,245"/>
+<area shape="poly" id="edge13_Node000001_Node000012" title=" " alt="" coords="1088,144,1058,170,1023,195,1000,206,998,202,1020,191,1055,166,1084,140"/>
+<area shape="rect" id="Node000013" href="$gameplay_8c.html#ab1e8de75a8a897632941c220743edbc5" title=" " alt="" coords="861,56,1003,82"/>
+<area shape="poly" id="edge15_Node000001_Node000013" title=" " alt="" coords="1054,105,1021,95,982,85,984,80,1022,90,1055,100"/>
+<area shape="rect" id="Node000003" href="$gameplay_8c.html#a51e8e30605fea6f79a919eb15c2ce885" title=" " alt="" coords="669,105,791,131"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="828,121,791,121,791,116,828,116"/>
+<area shape="rect" id="Node000004" href="$gameplay_8c.html#a97feb8702b4bc47a3dee7bf3b220da2b" title="Updates all the game objects and buttons.. etc in the game." alt="" coords="508,68,604,94"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="653,105,603,94,605,88,654,99"/>
+<area shape="rect" id="Node000005" href="$game_8c.html#a315e950a7e6bb500fe11c37ee1122577" title="Encapsulates the whole game logic." alt="" coords="327,68,446,94"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="493,84,446,84,446,78,493,78"/>
+<area shape="rect" id="Node000006" href="$device__controller_8c.html#a4d10f01a84e9e24f18682c0bca48dca6" title="Calls all device&#39;s interrupt handlers." alt="" coords="162,68,279,94"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="312,84,279,84,279,78,312,78"/>
+<area shape="rect" id="Node000007" href="$proj_8c.html#af244d65e69677cf312af1950452ec256" title=" " alt="" coords="5,68,114,94"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="146,84,114,84,114,78,146,78"/>
+<area shape="rect" id="Node000009" href="$gameover_8c.html#af2f7ce039c1cc4997de1b9469f1d8059" title="Updates the game over screen." alt="" coords="494,12,618,38"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="832,23,618,26,618,21,832,17"/>
+<area shape="poly" id="edge9_Node000009_Node000005" title=" " alt="" coords="501,46,429,70,427,65,499,41"/>
+<area shape="rect" id="Node000011" href="$instructions_8c.html#a5fd1505f1f7d8fbb4d0a447fb4ba4539" title="Updates the instructions screen." alt="" coords="666,155,794,180"/>
+<area shape="poly" id="edge11_Node000010_Node000011" title=" " alt="" coords="833,170,794,170,794,165,833,165"/>
+<area shape="poly" id="edge12_Node000011_Node000005" title=" " alt="" coords="661,153,440,97,442,92,662,148"/>
+<area shape="poly" id="edge14_Node000012_Node000011" title=" " alt="" coords="843,202,777,184,779,178,844,197"/>
+<area shape="rect" id="Node000014" href="$gameplay_8c.html#a249981b88f5eb32eafdcc1b234ed4b77" title=" " alt="" coords="681,56,779,82"/>
+<area shape="poly" id="edge16_Node000013_Node000014" title=" " alt="" coords="845,72,779,72,779,66,845,66"/>
+<area shape="poly" id="edge17_Node000014_Node000004" title=" " alt="" coords="666,76,604,80,604,75,666,71"/>
+</map>

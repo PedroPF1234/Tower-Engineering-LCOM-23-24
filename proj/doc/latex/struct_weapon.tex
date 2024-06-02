@@ -1,0 +1,62 @@
+\doxysection{Weapon Struct Reference}
+\hypertarget{struct_weapon}{}\label{struct_weapon}\index{Weapon@{Weapon}}
+
+
+Struct that represents a weapon.  
+
+
+
+
+{\ttfamily \#include $<$weapon.\+h$>$}
+
+
+
+Collaboration diagram for Weapon\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=157pt]{struct_weapon__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct_weapon_a81d61dbcbd691e74eacfeee97303928f}{weaponL}}
+\item 
+\mbox{\hyperlink{struct_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct_weapon_ab865e47920042282f65e28a6cfce01cd}{weaponR}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Struct that represents a weapon. 
+
+Contains the left and right weapon game objects. The weapon is separated into two game objects since the sprite representing it had to be mirrored, depending on the direction the mouse is relative to the player.
+
+
+\begin{DoxyParams}{Parameters}
+{\em weaponL} & The weapon game object with the sprite facing left. \\
+\hline
+{\em weaponR} & The weapon game object with the sprite facing right. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{struct_weapon_a81d61dbcbd691e74eacfeee97303928f}\index{Weapon@{Weapon}!weaponL@{weaponL}}
+\index{weaponL@{weaponL}!Weapon@{Weapon}}
+\doxysubsubsection{\texorpdfstring{weaponL}{weaponL}}
+{\footnotesize\ttfamily \label{struct_weapon_a81d61dbcbd691e74eacfeee97303928f} 
+\mbox{\hyperlink{struct_game_object}{Game\+Object}}\texorpdfstring{$\ast$}{*} Weapon\+::weaponL}
+
+\Hypertarget{struct_weapon_ab865e47920042282f65e28a6cfce01cd}\index{Weapon@{Weapon}!weaponR@{weaponR}}
+\index{weaponR@{weaponR}!Weapon@{Weapon}}
+\doxysubsubsection{\texorpdfstring{weaponR}{weaponR}}
+{\footnotesize\ttfamily \label{struct_weapon_ab865e47920042282f65e28a6cfce01cd} 
+\mbox{\hyperlink{struct_game_object}{Game\+Object}}\texorpdfstring{$\ast$}{*} Weapon\+::weaponR}
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/\+Game/\+Gameplay/\+Weapon/\mbox{\hyperlink{weapon_8h}{weapon.\+h}}\end{DoxyCompactItemize}

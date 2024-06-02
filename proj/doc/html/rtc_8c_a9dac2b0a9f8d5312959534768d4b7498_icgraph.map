@@ -1,0 +1,14 @@
+<map id="rtc_await_valid_state" name="rtc_await_valid_state">
+<area shape="rect" id="Node000001" title=" " alt="" coords="617,56,761,82"/>
+<area shape="rect" id="Node000002" href="$rtc_8c.html#acb430fd58d2e4da3a685d42cf2f3594a" title=" " alt="" coords="428,5,569,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="622,54,549,34,550,29,624,49"/>
+<area shape="rect" id="Node000003" href="$rtc_8c.html#a75dad42881d64cf07cf1bdc2979a7056" title="RTC Interrupt Handler." alt="" coords="327,31,380,56"/>
+<area shape="poly" id="edge5_Node000001_Node000003" title=" " alt="" coords="601,65,381,48,381,43,601,60"/>
+<area shape="rect" id="Node000006" href="$rtc_8c.html#a2190c057929ef6fbff940998492aa4ec" title="Sets the RTC alarm every second." alt="" coords="429,106,568,147"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="630,89,569,108,568,103,629,84"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="413,36,381,42,380,36,412,31"/>
+<area shape="rect" id="Node000004" href="$device__controller_8c.html#a4d10f01a84e9e24f18682c0bca48dca6" title="Calls all device&#39;s interrupt handlers." alt="" coords="162,31,279,56"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="311,46,279,46,279,41,311,41"/>
+<area shape="rect" id="Node000005" href="$proj_8c.html#af244d65e69677cf312af1950452ec256" title=" " alt="" coords="5,31,114,56"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="146,46,114,46,114,41,146,41"/>
+</map>

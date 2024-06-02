@@ -1,0 +1,54 @@
+\doxysection{enemy.\+h}
+\hypertarget{enemy_8h_source}{}\label{enemy_8h_source}\index{src/Game/Gameplay/Enemy/enemy.h@{src/Game/Gameplay/Enemy/enemy.h}}
+\mbox{\hyperlink{enemy_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{device__controller_8h}{../../../Devices/device\_controller.h}}"{}}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00008\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_enemy}{Enemy}}\ \{}
+\DoxyCodeLine{00009\ \ \ \ \ \mbox{\hyperlink{struct_game_object}{GameObject}}*\ \mbox{\hyperlink{struct_enemy_a7ab44b9d3c9f868bda3636fd45e8bb9b}{enemy}};\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00010\ \ \ \ \ \mbox{\hyperlink{struct_game_object}{GameObject}}*\ \mbox{\hyperlink{struct_enemy_ab88b9200330af5518918c754a4d20f95}{health\_bar}};\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00011\ \ \ \ \ \mbox{\hyperlink{struct_sprite}{Sprite}}*\ \mbox{\hyperlink{struct_enemy_abc081c1bb44aeb6b94aa5b16eb1f6377}{up}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00012\ \ \ \ \ \mbox{\hyperlink{struct_sprite}{Sprite}}*\ \mbox{\hyperlink{struct_enemy_a1ce565740fcd416899628f6c4ef07a1b}{down}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00013\ \ \ \ \ \mbox{\hyperlink{struct_sprite}{Sprite}}*\ \mbox{\hyperlink{struct_enemy_a3b3b3aa9d2c917c70114c49c100571a0}{left}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00014\ \ \ \ \ \mbox{\hyperlink{struct_sprite}{Sprite}}*\ \mbox{\hyperlink{struct_enemy_a0d97a9e08c04c2bfb7d8023fe3068b83}{right}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{struct_enemy_a9b45f57b3d7474400108f09587df67b0}{x}},\ \mbox{\hyperlink{struct_enemy_aa7d03269f81e619c117ce49f40f53eef}{y}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{struct_enemy_ad2541b5819c39a6734d27e7be7d42ee7}{speed}}[2];\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00017\ \ \ \ \ int16\_t\ \mbox{\hyperlink{struct_enemy_ace6766f8b7b7d13b78eca2050c350b3d}{origin\_offset\_x}};\ \ \ \ \ \ \ }
+\DoxyCodeLine{00018\ \ \ \ \ int16\_t\ \mbox{\hyperlink{struct_enemy_a344e9b1e8e2469a8172f7be382c3837e}{origin\_offset\_y}};\ \ \ \ \ \ \ }
+\DoxyCodeLine{00019\ \ \ \ \ int16\_t\ \mbox{\hyperlink{struct_enemy_a1abe292057034f02da4744a5a3e36311}{hit\_points}};\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00020\ \ \ \ \ int16\_t\ \mbox{\hyperlink{struct_enemy_a8ec276db2a2ca75293db86adc31fc2e3}{max\_hit\_points}};\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00021\ \ \ \ \ int16\_t*\ \mbox{\hyperlink{struct_enemy_a1b5e47c43cdb962e421536d6420bbe26}{targets}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00022\ \ \ \ \ int16\_t\ \mbox{\hyperlink{struct_enemy_a18a4274fcb1ebcfc59a72349fd2edf3a}{targets\_hit}};\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00023\ \ \ \ \ int16\_t\ \mbox{\hyperlink{struct_enemy_af91ee364d18b7a9302b55f62772b72f4}{last\_target}};\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{struct_enemy_a48a5b69546e3350c86cf8ec5c1a232c5}{reached\_target}};\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00025\ \}\ \mbox{\hyperlink{enemy_8h_af975ad1eb2a131dcfa7620809ae9bf92}{Enemy}};}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_enemy_array}{EnemyArray}}\ \{}
+\DoxyCodeLine{00028\ \ \ \ \ \mbox{\hyperlink{struct_enemy}{Enemy}}**\ \mbox{\hyperlink{struct_enemy_array_a361286bd05f341e01f4726b2ecc6658b}{enemies}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00029\ \ \ \ \ uint32\_t\ \mbox{\hyperlink{struct_enemy_array_a99e37119a70d6d17193c8201ed77be75}{capacity}};\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00030\ \ \ \ \ uint32\_t\ \mbox{\hyperlink{struct_enemy_array_ace870f322ec15d214d940b765077b3fd}{length}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00031\ \}\ \mbox{\hyperlink{enemy_8h_a01d0308871245e957da5e05f6662e336}{EnemyArray}};}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00045\ \mbox{\hyperlink{struct_enemy}{Enemy}}*\ \mbox{\hyperlink{enemy_8h_a0a2032931d6f885c4803495958b92752}{initializeEnemy}}(\textcolor{keywordtype}{float}\ x,\ \textcolor{keywordtype}{float}\ y,\ int16\_t\ ox,\ int16\_t\ oy,\ int16\_t\ hp,\ int16\_t*\ targets,\ int16\_t\ last\_target);}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00052\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{enemy_8h_ade21f14f9d1e80dd3e6c893fb9fc61b2}{destroyEnemy}}(\mbox{\hyperlink{struct_enemy}{Enemy}}*\ enemy);}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00059\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{enemy_8h_a3629b4aff742f5680afb68b73733bb23}{updateEnemyPosition}}(\mbox{\hyperlink{struct_enemy}{Enemy}}*\ enemy);}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00066\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{enemy_8h_a994683c5a71c02885fd19ed4ebf1987b}{updateEnemySpriteBasedOnPosition}}(\mbox{\hyperlink{struct_enemy}{Enemy}}*\ enemy);}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00074\ \mbox{\hyperlink{struct_enemy_array}{EnemyArray}}\ \mbox{\hyperlink{enemy_8h_a5137200416d71c41e422811f23120743}{newEnemyArray}}(uint32\_t\ capacity);}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00082\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{enemy_8h_a5d14b5b6b2d08c86368e738ffcae504a}{pushEnemyArray}}(\mbox{\hyperlink{struct_enemy_array}{EnemyArray}}*\ array,\ \mbox{\hyperlink{struct_enemy}{Enemy}}*\ enemy);}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00091\ \mbox{\hyperlink{struct_enemy}{Enemy}}*\ \mbox{\hyperlink{enemy_8h_af7c331e4cc55f8daeb2a6027fff5c0c9}{getEnemyArray}}(\mbox{\hyperlink{struct_enemy_array}{EnemyArray}}*\ array,\ uint32\_t\ index);}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00099\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{enemy_8h_a22c30bd02e9fbe4aa5939af2db9a9474}{removeEnemyArray}}(\mbox{\hyperlink{struct_enemy_array}{EnemyArray}}*\ array,\ uint32\_t\ index);}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00106\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{enemy_8h_ab25f3d1f4b2e71a0e588f4e44cd96fe8}{destroyEnemyArray}}(\mbox{\hyperlink{struct_enemy_array}{EnemyArray}}*\ array);}
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00108\ uint32\_t\ \mbox{\hyperlink{enemy_8h_afdd983e5750453c75934d601bb3f0cf8}{updateAllEnemyPositions}}(\mbox{\hyperlink{struct_enemy_array}{EnemyArray}}*\ array);}
+
+\end{DoxyCode}

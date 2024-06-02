@@ -1,0 +1,18 @@
+<map id="create_animated_sprite" name="create_animated_sprite">
+<area shape="rect" id="Node000001" title="Initializes a new animated sprite." alt="" coords="5,80,162,106"/>
+<area shape="rect" id="Node000002" href="$sprite_8c.html#a06170cd082bf54a5bbb4fda040c83a0a" title="Initializes a new sprite." alt="" coords="243,5,340,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="114,77,209,40,227,33,229,39,211,45,116,82"/>
+<area shape="rect" id="Node000003" href="$sprite_8c.html#a6c750482d331a7ed8df472082e4d8cea" title="Destroys a animated sprite and frees associated memory." alt="" coords="210,55,373,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="161,81,194,77,194,82,162,86"/>
+<area shape="rect" id="Node000007" href="$sprite_8c.html#a2750de6808d67159c97628cb24c2b183" title="Initializes a new array of sprites." alt="" coords="236,104,347,130"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="162,99,221,106,221,111,162,104"/>
+<area shape="rect" id="Node000008" href="$sprite_8c.html#a3397d0a7355254facaec13fcf99efe53" title="Pushes a sprite to a given sprite array." alt="" coords="234,153,349,179"/>
+<area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="117,104,211,140,229,146,227,151,209,145,115,109"/>
+<area shape="rect" id="Node000004" href="$sprite_8c.html#af16c6befaac9ffb673b9e3c798d542ed" title="Destroys a sprite and frees associated memory." alt="" coords="598,29,702,55"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="348,51,421,40,505,35,583,36,583,41,505,41,421,45,349,57"/>
+<area shape="rect" id="Node000005" href="$sprite_8c.html#a2e02ad1a9c90d6c39dccb793df2299ec" title="Destroys a sprite array and frees associated memory." alt="" coords="421,55,550,80"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="373,65,405,65,405,70,373,70"/>
+<area shape="rect" id="Node000006" href="$sprite_8c.html#a4ed5b9becd1df00c68f6348b54b01191" title="Gets a sprite from a given sprite array." alt="" coords="434,104,538,130"/>
+<area shape="poly" id="edge6_Node000003_Node000006" title=" " alt="" coords="346,78,419,97,418,103,344,84"/>
+<area shape="poly" id="edge5_Node000005_Node000004" title=" " alt="" coords="550,55,582,50,583,55,551,60"/>
+</map>

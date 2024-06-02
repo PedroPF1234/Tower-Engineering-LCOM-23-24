@@ -1,0 +1,9 @@
+<map id="mountTurret" name="mountTurret">
+<area shape="rect" id="Node000001" title="Mounts a turret on a tower." alt="" coords="5,46,97,72"/>
+<area shape="rect" id="Node000002" href="$gameobject_8c.html#ab0bb9964dbe83fac1b9a0e456721caef" title="Adds a sprite to a spriteless game object." alt="" coords="145,5,307,46"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="97,48,129,41,130,47,98,53"/>
+<area shape="rect" id="Node000004" href="$sprite_8c.html#a86dac8b19d8c34c469b2df0e0e29489e" title="Initializes a new rotated sprite from a given sprite." alt="" coords="161,71,291,111"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="98,65,147,74,146,79,97,70"/>
+<area shape="rect" id="Node000003" href="$gameobject_8c.html#a6a1ebecd29c69ded46970bd41c3097f0" title=" " alt="" coords="355,13,496,39"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="307,23,339,23,339,28,307,28"/>
+</map>

@@ -1,0 +1,11 @@
+<map id="updatePause" name="updatePause">
+<area shape="rect" id="Node000001" title=" " alt="" coords="638,5,735,31"/>
+<area shape="rect" id="Node000002" href="$gameplay_8c.html#a97feb8702b4bc47a3dee7bf3b220da2b" title="Updates all the game objects and buttons.. etc in the game." alt="" coords="494,5,590,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="622,21,590,21,590,16,622,16"/>
+<area shape="rect" id="Node000003" href="$game_8c.html#a315e950a7e6bb500fe11c37ee1122577" title="Encapsulates the whole game logic." alt="" coords="327,5,446,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="479,21,447,21,447,16,479,16"/>
+<area shape="rect" id="Node000004" href="$device__controller_8c.html#a4d10f01a84e9e24f18682c0bca48dca6" title="Calls all device&#39;s interrupt handlers." alt="" coords="162,5,279,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="312,21,279,21,279,16,312,16"/>
+<area shape="rect" id="Node000005" href="$proj_8c.html#af244d65e69677cf312af1950452ec256" title=" " alt="" coords="5,5,114,31"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="146,21,114,21,114,16,146,16"/>
+</map>

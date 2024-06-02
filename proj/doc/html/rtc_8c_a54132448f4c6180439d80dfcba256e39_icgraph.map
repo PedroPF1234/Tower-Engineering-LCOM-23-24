@@ -1,0 +1,28 @@
+<map id="bcd_to_binary" name="bcd_to_binary">
+<area shape="rect" id="Node000001" title=" " alt="" coords="782,129,884,155"/>
+<area shape="rect" id="Node000002" href="$rtc_8c.html#ac90c5c86ddb921afe41656dfe342b439" title=" " alt="" coords="631,5,720,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="810,119,776,81,732,44,714,34,716,29,736,40,780,77,814,115"/>
+<area shape="rect" id="Node000007" href="$rtc_8c.html#a2234482295bce9f2db6991decd3f54d4" title=" " alt="" coords="629,55,722,80"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="793,124,733,94,709,83,711,78,735,89,795,119"/>
+<area shape="rect" id="Node000008" href="$rtc_8c.html#aef1214ca4144380fb1f9cf3039e6927d" title=" " alt="" coords="618,104,733,130"/>
+<area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="766,134,732,129,733,123,767,129"/>
+<area shape="rect" id="Node000009" href="$rtc_8c.html#a864a96d3106cfb03f9fad91cfd294e3f" title=" " alt="" coords="623,153,728,179"/>
+<area shape="poly" id="edge10_Node000001_Node000009" title=" " alt="" coords="767,155,728,161,727,156,766,150"/>
+<area shape="rect" id="Node000010" href="$rtc_8c.html#ab629781c4168a835c2ab2548e2711ae7" title=" " alt="" coords="617,203,734,228"/>
+<area shape="poly" id="edge12_Node000001_Node000010" title=" " alt="" coords="794,165,735,194,711,205,709,200,733,189,792,160"/>
+<area shape="rect" id="Node000011" href="$rtc_8c.html#ac0854496e8e86ee49e049a58cc9eff5d" title=" " alt="" coords="629,252,722,278"/>
+<area shape="poly" id="edge14_Node000001_Node000011" title=" " alt="" coords="814,169,779,206,736,243,716,254,713,249,732,239,776,203,810,165"/>
+<area shape="rect" id="Node000003" href="$rtc_8c.html#acb430fd58d2e4da3a685d42cf2f3594a" title=" " alt="" coords="428,129,569,155"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="626,40,618,44,558,90,514,131,511,127,555,85,615,40,623,36"/>
+<area shape="rect" id="Node000004" href="$rtc_8c.html#a75dad42881d64cf07cf1bdc2979a7056" title="RTC Interrupt Handler." alt="" coords="327,129,380,155"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="412,145,381,145,381,140,412,140"/>
+<area shape="rect" id="Node000005" href="$device__controller_8c.html#a4d10f01a84e9e24f18682c0bca48dca6" title="Calls all device&#39;s interrupt handlers." alt="" coords="162,129,279,155"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="311,145,279,145,279,140,311,140"/>
+<area shape="rect" id="Node000006" href="$proj_8c.html#af244d65e69677cf312af1950452ec256" title=" " alt="" coords="5,129,114,155"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="146,145,114,145,114,140,146,140"/>
+<area shape="poly" id="edge7_Node000007_Node000003" title=" " alt="" coords="629,89,618,94,532,131,529,126,616,89,627,84"/>
+<area shape="poly" id="edge9_Node000008_Node000003" title=" " alt="" coords="603,130,570,135,569,129,603,125"/>
+<area shape="poly" id="edge11_Node000009_Node000003" title=" " alt="" coords="607,160,568,154,569,149,608,154"/>
+<area shape="poly" id="edge13_Node000010_Node000003" title=" " alt="" coords="627,199,616,194,531,158,533,153,618,189,629,194"/>
+<area shape="poly" id="edge15_Node000011_Node000003" title=" " alt="" coords="623,247,615,243,555,198,511,157,515,154,559,194,618,239,626,243"/>
+</map>

@@ -1,0 +1,9 @@
+<map id="initializeButton" name="initializeButton">
+<area shape="rect" id="Node000001" title="Initializes a new Button." alt="" coords="5,42,112,68"/>
+<area shape="rect" id="Node000002" href="$gameobject_8c.html#a3e3995c85445e5e632c02ce335f6d43a" title="Creates a game object from a sprite." alt="" coords="160,5,324,46"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="112,44,144,39,145,44,113,49"/>
+<area shape="rect" id="Node000004" href="$sprite_8c.html#a06170cd082bf54a5bbb4fda040c83a0a" title="Initializes a new sprite." alt="" coords="194,70,290,96"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="112,60,179,71,178,76,112,66"/>
+<area shape="rect" id="Node000003" href="$gameobject_8c.html#a6a1ebecd29c69ded46970bd41c3097f0" title=" " alt="" coords="372,13,513,39"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="324,23,356,23,356,28,324,28"/>
+</map>

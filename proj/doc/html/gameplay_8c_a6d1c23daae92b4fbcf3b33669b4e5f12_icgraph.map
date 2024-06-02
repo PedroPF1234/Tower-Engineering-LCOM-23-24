@@ -1,0 +1,25 @@
+<map id="swapMouseSprites" name="swapMouseSprites">
+<area shape="rect" id="Node000001" title=" " alt="" coords="813,104,945,130"/>
+<area shape="rect" id="Node000002" href="$gameplay_8c.html#a83b88ae83a8793289aaa3cb1cb56ed56" title=" " alt="" coords="656,5,747,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="847,97,808,70,764,45,740,34,743,29,766,40,811,66,850,93"/>
+<area shape="rect" id="Node000007" href="$gameplay_8c.html#a51e8e30605fea6f79a919eb15c2ce885" title=" " alt="" coords="641,55,762,80"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="815,102,750,84,751,78,816,97"/>
+<area shape="rect" id="Node000008" href="$gameplay_8c.html#a249981b88f5eb32eafdcc1b234ed4b77" title=" " alt="" coords="653,104,750,130"/>
+<area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="797,120,750,120,750,114,797,114"/>
+<area shape="rect" id="Node000009" href="$gameplay_8c.html#a91ca61d0488b8f57a54edbbdf2107def" title=" " alt="" coords="656,153,747,179"/>
+<area shape="poly" id="edge10_Node000001_Node000009" title=" " alt="" coords="816,137,748,156,746,151,815,132"/>
+<area shape="rect" id="Node000010" href="$gameplay_8c.html#aaa428c7375da850b3a825dbd8b95d1d5" title=" " alt="" coords="638,203,765,228"/>
+<area shape="poly" id="edge12_Node000001_Node000010" title=" " alt="" coords="850,141,811,168,766,194,743,204,740,200,764,189,808,163,847,137"/>
+<area shape="rect" id="Node000003" href="$gameplay_8c.html#a97feb8702b4bc47a3dee7bf3b220da2b" title="Updates all the game objects and buttons.. etc in the game." alt="" coords="494,104,590,130"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="647,40,639,44,594,76,559,106,555,102,591,71,636,40,644,36"/>
+<area shape="rect" id="Node000004" href="$game_8c.html#a315e950a7e6bb500fe11c37ee1122577" title="Encapsulates the whole game logic." alt="" coords="327,104,446,130"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="479,120,447,120,447,114,479,114"/>
+<area shape="rect" id="Node000005" href="$device__controller_8c.html#a4d10f01a84e9e24f18682c0bca48dca6" title="Calls all device&#39;s interrupt handlers." alt="" coords="162,104,279,130"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="312,120,279,120,279,114,312,114"/>
+<area shape="rect" id="Node000006" href="$proj_8c.html#af244d65e69677cf312af1950452ec256" title=" " alt="" coords="5,104,114,130"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="146,120,114,120,114,114,146,114"/>
+<area shape="poly" id="edge7_Node000007_Node000003" title=" " alt="" coords="643,88,587,106,585,101,642,83"/>
+<area shape="poly" id="edge9_Node000008_Node000003" title=" " alt="" coords="637,120,590,120,590,114,637,114"/>
+<area shape="poly" id="edge11_Node000009_Node000003" title=" " alt="" coords="642,151,585,133,587,128,643,146"/>
+<area shape="poly" id="edge13_Node000010_Node000003" title=" " alt="" coords="644,198,636,194,591,162,555,132,559,128,594,158,639,189,647,193"/>
+</map>

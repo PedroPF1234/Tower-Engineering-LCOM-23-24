@@ -1,0 +1,9 @@
+<map id="initializeEnemy" name="initializeEnemy">
+<area shape="rect" id="Node000001" title="Initializes a new enemy." alt="" coords="5,42,115,68"/>
+<area shape="rect" id="Node000002" href="$gameobject_8c.html#a3e3995c85445e5e632c02ce335f6d43a" title="Creates a game object from a sprite." alt="" coords="163,5,327,46"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="115,44,147,39,148,44,115,49"/>
+<area shape="rect" id="Node000004" href="$sprite_8c.html#a06170cd082bf54a5bbb4fda040c83a0a" title="Initializes a new sprite." alt="" coords="197,70,293,96"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="115,61,182,71,181,76,115,66"/>
+<area shape="rect" id="Node000003" href="$gameobject_8c.html#a6a1ebecd29c69ded46970bd41c3097f0" title=" " alt="" coords="375,13,516,39"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="327,23,359,23,359,28,327,28"/>
+</map>

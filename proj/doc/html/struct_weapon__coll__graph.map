@@ -1,0 +1,7 @@
+<map id="Weapon" name="Weapon">
+<area shape="rect" id="Node000001" title="Struct that represents a weapon." alt="" coords="18,198,87,223"/>
+<area shape="rect" id="Node000002" href="$struct_game_object.html" title="Represents a game object in the game." alt="" coords="5,94,100,120"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="55,135,55,197,50,197,50,135"/>
+<area shape="rect" id="Node000003" href="$struct_sprite.html" title="Struct that represents a sprite." alt="" coords="25,5,80,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="55,47,55,94,50,94,50,47"/>
+</map>

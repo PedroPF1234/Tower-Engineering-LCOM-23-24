@@ -1,0 +1,11 @@
+<map id="vg_draw_rectangle" name="vg_draw_rectangle">
+<area shape="rect" id="Node000001" title="Draws a rectangle." alt="" coords="5,31,136,56"/>
+<area shape="rect" id="Node000002" href="$graphics_8c.html#adb08b276272848bc7f3bccc0f5e770c8" title="Draws a line of pixels." alt="" coords="184,31,288,56"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="136,41,168,41,168,46,136,46"/>
+<area shape="rect" id="Node000003" href="$graphics_8c.html#a536ead18078d70ceba9fe0cf4e1221e4" title="Draws a pixel in the screen." alt="" coords="336,5,447,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="288,32,320,27,321,32,289,38"/>
+<area shape="rect" id="Node000004" href="$graphics_8c.html#a6f895de9725f9f231f9a7f74b6087f60" title=" " alt="" coords="340,55,444,80"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="289,49,325,55,324,60,288,54"/>
+<area shape="rect" id="Node000005" href="$graphics_8c.html#a1b8631c21f48520b6fcfddd8532fb2b1" title=" " alt="" coords="495,55,608,80"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="444,65,480,65,480,70,444,70"/>
+</map>

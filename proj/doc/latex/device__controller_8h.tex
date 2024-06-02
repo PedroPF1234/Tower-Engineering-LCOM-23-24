@@ -1,0 +1,267 @@
+\doxysection{src/\+Devices/device\+\_\+controller.h File Reference}
+\hypertarget{device__controller_8h}{}\label{device__controller_8h}\index{src/Devices/device\_controller.h@{src/Devices/device\_controller.h}}
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include "{}../\+Devices/\+Key\+Board/keyboardkeys.\+h"{}}\newline
+{\ttfamily \#include "{}../\+Devices/\+RTC/rtc\+\_\+time.\+h"{}}\newline
+{\ttfamily \#include "{}../\+Game\+Objects/gameobject.\+h"{}}\newline
+{\ttfamily \#include "{}../\+Image\+Assets/sprite.\+h"{}}\newline
+Include dependency graph for device\+\_\+controller.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{device__controller_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{device__controller_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_mouse_device}{Mouse\+Device}}
+\begin{DoxyCompactList}\small\item\em Struct that represents the mouse device. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_keyboard_device}{Keyboard\+Device}}
+\begin{DoxyCompactList}\small\item\em Struct that represents the Keyboard device. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_screen_info}{Screen\+Info}}
+\begin{DoxyCompactList}\small\item\em Struct that represents the Screen resolution. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct Mouse\+Device \mbox{\hyperlink{device__controller_8h_a40693e148535733bcd701447f7372562}{Mouse\+Device}}
+\begin{DoxyCompactList}\small\item\em Struct that represents the mouse device. \end{DoxyCompactList}\item 
+typedef struct Keyboard\+Device \mbox{\hyperlink{device__controller_8h_abcbabeb49cb78d922cad0fb3220c1ab0}{Keyboard\+Device}}
+\begin{DoxyCompactList}\small\item\em Struct that represents the Keyboard device. \end{DoxyCompactList}\item 
+typedef struct Screen\+Info \mbox{\hyperlink{device__controller_8h_aa74249c1117ca68c296d0a1d4ef54f38}{Screen\+Info}}
+\begin{DoxyCompactList}\small\item\em Struct that represents the Screen resolution. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{device__controller_8h_a47e74a2f7a5edae37287b8bcfbb30562}{boot\+\_\+devices}} (uint32\+\_\+t freq, uint16\+\_\+t framespersecond, uint16\+\_\+t mode)
+\begin{DoxyCompactList}\small\item\em Encapsulates the initialization of all the devices. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{device__controller_8h_ab1bc69df0c7a23951179c8258d9ac75c}{stop\+\_\+devices}} ()
+\begin{DoxyCompactList}\small\item\em Encapsulates the termination of all the devices. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{device__controller_8h_a4d10f01a84e9e24f18682c0bca48dca6}{interrupt\+\_\+handler}} (uint32\+\_\+t interrupt\+\_\+mask)
+\begin{DoxyCompactList}\small\item\em Calls all device\textquotesingle{}s interrupt handlers. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{device__controller_8h_a441744c4b348eb70ad06ef25cedbb7cc}{update\+\_\+timer\+\_\+freq}} (uint32\+\_\+t freq)
+\begin{DoxyCompactList}\small\item\em Updates the frequency of the timer. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_screen_info}{Screen\+Info}} \mbox{\hyperlink{device__controller_8h_a3735a9afedcfaf5472fa1c650e74d1dd}{get\+Screen\+Info}} ()
+\begin{DoxyCompactList}\small\item\em Fetches the screen resolution and stores that information in the \doxylink{struct_screen_info}{Screen\+Info} struct. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{device__controller_8h_aaf75393bbaa328c2011c3cd3bf57c1ab}{reset\+Devices\+Changing\+Screens}} ()
+\begin{DoxyCompactList}\small\item\em Resets the devices when changing screens. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Typedef Documentation}
+\Hypertarget{device__controller_8h_abcbabeb49cb78d922cad0fb3220c1ab0}\index{device\_controller.h@{device\_controller.h}!KeyboardDevice@{KeyboardDevice}}
+\index{KeyboardDevice@{KeyboardDevice}!device\_controller.h@{device\_controller.h}}
+\doxysubsubsection{\texorpdfstring{KeyboardDevice}{KeyboardDevice}}
+{\footnotesize\ttfamily \label{device__controller_8h_abcbabeb49cb78d922cad0fb3220c1ab0} 
+typedef struct Keyboard\+Device Keyboard\+Device}
+
+
+
+Struct that represents the Keyboard device. 
+
+\Hypertarget{device__controller_8h_a40693e148535733bcd701447f7372562}\index{device\_controller.h@{device\_controller.h}!MouseDevice@{MouseDevice}}
+\index{MouseDevice@{MouseDevice}!device\_controller.h@{device\_controller.h}}
+\doxysubsubsection{\texorpdfstring{MouseDevice}{MouseDevice}}
+{\footnotesize\ttfamily \label{device__controller_8h_a40693e148535733bcd701447f7372562} 
+typedef struct Mouse\+Device Mouse\+Device}
+
+
+
+Struct that represents the mouse device. 
+
+\Hypertarget{device__controller_8h_aa74249c1117ca68c296d0a1d4ef54f38}\index{device\_controller.h@{device\_controller.h}!ScreenInfo@{ScreenInfo}}
+\index{ScreenInfo@{ScreenInfo}!device\_controller.h@{device\_controller.h}}
+\doxysubsubsection{\texorpdfstring{ScreenInfo}{ScreenInfo}}
+{\footnotesize\ttfamily \label{device__controller_8h_aa74249c1117ca68c296d0a1d4ef54f38} 
+typedef struct Screen\+Info Screen\+Info}
+
+
+
+Struct that represents the Screen resolution. 
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{device__controller_8h_a47e74a2f7a5edae37287b8bcfbb30562}\index{device\_controller.h@{device\_controller.h}!boot\_devices@{boot\_devices}}
+\index{boot\_devices@{boot\_devices}!device\_controller.h@{device\_controller.h}}
+\doxysubsubsection{\texorpdfstring{boot\_devices()}{boot\_devices()}}
+{\footnotesize\ttfamily \label{device__controller_8h_a47e74a2f7a5edae37287b8bcfbb30562} 
+int boot\+\_\+devices (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{freq}{, }\item[{uint16\+\_\+t}]{framespersecond}{, }\item[{uint16\+\_\+t}]{mode}{}\end{DoxyParamCaption})}
+
+
+
+Encapsulates the initialization of all the devices. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em freq} & frequency of the timer \\
+\hline
+{\em framespersecond} & frames per second of the graphics \\
+\hline
+{\em mode} & mode to set the graphics to \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 if successful, 1 otherwise 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{device__controller_8h_a47e74a2f7a5edae37287b8bcfbb30562_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=271pt]{device__controller_8h_a47e74a2f7a5edae37287b8bcfbb30562_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{device__controller_8h_a3735a9afedcfaf5472fa1c650e74d1dd}\index{device\_controller.h@{device\_controller.h}!getScreenInfo@{getScreenInfo}}
+\index{getScreenInfo@{getScreenInfo}!device\_controller.h@{device\_controller.h}}
+\doxysubsubsection{\texorpdfstring{getScreenInfo()}{getScreenInfo()}}
+{\footnotesize\ttfamily \label{device__controller_8h_a3735a9afedcfaf5472fa1c650e74d1dd} 
+\mbox{\hyperlink{struct_screen_info}{Screen\+Info}} get\+Screen\+Info (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Fetches the screen resolution and stores that information in the \doxylink{struct_screen_info}{Screen\+Info} struct. 
+
+\begin{DoxyReturn}{Returns}
+\doxylink{struct_screen_info}{Screen\+Info} struct with the screen resolution 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=239pt]{device__controller_8h_a3735a9afedcfaf5472fa1c650e74d1dd_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{device__controller_8h_a3735a9afedcfaf5472fa1c650e74d1dd_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{device__controller_8h_a4d10f01a84e9e24f18682c0bca48dca6}\index{device\_controller.h@{device\_controller.h}!interrupt\_handler@{interrupt\_handler}}
+\index{interrupt\_handler@{interrupt\_handler}!device\_controller.h@{device\_controller.h}}
+\doxysubsubsection{\texorpdfstring{interrupt\_handler()}{interrupt\_handler()}}
+{\footnotesize\ttfamily \label{device__controller_8h_a4d10f01a84e9e24f18682c0bca48dca6} 
+int interrupt\+\_\+handler (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{interrupt\+\_\+mask}{}\end{DoxyParamCaption})}
+
+
+
+Calls all device\textquotesingle{}s interrupt handlers. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em interrupt\+\_\+mask} & mask of the interrupts \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 if successful, 1 otherwise 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{device__controller_8h_a4d10f01a84e9e24f18682c0bca48dca6_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=285pt]{device__controller_8h_a4d10f01a84e9e24f18682c0bca48dca6_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{device__controller_8h_aaf75393bbaa328c2011c3cd3bf57c1ab}\index{device\_controller.h@{device\_controller.h}!resetDevicesChangingScreens@{resetDevicesChangingScreens}}
+\index{resetDevicesChangingScreens@{resetDevicesChangingScreens}!device\_controller.h@{device\_controller.h}}
+\doxysubsubsection{\texorpdfstring{resetDevicesChangingScreens()}{resetDevicesChangingScreens()}}
+{\footnotesize\ttfamily \label{device__controller_8h_aaf75393bbaa328c2011c3cd3bf57c1ab} 
+void reset\+Devices\+Changing\+Screens (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Resets the devices when changing screens. 
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{device__controller_8h_aaf75393bbaa328c2011c3cd3bf57c1ab_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{device__controller_8h_ab1bc69df0c7a23951179c8258d9ac75c}\index{device\_controller.h@{device\_controller.h}!stop\_devices@{stop\_devices}}
+\index{stop\_devices@{stop\_devices}!device\_controller.h@{device\_controller.h}}
+\doxysubsubsection{\texorpdfstring{stop\_devices()}{stop\_devices()}}
+{\footnotesize\ttfamily \label{device__controller_8h_ab1bc69df0c7a23951179c8258d9ac75c} 
+int stop\+\_\+devices (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Encapsulates the termination of all the devices. 
+
+\begin{DoxyReturn}{Returns}
+0 if successful, 1 otherwise 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{device__controller_8h_ab1bc69df0c7a23951179c8258d9ac75c_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=271pt]{device__controller_8h_ab1bc69df0c7a23951179c8258d9ac75c_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{device__controller_8h_a441744c4b348eb70ad06ef25cedbb7cc}\index{device\_controller.h@{device\_controller.h}!update\_timer\_freq@{update\_timer\_freq}}
+\index{update\_timer\_freq@{update\_timer\_freq}!device\_controller.h@{device\_controller.h}}
+\doxysubsubsection{\texorpdfstring{update\_timer\_freq()}{update\_timer\_freq()}}
+{\footnotesize\ttfamily \label{device__controller_8h_a441744c4b348eb70ad06ef25cedbb7cc} 
+int update\+\_\+timer\+\_\+freq (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{freq}{}\end{DoxyParamCaption})}
+
+
+
+Updates the frequency of the timer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em freq} & frequency of the timer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 if successful, 1 otherwise 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{device__controller_8h_a441744c4b348eb70ad06ef25cedbb7cc_cgraph}
+\end{center}
+\end{figure}

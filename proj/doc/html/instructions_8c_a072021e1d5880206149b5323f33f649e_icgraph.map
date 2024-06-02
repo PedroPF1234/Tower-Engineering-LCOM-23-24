@@ -1,0 +1,11 @@
+<map id="checkInstructionsKeyboardInput" name="checkInstructionsKeyboardInput">
+<area shape="rect" id="Node000001" title=" " alt="" coords="671,5,850,46"/>
+<area shape="rect" id="Node000002" href="$instructions_8c.html#a5fd1505f1f7d8fbb4d0a447fb4ba4539" title="Updates the instructions screen." alt="" coords="494,13,623,39"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="655,28,623,28,623,23,655,23"/>
+<area shape="rect" id="Node000003" href="$game_8c.html#a315e950a7e6bb500fe11c37ee1122577" title="Encapsulates the whole game logic." alt="" coords="327,13,446,39"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="479,28,447,28,447,23,479,23"/>
+<area shape="rect" id="Node000004" href="$device__controller_8c.html#a4d10f01a84e9e24f18682c0bca48dca6" title="Calls all device&#39;s interrupt handlers." alt="" coords="162,13,279,39"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="312,28,279,28,279,23,312,23"/>
+<area shape="rect" id="Node000005" href="$proj_8c.html#af244d65e69677cf312af1950452ec256" title=" " alt="" coords="5,13,114,39"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="146,28,114,28,114,23,146,23"/>
+</map>

@@ -1,0 +1,16 @@
+<map id="pushAnimatedSpriteArray" name="pushAnimatedSpriteArray">
+<area shape="rect" id="Node000001" title="Pushes a animated sprite to a given animated sprite array." alt="" coords="1066,5,1236,31"/>
+<area shape="rect" id="Node000002" href="$player_8c.html#a1896161c4f39a705b5e60096e2e48994" title="Initializes a new player." alt="" coords="670,5,775,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1051,17,1018,17,823,17,775,18,775,13,823,12,1018,12,1051,12"/>
+<area shape="rect" id="Node000007" href="$sprite_8c.html#afc4dd6f8235181ecf069684ba7e0eada" title="Initializes a new array of animated sprites from a given array of animated sprites." alt="" coords="823,26,1018,67"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="1052,33,1019,37,1019,32,1051,28"/>
+<area shape="rect" id="Node000003" href="$gameplay_8c.html#a91bd3234380a02ca10ddc23b13cfc521" title="Includes all things related to the gameplay of the game." alt="" coords="494,5,622,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="654,21,622,21,622,16,654,16"/>
+<area shape="rect" id="Node000004" href="$game_8c.html#a315e950a7e6bb500fe11c37ee1122577" title="Encapsulates the whole game logic." alt="" coords="327,5,446,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="479,21,447,21,447,16,479,16"/>
+<area shape="rect" id="Node000005" href="$device__controller_8c.html#a4d10f01a84e9e24f18682c0bca48dca6" title="Calls all device&#39;s interrupt handlers." alt="" coords="162,5,279,31"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="312,21,279,21,279,16,312,16"/>
+<area shape="rect" id="Node000006" href="$proj_8c.html#af244d65e69677cf312af1950452ec256" title=" " alt="" coords="5,5,114,31"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="146,21,114,21,114,16,146,16"/>
+<area shape="poly" id="edge7_Node000007_Node000002" title=" " alt="" coords="807,33,775,28,776,23,808,28"/>
+</map>

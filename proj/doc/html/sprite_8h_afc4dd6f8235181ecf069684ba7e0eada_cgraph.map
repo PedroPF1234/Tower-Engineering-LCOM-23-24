@@ -1,0 +1,27 @@
+<map id="newAnimatedSpriteArrayFromSprites" name="newAnimatedSpriteArrayFromSprites">
+<area shape="rect" id="Node000001" title="Initializes a new array of animated sprites from a given array of animated sprites." alt="" coords="5,98,201,139"/>
+<area shape="rect" id="Node000002" href="$sprite_8c.html#af8032d5b2ba368d96330ca0781e6144b" title="Initializes a new animated sprite." alt="" coords="263,80,419,106"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="201,105,247,100,248,105,201,110"/>
+<area shape="rect" id="Node000010" href="$sprite_8c.html#ae80e973c2c8b646d514fe5c80573ab3e" title="Destroys a animated sprite array and frees associated memory." alt="" coords="249,31,433,56"/>
+<area shape="poly" id="edge10_Node000001_Node000010" title=" " alt="" coords="160,95,248,65,271,58,272,63,249,70,161,100"/>
+<area shape="rect" id="Node000011" href="$sprite_8c.html#a8178c2df422832dd1552ba70e8d4f52d" title="Initializes a new array of animated sprites." alt="" coords="258,129,424,155"/>
+<area shape="poly" id="edge12_Node000001_Node000011" title=" " alt="" coords="201,125,243,130,243,135,201,131"/>
+<area shape="rect" id="Node000012" href="$sprite_8c.html#acf87d2670fccbda1a6c1be73af22dfe3" title="Pushes a animated sprite to a given animated sprite array." alt="" coords="256,179,426,204"/>
+<area shape="poly" id="edge13_Node000001_Node000012" title=" " alt="" coords="164,137,249,165,272,171,271,177,248,170,162,142"/>
+<area shape="rect" id="Node000003" href="$sprite_8c.html#a06170cd082bf54a5bbb4fda040c83a0a" title="Initializes a new sprite." alt="" coords="515,80,611,106"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="419,90,499,90,499,96,419,96"/>
+<area shape="rect" id="Node000004" href="$sprite_8c.html#a6c750482d331a7ed8df472082e4d8cea" title="Destroys a animated sprite and frees associated memory." alt="" coords="481,31,644,56"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="401,77,486,58,487,63,403,82"/>
+<area shape="rect" id="Node000008" href="$sprite_8c.html#a2750de6808d67159c97628cb24c2b183" title="Initializes a new array of sprites." alt="" coords="508,129,618,155"/>
+<area shape="poly" id="edge8_Node000002_Node000008" title=" " alt="" coords="403,104,493,124,492,129,401,109"/>
+<area shape="rect" id="Node000009" href="$sprite_8c.html#a3397d0a7355254facaec13fcf99efe53" title="Pushes a sprite to a given sprite array." alt="" coords="506,179,620,204"/>
+<area shape="poly" id="edge9_Node000002_Node000009" title=" " alt="" coords="411,104,434,115,450,127,459,140,468,153,483,165,492,171,490,175,479,170,464,157,455,144,446,131,432,119,409,109"/>
+<area shape="rect" id="Node000005" href="$sprite_8c.html#af16c6befaac9ffb673b9e3c798d542ed" title="Destroys a sprite and frees associated memory." alt="" coords="870,5,973,31"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="619,27,692,16,777,11,854,12,854,17,777,17,693,21,620,33"/>
+<area shape="rect" id="Node000006" href="$sprite_8c.html#a2e02ad1a9c90d6c39dccb793df2299ec" title="Destroys a sprite array and frees associated memory." alt="" coords="692,31,822,56"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="645,41,677,41,677,46,645,46"/>
+<area shape="rect" id="Node000007" href="$sprite_8c.html#a4ed5b9becd1df00c68f6348b54b01191" title="Gets a sprite from a given sprite array." alt="" coords="705,80,809,106"/>
+<area shape="poly" id="edge7_Node000004_Node000007" title=" " alt="" coords="617,54,691,73,689,79,616,60"/>
+<area shape="poly" id="edge6_Node000006_Node000005" title=" " alt="" coords="822,31,854,26,854,31,823,36"/>
+<area shape="poly" id="edge11_Node000010_Node000004" title=" " alt="" coords="433,41,465,41,465,46,433,46"/>
+</map>

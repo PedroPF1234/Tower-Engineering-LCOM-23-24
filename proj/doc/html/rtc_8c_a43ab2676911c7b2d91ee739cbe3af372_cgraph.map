@@ -1,0 +1,9 @@
+<map id="rtc_toggle_update_int" name="rtc_toggle_update_int">
+<area shape="rect" id="Node000001" title="Enables or disables RTC update ended interrupts." alt="" coords="5,31,151,56"/>
+<area shape="rect" id="Node000002" href="$rtc_8c.html#ac8b0ed21f98fd3ada932e232c253b92b" title="Reads a byte from the RTC." alt="" coords="200,5,269,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="151,29,184,24,185,29,152,34"/>
+<area shape="rect" id="Node000004" href="$rtc_8c.html#a88bc7fc547c8c1296e2e42d246e5e23e" title="Writes a byte to the RTC." alt="" coords="199,55,270,80"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="152,52,184,57,183,62,151,57"/>
+<area shape="rect" id="Node000003" href="$utils_8c.html#a2b56f50ba159e9d5115ed1a75eff15d9" title=" " alt="" coords="318,5,408,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="269,16,303,16,303,21,269,21"/>
+</map>

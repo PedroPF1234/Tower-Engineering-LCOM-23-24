@@ -1,0 +1,23 @@
+<map id="initializeGameOver" name="initializeGameOver">
+<area shape="rect" id="Node000001" title="Represents the game over screen." alt="" coords="5,127,137,153"/>
+<area shape="rect" id="Node000002" href="$gameobject_8c.html#a9d06de2eac7bee1218b90ee9a232ae25" title="Creates a game object." alt="" coords="185,24,316,50"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="89,124,131,95,183,63,200,54,202,59,186,67,134,99,92,129"/>
+<area shape="rect" id="Node000005" href="$button_8c.html#a4d66a0f1c519e7e4ab43d96d3286db4f" title="Turns off the visibility of all the Button&#39;s Sprites in a ButtonArray." alt="" coords="205,127,296,153"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="137,137,190,137,190,142,137,142"/>
+<area shape="rect" id="Node000007" href="$button_8c.html#ae9f660094280602de4eff0e09533c1e5" title="Initializes a new Button." alt="" coords="197,78,304,103"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="120,124,186,105,187,111,121,129"/>
+<area shape="rect" id="Node000009" href="$button_8c.html#aa9d3bd32bea637ecfbcd15e758f4cbcf" title="Initializes a new ButtonArray." alt="" coords="193,176,308,202"/>
+<area shape="poly" id="edge10_Node000001_Node000009" title=" " alt="" coords="121,151,187,169,186,174,120,156"/>
+<area shape="rect" id="Node000010" href="$button_8c.html#a939c9626b7da1c6b49a760fe8df700c9" title="Adds a Button to a ButtonArray." alt="" coords="191,226,310,251"/>
+<area shape="poly" id="edge11_Node000001_Node000010" title=" " alt="" coords="91,151,133,181,186,212,196,217,193,222,183,217,131,185,88,155"/>
+<area shape="rect" id="Node000003" href="$sprite_8c.html#a06170cd082bf54a5bbb4fda040c83a0a" title="Initializes a new sprite." alt="" coords="398,24,494,50"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="317,34,383,34,383,40,317,40"/>
+<area shape="rect" id="Node000004" href="$gameobject_8c.html#a6a1ebecd29c69ded46970bd41c3097f0" title=" " alt="" coords="576,28,718,54"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="300,21,364,9,446,3,529,9,589,21,588,26,528,14,446,8,364,14,301,26"/>
+<area shape="rect" id="Node000006" href="$button_8c.html#ac3e1fa5a312e4690dd8b5d14db4bdd0f" title="Retrieves a Button from a ButtonArray." alt="" coords="392,139,500,165"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="296,140,376,145,376,150,296,145"/>
+<area shape="poly" id="edge9_Node000007_Node000003" title=" " alt="" coords="300,74,382,52,383,57,301,80"/>
+<area shape="rect" id="Node000008" href="$gameobject_8c.html#a3e3995c85445e5e632c02ce335f6d43a" title="Creates a game object from a sprite." alt="" coords="364,74,528,115"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="304,89,348,90,348,95,304,94"/>
+<area shape="poly" id="edge8_Node000008_Node000004" title=" " alt="" coords="525,71,580,56,582,61,526,76"/>
+</map>

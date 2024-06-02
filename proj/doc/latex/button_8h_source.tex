@@ -1,0 +1,41 @@
+\doxysection{button.\+h}
+\hypertarget{button_8h_source}{}\label{button_8h_source}\index{src/Game/DataStructure/button.h@{src/Game/DataStructure/button.h}}
+\mbox{\hyperlink{button_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{device__controller_8h}{../../Devices/device\_controller.h}}"{}}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00008\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_button}{Button}}\ \{}
+\DoxyCodeLine{00009\ \ \ \mbox{\hyperlink{struct_game_object}{GameObject}}*\ \mbox{\hyperlink{struct_button_a234b0e1c24a94c46eaab355d0ec8498a}{button}};\ \textcolor{comment}{/*The\ game\ object\ associated\ with\ the\ button*/}}
+\DoxyCodeLine{00010\ \ \ \mbox{\hyperlink{struct_sprite}{Sprite}}*\ \mbox{\hyperlink{struct_button_a2a0e56e54939e8a12a77e38fc5ade15d}{hovering}};\ \textcolor{comment}{/*The\ sprite\ for\ the\ button\ when\ the\ cursor\ is\ hovering\ over\ it*/}}
+\DoxyCodeLine{00011\ \ \ \mbox{\hyperlink{struct_sprite}{Sprite}}*\ \mbox{\hyperlink{struct_button_a5d3b84eeeb8f7a6cc8fabc73e1ae94d8}{no\_hovering}};\ \textcolor{comment}{/*The\ sprite\ for\ the\ button\ when\ the\ cursor\ is\ not\ hovering\ over\ it*/}}
+\DoxyCodeLine{00012\ \ \ int16\_t\ \mbox{\hyperlink{struct_button_a53868cf3808da4d106ca3fd0cfcc8ea8}{x}},\ \mbox{\hyperlink{struct_button_a65717b53718350271aa4ddb3ba0605f0}{y}};\ \textcolor{comment}{/*The\ x\ and\ y\ positions\ of\ the\ button*/}}
+\DoxyCodeLine{00013\ \ \ int16\_t\ \mbox{\hyperlink{struct_button_a83273ca8c8d8dfd22ef349eaa971eee8}{origin\_offset\_x}},\ \mbox{\hyperlink{struct_button_a4cb1a1d8d42c4ebafc7c35a147e94e2f}{origin\_offset\_y}};\ \textcolor{comment}{/*The\ x\ and\ y\ offsets\ of\ the\ button's\ origin*/}}
+\DoxyCodeLine{00014\ \}\ \mbox{\hyperlink{button_8h_aabbec029df4131b530b45fc227cfddcc}{Button}};}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_button_array}{ButtonArray}}\ \{}
+\DoxyCodeLine{00020\ \ \ \mbox{\hyperlink{struct_button}{Button}}**\ \mbox{\hyperlink{struct_button_array_a259c67552be2216eac0367de83c5099e}{buttons}};\ \textcolor{comment}{/*Pointer\ to\ an\ array\ of\ Button\ pointers*/}}
+\DoxyCodeLine{00021\ \ \ uint32\_t\ \mbox{\hyperlink{struct_button_array_ae7e2aed278361dc719954b06b59c0710}{capacity}};\ \textcolor{comment}{/*The\ total\ capacity\ of\ the\ array*/}}
+\DoxyCodeLine{00022\ \ \ uint32\_t\ \mbox{\hyperlink{struct_button_array_a2cc6963a1742ac14d39cf6867c71c9d7}{length}};\ \textcolor{comment}{/*The\ current\ number\ of\ Buttons\ in\ the\ array*/}}
+\DoxyCodeLine{00023\ \}\ \mbox{\hyperlink{button_8h_acae2360bea1fb75ace30cc73bda3c179}{ButtonArray}};}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00031\ \mbox{\hyperlink{struct_button_array}{ButtonArray}}\ \mbox{\hyperlink{button_8h_aa9d3bd32bea637ecfbcd15e758f4cbcf}{newButtonArray}}(uint32\_t\ capacity);}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00039\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{button_8h_a939c9626b7da1c6b49a760fe8df700c9}{pushButtonArray}}(\mbox{\hyperlink{struct_button_array}{ButtonArray}}*\ array,\ \mbox{\hyperlink{struct_button}{Button}}*\ button);}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00048\ \mbox{\hyperlink{struct_button}{Button}}*\ \mbox{\hyperlink{button_8h_ac3e1fa5a312e4690dd8b5d14db4bdd0f}{getButtonArray}}(\mbox{\hyperlink{struct_button_array}{ButtonArray}}*\ array,\ uint32\_t\ index);}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00056\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{button_8h_aacbbbe3d77b1d2d52abfeb7605420e1e}{removeButtonArray}}(\mbox{\hyperlink{struct_button_array}{ButtonArray}}*\ array,\ uint32\_t\ index);}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00063\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{button_8h_ae83833e8f93bcfa29c8c8370f101db0f}{destroyButtonArray}}(\mbox{\hyperlink{struct_button_array}{ButtonArray}}*\ array);}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00077\ \mbox{\hyperlink{struct_button}{Button}}*\ \mbox{\hyperlink{button_8h_ae9f660094280602de4eff0e09533c1e5}{initializeButton}}(xpm\_map\_t\ hovered,\ xpm\_map\_t\ no\_hovered,\ int16\_t\ x,\ int16\_t\ y,}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint16\_t\ z,\ \textcolor{keywordtype}{bool}\ square,\ \textcolor{keywordtype}{bool}\ visible);}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00086\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{button_8h_a4d66a0f1c519e7e4ab43d96d3286db4f}{hideButtons}}(\mbox{\hyperlink{struct_button_array}{ButtonArray}}*\ array);}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00093\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{button_8h_a847e1a5abfc2fe5a7f2e8fa3dc85675f}{showButtons}}(\mbox{\hyperlink{struct_button_array}{ButtonArray}}*\ array);}
+
+\end{DoxyCode}

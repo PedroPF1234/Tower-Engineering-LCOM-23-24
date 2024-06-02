@@ -1,0 +1,19 @@
+<map id="initializeWeapon" name="initializeWeapon">
+<area shape="rect" id="Node000001" title="Initializes a new weapon." alt="" coords="5,108,121,133"/>
+<area shape="rect" id="Node000002" href="$gameobject_8c.html#a3e3995c85445e5e632c02ce335f6d43a" title="Creates a game object from a sprite." alt="" coords="169,5,333,46"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="84,105,167,57,181,50,183,55,170,61,86,109"/>
+<area shape="rect" id="Node000004" href="$sprite_8c.html#a9c312f1843a2af5c03fafd92cda3d8a3" title="Initializes a new sprite with the ability to be rotated." alt="" coords="178,71,324,111"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="120,109,162,102,163,107,121,114"/>
+<area shape="rect" id="Node000006" href="$sprite_8c.html#a0c722ac2dbcd401373c21e8b33679945" title="Gets a sprite from a given sprite with the intended angle." alt="" coords="183,136,319,161"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="121,126,168,133,167,139,120,132"/>
+<area shape="rect" id="Node000007" href="$weapon_8c.html#ae5e46be3e9f65ef3450c21bb7a47e7a7" title="Hides the weapon by making the associated sprite invisible." alt="" coords="205,185,297,211"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="89,131,170,171,191,179,189,184,168,176,86,136"/>
+<area shape="rect" id="Node000003" href="$gameobject_8c.html#a6a1ebecd29c69ded46970bd41c3097f0" title=" " alt="" coords="381,13,522,39"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="333,23,365,23,365,28,333,28"/>
+<area shape="rect" id="Node000005" href="$sprite_8c.html#a6b627ebca9ac330b47c8645631e9e045" title=" " alt="" coords="404,78,500,104"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="324,88,388,88,388,94,324,94"/>
+<area shape="rect" id="Node000008" href="$gameobject_8c.html#aed2b525f6703cd35381c0cc9e7397a63" title="Hides a game object by removing it from the render pipeline." alt="" coords="393,185,511,211"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="298,195,377,195,377,200,298,200"/>
+<area shape="rect" id="Node000009" href="$gameobject_8c.html#a11caa0bf998b9de720cc858c6d02274b" title=" " alt="" coords="570,185,723,211"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="511,195,555,195,555,200,511,200"/>
+</map>
