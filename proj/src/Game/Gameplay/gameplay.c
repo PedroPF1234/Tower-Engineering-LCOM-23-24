@@ -1398,6 +1398,7 @@ void enterGame(bool multi, uint8_t arena) {
   hideSprites(&player2->player->animatedSprite->sprites);
   //
 
+  
   Button* tempButton1 = getButtonArray(&shop_buttons, 1);
   Button* tempButton2 = getButtonArray(&shop_buttons, 2);
 

@@ -22,7 +22,7 @@ void initializeDifferentTowerSprites() {
 TowerBase* initializeTower(int16_t x, int16_t y) {
   TowerBase* new_tower = (TowerBase*)malloc(sizeof(TowerBase));
 
-  uint16_t z_indexing = y * Z_INDEX_PER_LAYER + MEDIUM_PRIORITY_Z_INDEX;
+  uint16_t z_indexing = y * Z_INDEX_PER_LAYER + MAX_PRIORITY_Z_INDEX;
 
   Sprite* base = create_sprite((xpm_map_t)Base, x, y, false, false);
   Sprite* baseHovered = create_sprite((xpm_map_t)BaseHovered, x, y, false, true);
