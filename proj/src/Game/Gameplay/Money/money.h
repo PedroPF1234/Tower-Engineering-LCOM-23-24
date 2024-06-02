@@ -30,4 +30,8 @@ void insertMoneyArray(MoneyArray* moneyArray, Money* money);
 void removeMoneyArray(MoneyArray* moneyArray, Money* money);
 Money* getMoneyArray(MoneyArray *moneyArray, uint32_t index);
 void destroyMoneyArray(MoneyArray *moneyArray);
+void hideMoney(Money* money);
+void showMoney(Money* money);
+void hideMoneyArray(MoneyArray* moneyArray);
+void showMoneyArray(MoneyArray* moneyArray);
 

@@ -60,3 +60,5 @@ void removeGameObjectArray(GameObjectArray *array, GameObject *gameObject);
 void destroyGameObjectArray(GameObjectArray *array);
 void showGameObjects(GameObjectArray* gameObjects);
 void hideGameObjects(GameObjectArray* gameObjects);
+void hideGameObject(GameObject* gameObject);
+void showGameObject(GameObject* gameObject);
