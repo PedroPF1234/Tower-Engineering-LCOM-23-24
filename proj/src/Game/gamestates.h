@@ -1,5 +1,8 @@
 #pragma once
 
+/**
+ * @brief Represents the different states the game can be in.
+ */
 typedef enum GameState {
   MAIN_MENU,
   SELECT_GAME,
