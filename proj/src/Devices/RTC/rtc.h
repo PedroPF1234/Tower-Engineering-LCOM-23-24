@@ -66,17 +66,96 @@
 #define RTC_RATE_250MS (RTC_RS3 | RTC_RS2 | RTC_RS1)   // RTC Periodic Interrupt Rate 250ms
 #define RTC_RATE_500MS (RTC_RS3 | RTC_RS2 | RTC_RS1 | RTC_RS0) // RTC Periodic Interrupt Rate 500ms
 
+/**
+ * @brief Reads a byte from the RTC
+ * 
+ * @param reg RTC register to read from
+ * @param byte address of memory to be initialized with the byte read
+ * @return 0 if successful, 1 otherwise
+ */
 int (rtc_read)(uint8_t reg, uint8_t *byte);
+
+/**
+ * @brief Writes a byte to the RTC
+ * 
+ * @param reg RTC register to write to
+ * @param byte byte to write
+ * @return 0 if successful, 1 otherwise
+ */
 int (rtc_write)(uint8_t reg, uint8_t byte);
+
+/**
+ * @brief Subscribes and enables RTC interrupts
+ * 
+ * @param bit_no address of memory to be initialized with the bit number to be set in the mask returned upon an interrupt
+ * @return 0 if successful, 1 otherwise
+ */
 int (rtc_subscribe_int)(uint8_t *bit_no);
+
+/**
+ * @brief Unsubscribes RTC interrupts
+ * 
+ * @return 0 if successful, 1 otherwise
+ */
 int (rtc_unsubscribe_int)();
+
+/**
+ * @brief Enables or disables RTC periodic interrupts
+ * 
+ * @param enable if the periodic interrupts should be enabled
+ * @param rate rate of the periodic interrupts
+ * @return 0 if successful, 1 otherwise
+ */
 int (rtc_toggle_periodic_int)(bool enable, uint8_t rate);
+
+/**
+ * @brief Enables or disables RTC alarm interrupts
+ * 
+ * @param enable if the alarm interrupts should be enabled
+ * @return 0 if successful, 1 otherwise
+ */
 int (rtc_toggle_alarm_int)(bool enable);
+
+/**
+ * @brief Enables or disables RTC update ended interrupts
+ * 
+ * @param enable if the update ended interrupts should be enabled
+ * @return 0 if successful, 1 otherwise
+ */
 int (rtc_toggle_update_int)(bool enable);
+
+/**
+ * @brief Disables all RTC interrupts
+ * 
+ * @return 0 if successful, 1 otherwise
+ */
 int (rtc_disable_all_ints)();
 
+/**
+ * @brief Sets the RTC alarm every second
+ * 
+ * @param alarm_time time of the alarm
+ * @return 0 if successful, 1 otherwise
+ */
 void(rtc_set_alarm_every_second)();
 
+/**
+ * @brief Encapsulates the RTC initialization and subscription
+ * 
+ * @param bit_no address of memory to be initialized with the bit number to be set in the mask returned upon an interrupt
+ * @return 0 if successful, 1 otherwise
+ */
 int rtc_initialize_and_subscribe(uint8_t *bit_no);
+
+/**
+ * @brief Encapsulates the RTC disable and unsubscription
+ * 
+ * @return 0 if successful, 1 otherwise
+ */
 int rtc_disable_and_unsubscribe();
+
+/**
+ * @brief RTC Interrupt Handler
+ * 
+ */
 void rtc_ih();
