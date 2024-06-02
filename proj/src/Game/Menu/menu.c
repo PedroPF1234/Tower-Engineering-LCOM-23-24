@@ -53,9 +53,8 @@ static void checkSelectGameHovered(ButtonArray* array) {
       if (mouse_x > leftMostBound && mouse_x < rightMostBound &&
           mouse_y > upMostBound && mouse_y < downMostBound && last_pressed_was_mouse) {
 
-        if (mouse_device->left_button_is_pressed && mouse_device->mouse_just_updated) {
+        if (mouse_device->left_button_is_pressed) {
           pressed_menu_button = true;
-          mouse_device->mouse_just_updated = false;
         }
 
         updateGameObjectSprite(buttonObject, button->hovering);
@@ -226,9 +225,8 @@ static void checkMenuHovered(ButtonArray* array) {
       if (mouse_x > leftMostBound && mouse_x < rightMostBound &&
           mouse_y > upMostBound && mouse_y < downMostBound && last_pressed_was_mouse) {
 
-        if (mouse_device->left_button_is_pressed && mouse_device->mouse_just_updated) {
+        if (mouse_device->left_button_is_pressed) {
           pressed_menu_button = true;
-          mouse_device->mouse_just_updated = false;
         }
 
         updateGameObjectSprite(buttonObject, button->hovering);
@@ -374,11 +372,11 @@ void enterMenu() {
 
 void updateMenu() {
   if (state == MAIN_MENU) {
-    checkMenuKeyboardInput(&keyboard_device->keyPresses);
     checkMenuHovered(&menuButtons);
+    checkMenuKeyboardInput(&keyboard_device->keyPresses);
   } else if (state == SELECT_GAME) {
-    checkSelectGameKeyboardInput(&keyboard_device->keyPresses);
     checkSelectGameHovered(&selectGameArenaButtons);
+    checkSelectGameKeyboardInput(&keyboard_device->keyPresses);
   }
 }
 
@@ -403,6 +401,8 @@ void exitMenu() {
   menu_current_selection = -1;
   select_game_current_selection = -1;
   select_game_current_arena = -1;
+  hideButtons(&menuButtons);
+  hideButtons(&selectGameArenaButtons);
   background->sprite->is_visible = false;
   selectGameBackground->sprite->is_visible = false;
 }

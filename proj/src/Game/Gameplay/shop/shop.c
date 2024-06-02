@@ -26,8 +26,6 @@ Shop* initializeShop(int16_t x, int16_t y) {
     insertMoneyArray(&new_shop->prices, temp);
   }
 
-  printf(" --- initialize shop called ---\n");
-
   return new_shop;
 }
 

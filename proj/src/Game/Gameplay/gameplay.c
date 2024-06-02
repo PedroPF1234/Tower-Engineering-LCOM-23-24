@@ -43,6 +43,8 @@ extern bool can_base;
 
 extern int16_t tower_index;
 
+extern SpriteArray digits;
+
 TurretType current_turret = CROSSBOW;
 
 static bool pressed_game_button = false;
@@ -1360,6 +1362,8 @@ void initializeGameplay() {
 
 void enterGame(bool multi, uint8_t arena) {
 
+  showSprites(&digits);
+
   mouse_device->mouse->sprite = aim_mouse;
   mouse_device->mouse->origin_offset_x = -(aim_mouse->width/2-2);
   mouse_device->mouse->origin_offset_y = -(aim_mouse->height/2-2);
@@ -1380,6 +1384,21 @@ void enterGame(bool multi, uint8_t arena) {
   hideSprites(&player1->player->animatedSprite->sprites);
   hideSprites(&player2->player->animatedSprite->sprites);
   //
+
+  Button* tempButton1 = getButtonArray(&shop_buttons, 1);
+  Button* tempButton2 = getButtonArray(&shop_buttons, 2);
+
+  destroy_sprite(tempButton1->hovering);
+  destroy_sprite(tempButton1->no_hovering);
+  destroy_sprite(tempButton2->hovering);
+  destroy_sprite(tempButton2->no_hovering);
+
+  tempButton1->hovering = create_sprite((xpm_map_t)CannonButtonHovered, 0, 0, false, true);
+  tempButton1->no_hovering = create_sprite((xpm_map_t)CannonButton, 0, 0, false, true);
+  tempButton2->hovering = create_sprite((xpm_map_t)LaserButtonHovered, 0, 0, false, true);
+  tempButton2->no_hovering = create_sprite((xpm_map_t)LaserButton, 0, 0, false, true);
+
+  hideButtons(&shop_buttons);
 
   unlocked_weapon = false;
 
@@ -1436,6 +1455,8 @@ void updateGame() {
 }
 
 void exitGame() {
+
+  hideSprites(&digits);
 
   mouse_device->mouse->sprite = normal_mouse;
   mouse_device->mouse->origin_offset_x = 0;
