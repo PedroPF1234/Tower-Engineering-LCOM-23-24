@@ -57,7 +57,8 @@ void updateWeapon(Weapon* weapon, Player* player, int16_t mouse_x, int16_t mouse
   }
   
   //Calculate the angle between the player and the mouse
-  int angle = calculate_angle(player->x, player->y, mouse_x, mouse_y);
+  int angle = calculate_angle((float)player->player->gameObject->x, 
+  (float)player->player->gameObject->y + player->origin_offset_y, mouse_x, mouse_y);
   
   if (mouse_x > player->x) { //If the mouse is to the right of the player, show the right weapon sprite
     weapon->weaponL->sprite->is_visible = false;
