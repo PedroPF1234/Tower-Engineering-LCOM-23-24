@@ -218,10 +218,11 @@ static void destroyAnimatedGameObjectArray(AnimatedGameObjectArray *array) {
 }
 
 void destroyGameObjectArray(GameObjectArray *array) {
-  for (int32_t i = 0; i < (int32_t)array->length; i++) {
-    GameObject* gameObject = getGameObjectArray(array, i);
+  uint32_t length = array->length;
+  for (uint32_t i = 0; i < length; i++) {
+    GameObject* gameObject = getGameObjectArray(array, 0);
     removeGameObjectArray(array, gameObject);
-    free(gameObject);
+    destroy_gameobject_safe_sprite(gameObject);
   }
 }
 

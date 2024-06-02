@@ -43,8 +43,9 @@ static void checkGameOverHovered(ButtonArray* array) {
       if (mouse_x > leftMostBound && mouse_x < rightMostBound &&
           mouse_y > upMostBound && mouse_y < downMostBound && last_pressed_was_mouse) {
 
-        if (mouse_device->left_button_is_pressed) {
+        if (mouse_device->left_button_is_pressed && mouse_device->mouse_just_updated) {
           pressed_gameover_button = true;
+          mouse_device->mouse_just_updated = false;
         }
 
         updateGameObjectSprite(buttonObject, button->hovering);

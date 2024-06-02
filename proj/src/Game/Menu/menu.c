@@ -52,8 +52,9 @@ static void checkSelectGameHovered(ButtonArray* array) {
       if (mouse_x > leftMostBound && mouse_x < rightMostBound &&
           mouse_y > upMostBound && mouse_y < downMostBound && last_pressed_was_mouse) {
 
-        if (mouse_device->left_button_is_pressed) {
+        if (mouse_device->left_button_is_pressed && mouse_device->mouse_just_updated) {
           pressed_menu_button = true;
+          mouse_device->mouse_just_updated = false;
         }
 
         updateGameObjectSprite(buttonObject, button->hovering);
@@ -223,8 +224,9 @@ static void checkMenuHovered(ButtonArray* array) {
       if (mouse_x > leftMostBound && mouse_x < rightMostBound &&
           mouse_y > upMostBound && mouse_y < downMostBound && last_pressed_was_mouse) {
 
-        if (mouse_device->left_button_is_pressed) {
+        if (mouse_device->left_button_is_pressed && mouse_device->mouse_just_updated) {
           pressed_menu_button = true;
+          mouse_device->mouse_just_updated = false;
         }
 
         updateGameObjectSprite(buttonObject, button->hovering);
@@ -370,21 +372,34 @@ void enterMenu() {
 
 void updateMenu() {
   if (state == MAIN_MENU) {
-    checkMenuHovered(&menuButtons);
     checkMenuKeyboardInput(&keyboard_device->keyPresses);
+    checkMenuHovered(&menuButtons);
   } else if (state == SELECT_GAME) {
-    checkSelectGameHovered(&selectGameArenaButtons);
     checkSelectGameKeyboardInput(&keyboard_device->keyPresses);
+    checkSelectGameHovered(&selectGameArenaButtons);
   }
 }
 
 void exitMenu() {
   pressed_menu_button = false;
+  printf("Exiting Menu\n");
+  Button* temp = getButtonArray(&selectGameArenaButtons, 4);
+  destroy_sprite(temp->hovering);
+  destroy_sprite(temp->no_hovering);
+  temp->hovering = create_sprite((xpm_map_t)PlayButtonUnclickable, 0, 0, false, true);
+  temp->no_hovering = create_sprite((xpm_map_t)PlayButtonUnclickable, 0, 0, false, true);  
+  temp->button->sprite = temp->no_hovering;
+  temp = getButtonArray(&selectGameArenaButtons, select_game_current_arena);  
+  destroy_sprite(temp->hovering);
+  destroy_sprite(temp->no_hovering);
+  temp->hovering = create_sprite(select_game_current_arena == 0 ? (xpm_map_t)FirstMiniMapHovered : select_game_current_arena == 1 ? (xpm_map_t)SecondMiniMapHovered : (xpm_map_t)ThirdMiniMapHovered, 0, 0, false, true);
+  temp->no_hovering = create_sprite(select_game_current_arena == 0 ? (xpm_map_t)FirstMiniMap : select_game_current_arena == 1 ? (xpm_map_t)SecondMiniMap : (xpm_map_t)ThirdMiniMap, 0, 0, false, true);
+  temp->button->sprite = temp->no_hovering;
+  hideButtons(&menuButtons);
+  hideButtons(&selectGameArenaButtons);
   menu_current_selection = -1;
   select_game_current_selection = -1;
   select_game_current_arena = -1;
-  hideButtons(&menuButtons);
-  hideButtons(&selectGameArenaButtons);
   background->sprite->is_visible = false;
   selectGameBackground->sprite->is_visible = false;
 }

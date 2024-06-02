@@ -4,7 +4,7 @@
 #include "money.h"
 #include "../../../ImageAssets/Money.xpm"
 
-Money* initializeMoney(int32_t money_amount,int8_t type) {
+Money* initializeMoney(int32_t money_amount, int8_t type) {
   Money* new_money = (Money*)malloc(sizeof(Money));
 
   Sprite* coin = create_sprite((xpm_map_t)Coin, 0, 0, false, false);
@@ -18,15 +18,11 @@ Money* initializeMoney(int32_t money_amount,int8_t type) {
 
   digits = newApriteFromCharArray(digitsXPM, 30);
 
-  //type is 0 for now, introduce type changing logic
   int size = 0;
   associateSprites(new_money, new_money->money_amount, size, type);
   createMoneyDigitsGameObjects(new_money);
 
   hideGameObjects(&new_money->moneyDigitsGameObjects);
-
-  printf("pointer money: %p ,", new_money);
-  printf("money amount: %d\n", new_money->money_amount);
 
   return new_money;
 }
@@ -48,7 +44,6 @@ int* getDigits(int num, int* size) {
     
     int* digits = (int*)malloc(*size * sizeof(int));
     if (digits == NULL) {
-        printf("Memory allocation failed\n");
         exit(1);
     }
 
@@ -85,9 +80,6 @@ void createMoneyDigitsGameObjects(Money* money) {
 
 
 void updateGameObjectSprites(Money* money, uint8_t type, int16_t x, int16_t y) {
-
-  printf("pointer money: %p, ", money);
-  printf("money amount: %d\n", money->money_amount);
   if (!(x == 0 && y == 0)) {
 
     money->coin->x = x;
@@ -102,8 +94,6 @@ void updateGameObjectSprites(Money* money, uint8_t type, int16_t x, int16_t y) {
       gameObject->y = new_y;
     }
   }
-
-  printf("coin x: %d; coin y: %d\n", money->coin->x, money->coin->y);
 
   if(money->money_amount <= 0) money->money_amount = 0;
 
@@ -141,8 +131,7 @@ void updateGameObjectSprites(Money* money, uint8_t type, int16_t x, int16_t y) {
 
 void destroyMoney(Money* money) {
   destroy_gameobject(money->coin);
-  destroySpriteArray(&money->moneyDigits);
-  destroySpriteArray(&digits);
+  destroyGameObjectArray(&money->moneyDigitsGameObjects);
   free(money);
 }
 
@@ -184,7 +173,6 @@ void insertMoneyArray(MoneyArray* moneyArray, Money* newMoney) {
 
 void removeMoneyArray(MoneyArray* moneyArray, Money* money) {
   if (moneyArray->length == 0) {
-    printf("Array is already empty!\n");
     return;
   }
 
@@ -239,10 +227,16 @@ Money* getMoneyArray(MoneyArray *moneyArray, uint32_t index) {
 }
 
 void destroyMoneyArray(MoneyArray *moneyArray) {
-  for (int32_t i = 0; i < (int32_t)moneyArray->length; i++) {
-    Money* money = getMoneyArray(moneyArray, i);
+  printf("Destrying Money Array\n");
+  uint32_t length = moneyArray->length;
+  for (uint32_t i = 0; i < length; i++) {
+    printf("Before destroying %d member\n", i);
+    Money* money = getMoneyArray(moneyArray, 0);
+    printf("Ammount saved in this member: %d\n", money->money_amount);
     removeMoneyArray(moneyArray, money);
-    free(money);
+    printf("Removed member %d from array.\n", i);
+    destroyMoney(money);
+    printf("Destroyed member %d from array.\n", i);
   }
 }
 
