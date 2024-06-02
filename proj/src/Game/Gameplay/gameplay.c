@@ -39,6 +39,7 @@ extern bool playing;
 
 extern bool can_shop;
 extern bool can_tower;
+extern bool can_base;
 
 extern int16_t tower_index;
 
@@ -49,6 +50,9 @@ static bool to_spawn_enemy = false;
 
 static bool first_time_paused = true;
 static bool pressed_pause_button = false;
+
+static bool first_time_base = true;
+static bool pressed_base_button = false;
 
 static bool first_time_shop = true;
 static bool pressed_shop_button = false;
@@ -61,6 +65,7 @@ int8_t selected_tower_index = -1;
 
 static int8_t game_current_selection = -1;
 static int8_t pause_current_selection = -1;
+static int8_t base_current_selection = -1;
 static int8_t shop_current_selection = -1;
 static int8_t tower_current_selection = -1;
 static int8_t select_game_current_arena = -1;
@@ -69,6 +74,7 @@ static bool just_changed_selection = false;
 bool multiplayer = false;
 
 static int8_t unlocked_turrets[] = {1, 0, 0};
+static bool unlocked_weapon = false;
 
 Economy* economy;
 
@@ -81,6 +87,7 @@ Arena* current_arena;
 GameObject* game_background;
 GameObject* pause_background;
 GameObject* shop_background;
+GameObject* base_background;
 GameObject* tower_background;
 
 // Players
@@ -104,6 +111,7 @@ Shop shop;
 ButtonArray pause_buttons;
 ButtonArray shop_buttons;
 ButtonArray tower_buttons;
+ButtonArray base_buttons;
 
 // Money
 Money* money;
@@ -159,6 +167,9 @@ static void checkGameKeyboardInput(KeyPresses** head) {
         } else if (state == GAME && can_tower) {
           state = TOWER_MENU;
           tower_background->sprite->is_visible = true;
+        } else if (state == GAME && can_base) {
+          state = BASE_MENU;
+          base_background->sprite->is_visible = true;
         }
         break;
 
@@ -517,6 +528,10 @@ static void checkShopHovered(ButtonArray* array) {
     case 0:
       state = GAME;
       shop_background->sprite->is_visible = false;
+      //for (uint32_t i = 0; i < shop.prices.length; i++) {
+      //  Money* temp = getMoneyArray(&shop.prices, i);
+      //  hideGameObjects(&temp->moneyDigitsGameObjects);
+      //}
       break;
 
     case 1:
@@ -552,6 +567,75 @@ static void checkShopHovered(ButtonArray* array) {
     }
 
     shop_current_selection = -1;
+  }
+}
+
+//static void checkBaseKeyboardInput(KeyPresses** head){}
+
+static void checkBaseHovered(ButtonArray* array) {
+  for (int32_t i = 0; i < (int32_t)array->length; i++) {
+    Button* button = getButtonArray(array, i);
+    GameObject* buttonObject = button->button;
+
+    int16_t mouse_x = mouse_device->mouse->x;
+    int16_t mouse_y = mouse_device->mouse->y;
+    int16_t leftMostBound = button->x + button->origin_offset_x;
+    int16_t rightMostBound = button->x + button->origin_offset_x + button->button->sprite->width;
+    int16_t upMostBound = button->y + button->origin_offset_y;
+    int16_t downMostBound = button->y + button->origin_offset_y + button->button->sprite->height;
+
+    if (!pressed_base_button) {
+      if (mouse_x > leftMostBound && mouse_x < rightMostBound &&
+          mouse_y > upMostBound && mouse_y < downMostBound && last_pressed_was_mouse) {
+
+        updateGameObjectSprite(buttonObject, button->hovering);
+        base_current_selection = i;
+
+        if (mouse_device->left_button_is_pressed) {
+          pressed_base_button = true;
+          break;
+        }
+
+      } else if (!last_pressed_was_mouse && base_current_selection == i) {
+        updateGameObjectSprite(buttonObject, button->hovering);
+      } else {
+        updateGameObjectSprite(buttonObject, button->no_hovering);
+      }
+    }
+  }
+
+  if (pressed_base_button) {
+    pressed_base_button = false;
+    switch (base_current_selection)
+    {
+    case -1:
+      break;
+    
+    case 0:
+      state = GAME;
+      base_background->sprite->is_visible = false;
+      //hideGameObjects(&player_base.price->moneyDigitsGameObjects);
+      break;
+
+    case 1:
+      if (money->money_amount >= 600 && !unlocked_weapon) {
+        unlocked_weapon = true;
+        player1->hasWeapon = true;
+        showWeapon(player_weapon);
+        money->money_amount -= 600;
+        updateGameObjectSprites(money, 0,0,0);
+        destroy_sprite(getButtonArray(&base_buttons, 1)->hovering);
+        destroy_sprite(getButtonArray(&base_buttons, 1)->no_hovering);
+        Sprite* new_weaponButton = create_sprite((xpm_map_t)WeaponButtonUnclickable, screen.xres/2 -150, screen.yres/2 -150, false, true);
+        getButtonArray(&base_buttons, 1)->hovering = new_weaponButton;
+        getButtonArray(&base_buttons, 1)->no_hovering = new_weaponButton;
+      }
+      break;
+    default:
+      break;
+    }
+
+    base_current_selection = -1;
   }
 }
 
@@ -847,12 +931,24 @@ static void updateGamePlay() {
     swapMouseSprites();
   }
 
+  if (!first_time_base) {
+    hideMoney(player_base.price);
+    player_base.price->coin->sprite->is_visible = false;
+    //hideGameObject(player_base.price->coin);
+    hideButtons(&base_buttons);
+    hideGameObjects(&player_base.price->moneyDigitsGameObjects);
+    first_time_base = !first_time_base;
+    swapMouseSprites();
+  }
+
   if(!first_time_shop) {
-    for (uint32_t i = 0; i < shop.prices.length; i++) {
-      hideGameObjects(&getMoneyArray(&shop.prices, i)->moneyDigitsGameObjects);
-      getMoneyArray(&shop.prices, i)->coin->sprite->is_visible = false;
-    }
+    hideMoneyArray(&shop.prices);
     hideButtons(&shop_buttons);
+    for (uint32_t i = 0; i < shop.prices.length; i++) {
+      Money* temp = getMoneyArray(&shop.prices, i);
+      temp->coin->sprite->is_visible = false;
+      hideGameObjects(&temp->moneyDigitsGameObjects);
+    }
     first_time_shop = !first_time_shop;
     swapMouseSprites();
   }
@@ -869,6 +965,12 @@ static void updateGamePlay() {
     current_arena->shop.shopButton->sprite->is_visible = true;
   } else {
     current_arena->shop.shopButton->sprite->is_visible = false;
+  }
+
+  if (can_base) {
+    current_arena->base.baseButton->sprite->is_visible = true;
+  } else {
+    current_arena->base.baseButton->sprite->is_visible = false;
   }
 
   checkGameKeyboardInput(&keyboard_device->keyPresses);
@@ -926,7 +1028,7 @@ static void updateGamePlay() {
       //death of enemy
       if(enemy->hit_points <= 0){
         removeEnemyArray(&enemies, j);
-        money->money_amount += 10;
+        money->money_amount -= 10;
         updateGameObjectSprites(money, 0,0,0);
         j--;
       }
@@ -939,8 +1041,33 @@ static void updateGamePlay() {
 
     rotateTowersTowardsTarget(&towers, &enemies);
 
-    updateWeapon(player_weapon, player1, mouse_device->mouse->x, mouse_device->mouse->y);
+    if (unlocked_weapon) {
+      updateWeapon(player_weapon, player1, mouse_device->mouse->x, mouse_device->mouse->y);
+    }
   }
+}
+
+static void updateBase(){
+  if (first_time_base) {
+
+    Button* tmp = getButtonArray(&base_buttons, 1);
+    updateGameObjectSprites(player_base.price, 2, tmp->x+200, tmp->y);
+
+    
+    showMoney(player_base.price);
+    showGameObjects(&player_base.price->moneyDigitsGameObjects);
+
+    //showGameObject(player_base.price->coin);
+    
+    player_base.price->coin->sprite->is_visible = true;
+    updateGameObjectZIndex(player_base.price->coin, 0xFFF0);
+
+    showButtons(&base_buttons);
+    first_time_base = !first_time_base;
+    swapMouseSprites();
+  }
+  //checkBaseKeyboardInput(&keyboard_device->keyPresses);
+  checkBaseHovered(&base_buttons);
 }
 
 static void updatePause() {
@@ -965,8 +1092,9 @@ static void updateShop() {
 
       updateGameObjectSprites(temp_money, 2, tmp->x+200, tmp->y);
 
+      showMoney(temp_money);
       showGameObjects(&temp_money->moneyDigitsGameObjects);
-      
+      //showGameObject(temp_money->coin);
       temp_money->coin->sprite->is_visible = true;
 
       updateGameObjectZIndex(temp_money->coin, 0xFFF0);
@@ -1051,18 +1179,24 @@ void initializeGameplay() {
   player_weapon = initializeWeapon(32, 28);
   hideWeapon(player_weapon);
   
-  money = initializeMoney(1750,0);
+  money = initializeMoney(1620,0);
   hideGameObjects(&money->moneyDigitsGameObjects);
 
   enemies = newEnemyArray(100);
   bullets = newBulletArray(100);
   pause_buttons = newButtonArray(20);
+  base_buttons = newButtonArray(20);
   shop_buttons = newButtonArray(20);
   tower_buttons = newButtonArray(20);
 
   pushButtonArray(&pause_buttons, initializeButton((xpm_map_t)ResumeButtonHovered, (xpm_map_t)ResumeButton, screen.xres/2, screen.yres/2, 0xFFFE, false, true));
 
   pushButtonArray(&pause_buttons, initializeButton((xpm_map_t)QuitButtonHovered, (xpm_map_t)QuitButton, screen.xres/2, screen.yres/2 + 100, 0xFFFE, false, true));
+
+
+  pushButtonArray(&base_buttons, initializeButton((xpm_map_t)ExitButtonHovered, (xpm_map_t)ExitButton, screen.xres/2+400, screen.yres/2 -300, 0xFFFE, false, true));
+
+  pushButtonArray(&base_buttons, initializeButton((xpm_map_t)WeaponButtonHovered, (xpm_map_t)WeaponButton, screen.xres/2 -150, screen.yres/2 -90, 0xF000, false, true));
 
   pushButtonArray(&shop_buttons, initializeButton((xpm_map_t)ExitButtonHovered, (xpm_map_t)ExitButton, screen.xres/2+400, screen.yres/2 -300, 0xFFFE, false, true));
 
@@ -1073,6 +1207,7 @@ void initializeGameplay() {
 
   hideButtons(&pause_buttons);
   hideButtons(&shop_buttons);
+  hideButtons(&base_buttons);
 
   game_background = create_spriteless_gameobject(0, 0, 0, 0, 0);
 
@@ -1083,6 +1218,10 @@ void initializeGameplay() {
   Sprite* shop_background_sprite = create_sprite((xpm_map_t)SelectGameBackground, screen.xres/2, screen.yres/2, true, false);
 
   shop_background = create_gameobject_from_sprite(shop_background_sprite, screen.xres/2, screen.yres/2, -(shop_background_sprite->width/2), -(shop_background_sprite->height/2), 0xDFFF);
+
+  Sprite* base_background_sprite = create_sprite((xpm_map_t)SelectGameBackground, screen.xres/2, screen.yres/2, true, false);
+
+  base_background = create_gameobject_from_sprite(base_background_sprite, screen.xres/2, screen.yres/2, -(base_background_sprite->width/2), -(base_background_sprite->height/2), 0xDFFF);
 
   Sprite* tower_background_sprite = create_sprite((xpm_map_t)SelectGameBackground, screen.xres/2, screen.yres/2, true, false);
 
@@ -1106,11 +1245,11 @@ void enterGame(bool multi, uint8_t arena) {
   hideSprites(&player2->player->animatedSprite->sprites);
   //
 
+  unlocked_weapon = false;
+
   showGameObjects(&money->moneyDigitsGameObjects);
 
-  showWeapon(player_weapon);
-
-  money->money_amount = 1750;
+  money->money_amount = 1620;
 
   multiplayer = multi;
   current_arena = &arenas[arena];
@@ -1150,6 +1289,8 @@ void updateGame() {
     updateShop();
   } else if (state == TOWER_MENU) {
     updateTowerMenu();
+  } else if (state == BASE_MENU) {
+    updateBase();
   }
 }
 
@@ -1162,16 +1303,19 @@ void exitGame() {
   hideSprites(&player2->player->animatedSprite->sprites);
 
   hideButtons(&pause_buttons);
+  hideButtons(&shop_buttons);
+  hideButtons(&base_buttons);
   destroyEnemyArray(&enemies);
 
   money->coin->sprite->is_visible = false;
   hideGameObjects(&money->moneyDigitsGameObjects);
+
   //updateGameObjectSprites(money);
 
   hideWeapon(player_weapon);
 
   towers = (TowerArray){NULL, 0, 0};
-  player_base = (PlayerBase){NULL, NULL, 0, 0};
+  player_base = (PlayerBase){NULL, NULL, NULL, 0, 0, NULL};
   shop = (Shop){NULL, NULL, (MoneyArray){NULL, 0, 0}};
   remove_sprite_from_spriteless_gameobject(game_background);
   pause_background->sprite->is_visible = false;
@@ -1189,6 +1333,7 @@ void destroyGame() {
   destroyButtonArray(&pause_buttons);
   destroyButtonArray(&shop_buttons);
   destroyButtonArray(&tower_buttons);
+  destroyButtonArray(&base_buttons);
 
   //destroyBulletArray(&bullets)
   destroyBulletArray(&bullets);

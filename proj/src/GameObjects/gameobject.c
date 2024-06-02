@@ -227,13 +227,13 @@ void destroyGameObjectArray(GameObjectArray *array) {
 
 void showGameObjects(GameObjectArray* gameObjects) {
   for (uint32_t i = 0; i < gameObjects->length; i++) {
-    getGameObjectArray(gameObjects, i)->sprite->is_visible = true;
+    showGameObject(getGameObjectArray(gameObjects, i));
   }
 }
 
 void hideGameObjects(GameObjectArray* gameObjects) {
   for (uint32_t i = 0; i < gameObjects->length; i++) {
-    getGameObjectArray(gameObjects, i)->sprite->is_visible = false;
+    hideGameObject(getGameObjectArray(gameObjects, i));
   }
 }
 
@@ -361,6 +361,15 @@ void destroy_gameobject_safe_sprite(GameObject* gameObject) {
   removeRenderPipeline(&renderPipeline, gameObject);
   free(gameObject);
 }
+
+void hideGameObject(GameObject* gameObject) {
+  removeRenderPipeline(&renderPipeline, gameObject);
+}
+
+void showGameObject(GameObject* gameObject) {
+  insertRenderPipeline(&renderPipeline, gameObject);
+}
+
 
 static int draw_gameObject(GameObject* gameObject) {
   gameObject->sprite->x = gameObject->x + gameObject->origin_offset_x;

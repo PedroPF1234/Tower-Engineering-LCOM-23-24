@@ -72,7 +72,7 @@ Economy* read_prices_info(char** prices_info) {
   accumulator = 0;
   info = prices_info[current_line++];
 
-  while (state != 5) {
+  while (state != 6) {
 
     uint8_t index = 0;
     uint8_t array_index = 0;
@@ -108,6 +108,12 @@ Economy* read_prices_info(char** prices_info) {
           upgrade_laser[array_index++] = accumulator;
           accumulator = 0;
           break;
+
+        case 5:
+          new_economy->weapon_price = accumulator;
+          accumulator = 0;
+          break;
+
         default:
           break;
         }

@@ -33,5 +33,6 @@ Shop* initializeShop(int16_t x, int16_t y) {
 
 void destroyShop(Shop* shop) {
   destroy_gameobject(shop->shopObject);
+  destroyMoneyArray(&shop->prices);
   free(shop);
 }

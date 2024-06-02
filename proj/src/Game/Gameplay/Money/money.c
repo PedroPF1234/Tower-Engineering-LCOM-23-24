@@ -168,14 +168,15 @@ void insertMoneyArray(MoneyArray* moneyArray, Money* newMoney) {
   if (moneyArray->capacity != moneyArray->length) {
     moneyArray->money[moneyArray->length] = newMoney;
   } else {
-    uint32_t newCapacity = moneyArray->capacity * 2;
+    moneyArray->capacity = moneyArray->capacity * 2;
     Money** oldPointer = moneyArray->money;
-    Money** newPointer = (Money**)malloc(newCapacity * sizeof(Money*));
+    Money** newPointer = (Money**)malloc(moneyArray->capacity * sizeof(Money*));
     moneyArray->money = newPointer;
     for (uint32_t i = 0; i < moneyArray->length; i++) {
       newPointer[i] = oldPointer[i];
     }
     free(oldPointer);
+    moneyArray->money[moneyArray->length] = newMoney;
   }
 
   moneyArray->length++;  
@@ -196,6 +197,36 @@ void removeMoneyArray(MoneyArray* moneyArray, Money* money) {
       moneyArray->length--;
       break;
     }
+  }
+}
+
+void hideMoneyArray(MoneyArray* moneyArray) {
+  for (uint32_t i = 0; i < moneyArray->length; i++) {
+    Money* tmp = getMoneyArray(moneyArray, i);
+    for (uint32_t j = 0; j < tmp->moneyDigitsGameObjects.length; j++) {
+      hideGameObject(getGameObjectArray(&tmp->moneyDigitsGameObjects, j));
+    }
+  }
+}
+
+void showMoneyArray(MoneyArray* moneyArray) {
+  for (uint32_t i = 0; i < moneyArray->length; i++) {
+    Money* tmp = getMoneyArray(moneyArray, i);
+    for (uint32_t j = 0; j < tmp->moneyDigitsGameObjects.length; j++) {
+      showGameObject(getGameObjectArray(&tmp->moneyDigitsGameObjects, j));
+    }
+  }
+}
+
+void hideMoney(Money* money) {
+  for (uint32_t i = 0; i < money->moneyDigitsGameObjects.length; i++) {
+    hideGameObject(getGameObjectArray(&money->moneyDigitsGameObjects, i));
+  }
+}
+
+void showMoney(Money* money) {
+  for (uint32_t i = 0; i < money->moneyDigitsGameObjects.length; i++) {
+    showGameObject(getGameObjectArray(&money->moneyDigitsGameObjects, i));
   }
 }
 

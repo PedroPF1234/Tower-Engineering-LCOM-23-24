@@ -5,7 +5,8 @@ static char *Prices[] = {
   "200 400 600 ", // construir besta, construir canhão, construir laser
   "50 100 150 200 300 ", //upgrade besta
   "150 200 300 450 600 ", //upgrade canhão
-  "250 400 600 750 1000 " //upgrade laser
+  "250 400 600 750 1000 ", //upgrade laser
+  "600 " //desbloquear weapon
 };
 
 /* XPM */
