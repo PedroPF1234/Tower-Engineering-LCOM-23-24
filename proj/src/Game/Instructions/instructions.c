@@ -125,7 +125,9 @@ void initializeInstructions() {
   instructions_background = create_gameobject((xpm_map_t)InstructionBackground, 0, 0, 0, 0, 0, true, false);
 
   // Go back Button
-  pushButtonArray(&instButtons, initializeButton((xpm_map_t)QuitButtonHovered, (xpm_map_t)QuitButton, screen.xres/2-1, screen.yres/2+350, 1, false, false));
+  pushButtonArray(&instButtons, initializeButton((xpm_map_t)QuitButtonHovered, (xpm_map_t)QuitButton, screen.xres/2-1, screen.yres/2+350, 1, false, true));
+
+  hideButtons(&instButtons);
 }
 
 void enterInstructions() {
