@@ -370,11 +370,11 @@ void enterMenu() {
 
 void updateMenu() {
   if (state == MAIN_MENU) {
-    checkMenuKeyboardInput(&keyboard_device->keyPresses);
     checkMenuHovered(&menuButtons);
+    checkMenuKeyboardInput(&keyboard_device->keyPresses);
   } else if (state == SELECT_GAME) {
-    checkSelectGameKeyboardInput(&keyboard_device->keyPresses);
     checkSelectGameHovered(&selectGameArenaButtons);
+    checkSelectGameKeyboardInput(&keyboard_device->keyPresses);
   }
 }
 
