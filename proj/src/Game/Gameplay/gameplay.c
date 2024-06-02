@@ -45,6 +45,9 @@ extern int16_t tower_index;
 
 extern SpriteArray digits;
 
+extern Sprite* rotatedSpriteL;
+extern Sprite* rotatedSpriteR;
+
 TurretType current_turret = CROSSBOW;
 
 static bool pressed_game_button = false;
@@ -1307,7 +1310,13 @@ void initializeGameplay() {
   player1 = initializePlayer(32, 28, -16, -29, 100);
   player2 = initializePlayer(32, 28, -16, -29, 100);
   player_weapon = initializeWeapon(32, 28);
+
   hideWeapon(player_weapon);
+
+  for (int i = 0; i < 360; i++) {
+    rotatedSpriteL[i].is_visible = true;
+    rotatedSpriteR[i].is_visible = true;
+  }
   
   money = initializeMoney(99999,0);
   hideGameObjects(&money->moneyDigitsGameObjects);
@@ -1363,6 +1372,10 @@ void initializeGameplay() {
 void enterGame(bool multi, uint8_t arena) {
 
   showSprites(&digits);
+  for (int i = 0; i < 360; i++) {
+    rotatedSpriteL[i].is_visible = true;
+    rotatedSpriteR[i].is_visible = true;
+  }
 
   mouse_device->mouse->sprite = aim_mouse;
   mouse_device->mouse->origin_offset_x = -(aim_mouse->width/2-2);
@@ -1434,7 +1447,7 @@ void updateGame() {
   if (rtc_time->just_updated && state == GAME) {
     if (to_spawn_enemy) {
       to_spawn_enemy = false;
-      pushEnemyArray(&enemies, initializeEnemy((float)current_arena->spawn_x, (float)current_arena->spawn_y, 0, 0, multiplayer ? 1500 : 1000, current_arena->target_coordinates, current_arena->num_targets));
+      pushEnemyArray(&enemies, initializeEnemy((float)current_arena->spawn_x, (float)current_arena->spawn_y, 0, 0, (multiplayer ? 1500 : 1000), current_arena->target_coordinates, current_arena->num_targets));
     } else {
       to_spawn_enemy = true;
     }
@@ -1458,6 +1471,13 @@ void exitGame() {
 
   hideSprites(&digits);
 
+  destroyWeapon(player_weapon);
+
+  for (int i = 0; i < 360; i++) {
+    rotatedSpriteL[i].is_visible = false;
+    rotatedSpriteR[i].is_visible = false;
+  }
+
   mouse_device->mouse->sprite = normal_mouse;
   mouse_device->mouse->origin_offset_x = 0;
   mouse_device->mouse->origin_offset_y = 0;
@@ -1477,8 +1497,6 @@ void exitGame() {
   hideGameObjects(&money->moneyDigitsGameObjects);
   printf("Money amount: %d\n", money->money_amount);
   updateGameObjectSprites(money, 0, 0, 0);
-
-  hideWeapon(player_weapon);
 
   destroyBulletArray(&bullets);
 
