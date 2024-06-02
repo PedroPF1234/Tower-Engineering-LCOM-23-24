@@ -1046,7 +1046,7 @@ static char *info1[] = {
   "216 847",
   "1135 847",
   /*Base coordinates*/
-  "1135 1000",
+  "1135 949",
 
   /*Decoration coordinates*/
   "0 380 272", //Furnace
@@ -2130,7 +2130,7 @@ static char *info2[] = {
   "439 847",
   "110 847",
   /*Base coordinates*/
-  "110 1000",
+  "110 949",
 
   /*Decoration coordinates*/
   "0 712 400", //Furnace
