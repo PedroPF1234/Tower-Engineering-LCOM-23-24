@@ -843,7 +843,9 @@ static void checkTowerMenuHovered(ButtonArray* array) {
           }
           if (selected_tower_base->level < 5 && money->money_amount >= upgrade_price[selected_tower_base->level]) {
             money->money_amount -= upgrade_price[selected_tower_base->level];
+            printf("Money after upgrade: %d\n", money->money_amount);
             updateGameObjectSprites(money, 0,0,0);
+            printf("Upgrading tower to level %d\n", selected_tower_base->level + 1);
             selected_tower_base->damage *= 1.1;
             selected_tower_base->level++;
             printf("Upgraded tower to level %d\n", selected_tower_base->level);
@@ -1077,7 +1079,7 @@ static void updateGamePlay() {
       //death of enemy
       if(enemy->hit_points <= 0){
         removeEnemyArray(&enemies, j);
-        money->money_amount -= 10;
+        money->money_amount += 100;
         updateGameObjectSprites(money, 0,0,0);
         j--;
       }
@@ -1305,7 +1307,7 @@ void initializeGameplay() {
   player_weapon = initializeWeapon(32, 28);
   hideWeapon(player_weapon);
   
-  money = initializeMoney(17500,0);
+  money = initializeMoney(99999,0);
   hideGameObjects(&money->moneyDigitsGameObjects);
 
   enemies = newEnemyArray(100);
@@ -1384,8 +1386,11 @@ void enterGame(bool multi, uint8_t arena) {
   showGameObjects(&money->moneyDigitsGameObjects);
 
   showWeapon(player_weapon);
+  player_weapon->weaponL->sprite->is_visible = false;
+  player_weapon->weaponR->sprite->is_visible = false;
 
-  money->money_amount = 17500;
+
+  money->money_amount = 99999;
 
   multiplayer = multi;
   current_arena = &arenas[arena];
@@ -1446,11 +1451,15 @@ void exitGame() {
   destroyEnemyArray(&enemies);
 
   money->coin->sprite->is_visible = false;
-  hideGameObjects(&money->moneyDigitsGameObjects);
 
-  //updateGameObjectSprites(money);
+  printf("Money amount: %d\n", money->money_amount);
+  hideGameObjects(&money->moneyDigitsGameObjects);
+  printf("Money amount: %d\n", money->money_amount);
+  updateGameObjectSprites(money, 0, 0, 0);
 
   hideWeapon(player_weapon);
+
+  destroyBulletArray(&bullets);
 
   towers = (TowerArray){NULL, 0, 0};
   player_base = (PlayerBase){NULL, NULL, NULL, 0, 0, NULL};

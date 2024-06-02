@@ -110,8 +110,10 @@ void removeBulletArray(BulletArray* array, uint32_t index) {
 }
 
 void destroyBulletArray(BulletArray* array) {
-    for (uint32_t i = 0; i < array->length; i++) {
-        destroyBullet(array->bullets[i]);
+
+    uint32_t length = array->length;
+    for (uint32_t i = 0; i < length; i++) {
+        destroyBullet(getBulletArray(array, i));
     }
     array->length = 0;
 }

@@ -80,6 +80,9 @@ void createMoneyDigitsGameObjects(Money* money) {
 
 
 void updateGameObjectSprites(Money* money, uint8_t type, int16_t x, int16_t y) {
+
+  printf("Money pointer: %p\n", money);
+
   if (!(x == 0 && y == 0)) {
 
     money->coin->x = x;
@@ -103,6 +106,8 @@ void updateGameObjectSprites(Money* money, uint8_t type, int16_t x, int16_t y) {
   int* num_digits = getDigits(money->money_amount, &size_);
 
   uint32_t size = (uint32_t) size_;
+
+  printf("Array size before size comparsion: %d\n", money->moneyDigitsGameObjects.length);
   
   if (size > money->moneyDigitsGameObjects.length) {
     for (uint32_t i = money->moneyDigitsGameObjects.length; i < size; i++) {
@@ -111,18 +116,29 @@ void updateGameObjectSprites(Money* money, uint8_t type, int16_t x, int16_t y) {
       insertGameObjectArray(&money->moneyDigitsGameObjects, gameObject);
     }
   } else if (size < money->moneyDigitsGameObjects.length) {
+    printf("Size is smaller, should elliminate one or more digits\n");
     for (uint32_t i = money->moneyDigitsGameObjects.length - 1; i >= size; i--) {
+      printf("Removing digit %d\n", i);
+      printf("This should be called once\n");
       GameObject* gameObject = getGameObjectArray(&money->moneyDigitsGameObjects, i);
+      printf("Got the gameobject\n");
       removeGameObjectArray(&money->moneyDigitsGameObjects, gameObject);
+      printf("Removed the gameobject\n");
       destroy_gameobject_safe_sprite(gameObject);
+      printf("Destroyed the gameobject\n");
     }
   } 
 
-  // New version
+  printf("Array size after size comparsion: %d\n", money->moneyDigitsGameObjects.length);
+
   for (uint32_t i = 0; i < money->moneyDigitsGameObjects.length; i++) {
+    printf("Updating digit %d\n", i);
     GameObject* gameObject = getGameObjectArray(&money->moneyDigitsGameObjects, i);
+    printf("Got the gameobject\n");
     Sprite* sprite = getSpriteArray(&digits, num_digits[i]+(type*10));
+    printf("Got the sprite with value %d\n", num_digits[i]);
     updateGameObjectSprite(gameObject, sprite);
+    printf("Updated the sprite\n");
   } 
 
   free(num_digits);

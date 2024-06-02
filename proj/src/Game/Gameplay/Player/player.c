@@ -94,21 +94,19 @@ void updatePlayerPosition(Player* player, Arena arena) {
 
   if (shop_distance < 130 && shop_distance < turret_distance) {
     can_shop = true;
-  } else if (tower_index != -1) {
-    can_shop = false;
-    can_tower = true;
-  } else {
-    can_shop = false;
+    can_base = false;
     can_tower = false;
-  }
-
-  if (base_distance < 130 && base_distance < turret_distance) {
+  } else if (base_distance < 130 && base_distance < turret_distance) {
+    can_shop = false;
     can_base = true;
+    can_tower = false;
   } else if (tower_index != -1) {
+    can_shop = false;
     can_base = false;
     can_tower = true;
   } else {
     can_base = false;
+    can_shop = false;
     can_tower = false;
   }
 

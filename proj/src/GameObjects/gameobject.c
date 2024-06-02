@@ -38,15 +38,16 @@ static RenderArrayList newRenderArray(uint32_t capacity) {
 }
 
 static void insertRenderPipeline(RenderArrayList *array, GameObject *newGameObject) {
+  //printf("Inserting gameobject with z_index %d\n", newGameObject->z_index);
   if (array->length == 0) {
     array->gameObjects[0] = newGameObject;
     array->length++;
   }
 
   if (array->length >= array->capacity) {
-    uint32_t newCapacity = array->capacity * 2;
+    array->capacity = array->capacity * 2;
     GameObject** oldPointer = array->gameObjects;
-    GameObject** newPointer = (GameObject**)malloc(newCapacity * sizeof(GameObject*));
+    GameObject** newPointer = (GameObject**)malloc(array->capacity * sizeof(GameObject*));
     array->gameObjects = newPointer;
     for (uint32_t i = 0; i < array->length; i++) {
       newPointer[i] = oldPointer[i];
@@ -75,7 +76,8 @@ static void insertRenderPipeline(RenderArrayList *array, GameObject *newGameObje
 }
 
 static void removeRenderPipeline(RenderArrayList *array, GameObject *gameObject) {
-  
+
+  //printf("Removing gameobject with z_index %d\n", gameObject->z_index);
   if (array->length == 0) {
     printf("Array is already empty!\n");
     return;
@@ -144,14 +146,15 @@ void insertGameObjectArray(GameObjectArray *array, GameObject *newGameObject) {
   if (array->capacity != array->length) {
     array->gameObjects[array->length] = newGameObject;
   } else {
-    uint32_t newCapacity = array->capacity * 2;
+    array->capacity = array->capacity * 2;
     GameObject** oldPointer = array->gameObjects;
-    GameObject** newPointer = (GameObject**)malloc(newCapacity * sizeof(GameObject*));
+    GameObject** newPointer = (GameObject**)malloc(array->capacity * sizeof(GameObject*));
     array->gameObjects = newPointer;
     for (uint32_t i = 0; i < array->length; i++) {
       newPointer[i] = oldPointer[i];
     }
     free(oldPointer);
+    array->gameObjects[array->length] = newGameObject;
   }
 
   array->length++;
@@ -384,7 +387,7 @@ void updateGameObjectSprite(GameObject* gameObject, Sprite* sprite) {
 }
 
 void renderGameObjects() {
-
+  
   for (uint32_t i = 0; i < renderPipeline.length; i++) {
     draw_gameObject(renderPipeline.gameObjects[i]);
   }

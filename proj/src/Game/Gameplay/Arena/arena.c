@@ -58,6 +58,7 @@ void hideArena(Arena* arena) {
   arena->shop.shopButton->sprite->is_visible = false;
   arena->base.baseObject->sprite->is_visible = false;
   arena->base.health_bar->sprite->is_visible = false;
+  arena->base.baseButton->sprite->is_visible = false;
   for (int i = 0; i < arena->num_decorations; i++) {
     hideAnimatedGameObject(arena->decorations[i]);
   }
