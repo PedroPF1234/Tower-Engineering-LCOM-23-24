@@ -1,0 +1,12 @@
+<map id="enterMenu" name="enterMenu">
+<area shape="rect" id="Node000001" title="Enters the menu." alt="" coords="5,55,88,80"/>
+<area shape="rect" id="Node000002" href="$button_8c.html#a4d66a0f1c519e7e4ab43d96d3286db4f" title="Turns off the visibility of all the Button&#39;s Sprites in a ButtonArray." alt="" coords="191,5,282,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="87,53,135,40,176,29,177,35,136,45,89,58"/>
+<area shape="rect" id="Node000004" href="$device__controller_8c.html#aaf75393bbaa328c2011c3cd3bf57c1ab" title="Resets the devices when changing screens." alt="" coords="136,55,337,80"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="88,65,120,65,120,70,88,70"/>
+<area shape="rect" id="Node000005" href="$button_8c.html#a847e1a5abfc2fe5a7f2e8fa3dc85675f" title="Turns on the visibility of all the Button&#39;s Sprites in a ButtonArray." alt="" coords="188,104,285,130"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="89,77,136,90,173,100,172,105,135,95,87,82"/>
+<area shape="rect" id="Node000003" href="$button_8c.html#ac3e1fa5a312e4690dd8b5d14db4bdd0f" title="Retrieves a Button from a ButtonArray." alt="" coords="385,55,493,80"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="282,26,338,40,371,48,370,53,336,45,281,31"/>
+<area shape="poly" id="edge5_Node000005_Node000003" title=" " alt="" coords="285,103,336,90,370,82,371,87,338,95,286,108"/>
+</map>

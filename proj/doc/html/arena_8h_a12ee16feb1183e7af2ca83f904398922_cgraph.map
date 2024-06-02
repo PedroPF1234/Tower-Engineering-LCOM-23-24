@@ -1,0 +1,14 @@
+<map id="hideArena" name="hideArena">
+<area shape="rect" id="Node000001" title="Hides the arena by making the associated sprites invisible." alt="" coords="5,31,85,56"/>
+<area shape="rect" id="Node000002" href="$gameobject_8c.html#a90ff45e7b7576b7b1c88255466ac2ff5" title="Hides an animated game object." alt="" coords="133,5,306,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="85,35,117,30,118,36,86,40"/>
+<area shape="rect" id="Node000004" href="$towers_8c.html#ad53e6aa00d7f7525ecefb28a51fa05bb" title="Hide the sprites of all the towers in a TowerArray." alt="" coords="176,55,263,80"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="86,46,161,57,160,62,85,52"/>
+<area shape="rect" id="Node000003" href="$gameobject_8c.html#a11caa0bf998b9de720cc858c6d02274b" title=" " alt="" coords="560,59,713,84"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="307,19,406,26,513,40,572,52,571,57,512,45,405,32,306,24"/>
+<area shape="rect" id="Node000005" href="$towers_8c.html#a23d2d6181fcd8d6fedd8308045a16810" title="Retrieves a TowerBase from a TowerArray." alt="" coords="381,55,486,80"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="263,65,365,65,365,70,263,70"/>
+<area shape="rect" id="Node000006" href="$gameobject_8c.html#a5450390b74149c8e80f882c397d7bafb" title="Removes a sprite from a spriteless game object." alt="" coords="354,105,512,145"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="264,77,341,97,339,102,263,82"/>
+<area shape="poly" id="edge6_Node000006_Node000003" title=" " alt="" coords="512,101,570,86,571,91,513,107"/>
+</map>

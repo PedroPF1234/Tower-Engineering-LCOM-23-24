@@ -1,0 +1,21 @@
+<map id="exitGame" name="exitGame">
+<area shape="rect" id="Node000001" title="Exits the game." alt="" coords="1030,56,1108,82"/>
+<area shape="rect" id="Node000002" href="$gameplay_8c.html#a8ab7c3f15457e7b1d05182d33a9fbea6" title=" " alt="" coords="807,5,982,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1015,56,941,34,942,29,1016,51"/>
+<area shape="rect" id="Node000003" href="$gameplay_8c.html#a51e8e30605fea6f79a919eb15c2ce885" title=" " alt="" coords="638,56,759,82"/>
+<area shape="poly" id="edge10_Node000001_Node000003" title=" " alt="" coords="1014,72,759,72,759,66,1014,66"/>
+<area shape="rect" id="Node000008" href="$gameplay_8c.html#ab1e8de75a8a897632941c220743edbc5" title=" " alt="" coords="824,107,966,132"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="1016,87,942,109,941,104,1015,82"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="828,38,752,58,750,53,827,33"/>
+<area shape="rect" id="Node000004" href="$gameplay_8c.html#a97feb8702b4bc47a3dee7bf3b220da2b" title="Updates all the game objects and buttons.. etc in the game." alt="" coords="494,81,590,107"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="623,84,590,89,590,84,622,79"/>
+<area shape="rect" id="Node000005" href="$game_8c.html#a315e950a7e6bb500fe11c37ee1122577" title="Encapsulates the whole game logic." alt="" coords="327,81,446,107"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="479,97,447,97,447,92,479,92"/>
+<area shape="rect" id="Node000006" href="$device__controller_8c.html#a4d10f01a84e9e24f18682c0bca48dca6" title="Calls all device&#39;s interrupt handlers." alt="" coords="162,81,279,107"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="312,97,279,97,279,92,312,92"/>
+<area shape="rect" id="Node000007" href="$proj_8c.html#af244d65e69677cf312af1950452ec256" title=" " alt="" coords="5,81,114,107"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="146,97,114,97,114,92,146,92"/>
+<area shape="rect" id="Node000009" href="$gameplay_8c.html#a249981b88f5eb32eafdcc1b234ed4b77" title=" " alt="" coords="650,105,747,131"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="808,122,747,121,747,116,808,116"/>
+<area shape="poly" id="edge9_Node000009_Node000004" title=" " alt="" coords="634,111,590,104,590,99,635,106"/>
+</map>

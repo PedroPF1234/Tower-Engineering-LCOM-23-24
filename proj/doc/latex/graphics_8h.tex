@@ -1,0 +1,271 @@
+\doxysection{src/\+Devices/\+Graphics/graphics.h File Reference}
+\hypertarget{graphics_8h}{}\label{graphics_8h}\index{src/Devices/Graphics/graphics.h@{src/Devices/Graphics/graphics.h}}
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+Include dependency graph for graphics.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=191pt]{graphics_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=324pt]{graphics_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{graphics_8h_acc11b311c479b1904fd45e8c6da5fcc3}{vg\+\_\+init}} (uint16\+\_\+t mode)
+\begin{DoxyCompactList}\small\item\em Initializes the graphics in the given mode. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{graphics_8h_adb08b276272848bc7f3bccc0f5e770c8}{vg\+\_\+draw\+\_\+hline}} (uint16\+\_\+t x, uint16\+\_\+t y, uint16\+\_\+t len, uint32\+\_\+t color)
+\begin{DoxyCompactList}\small\item\em Draws a line of pixels. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{graphics_8h_a4d53728322f948683b768482bf4906e8}{vg\+\_\+draw\+\_\+rectangle}} (uint16\+\_\+t x, uint16\+\_\+t y, uint16\+\_\+t width, uint16\+\_\+t height, uint32\+\_\+t color)
+\begin{DoxyCompactList}\small\item\em Draws a rectangle. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{graphics_8h_aab5127afe1cbcbe617438adc9805eb5d}{vg\+\_\+draw\+\_\+xpm}} (int16\+\_\+t x, int16\+\_\+t y, uint16\+\_\+t width, uint16\+\_\+t height, uint8\+\_\+t \texorpdfstring{$\ast$}{*}bytes, bool square\+\_\+shape)
+\begin{DoxyCompactList}\small\item\em Draws a sprite. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{graphics_8h_a536ead18078d70ceba9fe0cf4e1221e4}{proj\+\_\+draw\+\_\+pixel}} (uint16\+\_\+t x, uint16\+\_\+t y, uint32\+\_\+t color)
+\begin{DoxyCompactList}\small\item\em Draws a pixel in the screen. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{graphics_8h_ae67f6e0779a7ea63cd66b6770d912703}{vg\+\_\+replace\+\_\+buffer}} ()
+\begin{DoxyCompactList}\small\item\em Uses vbe function to page flip. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{graphics_8h_a42e0d1df94ce2d24ae80aef8691c80e1}{vg\+\_\+free}} ()
+\begin{DoxyCompactList}\small\item\em Frees the memory allocated for the graphics. \end{DoxyCompactList}\item 
+uint16\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{graphics_8h_a09114e97b1fe0ce6964764143e760cf2}{get\+Info}} ()
+\begin{DoxyCompactList}\small\item\em Gets the screen information of the graphics. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{graphics_8h_a09114e97b1fe0ce6964764143e760cf2}\index{graphics.h@{graphics.h}!getInfo@{getInfo}}
+\index{getInfo@{getInfo}!graphics.h@{graphics.h}}
+\doxysubsubsection{\texorpdfstring{getInfo()}{getInfo()}}
+{\footnotesize\ttfamily \label{graphics_8h_a09114e97b1fe0ce6964764143e760cf2} 
+uint16\+\_\+t \texorpdfstring{$\ast$}{*} get\+Info (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Gets the screen information of the graphics. 
+
+\begin{DoxyReturn}{Returns}
+array with the information of the graphics 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{graphics_8h_a09114e97b1fe0ce6964764143e760cf2_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{graphics_8h_a536ead18078d70ceba9fe0cf4e1221e4}\index{graphics.h@{graphics.h}!proj\_draw\_pixel@{proj\_draw\_pixel}}
+\index{proj\_draw\_pixel@{proj\_draw\_pixel}!graphics.h@{graphics.h}}
+\doxysubsubsection{\texorpdfstring{proj\_draw\_pixel()}{proj\_draw\_pixel()}}
+{\footnotesize\ttfamily \label{graphics_8h_a536ead18078d70ceba9fe0cf4e1221e4} 
+int proj\+\_\+draw\+\_\+pixel (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x}{, }\item[{uint16\+\_\+t}]{y}{, }\item[{uint32\+\_\+t}]{color}{}\end{DoxyParamCaption})}
+
+
+
+Draws a pixel in the screen. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & x coordinate of the pixel \\
+\hline
+{\em y} & y coordinate of the pixel \\
+\hline
+{\em color} & color of the pixel \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{graphics_8h_a536ead18078d70ceba9fe0cf4e1221e4_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{graphics_8h_adb08b276272848bc7f3bccc0f5e770c8}\index{graphics.h@{graphics.h}!vg\_draw\_hline@{vg\_draw\_hline}}
+\index{vg\_draw\_hline@{vg\_draw\_hline}!graphics.h@{graphics.h}}
+\doxysubsubsection{\texorpdfstring{vg\_draw\_hline()}{vg\_draw\_hline()}}
+{\footnotesize\ttfamily \label{graphics_8h_adb08b276272848bc7f3bccc0f5e770c8} 
+int vg\+\_\+draw\+\_\+hline (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x}{, }\item[{uint16\+\_\+t}]{y}{, }\item[{uint16\+\_\+t}]{len}{, }\item[{uint32\+\_\+t}]{color}{}\end{DoxyParamCaption})}
+
+
+
+Draws a line of pixels. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & x coordinate of the first pixel of the line \\
+\hline
+{\em y} & y coordinate of the first pixel of the line \\
+\hline
+{\em len} & length of the line \\
+\hline
+{\em color} & color of the pixels of the line \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{graphics_8h_adb08b276272848bc7f3bccc0f5e770c8_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=292pt]{graphics_8h_adb08b276272848bc7f3bccc0f5e770c8_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{graphics_8h_a4d53728322f948683b768482bf4906e8}\index{graphics.h@{graphics.h}!vg\_draw\_rectangle@{vg\_draw\_rectangle}}
+\index{vg\_draw\_rectangle@{vg\_draw\_rectangle}!graphics.h@{graphics.h}}
+\doxysubsubsection{\texorpdfstring{vg\_draw\_rectangle()}{vg\_draw\_rectangle()}}
+{\footnotesize\ttfamily \label{graphics_8h_a4d53728322f948683b768482bf4906e8} 
+int vg\+\_\+draw\+\_\+rectangle (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x}{, }\item[{uint16\+\_\+t}]{y}{, }\item[{uint16\+\_\+t}]{width}{, }\item[{uint16\+\_\+t}]{height}{, }\item[{uint32\+\_\+t}]{color}{}\end{DoxyParamCaption})}
+
+
+
+Draws a rectangle. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & x coordinate of the top left corner of the rectangle \\
+\hline
+{\em y} & y coordinate of the top left corner of the rectangle \\
+\hline
+{\em width} & width of the rectangle \\
+\hline
+{\em height} & height of the rectangle \\
+\hline
+{\em color} & color of the pixels of the rectangle \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{graphics_8h_a4d53728322f948683b768482bf4906e8_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{graphics_8h_aab5127afe1cbcbe617438adc9805eb5d}\index{graphics.h@{graphics.h}!vg\_draw\_xpm@{vg\_draw\_xpm}}
+\index{vg\_draw\_xpm@{vg\_draw\_xpm}!graphics.h@{graphics.h}}
+\doxysubsubsection{\texorpdfstring{vg\_draw\_xpm()}{vg\_draw\_xpm()}}
+{\footnotesize\ttfamily \label{graphics_8h_aab5127afe1cbcbe617438adc9805eb5d} 
+int vg\+\_\+draw\+\_\+xpm (\begin{DoxyParamCaption}\item[{int16\+\_\+t}]{x}{, }\item[{int16\+\_\+t}]{y}{, }\item[{uint16\+\_\+t}]{width}{, }\item[{uint16\+\_\+t}]{height}{, }\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{bytes}{, }\item[{bool}]{square\+\_\+shape}{}\end{DoxyParamCaption})}
+
+
+
+Draws a sprite. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & x coordinate of the top left corner of the rectangle \\
+\hline
+{\em y} & y coordinate of the top left corner of the rectangle \\
+\hline
+{\em width} & width of the rectangle \\
+\hline
+{\em height} & height of the rectangle \\
+\hline
+{\em bytes} & array of bytes that represent the color of the pixels of the rectangle \\
+\hline
+{\em square\+\_\+shape} & if the rectangle is a square \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{graphics_8h_aab5127afe1cbcbe617438adc9805eb5d_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{graphics_8h_a42e0d1df94ce2d24ae80aef8691c80e1}\index{graphics.h@{graphics.h}!vg\_free@{vg\_free}}
+\index{vg\_free@{vg\_free}!graphics.h@{graphics.h}}
+\doxysubsubsection{\texorpdfstring{vg\_free()}{vg\_free()}}
+{\footnotesize\ttfamily \label{graphics_8h_a42e0d1df94ce2d24ae80aef8691c80e1} 
+int vg\+\_\+free (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Frees the memory allocated for the graphics. 
+
+\begin{DoxyReturn}{Returns}
+0 if successful, 1 otherwise 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{graphics_8h_a42e0d1df94ce2d24ae80aef8691c80e1_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{graphics_8h_acc11b311c479b1904fd45e8c6da5fcc3}\index{graphics.h@{graphics.h}!vg\_init@{vg\_init}}
+\index{vg\_init@{vg\_init}!graphics.h@{graphics.h}}
+\doxysubsubsection{\texorpdfstring{vg\_init()}{vg\_init()}}
+{\footnotesize\ttfamily \label{graphics_8h_acc11b311c479b1904fd45e8c6da5fcc3} 
+void \texorpdfstring{$\ast$}{*} vg\+\_\+init (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{mode}{}\end{DoxyParamCaption})}
+
+
+
+Initializes the graphics in the given mode. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mode} & mode to set the graphics to \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=294pt]{graphics_8h_acc11b311c479b1904fd45e8c6da5fcc3_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{graphics_8h_acc11b311c479b1904fd45e8c6da5fcc3_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{graphics_8h_ae67f6e0779a7ea63cd66b6770d912703}\index{graphics.h@{graphics.h}!vg\_replace\_buffer@{vg\_replace\_buffer}}
+\index{vg\_replace\_buffer@{vg\_replace\_buffer}!graphics.h@{graphics.h}}
+\doxysubsubsection{\texorpdfstring{vg\_replace\_buffer()}{vg\_replace\_buffer()}}
+{\footnotesize\ttfamily \label{graphics_8h_ae67f6e0779a7ea63cd66b6770d912703} 
+int vg\+\_\+replace\+\_\+buffer (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Uses vbe function to page flip. 
+
+\begin{DoxyReturn}{Returns}
+0 if successful, 1 otherwise 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=294pt]{graphics_8h_ae67f6e0779a7ea63cd66b6770d912703_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{graphics_8h_ae67f6e0779a7ea63cd66b6770d912703_icgraph}
+\end{center}
+\end{figure}

@@ -1,0 +1,5 @@
+<map id="hideButtons" name="hideButtons">
+<area shape="rect" id="Node000001" title="Turns off the visibility of all the Button&#39;s Sprites in a ButtonArray." alt="" coords="5,5,96,31"/>
+<area shape="rect" id="Node000002" href="$button_8c.html#ac3e1fa5a312e4690dd8b5d14db4bdd0f" title="Retrieves a Button from a ButtonArray." alt="" coords="144,5,252,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="96,16,128,16,128,21,96,21"/>
+</map>

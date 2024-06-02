@@ -1,0 +1,11 @@
+<map id="initializeTower" name="initializeTower">
+<area shape="rect" id="Node000001" title="Initializes a new tower." alt="" coords="5,70,109,96"/>
+<area shape="rect" id="Node000002" href="$gameobject_8c.html#a3e3995c85445e5e632c02ce335f6d43a" title="Creates a game object from a sprite." alt="" coords="172,5,336,46"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="103,67,166,48,168,53,105,72"/>
+<area shape="rect" id="Node000004" href="$sprite_8c.html#a06170cd082bf54a5bbb4fda040c83a0a" title="Initializes a new sprite." alt="" coords="206,70,302,96"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="109,80,191,80,191,86,109,86"/>
+<area shape="rect" id="Node000005" href="$gameobject_8c.html#a533ac6c940eb9983e2e8776ea14c9347" title="Creates a game object without a sprite." alt="" coords="157,120,351,145"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="110,94,157,106,185,113,184,118,156,111,108,99"/>
+<area shape="rect" id="Node000003" href="$gameobject_8c.html#a6a1ebecd29c69ded46970bd41c3097f0" title=" " alt="" coords="399,13,540,39"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="336,23,383,23,383,28,336,28"/>
+</map>

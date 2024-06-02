@@ -1,0 +1,15 @@
+<map id="destroyMoneyArray" name="destroyMoneyArray">
+<area shape="rect" id="Node000001" title="Destroys a MoneyArray and frees associated memory." alt="" coords="807,31,941,56"/>
+<area shape="rect" id="Node000002" href="$shop_8c.html#a2274170d80dbc72e18e64f77eaba1cec" title="Destroys all the Game Objects associated with a Shop and frees their associated memory." alt="" coords="651,5,746,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="791,34,745,28,746,22,792,29"/>
+<area shape="rect" id="Node000003" href="$gameplay_8c.html#a51e8e30605fea6f79a919eb15c2ce885" title=" " alt="" coords="638,55,759,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="792,57,760,62,759,57,791,52"/>
+<area shape="rect" id="Node000004" href="$gameplay_8c.html#a97feb8702b4bc47a3dee7bf3b220da2b" title="Updates all the game objects and buttons.. etc in the game." alt="" coords="494,55,590,80"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="622,70,590,70,590,65,622,65"/>
+<area shape="rect" id="Node000005" href="$game_8c.html#a315e950a7e6bb500fe11c37ee1122577" title="Encapsulates the whole game logic." alt="" coords="327,55,446,80"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="479,70,447,70,447,65,479,65"/>
+<area shape="rect" id="Node000006" href="$device__controller_8c.html#a4d10f01a84e9e24f18682c0bca48dca6" title="Calls all device&#39;s interrupt handlers." alt="" coords="162,55,279,80"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="312,70,279,70,279,65,312,65"/>
+<area shape="rect" id="Node000007" href="$proj_8c.html#af244d65e69677cf312af1950452ec256" title=" " alt="" coords="5,55,114,80"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="146,70,114,70,114,65,146,65"/>
+</map>

@@ -1,0 +1,19 @@
+<map id="rtc_disable_all_ints" name="rtc_disable_all_ints">
+<area shape="rect" id="Node000001" title="Disables all RTC interrupts." alt="" coords="5,55,138,80"/>
+<area shape="rect" id="Node000002" href="$rtc_8c.html#ae1ad1cb6ae417786d227c4ede4d586fd" title="Enables or disables RTC alarm interrupts." alt="" coords="192,5,331,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="123,51,194,33,195,38,125,57"/>
+<area shape="rect" id="Node000006" href="$rtc_8c.html#aadf5ab2196aa22ca0ae6679fe388e270" title="Enables or disables RTC periodic interrupts." alt="" coords="186,55,337,80"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="138,65,170,65,170,70,138,70"/>
+<area shape="rect" id="Node000007" href="$rtc_8c.html#a43ab2676911c7b2d91ee739cbe3af372" title="Enables or disables RTC update ended interrupts." alt="" coords="189,104,334,130"/>
+<area shape="poly" id="edge8_Node000001_Node000007" title=" " alt="" coords="125,78,195,97,194,102,123,84"/>
+<area shape="rect" id="Node000003" href="$rtc_8c.html#ac8b0ed21f98fd3ada932e232c253b92b" title="Reads a byte from the RTC." alt="" coords="387,31,455,56"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="331,27,372,33,371,38,331,32"/>
+<area shape="rect" id="Node000005" href="$rtc_8c.html#a88bc7fc547c8c1296e2e42d246e5e23e" title="Writes a byte to the RTC." alt="" coords="385,80,456,106"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="311,29,338,40,389,69,386,73,336,45,309,34"/>
+<area shape="rect" id="Node000004" href="$utils_8c.html#a2b56f50ba159e9d5115ed1a75eff15d9" title=" " alt="" coords="504,31,595,56"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="455,41,489,41,489,46,455,46"/>
+<area shape="poly" id="edge6_Node000006_Node000003" title=" " alt="" coords="337,53,371,48,371,54,338,59"/>
+<area shape="poly" id="edge7_Node000006_Node000005" title=" " alt="" coords="338,77,370,82,369,87,337,82"/>
+<area shape="poly" id="edge9_Node000007_Node000003" title=" " alt="" coords="309,101,336,90,386,63,388,67,338,95,311,106"/>
+<area shape="poly" id="edge10_Node000007_Node000005" title=" " alt="" coords="334,103,369,98,370,103,335,108"/>
+</map>

@@ -1,0 +1,20 @@
+<map id="getAnimatedObjectArray" name="getAnimatedObjectArray">
+<area shape="rect" id="Node000001" title=" " alt="" coords="931,42,1094,68"/>
+<area shape="rect" id="Node000002" href="$gameobject_8c.html#a7e91d1a7fcf8ae4b0d63f5c6e57e70e8" title=" " alt="" coords="689,5,882,46"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="915,45,882,41,882,35,916,40"/>
+<area shape="rect" id="Node000006" href="$gameobject_8c.html#a3abb3c71d593255afaa381d680171133" title="Updates the animated game objects." alt="" coords="688,70,883,96"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="916,70,884,74,883,68,916,64"/>
+<area shape="rect" id="Node000003" href="$gameobject_8c.html#a39bd26a5aa1cd2b9da4075369233f25a" title="Destroys the game objects." alt="" coords="494,14,640,40"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="674,29,640,29,640,24,674,24"/>
+<area shape="rect" id="Node000004" href="$device__controller_8c.html#ab1bc69df0c7a23951179c8258d9ac75c" title="Encapsulates the termination of all the devices." alt="" coords="171,17,270,43"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="479,30,270,32,270,27,479,25"/>
+<area shape="rect" id="Node000005" href="$proj_8c.html#af244d65e69677cf312af1950452ec256" title=" " alt="" coords="5,42,114,68"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="156,42,114,49,113,44,155,37"/>
+<area shape="rect" id="Node000007" href="$gameplay_8c.html#a97feb8702b4bc47a3dee7bf3b220da2b" title="Updates all the game objects and buttons.. etc in the game." alt="" coords="519,68,615,93"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="673,84,615,84,615,78,673,79"/>
+<area shape="rect" id="Node000008" href="$game_8c.html#a315e950a7e6bb500fe11c37ee1122577" title="Encapsulates the whole game logic." alt="" coords="327,66,446,92"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="504,83,446,82,446,77,504,77"/>
+<area shape="rect" id="Node000009" href="$device__controller_8c.html#a4d10f01a84e9e24f18682c0bca48dca6" title="Calls all device&#39;s interrupt handlers." alt="" coords="162,66,279,92"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="312,82,279,82,279,76,312,76"/>
+<area shape="poly" id="edge9_Node000009_Node000005" title=" " alt="" coords="146,71,114,66,115,60,146,65"/>
+</map>

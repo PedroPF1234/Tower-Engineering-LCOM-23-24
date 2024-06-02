@@ -1,10 +1,5 @@
 var searchData=
 [
-  ['screeninfo_0',['ScreenInfo',['../struct_screen_info.html',1,'']]],
-  ['shop_1',['Shop',['../struct_shop.html',1,'']]],
-  ['speaker_5fctrl_2',['SPEAKER_CTRL',['../group__i8254.html#ga51b3a5e3d4811ca063fe25e35560ab40',1,'i8254.h']]],
-  ['speed_3',['speed',['../struct_bullet.html#a6b8d75d4ff37b66b153383c47bcae3a7',1,'Bullet::speed()'],['../struct_enemy.html#ad2541b5819c39a6734d27e7be7d42ee7',1,'Enemy::speed()']]],
-  ['sprite_4',['Sprite',['../struct_sprite.html',1,'']]],
-  ['sprite_5',['sprite',['../struct_bullet.html#a040bbfdb4d8e38dbd347309230e7bb50',1,'Bullet']]],
-  ['spritearray_6',['SpriteArray',['../struct_sprite_array.html',1,'']]]
+  ['origin_5foffset_5fx_0',['origin_offset_x',['../struct_button.html#a83273ca8c8d8dfd22ef349eaa971eee8',1,'Button::origin_offset_x'],['../struct_bullet.html#a9d82af2426edbbf70e32690b3b6ec99e',1,'Bullet::origin_offset_x'],['../struct_enemy.html#ace6766f8b7b7d13b78eca2050c350b3d',1,'Enemy::origin_offset_x'],['../struct_player.html#a175b5432791e60b7dd68f733e3615c67',1,'Player::origin_offset_x'],['../struct_tower_base.html#a1ea798ea0eb94ee6fdf0eb8210a0fe19',1,'TowerBase::origin_offset_x'],['../struct_game_object.html#a1ded1225debac7ecf15a7b20e8a3dbc3',1,'GameObject::origin_offset_x']]],
+  ['origin_5foffset_5fy_1',['origin_offset_y',['../struct_button.html#a4cb1a1d8d42c4ebafc7c35a147e94e2f',1,'Button::origin_offset_y'],['../struct_bullet.html#a1ad6a6cc315a33822df37a4b70d90d75',1,'Bullet::origin_offset_y'],['../struct_enemy.html#a344e9b1e8e2469a8172f7be382c3837e',1,'Enemy::origin_offset_y'],['../struct_player.html#a281ea75f53487c5f469d9a06dbf63764',1,'Player::origin_offset_y'],['../struct_tower_base.html#a159d3e9c07b9e3c4a61952d8aae1c2ef',1,'TowerBase::origin_offset_y'],['../struct_game_object.html#a8dd24eb593f234e987f65f2e8351f13b',1,'GameObject::origin_offset_y']]]
 ];

@@ -1,0 +1,21 @@
+<map id="checkMenuHovered" name="checkMenuHovered">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,132,143,158"/>
+<area shape="rect" id="Node000002" href="$instructions_8c.html#a6f05cb8c8a0c3cc09a6540dcd756315d" title="Enters the instructions screen." alt="" coords="215,5,334,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="87,130,130,90,189,48,216,35,218,40,192,52,134,94,90,134"/>
+<area shape="rect" id="Node000004" href="$button_8c.html#a847e1a5abfc2fe5a7f2e8fa3dc85675f" title="Turns on the visibility of all the Button&#39;s Sprites in a ButtonArray." alt="" coords="458,56,555,82"/>
+<area shape="poly" id="edge10_Node000001_Node000004" title=" " alt="" coords="103,129,144,113,190,98,257,85,325,76,443,68,443,73,325,82,258,90,191,103,145,118,105,134"/>
+<area shape="rect" id="Node000005" href="$button_8c.html#ac3e1fa5a312e4690dd8b5d14db4bdd0f" title="Retrieves a Button from a ButtonArray." alt="" coords="655,107,764,132"/>
+<area shape="poly" id="edge8_Node000001_Node000005" title=" " alt="" coords="143,139,640,120,640,125,143,145"/>
+<area shape="rect" id="Node000006" href="$menu_8c.html#a5a27e6d313d05fc5ae3d138287934b9e" title="Exits the menu." alt="" coords="237,157,312,183"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="143,151,222,161,222,166,142,156"/>
+<area shape="rect" id="Node000007" href="$button_8c.html#a4d66a0f1c519e7e4ab43d96d3286db4f" title="Turns off the visibility of all the Button&#39;s Sprites in a ButtonArray." alt="" coords="462,157,552,183"/>
+<area shape="poly" id="edge9_Node000001_Node000007" title=" " alt="" coords="99,156,141,176,191,193,259,201,327,200,391,192,446,182,447,188,392,198,328,205,258,206,190,198,139,181,97,161"/>
+<area shape="rect" id="Node000008" href="$gameobject_8c.html#aaab2489d023b98f5089e354979662252" title="Updates the sprite of a game object." alt="" coords="191,259,358,284"/>
+<area shape="poly" id="edge11_Node000001_Node000008" title=" " alt="" coords="90,156,134,195,192,237,218,250,216,255,189,242,130,199,87,160"/>
+<area shape="rect" id="Node000003" href="$device__controller_8c.html#aaf75393bbaa328c2011c3cd3bf57c1ab" title="Resets the devices when changing screens." alt="" coords="406,5,607,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="334,16,390,16,390,21,334,21"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="334,28,443,52,442,58,333,34"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="557,78,641,100,640,105,555,84"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="312,168,446,168,446,173,312,173"/>
+<area shape="poly" id="edge7_Node000007_Node000005" title=" " alt="" coords="552,156,640,134,641,139,553,162"/>
+</map>

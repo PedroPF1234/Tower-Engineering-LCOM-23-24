@@ -1,0 +1,593 @@
+\doxysection{src/\+Game/\+Gameplay/\+Money/money.h File Reference}
+\hypertarget{money_8h}{}\label{money_8h}\index{src/Game/Gameplay/Money/money.h@{src/Game/Gameplay/Money/money.h}}
+{\ttfamily \#include "{}../../../\+Devices/device\+\_\+controller.\+h"{}}\newline
+Include dependency graph for money.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{money_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{money_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_money}{Money}}
+\begin{DoxyCompactList}\small\item\em Represents the money in the game. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_money_array}{Money\+Array}}
+\begin{DoxyCompactList}\small\item\em Represents an array of \doxylink{struct_money}{Money}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct Money \mbox{\hyperlink{money_8h_a55dbfc591068277d2b65a974490487ec}{Money}}
+\begin{DoxyCompactList}\small\item\em Represents the money in the game. \end{DoxyCompactList}\item 
+typedef struct Money\+Array \mbox{\hyperlink{money_8h_a06126c17c6659cfc72731486e53c4273}{Money\+Array}}
+\begin{DoxyCompactList}\small\item\em Represents an array of \doxylink{struct_money}{Money}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_money}{Money}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{money_8h_a93e5d98cb7a8773ebef138857bf1ab7d}{initialize\+Money}} (int32\+\_\+t money\+\_\+amount, int8\+\_\+t type)
+\begin{DoxyCompactList}\small\item\em Initializes a new \doxylink{struct_money}{Money}. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{money_8h_abe887ed57c273909bed050b92681df6c}{count\+Digits}} (int num)
+\begin{DoxyCompactList}\small\item\em Counts the digits of a certain money amount. \end{DoxyCompactList}\item 
+int \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{money_8h_a36a4298f30848abcfc57a6f4d218341a}{get\+Digits}} (int num, int \texorpdfstring{$\ast$}{*}size)
+\begin{DoxyCompactList}\small\item\em Retrieves the digits of a certain money amount. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{money_8h_a87d35b98c1c3726e998963dec76e1f83}{associate\+Sprites}} (\mbox{\hyperlink{struct_money}{Money}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{gameplay_8c_a2f1d20fe71e2a2721b25bd83c274425a}{money}}, int money\+\_\+amount, int size, int8\+\_\+t type)
+\begin{DoxyCompactList}\small\item\em Associates the digit sprites with each digit of the money amount. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{money_8h_aeb6a933a77066dcc2560e6d6716aad16}{destroy\+Money}} (\mbox{\hyperlink{struct_money}{Money}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{gameplay_8c_a2f1d20fe71e2a2721b25bd83c274425a}{money}})
+\begin{DoxyCompactList}\small\item\em Destroys a \doxylink{struct_money}{Money} and frees associated memory. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{money_8h_afa1608f2c9910af4c7f038888d03b7d8}{create\+Money\+Digits\+Game\+Objects}} (\mbox{\hyperlink{struct_money}{Money}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{gameplay_8c_a2f1d20fe71e2a2721b25bd83c274425a}{money}})
+\begin{DoxyCompactList}\small\item\em Creates the game objects that represent the digits of the money amount using the associated sprites. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{money_8h_a7310c4878fa529ca9780b122ab305566}{update\+Game\+Object\+Sprites}} (\mbox{\hyperlink{struct_money}{Money}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{gameplay_8c_a2f1d20fe71e2a2721b25bd83c274425a}{money}}, uint8\+\_\+t type, int16\+\_\+t x, int16\+\_\+t y)
+\begin{DoxyCompactList}\small\item\em Updates the \doxylink{struct_money}{Money} Game Objects. Used when the money amount changes / is moved. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_money_array}{Money\+Array}} \mbox{\hyperlink{money_8h_ac2cab6ebcd9d6585bb463b7f563c3e6d}{new\+Money\+Array}} (uint32\+\_\+t capacity)
+\begin{DoxyCompactList}\small\item\em Initializes a new \doxylink{struct_money_array}{Money\+Array}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{money_8h_a0f9b2b0e545f05e706f113d3b9655d69}{insert\+Money\+Array}} (\mbox{\hyperlink{struct_money_array}{Money\+Array}} \texorpdfstring{$\ast$}{*}money\+Array, \mbox{\hyperlink{struct_money}{Money}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{gameplay_8c_a2f1d20fe71e2a2721b25bd83c274425a}{money}})
+\begin{DoxyCompactList}\small\item\em Adds a \doxylink{struct_money}{Money} to the \doxylink{struct_money_array}{Money\+Array}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{money_8h_a31dba917ea802ff43ed83c1afe470d1b}{remove\+Money\+Array}} (\mbox{\hyperlink{struct_money_array}{Money\+Array}} \texorpdfstring{$\ast$}{*}money\+Array, \mbox{\hyperlink{struct_money}{Money}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{gameplay_8c_a2f1d20fe71e2a2721b25bd83c274425a}{money}})
+\begin{DoxyCompactList}\small\item\em Removes a \doxylink{struct_money}{Money} from the \doxylink{struct_money_array}{Money\+Array}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_money}{Money}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{money_8h_a36b53e03c59c66e854e3552a1e45c058}{get\+Money\+Array}} (\mbox{\hyperlink{struct_money_array}{Money\+Array}} \texorpdfstring{$\ast$}{*}money\+Array, uint32\+\_\+t index)
+\begin{DoxyCompactList}\small\item\em Retrieves a \doxylink{struct_money}{Money} from the \doxylink{struct_money_array}{Money\+Array} at a specified index. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{money_8h_a33c893fc07f6c35942107d0e1bc00e4c}{destroy\+Money\+Array}} (\mbox{\hyperlink{struct_money_array}{Money\+Array}} \texorpdfstring{$\ast$}{*}money\+Array)
+\begin{DoxyCompactList}\small\item\em Destroys a \doxylink{struct_money_array}{Money\+Array} and frees associated memory. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{money_8h_ad185379e3b998bc2290c578fcde4c173}{hide\+Money}} (\mbox{\hyperlink{struct_money}{Money}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{gameplay_8c_a2f1d20fe71e2a2721b25bd83c274425a}{money}})
+\begin{DoxyCompactList}\small\item\em Removes \doxylink{struct_money}{Money} Sprites from Render Pipeline. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{money_8h_a736fbac5effbd08e499cb49779492981}{show\+Money}} (\mbox{\hyperlink{struct_money}{Money}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{gameplay_8c_a2f1d20fe71e2a2721b25bd83c274425a}{money}})
+\begin{DoxyCompactList}\small\item\em Inserts \doxylink{struct_money}{Money} Sprites into Render Pipeline. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{money_8h_addf41816eba02486252ebe2eba35ec1f}{hide\+Money\+Array}} (\mbox{\hyperlink{struct_money_array}{Money\+Array}} \texorpdfstring{$\ast$}{*}money\+Array)
+\begin{DoxyCompactList}\small\item\em Removes all the \doxylink{struct_money}{Money} Sprites in \doxylink{struct_money_array}{Money\+Array} from Render Pipeline. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{money_8h_a2bf3776bcea0a4e5918e95e736825592}{show\+Money\+Array}} (\mbox{\hyperlink{struct_money_array}{Money\+Array}} \texorpdfstring{$\ast$}{*}money\+Array)
+\begin{DoxyCompactList}\small\item\em Inserts all the \doxylink{struct_money}{Money} Sprites in \doxylink{struct_money_array}{Money\+Array} into Render Pipeline. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_sprite_array}{Sprite\+Array}} \mbox{\hyperlink{money_8h_a73764bf1cb460e9d1879bd0a0024ace2}{digits}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Typedef Documentation}
+\Hypertarget{money_8h_a55dbfc591068277d2b65a974490487ec}\index{money.h@{money.h}!Money@{Money}}
+\index{Money@{Money}!money.h@{money.h}}
+\doxysubsubsection{\texorpdfstring{Money}{Money}}
+{\footnotesize\ttfamily \label{money_8h_a55dbfc591068277d2b65a974490487ec} 
+typedef struct Money Money}
+
+
+
+Represents the money in the game. 
+
+\Hypertarget{money_8h_a06126c17c6659cfc72731486e53c4273}\index{money.h@{money.h}!MoneyArray@{MoneyArray}}
+\index{MoneyArray@{MoneyArray}!money.h@{money.h}}
+\doxysubsubsection{\texorpdfstring{MoneyArray}{MoneyArray}}
+{\footnotesize\ttfamily \label{money_8h_a06126c17c6659cfc72731486e53c4273} 
+typedef struct Money\+Array Money\+Array}
+
+
+
+Represents an array of \doxylink{struct_money}{Money}. 
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{money_8h_a87d35b98c1c3726e998963dec76e1f83}\index{money.h@{money.h}!associateSprites@{associateSprites}}
+\index{associateSprites@{associateSprites}!money.h@{money.h}}
+\doxysubsubsection{\texorpdfstring{associateSprites()}{associateSprites()}}
+{\footnotesize\ttfamily \label{money_8h_a87d35b98c1c3726e998963dec76e1f83} 
+void associate\+Sprites (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_money}{Money}} \texorpdfstring{$\ast$}{*}}]{money}{, }\item[{int}]{money\+\_\+amount}{, }\item[{int}]{size}{, }\item[{int8\+\_\+t}]{type}{}\end{DoxyParamCaption})}
+
+
+
+Associates the digit sprites with each digit of the money amount. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em money} & A pointer to the \doxylink{struct_money}{Money}. \\
+\hline
+{\em money\+\_\+amount} & The amount of money \\
+\hline
+{\em size} & The number of digits in the money amount. \\
+\hline
+{\em type} & The color of the money digits. 0 for white, 1 for green and 2 for red. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{money_8h_a87d35b98c1c3726e998963dec76e1f83_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{money_8h_a87d35b98c1c3726e998963dec76e1f83_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{money_8h_abe887ed57c273909bed050b92681df6c}\index{money.h@{money.h}!countDigits@{countDigits}}
+\index{countDigits@{countDigits}!money.h@{money.h}}
+\doxysubsubsection{\texorpdfstring{countDigits()}{countDigits()}}
+{\footnotesize\ttfamily \label{money_8h_abe887ed57c273909bed050b92681df6c} 
+int count\+Digits (\begin{DoxyParamCaption}\item[{int}]{num}{}\end{DoxyParamCaption})}
+
+
+
+Counts the digits of a certain money amount. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em num} & The money amount. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of digits in the money amount. 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{money_8h_abe887ed57c273909bed050b92681df6c_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{money_8h_afa1608f2c9910af4c7f038888d03b7d8}\index{money.h@{money.h}!createMoneyDigitsGameObjects@{createMoneyDigitsGameObjects}}
+\index{createMoneyDigitsGameObjects@{createMoneyDigitsGameObjects}!money.h@{money.h}}
+\doxysubsubsection{\texorpdfstring{createMoneyDigitsGameObjects()}{createMoneyDigitsGameObjects()}}
+{\footnotesize\ttfamily \label{money_8h_afa1608f2c9910af4c7f038888d03b7d8} 
+void create\+Money\+Digits\+Game\+Objects (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_money}{Money}} \texorpdfstring{$\ast$}{*}}]{money}{}\end{DoxyParamCaption})}
+
+
+
+Creates the game objects that represent the digits of the money amount using the associated sprites. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em money} & A pointer to the \doxylink{struct_money}{Money}. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{money_8h_afa1608f2c9910af4c7f038888d03b7d8_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{money_8h_afa1608f2c9910af4c7f038888d03b7d8_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{money_8h_aeb6a933a77066dcc2560e6d6716aad16}\index{money.h@{money.h}!destroyMoney@{destroyMoney}}
+\index{destroyMoney@{destroyMoney}!money.h@{money.h}}
+\doxysubsubsection{\texorpdfstring{destroyMoney()}{destroyMoney()}}
+{\footnotesize\ttfamily \label{money_8h_aeb6a933a77066dcc2560e6d6716aad16} 
+void destroy\+Money (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_money}{Money}} \texorpdfstring{$\ast$}{*}}]{money}{}\end{DoxyParamCaption})}
+
+
+
+Destroys a \doxylink{struct_money}{Money} and frees associated memory. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em money} & A pointer to the \doxylink{struct_money}{Money} to be updated. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{money_8h_aeb6a933a77066dcc2560e6d6716aad16_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{money_8h_aeb6a933a77066dcc2560e6d6716aad16_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{money_8h_a33c893fc07f6c35942107d0e1bc00e4c}\index{money.h@{money.h}!destroyMoneyArray@{destroyMoneyArray}}
+\index{destroyMoneyArray@{destroyMoneyArray}!money.h@{money.h}}
+\doxysubsubsection{\texorpdfstring{destroyMoneyArray()}{destroyMoneyArray()}}
+{\footnotesize\ttfamily \label{money_8h_a33c893fc07f6c35942107d0e1bc00e4c} 
+void destroy\+Money\+Array (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_money_array}{Money\+Array}} \texorpdfstring{$\ast$}{*}}]{money\+Array}{}\end{DoxyParamCaption})}
+
+
+
+Destroys a \doxylink{struct_money_array}{Money\+Array} and frees associated memory. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em money\+Array} & A pointer to the \doxylink{struct_money_array}{Money\+Array} to be destroyed. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{money_8h_a33c893fc07f6c35942107d0e1bc00e4c_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{money_8h_a33c893fc07f6c35942107d0e1bc00e4c_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{money_8h_a36a4298f30848abcfc57a6f4d218341a}\index{money.h@{money.h}!getDigits@{getDigits}}
+\index{getDigits@{getDigits}!money.h@{money.h}}
+\doxysubsubsection{\texorpdfstring{getDigits()}{getDigits()}}
+{\footnotesize\ttfamily \label{money_8h_a36a4298f30848abcfc57a6f4d218341a} 
+int \texorpdfstring{$\ast$}{*} get\+Digits (\begin{DoxyParamCaption}\item[{int}]{num}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{size}{}\end{DoxyParamCaption})}
+
+
+
+Retrieves the digits of a certain money amount. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em num} & The money amount. \\
+\hline
+{\em size} & The number of digits in the money amount. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+An array with the digits of the money amount. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=237pt]{money_8h_a36a4298f30848abcfc57a6f4d218341a_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{money_8h_a36a4298f30848abcfc57a6f4d218341a_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{money_8h_a36b53e03c59c66e854e3552a1e45c058}\index{money.h@{money.h}!getMoneyArray@{getMoneyArray}}
+\index{getMoneyArray@{getMoneyArray}!money.h@{money.h}}
+\doxysubsubsection{\texorpdfstring{getMoneyArray()}{getMoneyArray()}}
+{\footnotesize\ttfamily \label{money_8h_a36b53e03c59c66e854e3552a1e45c058} 
+\mbox{\hyperlink{struct_money}{Money}} \texorpdfstring{$\ast$}{*} get\+Money\+Array (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_money_array}{Money\+Array}} \texorpdfstring{$\ast$}{*}}]{money\+Array}{, }\item[{uint32\+\_\+t}]{index}{}\end{DoxyParamCaption})}
+
+
+
+Retrieves a \doxylink{struct_money}{Money} from the \doxylink{struct_money_array}{Money\+Array} at a specified index. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em money\+Array} & A pointer to the \doxylink{struct_money_array}{Money\+Array}. \\
+\hline
+{\em index} & The index of the \doxylink{struct_money}{Money} to retrieve. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the \doxylink{struct_money}{Money} at the specified index, or NULL if the index is out of bounds. 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{money_8h_a36b53e03c59c66e854e3552a1e45c058_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{money_8h_ad185379e3b998bc2290c578fcde4c173}\index{money.h@{money.h}!hideMoney@{hideMoney}}
+\index{hideMoney@{hideMoney}!money.h@{money.h}}
+\doxysubsubsection{\texorpdfstring{hideMoney()}{hideMoney()}}
+{\footnotesize\ttfamily \label{money_8h_ad185379e3b998bc2290c578fcde4c173} 
+void hide\+Money (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_money}{Money}} \texorpdfstring{$\ast$}{*}}]{money}{}\end{DoxyParamCaption})}
+
+
+
+Removes \doxylink{struct_money}{Money} Sprites from Render Pipeline. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em money} & A pointer to the \doxylink{struct_money}{Money} \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{money_8h_ad185379e3b998bc2290c578fcde4c173_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{money_8h_ad185379e3b998bc2290c578fcde4c173_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{money_8h_addf41816eba02486252ebe2eba35ec1f}\index{money.h@{money.h}!hideMoneyArray@{hideMoneyArray}}
+\index{hideMoneyArray@{hideMoneyArray}!money.h@{money.h}}
+\doxysubsubsection{\texorpdfstring{hideMoneyArray()}{hideMoneyArray()}}
+{\footnotesize\ttfamily \label{money_8h_addf41816eba02486252ebe2eba35ec1f} 
+void hide\+Money\+Array (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_money_array}{Money\+Array}} \texorpdfstring{$\ast$}{*}}]{money\+Array}{}\end{DoxyParamCaption})}
+
+
+
+Removes all the \doxylink{struct_money}{Money} Sprites in \doxylink{struct_money_array}{Money\+Array} from Render Pipeline. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em money} & A pointer to the \doxylink{struct_money}{Money} Array. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{money_8h_addf41816eba02486252ebe2eba35ec1f_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{money_8h_addf41816eba02486252ebe2eba35ec1f_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{money_8h_a93e5d98cb7a8773ebef138857bf1ab7d}\index{money.h@{money.h}!initializeMoney@{initializeMoney}}
+\index{initializeMoney@{initializeMoney}!money.h@{money.h}}
+\doxysubsubsection{\texorpdfstring{initializeMoney()}{initializeMoney()}}
+{\footnotesize\ttfamily \label{money_8h_a93e5d98cb7a8773ebef138857bf1ab7d} 
+\mbox{\hyperlink{struct_money}{Money}} \texorpdfstring{$\ast$}{*} initialize\+Money (\begin{DoxyParamCaption}\item[{int32\+\_\+t}]{money\+\_\+amount}{, }\item[{int8\+\_\+t}]{type}{}\end{DoxyParamCaption})}
+
+
+
+Initializes a new \doxylink{struct_money}{Money}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em money\+\_\+amount} & The initial amount of money. \\
+\hline
+{\em type} & The color of the money digits. 0 for white, 1 for green and 2 for red. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the newly initialized \doxylink{struct_money}{Money}. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{money_8h_a93e5d98cb7a8773ebef138857bf1ab7d_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{money_8h_a93e5d98cb7a8773ebef138857bf1ab7d_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{money_8h_a0f9b2b0e545f05e706f113d3b9655d69}\index{money.h@{money.h}!insertMoneyArray@{insertMoneyArray}}
+\index{insertMoneyArray@{insertMoneyArray}!money.h@{money.h}}
+\doxysubsubsection{\texorpdfstring{insertMoneyArray()}{insertMoneyArray()}}
+{\footnotesize\ttfamily \label{money_8h_a0f9b2b0e545f05e706f113d3b9655d69} 
+void insert\+Money\+Array (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_money_array}{Money\+Array}} \texorpdfstring{$\ast$}{*}}]{money\+Array}{, }\item[{\mbox{\hyperlink{struct_money}{Money}} \texorpdfstring{$\ast$}{*}}]{money}{}\end{DoxyParamCaption})}
+
+
+
+Adds a \doxylink{struct_money}{Money} to the \doxylink{struct_money_array}{Money\+Array}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em money\+Array} & A pointer to the \doxylink{struct_money_array}{Money\+Array}. \\
+\hline
+{\em money} & A pointer to the \doxylink{struct_money}{Money} to be added. \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{money_8h_a0f9b2b0e545f05e706f113d3b9655d69_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{money_8h_ac2cab6ebcd9d6585bb463b7f563c3e6d}\index{money.h@{money.h}!newMoneyArray@{newMoneyArray}}
+\index{newMoneyArray@{newMoneyArray}!money.h@{money.h}}
+\doxysubsubsection{\texorpdfstring{newMoneyArray()}{newMoneyArray()}}
+{\footnotesize\ttfamily \label{money_8h_ac2cab6ebcd9d6585bb463b7f563c3e6d} 
+\mbox{\hyperlink{struct_money_array}{Money\+Array}} new\+Money\+Array (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{capacity}{}\end{DoxyParamCaption})}
+
+
+
+Initializes a new \doxylink{struct_money_array}{Money\+Array}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em capacity} & The initial capacity of the \doxylink{struct_money_array}{Money\+Array}. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A new \doxylink{struct_money_array}{Money\+Array}. 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{money_8h_ac2cab6ebcd9d6585bb463b7f563c3e6d_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{money_8h_a31dba917ea802ff43ed83c1afe470d1b}\index{money.h@{money.h}!removeMoneyArray@{removeMoneyArray}}
+\index{removeMoneyArray@{removeMoneyArray}!money.h@{money.h}}
+\doxysubsubsection{\texorpdfstring{removeMoneyArray()}{removeMoneyArray()}}
+{\footnotesize\ttfamily \label{money_8h_a31dba917ea802ff43ed83c1afe470d1b} 
+void remove\+Money\+Array (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_money_array}{Money\+Array}} \texorpdfstring{$\ast$}{*}}]{money\+Array}{, }\item[{\mbox{\hyperlink{struct_money}{Money}} \texorpdfstring{$\ast$}{*}}]{money}{}\end{DoxyParamCaption})}
+
+
+
+Removes a \doxylink{struct_money}{Money} from the \doxylink{struct_money_array}{Money\+Array}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em money\+Array} & A pointer to the \doxylink{struct_money_array}{Money\+Array}. \\
+\hline
+{\em money} & A pointer to the \doxylink{struct_money}{Money} to be removed. \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{money_8h_a31dba917ea802ff43ed83c1afe470d1b_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{money_8h_a736fbac5effbd08e499cb49779492981}\index{money.h@{money.h}!showMoney@{showMoney}}
+\index{showMoney@{showMoney}!money.h@{money.h}}
+\doxysubsubsection{\texorpdfstring{showMoney()}{showMoney()}}
+{\footnotesize\ttfamily \label{money_8h_a736fbac5effbd08e499cb49779492981} 
+void show\+Money (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_money}{Money}} \texorpdfstring{$\ast$}{*}}]{money}{}\end{DoxyParamCaption})}
+
+
+
+Inserts \doxylink{struct_money}{Money} Sprites into Render Pipeline. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em money} & A pointer to the \doxylink{struct_money}{Money} \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{money_8h_a736fbac5effbd08e499cb49779492981_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{money_8h_a736fbac5effbd08e499cb49779492981_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{money_8h_a2bf3776bcea0a4e5918e95e736825592}\index{money.h@{money.h}!showMoneyArray@{showMoneyArray}}
+\index{showMoneyArray@{showMoneyArray}!money.h@{money.h}}
+\doxysubsubsection{\texorpdfstring{showMoneyArray()}{showMoneyArray()}}
+{\footnotesize\ttfamily \label{money_8h_a2bf3776bcea0a4e5918e95e736825592} 
+void show\+Money\+Array (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_money_array}{Money\+Array}} \texorpdfstring{$\ast$}{*}}]{money\+Array}{}\end{DoxyParamCaption})}
+
+
+
+Inserts all the \doxylink{struct_money}{Money} Sprites in \doxylink{struct_money_array}{Money\+Array} into Render Pipeline. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em money} & A pointer to the \doxylink{struct_money}{Money} Array. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{money_8h_a2bf3776bcea0a4e5918e95e736825592_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{money_8h_a7310c4878fa529ca9780b122ab305566}\index{money.h@{money.h}!updateGameObjectSprites@{updateGameObjectSprites}}
+\index{updateGameObjectSprites@{updateGameObjectSprites}!money.h@{money.h}}
+\doxysubsubsection{\texorpdfstring{updateGameObjectSprites()}{updateGameObjectSprites()}}
+{\footnotesize\ttfamily \label{money_8h_a7310c4878fa529ca9780b122ab305566} 
+void update\+Game\+Object\+Sprites (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_money}{Money}} \texorpdfstring{$\ast$}{*}}]{money}{, }\item[{uint8\+\_\+t}]{type}{, }\item[{int16\+\_\+t}]{x}{, }\item[{int16\+\_\+t}]{y}{}\end{DoxyParamCaption})}
+
+
+
+Updates the \doxylink{struct_money}{Money} Game Objects. Used when the money amount changes / is moved. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em money} & A pointer to the \doxylink{struct_money}{Money} to be updated. \\
+\hline
+{\em type} & The color of the money digits. 0 for white, 1 for green and 2 for red. \\
+\hline
+{\em x} & The x position of the money. \\
+\hline
+{\em y} & The y position of the money. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{money_8h_a7310c4878fa529ca9780b122ab305566_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{money_8h_a7310c4878fa529ca9780b122ab305566_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{money_8h_a73764bf1cb460e9d1879bd0a0024ace2}\index{money.h@{money.h}!digits@{digits}}
+\index{digits@{digits}!money.h@{money.h}}
+\doxysubsubsection{\texorpdfstring{digits}{digits}}
+{\footnotesize\ttfamily \label{money_8h_a73764bf1cb460e9d1879bd0a0024ace2} 
+\mbox{\hyperlink{struct_sprite_array}{Sprite\+Array}} digits}
+

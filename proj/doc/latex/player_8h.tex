@@ -1,0 +1,318 @@
+\doxysection{src/\+Game/\+Gameplay/\+Player/player.h File Reference}
+\hypertarget{player_8h}{}\label{player_8h}\index{src/Game/Gameplay/Player/player.h@{src/Game/Gameplay/Player/player.h}}
+{\ttfamily \#include "{}../\+Arena/arena.\+h"{}}\newline
+{\ttfamily \#include "{}../../../\+Devices/device\+\_\+controller.\+h"{}}\newline
+Include dependency graph for player.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{player_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{player_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_player}{Player}}
+\begin{DoxyCompactList}\small\item\em Struct that represents the player. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef enum \mbox{\hyperlink{player_8h_a224b9163917ac32fc95a60d8c1eec3aa}{Direction}} \mbox{\hyperlink{player_8h_ad196bf510b28a9ba4c872e96dfd16f92}{Direction}}
+\begin{DoxyCompactList}\small\item\em Enum that represents the direction of the player. \end{DoxyCompactList}\item 
+typedef struct Player \mbox{\hyperlink{player_8h_a480a040facb94f90060562cd65274385}{Player}}
+\begin{DoxyCompactList}\small\item\em Struct that represents the player. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{player_8h_a224b9163917ac32fc95a60d8c1eec3aa}{Direction}} \{ \newline
+\mbox{\hyperlink{player_8h_a224b9163917ac32fc95a60d8c1eec3aaaba595d8bca8bc5e67c37c0a9d89becfa}{UP}}
+, \mbox{\hyperlink{player_8h_a224b9163917ac32fc95a60d8c1eec3aaa9b0b4a95b99523966e0e34ffdadac9da}{DOWN}}
+, \mbox{\hyperlink{player_8h_a224b9163917ac32fc95a60d8c1eec3aaadb45120aafd37a973140edee24708065}{LEFT}}
+, \mbox{\hyperlink{player_8h_a224b9163917ac32fc95a60d8c1eec3aaaec8379af7490bb9eaaf579cf17876f38}{RIGHT}}
+, \newline
+\mbox{\hyperlink{player_8h_a224b9163917ac32fc95a60d8c1eec3aaaa30e5e6cfd104178275f087ae51b3b74}{UP\+\_\+\+LEFT}}
+, \mbox{\hyperlink{player_8h_a224b9163917ac32fc95a60d8c1eec3aaa91a530eb0387ac0d86947784a1946a14}{UP\+\_\+\+RIGHT}}
+, \mbox{\hyperlink{player_8h_a224b9163917ac32fc95a60d8c1eec3aaa0ae724cef12b771121df5a7c083bf1b6}{DOWN\+\_\+\+LEFT}}
+, \mbox{\hyperlink{player_8h_a224b9163917ac32fc95a60d8c1eec3aaa2877ba4eb53c0dec12f0363cfca35d0e}{DOWN\+\_\+\+RIGHT}}
+, \newline
+\mbox{\hyperlink{player_8h_a224b9163917ac32fc95a60d8c1eec3aaa9870f7f77b7dcea84972f69dd5aee58c}{UP\+\_\+\+IDLE}}
+, \mbox{\hyperlink{player_8h_a224b9163917ac32fc95a60d8c1eec3aaa50754cec95924eec36289756e9eee4e7}{DOWN\+\_\+\+IDLE}}
+, \mbox{\hyperlink{player_8h_a224b9163917ac32fc95a60d8c1eec3aaa857154f172426651829e12568c74d385}{LEFT\+\_\+\+IDLE}}
+, \mbox{\hyperlink{player_8h_a224b9163917ac32fc95a60d8c1eec3aaa725c3d98112cd9ccb6f7b5921d9f23e8}{RIGHT\+\_\+\+IDLE}}
+ \}
+\begin{DoxyCompactList}\small\item\em Enum that represents the direction of the player. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_player}{Player}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{player_8h_a1896161c4f39a705b5e60096e2e48994}{initialize\+Player}} (float x, float y, int16\+\_\+t ox, int16\+\_\+t oy, int16\+\_\+t hp)
+\begin{DoxyCompactList}\small\item\em Initializes a new player. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{player_8h_aeaca5c627e5599b60cc71af248c0f98e}{destroy\+Player}} (\mbox{\hyperlink{struct_player}{Player}} \texorpdfstring{$\ast$}{*}player)
+\begin{DoxyCompactList}\small\item\em Destroys a player and frees associated memory. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{player_8h_a38c616b7fb3b91f791a9bd2829cc5f60}{update\+Player\+Position}} (\mbox{\hyperlink{struct_player}{Player}} \texorpdfstring{$\ast$}{*}player, \mbox{\hyperlink{struct_arena}{Arena}} \mbox{\hyperlink{gameover_8c_af5a57582e3f2a42749711036c767fe64}{arena}})
+\begin{DoxyCompactList}\small\item\em Updates the position of the player based on the input and the current arena, checking for collisions with the arena\textquotesingle{}s objects. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{player_8h_a8a34b70d828ebf602f2473f7d4e69319}{update\+Player\+Sprite\+Based\+On\+Position}} (\mbox{\hyperlink{struct_player}{Player}} \texorpdfstring{$\ast$}{*}player)
+\begin{DoxyCompactList}\small\item\em Updates the player sprite based on the input and current position of the player. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Typedef Documentation}
+\Hypertarget{player_8h_ad196bf510b28a9ba4c872e96dfd16f92}\index{player.h@{player.h}!Direction@{Direction}}
+\index{Direction@{Direction}!player.h@{player.h}}
+\doxysubsubsection{\texorpdfstring{Direction}{Direction}}
+{\footnotesize\ttfamily \label{player_8h_ad196bf510b28a9ba4c872e96dfd16f92} 
+typedef enum \mbox{\hyperlink{player_8h_a224b9163917ac32fc95a60d8c1eec3aa}{Direction}} \mbox{\hyperlink{player_8h_a224b9163917ac32fc95a60d8c1eec3aa}{Direction}}}
+
+
+
+Enum that represents the direction of the player. 
+
+Enum that represents the direction of the player. The player can move in 8 directions, or be idle in one of the 4 cardinal directions. \Hypertarget{player_8h_a480a040facb94f90060562cd65274385}\index{player.h@{player.h}!Player@{Player}}
+\index{Player@{Player}!player.h@{player.h}}
+\doxysubsubsection{\texorpdfstring{Player}{Player}}
+{\footnotesize\ttfamily \label{player_8h_a480a040facb94f90060562cd65274385} 
+typedef struct Player Player}
+
+
+
+Struct that represents the player. 
+
+Struct that contains the player game object, the sprites, the current direction, the position, the speed, the origin offset, the hit points and the weapon status.
+
+
+\begin{DoxyParams}{Parameters}
+{\em player} & The player game object. \\
+\hline
+{\em sprites} & The array of Animated\+Sprites that represent the player walking in different directions. \\
+\hline
+{\em current\+\_\+direction} & The current direction of the player. \\
+\hline
+{\em x} & The x position of the player. \\
+\hline
+{\em y} & The y position of the player. \\
+\hline
+{\em speed} & The array representing speed of the player in the x and y directions. \\
+\hline
+{\em origin\+\_\+offset\+\_\+x} & The offset of the origin of the player sprite in the x direction. \\
+\hline
+{\em origin\+\_\+offset\+\_\+y} & The offset of the origin of the player sprite in the y direction. \\
+\hline
+{\em hit\+\_\+points} & The current hit points of the player. \\
+\hline
+{\em max\+\_\+hit\+\_\+points} & The maximum hit points of the player. \\
+\hline
+{\em has\+Weapon} & A boolean that represents if the player has a weapon. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{player_8h_a224b9163917ac32fc95a60d8c1eec3aa}\index{player.h@{player.h}!Direction@{Direction}}
+\index{Direction@{Direction}!player.h@{player.h}}
+\doxysubsubsection{\texorpdfstring{Direction}{Direction}}
+{\footnotesize\ttfamily \label{player_8h_a224b9163917ac32fc95a60d8c1eec3aa} 
+enum \mbox{\hyperlink{player_8h_a224b9163917ac32fc95a60d8c1eec3aa}{Direction}}}
+
+
+
+Enum that represents the direction of the player. 
+
+Enum that represents the direction of the player. The player can move in 8 directions, or be idle in one of the 4 cardinal directions. \begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{UP@{UP}!player.h@{player.h}}\index{player.h@{player.h}!UP@{UP}}}\Hypertarget{player_8h_a224b9163917ac32fc95a60d8c1eec3aaaba595d8bca8bc5e67c37c0a9d89becfa}\label{player_8h_a224b9163917ac32fc95a60d8c1eec3aa} 
+UP&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DOWN@{DOWN}!player.h@{player.h}}\index{player.h@{player.h}!DOWN@{DOWN}}}\Hypertarget{player_8h_a224b9163917ac32fc95a60d8c1eec3aaa9b0b4a95b99523966e0e34ffdadac9da}\label{player_8h_a224b9163917ac32fc95a60d8c1eec3aa} 
+DOWN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LEFT@{LEFT}!player.h@{player.h}}\index{player.h@{player.h}!LEFT@{LEFT}}}\Hypertarget{player_8h_a224b9163917ac32fc95a60d8c1eec3aaadb45120aafd37a973140edee24708065}\label{player_8h_a224b9163917ac32fc95a60d8c1eec3aa} 
+LEFT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{RIGHT@{RIGHT}!player.h@{player.h}}\index{player.h@{player.h}!RIGHT@{RIGHT}}}\Hypertarget{player_8h_a224b9163917ac32fc95a60d8c1eec3aaaec8379af7490bb9eaaf579cf17876f38}\label{player_8h_a224b9163917ac32fc95a60d8c1eec3aa} 
+RIGHT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{UP\_LEFT@{UP\_LEFT}!player.h@{player.h}}\index{player.h@{player.h}!UP\_LEFT@{UP\_LEFT}}}\Hypertarget{player_8h_a224b9163917ac32fc95a60d8c1eec3aaaa30e5e6cfd104178275f087ae51b3b74}\label{player_8h_a224b9163917ac32fc95a60d8c1eec3aa} 
+UP\+\_\+\+LEFT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{UP\_RIGHT@{UP\_RIGHT}!player.h@{player.h}}\index{player.h@{player.h}!UP\_RIGHT@{UP\_RIGHT}}}\Hypertarget{player_8h_a224b9163917ac32fc95a60d8c1eec3aaa91a530eb0387ac0d86947784a1946a14}\label{player_8h_a224b9163917ac32fc95a60d8c1eec3aa} 
+UP\+\_\+\+RIGHT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DOWN\_LEFT@{DOWN\_LEFT}!player.h@{player.h}}\index{player.h@{player.h}!DOWN\_LEFT@{DOWN\_LEFT}}}\Hypertarget{player_8h_a224b9163917ac32fc95a60d8c1eec3aaa0ae724cef12b771121df5a7c083bf1b6}\label{player_8h_a224b9163917ac32fc95a60d8c1eec3aa} 
+DOWN\+\_\+\+LEFT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DOWN\_RIGHT@{DOWN\_RIGHT}!player.h@{player.h}}\index{player.h@{player.h}!DOWN\_RIGHT@{DOWN\_RIGHT}}}\Hypertarget{player_8h_a224b9163917ac32fc95a60d8c1eec3aaa2877ba4eb53c0dec12f0363cfca35d0e}\label{player_8h_a224b9163917ac32fc95a60d8c1eec3aa} 
+DOWN\+\_\+\+RIGHT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{UP\_IDLE@{UP\_IDLE}!player.h@{player.h}}\index{player.h@{player.h}!UP\_IDLE@{UP\_IDLE}}}\Hypertarget{player_8h_a224b9163917ac32fc95a60d8c1eec3aaa9870f7f77b7dcea84972f69dd5aee58c}\label{player_8h_a224b9163917ac32fc95a60d8c1eec3aa} 
+UP\+\_\+\+IDLE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DOWN\_IDLE@{DOWN\_IDLE}!player.h@{player.h}}\index{player.h@{player.h}!DOWN\_IDLE@{DOWN\_IDLE}}}\Hypertarget{player_8h_a224b9163917ac32fc95a60d8c1eec3aaa50754cec95924eec36289756e9eee4e7}\label{player_8h_a224b9163917ac32fc95a60d8c1eec3aa} 
+DOWN\+\_\+\+IDLE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LEFT\_IDLE@{LEFT\_IDLE}!player.h@{player.h}}\index{player.h@{player.h}!LEFT\_IDLE@{LEFT\_IDLE}}}\Hypertarget{player_8h_a224b9163917ac32fc95a60d8c1eec3aaa857154f172426651829e12568c74d385}\label{player_8h_a224b9163917ac32fc95a60d8c1eec3aa} 
+LEFT\+\_\+\+IDLE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{RIGHT\_IDLE@{RIGHT\_IDLE}!player.h@{player.h}}\index{player.h@{player.h}!RIGHT\_IDLE@{RIGHT\_IDLE}}}\Hypertarget{player_8h_a224b9163917ac32fc95a60d8c1eec3aaa725c3d98112cd9ccb6f7b5921d9f23e8}\label{player_8h_a224b9163917ac32fc95a60d8c1eec3aa} 
+RIGHT\+\_\+\+IDLE&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{player_8h_aeaca5c627e5599b60cc71af248c0f98e}\index{player.h@{player.h}!destroyPlayer@{destroyPlayer}}
+\index{destroyPlayer@{destroyPlayer}!player.h@{player.h}}
+\doxysubsubsection{\texorpdfstring{destroyPlayer()}{destroyPlayer()}}
+{\footnotesize\ttfamily \label{player_8h_aeaca5c627e5599b60cc71af248c0f98e} 
+void destroy\+Player (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_player}{Player}} \texorpdfstring{$\ast$}{*}}]{player}{}\end{DoxyParamCaption})}
+
+
+
+Destroys a player and frees associated memory. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em player} & A pointer to the \doxylink{struct_player}{Player} to be destroyed. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{player_8h_aeaca5c627e5599b60cc71af248c0f98e_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{player_8h_aeaca5c627e5599b60cc71af248c0f98e_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{player_8h_a1896161c4f39a705b5e60096e2e48994}\index{player.h@{player.h}!initializePlayer@{initializePlayer}}
+\index{initializePlayer@{initializePlayer}!player.h@{player.h}}
+\doxysubsubsection{\texorpdfstring{initializePlayer()}{initializePlayer()}}
+{\footnotesize\ttfamily \label{player_8h_a1896161c4f39a705b5e60096e2e48994} 
+\mbox{\hyperlink{struct_player}{Player}} \texorpdfstring{$\ast$}{*} initialize\+Player (\begin{DoxyParamCaption}\item[{float}]{x}{, }\item[{float}]{y}{, }\item[{int16\+\_\+t}]{ox}{, }\item[{int16\+\_\+t}]{oy}{, }\item[{int16\+\_\+t}]{hp}{}\end{DoxyParamCaption})}
+
+
+
+Initializes a new player. 
+
+Initializes a new player by creating the player game object, the sprites, setting the initial position, the origin offset, the hit points and the weapon status.
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & The initial x position of the player. \\
+\hline
+{\em y} & The initial y position of the player. \\
+\hline
+{\em ox} & The offset of the origin of the player sprite in the x direction. \\
+\hline
+{\em oy} & The offset of the origin of the player sprite in the y direction. \\
+\hline
+{\em hp} & The initial hit points of the player. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the newly initialized \doxylink{struct_player}{Player} object. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{player_8h_a1896161c4f39a705b5e60096e2e48994_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{player_8h_a1896161c4f39a705b5e60096e2e48994_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{player_8h_a38c616b7fb3b91f791a9bd2829cc5f60}\index{player.h@{player.h}!updatePlayerPosition@{updatePlayerPosition}}
+\index{updatePlayerPosition@{updatePlayerPosition}!player.h@{player.h}}
+\doxysubsubsection{\texorpdfstring{updatePlayerPosition()}{updatePlayerPosition()}}
+{\footnotesize\ttfamily \label{player_8h_a38c616b7fb3b91f791a9bd2829cc5f60} 
+void update\+Player\+Position (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_player}{Player}} \texorpdfstring{$\ast$}{*}}]{player}{, }\item[{\mbox{\hyperlink{struct_arena}{Arena}}}]{arena}{}\end{DoxyParamCaption})}
+
+
+
+Updates the position of the player based on the input and the current arena, checking for collisions with the arena\textquotesingle{}s objects. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em player} & A pointer to the \doxylink{struct_player}{Player} to be updated. \\
+\hline
+{\em arena} & The current arena. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{player_8h_a38c616b7fb3b91f791a9bd2829cc5f60_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{player_8h_a38c616b7fb3b91f791a9bd2829cc5f60_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{player_8h_a8a34b70d828ebf602f2473f7d4e69319}\index{player.h@{player.h}!updatePlayerSpriteBasedOnPosition@{updatePlayerSpriteBasedOnPosition}}
+\index{updatePlayerSpriteBasedOnPosition@{updatePlayerSpriteBasedOnPosition}!player.h@{player.h}}
+\doxysubsubsection{\texorpdfstring{updatePlayerSpriteBasedOnPosition()}{updatePlayerSpriteBasedOnPosition()}}
+{\footnotesize\ttfamily \label{player_8h_a8a34b70d828ebf602f2473f7d4e69319} 
+void update\+Player\+Sprite\+Based\+On\+Position (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_player}{Player}} \texorpdfstring{$\ast$}{*}}]{player}{}\end{DoxyParamCaption})}
+
+
+
+Updates the player sprite based on the input and current position of the player. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em player} & A pointer to the \doxylink{struct_player}{Player} to be updated. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{player_8h_a8a34b70d828ebf602f2473f7d4e69319_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{player_8h_a8a34b70d828ebf602f2473f7d4e69319_icgraph}
+\end{center}
+\end{figure}

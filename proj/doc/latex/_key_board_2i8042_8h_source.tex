@@ -1,0 +1,55 @@
+\doxysection{i8042.\+h}
+\hypertarget{_key_board_2i8042_8h_source}{}\label{_key_board_2i8042_8h_source}\index{src/Devices/KeyBoard/i8042.h@{src/Devices/KeyBoard/i8042.h}}
+\mbox{\hyperlink{_key_board_2i8042_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//\ Make\ and\ Break\ codes\ for\ the\ keyboard's\ ESC\ key}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#define\ MAKE\ 0x01\ }\textcolor{comment}{//\ Make\ Boolean}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#define\ BREAK\ 0x00\ }\textcolor{comment}{//\ Break\ Boolean}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#define\ SPECIAL\_KEY\ 0xE0\ }\textcolor{comment}{//\ Special\ Key\ Scancode\ Byte}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{comment}{//\ Keyboard\ Controller\ Commands\ and\ Interrupt\ Identifiers}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#define\ MAX\_RETRIES\ 5\ }\textcolor{comment}{//\ Maximum\ Number\ of\ Tries\ to\ Read/Write\ to\ KBC}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#define\ KBC\_ACK\ 0xFA\ }\textcolor{comment}{//\ Acknowledgment\ Byte}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#define\ KBC\_RESEND\ 0xFE\ }\textcolor{comment}{//\ Resend\ Byte}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#define\ KBC\_STATUS\_RG\ 0x64\ }\textcolor{comment}{//\ Read-\/Only}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#define\ KBC\_COMMAND\_REG\ 0x64\ }\textcolor{comment}{//\ Write-\/Only}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#define\ KBC\_DATA\_REG\ 0x60\ }\textcolor{comment}{//\ Read-\/Only}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#define\ KBC\_OUTPUT\_BUFFER\ 0x60\ }\textcolor{comment}{//\ Read-\/Only}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#define\ KBC\_INPUT\_BUFFER\ 0x60\ }\textcolor{comment}{//\ Write-\/Only}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#define\ KBC\_READ\_COMMAND\_BYTE\ 0x20\ }\textcolor{comment}{//\ To\ write\ to\ KBC\_COMMAND\_REG}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#define\ KBC\_WRITE\_COMMAND\_BYTE\ 0x60\ }\textcolor{comment}{//\ To\ write\ to\ KBC\_COMMAND\_REG}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#define\ KBC\_WRITE\_TO\_MOUSE\ 0xD4\ }\textcolor{comment}{//\ To\ write\ to\ KBC\_COMMAND\_REG}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#define\ KBC\_MOUSE\_DISABLE\_STREAM\_MODE\_REPORTING\ 0xF5\ }\textcolor{comment}{//\ To\ write\ to\ KBC\_INPUT\_BUFFER}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#define\ KBC\_MOUSE\_ENABLE\_STREAM\_MODE\_REPORTING\ 0xF4\ }\textcolor{comment}{//\ To\ write\ to\ KBC\_INPUT\_BUFFER}}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#define\ KBC\_MOUSE\_SET\_SAMPLE\_RATE\ 0xF3\ }\textcolor{comment}{//\ To\ write\ to\ KBC\_INPUT\_BUFFER}}
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#define\ KBC\_MOUSE\_SET\_STREAM\_MODE\ 0xEA\ }\textcolor{comment}{//\ To\ write\ to\ KBC\_INPUT\_BUFFER}}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#define\ KBC\_MOUSE\_SET\_REMOTE\_MODE\ 0xF0\ }\textcolor{comment}{//\ To\ write\ to\ KBC\_INPUT\_BUFFER}}
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#define\ KBC\_MOUSE\_READ\_DATA\ 0xEB\ }\textcolor{comment}{//\ To\ write\ to\ KBC\_INPUT\_BUFFER}}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#define\ KBC\_IRQ\ 1\ }\textcolor{comment}{//\ Keyboard\ IRQ}}
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#define\ KBC\_MOUSE\_IRQ\ 12\ }\textcolor{comment}{//\ Mouse\ IRQ}}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#define\ KBC\_OUT\_BUFFER\_FULL\ BIT(0)\ }\textcolor{comment}{//\ Status\ Register\ Bit\ 0}}
+\DoxyCodeLine{00037\ \textcolor{preprocessor}{\#define\ KBC\_IN\_BUFFER\_FULL\ BIT(1)\ }\textcolor{comment}{//\ Status\ Register\ Bit\ 1}}
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#define\ MOUSE\_DATA\ BIT(5)\ }\textcolor{comment}{//\ Status\ Register\ Bit\ 5}}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \textcolor{preprocessor}{\#define\ KBC\_TRANSMIT\_TIMEOUT\_ERR\ BIT(5)\ }\textcolor{comment}{//\ Status\ Register\ Bit\ 5}}
+\DoxyCodeLine{00041\ \textcolor{preprocessor}{\#define\ KBC\_RECEIVE\_TIMEOUT\_ERR\ BIT(6)\ }\textcolor{comment}{//\ Status\ Register\ Bit\ 6}}
+\DoxyCodeLine{00042\ \textcolor{preprocessor}{\#define\ KBC\_PARITY\_ERR\ BIT(7)\ }\textcolor{comment}{//\ Status\ Register\ Bit\ 7}}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \textcolor{preprocessor}{\#define\ KBC\_ENABLE\_KBD\_INT\ BIT(0)\ }\textcolor{comment}{//\ Command\ Byte\ Bit\ 0}}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \textcolor{comment}{//\ Miscellanous\ Keyboard\ Related\ Constants}}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \textcolor{preprocessor}{\#define\ DELAY\_US\ 20000}}
+
+\end{DoxyCode}

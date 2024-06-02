@@ -1,0 +1,7 @@
+<map id="mouse_read_cmdb" name="mouse_read_cmdb">
+<area shape="rect" id="Node000001" title="Reads a command from the Mouse." alt="" coords="5,5,137,31"/>
+<area shape="rect" id="Node000002" href="$kbc_8c.html#abc18ea628a0ac94eeabd7422e544d94d" title="Reads a command from the KBC." alt="" coords="185,5,298,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="137,16,169,16,169,21,137,21"/>
+<area shape="rect" id="Node000003" href="$utils_8c.html#a2b56f50ba159e9d5115ed1a75eff15d9" title=" " alt="" coords="346,5,436,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="298,16,330,16,330,21,298,21"/>
+</map>

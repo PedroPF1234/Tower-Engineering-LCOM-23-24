@@ -1,0 +1,9 @@
+<map id="rtc_toggle_periodic_int" name="rtc_toggle_periodic_int">
+<area shape="rect" id="Node000001" title="Enables or disables RTC periodic interrupts." alt="" coords="5,31,157,56"/>
+<area shape="rect" id="Node000002" href="$rtc_8c.html#ac8b0ed21f98fd3ada932e232c253b92b" title="Reads a byte from the RTC." alt="" coords="206,5,275,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="157,29,190,23,191,29,157,34"/>
+<area shape="rect" id="Node000004" href="$rtc_8c.html#a88bc7fc547c8c1296e2e42d246e5e23e" title="Writes a byte to the RTC." alt="" coords="205,55,276,80"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="157,52,190,57,189,63,157,58"/>
+<area shape="rect" id="Node000003" href="$utils_8c.html#a2b56f50ba159e9d5115ed1a75eff15d9" title=" " alt="" coords="324,5,414,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="275,16,309,16,309,21,275,21"/>
+</map>

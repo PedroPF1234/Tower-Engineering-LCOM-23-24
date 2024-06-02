@@ -1,0 +1,139 @@
+\doxysection{src/\+Game/\+Gameplay/\+Player\+Base/playerbase.h File Reference}
+\hypertarget{playerbase_8h}{}\label{playerbase_8h}\index{src/Game/Gameplay/PlayerBase/playerbase.h@{src/Game/Gameplay/PlayerBase/playerbase.h}}
+{\ttfamily \#include "{}../../../\+Devices/device\+\_\+controller.\+h"{}}\newline
+{\ttfamily \#include "{}../\+Money/money.\+h"{}}\newline
+Include dependency graph for playerbase.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{playerbase_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{playerbase_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_player_base}{Player\+Base}}
+\begin{DoxyCompactList}\small\item\em Represents the player\textquotesingle{}s base. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct Player\+Base \mbox{\hyperlink{playerbase_8h_a12d60285f698a7eefe1d438069664269}{Player\+Base}}
+\begin{DoxyCompactList}\small\item\em Represents the player\textquotesingle{}s base. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_player_base}{Player\+Base}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{playerbase_8h_ac6cd2a8de8bf7122bea7bfacf2aa6d7e}{initialize\+Player\+Base}} (int16\+\_\+t x, int16\+\_\+t y, int16\+\_\+t hp)
+\begin{DoxyCompactList}\small\item\em Initializes a new player base. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{playerbase_8h_a547b7702d9da3b582ab6be7ebe09b3f5}{destroy\+Player\+Base}} (\mbox{\hyperlink{struct_player_base}{Player\+Base}} \texorpdfstring{$\ast$}{*}playerbase)
+\begin{DoxyCompactList}\small\item\em Destroys all the Game Objects associated with a \doxylink{struct_player}{Player} Base and frees their associated memory. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{playerbase_8h_a9f2dd9531f5a0a67d5baae332423e8d5}{update\+Player\+Base\+Health\+Bar}} (\mbox{\hyperlink{struct_player_base}{Player\+Base}} \texorpdfstring{$\ast$}{*}playerbase)
+\begin{DoxyCompactList}\small\item\em Updates the displayed health of the health bar of a player base. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Typedef Documentation}
+\Hypertarget{playerbase_8h_a12d60285f698a7eefe1d438069664269}\index{playerbase.h@{playerbase.h}!PlayerBase@{PlayerBase}}
+\index{PlayerBase@{PlayerBase}!playerbase.h@{playerbase.h}}
+\doxysubsubsection{\texorpdfstring{PlayerBase}{PlayerBase}}
+{\footnotesize\ttfamily \label{playerbase_8h_a12d60285f698a7eefe1d438069664269} 
+typedef struct Player\+Base Player\+Base}
+
+
+
+Represents the player\textquotesingle{}s base. 
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{playerbase_8h_a547b7702d9da3b582ab6be7ebe09b3f5}\index{playerbase.h@{playerbase.h}!destroyPlayerBase@{destroyPlayerBase}}
+\index{destroyPlayerBase@{destroyPlayerBase}!playerbase.h@{playerbase.h}}
+\doxysubsubsection{\texorpdfstring{destroyPlayerBase()}{destroyPlayerBase()}}
+{\footnotesize\ttfamily \label{playerbase_8h_a547b7702d9da3b582ab6be7ebe09b3f5} 
+void destroy\+Player\+Base (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_player_base}{Player\+Base}} \texorpdfstring{$\ast$}{*}}]{playerbase}{}\end{DoxyParamCaption})}
+
+
+
+Destroys all the Game Objects associated with a \doxylink{struct_player}{Player} Base and frees their associated memory. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em playerbase} & A pointer to the \doxylink{struct_player_base}{Player\+Base} to be destroyed. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{playerbase_8h_a547b7702d9da3b582ab6be7ebe09b3f5_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{playerbase_8h_ac6cd2a8de8bf7122bea7bfacf2aa6d7e}\index{playerbase.h@{playerbase.h}!initializePlayerBase@{initializePlayerBase}}
+\index{initializePlayerBase@{initializePlayerBase}!playerbase.h@{playerbase.h}}
+\doxysubsubsection{\texorpdfstring{initializePlayerBase()}{initializePlayerBase()}}
+{\footnotesize\ttfamily \label{playerbase_8h_ac6cd2a8de8bf7122bea7bfacf2aa6d7e} 
+\mbox{\hyperlink{struct_player_base}{Player\+Base}} \texorpdfstring{$\ast$}{*} initialize\+Player\+Base (\begin{DoxyParamCaption}\item[{int16\+\_\+t}]{x}{, }\item[{int16\+\_\+t}]{y}{, }\item[{int16\+\_\+t}]{hp}{}\end{DoxyParamCaption})}
+
+
+
+Initializes a new player base. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & The initial x position of the player base. \\
+\hline
+{\em y} & The initial y position of the player base. \\
+\hline
+{\em hp} & The initial hit points of the player base. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the newly initialized \doxylink{struct_player_base}{Player\+Base}. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{playerbase_8h_ac6cd2a8de8bf7122bea7bfacf2aa6d7e_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{playerbase_8h_ac6cd2a8de8bf7122bea7bfacf2aa6d7e_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{playerbase_8h_a9f2dd9531f5a0a67d5baae332423e8d5}\index{playerbase.h@{playerbase.h}!updatePlayerBaseHealthBar@{updatePlayerBaseHealthBar}}
+\index{updatePlayerBaseHealthBar@{updatePlayerBaseHealthBar}!playerbase.h@{playerbase.h}}
+\doxysubsubsection{\texorpdfstring{updatePlayerBaseHealthBar()}{updatePlayerBaseHealthBar()}}
+{\footnotesize\ttfamily \label{playerbase_8h_a9f2dd9531f5a0a67d5baae332423e8d5} 
+void update\+Player\+Base\+Health\+Bar (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_player_base}{Player\+Base}} \texorpdfstring{$\ast$}{*}}]{playerbase}{}\end{DoxyParamCaption})}
+
+
+
+Updates the displayed health of the health bar of a player base. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em playerbase} & A pointer to the \doxylink{struct_player_base}{Player\+Base} whose health bar is to be updated. \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{playerbase_8h_a9f2dd9531f5a0a67d5baae332423e8d5_icgraph}
+\end{center}
+\end{figure}

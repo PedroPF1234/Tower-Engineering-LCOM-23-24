@@ -1,0 +1,14 @@
+<map id="TowerArray" name="TowerArray">
+<area shape="rect" id="Node000001" title="Represents an array of TowerBases." alt="" coords="44,429,131,454"/>
+<area shape="rect" id="Node000002" href="$struct_tower_base.html" title="Represents a tower placeholder in the game." alt="" coords="44,340,131,366"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="90,381,90,428,85,428,85,381"/>
+<area shape="rect" id="Node000003" href="$struct_game_object.html" title="Represents a game object in the game." alt="" coords="55,111,149,137"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="103,153,91,340,85,340,98,152"/>
+<area shape="rect" id="Node000005" href="$struct_enemy.html" title="Represents an enemy in the game." alt="" coords="143,249,205,275"/>
+<area shape="poly" id="edge6_Node000005_Node000003" title=" " alt="" coords="109,151,118,186,135,222,159,247,155,251,130,224,113,188,104,152"/>
+<area shape="rect" id="Node000004" href="$struct_sprite.html" title="Struct that represents a sprite." alt="" coords="74,5,130,31"/>
+<area shape="poly" id="edge4_Node000002_Node000004" title=" " alt="" coords="83,44,46,95,24,135,12,179,8,201,12,222,25,257,43,290,79,338,75,341,39,292,20,259,6,224,3,201,6,177,19,133,41,93,79,41"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="105,46,105,111,99,111,99,46"/>
+<area shape="poly" id="edge7_Node000005_Node000004" title=" " alt="" coords="133,39,146,54,175,117,195,177,198,201,195,224,184,250,179,248,190,222,193,201,190,179,170,119,141,56,129,43"/>
+<area shape="poly" id="edge5_Node000002_Node000005" title=" " alt="" coords="154,288,101,342,97,338,150,284"/>
+</map>

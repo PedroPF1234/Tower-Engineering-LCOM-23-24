@@ -1,0 +1,7 @@
+<map id="src/Devices/RTC/rtc.h" name="src/Devices/RTC/rtc.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="89,5,243,31"/>
+<area shape="rect" id="Node000002" href="$rtc_8c.html" title=" " alt="" coords="5,87,159,112"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="144,43,97,88,93,84,141,40"/>
+<area shape="rect" id="Node000003" href="$device__controller_8c.html" title=" " alt="" coords="183,79,317,120"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="192,40,231,77,227,81,188,44"/>
+</map>

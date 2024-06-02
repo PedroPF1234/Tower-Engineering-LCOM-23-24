@@ -1,0 +1,99 @@
+<map id="util_sys_inb" name="util_sys_inb">
+<area shape="rect" id="Node000001" title=" " alt="" coords="1125,353,1216,379"/>
+<area shape="rect" id="Node000002" href="$kbc_8c.html#ab9e6ed7960d60aa4834f2038247d4536" title="KBC Interrupt Handler." alt="" coords="989,105,1048,131"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1155,341,1121,272,1075,193,1029,133,1033,130,1080,190,1126,270,1159,338"/>
+<area shape="rect" id="Node000006" href="$kbc_8c.html#abc18ea628a0ac94eeabd7422e544d94d" title="Reads a command from the KBC." alt="" coords="962,755,1075,780"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="1173,395,1171,463,1160,555,1148,605,1131,654,1109,701,1079,744,1064,756,1061,752,1075,740,1104,699,1126,652,1143,604,1154,554,1166,463,1168,395"/>
+<area shape="rect" id="Node000009" href="$kbc_8c.html#aa4c58a11cd49c54cc0eb02a79010a9cc" title="Reads the status of the KBC." alt="" coords="960,204,1077,230"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="1144,344,1032,232,1035,228,1147,341"/>
+<area shape="rect" id="Node000010" href="$kbc_8c.html#a07566fc9da24f69ede678ea644744195" title="Writes a command to the KBC." alt="" coords="961,704,1077,730"/>
+<area shape="poly" id="edge10_Node000001_Node000010" title=" " alt="" coords="1160,394,1028,705,1023,702,1155,392"/>
+<area shape="rect" id="Node000016" href="$mouse_8c.html#a834b6d7efe311484d6da234db333cb97" title="Mouse Interrupt Handler." alt="" coords="980,31,1057,56"/>
+<area shape="poly" id="edge19_Node000001_Node000016" title=" " alt="" coords="1162,339,1152,290,1135,227,1110,159,1075,94,1058,75,1039,59,1042,55,1062,71,1080,91,1115,156,1140,225,1157,289,1167,338"/>
+<area shape="rect" id="Node000017" href="$rtc_8c.html#ac8b0ed21f98fd3ada932e232c253b92b" title="Reads a byte from the RTC." alt="" coords="985,353,1053,379"/>
+<area shape="poly" id="edge21_Node000001_Node000017" title=" " alt="" coords="1110,369,1053,369,1053,364,1110,364"/>
+<area shape="rect" id="Node000035" href="$timer_8c.html#afafc1891c876602d55b894103b1841a7" title=" " alt="" coords="965,828,1072,854"/>
+<area shape="poly" id="edge55_Node000001_Node000035" title=" " alt="" coords="1172,395,1168,469,1156,572,1144,628,1128,686,1107,742,1080,794,1063,814,1044,830,1041,825,1059,810,1075,791,1102,739,1123,684,1139,627,1150,571,1163,469,1167,395"/>
+<area shape="rect" id="Node000003" href="$device__controller_8c.html#a7cd80a0fd93e349abec03d39d7e94e33" title=" " alt="" coords="784,5,881,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="985,98,911,53,869,34,872,29,913,48,988,94"/>
+<area shape="rect" id="Node000004" href="$device__controller_8c.html#a4d10f01a84e9e24f18682c0bca48dca6" title="Calls all device&#39;s interrupt handlers." alt="" coords="162,255,279,280"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="770,36,673,64,565,101,471,141,380,185,246,257,244,252,377,181,469,136,563,96,671,59,769,31"/>
+<area shape="rect" id="Node000005" href="$proj_8c.html#af244d65e69677cf312af1950452ec256" title=" " alt="" coords="5,579,114,604"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="208,295,70,579,65,577,204,293"/>
+<area shape="rect" id="Node000007" href="$kbc_8c.html#a0abccaf1a5e334eb50194f3490355c50" title="Reenables KBC interrupts." alt="" coords="753,755,912,780"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="946,770,912,770,912,765,946,765"/>
+<area shape="rect" id="Node000008" href="$mouse_8c.html#a84f8dbeb425ea9796aea60d8a2ad0801" title="Reads a command from the Mouse." alt="" coords="767,804,898,830"/>
+<area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="953,787,884,806,883,801,952,782"/>
+<area shape="poly" id="edge9_Node000009_Node000003" title=" " alt="" coords="994,194,958,145,944,118,937,95,928,74,910,52,880,34,883,29,914,48,933,71,942,93,949,116,962,142,998,190"/>
+<area shape="poly" id="edge11_Node000010_Node000007" title=" " alt="" coords="955,737,883,757,881,752,953,732"/>
+<area shape="rect" id="Node000011" href="$mouse_8c.html#add3f28e5b936cfe39057eea4d30284f2" title="Writes a command to the Mouse." alt="" coords="567,704,702,730"/>
+<area shape="poly" id="edge12_Node000010_Node000011" title=" " alt="" coords="945,720,702,720,702,714,945,714"/>
+<area shape="rect" id="Node000012" href="$mouse_8c.html#a4cc83f82d3baf0f2c63ae52ecae8aa9f" title="Encapsulates the subscription and initialization of the mouse." alt="" coords="369,712,474,738"/>
+<area shape="poly" id="edge13_Node000011_Node000012" title=" " alt="" coords="551,723,475,726,475,720,551,717"/>
+<area shape="rect" id="Node000014" href="$mouse_8c.html#ae4a3f8afb4bb0f324a4c1f2e87932eed" title="Encapsulates the unsubscription and termination of the mouse." alt="" coords="361,663,482,688"/>
+<area shape="poly" id="edge16_Node000011_Node000014" title=" " alt="" coords="551,703,482,690,483,685,552,698"/>
+<area shape="rect" id="Node000013" href="$device__controller_8c.html#a47e74a2f7a5edae37287b8bcfbb30562" title="Encapsulates the initialization of all the devices." alt="" coords="171,659,270,684"/>
+<area shape="poly" id="edge14_Node000012_Node000013" title=" " alt="" coords="353,710,326,703,269,688,270,682,328,698,354,705"/>
+<area shape="poly" id="edge15_Node000013_Node000005" title=" " alt="" coords="178,654,86,607,89,603,180,649"/>
+<area shape="rect" id="Node000015" href="$device__controller_8c.html#ab1bc69df0c7a23951179c8258d9ac75c" title="Encapsulates the termination of all the devices." alt="" coords="171,579,270,604"/>
+<area shape="poly" id="edge17_Node000014_Node000015" title=" " alt="" coords="347,660,326,653,280,630,241,607,244,603,282,625,328,648,349,655"/>
+<area shape="poly" id="edge18_Node000015_Node000005" title=" " alt="" coords="155,594,114,594,114,589,155,589"/>
+<area shape="poly" id="edge20_Node000016_Node000003" title=" " alt="" coords="965,39,881,27,881,22,965,34"/>
+<area shape="rect" id="Node000018" href="$rtc_8c.html#a9dac2b0a9f8d5312959534768d4b7498" title=" " alt="" coords="760,403,905,428"/>
+<area shape="poly" id="edge22_Node000017_Node000018" title=" " alt="" coords="970,382,884,405,883,399,969,376"/>
+<area shape="rect" id="Node000020" href="$rtc_8c.html#a75dad42881d64cf07cf1bdc2979a7056" title="RTC Interrupt Handler." alt="" coords="395,255,448,280"/>
+<area shape="poly" id="edge40_Node000017_Node000020" title=" " alt="" coords="1001,341,957,243,947,198,945,160,937,126,927,111,910,96,879,78,847,67,813,63,778,64,743,70,707,80,637,110,573,149,516,190,439,256,435,252,512,186,570,145,635,106,705,75,741,65,777,58,813,57,848,62,882,73,914,92,931,108,942,124,950,159,952,197,963,241,1006,338"/>
+<area shape="rect" id="Node000021" href="$rtc_8c.html#a2190c057929ef6fbff940998492aa4ec" title="Sets the RTC alarm every second." alt="" coords="565,423,704,464"/>
+<area shape="poly" id="edge41_Node000017_Node000021" title=" " alt="" coords="995,392,959,420,913,443,859,456,804,461,751,460,704,457,705,451,752,455,804,455,859,450,911,438,956,416,992,387"/>
+<area shape="rect" id="Node000022" href="$rtc_8c.html#ac90c5c86ddb921afe41656dfe342b439" title=" " alt="" coords="788,353,877,379"/>
+<area shape="poly" id="edge28_Node000017_Node000022" title=" " alt="" coords="969,369,877,369,877,364,969,364"/>
+<area shape="rect" id="Node000023" href="$rtc_8c.html#a2234482295bce9f2db6991decd3f54d4" title=" " alt="" coords="786,107,879,132"/>
+<area shape="poly" id="edge30_Node000017_Node000023" title=" " alt="" coords="1003,341,910,145,895,136,879,129,881,124,898,131,914,142,1007,338"/>
+<area shape="rect" id="Node000024" href="$rtc_8c.html#aef1214ca4144380fb1f9cf3039e6927d" title=" " alt="" coords="775,156,890,182"/>
+<area shape="poly" id="edge32_Node000017_Node000024" title=" " alt="" coords="1005,340,991,306,971,267,944,228,910,195,889,183,891,178,914,191,948,225,975,265,996,304,1010,338"/>
+<area shape="rect" id="Node000025" href="$rtc_8c.html#a864a96d3106cfb03f9fad91cfd294e3f" title=" " alt="" coords="780,205,885,231"/>
+<area shape="poly" id="edge34_Node000017_Node000025" title=" " alt="" coords="1000,342,963,292,938,266,911,244,884,232,886,227,913,240,942,262,967,288,1004,338"/>
+<area shape="rect" id="Node000026" href="$rtc_8c.html#ab629781c4168a835c2ab2548e2711ae7" title=" " alt="" coords="774,255,891,280"/>
+<area shape="poly" id="edge36_Node000017_Node000026" title=" " alt="" coords="989,346,953,319,911,294,885,283,887,278,913,289,956,314,992,341"/>
+<area shape="rect" id="Node000027" href="$rtc_8c.html#ac0854496e8e86ee49e049a58cc9eff5d" title=" " alt="" coords="786,304,879,330"/>
+<area shape="poly" id="edge38_Node000017_Node000027" title=" " alt="" coords="969,356,879,332,880,327,970,351"/>
+<area shape="rect" id="Node000028" href="$rtc_8c.html#a5171a9c0f54940fe60f7500896afcc86" title="Subscribes and enables RTC interrupts." alt="" coords="574,653,695,679"/>
+<area shape="poly" id="edge42_Node000017_Node000028" title=" " alt="" coords="1018,395,1011,449,995,517,981,553,963,586,941,617,914,643,889,659,861,670,803,682,746,684,695,680,695,675,746,679,803,677,860,665,886,654,910,639,937,614,959,584,976,550,989,516,1006,448,1013,394"/>
+<area shape="rect" id="Node000030" href="$rtc_8c.html#ae1ad1cb6ae417786d227c4ede4d586fd" title="Enables or disables RTC alarm interrupts." alt="" coords="763,504,902,530"/>
+<area shape="poly" id="edge45_Node000017_Node000030" title=" " alt="" coords="1002,393,965,440,940,465,913,487,878,506,875,501,911,483,937,461,961,437,998,390"/>
+<area shape="rect" id="Node000033" href="$rtc_8c.html#aadf5ab2196aa22ca0ae6679fe388e270" title="Enables or disables RTC periodic interrupts." alt="" coords="757,603,908,628"/>
+<area shape="poly" id="edge50_Node000017_Node000033" title=" " alt="" coords="1015,395,1003,438,983,492,954,546,935,571,914,594,897,604,894,600,910,589,931,568,950,543,979,490,998,437,1009,394"/>
+<area shape="rect" id="Node000034" href="$rtc_8c.html#a43ab2676911c7b2d91ee739cbe3af372" title="Enables or disables RTC update ended interrupts." alt="" coords="760,553,905,579"/>
+<area shape="poly" id="edge53_Node000017_Node000034" title=" " alt="" coords="1011,395,997,429,976,469,948,509,914,544,895,555,893,550,910,540,944,506,971,466,992,426,1006,392"/>
+<area shape="rect" id="Node000019" href="$rtc_8c.html#acb430fd58d2e4da3a685d42cf2f3594a" title=" " alt="" coords="564,255,705,280"/>
+<area shape="poly" id="edge23_Node000018_Node000019" title=" " alt="" coords="760,398,751,394,704,346,646,282,650,279,707,343,754,389,762,394"/>
+<area shape="poly" id="edge26_Node000018_Node000020" title=" " alt="" coords="770,400,752,394,578,331,448,280,450,275,580,326,754,389,772,395"/>
+<area shape="poly" id="edge27_Node000018_Node000021" title=" " alt="" coords="745,430,705,436,704,431,745,425"/>
+<area shape="poly" id="edge24_Node000019_Node000020" title=" " alt="" coords="549,270,449,270,449,265,549,265"/>
+<area shape="poly" id="edge25_Node000020_Node000004" title=" " alt="" coords="379,270,279,270,279,265,379,265"/>
+<area shape="poly" id="edge29_Node000022_Node000019" title=" " alt="" coords="772,353,752,345,696,313,652,283,655,279,699,309,754,340,774,348"/>
+<area shape="poly" id="edge31_Node000023_Node000019" title=" " alt="" coords="772,137,754,146,720,172,689,202,647,256,643,252,685,199,716,168,751,141,770,132"/>
+<area shape="poly" id="edge33_Node000024_Node000019" title=" " alt="" coords="767,190,754,195,699,226,655,256,652,252,696,222,751,190,765,185"/>
+<area shape="poly" id="edge35_Node000025_Node000019" title=" " alt="" coords="766,237,690,257,688,251,765,232"/>
+<area shape="poly" id="edge37_Node000026_Node000019" title=" " alt="" coords="758,270,705,270,705,265,758,265"/>
+<area shape="poly" id="edge39_Node000027_Node000019" title=" " alt="" coords="770,304,688,284,690,278,771,299"/>
+<area shape="rect" id="Node000029" href="$rtc_8c.html#af086192448abc551b618e1856d661926" title="Encapsulates the RTC initialization and subscription." alt="" coords="363,598,481,639"/>
+<area shape="poly" id="edge43_Node000028_Node000029" title=" " alt="" coords="559,652,481,634,482,629,560,647"/>
+<area shape="poly" id="edge44_Node000029_Node000013" title=" " alt="" coords="349,640,271,661,269,656,347,635"/>
+<area shape="rect" id="Node000031" href="$rtc_8c.html#a3c40f97c04701fc6ac45a19bb92be181" title="Disables all RTC interrupts." alt="" coords="568,552,701,578"/>
+<area shape="poly" id="edge46_Node000030_Node000031" title=" " alt="" coords="762,537,691,554,690,549,761,531"/>
+<area shape="poly" id="edge49_Node000031_Node000029" title=" " alt="" coords="566,585,482,606,481,601,565,579"/>
+<area shape="rect" id="Node000032" href="$rtc_8c.html#a6a46d7dad3841ae858c249d42081f9ac" title="Encapsulates the RTC disable and unsubscription." alt="" coords="327,548,516,574"/>
+<area shape="poly" id="edge47_Node000031_Node000032" title=" " alt="" coords="553,566,517,565,517,560,553,561"/>
+<area shape="poly" id="edge48_Node000032_Node000015" title=" " alt="" coords="319,579,270,587,270,581,318,574"/>
+<area shape="poly" id="edge52_Node000033_Node000029" title=" " alt="" coords="741,619,481,620,481,615,741,613"/>
+<area shape="poly" id="edge51_Node000033_Node000031" title=" " alt="" coords="764,601,687,581,688,576,765,596"/>
+<area shape="poly" id="edge54_Node000034_Node000031" title=" " alt="" coords="744,568,701,568,701,563,744,563"/>
+<area shape="rect" id="Node000036" href="$timer_8c.html#aca1506be74dfc71c6f90772ca269c619" title=" " alt="" coords="763,853,902,879"/>
+<area shape="poly" id="edge56_Node000035_Node000036" title=" " alt="" coords="950,853,903,859,902,854,949,848"/>
+<area shape="rect" id="Node000037" href="$timer_8c.html#acaf7742ecd9e34865122cde30749e54f" title="Subscribes and enables Timer 0 interrupts with a given frequency." alt="" coords="573,838,696,879"/>
+<area shape="poly" id="edge57_Node000036_Node000037" title=" " alt="" coords="747,865,696,863,696,858,747,860"/>
+<area shape="poly" id="edge58_Node000037_Node000013" title=" " alt="" coords="557,841,445,805,384,781,326,752,274,719,235,687,238,683,277,715,328,748,387,776,447,800,558,836"/>
+<area shape="rect" id="Node000038" href="$device__controller_8c.html#a441744c4b348eb70ad06ef25cedbb7cc" title="Updates the frequency of the timer." alt="" coords="359,845,484,871"/>
+<area shape="poly" id="edge59_Node000037_Node000038" title=" " alt="" coords="557,861,485,861,485,856,557,856"/>
+</map>

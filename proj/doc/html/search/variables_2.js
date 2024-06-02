@@ -1,4 +1,22 @@
 var searchData=
 [
-  ['capacity_0',['capacity',['../struct_bullet_array.html#ac8e44dd4f103368e74104473bac9a696',1,'BulletArray::capacity()'],['../struct_enemy_array.html#a99e37119a70d6d17193c8201ed77be75',1,'EnemyArray::capacity()']]]
+  ['can_5fbase_0',['can_base',['../gameplay_8c.html#a53b83467d6131ed391f6a28d2290fdc1',1,'can_base:&#160;player.c'],['../player_8c.html#a53b83467d6131ed391f6a28d2290fdc1',1,'can_base:&#160;player.c']]],
+  ['can_5fshop_1',['can_shop',['../gameplay_8c.html#af2265234a5aa467e7d8abe326f759469',1,'can_shop:&#160;player.c'],['../player_8c.html#af2265234a5aa467e7d8abe326f759469',1,'can_shop:&#160;player.c']]],
+  ['can_5ftower_2',['can_tower',['../gameplay_8c.html#aaa338f436776c483ca66f54be811cacf',1,'can_tower:&#160;player.c'],['../player_8c.html#aaa338f436776c483ca66f54be811cacf',1,'can_tower:&#160;player.c']]],
+  ['canonturret_3',['canonTurret',['../towers_8c.html#a8a8d308afe95f190d9e5f8506c26a305',1,'towers.c']]],
+  ['capacity_4',['capacity',['../struct_button_array.html#ae7e2aed278361dc719954b06b59c0710',1,'ButtonArray::capacity'],['../struct_bullet_array.html#ac8e44dd4f103368e74104473bac9a696',1,'BulletArray::capacity'],['../struct_enemy_array.html#a99e37119a70d6d17193c8201ed77be75',1,'EnemyArray::capacity'],['../struct_money_array.html#adab31eff2aa415aa67fa04a87360b7ac',1,'MoneyArray::capacity'],['../struct_tower_array.html#a44fc2728f40eb0dbe848881a614e3ca9',1,'TowerArray::capacity'],['../struct_render_array_list.html#a760345803f93d7260b1d77783710fef8',1,'RenderArrayList::capacity'],['../struct_animated_game_object_array.html#ae88ac9b45289deac89ccd84d8b2c26b0',1,'AnimatedGameObjectArray::capacity'],['../struct_game_object_array.html#ae6923e006c9f32fa8f4fc33f0cd23c30',1,'GameObjectArray::capacity'],['../struct_sprite_array.html#a0d654425a6ced6ca9fffd5b876b46c44',1,'SpriteArray::capacity'],['../struct_animated_sprite_array.html#a2b339a3a6d2dbeb80d45868bbd5dfc8d',1,'AnimatedSpriteArray::capacity']]],
+  ['coin_5',['coin',['../struct_money.html#a0e238c0daaeb94421c0407309e4424ed',1,'Money']]],
+  ['cooldown_6',['cooldown',['../struct_tower_base.html#aeca11fd17f4b8e4d2561d4ab287e3440',1,'TowerBase']]],
+  ['cooldown_5fcounter_7',['cooldown_counter',['../struct_animated_sprite.html#a55dc0fe26ec2b34bd7b762fece7d30c4',1,'AnimatedSprite']]],
+  ['counter_8',['counter',['../device__controller_8c.html#a1944753ac8107ec537f75b7e0201d866',1,'counter:&#160;timer.c'],['../timer_8c.html#a1944753ac8107ec537f75b7e0201d866',1,'counter:&#160;timer.c']]],
+  ['createdsprites_9',['createdSprites',['../sprite_8c.html#aac6aa90d0f9fdee62f1f8243432ef507',1,'sprite.c']]],
+  ['crossbowturret_10',['crossbowTurret',['../towers_8c.html#a570582588524061609a9f5cdff5371a5',1,'towers.c']]],
+  ['ctr_11',['ctr',['../kbc_8c.html#ae5a6b5527cccfd9715db511bcaa08b2c',1,'kbc.c']]],
+  ['current_5farena_12',['current_arena',['../gameplay_8c.html#a8f46f949e432c6726f3fac7de8609eb0',1,'gameplay.c']]],
+  ['current_5fbuffer_13',['current_buffer',['../graphics_8c.html#aec4832c6a751a849c5d7d1f1e3f8f48c',1,'graphics.c']]],
+  ['current_5fdirection_14',['current_direction',['../struct_player.html#a57e8632b1b25e4a770a83f0b566b9ddf',1,'Player']]],
+  ['current_5fmode_15',['current_mode',['../graphics_8c.html#abee8bc06ef9e4dc5d48b16cfb9e25b88',1,'graphics.c']]],
+  ['current_5fpos_16',['current_pos',['../mouse_8c.html#a632d5565f05720e36a1ccf3a72361dcd',1,'mouse.c']]],
+  ['current_5fsprite_17',['current_sprite',['../struct_animated_sprite.html#ac8e92de87de615b38759e11710a505f2',1,'AnimatedSprite']]],
+  ['current_5fturret_18',['current_turret',['../gameplay_8c.html#a4ba649ab9bd98bcc8a6b422a582821e4',1,'gameplay.c']]]
 ];

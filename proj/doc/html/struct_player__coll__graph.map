@@ -1,0 +1,17 @@
+<map id="Player" name="Player">
+<area shape="rect" id="Node000001" title="Struct that represents the player." alt="" coords="135,371,193,396"/>
+<area shape="rect" id="Node000002" href="$struct_animated_game_object.html" title="Represents an Animated Game Object in the game." alt="" coords="5,282,155,308"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="104,317,154,368,151,372,100,321"/>
+<area shape="rect" id="Node000003" href="$struct_game_object.html" title="Represents a game object in the game." alt="" coords="69,144,163,169"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="100,183,95,194,85,242,82,282,77,281,79,241,90,192,96,181"/>
+<area shape="rect" id="Node000004" href="$struct_sprite.html" title="Struct that represents a sprite." alt="" coords="140,5,196,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="158,46,153,56,122,144,117,142,148,54,153,44"/>
+<area shape="rect" id="Node000006" href="$struct_sprite_array.html" title="Struct that represents an array of sprites." alt="" coords="181,94,267,120"/>
+<area shape="poly" id="edge6_Node000006_Node000004" title=" " alt="" coords="186,43,219,92,214,95,182,46"/>
+<area shape="rect" id="Node000005" href="$struct_animated_sprite.html" title="Struct that represents an animated sprite." alt="" coords="178,193,289,219"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="183,227,145,245,117,264,95,283,91,279,114,260,142,241,180,223"/>
+<area shape="rect" id="Node000007" href="$struct_animated_sprite_array.html" title="Struct that represents an array of animated sprites." alt="" coords="179,282,320,308"/>
+<area shape="poly" id="edge8_Node000007_Node000005" title=" " alt="" coords="241,234,250,281,245,282,236,235"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="229,135,235,193,230,193,224,135"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="229,320,178,372,174,368,225,317"/>
+</map>

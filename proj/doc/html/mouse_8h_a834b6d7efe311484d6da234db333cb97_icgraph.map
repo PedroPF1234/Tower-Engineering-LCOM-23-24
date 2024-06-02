@@ -1,0 +1,9 @@
+<map id="mouse_ih" name="mouse_ih">
+<area shape="rect" id="Node000001" title="Mouse Interrupt Handler." alt="" coords="471,5,549,31"/>
+<area shape="rect" id="Node000002" href="$device__controller_8c.html#a7cd80a0fd93e349abec03d39d7e94e33" title=" " alt="" coords="327,5,423,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="456,21,424,21,424,16,456,16"/>
+<area shape="rect" id="Node000003" href="$device__controller_8c.html#a4d10f01a84e9e24f18682c0bca48dca6" title="Calls all device&#39;s interrupt handlers." alt="" coords="162,5,279,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="311,21,280,21,280,16,311,16"/>
+<area shape="rect" id="Node000004" href="$proj_8c.html#af244d65e69677cf312af1950452ec256" title=" " alt="" coords="5,5,114,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="146,21,114,21,114,16,146,16"/>
+</map>

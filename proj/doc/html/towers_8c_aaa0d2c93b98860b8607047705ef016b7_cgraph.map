@@ -1,0 +1,10 @@
+<map id="destroyTower" name="destroyTower">
+<area shape="rect" id="Node000001" title="Destroys a tower and frees associated memory." alt="" coords="5,29,105,55"/>
+<area shape="rect" id="Node000002" href="$gameobject_8c.html#ab2ca8f1feaafcb93216e911798e96b40" title="Destroys a game object, removes it from the render pipeline and frees associated memory." alt="" coords="153,55,291,80"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="106,47,138,52,137,57,105,52"/>
+<area shape="rect" id="Node000003" href="$sprite_8c.html#af16c6befaac9ffb673b9e3c798d542ed" title="Destroys a sprite and frees associated memory." alt="" coords="364,5,467,31"/>
+<area shape="poly" id="edge4_Node000001_Node000003" title=" " alt="" coords="105,36,348,20,348,25,105,42"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="275,51,348,33,349,38,276,57"/>
+<area shape="rect" id="Node000004" href="$gameobject_8c.html#a11caa0bf998b9de720cc858c6d02274b" title=" " alt="" coords="339,55,491,80"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="291,65,324,65,324,70,291,70"/>
+</map>

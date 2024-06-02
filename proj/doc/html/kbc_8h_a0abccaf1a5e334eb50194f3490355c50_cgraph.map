@@ -1,0 +1,10 @@
+<map id="kbd_reenable_interrupts" name="kbd_reenable_interrupts">
+<area shape="rect" id="Node000001" title="Reenables KBC interrupts." alt="" coords="5,31,165,56"/>
+<area shape="rect" id="Node000002" href="$kbc_8c.html#abc18ea628a0ac94eeabd7422e544d94d" title="Reads a command from the KBC." alt="" coords="214,5,328,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="165,30,199,25,200,31,165,35"/>
+<area shape="rect" id="Node000004" href="$kbc_8c.html#a07566fc9da24f69ede678ea644744195" title="Writes a command to the KBC." alt="" coords="213,55,329,80"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="165,51,198,55,197,61,165,56"/>
+<area shape="rect" id="Node000003" href="$utils_8c.html#a2b56f50ba159e9d5115ed1a75eff15d9" title=" " alt="" coords="377,31,467,56"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="328,25,362,31,361,36,327,30"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="329,56,361,50,362,56,330,61"/>
+</map>

@@ -1,0 +1,22 @@
+<map id="removeAnimatedObjectArray" name="removeAnimatedObjectArray">
+<area shape="rect" id="Node000001" title=" " alt="" coords="1081,35,1270,60"/>
+<area shape="rect" id="Node000002" href="$gameobject_8c.html#a0d4c98c4920a02bc46351ab1f13facc0" title="Destroys an animated game object and frees associated memory." alt="" coords="835,5,1033,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1066,37,1034,33,1034,28,1066,32"/>
+<area shape="rect" id="Node000008" href="$gameobject_8c.html#a7e91d1a7fcf8ae4b0d63f5c6e57e70e8" title=" " alt="" coords="838,55,1030,96"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="1066,63,1031,67,1030,62,1065,58"/>
+<area shape="rect" id="Node000003" href="$player_8c.html#aeaca5c627e5599b60cc71af248c0f98e" title="Destroys a player and frees associated memory." alt="" coords="664,7,765,32"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="819,22,765,22,765,17,819,16"/>
+<area shape="rect" id="Node000004" href="$gameplay_8c.html#ab7c9ee132f977dd2efd33ab66509d650" title="Destroys all the game objects and buttons.. etc in the game and frees their memory." alt="" coords="494,7,594,32"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="648,22,594,22,594,17,648,17"/>
+<area shape="rect" id="Node000005" href="$game_8c.html#a315e950a7e6bb500fe11c37ee1122577" title="Encapsulates the whole game logic." alt="" coords="327,8,446,34"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="479,23,447,23,447,18,479,17"/>
+<area shape="rect" id="Node000006" href="$device__controller_8c.html#a4d10f01a84e9e24f18682c0bca48dca6" title="Calls all device&#39;s interrupt handlers." alt="" coords="162,8,279,34"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="312,24,279,24,279,18,312,18"/>
+<area shape="rect" id="Node000007" href="$proj_8c.html#af244d65e69677cf312af1950452ec256" title=" " alt="" coords="5,33,114,59"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="146,35,115,40,114,35,146,30"/>
+<area shape="rect" id="Node000009" href="$gameobject_8c.html#a39bd26a5aa1cd2b9da4075369233f25a" title="Destroys the game objects." alt="" coords="642,60,787,86"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="822,77,787,76,787,71,823,71"/>
+<area shape="rect" id="Node000010" href="$device__controller_8c.html#ab1bc69df0c7a23951179c8258d9ac75c" title="Encapsulates the termination of all the devices." alt="" coords="338,59,436,84"/>
+<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="626,75,436,74,436,69,626,70"/>
+<area shape="poly" id="edge10_Node000010_Node000007" title=" " alt="" coords="322,69,114,53,114,48,322,64"/>
+</map>

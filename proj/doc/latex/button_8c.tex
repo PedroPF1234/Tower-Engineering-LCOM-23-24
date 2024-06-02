@@ -1,0 +1,286 @@
+\doxysection{src/\+Game/\+Data\+Structure/button.c File Reference}
+\hypertarget{button_8c}{}\label{button_8c}\index{src/Game/DataStructure/button.c@{src/Game/DataStructure/button.c}}
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include "{}button.\+h"{}}\newline
+Include dependency graph for button.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{button_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_button_array}{Button\+Array}} \mbox{\hyperlink{button_8c_aa9d3bd32bea637ecfbcd15e758f4cbcf}{new\+Button\+Array}} (uint32\+\_\+t capacity)
+\begin{DoxyCompactList}\small\item\em Initializes a new \doxylink{struct_button_array}{Button\+Array}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{button_8c_a939c9626b7da1c6b49a760fe8df700c9}{push\+Button\+Array}} (\mbox{\hyperlink{struct_button_array}{Button\+Array}} \texorpdfstring{$\ast$}{*}array, \mbox{\hyperlink{struct_button}{Button}} \texorpdfstring{$\ast$}{*}button)
+\begin{DoxyCompactList}\small\item\em Adds a \doxylink{struct_button}{Button} to a \doxylink{struct_button_array}{Button\+Array}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_button}{Button}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{button_8c_ac3e1fa5a312e4690dd8b5d14db4bdd0f}{get\+Button\+Array}} (\mbox{\hyperlink{struct_button_array}{Button\+Array}} \texorpdfstring{$\ast$}{*}array, uint32\+\_\+t index)
+\begin{DoxyCompactList}\small\item\em Retrieves a \doxylink{struct_button}{Button} from a \doxylink{struct_button_array}{Button\+Array}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{button_8c_aacbbbe3d77b1d2d52abfeb7605420e1e}{remove\+Button\+Array}} (\mbox{\hyperlink{struct_button_array}{Button\+Array}} \texorpdfstring{$\ast$}{*}array, uint32\+\_\+t index)
+\begin{DoxyCompactList}\small\item\em Removes a \doxylink{struct_button}{Button} from a \doxylink{struct_button_array}{Button\+Array}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{button_8c_ae83833e8f93bcfa29c8c8370f101db0f}{destroy\+Button\+Array}} (\mbox{\hyperlink{struct_button_array}{Button\+Array}} \texorpdfstring{$\ast$}{*}array)
+\begin{DoxyCompactList}\small\item\em Destroys a \doxylink{struct_button_array}{Button\+Array} and frees associated memory. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_button}{Button}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{button_8c_ae9f660094280602de4eff0e09533c1e5}{initialize\+Button}} (xpm\+\_\+map\+\_\+t hovered, xpm\+\_\+map\+\_\+t no\+\_\+hovered, int16\+\_\+t x, int16\+\_\+t y, uint16\+\_\+t z, bool square, bool visible)
+\begin{DoxyCompactList}\small\item\em Initializes a new \doxylink{struct_button}{Button}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{button_8c_a4d66a0f1c519e7e4ab43d96d3286db4f}{hide\+Buttons}} (\mbox{\hyperlink{struct_button_array}{Button\+Array}} \texorpdfstring{$\ast$}{*}array)
+\begin{DoxyCompactList}\small\item\em Turns off the visibility of all the \doxylink{struct_button}{Button}\textquotesingle{}s Sprites in a \doxylink{struct_button_array}{Button\+Array}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{button_8c_a847e1a5abfc2fe5a7f2e8fa3dc85675f}{show\+Buttons}} (\mbox{\hyperlink{struct_button_array}{Button\+Array}} \texorpdfstring{$\ast$}{*}array)
+\begin{DoxyCompactList}\small\item\em Turns on the visibility of all the \doxylink{struct_button}{Button}\textquotesingle{}s Sprites in a \doxylink{struct_button_array}{Button\+Array}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{button_8c_ae83833e8f93bcfa29c8c8370f101db0f}\index{button.c@{button.c}!destroyButtonArray@{destroyButtonArray}}
+\index{destroyButtonArray@{destroyButtonArray}!button.c@{button.c}}
+\doxysubsubsection{\texorpdfstring{destroyButtonArray()}{destroyButtonArray()}}
+{\footnotesize\ttfamily \label{button_8c_ae83833e8f93bcfa29c8c8370f101db0f} 
+void destroy\+Button\+Array (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_button_array}{Button\+Array}} \texorpdfstring{$\ast$}{*}}]{array}{}\end{DoxyParamCaption})}
+
+
+
+Destroys a \doxylink{struct_button_array}{Button\+Array} and frees associated memory. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em array} & The \doxylink{struct_button_array}{Button\+Array} to destroy. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{button_8c_ae83833e8f93bcfa29c8c8370f101db0f_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{button_8c_ae83833e8f93bcfa29c8c8370f101db0f_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{button_8c_ac3e1fa5a312e4690dd8b5d14db4bdd0f}\index{button.c@{button.c}!getButtonArray@{getButtonArray}}
+\index{getButtonArray@{getButtonArray}!button.c@{button.c}}
+\doxysubsubsection{\texorpdfstring{getButtonArray()}{getButtonArray()}}
+{\footnotesize\ttfamily \label{button_8c_ac3e1fa5a312e4690dd8b5d14db4bdd0f} 
+\mbox{\hyperlink{struct_button}{Button}} \texorpdfstring{$\ast$}{*} get\+Button\+Array (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_button_array}{Button\+Array}} \texorpdfstring{$\ast$}{*}}]{array}{, }\item[{uint32\+\_\+t}]{index}{}\end{DoxyParamCaption})}
+
+
+
+Retrieves a \doxylink{struct_button}{Button} from a \doxylink{struct_button_array}{Button\+Array}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em array} & The \doxylink{struct_button_array}{Button\+Array} to retrieve the \doxylink{struct_button}{Button} from. \\
+\hline
+{\em index} & The index of the \doxylink{struct_button}{Button} to retrieve. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The \doxylink{struct_button}{Button} at the specified index. 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{button_8c_ac3e1fa5a312e4690dd8b5d14db4bdd0f_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{button_8c_a4d66a0f1c519e7e4ab43d96d3286db4f}\index{button.c@{button.c}!hideButtons@{hideButtons}}
+\index{hideButtons@{hideButtons}!button.c@{button.c}}
+\doxysubsubsection{\texorpdfstring{hideButtons()}{hideButtons()}}
+{\footnotesize\ttfamily \label{button_8c_a4d66a0f1c519e7e4ab43d96d3286db4f} 
+void hide\+Buttons (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_button_array}{Button\+Array}} \texorpdfstring{$\ast$}{*}}]{array}{}\end{DoxyParamCaption})}
+
+
+
+Turns off the visibility of all the \doxylink{struct_button}{Button}\textquotesingle{}s Sprites in a \doxylink{struct_button_array}{Button\+Array}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em array} & The \doxylink{struct_button_array}{Button\+Array}. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=265pt]{button_8c_a4d66a0f1c519e7e4ab43d96d3286db4f_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{button_8c_a4d66a0f1c519e7e4ab43d96d3286db4f_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{button_8c_ae9f660094280602de4eff0e09533c1e5}\index{button.c@{button.c}!initializeButton@{initializeButton}}
+\index{initializeButton@{initializeButton}!button.c@{button.c}}
+\doxysubsubsection{\texorpdfstring{initializeButton()}{initializeButton()}}
+{\footnotesize\ttfamily \label{button_8c_ae9f660094280602de4eff0e09533c1e5} 
+\mbox{\hyperlink{struct_button}{Button}} \texorpdfstring{$\ast$}{*} initialize\+Button (\begin{DoxyParamCaption}\item[{xpm\+\_\+map\+\_\+t}]{hovered}{, }\item[{xpm\+\_\+map\+\_\+t}]{no\+\_\+hovered}{, }\item[{int16\+\_\+t}]{x}{, }\item[{int16\+\_\+t}]{y}{, }\item[{uint16\+\_\+t}]{z}{, }\item[{bool}]{square}{, }\item[{bool}]{visible}{}\end{DoxyParamCaption})}
+
+
+
+Initializes a new \doxylink{struct_button}{Button}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em hovered} & The sprite for the button when the cursor is hovering over it. \\
+\hline
+{\em no\+\_\+hovered} & The sprite for the button when the cursor is not hovering over it. \\
+\hline
+{\em x} & The x position of the button. \\
+\hline
+{\em y} & The y position of the button. \\
+\hline
+{\em z} & The z index of the button (its priority in sprite layers). \\
+\hline
+{\em square} & Whether the button is square or not. \\
+\hline
+{\em visible} & Whether the button is visible or not. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A new \doxylink{struct_button}{Button}. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{button_8c_ae9f660094280602de4eff0e09533c1e5_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{button_8c_ae9f660094280602de4eff0e09533c1e5_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{button_8c_aa9d3bd32bea637ecfbcd15e758f4cbcf}\index{button.c@{button.c}!newButtonArray@{newButtonArray}}
+\index{newButtonArray@{newButtonArray}!button.c@{button.c}}
+\doxysubsubsection{\texorpdfstring{newButtonArray()}{newButtonArray()}}
+{\footnotesize\ttfamily \label{button_8c_aa9d3bd32bea637ecfbcd15e758f4cbcf} 
+\mbox{\hyperlink{struct_button_array}{Button\+Array}} new\+Button\+Array (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{capacity}{}\end{DoxyParamCaption})}
+
+
+
+Initializes a new \doxylink{struct_button_array}{Button\+Array}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em capacity} & The initial capacity of the \doxylink{struct_button_array}{Button\+Array}. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A new \doxylink{struct_button_array}{Button\+Array}. 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{button_8c_aa9d3bd32bea637ecfbcd15e758f4cbcf_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{button_8c_a939c9626b7da1c6b49a760fe8df700c9}\index{button.c@{button.c}!pushButtonArray@{pushButtonArray}}
+\index{pushButtonArray@{pushButtonArray}!button.c@{button.c}}
+\doxysubsubsection{\texorpdfstring{pushButtonArray()}{pushButtonArray()}}
+{\footnotesize\ttfamily \label{button_8c_a939c9626b7da1c6b49a760fe8df700c9} 
+void push\+Button\+Array (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_button_array}{Button\+Array}} \texorpdfstring{$\ast$}{*}}]{array}{, }\item[{\mbox{\hyperlink{struct_button}{Button}} \texorpdfstring{$\ast$}{*}}]{button}{}\end{DoxyParamCaption})}
+
+
+
+Adds a \doxylink{struct_button}{Button} to a \doxylink{struct_button_array}{Button\+Array}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em array} & The \doxylink{struct_button_array}{Button\+Array} to add the \doxylink{struct_button}{Button} to. \\
+\hline
+{\em button} & The \doxylink{struct_button}{Button} to add. \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{button_8c_a939c9626b7da1c6b49a760fe8df700c9_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{button_8c_aacbbbe3d77b1d2d52abfeb7605420e1e}\index{button.c@{button.c}!removeButtonArray@{removeButtonArray}}
+\index{removeButtonArray@{removeButtonArray}!button.c@{button.c}}
+\doxysubsubsection{\texorpdfstring{removeButtonArray()}{removeButtonArray()}}
+{\footnotesize\ttfamily \label{button_8c_aacbbbe3d77b1d2d52abfeb7605420e1e} 
+void remove\+Button\+Array (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_button_array}{Button\+Array}} \texorpdfstring{$\ast$}{*}}]{array}{, }\item[{uint32\+\_\+t}]{index}{}\end{DoxyParamCaption})}
+
+
+
+Removes a \doxylink{struct_button}{Button} from a \doxylink{struct_button_array}{Button\+Array}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em array} & The \doxylink{struct_button_array}{Button\+Array} to remove the \doxylink{struct_button}{Button} from. \\
+\hline
+{\em index} & The index of the \doxylink{struct_button}{Button} to remove. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{button_8c_aacbbbe3d77b1d2d52abfeb7605420e1e_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{button_8c_aacbbbe3d77b1d2d52abfeb7605420e1e_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{button_8c_a847e1a5abfc2fe5a7f2e8fa3dc85675f}\index{button.c@{button.c}!showButtons@{showButtons}}
+\index{showButtons@{showButtons}!button.c@{button.c}}
+\doxysubsubsection{\texorpdfstring{showButtons()}{showButtons()}}
+{\footnotesize\ttfamily \label{button_8c_a847e1a5abfc2fe5a7f2e8fa3dc85675f} 
+void show\+Buttons (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_button_array}{Button\+Array}} \texorpdfstring{$\ast$}{*}}]{array}{}\end{DoxyParamCaption})}
+
+
+
+Turns on the visibility of all the \doxylink{struct_button}{Button}\textquotesingle{}s Sprites in a \doxylink{struct_button_array}{Button\+Array}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em array} & The \doxylink{struct_button_array}{Button\+Array}. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=270pt]{button_8c_a847e1a5abfc2fe5a7f2e8fa3dc85675f_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{button_8c_a847e1a5abfc2fe5a7f2e8fa3dc85675f_icgraph}
+\end{center}
+\end{figure}

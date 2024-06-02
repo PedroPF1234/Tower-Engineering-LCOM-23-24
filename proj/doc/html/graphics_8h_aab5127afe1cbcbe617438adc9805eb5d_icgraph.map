@@ -1,0 +1,13 @@
+<map id="vg_draw_xpm" name="vg_draw_xpm">
+<area shape="rect" id="Node000001" title="Draws a sprite." alt="" coords="823,5,925,31"/>
+<area shape="rect" id="Node000002" href="$sprite_8c.html#a6c75fbf31230126d2f19b29deaf24b2f" title="Draws a sprite." alt="" coords="687,5,775,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="807,21,775,21,775,16,807,16"/>
+<area shape="rect" id="Node000003" href="$gameobject_8c.html#a6b41624b969bb4858d7ff4c0a71bca6e" title=" " alt="" coords="512,5,639,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="671,21,639,21,639,16,671,16"/>
+<area shape="rect" id="Node000004" href="$gameobject_8c.html#a2b3a693827aa9ff61460e24fec22aa71" title="Renders the game objects." alt="" coords="327,5,464,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="497,21,465,21,465,16,497,16"/>
+<area shape="rect" id="Node000005" href="$device__controller_8c.html#a4d10f01a84e9e24f18682c0bca48dca6" title="Calls all device&#39;s interrupt handlers." alt="" coords="162,5,279,31"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="311,21,279,21,279,16,311,16"/>
+<area shape="rect" id="Node000006" href="$proj_8c.html#af244d65e69677cf312af1950452ec256" title=" " alt="" coords="5,5,114,31"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="146,21,114,21,114,16,146,16"/>
+</map>

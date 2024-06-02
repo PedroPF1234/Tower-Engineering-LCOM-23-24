@@ -1,0 +1,227 @@
+\doxysection{src/\+Game/\+Gameplay/\+Weapon/weapon.c File Reference}
+\hypertarget{weapon_8c}{}\label{weapon_8c}\index{src/Game/Gameplay/Weapon/weapon.c@{src/Game/Gameplay/Weapon/weapon.c}}
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include $<$math.\+h$>$}\newline
+{\ttfamily \#include "{}weapon.\+h"{}}\newline
+{\ttfamily \#include "{}../../../\+Image\+Assets/\+Weapon.\+xpm"{}}\newline
+Include dependency graph for weapon.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{weapon_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_weapon}{Weapon}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{weapon_8c_a9368256554c7db2de25dcd813fdb9a4e}{initialize\+Weapon}} (int16\+\_\+t x, int16\+\_\+t y)
+\begin{DoxyCompactList}\small\item\em Initializes a new weapon. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{weapon_8c_a0cf9e5c8f5182cf01f5017b5ef216b4f}{destroy\+Weapon}} (\mbox{\hyperlink{struct_weapon}{Weapon}} \texorpdfstring{$\ast$}{*}weapon)
+\begin{DoxyCompactList}\small\item\em Destroys a weapon and frees associated memory. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{weapon_8c_a1b4486ddaf82983b136f27a47db8c516}{show\+Weapon}} (\mbox{\hyperlink{struct_weapon}{Weapon}} \texorpdfstring{$\ast$}{*}weapon)
+\begin{DoxyCompactList}\small\item\em Shows the weapon by making the associated sprite visible. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{weapon_8c_ae5e46be3e9f65ef3450c21bb7a47e7a7}{hide\+Weapon}} (\mbox{\hyperlink{struct_weapon}{Weapon}} \texorpdfstring{$\ast$}{*}weapon)
+\begin{DoxyCompactList}\small\item\em Hides the weapon by making the associated sprite invisible. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{weapon_8c_acd918fccd1070158dcd57c180c456e37}{update\+Weapon}} (\mbox{\hyperlink{struct_weapon}{Weapon}} \texorpdfstring{$\ast$}{*}weapon, \mbox{\hyperlink{struct_player}{Player}} \texorpdfstring{$\ast$}{*}player, int16\+\_\+t mouse\+\_\+x, int16\+\_\+t mouse\+\_\+y)
+\begin{DoxyCompactList}\small\item\em Updates the position/angle of the weapon based on the player\textquotesingle{}s and the mouse\textquotesingle{}s positions. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_sprite}{Sprite}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{weapon_8c_a64f0aa5585e60b5c58c8907c43f77866}{rotated\+SpriteL}}
+\item 
+\mbox{\hyperlink{struct_sprite}{Sprite}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{weapon_8c_ae42af4db7716d268172b8fd7c9e1f967}{rotated\+SpriteR}}
+\item 
+static int \mbox{\hyperlink{weapon_8c_ac4fcf12ca73613b924575bf0bfe476f4}{rotationsL}} = 0
+\item 
+static int \mbox{\hyperlink{weapon_8c_a96d3d98d6cda3acb47f960d8b881500e}{rotationsR}} = 0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{weapon_8c_a0cf9e5c8f5182cf01f5017b5ef216b4f}\index{weapon.c@{weapon.c}!destroyWeapon@{destroyWeapon}}
+\index{destroyWeapon@{destroyWeapon}!weapon.c@{weapon.c}}
+\doxysubsubsection{\texorpdfstring{destroyWeapon()}{destroyWeapon()}}
+{\footnotesize\ttfamily \label{weapon_8c_a0cf9e5c8f5182cf01f5017b5ef216b4f} 
+void destroy\+Weapon (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_weapon}{Weapon}} \texorpdfstring{$\ast$}{*}}]{weapon}{}\end{DoxyParamCaption})}
+
+
+
+Destroys a weapon and frees associated memory. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em weapon} & A pointer to the \doxylink{struct_weapon}{Weapon} to be destroyed. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{weapon_8c_a0cf9e5c8f5182cf01f5017b5ef216b4f_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{weapon_8c_ae5e46be3e9f65ef3450c21bb7a47e7a7}\index{weapon.c@{weapon.c}!hideWeapon@{hideWeapon}}
+\index{hideWeapon@{hideWeapon}!weapon.c@{weapon.c}}
+\doxysubsubsection{\texorpdfstring{hideWeapon()}{hideWeapon()}}
+{\footnotesize\ttfamily \label{weapon_8c_ae5e46be3e9f65ef3450c21bb7a47e7a7} 
+void hide\+Weapon (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_weapon}{Weapon}} \texorpdfstring{$\ast$}{*}}]{weapon}{}\end{DoxyParamCaption})}
+
+
+
+Hides the weapon by making the associated sprite invisible. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em weapon} & A pointer to the \doxylink{struct_weapon}{Weapon} to be hidden. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{weapon_8c_ae5e46be3e9f65ef3450c21bb7a47e7a7_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{weapon_8c_ae5e46be3e9f65ef3450c21bb7a47e7a7_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{weapon_8c_a9368256554c7db2de25dcd813fdb9a4e}\index{weapon.c@{weapon.c}!initializeWeapon@{initializeWeapon}}
+\index{initializeWeapon@{initializeWeapon}!weapon.c@{weapon.c}}
+\doxysubsubsection{\texorpdfstring{initializeWeapon()}{initializeWeapon()}}
+{\footnotesize\ttfamily \label{weapon_8c_a9368256554c7db2de25dcd813fdb9a4e} 
+\mbox{\hyperlink{struct_weapon}{Weapon}} \texorpdfstring{$\ast$}{*} initialize\+Weapon (\begin{DoxyParamCaption}\item[{int16\+\_\+t}]{x}{, }\item[{int16\+\_\+t}]{y}{}\end{DoxyParamCaption})}
+
+
+
+Initializes a new weapon. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & The initial x position of the weapon. \\
+\hline
+{\em y} & The initial y position of the weapon. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the newly initialized \doxylink{struct_weapon}{Weapon} object. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{weapon_8c_a9368256554c7db2de25dcd813fdb9a4e_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{weapon_8c_a9368256554c7db2de25dcd813fdb9a4e_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{weapon_8c_a1b4486ddaf82983b136f27a47db8c516}\index{weapon.c@{weapon.c}!showWeapon@{showWeapon}}
+\index{showWeapon@{showWeapon}!weapon.c@{weapon.c}}
+\doxysubsubsection{\texorpdfstring{showWeapon()}{showWeapon()}}
+{\footnotesize\ttfamily \label{weapon_8c_a1b4486ddaf82983b136f27a47db8c516} 
+void show\+Weapon (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_weapon}{Weapon}} \texorpdfstring{$\ast$}{*}}]{weapon}{}\end{DoxyParamCaption})}
+
+
+
+Shows the weapon by making the associated sprite visible. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em weapon} & A pointer to the \doxylink{struct_weapon}{Weapon} to be shown. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{weapon_8c_a1b4486ddaf82983b136f27a47db8c516_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{weapon_8c_a1b4486ddaf82983b136f27a47db8c516_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{weapon_8c_acd918fccd1070158dcd57c180c456e37}\index{weapon.c@{weapon.c}!updateWeapon@{updateWeapon}}
+\index{updateWeapon@{updateWeapon}!weapon.c@{weapon.c}}
+\doxysubsubsection{\texorpdfstring{updateWeapon()}{updateWeapon()}}
+{\footnotesize\ttfamily \label{weapon_8c_acd918fccd1070158dcd57c180c456e37} 
+void update\+Weapon (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_weapon}{Weapon}} \texorpdfstring{$\ast$}{*}}]{weapon}{, }\item[{\mbox{\hyperlink{struct_player}{Player}} \texorpdfstring{$\ast$}{*}}]{player}{, }\item[{int16\+\_\+t}]{mouse\+\_\+x}{, }\item[{int16\+\_\+t}]{mouse\+\_\+y}{}\end{DoxyParamCaption})}
+
+
+
+Updates the position/angle of the weapon based on the player\textquotesingle{}s and the mouse\textquotesingle{}s positions. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em weapon} & A pointer to the \doxylink{struct_weapon}{Weapon} to be updated. \\
+\hline
+{\em player} & A pointer to the \doxylink{struct_player}{Player} object. \\
+\hline
+{\em mouse\+\_\+x} & The x position of the mouse. \\
+\hline
+{\em mouse\+\_\+y} & The y position of the mouse. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{weapon_8c_acd918fccd1070158dcd57c180c456e37_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{weapon_8c_acd918fccd1070158dcd57c180c456e37_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{weapon_8c_a64f0aa5585e60b5c58c8907c43f77866}\index{weapon.c@{weapon.c}!rotatedSpriteL@{rotatedSpriteL}}
+\index{rotatedSpriteL@{rotatedSpriteL}!weapon.c@{weapon.c}}
+\doxysubsubsection{\texorpdfstring{rotatedSpriteL}{rotatedSpriteL}}
+{\footnotesize\ttfamily \label{weapon_8c_a64f0aa5585e60b5c58c8907c43f77866} 
+\mbox{\hyperlink{struct_sprite}{Sprite}}\texorpdfstring{$\ast$}{*} rotated\+SpriteL}
+
+\Hypertarget{weapon_8c_ae42af4db7716d268172b8fd7c9e1f967}\index{weapon.c@{weapon.c}!rotatedSpriteR@{rotatedSpriteR}}
+\index{rotatedSpriteR@{rotatedSpriteR}!weapon.c@{weapon.c}}
+\doxysubsubsection{\texorpdfstring{rotatedSpriteR}{rotatedSpriteR}}
+{\footnotesize\ttfamily \label{weapon_8c_ae42af4db7716d268172b8fd7c9e1f967} 
+\mbox{\hyperlink{struct_sprite}{Sprite}}\texorpdfstring{$\ast$}{*} rotated\+SpriteR}
+
+\Hypertarget{weapon_8c_ac4fcf12ca73613b924575bf0bfe476f4}\index{weapon.c@{weapon.c}!rotationsL@{rotationsL}}
+\index{rotationsL@{rotationsL}!weapon.c@{weapon.c}}
+\doxysubsubsection{\texorpdfstring{rotationsL}{rotationsL}}
+{\footnotesize\ttfamily \label{weapon_8c_ac4fcf12ca73613b924575bf0bfe476f4} 
+int rotationsL = 0\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{weapon_8c_a96d3d98d6cda3acb47f960d8b881500e}\index{weapon.c@{weapon.c}!rotationsR@{rotationsR}}
+\index{rotationsR@{rotationsR}!weapon.c@{weapon.c}}
+\doxysubsubsection{\texorpdfstring{rotationsR}{rotationsR}}
+{\footnotesize\ttfamily \label{weapon_8c_a96d3d98d6cda3acb47f960d8b881500e} 
+int rotationsR = 0\hspace{0.3cm}{\ttfamily [static]}}
+

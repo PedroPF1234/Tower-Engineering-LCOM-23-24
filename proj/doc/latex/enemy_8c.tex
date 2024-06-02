@@ -1,0 +1,380 @@
+\doxysection{src/\+Game/\+Gameplay/\+Enemy/enemy.c File Reference}
+\hypertarget{enemy_8c}{}\label{enemy_8c}\index{src/Game/Gameplay/Enemy/enemy.c@{src/Game/Gameplay/Enemy/enemy.c}}
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include "{}enemy.\+h"{}}\newline
+{\ttfamily \#include "{}../../../\+Image\+Assets/\+Enemy.\+xpm"{}}\newline
+Include dependency graph for enemy.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{enemy_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{enemy_8c_aeb52a6574182fcfe9742d7c7887dbfe0}{ENEMY\+\_\+\+RED\+\_\+\+HEALTH\+\_\+\+COLOR}}~\{0x00, 0x00, 0x\+FF\};
+\item 
+\#define \mbox{\hyperlink{enemy_8c_a3387a46eb97f27b81a41640ead378092}{ENEMY\+\_\+\+GREEN\+\_\+\+HEALTH\+\_\+\+COLOR}}~\{0x49, 0x\+FF, 0x15\};
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_enemy}{Enemy}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{enemy_8c_a0a2032931d6f885c4803495958b92752}{initialize\+Enemy}} (float x, float y, int16\+\_\+t ox, int16\+\_\+t oy, int16\+\_\+t hp, int16\+\_\+t \texorpdfstring{$\ast$}{*}targets, int16\+\_\+t last\+\_\+target)
+\begin{DoxyCompactList}\small\item\em Initializes a new enemy. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{enemy_8c_ade21f14f9d1e80dd3e6c893fb9fc61b2}{destroy\+Enemy}} (\mbox{\hyperlink{struct_enemy}{Enemy}} \texorpdfstring{$\ast$}{*}enemy)
+\begin{DoxyCompactList}\small\item\em Destroys an enemy and frees associated memory. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{enemy_8c_a3629b4aff742f5680afb68b73733bb23}{update\+Enemy\+Position}} (\mbox{\hyperlink{struct_enemy}{Enemy}} \texorpdfstring{$\ast$}{*}enemy)
+\begin{DoxyCompactList}\small\item\em Updates the position of an enemy based on its speed. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{enemy_8c_a994683c5a71c02885fd19ed4ebf1987b}{update\+Enemy\+Sprite\+Based\+On\+Position}} (\mbox{\hyperlink{struct_enemy}{Enemy}} \texorpdfstring{$\ast$}{*}enemy)
+\begin{DoxyCompactList}\small\item\em Updates the sprite of an enemy based on its current position and direction. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_enemy_array}{Enemy\+Array}} \mbox{\hyperlink{enemy_8c_a5137200416d71c41e422811f23120743}{new\+Enemy\+Array}} (uint32\+\_\+t capacity)
+\begin{DoxyCompactList}\small\item\em Creates a new \doxylink{struct_enemy_array}{Enemy\+Array} with a specified capacity. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{enemy_8c_a5d14b5b6b2d08c86368e738ffcae504a}{push\+Enemy\+Array}} (\mbox{\hyperlink{struct_enemy_array}{Enemy\+Array}} \texorpdfstring{$\ast$}{*}array, \mbox{\hyperlink{struct_enemy}{Enemy}} \texorpdfstring{$\ast$}{*}enemy)
+\begin{DoxyCompactList}\small\item\em Adds an enemy to the \doxylink{struct_enemy_array}{Enemy\+Array}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_enemy}{Enemy}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{enemy_8c_af7c331e4cc55f8daeb2a6027fff5c0c9}{get\+Enemy\+Array}} (\mbox{\hyperlink{struct_enemy_array}{Enemy\+Array}} \texorpdfstring{$\ast$}{*}array, uint32\+\_\+t index)
+\begin{DoxyCompactList}\small\item\em Retrieves an enemy from the \doxylink{struct_enemy_array}{Enemy\+Array} at a specified index. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{enemy_8c_a22c30bd02e9fbe4aa5939af2db9a9474}{remove\+Enemy\+Array}} (\mbox{\hyperlink{struct_enemy_array}{Enemy\+Array}} \texorpdfstring{$\ast$}{*}array, uint32\+\_\+t index)
+\begin{DoxyCompactList}\small\item\em Removes an enemy from the \doxylink{struct_enemy_array}{Enemy\+Array} at a specified index and destroys it. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{enemy_8c_ab25f3d1f4b2e71a0e588f4e44cd96fe8}{destroy\+Enemy\+Array}} (\mbox{\hyperlink{struct_enemy_array}{Enemy\+Array}} \texorpdfstring{$\ast$}{*}array)
+\begin{DoxyCompactList}\small\item\em Destroys an \doxylink{struct_enemy_array}{Enemy\+Array} and frees associated memory. \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{enemy_8c_afdd983e5750453c75934d601bb3f0cf8}{update\+All\+Enemy\+Positions}} (\mbox{\hyperlink{struct_enemy_array}{Enemy\+Array}} \texorpdfstring{$\ast$}{*}array)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_screen_info}{Screen\+Info}} \mbox{\hyperlink{enemy_8c_a1636c5f52c5c798d9a14ec91cc0b577d}{screen}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{enemy_8c_a3387a46eb97f27b81a41640ead378092}\index{enemy.c@{enemy.c}!ENEMY\_GREEN\_HEALTH\_COLOR@{ENEMY\_GREEN\_HEALTH\_COLOR}}
+\index{ENEMY\_GREEN\_HEALTH\_COLOR@{ENEMY\_GREEN\_HEALTH\_COLOR}!enemy.c@{enemy.c}}
+\doxysubsubsection{\texorpdfstring{ENEMY\_GREEN\_HEALTH\_COLOR}{ENEMY\_GREEN\_HEALTH\_COLOR}}
+{\footnotesize\ttfamily \label{enemy_8c_a3387a46eb97f27b81a41640ead378092} 
+\#define ENEMY\+\_\+\+GREEN\+\_\+\+HEALTH\+\_\+\+COLOR~\{0x49, 0x\+FF, 0x15\};}
+
+\Hypertarget{enemy_8c_aeb52a6574182fcfe9742d7c7887dbfe0}\index{enemy.c@{enemy.c}!ENEMY\_RED\_HEALTH\_COLOR@{ENEMY\_RED\_HEALTH\_COLOR}}
+\index{ENEMY\_RED\_HEALTH\_COLOR@{ENEMY\_RED\_HEALTH\_COLOR}!enemy.c@{enemy.c}}
+\doxysubsubsection{\texorpdfstring{ENEMY\_RED\_HEALTH\_COLOR}{ENEMY\_RED\_HEALTH\_COLOR}}
+{\footnotesize\ttfamily \label{enemy_8c_aeb52a6574182fcfe9742d7c7887dbfe0} 
+\#define ENEMY\+\_\+\+RED\+\_\+\+HEALTH\+\_\+\+COLOR~\{0x00, 0x00, 0x\+FF\};}
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{enemy_8c_ade21f14f9d1e80dd3e6c893fb9fc61b2}\index{enemy.c@{enemy.c}!destroyEnemy@{destroyEnemy}}
+\index{destroyEnemy@{destroyEnemy}!enemy.c@{enemy.c}}
+\doxysubsubsection{\texorpdfstring{destroyEnemy()}{destroyEnemy()}}
+{\footnotesize\ttfamily \label{enemy_8c_ade21f14f9d1e80dd3e6c893fb9fc61b2} 
+void destroy\+Enemy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_enemy}{Enemy}} \texorpdfstring{$\ast$}{*}}]{enemy}{}\end{DoxyParamCaption})}
+
+
+
+Destroys an enemy and frees associated memory. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em enemy} & A pointer to the \doxylink{struct_enemy}{Enemy} to be destroyed. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{enemy_8c_ade21f14f9d1e80dd3e6c893fb9fc61b2_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{enemy_8c_ade21f14f9d1e80dd3e6c893fb9fc61b2_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{enemy_8c_ab25f3d1f4b2e71a0e588f4e44cd96fe8}\index{enemy.c@{enemy.c}!destroyEnemyArray@{destroyEnemyArray}}
+\index{destroyEnemyArray@{destroyEnemyArray}!enemy.c@{enemy.c}}
+\doxysubsubsection{\texorpdfstring{destroyEnemyArray()}{destroyEnemyArray()}}
+{\footnotesize\ttfamily \label{enemy_8c_ab25f3d1f4b2e71a0e588f4e44cd96fe8} 
+void destroy\+Enemy\+Array (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_enemy_array}{Enemy\+Array}} \texorpdfstring{$\ast$}{*}}]{array}{}\end{DoxyParamCaption})}
+
+
+
+Destroys an \doxylink{struct_enemy_array}{Enemy\+Array} and frees associated memory. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em array} & A pointer to the \doxylink{struct_enemy_array}{Enemy\+Array} to be destroyed. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{enemy_8c_ab25f3d1f4b2e71a0e588f4e44cd96fe8_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{enemy_8c_ab25f3d1f4b2e71a0e588f4e44cd96fe8_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{enemy_8c_af7c331e4cc55f8daeb2a6027fff5c0c9}\index{enemy.c@{enemy.c}!getEnemyArray@{getEnemyArray}}
+\index{getEnemyArray@{getEnemyArray}!enemy.c@{enemy.c}}
+\doxysubsubsection{\texorpdfstring{getEnemyArray()}{getEnemyArray()}}
+{\footnotesize\ttfamily \label{enemy_8c_af7c331e4cc55f8daeb2a6027fff5c0c9} 
+\mbox{\hyperlink{struct_enemy}{Enemy}} \texorpdfstring{$\ast$}{*} get\+Enemy\+Array (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_enemy_array}{Enemy\+Array}} \texorpdfstring{$\ast$}{*}}]{array}{, }\item[{uint32\+\_\+t}]{index}{}\end{DoxyParamCaption})}
+
+
+
+Retrieves an enemy from the \doxylink{struct_enemy_array}{Enemy\+Array} at a specified index. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em array} & A pointer to the \doxylink{struct_enemy_array}{Enemy\+Array}. \\
+\hline
+{\em index} & The index of the \doxylink{struct_enemy}{Enemy} to retrieve. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the \doxylink{struct_enemy}{Enemy} at the specified index, or NULL if the index is out of bounds. 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{enemy_8c_af7c331e4cc55f8daeb2a6027fff5c0c9_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{enemy_8c_a0a2032931d6f885c4803495958b92752}\index{enemy.c@{enemy.c}!initializeEnemy@{initializeEnemy}}
+\index{initializeEnemy@{initializeEnemy}!enemy.c@{enemy.c}}
+\doxysubsubsection{\texorpdfstring{initializeEnemy()}{initializeEnemy()}}
+{\footnotesize\ttfamily \label{enemy_8c_a0a2032931d6f885c4803495958b92752} 
+\mbox{\hyperlink{struct_enemy}{Enemy}} \texorpdfstring{$\ast$}{*} initialize\+Enemy (\begin{DoxyParamCaption}\item[{float}]{x}{, }\item[{float}]{y}{, }\item[{int16\+\_\+t}]{ox}{, }\item[{int16\+\_\+t}]{oy}{, }\item[{int16\+\_\+t}]{hp}{, }\item[{int16\+\_\+t \texorpdfstring{$\ast$}{*}}]{targets}{, }\item[{int16\+\_\+t}]{last\+\_\+target}{}\end{DoxyParamCaption})}
+
+
+
+Initializes a new enemy. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & The initial x position of the enemy. \\
+\hline
+{\em y} & The initial y position of the enemy. \\
+\hline
+{\em ox} & The x offset of the enemy\textquotesingle{}s origin. \\
+\hline
+{\em oy} & The y offset of the enemy\textquotesingle{}s origin. \\
+\hline
+{\em hp} & The initial hit points of the enemy. \\
+\hline
+{\em targets} & An array of target positions for the enemy to move towards. \\
+\hline
+{\em last\+\_\+target} & The index of the last target in the targets array. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the newly initialized \doxylink{struct_enemy}{Enemy}. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{enemy_8c_a0a2032931d6f885c4803495958b92752_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{enemy_8c_a0a2032931d6f885c4803495958b92752_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{enemy_8c_a5137200416d71c41e422811f23120743}\index{enemy.c@{enemy.c}!newEnemyArray@{newEnemyArray}}
+\index{newEnemyArray@{newEnemyArray}!enemy.c@{enemy.c}}
+\doxysubsubsection{\texorpdfstring{newEnemyArray()}{newEnemyArray()}}
+{\footnotesize\ttfamily \label{enemy_8c_a5137200416d71c41e422811f23120743} 
+\mbox{\hyperlink{struct_enemy_array}{Enemy\+Array}} new\+Enemy\+Array (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{capacity}{}\end{DoxyParamCaption})}
+
+
+
+Creates a new \doxylink{struct_enemy_array}{Enemy\+Array} with a specified capacity. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em capacity} & The initial capacity of the \doxylink{struct_enemy_array}{Enemy\+Array}. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A new \doxylink{struct_enemy_array}{Enemy\+Array}. 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{enemy_8c_a5137200416d71c41e422811f23120743_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{enemy_8c_a5d14b5b6b2d08c86368e738ffcae504a}\index{enemy.c@{enemy.c}!pushEnemyArray@{pushEnemyArray}}
+\index{pushEnemyArray@{pushEnemyArray}!enemy.c@{enemy.c}}
+\doxysubsubsection{\texorpdfstring{pushEnemyArray()}{pushEnemyArray()}}
+{\footnotesize\ttfamily \label{enemy_8c_a5d14b5b6b2d08c86368e738ffcae504a} 
+void push\+Enemy\+Array (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_enemy_array}{Enemy\+Array}} \texorpdfstring{$\ast$}{*}}]{array}{, }\item[{\mbox{\hyperlink{struct_enemy}{Enemy}} \texorpdfstring{$\ast$}{*}}]{enemy}{}\end{DoxyParamCaption})}
+
+
+
+Adds an enemy to the \doxylink{struct_enemy_array}{Enemy\+Array}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em array} & A pointer to the \doxylink{struct_enemy_array}{Enemy\+Array}. \\
+\hline
+{\em enemy} & A pointer to the \doxylink{struct_enemy}{Enemy} to be added. \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{enemy_8c_a5d14b5b6b2d08c86368e738ffcae504a_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{enemy_8c_a22c30bd02e9fbe4aa5939af2db9a9474}\index{enemy.c@{enemy.c}!removeEnemyArray@{removeEnemyArray}}
+\index{removeEnemyArray@{removeEnemyArray}!enemy.c@{enemy.c}}
+\doxysubsubsection{\texorpdfstring{removeEnemyArray()}{removeEnemyArray()}}
+{\footnotesize\ttfamily \label{enemy_8c_a22c30bd02e9fbe4aa5939af2db9a9474} 
+void remove\+Enemy\+Array (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_enemy_array}{Enemy\+Array}} \texorpdfstring{$\ast$}{*}}]{array}{, }\item[{uint32\+\_\+t}]{index}{}\end{DoxyParamCaption})}
+
+
+
+Removes an enemy from the \doxylink{struct_enemy_array}{Enemy\+Array} at a specified index and destroys it. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em array} & A pointer to the \doxylink{struct_enemy_array}{Enemy\+Array}. \\
+\hline
+{\em index} & The index of the \doxylink{struct_enemy}{Enemy} to be removed. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{enemy_8c_a22c30bd02e9fbe4aa5939af2db9a9474_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{enemy_8c_a22c30bd02e9fbe4aa5939af2db9a9474_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{enemy_8c_afdd983e5750453c75934d601bb3f0cf8}\index{enemy.c@{enemy.c}!updateAllEnemyPositions@{updateAllEnemyPositions}}
+\index{updateAllEnemyPositions@{updateAllEnemyPositions}!enemy.c@{enemy.c}}
+\doxysubsubsection{\texorpdfstring{updateAllEnemyPositions()}{updateAllEnemyPositions()}}
+{\footnotesize\ttfamily \label{enemy_8c_afdd983e5750453c75934d601bb3f0cf8} 
+uint32\+\_\+t update\+All\+Enemy\+Positions (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_enemy_array}{Enemy\+Array}} \texorpdfstring{$\ast$}{*}}]{array}{}\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{enemy_8c_afdd983e5750453c75934d601bb3f0cf8_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{enemy_8c_afdd983e5750453c75934d601bb3f0cf8_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{enemy_8c_a3629b4aff742f5680afb68b73733bb23}\index{enemy.c@{enemy.c}!updateEnemyPosition@{updateEnemyPosition}}
+\index{updateEnemyPosition@{updateEnemyPosition}!enemy.c@{enemy.c}}
+\doxysubsubsection{\texorpdfstring{updateEnemyPosition()}{updateEnemyPosition()}}
+{\footnotesize\ttfamily \label{enemy_8c_a3629b4aff742f5680afb68b73733bb23} 
+void update\+Enemy\+Position (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_enemy}{Enemy}} \texorpdfstring{$\ast$}{*}}]{enemy}{}\end{DoxyParamCaption})}
+
+
+
+Updates the position of an enemy based on its speed. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em enemy} & A pointer to the \doxylink{struct_enemy}{Enemy} to be updated. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{enemy_8c_a3629b4aff742f5680afb68b73733bb23_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{enemy_8c_a3629b4aff742f5680afb68b73733bb23_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{enemy_8c_a994683c5a71c02885fd19ed4ebf1987b}\index{enemy.c@{enemy.c}!updateEnemySpriteBasedOnPosition@{updateEnemySpriteBasedOnPosition}}
+\index{updateEnemySpriteBasedOnPosition@{updateEnemySpriteBasedOnPosition}!enemy.c@{enemy.c}}
+\doxysubsubsection{\texorpdfstring{updateEnemySpriteBasedOnPosition()}{updateEnemySpriteBasedOnPosition()}}
+{\footnotesize\ttfamily \label{enemy_8c_a994683c5a71c02885fd19ed4ebf1987b} 
+void update\+Enemy\+Sprite\+Based\+On\+Position (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_enemy}{Enemy}} \texorpdfstring{$\ast$}{*}}]{enemy}{}\end{DoxyParamCaption})}
+
+
+
+Updates the sprite of an enemy based on its current position and direction. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em enemy} & A pointer to the \doxylink{struct_enemy}{Enemy} to be updated. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{enemy_8c_a994683c5a71c02885fd19ed4ebf1987b_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{enemy_8c_a994683c5a71c02885fd19ed4ebf1987b_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{enemy_8c_a1636c5f52c5c798d9a14ec91cc0b577d}\index{enemy.c@{enemy.c}!screen@{screen}}
+\index{screen@{screen}!enemy.c@{enemy.c}}
+\doxysubsubsection{\texorpdfstring{screen}{screen}}
+{\footnotesize\ttfamily \label{enemy_8c_a1636c5f52c5c798d9a14ec91cc0b577d} 
+\mbox{\hyperlink{struct_screen_info}{Screen\+Info}} screen\hspace{0.3cm}{\ttfamily [extern]}}
+

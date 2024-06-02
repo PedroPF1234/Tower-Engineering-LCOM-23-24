@@ -1,0 +1,43 @@
+<map id="hideGameObjects" name="hideGameObjects">
+<area shape="rect" id="Node000001" title="Hides all the GameObjects in the GameObjectArray." alt="" coords="1381,150,1506,176"/>
+<area shape="rect" id="Node000002" href="$gameplay_8c.html#a8d079dbe8fe6897f8930a45bacac842f" title="Exits the game." alt="" coords="1241,75,1318,101"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1399,146,1309,104,1311,99,1401,141"/>
+<area shape="rect" id="Node000004" href="$gameplay_8c.html#a51e8e30605fea6f79a919eb15c2ce885" title=" " alt="" coords="830,25,951,50"/>
+<area shape="poly" id="edge24_Node000001_Node000004" title=" " alt="" coords="1419,140,1381,102,1332,65,1291,44,1258,31,1177,16,1090,8,1003,16,943,27,942,21,1002,11,1090,3,1178,11,1259,26,1293,39,1334,60,1384,97,1423,136"/>
+<area shape="rect" id="Node000011" href="$gameplay_8c.html#a91bd3234380a02ca10ddc23b13cfc521" title="Includes all things related to the gameplay of the game." alt="" coords="494,275,622,301"/>
+<area shape="poly" id="edge12_Node000001_Node000011" title=" " alt="" coords="1422,189,1368,239,1291,298,1245,324,1196,346,1144,361,1091,367,889,367,805,360,722,344,649,323,593,304,595,299,650,318,723,338,805,355,889,361,1091,361,1143,356,1194,341,1242,320,1288,293,1365,235,1418,185"/>
+<area shape="rect" id="Node000012" href="$money_8c.html#a93e5d98cb7a8773ebef138857bf1ab7d" title="Initializes a new Money." alt="" coords="1226,201,1333,226"/>
+<area shape="poly" id="edge14_Node000001_Node000012" title=" " alt="" coords="1386,183,1324,203,1322,198,1384,178"/>
+<area shape="rect" id="Node000003" href="$gameplay_8c.html#a8ab7c3f15457e7b1d05182d33a9fbea6" title=" " alt="" coords="1002,50,1178,76"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="1225,84,1178,77,1178,72,1225,78"/>
+<area shape="poly" id="edge11_Node000002_Node000004" title=" " alt="" coords="1244,69,1213,53,1177,40,1118,30,1058,27,952,32,951,27,1058,22,1119,25,1178,35,1215,48,1247,64"/>
+<area shape="rect" id="Node000009" href="$gameplay_8c.html#ab1e8de75a8a897632941c220743edbc5" title=" " alt="" coords="1019,99,1161,125"/>
+<area shape="poly" id="edge8_Node000002_Node000009" title=" " alt="" coords="1225,97,1162,106,1161,100,1225,92"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="986,52,952,48,952,42,987,47"/>
+<area shape="rect" id="Node000005" href="$gameplay_8c.html#a97feb8702b4bc47a3dee7bf3b220da2b" title="Updates all the game objects and buttons.. etc in the game." alt="" coords="677,125,772,150"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="856,61,749,126,746,122,853,56"/>
+<area shape="rect" id="Node000006" href="$game_8c.html#a315e950a7e6bb500fe11c37ee1122577" title="Encapsulates the whole game logic." alt="" coords="327,250,446,276"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="674,159,425,252,423,247,672,154"/>
+<area shape="rect" id="Node000007" href="$device__controller_8c.html#a4d10f01a84e9e24f18682c0bca48dca6" title="Calls all device&#39;s interrupt handlers." alt="" coords="162,250,279,276"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="312,265,279,265,279,260,312,260"/>
+<area shape="rect" id="Node000008" href="$proj_8c.html#af244d65e69677cf312af1950452ec256" title=" " alt="" coords="5,250,114,276"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="146,265,114,265,114,260,146,260"/>
+<area shape="rect" id="Node000010" href="$gameplay_8c.html#a249981b88f5eb32eafdcc1b234ed4b77" title=" " alt="" coords="842,99,939,125"/>
+<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="1003,115,940,115,940,109,1003,109"/>
+<area shape="poly" id="edge10_Node000010_Node000005" title=" " alt="" coords="827,124,773,133,772,127,826,119"/>
+<area shape="poly" id="edge13_Node000011_Node000006" title=" " alt="" coords="478,279,447,274,447,269,479,274"/>
+<area shape="poly" id="edge15_Node000012_Node000011" title=" " alt="" coords="1257,239,1222,268,1179,291,1103,310,1025,323,947,328,870,329,729,319,622,303,622,298,730,314,870,323,946,323,1025,317,1102,305,1177,286,1219,263,1254,235"/>
+<area shape="rect" id="Node000013" href="$playerbase_8c.html#ac6cd2a8de8bf7122bea7bfacf2aa6d7e" title="Initializes a new player base." alt="" coords="1022,201,1158,226"/>
+<area shape="poly" id="edge16_Node000012_Node000013" title=" " alt="" coords="1210,216,1158,216,1158,211,1210,211"/>
+<area shape="rect" id="Node000016" href="$shop_8c.html#ad36f8a5dda0b38c6eb273f89abae4e8c" title="Initializes a new shop." alt="" coords="1041,250,1139,276"/>
+<area shape="poly" id="edge20_Node000012_Node000016" title=" " alt="" coords="1213,233,1140,253,1139,247,1211,228"/>
+<area shape="rect" id="Node000017" href="$gameplay_8c.html#aaa428c7375da850b3a825dbd8b95d1d5" title=" " alt="" coords="827,150,954,176"/>
+<area shape="poly" id="edge22_Node000012_Node000017" title=" " alt="" coords="1216,199,1177,191,1059,176,955,168,955,163,1060,170,1178,185,1217,194"/>
+<area shape="rect" id="Node000014" href="$arena_8c.html#a0f21764fa944b4729f9a6cff2d05d507" title=" " alt="" coords="834,250,947,276"/>
+<area shape="poly" id="edge17_Node000013_Node000014" title=" " alt="" coords="1021,233,946,252,945,247,1019,228"/>
+<area shape="rect" id="Node000015" href="$arena_8c.html#aa3fdd3e87acb2a6ff24a3fca4412ebe4" title="Initializes the arenas." alt="" coords="670,250,779,276"/>
+<area shape="poly" id="edge18_Node000014_Node000015" title=" " alt="" coords="818,265,780,265,780,260,818,260"/>
+<area shape="poly" id="edge19_Node000015_Node000011" title=" " alt="" coords="655,276,623,281,622,276,654,271"/>
+<area shape="poly" id="edge21_Node000016_Node000014" title=" " alt="" coords="1026,265,948,265,948,260,1026,260"/>
+<area shape="poly" id="edge23_Node000017_Node000005" title=" " alt="" coords="811,153,772,147,773,142,812,148"/>
+</map>

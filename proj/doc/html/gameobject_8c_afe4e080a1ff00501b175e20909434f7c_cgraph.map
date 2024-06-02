@@ -1,0 +1,9 @@
+<map id="create_gameobjects" name="create_gameobjects">
+<area shape="rect" id="Node000001" title="Creates the game objects. Creates the object and adds it to the render pipeline." alt="" coords="5,31,144,56"/>
+<area shape="rect" id="Node000002" href="$gameobject_8c.html#a9d06de2eac7bee1218b90ee9a232ae25" title="Creates a game object." alt="" coords="192,31,323,56"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="144,41,176,41,176,46,144,46"/>
+<area shape="rect" id="Node000003" href="$sprite_8c.html#a06170cd082bf54a5bbb4fda040c83a0a" title="Initializes a new sprite." alt="" coords="394,5,490,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="323,32,378,24,378,29,324,37"/>
+<area shape="rect" id="Node000004" href="$gameobject_8c.html#a6a1ebecd29c69ded46970bd41c3097f0" title=" " alt="" coords="371,55,512,80"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="324,49,356,54,355,59,323,55"/>
+</map>

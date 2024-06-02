@@ -1,0 +1,1008 @@
+\doxysection{src/\+Game/\+Gameplay/gameplay.c File Reference}
+\hypertarget{gameplay_8c}{}\label{gameplay_8c}\index{src/Game/Gameplay/gameplay.c@{src/Game/Gameplay/gameplay.c}}
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include $<$math.\+h$>$}\newline
+{\ttfamily \#include "{}gameplay.\+h"{}}\newline
+{\ttfamily \#include "{}economy.\+h"{}}\newline
+{\ttfamily \#include "{}../\+Data\+Structure/button.\+h"{}}\newline
+{\ttfamily \#include "{}../\+Menu/menu.\+h"{}}\newline
+{\ttfamily \#include "{}../\+Game\+Over/gameover.\+h"{}}\newline
+{\ttfamily \#include "{}Player/player.\+h"{}}\newline
+{\ttfamily \#include "{}Tower/towers.\+h"{}}\newline
+{\ttfamily \#include "{}Arena/arena.\+h"{}}\newline
+{\ttfamily \#include "{}Enemy/enemy.\+h"{}}\newline
+{\ttfamily \#include "{}Bullet/bullet.\+h"{}}\newline
+{\ttfamily \#include "{}Player\+Base/playerbase.\+h"{}}\newline
+{\ttfamily \#include "{}Shop/shop.\+h"{}}\newline
+{\ttfamily \#include "{}Money/money.\+h"{}}\newline
+{\ttfamily \#include "{}Weapon/weapon.\+h"{}}\newline
+{\ttfamily \#include "{}../gamestates.\+h"{}}\newline
+{\ttfamily \#include "{}../../\+Image\+Assets/\+Background.\+xpm"{}}\newline
+{\ttfamily \#include "{}../../\+Image\+Assets/\+Pause.\+xpm"{}}\newline
+{\ttfamily \#include "{}../../\+Image\+Assets/\+Button.\+xpm"{}}\newline
+{\ttfamily \#include "{}../../\+Image\+Assets/\+Towers.\+xpm"{}}\newline
+{\ttfamily \#include "{}../../\+Image\+Assets/\+Money.\+xpm"{}}\newline
+Include dependency graph for gameplay.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gameplay_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{gameplay_8c_a6d1c23daae92b4fbcf3b33669b4e5f12}{swap\+Mouse\+Sprites}} ()
+\item 
+static void \mbox{\hyperlink{gameplay_8c_a8ab7c3f15457e7b1d05182d33a9fbea6}{check\+Game\+Keyboard\+Input}} (\mbox{\hyperlink{struct_key_presses}{Key\+Presses}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}head)
+\item 
+static void \mbox{\hyperlink{gameplay_8c_a6bb5d43c322be45f0ee0f89ab7c9ef1b}{check\+Game\+Hovered}} (\mbox{\hyperlink{struct_tower_array}{Tower\+Array}} \texorpdfstring{$\ast$}{*}array)
+\item 
+static void \mbox{\hyperlink{gameplay_8c_a5f29260f4e777bc46448063f9003f524}{check\+Pause\+Keyboard\+Input}} (\mbox{\hyperlink{struct_key_presses}{Key\+Presses}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}head)
+\item 
+static void \mbox{\hyperlink{gameplay_8c_ab1e8de75a8a897632941c220743edbc5}{check\+Pause\+Hovered}} (\mbox{\hyperlink{struct_button_array}{Button\+Array}} \texorpdfstring{$\ast$}{*}array)
+\item 
+static void \mbox{\hyperlink{gameplay_8c_a70ea975e65d74ecaf8fe94e965e419cd}{check\+Shop\+Keyboard\+Input}} (\mbox{\hyperlink{struct_key_presses}{Key\+Presses}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}head)
+\item 
+static void \mbox{\hyperlink{gameplay_8c_ad5e31663c151c593261dc350f73a586a}{check\+Shop\+Hovered}} (\mbox{\hyperlink{struct_button_array}{Button\+Array}} \texorpdfstring{$\ast$}{*}array)
+\item 
+static void \mbox{\hyperlink{gameplay_8c_a3cb248ce809e467e4c20566224f80398}{check\+Base\+Hovered}} (\mbox{\hyperlink{struct_button_array}{Button\+Array}} \texorpdfstring{$\ast$}{*}array)
+\item 
+static void \mbox{\hyperlink{gameplay_8c_af8c4ed9fc7595193afa97b106137d8e5}{check\+Tower\+Menu\+Keyboard\+Input}} (\mbox{\hyperlink{struct_key_presses}{Key\+Presses}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}head)
+\item 
+static void \mbox{\hyperlink{gameplay_8c_a899dbd471333a60ae2c9db1c860314a6}{check\+Tower\+Menu\+Hovered}} (\mbox{\hyperlink{struct_button_array}{Button\+Array}} \texorpdfstring{$\ast$}{*}array)
+\item 
+static bool \mbox{\hyperlink{gameplay_8c_a3ec5ab15c9cb253f6e1b88be979f50c8}{check\+Collision}} (\mbox{\hyperlink{struct_bullet}{Bullet}} \texorpdfstring{$\ast$}{*}bullet, \mbox{\hyperlink{struct_enemy}{Enemy}} \texorpdfstring{$\ast$}{*}enemy)
+\item 
+static void \mbox{\hyperlink{gameplay_8c_a51e8e30605fea6f79a919eb15c2ce885}{update\+Game\+Play}} ()
+\item 
+static void \mbox{\hyperlink{gameplay_8c_a83b88ae83a8793289aaa3cb1cb56ed56}{update\+Base}} ()
+\item 
+static void \mbox{\hyperlink{gameplay_8c_a249981b88f5eb32eafdcc1b234ed4b77}{update\+Pause}} ()
+\item 
+static void \mbox{\hyperlink{gameplay_8c_a91ca61d0488b8f57a54edbbdf2107def}{update\+Shop}} ()
+\item 
+static void \mbox{\hyperlink{gameplay_8c_aaa428c7375da850b3a825dbd8b95d1d5}{update\+Tower\+Menu}} ()
+\item 
+void \mbox{\hyperlink{gameplay_8c_a91bd3234380a02ca10ddc23b13cfc521}{initialize\+Gameplay}} ()
+\begin{DoxyCompactList}\small\item\em Includes all things related to the gameplay of the game. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{gameplay_8c_a01e7a0ef98ea3508f98eaa328b911ad1}{enter\+Game}} (bool multi, uint8\+\_\+t \mbox{\hyperlink{gameover_8c_af5a57582e3f2a42749711036c767fe64}{arena}})
+\begin{DoxyCompactList}\small\item\em Enters the game. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{gameplay_8c_a97feb8702b4bc47a3dee7bf3b220da2b}{update\+Game}} ()
+\begin{DoxyCompactList}\small\item\em Updates all the game objects and buttons.. etc in the game. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{gameplay_8c_a8d079dbe8fe6897f8930a45bacac842f}{exit\+Game}} ()
+\begin{DoxyCompactList}\small\item\em Exits the game. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{gameplay_8c_ab7c9ee132f977dd2efd33ab66509d650}{destroy\+Game}} ()
+\begin{DoxyCompactList}\small\item\em Destroys all the game objects and buttons.. etc in the game and frees their memory. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{gamestates_8h_a7899b65f1ea0f655e4bbf8d2a5714285}{Game\+State}} \mbox{\hyperlink{gameplay_8c_a25362b33bad9ff6222dc40646c411649}{state}}
+\item 
+\mbox{\hyperlink{struct_screen_info}{Screen\+Info}} \mbox{\hyperlink{gameplay_8c_a1636c5f52c5c798d9a14ec91cc0b577d}{screen}}
+\item 
+\mbox{\hyperlink{struct_mouse_device}{Mouse\+Device}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{gameplay_8c_af690dfd2cb895a02795e3ee3c10792cc}{mouse\+\_\+device}}
+\item 
+\mbox{\hyperlink{struct_keyboard_device}{Keyboard\+Device}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{gameplay_8c_aaaee12ef170dce59e90a53ecb0c75172}{keyboard\+\_\+device}}
+\item 
+\mbox{\hyperlink{struct_r_t_c___time}{RTC\+\_\+\+Time}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{gameplay_8c_a5071c1013d2ba777107338794f9696f3}{rtc\+\_\+time}}
+\item 
+bool \mbox{\hyperlink{gameplay_8c_a189e4b3cf5d30c8f132982577142f27f}{last\+\_\+pressed\+\_\+was\+\_\+mouse}}
+\item 
+bool \mbox{\hyperlink{gameplay_8c_a0448fec049217e428b9ec21c03e51d52}{playing}}
+\item 
+bool \mbox{\hyperlink{gameplay_8c_af2265234a5aa467e7d8abe326f759469}{can\+\_\+shop}}
+\item 
+bool \mbox{\hyperlink{gameplay_8c_aaa338f436776c483ca66f54be811cacf}{can\+\_\+tower}}
+\item 
+bool \mbox{\hyperlink{gameplay_8c_a53b83467d6131ed391f6a28d2290fdc1}{can\+\_\+base}}
+\item 
+int16\+\_\+t \mbox{\hyperlink{gameplay_8c_aad846dc0f923a198aec8edd23f558683}{tower\+\_\+index}}
+\item 
+\mbox{\hyperlink{towers_8h_a251e51a50f09b8bf056c1e11febce1e6}{Turret\+Type}} \mbox{\hyperlink{gameplay_8c_a4ba649ab9bd98bcc8a6b422a582821e4}{current\+\_\+turret}} = \mbox{\hyperlink{towers_8h_a251e51a50f09b8bf056c1e11febce1e6a4f9adef2492fef9fca85c72bb600325d}{CROSSBOW}}
+\item 
+static bool \mbox{\hyperlink{gameplay_8c_abb380fd9095d35e1859949a4b441c212}{pressed\+\_\+game\+\_\+button}} = false
+\item 
+static bool \mbox{\hyperlink{gameplay_8c_a65201bdee797dfd993a7c4ad16f1f286}{to\+\_\+spawn\+\_\+enemy}} = false
+\item 
+static bool \mbox{\hyperlink{gameplay_8c_a34d5d9c83d541417a9932111f4396b74}{first\+\_\+time\+\_\+paused}} = true
+\item 
+static bool \mbox{\hyperlink{gameplay_8c_ac95e6a95764756a6b4b691561b3808de}{pressed\+\_\+pause\+\_\+button}} = false
+\item 
+static bool \mbox{\hyperlink{gameplay_8c_a9971ddfeda16e3e23e795127776cfbb7}{first\+\_\+time\+\_\+base}} = true
+\item 
+static bool \mbox{\hyperlink{gameplay_8c_a8f2fdce480863550d134e5f5e4ab6c9b}{pressed\+\_\+base\+\_\+button}} = false
+\item 
+static bool \mbox{\hyperlink{gameplay_8c_adfcfc0f865c0eddc5cc4036407e55f3c}{first\+\_\+time\+\_\+shop}} = true
+\item 
+static bool \mbox{\hyperlink{gameplay_8c_a740624ef2fb0251a991620f9e2ace0f0}{pressed\+\_\+shop\+\_\+button}} = false
+\item 
+static bool \mbox{\hyperlink{gameplay_8c_a35914cbec13f1e27109a6ae5f0e90b69}{first\+\_\+time\+\_\+tower}} = true
+\item 
+static bool \mbox{\hyperlink{gameplay_8c_a6795899eed19d968876330b2790d3b28}{pressed\+\_\+tower\+\_\+button}} = false
+\item 
+static bool \mbox{\hyperlink{gameplay_8c_a902d5a48a7419b2f6dc9e1e6b887e418}{type\+\_\+tower\+\_\+menu}} = false
+\item 
+\mbox{\hyperlink{struct_tower_base}{Tower\+Base}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{gameplay_8c_a4df5985d3463cd115fc89f34062225ac}{selected\+\_\+tower\+\_\+base}} = NULL
+\item 
+int8\+\_\+t \mbox{\hyperlink{gameplay_8c_a2925aab4f30546ab105eafbe74d9184d}{selected\+\_\+tower\+\_\+index}} = -\/1
+\item 
+static int8\+\_\+t \mbox{\hyperlink{gameplay_8c_ae9d9e7baa53e32cafb8287df2303be80}{game\+\_\+current\+\_\+selection}} = -\/1
+\item 
+static int8\+\_\+t \mbox{\hyperlink{gameplay_8c_ab0336c5d94abfcf33a2b2a068dd8ba28}{pause\+\_\+current\+\_\+selection}} = -\/1
+\item 
+static int8\+\_\+t \mbox{\hyperlink{gameplay_8c_a42cbe007265c5659f7bbe7d0e3b606be}{base\+\_\+current\+\_\+selection}} = -\/1
+\item 
+static int8\+\_\+t \mbox{\hyperlink{gameplay_8c_a5c599f8091c8a4b84f35e6c8c92efa69}{shop\+\_\+current\+\_\+selection}} = -\/1
+\item 
+static int8\+\_\+t \mbox{\hyperlink{gameplay_8c_a844771b28635e1d1455620f6646ec82e}{tower\+\_\+current\+\_\+selection}} = -\/1
+\item 
+static int8\+\_\+t \mbox{\hyperlink{gameplay_8c_a4c71bc021c13ee6ab3272aab138d7f45}{select\+\_\+game\+\_\+current\+\_\+arena}} = -\/1
+\item 
+static bool \mbox{\hyperlink{gameplay_8c_af3664612b739319a2787459e2ef14a4b}{just\+\_\+changed\+\_\+selection}} = false
+\item 
+bool \mbox{\hyperlink{gameplay_8c_ac9877f073f73ae2f5ec185b874468758}{multiplayer}} = false
+\item 
+static int8\+\_\+t \mbox{\hyperlink{gameplay_8c_a47a81a34f98fd665353d214b4f02c909}{unlocked\+\_\+turrets}} \mbox{[}$\,$\mbox{]} = \{1, 0, 0\}
+\item 
+static bool \mbox{\hyperlink{gameplay_8c_ab029b8bc1665c384d95b4f2247f801ac}{unlocked\+\_\+weapon}} = false
+\item 
+\mbox{\hyperlink{struct_economy}{Economy}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{gameplay_8c_a4fab3e2ea30a7587a700aaec37671bea}{economy}}
+\item 
+\mbox{\hyperlink{struct_arena}{Arena}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{gameplay_8c_ad09dd630b9c7b75a7c80f36ee1ab501c}{arenas}}
+\item 
+\mbox{\hyperlink{struct_arena}{Arena}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{gameplay_8c_a8f46f949e432c6726f3fac7de8609eb0}{current\+\_\+arena}}
+\item 
+\mbox{\hyperlink{struct_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{gameplay_8c_a0692a96086d7304238e995ba94a20300}{game\+\_\+background}}
+\item 
+\mbox{\hyperlink{struct_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{gameplay_8c_a4acecbbf0198d4b88343010420dad151}{pause\+\_\+background}}
+\item 
+\mbox{\hyperlink{struct_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{gameplay_8c_ad7e0fec0701c3aeec53c6af0664aa575}{shop\+\_\+background}}
+\item 
+\mbox{\hyperlink{struct_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{gameplay_8c_aeebf6cd7cbf95b5dd4eafa4e44f201d2}{base\+\_\+background}}
+\item 
+\mbox{\hyperlink{struct_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{gameplay_8c_abede5871fece94aed38cc059194023b4}{tower\+\_\+background}}
+\item 
+\mbox{\hyperlink{struct_player}{Player}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{gameplay_8c_a427622cef5fab821a8baf9d51e68450b}{player1}}
+\item 
+\mbox{\hyperlink{struct_player}{Player}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{gameplay_8c_aa1ad9a3d30291b7fbfbabd79cc45d4f9}{player2}}
+\item 
+\mbox{\hyperlink{struct_tower_array}{Tower\+Array}} \mbox{\hyperlink{gameplay_8c_a61f672a5d12cd6e5535b84f677bf7ca9}{towers}}
+\item 
+\mbox{\hyperlink{struct_enemy_array}{Enemy\+Array}} \mbox{\hyperlink{gameplay_8c_a33f4bd1f8d3cdbfa5d99e1b7e196f170}{enemies}}
+\item 
+\mbox{\hyperlink{struct_bullet_array}{Bullet\+Array}} \mbox{\hyperlink{gameplay_8c_a87e4468daaddd721c85554f848d918a1}{bullets}}
+\item 
+\mbox{\hyperlink{struct_player_base}{Player\+Base}} \mbox{\hyperlink{gameplay_8c_a7108ddee91e00cf28b06e520de568efd}{player\+\_\+base}}
+\item 
+\mbox{\hyperlink{struct_shop}{Shop}} \mbox{\hyperlink{gameplay_8c_a8a3e333f14a0758ccc5b075b2b640aa4}{shop}}
+\item 
+\mbox{\hyperlink{struct_button_array}{Button\+Array}} \mbox{\hyperlink{gameplay_8c_ac635bd559113fa935400e0d97d4141b7}{pause\+\_\+buttons}}
+\item 
+\mbox{\hyperlink{struct_button_array}{Button\+Array}} \mbox{\hyperlink{gameplay_8c_afa9956393fe1e3cdd773601e1f5b24a4}{shop\+\_\+buttons}}
+\item 
+\mbox{\hyperlink{struct_button_array}{Button\+Array}} \mbox{\hyperlink{gameplay_8c_a512cedc365232243c9427a18ebcdc51e}{tower\+\_\+buttons}}
+\item 
+\mbox{\hyperlink{struct_button_array}{Button\+Array}} \mbox{\hyperlink{gameplay_8c_a9179eeda1e9e2245f2d00eb5d19ab1dc}{base\+\_\+buttons}}
+\item 
+\mbox{\hyperlink{struct_money_array}{Money\+Array}} \mbox{\hyperlink{gameplay_8c_afed815ca974f10b3fe857613019e4027}{tower\+\_\+money}}
+\item 
+\mbox{\hyperlink{struct_money}{Money}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{gameplay_8c_a2f1d20fe71e2a2721b25bd83c274425a}{money}}
+\item 
+\mbox{\hyperlink{struct_weapon}{Weapon}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{gameplay_8c_a66996bc56804669e9b0677f0b5e32d3b}{player\+\_\+weapon}}
+\item 
+\mbox{\hyperlink{struct_sprite}{Sprite}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{gameplay_8c_a3db015da58396072ea3d095684fc8af0}{normal\+\_\+mouse}}
+\item 
+\mbox{\hyperlink{struct_sprite}{Sprite}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{gameplay_8c_ac586be1ef794dbc237f79483c8bd1b64}{aim\+\_\+mouse}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{gameplay_8c_a3cb248ce809e467e4c20566224f80398}\index{gameplay.c@{gameplay.c}!checkBaseHovered@{checkBaseHovered}}
+\index{checkBaseHovered@{checkBaseHovered}!gameplay.c@{gameplay.c}}
+\doxysubsubsection{\texorpdfstring{checkBaseHovered()}{checkBaseHovered()}}
+{\footnotesize\ttfamily \label{gameplay_8c_a3cb248ce809e467e4c20566224f80398} 
+static void check\+Base\+Hovered (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_button_array}{Button\+Array}} \texorpdfstring{$\ast$}{*}}]{array}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gameplay_8c_a3cb248ce809e467e4c20566224f80398_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gameplay_8c_a3cb248ce809e467e4c20566224f80398_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{gameplay_8c_a3ec5ab15c9cb253f6e1b88be979f50c8}\index{gameplay.c@{gameplay.c}!checkCollision@{checkCollision}}
+\index{checkCollision@{checkCollision}!gameplay.c@{gameplay.c}}
+\doxysubsubsection{\texorpdfstring{checkCollision()}{checkCollision()}}
+{\footnotesize\ttfamily \label{gameplay_8c_a3ec5ab15c9cb253f6e1b88be979f50c8} 
+static bool check\+Collision (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_bullet}{Bullet}} \texorpdfstring{$\ast$}{*}}]{bullet}{, }\item[{\mbox{\hyperlink{struct_enemy}{Enemy}} \texorpdfstring{$\ast$}{*}}]{enemy}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gameplay_8c_a3ec5ab15c9cb253f6e1b88be979f50c8_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{gameplay_8c_a6bb5d43c322be45f0ee0f89ab7c9ef1b}\index{gameplay.c@{gameplay.c}!checkGameHovered@{checkGameHovered}}
+\index{checkGameHovered@{checkGameHovered}!gameplay.c@{gameplay.c}}
+\doxysubsubsection{\texorpdfstring{checkGameHovered()}{checkGameHovered()}}
+{\footnotesize\ttfamily \label{gameplay_8c_a6bb5d43c322be45f0ee0f89ab7c9ef1b} 
+static void check\+Game\+Hovered (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_tower_array}{Tower\+Array}} \texorpdfstring{$\ast$}{*}}]{array}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gameplay_8c_a6bb5d43c322be45f0ee0f89ab7c9ef1b_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gameplay_8c_a6bb5d43c322be45f0ee0f89ab7c9ef1b_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{gameplay_8c_a8ab7c3f15457e7b1d05182d33a9fbea6}\index{gameplay.c@{gameplay.c}!checkGameKeyboardInput@{checkGameKeyboardInput}}
+\index{checkGameKeyboardInput@{checkGameKeyboardInput}!gameplay.c@{gameplay.c}}
+\doxysubsubsection{\texorpdfstring{checkGameKeyboardInput()}{checkGameKeyboardInput()}}
+{\footnotesize\ttfamily \label{gameplay_8c_a8ab7c3f15457e7b1d05182d33a9fbea6} 
+static void check\+Game\+Keyboard\+Input (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_key_presses}{Key\+Presses}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{head}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gameplay_8c_a8ab7c3f15457e7b1d05182d33a9fbea6_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gameplay_8c_a8ab7c3f15457e7b1d05182d33a9fbea6_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{gameplay_8c_ab1e8de75a8a897632941c220743edbc5}\index{gameplay.c@{gameplay.c}!checkPauseHovered@{checkPauseHovered}}
+\index{checkPauseHovered@{checkPauseHovered}!gameplay.c@{gameplay.c}}
+\doxysubsubsection{\texorpdfstring{checkPauseHovered()}{checkPauseHovered()}}
+{\footnotesize\ttfamily \label{gameplay_8c_ab1e8de75a8a897632941c220743edbc5} 
+static void check\+Pause\+Hovered (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_button_array}{Button\+Array}} \texorpdfstring{$\ast$}{*}}]{array}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gameplay_8c_ab1e8de75a8a897632941c220743edbc5_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gameplay_8c_ab1e8de75a8a897632941c220743edbc5_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{gameplay_8c_a5f29260f4e777bc46448063f9003f524}\index{gameplay.c@{gameplay.c}!checkPauseKeyboardInput@{checkPauseKeyboardInput}}
+\index{checkPauseKeyboardInput@{checkPauseKeyboardInput}!gameplay.c@{gameplay.c}}
+\doxysubsubsection{\texorpdfstring{checkPauseKeyboardInput()}{checkPauseKeyboardInput()}}
+{\footnotesize\ttfamily \label{gameplay_8c_a5f29260f4e777bc46448063f9003f524} 
+static void check\+Pause\+Keyboard\+Input (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_key_presses}{Key\+Presses}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{head}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gameplay_8c_a5f29260f4e777bc46448063f9003f524_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{gameplay_8c_ad5e31663c151c593261dc350f73a586a}\index{gameplay.c@{gameplay.c}!checkShopHovered@{checkShopHovered}}
+\index{checkShopHovered@{checkShopHovered}!gameplay.c@{gameplay.c}}
+\doxysubsubsection{\texorpdfstring{checkShopHovered()}{checkShopHovered()}}
+{\footnotesize\ttfamily \label{gameplay_8c_ad5e31663c151c593261dc350f73a586a} 
+static void check\+Shop\+Hovered (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_button_array}{Button\+Array}} \texorpdfstring{$\ast$}{*}}]{array}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gameplay_8c_ad5e31663c151c593261dc350f73a586a_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gameplay_8c_ad5e31663c151c593261dc350f73a586a_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{gameplay_8c_a70ea975e65d74ecaf8fe94e965e419cd}\index{gameplay.c@{gameplay.c}!checkShopKeyboardInput@{checkShopKeyboardInput}}
+\index{checkShopKeyboardInput@{checkShopKeyboardInput}!gameplay.c@{gameplay.c}}
+\doxysubsubsection{\texorpdfstring{checkShopKeyboardInput()}{checkShopKeyboardInput()}}
+{\footnotesize\ttfamily \label{gameplay_8c_a70ea975e65d74ecaf8fe94e965e419cd} 
+static void check\+Shop\+Keyboard\+Input (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_key_presses}{Key\+Presses}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{head}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gameplay_8c_a70ea975e65d74ecaf8fe94e965e419cd_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{gameplay_8c_a899dbd471333a60ae2c9db1c860314a6}\index{gameplay.c@{gameplay.c}!checkTowerMenuHovered@{checkTowerMenuHovered}}
+\index{checkTowerMenuHovered@{checkTowerMenuHovered}!gameplay.c@{gameplay.c}}
+\doxysubsubsection{\texorpdfstring{checkTowerMenuHovered()}{checkTowerMenuHovered()}}
+{\footnotesize\ttfamily \label{gameplay_8c_a899dbd471333a60ae2c9db1c860314a6} 
+static void check\+Tower\+Menu\+Hovered (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_button_array}{Button\+Array}} \texorpdfstring{$\ast$}{*}}]{array}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gameplay_8c_a899dbd471333a60ae2c9db1c860314a6_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gameplay_8c_a899dbd471333a60ae2c9db1c860314a6_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{gameplay_8c_af8c4ed9fc7595193afa97b106137d8e5}\index{gameplay.c@{gameplay.c}!checkTowerMenuKeyboardInput@{checkTowerMenuKeyboardInput}}
+\index{checkTowerMenuKeyboardInput@{checkTowerMenuKeyboardInput}!gameplay.c@{gameplay.c}}
+\doxysubsubsection{\texorpdfstring{checkTowerMenuKeyboardInput()}{checkTowerMenuKeyboardInput()}}
+{\footnotesize\ttfamily \label{gameplay_8c_af8c4ed9fc7595193afa97b106137d8e5} 
+static void check\+Tower\+Menu\+Keyboard\+Input (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_key_presses}{Key\+Presses}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{head}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gameplay_8c_af8c4ed9fc7595193afa97b106137d8e5_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{gameplay_8c_ab7c9ee132f977dd2efd33ab66509d650}\index{gameplay.c@{gameplay.c}!destroyGame@{destroyGame}}
+\index{destroyGame@{destroyGame}!gameplay.c@{gameplay.c}}
+\doxysubsubsection{\texorpdfstring{destroyGame()}{destroyGame()}}
+{\footnotesize\ttfamily \label{gameplay_8c_ab7c9ee132f977dd2efd33ab66509d650} 
+void destroy\+Game (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Destroys all the game objects and buttons.. etc in the game and frees their memory. 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gameplay_8c_ab7c9ee132f977dd2efd33ab66509d650_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gameplay_8c_ab7c9ee132f977dd2efd33ab66509d650_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{gameplay_8c_a01e7a0ef98ea3508f98eaa328b911ad1}\index{gameplay.c@{gameplay.c}!enterGame@{enterGame}}
+\index{enterGame@{enterGame}!gameplay.c@{gameplay.c}}
+\doxysubsubsection{\texorpdfstring{enterGame()}{enterGame()}}
+{\footnotesize\ttfamily \label{gameplay_8c_a01e7a0ef98ea3508f98eaa328b911ad1} 
+void enter\+Game (\begin{DoxyParamCaption}\item[{bool}]{multi}{, }\item[{uint8\+\_\+t}]{arena}{}\end{DoxyParamCaption})}
+
+
+
+Enters the game. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em multi} & Whether the game is multiplayer or not. \\
+\hline
+{\em arena} & The arena where the game will be played. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gameplay_8c_a01e7a0ef98ea3508f98eaa328b911ad1_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gameplay_8c_a01e7a0ef98ea3508f98eaa328b911ad1_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{gameplay_8c_a8d079dbe8fe6897f8930a45bacac842f}\index{gameplay.c@{gameplay.c}!exitGame@{exitGame}}
+\index{exitGame@{exitGame}!gameplay.c@{gameplay.c}}
+\doxysubsubsection{\texorpdfstring{exitGame()}{exitGame()}}
+{\footnotesize\ttfamily \label{gameplay_8c_a8d079dbe8fe6897f8930a45bacac842f} 
+void exit\+Game (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Exits the game. 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gameplay_8c_a8d079dbe8fe6897f8930a45bacac842f_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gameplay_8c_a8d079dbe8fe6897f8930a45bacac842f_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{gameplay_8c_a91bd3234380a02ca10ddc23b13cfc521}\index{gameplay.c@{gameplay.c}!initializeGameplay@{initializeGameplay}}
+\index{initializeGameplay@{initializeGameplay}!gameplay.c@{gameplay.c}}
+\doxysubsubsection{\texorpdfstring{initializeGameplay()}{initializeGameplay()}}
+{\footnotesize\ttfamily \label{gameplay_8c_a91bd3234380a02ca10ddc23b13cfc521} 
+void initialize\+Gameplay (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Includes all things related to the gameplay of the game. 
+
+Initializes the gameplay. Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gameplay_8c_a91bd3234380a02ca10ddc23b13cfc521_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gameplay_8c_a91bd3234380a02ca10ddc23b13cfc521_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{gameplay_8c_a6d1c23daae92b4fbcf3b33669b4e5f12}\index{gameplay.c@{gameplay.c}!swapMouseSprites@{swapMouseSprites}}
+\index{swapMouseSprites@{swapMouseSprites}!gameplay.c@{gameplay.c}}
+\doxysubsubsection{\texorpdfstring{swapMouseSprites()}{swapMouseSprites()}}
+{\footnotesize\ttfamily \label{gameplay_8c_a6d1c23daae92b4fbcf3b33669b4e5f12} 
+static void swap\+Mouse\+Sprites (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gameplay_8c_a6d1c23daae92b4fbcf3b33669b4e5f12_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{gameplay_8c_a83b88ae83a8793289aaa3cb1cb56ed56}\index{gameplay.c@{gameplay.c}!updateBase@{updateBase}}
+\index{updateBase@{updateBase}!gameplay.c@{gameplay.c}}
+\doxysubsubsection{\texorpdfstring{updateBase()}{updateBase()}}
+{\footnotesize\ttfamily \label{gameplay_8c_a83b88ae83a8793289aaa3cb1cb56ed56} 
+static void update\+Base (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gameplay_8c_a83b88ae83a8793289aaa3cb1cb56ed56_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gameplay_8c_a83b88ae83a8793289aaa3cb1cb56ed56_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{gameplay_8c_a97feb8702b4bc47a3dee7bf3b220da2b}\index{gameplay.c@{gameplay.c}!updateGame@{updateGame}}
+\index{updateGame@{updateGame}!gameplay.c@{gameplay.c}}
+\doxysubsubsection{\texorpdfstring{updateGame()}{updateGame()}}
+{\footnotesize\ttfamily \label{gameplay_8c_a97feb8702b4bc47a3dee7bf3b220da2b} 
+void update\+Game (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Updates all the game objects and buttons.. etc in the game. 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{gameplay_8c_a97feb8702b4bc47a3dee7bf3b220da2b_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gameplay_8c_a97feb8702b4bc47a3dee7bf3b220da2b_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{gameplay_8c_a51e8e30605fea6f79a919eb15c2ce885}\index{gameplay.c@{gameplay.c}!updateGamePlay@{updateGamePlay}}
+\index{updateGamePlay@{updateGamePlay}!gameplay.c@{gameplay.c}}
+\doxysubsubsection{\texorpdfstring{updateGamePlay()}{updateGamePlay()}}
+{\footnotesize\ttfamily \label{gameplay_8c_a51e8e30605fea6f79a919eb15c2ce885} 
+static void update\+Game\+Play (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gameplay_8c_a51e8e30605fea6f79a919eb15c2ce885_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gameplay_8c_a51e8e30605fea6f79a919eb15c2ce885_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{gameplay_8c_a249981b88f5eb32eafdcc1b234ed4b77}\index{gameplay.c@{gameplay.c}!updatePause@{updatePause}}
+\index{updatePause@{updatePause}!gameplay.c@{gameplay.c}}
+\doxysubsubsection{\texorpdfstring{updatePause()}{updatePause()}}
+{\footnotesize\ttfamily \label{gameplay_8c_a249981b88f5eb32eafdcc1b234ed4b77} 
+static void update\+Pause (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gameplay_8c_a249981b88f5eb32eafdcc1b234ed4b77_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gameplay_8c_a249981b88f5eb32eafdcc1b234ed4b77_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{gameplay_8c_a91ca61d0488b8f57a54edbbdf2107def}\index{gameplay.c@{gameplay.c}!updateShop@{updateShop}}
+\index{updateShop@{updateShop}!gameplay.c@{gameplay.c}}
+\doxysubsubsection{\texorpdfstring{updateShop()}{updateShop()}}
+{\footnotesize\ttfamily \label{gameplay_8c_a91ca61d0488b8f57a54edbbdf2107def} 
+static void update\+Shop (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gameplay_8c_a91ca61d0488b8f57a54edbbdf2107def_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gameplay_8c_a91ca61d0488b8f57a54edbbdf2107def_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{gameplay_8c_aaa428c7375da850b3a825dbd8b95d1d5}\index{gameplay.c@{gameplay.c}!updateTowerMenu@{updateTowerMenu}}
+\index{updateTowerMenu@{updateTowerMenu}!gameplay.c@{gameplay.c}}
+\doxysubsubsection{\texorpdfstring{updateTowerMenu()}{updateTowerMenu()}}
+{\footnotesize\ttfamily \label{gameplay_8c_aaa428c7375da850b3a825dbd8b95d1d5} 
+static void update\+Tower\+Menu (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gameplay_8c_aaa428c7375da850b3a825dbd8b95d1d5_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gameplay_8c_aaa428c7375da850b3a825dbd8b95d1d5_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{gameplay_8c_ac586be1ef794dbc237f79483c8bd1b64}\index{gameplay.c@{gameplay.c}!aim\_mouse@{aim\_mouse}}
+\index{aim\_mouse@{aim\_mouse}!gameplay.c@{gameplay.c}}
+\doxysubsubsection{\texorpdfstring{aim\_mouse}{aim\_mouse}}
+{\footnotesize\ttfamily \label{gameplay_8c_ac586be1ef794dbc237f79483c8bd1b64} 
+\mbox{\hyperlink{struct_sprite}{Sprite}}\texorpdfstring{$\ast$}{*} aim\+\_\+mouse}
+
+\Hypertarget{gameplay_8c_ad09dd630b9c7b75a7c80f36ee1ab501c}\index{gameplay.c@{gameplay.c}!arenas@{arenas}}
+\index{arenas@{arenas}!gameplay.c@{gameplay.c}}
+\doxysubsubsection{\texorpdfstring{arenas}{arenas}}
+{\footnotesize\ttfamily \label{gameplay_8c_ad09dd630b9c7b75a7c80f36ee1ab501c} 
+\mbox{\hyperlink{struct_arena}{Arena}}\texorpdfstring{$\ast$}{*} arenas}
+
+\Hypertarget{gameplay_8c_aeebf6cd7cbf95b5dd4eafa4e44f201d2}\index{gameplay.c@{gameplay.c}!base\_background@{base\_background}}
+\index{base\_background@{base\_background}!gameplay.c@{gameplay.c}}
+\doxysubsubsection{\texorpdfstring{base\_background}{base\_background}}
+{\footnotesize\ttfamily \label{gameplay_8c_aeebf6cd7cbf95b5dd4eafa4e44f201d2} 
+\mbox{\hyperlink{struct_game_object}{Game\+Object}}\texorpdfstring{$\ast$}{*} base\+\_\+background}
+
+\Hypertarget{gameplay_8c_a9179eeda1e9e2245f2d00eb5d19ab1dc}\index{gameplay.c@{gameplay.c}!base\_buttons@{base\_buttons}}
+\index{base\_buttons@{base\_buttons}!gameplay.c@{gameplay.c}}
+\doxysubsubsection{\texorpdfstring{base\_buttons}{base\_buttons}}
+{\footnotesize\ttfamily \label{gameplay_8c_a9179eeda1e9e2245f2d00eb5d19ab1dc} 
+\mbox{\hyperlink{struct_button_array}{Button\+Array}} base\+\_\+buttons}
+
+\Hypertarget{gameplay_8c_a42cbe007265c5659f7bbe7d0e3b606be}\index{gameplay.c@{gameplay.c}!base\_current\_selection@{base\_current\_selection}}
+\index{base\_current\_selection@{base\_current\_selection}!gameplay.c@{gameplay.c}}
+\doxysubsubsection{\texorpdfstring{base\_current\_selection}{base\_current\_selection}}
+{\footnotesize\ttfamily \label{gameplay_8c_a42cbe007265c5659f7bbe7d0e3b606be} 
+int8\+\_\+t base\+\_\+current\+\_\+selection = -\/1\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{gameplay_8c_a87e4468daaddd721c85554f848d918a1}\index{gameplay.c@{gameplay.c}!bullets@{bullets}}
+\index{bullets@{bullets}!gameplay.c@{gameplay.c}}
+\doxysubsubsection{\texorpdfstring{bullets}{bullets}}
+{\footnotesize\ttfamily \label{gameplay_8c_a87e4468daaddd721c85554f848d918a1} 
+\mbox{\hyperlink{struct_bullet_array}{Bullet\+Array}} bullets}
+
+\Hypertarget{gameplay_8c_a53b83467d6131ed391f6a28d2290fdc1}\index{gameplay.c@{gameplay.c}!can\_base@{can\_base}}
+\index{can\_base@{can\_base}!gameplay.c@{gameplay.c}}
+\doxysubsubsection{\texorpdfstring{can\_base}{can\_base}}
+{\footnotesize\ttfamily \label{gameplay_8c_a53b83467d6131ed391f6a28d2290fdc1} 
+bool can\+\_\+base\hspace{0.3cm}{\ttfamily [extern]}}
+
+\Hypertarget{gameplay_8c_af2265234a5aa467e7d8abe326f759469}\index{gameplay.c@{gameplay.c}!can\_shop@{can\_shop}}
+\index{can\_shop@{can\_shop}!gameplay.c@{gameplay.c}}
+\doxysubsubsection{\texorpdfstring{can\_shop}{can\_shop}}
+{\footnotesize\ttfamily \label{gameplay_8c_af2265234a5aa467e7d8abe326f759469} 
+bool can\+\_\+shop\hspace{0.3cm}{\ttfamily [extern]}}
+
+\Hypertarget{gameplay_8c_aaa338f436776c483ca66f54be811cacf}\index{gameplay.c@{gameplay.c}!can\_tower@{can\_tower}}
+\index{can\_tower@{can\_tower}!gameplay.c@{gameplay.c}}
+\doxysubsubsection{\texorpdfstring{can\_tower}{can\_tower}}
+{\footnotesize\ttfamily \label{gameplay_8c_aaa338f436776c483ca66f54be811cacf} 
+bool can\+\_\+tower\hspace{0.3cm}{\ttfamily [extern]}}
+
+\Hypertarget{gameplay_8c_a8f46f949e432c6726f3fac7de8609eb0}\index{gameplay.c@{gameplay.c}!current\_arena@{current\_arena}}
+\index{current\_arena@{current\_arena}!gameplay.c@{gameplay.c}}
+\doxysubsubsection{\texorpdfstring{current\_arena}{current\_arena}}
+{\footnotesize\ttfamily \label{gameplay_8c_a8f46f949e432c6726f3fac7de8609eb0} 
+\mbox{\hyperlink{struct_arena}{Arena}}\texorpdfstring{$\ast$}{*} current\+\_\+arena}
+
+\Hypertarget{gameplay_8c_a4ba649ab9bd98bcc8a6b422a582821e4}\index{gameplay.c@{gameplay.c}!current\_turret@{current\_turret}}
+\index{current\_turret@{current\_turret}!gameplay.c@{gameplay.c}}
+\doxysubsubsection{\texorpdfstring{current\_turret}{current\_turret}}
+{\footnotesize\ttfamily \label{gameplay_8c_a4ba649ab9bd98bcc8a6b422a582821e4} 
+\mbox{\hyperlink{towers_8h_a251e51a50f09b8bf056c1e11febce1e6}{Turret\+Type}} current\+\_\+turret = \mbox{\hyperlink{towers_8h_a251e51a50f09b8bf056c1e11febce1e6a4f9adef2492fef9fca85c72bb600325d}{CROSSBOW}}}
+
+\Hypertarget{gameplay_8c_a4fab3e2ea30a7587a700aaec37671bea}\index{gameplay.c@{gameplay.c}!economy@{economy}}
+\index{economy@{economy}!gameplay.c@{gameplay.c}}
+\doxysubsubsection{\texorpdfstring{economy}{economy}}
+{\footnotesize\ttfamily \label{gameplay_8c_a4fab3e2ea30a7587a700aaec37671bea} 
+\mbox{\hyperlink{struct_economy}{Economy}}\texorpdfstring{$\ast$}{*} economy}
+
+\Hypertarget{gameplay_8c_a33f4bd1f8d3cdbfa5d99e1b7e196f170}\index{gameplay.c@{gameplay.c}!enemies@{enemies}}
+\index{enemies@{enemies}!gameplay.c@{gameplay.c}}
+\doxysubsubsection{\texorpdfstring{enemies}{enemies}}
+{\footnotesize\ttfamily \label{gameplay_8c_a33f4bd1f8d3cdbfa5d99e1b7e196f170} 
+\mbox{\hyperlink{struct_enemy_array}{Enemy\+Array}} enemies}
+
+\Hypertarget{gameplay_8c_a9971ddfeda16e3e23e795127776cfbb7}\index{gameplay.c@{gameplay.c}!first\_time\_base@{first\_time\_base}}
+\index{first\_time\_base@{first\_time\_base}!gameplay.c@{gameplay.c}}
+\doxysubsubsection{\texorpdfstring{first\_time\_base}{first\_time\_base}}
+{\footnotesize\ttfamily \label{gameplay_8c_a9971ddfeda16e3e23e795127776cfbb7} 
+bool first\+\_\+time\+\_\+base = true\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{gameplay_8c_a34d5d9c83d541417a9932111f4396b74}\index{gameplay.c@{gameplay.c}!first\_time\_paused@{first\_time\_paused}}
+\index{first\_time\_paused@{first\_time\_paused}!gameplay.c@{gameplay.c}}
+\doxysubsubsection{\texorpdfstring{first\_time\_paused}{first\_time\_paused}}
+{\footnotesize\ttfamily \label{gameplay_8c_a34d5d9c83d541417a9932111f4396b74} 
+bool first\+\_\+time\+\_\+paused = true\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{gameplay_8c_adfcfc0f865c0eddc5cc4036407e55f3c}\index{gameplay.c@{gameplay.c}!first\_time\_shop@{first\_time\_shop}}
+\index{first\_time\_shop@{first\_time\_shop}!gameplay.c@{gameplay.c}}
+\doxysubsubsection{\texorpdfstring{first\_time\_shop}{first\_time\_shop}}
+{\footnotesize\ttfamily \label{gameplay_8c_adfcfc0f865c0eddc5cc4036407e55f3c} 
+bool first\+\_\+time\+\_\+shop = true\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{gameplay_8c_a35914cbec13f1e27109a6ae5f0e90b69}\index{gameplay.c@{gameplay.c}!first\_time\_tower@{first\_time\_tower}}
+\index{first\_time\_tower@{first\_time\_tower}!gameplay.c@{gameplay.c}}
+\doxysubsubsection{\texorpdfstring{first\_time\_tower}{first\_time\_tower}}
+{\footnotesize\ttfamily \label{gameplay_8c_a35914cbec13f1e27109a6ae5f0e90b69} 
+bool first\+\_\+time\+\_\+tower = true\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{gameplay_8c_a0692a96086d7304238e995ba94a20300}\index{gameplay.c@{gameplay.c}!game\_background@{game\_background}}
+\index{game\_background@{game\_background}!gameplay.c@{gameplay.c}}
+\doxysubsubsection{\texorpdfstring{game\_background}{game\_background}}
+{\footnotesize\ttfamily \label{gameplay_8c_a0692a96086d7304238e995ba94a20300} 
+\mbox{\hyperlink{struct_game_object}{Game\+Object}}\texorpdfstring{$\ast$}{*} game\+\_\+background}
+
+\Hypertarget{gameplay_8c_ae9d9e7baa53e32cafb8287df2303be80}\index{gameplay.c@{gameplay.c}!game\_current\_selection@{game\_current\_selection}}
+\index{game\_current\_selection@{game\_current\_selection}!gameplay.c@{gameplay.c}}
+\doxysubsubsection{\texorpdfstring{game\_current\_selection}{game\_current\_selection}}
+{\footnotesize\ttfamily \label{gameplay_8c_ae9d9e7baa53e32cafb8287df2303be80} 
+int8\+\_\+t game\+\_\+current\+\_\+selection = -\/1\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{gameplay_8c_af3664612b739319a2787459e2ef14a4b}\index{gameplay.c@{gameplay.c}!just\_changed\_selection@{just\_changed\_selection}}
+\index{just\_changed\_selection@{just\_changed\_selection}!gameplay.c@{gameplay.c}}
+\doxysubsubsection{\texorpdfstring{just\_changed\_selection}{just\_changed\_selection}}
+{\footnotesize\ttfamily \label{gameplay_8c_af3664612b739319a2787459e2ef14a4b} 
+bool just\+\_\+changed\+\_\+selection = false\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{gameplay_8c_aaaee12ef170dce59e90a53ecb0c75172}\index{gameplay.c@{gameplay.c}!keyboard\_device@{keyboard\_device}}
+\index{keyboard\_device@{keyboard\_device}!gameplay.c@{gameplay.c}}
+\doxysubsubsection{\texorpdfstring{keyboard\_device}{keyboard\_device}}
+{\footnotesize\ttfamily \label{gameplay_8c_aaaee12ef170dce59e90a53ecb0c75172} 
+\mbox{\hyperlink{struct_keyboard_device}{Keyboard\+Device}}\texorpdfstring{$\ast$}{*} keyboard\+\_\+device\hspace{0.3cm}{\ttfamily [extern]}}
+
+\Hypertarget{gameplay_8c_a189e4b3cf5d30c8f132982577142f27f}\index{gameplay.c@{gameplay.c}!last\_pressed\_was\_mouse@{last\_pressed\_was\_mouse}}
+\index{last\_pressed\_was\_mouse@{last\_pressed\_was\_mouse}!gameplay.c@{gameplay.c}}
+\doxysubsubsection{\texorpdfstring{last\_pressed\_was\_mouse}{last\_pressed\_was\_mouse}}
+{\footnotesize\ttfamily \label{gameplay_8c_a189e4b3cf5d30c8f132982577142f27f} 
+bool last\+\_\+pressed\+\_\+was\+\_\+mouse\hspace{0.3cm}{\ttfamily [extern]}}
+
+\Hypertarget{gameplay_8c_a2f1d20fe71e2a2721b25bd83c274425a}\index{gameplay.c@{gameplay.c}!money@{money}}
+\index{money@{money}!gameplay.c@{gameplay.c}}
+\doxysubsubsection{\texorpdfstring{money}{money}}
+{\footnotesize\ttfamily \label{gameplay_8c_a2f1d20fe71e2a2721b25bd83c274425a} 
+\mbox{\hyperlink{struct_money}{Money}}\texorpdfstring{$\ast$}{*} money}
+
+\Hypertarget{gameplay_8c_af690dfd2cb895a02795e3ee3c10792cc}\index{gameplay.c@{gameplay.c}!mouse\_device@{mouse\_device}}
+\index{mouse\_device@{mouse\_device}!gameplay.c@{gameplay.c}}
+\doxysubsubsection{\texorpdfstring{mouse\_device}{mouse\_device}}
+{\footnotesize\ttfamily \label{gameplay_8c_af690dfd2cb895a02795e3ee3c10792cc} 
+\mbox{\hyperlink{struct_mouse_device}{Mouse\+Device}}\texorpdfstring{$\ast$}{*} mouse\+\_\+device\hspace{0.3cm}{\ttfamily [extern]}}
+
+\Hypertarget{gameplay_8c_ac9877f073f73ae2f5ec185b874468758}\index{gameplay.c@{gameplay.c}!multiplayer@{multiplayer}}
+\index{multiplayer@{multiplayer}!gameplay.c@{gameplay.c}}
+\doxysubsubsection{\texorpdfstring{multiplayer}{multiplayer}}
+{\footnotesize\ttfamily \label{gameplay_8c_ac9877f073f73ae2f5ec185b874468758} 
+bool multiplayer = false}
+
+\Hypertarget{gameplay_8c_a3db015da58396072ea3d095684fc8af0}\index{gameplay.c@{gameplay.c}!normal\_mouse@{normal\_mouse}}
+\index{normal\_mouse@{normal\_mouse}!gameplay.c@{gameplay.c}}
+\doxysubsubsection{\texorpdfstring{normal\_mouse}{normal\_mouse}}
+{\footnotesize\ttfamily \label{gameplay_8c_a3db015da58396072ea3d095684fc8af0} 
+\mbox{\hyperlink{struct_sprite}{Sprite}}\texorpdfstring{$\ast$}{*} normal\+\_\+mouse}
+
+\Hypertarget{gameplay_8c_a4acecbbf0198d4b88343010420dad151}\index{gameplay.c@{gameplay.c}!pause\_background@{pause\_background}}
+\index{pause\_background@{pause\_background}!gameplay.c@{gameplay.c}}
+\doxysubsubsection{\texorpdfstring{pause\_background}{pause\_background}}
+{\footnotesize\ttfamily \label{gameplay_8c_a4acecbbf0198d4b88343010420dad151} 
+\mbox{\hyperlink{struct_game_object}{Game\+Object}}\texorpdfstring{$\ast$}{*} pause\+\_\+background}
+
+\Hypertarget{gameplay_8c_ac635bd559113fa935400e0d97d4141b7}\index{gameplay.c@{gameplay.c}!pause\_buttons@{pause\_buttons}}
+\index{pause\_buttons@{pause\_buttons}!gameplay.c@{gameplay.c}}
+\doxysubsubsection{\texorpdfstring{pause\_buttons}{pause\_buttons}}
+{\footnotesize\ttfamily \label{gameplay_8c_ac635bd559113fa935400e0d97d4141b7} 
+\mbox{\hyperlink{struct_button_array}{Button\+Array}} pause\+\_\+buttons}
+
+\Hypertarget{gameplay_8c_ab0336c5d94abfcf33a2b2a068dd8ba28}\index{gameplay.c@{gameplay.c}!pause\_current\_selection@{pause\_current\_selection}}
+\index{pause\_current\_selection@{pause\_current\_selection}!gameplay.c@{gameplay.c}}
+\doxysubsubsection{\texorpdfstring{pause\_current\_selection}{pause\_current\_selection}}
+{\footnotesize\ttfamily \label{gameplay_8c_ab0336c5d94abfcf33a2b2a068dd8ba28} 
+int8\+\_\+t pause\+\_\+current\+\_\+selection = -\/1\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{gameplay_8c_a427622cef5fab821a8baf9d51e68450b}\index{gameplay.c@{gameplay.c}!player1@{player1}}
+\index{player1@{player1}!gameplay.c@{gameplay.c}}
+\doxysubsubsection{\texorpdfstring{player1}{player1}}
+{\footnotesize\ttfamily \label{gameplay_8c_a427622cef5fab821a8baf9d51e68450b} 
+\mbox{\hyperlink{struct_player}{Player}}\texorpdfstring{$\ast$}{*} player1}
+
+\Hypertarget{gameplay_8c_aa1ad9a3d30291b7fbfbabd79cc45d4f9}\index{gameplay.c@{gameplay.c}!player2@{player2}}
+\index{player2@{player2}!gameplay.c@{gameplay.c}}
+\doxysubsubsection{\texorpdfstring{player2}{player2}}
+{\footnotesize\ttfamily \label{gameplay_8c_aa1ad9a3d30291b7fbfbabd79cc45d4f9} 
+\mbox{\hyperlink{struct_player}{Player}}\texorpdfstring{$\ast$}{*} player2}
+
+\Hypertarget{gameplay_8c_a7108ddee91e00cf28b06e520de568efd}\index{gameplay.c@{gameplay.c}!player\_base@{player\_base}}
+\index{player\_base@{player\_base}!gameplay.c@{gameplay.c}}
+\doxysubsubsection{\texorpdfstring{player\_base}{player\_base}}
+{\footnotesize\ttfamily \label{gameplay_8c_a7108ddee91e00cf28b06e520de568efd} 
+\mbox{\hyperlink{struct_player_base}{Player\+Base}} player\+\_\+base}
+
+\Hypertarget{gameplay_8c_a66996bc56804669e9b0677f0b5e32d3b}\index{gameplay.c@{gameplay.c}!player\_weapon@{player\_weapon}}
+\index{player\_weapon@{player\_weapon}!gameplay.c@{gameplay.c}}
+\doxysubsubsection{\texorpdfstring{player\_weapon}{player\_weapon}}
+{\footnotesize\ttfamily \label{gameplay_8c_a66996bc56804669e9b0677f0b5e32d3b} 
+\mbox{\hyperlink{struct_weapon}{Weapon}}\texorpdfstring{$\ast$}{*} player\+\_\+weapon}
+
+\Hypertarget{gameplay_8c_a0448fec049217e428b9ec21c03e51d52}\index{gameplay.c@{gameplay.c}!playing@{playing}}
+\index{playing@{playing}!gameplay.c@{gameplay.c}}
+\doxysubsubsection{\texorpdfstring{playing}{playing}}
+{\footnotesize\ttfamily \label{gameplay_8c_a0448fec049217e428b9ec21c03e51d52} 
+bool playing\hspace{0.3cm}{\ttfamily [extern]}}
+
+\Hypertarget{gameplay_8c_a8f2fdce480863550d134e5f5e4ab6c9b}\index{gameplay.c@{gameplay.c}!pressed\_base\_button@{pressed\_base\_button}}
+\index{pressed\_base\_button@{pressed\_base\_button}!gameplay.c@{gameplay.c}}
+\doxysubsubsection{\texorpdfstring{pressed\_base\_button}{pressed\_base\_button}}
+{\footnotesize\ttfamily \label{gameplay_8c_a8f2fdce480863550d134e5f5e4ab6c9b} 
+bool pressed\+\_\+base\+\_\+button = false\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{gameplay_8c_abb380fd9095d35e1859949a4b441c212}\index{gameplay.c@{gameplay.c}!pressed\_game\_button@{pressed\_game\_button}}
+\index{pressed\_game\_button@{pressed\_game\_button}!gameplay.c@{gameplay.c}}
+\doxysubsubsection{\texorpdfstring{pressed\_game\_button}{pressed\_game\_button}}
+{\footnotesize\ttfamily \label{gameplay_8c_abb380fd9095d35e1859949a4b441c212} 
+bool pressed\+\_\+game\+\_\+button = false\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{gameplay_8c_ac95e6a95764756a6b4b691561b3808de}\index{gameplay.c@{gameplay.c}!pressed\_pause\_button@{pressed\_pause\_button}}
+\index{pressed\_pause\_button@{pressed\_pause\_button}!gameplay.c@{gameplay.c}}
+\doxysubsubsection{\texorpdfstring{pressed\_pause\_button}{pressed\_pause\_button}}
+{\footnotesize\ttfamily \label{gameplay_8c_ac95e6a95764756a6b4b691561b3808de} 
+bool pressed\+\_\+pause\+\_\+button = false\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{gameplay_8c_a740624ef2fb0251a991620f9e2ace0f0}\index{gameplay.c@{gameplay.c}!pressed\_shop\_button@{pressed\_shop\_button}}
+\index{pressed\_shop\_button@{pressed\_shop\_button}!gameplay.c@{gameplay.c}}
+\doxysubsubsection{\texorpdfstring{pressed\_shop\_button}{pressed\_shop\_button}}
+{\footnotesize\ttfamily \label{gameplay_8c_a740624ef2fb0251a991620f9e2ace0f0} 
+bool pressed\+\_\+shop\+\_\+button = false\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{gameplay_8c_a6795899eed19d968876330b2790d3b28}\index{gameplay.c@{gameplay.c}!pressed\_tower\_button@{pressed\_tower\_button}}
+\index{pressed\_tower\_button@{pressed\_tower\_button}!gameplay.c@{gameplay.c}}
+\doxysubsubsection{\texorpdfstring{pressed\_tower\_button}{pressed\_tower\_button}}
+{\footnotesize\ttfamily \label{gameplay_8c_a6795899eed19d968876330b2790d3b28} 
+bool pressed\+\_\+tower\+\_\+button = false\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{gameplay_8c_a5071c1013d2ba777107338794f9696f3}\index{gameplay.c@{gameplay.c}!rtc\_time@{rtc\_time}}
+\index{rtc\_time@{rtc\_time}!gameplay.c@{gameplay.c}}
+\doxysubsubsection{\texorpdfstring{rtc\_time}{rtc\_time}}
+{\footnotesize\ttfamily \label{gameplay_8c_a5071c1013d2ba777107338794f9696f3} 
+\mbox{\hyperlink{struct_r_t_c___time}{RTC\+\_\+\+Time}}\texorpdfstring{$\ast$}{*} rtc\+\_\+time\hspace{0.3cm}{\ttfamily [extern]}}
+
+\Hypertarget{gameplay_8c_a1636c5f52c5c798d9a14ec91cc0b577d}\index{gameplay.c@{gameplay.c}!screen@{screen}}
+\index{screen@{screen}!gameplay.c@{gameplay.c}}
+\doxysubsubsection{\texorpdfstring{screen}{screen}}
+{\footnotesize\ttfamily \label{gameplay_8c_a1636c5f52c5c798d9a14ec91cc0b577d} 
+\mbox{\hyperlink{struct_screen_info}{Screen\+Info}} screen\hspace{0.3cm}{\ttfamily [extern]}}
+
+\Hypertarget{gameplay_8c_a4c71bc021c13ee6ab3272aab138d7f45}\index{gameplay.c@{gameplay.c}!select\_game\_current\_arena@{select\_game\_current\_arena}}
+\index{select\_game\_current\_arena@{select\_game\_current\_arena}!gameplay.c@{gameplay.c}}
+\doxysubsubsection{\texorpdfstring{select\_game\_current\_arena}{select\_game\_current\_arena}}
+{\footnotesize\ttfamily \label{gameplay_8c_a4c71bc021c13ee6ab3272aab138d7f45} 
+int8\+\_\+t select\+\_\+game\+\_\+current\+\_\+arena = -\/1\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{gameplay_8c_a4df5985d3463cd115fc89f34062225ac}\index{gameplay.c@{gameplay.c}!selected\_tower\_base@{selected\_tower\_base}}
+\index{selected\_tower\_base@{selected\_tower\_base}!gameplay.c@{gameplay.c}}
+\doxysubsubsection{\texorpdfstring{selected\_tower\_base}{selected\_tower\_base}}
+{\footnotesize\ttfamily \label{gameplay_8c_a4df5985d3463cd115fc89f34062225ac} 
+\mbox{\hyperlink{struct_tower_base}{Tower\+Base}}\texorpdfstring{$\ast$}{*} selected\+\_\+tower\+\_\+base = NULL}
+
+\Hypertarget{gameplay_8c_a2925aab4f30546ab105eafbe74d9184d}\index{gameplay.c@{gameplay.c}!selected\_tower\_index@{selected\_tower\_index}}
+\index{selected\_tower\_index@{selected\_tower\_index}!gameplay.c@{gameplay.c}}
+\doxysubsubsection{\texorpdfstring{selected\_tower\_index}{selected\_tower\_index}}
+{\footnotesize\ttfamily \label{gameplay_8c_a2925aab4f30546ab105eafbe74d9184d} 
+int8\+\_\+t selected\+\_\+tower\+\_\+index = -\/1}
+
+\Hypertarget{gameplay_8c_a8a3e333f14a0758ccc5b075b2b640aa4}\index{gameplay.c@{gameplay.c}!shop@{shop}}
+\index{shop@{shop}!gameplay.c@{gameplay.c}}
+\doxysubsubsection{\texorpdfstring{shop}{shop}}
+{\footnotesize\ttfamily \label{gameplay_8c_a8a3e333f14a0758ccc5b075b2b640aa4} 
+\mbox{\hyperlink{struct_shop}{Shop}} shop}
+
+\Hypertarget{gameplay_8c_ad7e0fec0701c3aeec53c6af0664aa575}\index{gameplay.c@{gameplay.c}!shop\_background@{shop\_background}}
+\index{shop\_background@{shop\_background}!gameplay.c@{gameplay.c}}
+\doxysubsubsection{\texorpdfstring{shop\_background}{shop\_background}}
+{\footnotesize\ttfamily \label{gameplay_8c_ad7e0fec0701c3aeec53c6af0664aa575} 
+\mbox{\hyperlink{struct_game_object}{Game\+Object}}\texorpdfstring{$\ast$}{*} shop\+\_\+background}
+
+\Hypertarget{gameplay_8c_afa9956393fe1e3cdd773601e1f5b24a4}\index{gameplay.c@{gameplay.c}!shop\_buttons@{shop\_buttons}}
+\index{shop\_buttons@{shop\_buttons}!gameplay.c@{gameplay.c}}
+\doxysubsubsection{\texorpdfstring{shop\_buttons}{shop\_buttons}}
+{\footnotesize\ttfamily \label{gameplay_8c_afa9956393fe1e3cdd773601e1f5b24a4} 
+\mbox{\hyperlink{struct_button_array}{Button\+Array}} shop\+\_\+buttons}
+
+\Hypertarget{gameplay_8c_a5c599f8091c8a4b84f35e6c8c92efa69}\index{gameplay.c@{gameplay.c}!shop\_current\_selection@{shop\_current\_selection}}
+\index{shop\_current\_selection@{shop\_current\_selection}!gameplay.c@{gameplay.c}}
+\doxysubsubsection{\texorpdfstring{shop\_current\_selection}{shop\_current\_selection}}
+{\footnotesize\ttfamily \label{gameplay_8c_a5c599f8091c8a4b84f35e6c8c92efa69} 
+int8\+\_\+t shop\+\_\+current\+\_\+selection = -\/1\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{gameplay_8c_a25362b33bad9ff6222dc40646c411649}\index{gameplay.c@{gameplay.c}!state@{state}}
+\index{state@{state}!gameplay.c@{gameplay.c}}
+\doxysubsubsection{\texorpdfstring{state}{state}}
+{\footnotesize\ttfamily \label{gameplay_8c_a25362b33bad9ff6222dc40646c411649} 
+\mbox{\hyperlink{gamestates_8h_a7899b65f1ea0f655e4bbf8d2a5714285}{Game\+State}} state\hspace{0.3cm}{\ttfamily [extern]}}
+
+\Hypertarget{gameplay_8c_a65201bdee797dfd993a7c4ad16f1f286}\index{gameplay.c@{gameplay.c}!to\_spawn\_enemy@{to\_spawn\_enemy}}
+\index{to\_spawn\_enemy@{to\_spawn\_enemy}!gameplay.c@{gameplay.c}}
+\doxysubsubsection{\texorpdfstring{to\_spawn\_enemy}{to\_spawn\_enemy}}
+{\footnotesize\ttfamily \label{gameplay_8c_a65201bdee797dfd993a7c4ad16f1f286} 
+bool to\+\_\+spawn\+\_\+enemy = false\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{gameplay_8c_abede5871fece94aed38cc059194023b4}\index{gameplay.c@{gameplay.c}!tower\_background@{tower\_background}}
+\index{tower\_background@{tower\_background}!gameplay.c@{gameplay.c}}
+\doxysubsubsection{\texorpdfstring{tower\_background}{tower\_background}}
+{\footnotesize\ttfamily \label{gameplay_8c_abede5871fece94aed38cc059194023b4} 
+\mbox{\hyperlink{struct_game_object}{Game\+Object}}\texorpdfstring{$\ast$}{*} tower\+\_\+background}
+
+\Hypertarget{gameplay_8c_a512cedc365232243c9427a18ebcdc51e}\index{gameplay.c@{gameplay.c}!tower\_buttons@{tower\_buttons}}
+\index{tower\_buttons@{tower\_buttons}!gameplay.c@{gameplay.c}}
+\doxysubsubsection{\texorpdfstring{tower\_buttons}{tower\_buttons}}
+{\footnotesize\ttfamily \label{gameplay_8c_a512cedc365232243c9427a18ebcdc51e} 
+\mbox{\hyperlink{struct_button_array}{Button\+Array}} tower\+\_\+buttons}
+
+\Hypertarget{gameplay_8c_a844771b28635e1d1455620f6646ec82e}\index{gameplay.c@{gameplay.c}!tower\_current\_selection@{tower\_current\_selection}}
+\index{tower\_current\_selection@{tower\_current\_selection}!gameplay.c@{gameplay.c}}
+\doxysubsubsection{\texorpdfstring{tower\_current\_selection}{tower\_current\_selection}}
+{\footnotesize\ttfamily \label{gameplay_8c_a844771b28635e1d1455620f6646ec82e} 
+int8\+\_\+t tower\+\_\+current\+\_\+selection = -\/1\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{gameplay_8c_aad846dc0f923a198aec8edd23f558683}\index{gameplay.c@{gameplay.c}!tower\_index@{tower\_index}}
+\index{tower\_index@{tower\_index}!gameplay.c@{gameplay.c}}
+\doxysubsubsection{\texorpdfstring{tower\_index}{tower\_index}}
+{\footnotesize\ttfamily \label{gameplay_8c_aad846dc0f923a198aec8edd23f558683} 
+int16\+\_\+t tower\+\_\+index\hspace{0.3cm}{\ttfamily [extern]}}
+
+\Hypertarget{gameplay_8c_afed815ca974f10b3fe857613019e4027}\index{gameplay.c@{gameplay.c}!tower\_money@{tower\_money}}
+\index{tower\_money@{tower\_money}!gameplay.c@{gameplay.c}}
+\doxysubsubsection{\texorpdfstring{tower\_money}{tower\_money}}
+{\footnotesize\ttfamily \label{gameplay_8c_afed815ca974f10b3fe857613019e4027} 
+\mbox{\hyperlink{struct_money_array}{Money\+Array}} tower\+\_\+money}
+
+\Hypertarget{gameplay_8c_a61f672a5d12cd6e5535b84f677bf7ca9}\index{gameplay.c@{gameplay.c}!towers@{towers}}
+\index{towers@{towers}!gameplay.c@{gameplay.c}}
+\doxysubsubsection{\texorpdfstring{towers}{towers}}
+{\footnotesize\ttfamily \label{gameplay_8c_a61f672a5d12cd6e5535b84f677bf7ca9} 
+\mbox{\hyperlink{struct_tower_array}{Tower\+Array}} towers}
+
+\Hypertarget{gameplay_8c_a902d5a48a7419b2f6dc9e1e6b887e418}\index{gameplay.c@{gameplay.c}!type\_tower\_menu@{type\_tower\_menu}}
+\index{type\_tower\_menu@{type\_tower\_menu}!gameplay.c@{gameplay.c}}
+\doxysubsubsection{\texorpdfstring{type\_tower\_menu}{type\_tower\_menu}}
+{\footnotesize\ttfamily \label{gameplay_8c_a902d5a48a7419b2f6dc9e1e6b887e418} 
+bool type\+\_\+tower\+\_\+menu = false\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{gameplay_8c_a47a81a34f98fd665353d214b4f02c909}\index{gameplay.c@{gameplay.c}!unlocked\_turrets@{unlocked\_turrets}}
+\index{unlocked\_turrets@{unlocked\_turrets}!gameplay.c@{gameplay.c}}
+\doxysubsubsection{\texorpdfstring{unlocked\_turrets}{unlocked\_turrets}}
+{\footnotesize\ttfamily \label{gameplay_8c_a47a81a34f98fd665353d214b4f02c909} 
+int8\+\_\+t unlocked\+\_\+turrets\mbox{[}$\,$\mbox{]} = \{1, 0, 0\}\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{gameplay_8c_ab029b8bc1665c384d95b4f2247f801ac}\index{gameplay.c@{gameplay.c}!unlocked\_weapon@{unlocked\_weapon}}
+\index{unlocked\_weapon@{unlocked\_weapon}!gameplay.c@{gameplay.c}}
+\doxysubsubsection{\texorpdfstring{unlocked\_weapon}{unlocked\_weapon}}
+{\footnotesize\ttfamily \label{gameplay_8c_ab029b8bc1665c384d95b4f2247f801ac} 
+bool unlocked\+\_\+weapon = false\hspace{0.3cm}{\ttfamily [static]}}
+

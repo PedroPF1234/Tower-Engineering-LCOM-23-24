@@ -1,0 +1,33 @@
+\doxysection{arena.\+h}
+\hypertarget{arena_8h_source}{}\label{arena_8h_source}\index{src/Game/Gameplay/Arena/arena.h@{src/Game/Gameplay/Arena/arena.h}}
+\mbox{\hyperlink{arena_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{towers_8h}{../Tower/towers.h}}"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{shop_8h}{../Shop/shop.h}}"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{playerbase_8h}{../PlayerBase/playerbase.h}}"{}}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{device__controller_8h}{../../../Devices/device\_controller.h}}"{}}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00025\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_arena}{Arena}}\ \{}
+\DoxyCodeLine{00026\ \ \ \mbox{\hyperlink{struct_sprite}{Sprite}}*\ \mbox{\hyperlink{struct_arena_a5f064d9b95cf68964648e5ce0db56f8f}{background}};}
+\DoxyCodeLine{00027\ \ \ \mbox{\hyperlink{struct_animated_game_object}{AnimatedGameObject}}**\ \mbox{\hyperlink{struct_arena_a677a4edb2f81951df1dae9973438c2a7}{decorations}};}
+\DoxyCodeLine{00028\ \ \ \mbox{\hyperlink{struct_tower_array}{TowerArray}}\ \mbox{\hyperlink{struct_arena_a8300d270045ccdeb8fb322ddc6b17e7b}{towers}};}
+\DoxyCodeLine{00029\ \ \ \mbox{\hyperlink{struct_shop}{Shop}}\ \mbox{\hyperlink{struct_arena_aadf58bce040b6abe8ee2d11eeacb28d0}{shop}};}
+\DoxyCodeLine{00030\ \ \ \mbox{\hyperlink{struct_player_base}{PlayerBase}}\ \mbox{\hyperlink{struct_arena_a1738f30b5a396977ba929074792b956f}{base}};}
+\DoxyCodeLine{00031\ \ \ uint8\_t\ \mbox{\hyperlink{struct_arena_a96d797988f9d22165b017d5f8ffa1e8e}{num\_targets}};}
+\DoxyCodeLine{00032\ \ \ uint8\_t\ \mbox{\hyperlink{struct_arena_a7d74d4c6b81d7da42331f4dfe01f3298}{num\_decorations}};}
+\DoxyCodeLine{00033\ \ \ int16\_t*\ \mbox{\hyperlink{struct_arena_a274d641e1b3557cae308943dff8312a2}{target\_coordinates}};}
+\DoxyCodeLine{00034\ \ \ int16\_t\ \mbox{\hyperlink{struct_arena_aedd1b1458eec370a0aa69e141c78ed29}{spawn\_x}},\ \mbox{\hyperlink{struct_arena_aa79521aa21aa3c3e46d403eef14020e3}{spawn\_y}};}
+\DoxyCodeLine{00035\ \}\ \mbox{\hyperlink{arena_8h_a98751b1b43f160fe72c8148775ae1734}{Arena}};}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00044\ \mbox{\hyperlink{struct_arena}{Arena}}*\ \mbox{\hyperlink{arena_8h_aa3fdd3e87acb2a6ff24a3fca4412ebe4}{initializeArenas}}();}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00051\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{arena_8h_a0917d504d8873616620b006187d006bf}{destroyArenas}}(\mbox{\hyperlink{struct_arena}{Arena}}*\ \mbox{\hyperlink{gameover_8c_af5a57582e3f2a42749711036c767fe64}{arena}});}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00058\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{arena_8h_a12ee16feb1183e7af2ca83f904398922}{hideArena}}(\mbox{\hyperlink{struct_arena}{Arena}}*\ \mbox{\hyperlink{gameover_8c_af5a57582e3f2a42749711036c767fe64}{arena}});}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00065\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{arena_8h_a533d9f59c73297aca71fb1c4d2b85b91}{showArena}}(\mbox{\hyperlink{struct_arena}{Arena}}*\ \mbox{\hyperlink{gameover_8c_af5a57582e3f2a42749711036c767fe64}{arena}});}
+
+\end{DoxyCode}

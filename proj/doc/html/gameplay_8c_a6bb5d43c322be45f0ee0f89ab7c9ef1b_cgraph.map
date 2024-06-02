@@ -1,0 +1,17 @@
+<map id="checkGameHovered" name="checkGameHovered">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,117,146,143"/>
+<area shape="rect" id="Node000002" href="$bullet_8c.html#a12b5d1f194ec83643db73246d3e09c19" title="Initializes a new bullet." alt="" coords="200,92,301,118"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="145,117,184,112,185,117,146,123"/>
+<area shape="rect" id="Node000008" href="$bullet_8c.html#a1a60dd0672c1beb20d1f934cfebc47a8" title="Adds a bullet to the BulletArray." alt="" coords="194,141,307,167"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="146,137,179,142,178,147,145,142"/>
+<area shape="rect" id="Node000003" href="$sprite_8c.html#a311fa58d9959113bb14be3676e0ed8c5" title="Calculates the angle between a line connecting two points and the x&#45;axis." alt="" coords="382,5,493,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="270,89,308,65,354,41,371,34,373,39,356,46,310,70,273,94"/>
+<area shape="rect" id="Node000004" href="$gameobject_8c.html#a3e3995c85445e5e632c02ce335f6d43a" title="Creates a game object from a sprite." alt="" coords="355,55,519,96"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="301,94,339,88,340,93,302,100"/>
+<area shape="rect" id="Node000006" href="$sprite_8c.html#a0c722ac2dbcd401373c21e8b33679945" title="Gets a sprite from a given sprite with the intended angle." alt="" coords="369,120,505,146"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="302,110,354,118,353,123,301,115"/>
+<area shape="rect" id="Node000007" href="$sprite_8c.html#a9c8b55bb5d5f980a3806fa95c391f8ae" title="Normalizes a vector defined by two points." alt="" coords="377,169,497,195"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="286,116,308,127,332,142,356,156,370,161,368,166,354,161,329,146,306,131,284,121"/>
+<area shape="rect" id="Node000005" href="$gameobject_8c.html#a6a1ebecd29c69ded46970bd41c3097f0" title=" " alt="" coords="567,63,709,88"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="520,73,551,73,551,78,520,78"/>
+</map>

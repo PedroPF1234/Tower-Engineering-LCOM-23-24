@@ -1,0 +1,19 @@
+<map id="create_rotation_abled_sprite" name="create_rotation_abled_sprite">
+<area shape="rect" id="Node000001" title="Initializes a new sprite with the ability to be rotated." alt="" coords="871,55,1016,96"/>
+<area shape="rect" id="Node000002" href="$bullet_8c.html#ae78713688ef82350c35afbd7e7cc6fe4" title=" " alt="" coords="675,5,818,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="856,53,793,34,794,29,858,48"/>
+<area shape="rect" id="Node000007" href="$towers_8c.html#a974abd8eb6b4b3e78607d4a3da66d64c" title="Initializes the sprites for the different types of turrets." alt="" coords="670,55,823,96"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="855,78,823,78,823,73,855,73"/>
+<area shape="rect" id="Node000008" href="$weapon_8c.html#a9368256554c7db2de25dcd813fdb9a4e" title="Initializes a new weapon." alt="" coords="689,120,804,146"/>
+<area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="858,103,794,122,793,117,856,98"/>
+<area shape="rect" id="Node000003" href="$gameplay_8c.html#a91bd3234380a02ca10ddc23b13cfc521" title="Includes all things related to the gameplay of the game." alt="" coords="494,63,622,88"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="688,39,603,65,602,60,686,34"/>
+<area shape="rect" id="Node000004" href="$game_8c.html#a315e950a7e6bb500fe11c37ee1122577" title="Encapsulates the whole game logic." alt="" coords="327,63,446,88"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="479,78,447,78,447,73,479,73"/>
+<area shape="rect" id="Node000005" href="$device__controller_8c.html#a4d10f01a84e9e24f18682c0bca48dca6" title="Calls all device&#39;s interrupt handlers." alt="" coords="162,63,279,88"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="312,78,279,78,279,73,312,73"/>
+<area shape="rect" id="Node000006" href="$proj_8c.html#af244d65e69677cf312af1950452ec256" title=" " alt="" coords="5,63,114,88"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="146,78,114,78,114,73,146,73"/>
+<area shape="poly" id="edge7_Node000007_Node000003" title=" " alt="" coords="654,78,622,78,622,73,654,73"/>
+<area shape="poly" id="edge9_Node000008_Node000003" title=" " alt="" coords="686,117,602,91,603,86,688,112"/>
+</map>

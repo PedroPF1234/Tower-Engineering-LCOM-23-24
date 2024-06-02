@@ -1,0 +1,22 @@
+<map id="destroyBullet" name="destroyBullet">
+<area shape="rect" id="Node000001" title="Destroys a bullet and frees associated memory." alt="" coords="1194,32,1291,58"/>
+<area shape="rect" id="Node000002" href="$bullet_8c.html#ac13a6f1d0846248f93bb3cd76a73ede7" title="Destroys a BulletArray and frees associated memory." alt="" coords="1017,7,1146,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1178,37,1146,32,1147,27,1179,32"/>
+<area shape="rect" id="Node000007" href="$bullet_8c.html#a7d310b405371fac77841b91acac0be24" title="Removes a bullet from the BulletArray at a specified index and destroys it." alt="" coords="1017,56,1146,82"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="1179,57,1147,62,1146,57,1178,52"/>
+<area shape="rect" id="Node000003" href="$gameplay_8c.html#ab7c9ee132f977dd2efd33ab66509d650" title="Destroys all the game objects and buttons.. etc in the game and frees their memory." alt="" coords="649,5,748,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="1002,22,749,21,749,16,1002,17"/>
+<area shape="rect" id="Node000004" href="$game_8c.html#a315e950a7e6bb500fe11c37ee1122577" title="Encapsulates the whole game logic." alt="" coords="327,31,446,56"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="633,26,447,41,447,36,633,21"/>
+<area shape="rect" id="Node000005" href="$device__controller_8c.html#a4d10f01a84e9e24f18682c0bca48dca6" title="Calls all device&#39;s interrupt handlers." alt="" coords="162,31,279,56"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="312,46,279,46,279,41,312,41"/>
+<area shape="rect" id="Node000006" href="$proj_8c.html#af244d65e69677cf312af1950452ec256" title=" " alt="" coords="5,31,114,56"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="146,46,114,46,114,41,146,41"/>
+<area shape="rect" id="Node000008" href="$bullet_8c.html#ac40527fcf49856a5faeb22b62f7ca5be" title="Updates the positions of all bullets in the BulletArray and removes any bullets that are no longer ac..." alt="" coords="807,56,969,82"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="1002,72,970,72,970,66,1002,66"/>
+<area shape="rect" id="Node000009" href="$gameplay_8c.html#a51e8e30605fea6f79a919eb15c2ce885" title=" " alt="" coords="638,56,759,82"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="791,72,759,72,759,66,791,66"/>
+<area shape="rect" id="Node000010" href="$gameplay_8c.html#a97feb8702b4bc47a3dee7bf3b220da2b" title="Updates all the game objects and buttons.. etc in the game." alt="" coords="494,56,590,82"/>
+<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="622,72,590,72,590,66,622,66"/>
+<area shape="poly" id="edge10_Node000010_Node000004" title=" " alt="" coords="479,61,446,56,447,51,480,56"/>
+</map>

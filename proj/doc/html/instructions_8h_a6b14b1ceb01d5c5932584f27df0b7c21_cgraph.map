@@ -1,0 +1,7 @@
+<map id="exitInstructions" name="exitInstructions">
+<area shape="rect" id="Node000001" title="Exits the instructions screen." alt="" coords="5,5,116,31"/>
+<area shape="rect" id="Node000002" href="$button_8c.html#a4d66a0f1c519e7e4ab43d96d3286db4f" title="Turns off the visibility of all the Button&#39;s Sprites in a ButtonArray." alt="" coords="164,5,254,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="116,16,148,16,148,21,116,21"/>
+<area shape="rect" id="Node000003" href="$button_8c.html#ac3e1fa5a312e4690dd8b5d14db4bdd0f" title="Retrieves a Button from a ButtonArray." alt="" coords="302,5,410,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="254,16,286,16,286,21,254,21"/>
+</map>

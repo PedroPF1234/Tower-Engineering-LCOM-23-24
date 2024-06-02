@@ -1,0 +1,171 @@
+\doxysection{Enemy Struct Reference}
+\hypertarget{struct_enemy}{}\label{struct_enemy}\index{Enemy@{Enemy}}
+
+
+Represents an enemy in the game.  
+
+
+
+
+{\ttfamily \#include $<$enemy.\+h$>$}
+
+
+
+Collaboration diagram for Enemy\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=200pt]{struct_enemy__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct_enemy_a7ab44b9d3c9f868bda3636fd45e8bb9b}{enemy}}
+\item 
+\mbox{\hyperlink{struct_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct_enemy_ab88b9200330af5518918c754a4d20f95}{health\+\_\+bar}}
+\item 
+\mbox{\hyperlink{struct_sprite}{Sprite}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct_enemy_abc081c1bb44aeb6b94aa5b16eb1f6377}{up}}
+\item 
+\mbox{\hyperlink{struct_sprite}{Sprite}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct_enemy_a1ce565740fcd416899628f6c4ef07a1b}{down}}
+\item 
+\mbox{\hyperlink{struct_sprite}{Sprite}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct_enemy_a3b3b3aa9d2c917c70114c49c100571a0}{left}}
+\item 
+\mbox{\hyperlink{struct_sprite}{Sprite}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct_enemy_a0d97a9e08c04c2bfb7d8023fe3068b83}{right}}
+\item 
+float \mbox{\hyperlink{struct_enemy_a9b45f57b3d7474400108f09587df67b0}{x}}
+\item 
+float \mbox{\hyperlink{struct_enemy_aa7d03269f81e619c117ce49f40f53eef}{y}}
+\item 
+float \mbox{\hyperlink{struct_enemy_ad2541b5819c39a6734d27e7be7d42ee7}{speed}} \mbox{[}2\mbox{]}
+\item 
+int16\+\_\+t \mbox{\hyperlink{struct_enemy_ace6766f8b7b7d13b78eca2050c350b3d}{origin\+\_\+offset\+\_\+x}}
+\item 
+int16\+\_\+t \mbox{\hyperlink{struct_enemy_a344e9b1e8e2469a8172f7be382c3837e}{origin\+\_\+offset\+\_\+y}}
+\item 
+int16\+\_\+t \mbox{\hyperlink{struct_enemy_a1abe292057034f02da4744a5a3e36311}{hit\+\_\+points}}
+\item 
+int16\+\_\+t \mbox{\hyperlink{struct_enemy_a8ec276db2a2ca75293db86adc31fc2e3}{max\+\_\+hit\+\_\+points}}
+\item 
+int16\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct_enemy_a1b5e47c43cdb962e421536d6420bbe26}{targets}}
+\item 
+int16\+\_\+t \mbox{\hyperlink{struct_enemy_a18a4274fcb1ebcfc59a72349fd2edf3a}{targets\+\_\+hit}}
+\item 
+int16\+\_\+t \mbox{\hyperlink{struct_enemy_af91ee364d18b7a9302b55f62772b72f4}{last\+\_\+target}}
+\item 
+bool \mbox{\hyperlink{struct_enemy_a48a5b69546e3350c86cf8ec5c1a232c5}{reached\+\_\+target}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents an enemy in the game. 
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{struct_enemy_a1ce565740fcd416899628f6c4ef07a1b}\index{Enemy@{Enemy}!down@{down}}
+\index{down@{down}!Enemy@{Enemy}}
+\doxysubsubsection{\texorpdfstring{down}{down}}
+{\footnotesize\ttfamily \label{struct_enemy_a1ce565740fcd416899628f6c4ef07a1b} 
+\mbox{\hyperlink{struct_sprite}{Sprite}}\texorpdfstring{$\ast$}{*} Enemy\+::down}
+
+The sprite for the enemy facing down. \Hypertarget{struct_enemy_a7ab44b9d3c9f868bda3636fd45e8bb9b}\index{Enemy@{Enemy}!enemy@{enemy}}
+\index{enemy@{enemy}!Enemy@{Enemy}}
+\doxysubsubsection{\texorpdfstring{enemy}{enemy}}
+{\footnotesize\ttfamily \label{struct_enemy_a7ab44b9d3c9f868bda3636fd45e8bb9b} 
+\mbox{\hyperlink{struct_game_object}{Game\+Object}}\texorpdfstring{$\ast$}{*} Enemy\+::enemy}
+
+The game object associated with the enemy. \Hypertarget{struct_enemy_ab88b9200330af5518918c754a4d20f95}\index{Enemy@{Enemy}!health\_bar@{health\_bar}}
+\index{health\_bar@{health\_bar}!Enemy@{Enemy}}
+\doxysubsubsection{\texorpdfstring{health\_bar}{health\_bar}}
+{\footnotesize\ttfamily \label{struct_enemy_ab88b9200330af5518918c754a4d20f95} 
+\mbox{\hyperlink{struct_game_object}{Game\+Object}}\texorpdfstring{$\ast$}{*} Enemy\+::health\+\_\+bar}
+
+The game object representing the enemy\textquotesingle{}s health bar. \Hypertarget{struct_enemy_a1abe292057034f02da4744a5a3e36311}\index{Enemy@{Enemy}!hit\_points@{hit\_points}}
+\index{hit\_points@{hit\_points}!Enemy@{Enemy}}
+\doxysubsubsection{\texorpdfstring{hit\_points}{hit\_points}}
+{\footnotesize\ttfamily \label{struct_enemy_a1abe292057034f02da4744a5a3e36311} 
+int16\+\_\+t Enemy\+::hit\+\_\+points}
+
+The current hit points of the enemy. \Hypertarget{struct_enemy_af91ee364d18b7a9302b55f62772b72f4}\index{Enemy@{Enemy}!last\_target@{last\_target}}
+\index{last\_target@{last\_target}!Enemy@{Enemy}}
+\doxysubsubsection{\texorpdfstring{last\_target}{last\_target}}
+{\footnotesize\ttfamily \label{struct_enemy_af91ee364d18b7a9302b55f62772b72f4} 
+int16\+\_\+t Enemy\+::last\+\_\+target}
+
+The index of the last target in the targets array. \Hypertarget{struct_enemy_a3b3b3aa9d2c917c70114c49c100571a0}\index{Enemy@{Enemy}!left@{left}}
+\index{left@{left}!Enemy@{Enemy}}
+\doxysubsubsection{\texorpdfstring{left}{left}}
+{\footnotesize\ttfamily \label{struct_enemy_a3b3b3aa9d2c917c70114c49c100571a0} 
+\mbox{\hyperlink{struct_sprite}{Sprite}}\texorpdfstring{$\ast$}{*} Enemy\+::left}
+
+The sprite for the enemy facing left. \Hypertarget{struct_enemy_a8ec276db2a2ca75293db86adc31fc2e3}\index{Enemy@{Enemy}!max\_hit\_points@{max\_hit\_points}}
+\index{max\_hit\_points@{max\_hit\_points}!Enemy@{Enemy}}
+\doxysubsubsection{\texorpdfstring{max\_hit\_points}{max\_hit\_points}}
+{\footnotesize\ttfamily \label{struct_enemy_a8ec276db2a2ca75293db86adc31fc2e3} 
+int16\+\_\+t Enemy\+::max\+\_\+hit\+\_\+points}
+
+The maximum hit points of the enemy. \Hypertarget{struct_enemy_ace6766f8b7b7d13b78eca2050c350b3d}\index{Enemy@{Enemy}!origin\_offset\_x@{origin\_offset\_x}}
+\index{origin\_offset\_x@{origin\_offset\_x}!Enemy@{Enemy}}
+\doxysubsubsection{\texorpdfstring{origin\_offset\_x}{origin\_offset\_x}}
+{\footnotesize\ttfamily \label{struct_enemy_ace6766f8b7b7d13b78eca2050c350b3d} 
+int16\+\_\+t Enemy\+::origin\+\_\+offset\+\_\+x}
+
+The x offset of the enemy\textquotesingle{}s origin. \Hypertarget{struct_enemy_a344e9b1e8e2469a8172f7be382c3837e}\index{Enemy@{Enemy}!origin\_offset\_y@{origin\_offset\_y}}
+\index{origin\_offset\_y@{origin\_offset\_y}!Enemy@{Enemy}}
+\doxysubsubsection{\texorpdfstring{origin\_offset\_y}{origin\_offset\_y}}
+{\footnotesize\ttfamily \label{struct_enemy_a344e9b1e8e2469a8172f7be382c3837e} 
+int16\+\_\+t Enemy\+::origin\+\_\+offset\+\_\+y}
+
+The y offset of the enemy\textquotesingle{}s origin. \Hypertarget{struct_enemy_a48a5b69546e3350c86cf8ec5c1a232c5}\index{Enemy@{Enemy}!reached\_target@{reached\_target}}
+\index{reached\_target@{reached\_target}!Enemy@{Enemy}}
+\doxysubsubsection{\texorpdfstring{reached\_target}{reached\_target}}
+{\footnotesize\ttfamily \label{struct_enemy_a48a5b69546e3350c86cf8ec5c1a232c5} 
+bool Enemy\+::reached\+\_\+target}
+
+Indicates whether the enemy has reached its final target. \Hypertarget{struct_enemy_a0d97a9e08c04c2bfb7d8023fe3068b83}\index{Enemy@{Enemy}!right@{right}}
+\index{right@{right}!Enemy@{Enemy}}
+\doxysubsubsection{\texorpdfstring{right}{right}}
+{\footnotesize\ttfamily \label{struct_enemy_a0d97a9e08c04c2bfb7d8023fe3068b83} 
+\mbox{\hyperlink{struct_sprite}{Sprite}}\texorpdfstring{$\ast$}{*} Enemy\+::right}
+
+The sprite for the enemy facing right. \Hypertarget{struct_enemy_ad2541b5819c39a6734d27e7be7d42ee7}\index{Enemy@{Enemy}!speed@{speed}}
+\index{speed@{speed}!Enemy@{Enemy}}
+\doxysubsubsection{\texorpdfstring{speed}{speed}}
+{\footnotesize\ttfamily \label{struct_enemy_ad2541b5819c39a6734d27e7be7d42ee7} 
+float Enemy\+::speed\mbox{[}2\mbox{]}}
+
+The speed of the enemy in the x and y directions. \Hypertarget{struct_enemy_a1b5e47c43cdb962e421536d6420bbe26}\index{Enemy@{Enemy}!targets@{targets}}
+\index{targets@{targets}!Enemy@{Enemy}}
+\doxysubsubsection{\texorpdfstring{targets}{targets}}
+{\footnotesize\ttfamily \label{struct_enemy_a1b5e47c43cdb962e421536d6420bbe26} 
+int16\+\_\+t\texorpdfstring{$\ast$}{*} Enemy\+::targets}
+
+The array of target positions the enemy moves towards. \Hypertarget{struct_enemy_a18a4274fcb1ebcfc59a72349fd2edf3a}\index{Enemy@{Enemy}!targets\_hit@{targets\_hit}}
+\index{targets\_hit@{targets\_hit}!Enemy@{Enemy}}
+\doxysubsubsection{\texorpdfstring{targets\_hit}{targets\_hit}}
+{\footnotesize\ttfamily \label{struct_enemy_a18a4274fcb1ebcfc59a72349fd2edf3a} 
+int16\+\_\+t Enemy\+::targets\+\_\+hit}
+
+The number of targets the enemy has reached. \Hypertarget{struct_enemy_abc081c1bb44aeb6b94aa5b16eb1f6377}\index{Enemy@{Enemy}!up@{up}}
+\index{up@{up}!Enemy@{Enemy}}
+\doxysubsubsection{\texorpdfstring{up}{up}}
+{\footnotesize\ttfamily \label{struct_enemy_abc081c1bb44aeb6b94aa5b16eb1f6377} 
+\mbox{\hyperlink{struct_sprite}{Sprite}}\texorpdfstring{$\ast$}{*} Enemy\+::up}
+
+The sprite for the enemy facing up. \Hypertarget{struct_enemy_a9b45f57b3d7474400108f09587df67b0}\index{Enemy@{Enemy}!x@{x}}
+\index{x@{x}!Enemy@{Enemy}}
+\doxysubsubsection{\texorpdfstring{x}{x}}
+{\footnotesize\ttfamily \label{struct_enemy_a9b45f57b3d7474400108f09587df67b0} 
+float Enemy\+::x}
+
+\Hypertarget{struct_enemy_aa7d03269f81e619c117ce49f40f53eef}\index{Enemy@{Enemy}!y@{y}}
+\index{y@{y}!Enemy@{Enemy}}
+\doxysubsubsection{\texorpdfstring{y}{y}}
+{\footnotesize\ttfamily \label{struct_enemy_aa7d03269f81e619c117ce49f40f53eef} 
+float Enemy\+::y}
+
+The current x and y positions of the enemy. 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/\+Game/\+Gameplay/\+Enemy/\mbox{\hyperlink{enemy_8h}{enemy.\+h}}\end{DoxyCompactItemize}

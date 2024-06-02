@@ -1,0 +1,296 @@
+\doxysection{src/\+Game/\+Game\+Over/gameover.c File Reference}
+\hypertarget{gameover_8c}{}\label{gameover_8c}\index{src/Game/GameOver/gameover.c@{src/Game/GameOver/gameover.c}}
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include "{}gameover.\+h"{}}\newline
+{\ttfamily \#include "{}../gamestates.\+h"{}}\newline
+{\ttfamily \#include "{}../\+Data\+Structure/button.\+h"{}}\newline
+{\ttfamily \#include "{}../../\+Image\+Assets/\+Button.\+xpm"{}}\newline
+{\ttfamily \#include "{}../../\+Image\+Assets/\+Background.\+xpm"{}}\newline
+{\ttfamily \#include "{}../\+Gameplay/gameplay.\+h"{}}\newline
+{\ttfamily \#include "{}../\+Menu/menu.\+h"{}}\newline
+Include dependency graph for gameover.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gameover_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{gameover_8c_a20563f1d3e320df15dfbf0c7d99b069d}{check\+Game\+Over\+Hovered}} (\mbox{\hyperlink{struct_button_array}{Button\+Array}} \texorpdfstring{$\ast$}{*}array)
+\item 
+static void \mbox{\hyperlink{gameover_8c_a6b742b5774e93782bd20ecc8b230e927}{check\+Game\+Over\+Keyboard\+Input}} (\mbox{\hyperlink{struct_key_presses}{Key\+Presses}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}head)
+\item 
+void \mbox{\hyperlink{gameover_8c_a29b67c183b3041055d3bb7fc50064b17}{initialize\+Game\+Over}} ()
+\begin{DoxyCompactList}\small\item\em Represents the game over screen. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{gameover_8c_acc8a351ab85e72deab2be432019f11c7}{enter\+Game\+Over}} (int8\+\_\+t arena\+\_\+)
+\begin{DoxyCompactList}\small\item\em Enters the game over screen. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{gameover_8c_af2f7ce039c1cc4997de1b9469f1d8059}{update\+Game\+Over}} ()
+\begin{DoxyCompactList}\small\item\em Updates the game over screen. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{gameover_8c_a412aa119d447d3d8d03e78f95fb27c91}{exit\+Game\+Over}} ()
+\begin{DoxyCompactList}\small\item\em Exits the game over screen. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{gameover_8c_a5bce2c26adca3954a70bcd67ed8ed272}{destroy\+Game\+Over}} ()
+\begin{DoxyCompactList}\small\item\em Destroys the game over screen\textquotesingle{}s associated Game\+Objects and Buttons, freeing their memory. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{gamestates_8h_a7899b65f1ea0f655e4bbf8d2a5714285}{Game\+State}} \mbox{\hyperlink{gameover_8c_a25362b33bad9ff6222dc40646c411649}{state}}
+\item 
+\mbox{\hyperlink{struct_mouse_device}{Mouse\+Device}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{gameover_8c_af690dfd2cb895a02795e3ee3c10792cc}{mouse\+\_\+device}}
+\item 
+\mbox{\hyperlink{struct_keyboard_device}{Keyboard\+Device}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{gameover_8c_aaaee12ef170dce59e90a53ecb0c75172}{keyboard\+\_\+device}}
+\item 
+bool \mbox{\hyperlink{gameover_8c_a189e4b3cf5d30c8f132982577142f27f}{last\+\_\+pressed\+\_\+was\+\_\+mouse}}
+\item 
+\mbox{\hyperlink{struct_screen_info}{Screen\+Info}} \mbox{\hyperlink{gameover_8c_a1636c5f52c5c798d9a14ec91cc0b577d}{screen}}
+\item 
+static int8\+\_\+t \mbox{\hyperlink{gameover_8c_af5a57582e3f2a42749711036c767fe64}{arena}}
+\item 
+\mbox{\hyperlink{struct_button_array}{Button\+Array}} \mbox{\hyperlink{gameover_8c_ae9a03379f9e06fcc3e9f92b99effb556}{gameover\+Buttons}}
+\item 
+\mbox{\hyperlink{struct_game_object}{Game\+Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{gameover_8c_a54b12a78ba771472b47709d08f5e566e}{gameover\+Background}}
+\item 
+static bool \mbox{\hyperlink{gameover_8c_a61546dfcd24033e371f9137cd68b8a55}{pressed\+\_\+gameover\+\_\+button}} = false
+\item 
+static int8\+\_\+t \mbox{\hyperlink{gameover_8c_ae4549cc8390c68123459f0ebfa9103ad}{gameover\+\_\+current\+\_\+selection}} = -\/1
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{gameover_8c_a20563f1d3e320df15dfbf0c7d99b069d}\index{gameover.c@{gameover.c}!checkGameOverHovered@{checkGameOverHovered}}
+\index{checkGameOverHovered@{checkGameOverHovered}!gameover.c@{gameover.c}}
+\doxysubsubsection{\texorpdfstring{checkGameOverHovered()}{checkGameOverHovered()}}
+{\footnotesize\ttfamily \label{gameover_8c_a20563f1d3e320df15dfbf0c7d99b069d} 
+static void check\+Game\+Over\+Hovered (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_button_array}{Button\+Array}} \texorpdfstring{$\ast$}{*}}]{array}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gameover_8c_a20563f1d3e320df15dfbf0c7d99b069d_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gameover_8c_a20563f1d3e320df15dfbf0c7d99b069d_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{gameover_8c_a6b742b5774e93782bd20ecc8b230e927}\index{gameover.c@{gameover.c}!checkGameOverKeyboardInput@{checkGameOverKeyboardInput}}
+\index{checkGameOverKeyboardInput@{checkGameOverKeyboardInput}!gameover.c@{gameover.c}}
+\doxysubsubsection{\texorpdfstring{checkGameOverKeyboardInput()}{checkGameOverKeyboardInput()}}
+{\footnotesize\ttfamily \label{gameover_8c_a6b742b5774e93782bd20ecc8b230e927} 
+static void check\+Game\+Over\+Keyboard\+Input (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_key_presses}{Key\+Presses}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{head}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gameover_8c_a6b742b5774e93782bd20ecc8b230e927_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{gameover_8c_a5bce2c26adca3954a70bcd67ed8ed272}\index{gameover.c@{gameover.c}!destroyGameOver@{destroyGameOver}}
+\index{destroyGameOver@{destroyGameOver}!gameover.c@{gameover.c}}
+\doxysubsubsection{\texorpdfstring{destroyGameOver()}{destroyGameOver()}}
+{\footnotesize\ttfamily \label{gameover_8c_a5bce2c26adca3954a70bcd67ed8ed272} 
+void destroy\+Game\+Over (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Destroys the game over screen\textquotesingle{}s associated Game\+Objects and Buttons, freeing their memory. 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gameover_8c_a5bce2c26adca3954a70bcd67ed8ed272_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gameover_8c_a5bce2c26adca3954a70bcd67ed8ed272_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{gameover_8c_acc8a351ab85e72deab2be432019f11c7}\index{gameover.c@{gameover.c}!enterGameOver@{enterGameOver}}
+\index{enterGameOver@{enterGameOver}!gameover.c@{gameover.c}}
+\doxysubsubsection{\texorpdfstring{enterGameOver()}{enterGameOver()}}
+{\footnotesize\ttfamily \label{gameover_8c_acc8a351ab85e72deab2be432019f11c7} 
+void enter\+Game\+Over (\begin{DoxyParamCaption}\item[{int8\+\_\+t}]{arena\+\_\+}{}\end{DoxyParamCaption})}
+
+
+
+Enters the game over screen. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em arena\+\_\+} & The arena where the game over screen will be displayed. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gameover_8c_acc8a351ab85e72deab2be432019f11c7_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gameover_8c_acc8a351ab85e72deab2be432019f11c7_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{gameover_8c_a412aa119d447d3d8d03e78f95fb27c91}\index{gameover.c@{gameover.c}!exitGameOver@{exitGameOver}}
+\index{exitGameOver@{exitGameOver}!gameover.c@{gameover.c}}
+\doxysubsubsection{\texorpdfstring{exitGameOver()}{exitGameOver()}}
+{\footnotesize\ttfamily \label{gameover_8c_a412aa119d447d3d8d03e78f95fb27c91} 
+void exit\+Game\+Over (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Exits the game over screen. 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gameover_8c_a412aa119d447d3d8d03e78f95fb27c91_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gameover_8c_a412aa119d447d3d8d03e78f95fb27c91_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{gameover_8c_a29b67c183b3041055d3bb7fc50064b17}\index{gameover.c@{gameover.c}!initializeGameOver@{initializeGameOver}}
+\index{initializeGameOver@{initializeGameOver}!gameover.c@{gameover.c}}
+\doxysubsubsection{\texorpdfstring{initializeGameOver()}{initializeGameOver()}}
+{\footnotesize\ttfamily \label{gameover_8c_a29b67c183b3041055d3bb7fc50064b17} 
+void initialize\+Game\+Over (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Represents the game over screen. 
+
+Initializes the game over screen. Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gameover_8c_a29b67c183b3041055d3bb7fc50064b17_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gameover_8c_a29b67c183b3041055d3bb7fc50064b17_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{gameover_8c_af2f7ce039c1cc4997de1b9469f1d8059}\index{gameover.c@{gameover.c}!updateGameOver@{updateGameOver}}
+\index{updateGameOver@{updateGameOver}!gameover.c@{gameover.c}}
+\doxysubsubsection{\texorpdfstring{updateGameOver()}{updateGameOver()}}
+{\footnotesize\ttfamily \label{gameover_8c_af2f7ce039c1cc4997de1b9469f1d8059} 
+void update\+Game\+Over (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Updates the game over screen. 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gameover_8c_af2f7ce039c1cc4997de1b9469f1d8059_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gameover_8c_af2f7ce039c1cc4997de1b9469f1d8059_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{gameover_8c_af5a57582e3f2a42749711036c767fe64}\index{gameover.c@{gameover.c}!arena@{arena}}
+\index{arena@{arena}!gameover.c@{gameover.c}}
+\doxysubsubsection{\texorpdfstring{arena}{arena}}
+{\footnotesize\ttfamily \label{gameover_8c_af5a57582e3f2a42749711036c767fe64} 
+int8\+\_\+t arena\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{gameover_8c_ae4549cc8390c68123459f0ebfa9103ad}\index{gameover.c@{gameover.c}!gameover\_current\_selection@{gameover\_current\_selection}}
+\index{gameover\_current\_selection@{gameover\_current\_selection}!gameover.c@{gameover.c}}
+\doxysubsubsection{\texorpdfstring{gameover\_current\_selection}{gameover\_current\_selection}}
+{\footnotesize\ttfamily \label{gameover_8c_ae4549cc8390c68123459f0ebfa9103ad} 
+int8\+\_\+t gameover\+\_\+current\+\_\+selection = -\/1\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{gameover_8c_a54b12a78ba771472b47709d08f5e566e}\index{gameover.c@{gameover.c}!gameoverBackground@{gameoverBackground}}
+\index{gameoverBackground@{gameoverBackground}!gameover.c@{gameover.c}}
+\doxysubsubsection{\texorpdfstring{gameoverBackground}{gameoverBackground}}
+{\footnotesize\ttfamily \label{gameover_8c_a54b12a78ba771472b47709d08f5e566e} 
+\mbox{\hyperlink{struct_game_object}{Game\+Object}}\texorpdfstring{$\ast$}{*} gameover\+Background}
+
+\Hypertarget{gameover_8c_ae9a03379f9e06fcc3e9f92b99effb556}\index{gameover.c@{gameover.c}!gameoverButtons@{gameoverButtons}}
+\index{gameoverButtons@{gameoverButtons}!gameover.c@{gameover.c}}
+\doxysubsubsection{\texorpdfstring{gameoverButtons}{gameoverButtons}}
+{\footnotesize\ttfamily \label{gameover_8c_ae9a03379f9e06fcc3e9f92b99effb556} 
+\mbox{\hyperlink{struct_button_array}{Button\+Array}} gameover\+Buttons}
+
+\Hypertarget{gameover_8c_aaaee12ef170dce59e90a53ecb0c75172}\index{gameover.c@{gameover.c}!keyboard\_device@{keyboard\_device}}
+\index{keyboard\_device@{keyboard\_device}!gameover.c@{gameover.c}}
+\doxysubsubsection{\texorpdfstring{keyboard\_device}{keyboard\_device}}
+{\footnotesize\ttfamily \label{gameover_8c_aaaee12ef170dce59e90a53ecb0c75172} 
+\mbox{\hyperlink{struct_keyboard_device}{Keyboard\+Device}}\texorpdfstring{$\ast$}{*} keyboard\+\_\+device\hspace{0.3cm}{\ttfamily [extern]}}
+
+\Hypertarget{gameover_8c_a189e4b3cf5d30c8f132982577142f27f}\index{gameover.c@{gameover.c}!last\_pressed\_was\_mouse@{last\_pressed\_was\_mouse}}
+\index{last\_pressed\_was\_mouse@{last\_pressed\_was\_mouse}!gameover.c@{gameover.c}}
+\doxysubsubsection{\texorpdfstring{last\_pressed\_was\_mouse}{last\_pressed\_was\_mouse}}
+{\footnotesize\ttfamily \label{gameover_8c_a189e4b3cf5d30c8f132982577142f27f} 
+bool last\+\_\+pressed\+\_\+was\+\_\+mouse\hspace{0.3cm}{\ttfamily [extern]}}
+
+\Hypertarget{gameover_8c_af690dfd2cb895a02795e3ee3c10792cc}\index{gameover.c@{gameover.c}!mouse\_device@{mouse\_device}}
+\index{mouse\_device@{mouse\_device}!gameover.c@{gameover.c}}
+\doxysubsubsection{\texorpdfstring{mouse\_device}{mouse\_device}}
+{\footnotesize\ttfamily \label{gameover_8c_af690dfd2cb895a02795e3ee3c10792cc} 
+\mbox{\hyperlink{struct_mouse_device}{Mouse\+Device}}\texorpdfstring{$\ast$}{*} mouse\+\_\+device\hspace{0.3cm}{\ttfamily [extern]}}
+
+\Hypertarget{gameover_8c_a61546dfcd24033e371f9137cd68b8a55}\index{gameover.c@{gameover.c}!pressed\_gameover\_button@{pressed\_gameover\_button}}
+\index{pressed\_gameover\_button@{pressed\_gameover\_button}!gameover.c@{gameover.c}}
+\doxysubsubsection{\texorpdfstring{pressed\_gameover\_button}{pressed\_gameover\_button}}
+{\footnotesize\ttfamily \label{gameover_8c_a61546dfcd24033e371f9137cd68b8a55} 
+bool pressed\+\_\+gameover\+\_\+button = false\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{gameover_8c_a1636c5f52c5c798d9a14ec91cc0b577d}\index{gameover.c@{gameover.c}!screen@{screen}}
+\index{screen@{screen}!gameover.c@{gameover.c}}
+\doxysubsubsection{\texorpdfstring{screen}{screen}}
+{\footnotesize\ttfamily \label{gameover_8c_a1636c5f52c5c798d9a14ec91cc0b577d} 
+\mbox{\hyperlink{struct_screen_info}{Screen\+Info}} screen\hspace{0.3cm}{\ttfamily [extern]}}
+
+\Hypertarget{gameover_8c_a25362b33bad9ff6222dc40646c411649}\index{gameover.c@{gameover.c}!state@{state}}
+\index{state@{state}!gameover.c@{gameover.c}}
+\doxysubsubsection{\texorpdfstring{state}{state}}
+{\footnotesize\ttfamily \label{gameover_8c_a25362b33bad9ff6222dc40646c411649} 
+\mbox{\hyperlink{gamestates_8h_a7899b65f1ea0f655e4bbf8d2a5714285}{Game\+State}} state\hspace{0.3cm}{\ttfamily [extern]}}
+

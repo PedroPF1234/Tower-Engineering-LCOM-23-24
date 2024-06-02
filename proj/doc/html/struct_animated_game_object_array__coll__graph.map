@@ -1,0 +1,14 @@
+<map id="AnimatedGameObjectArray" name="AnimatedGameObjectArray">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,371,186,396"/>
+<area shape="rect" id="Node000002" href="$struct_animated_game_object.html" title="Represents an Animated Game Object in the game." alt="" coords="21,282,170,308"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="98,323,98,370,93,370,93,323"/>
+<area shape="rect" id="Node000003" href="$struct_game_object.html" title="Represents a game object in the game." alt="" coords="63,144,157,169"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="94,183,89,194,86,218,86,241,94,281,89,282,81,242,80,217,84,193,89,181"/>
+<area shape="rect" id="Node000004" href="$struct_sprite.html" title="Struct that represents a sprite." alt="" coords="135,5,190,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="152,46,147,56,116,144,111,142,142,54,147,44"/>
+<area shape="rect" id="Node000006" href="$struct_sprite_array.html" title="Struct that represents an array of sprites." alt="" coords="175,94,261,120"/>
+<area shape="poly" id="edge6_Node000006_Node000004" title=" " alt="" coords="181,43,213,92,208,95,176,46"/>
+<area shape="rect" id="Node000005" href="$struct_animated_sprite.html" title="Struct that represents an animated sprite." alt="" coords="172,193,283,219"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="198,230,116,284,113,279,195,225"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="223,135,229,193,224,193,218,135"/>
+</map>

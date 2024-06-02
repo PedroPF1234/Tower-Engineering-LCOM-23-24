@@ -1,0 +1,5 @@
+<map id="getScreenInfo" name="getScreenInfo">
+<area shape="rect" id="Node000001" title="Fetches the screen resolution and stores that information in the ScreenInfo struct." alt="" coords="5,5,108,31"/>
+<area shape="rect" id="Node000002" href="$graphics_8c.html#a09114e97b1fe0ce6964764143e760cf2" title="Gets the screen information of the graphics." alt="" coords="156,5,217,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="108,16,140,16,140,21,108,21"/>
+</map>

@@ -1,0 +1,12 @@
+<map id="rtc_set_alarm_every_second" name="rtc_set_alarm_every_second">
+<area shape="rect" id="Node000001" title="Sets the RTC alarm every second." alt="" coords="5,49,145,89"/>
+<area shape="rect" id="Node000002" href="$rtc_8c.html#a9dac2b0a9f8d5312959534768d4b7498" title=" " alt="" coords="193,5,337,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="144,48,199,33,200,38,146,53"/>
+<area shape="rect" id="Node000003" href="$rtc_8c.html#ac8b0ed21f98fd3ada932e232c253b92b" title="Reads a byte from the RTC." alt="" coords="385,31,453,56"/>
+<area shape="poly" id="edge4_Node000001_Node000003" title=" " alt="" coords="145,61,369,44,370,50,145,66"/>
+<area shape="rect" id="Node000005" href="$rtc_8c.html#a88bc7fc547c8c1296e2e42d246e5e23e" title="Writes a byte to the RTC." alt="" coords="229,107,301,132"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="146,85,215,104,214,109,144,90"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="338,27,370,33,369,38,337,33"/>
+<area shape="rect" id="Node000004" href="$utils_8c.html#a2b56f50ba159e9d5115ed1a75eff15d9" title=" " alt="" coords="501,31,592,56"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="454,41,486,41,486,46,454,46"/>
+</map>

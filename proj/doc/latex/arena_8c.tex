@@ -1,0 +1,209 @@
+\doxysection{src/\+Game/\+Gameplay/\+Arena/arena.c File Reference}
+\hypertarget{arena_8c}{}\label{arena_8c}\index{src/Game/Gameplay/Arena/arena.c@{src/Game/Gameplay/Arena/arena.c}}
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include "{}arena.\+h"{}}\newline
+{\ttfamily \#include "{}../../../\+Image\+Assets/\+Arena.\+xpm"{}}\newline
+{\ttfamily \#include "{}../../../\+Image\+Assets/\+Decorations/\+Drill\+\_\+\+Decor.\+xpm"{}}\newline
+{\ttfamily \#include "{}../../../\+Image\+Assets/\+Decorations/\+Factory\+\_\+\+Decor.\+xpm"{}}\newline
+{\ttfamily \#include "{}../../../\+Image\+Assets/\+Decorations/\+Furnace\+\_\+\+Decor.\+xpm"{}}\newline
+Include dependency graph for arena.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arena_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{struct_arena}{Arena}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{arena_8c_a0f21764fa944b4729f9a6cff2d05d507}{read\+\_\+arena\+\_\+info}} (char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}arena\+\_\+info)
+\item 
+\mbox{\hyperlink{struct_arena}{Arena}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{arena_8c_aa3fdd3e87acb2a6ff24a3fca4412ebe4}{initialize\+Arenas}} ()
+\begin{DoxyCompactList}\small\item\em Initializes the arenas. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{arena_8c_a0917d504d8873616620b006187d006bf}{destroy\+Arenas}} (\mbox{\hyperlink{struct_arena}{Arena}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{gameover_8c_af5a57582e3f2a42749711036c767fe64}{arena}})
+\begin{DoxyCompactList}\small\item\em Destroys the arenas and frees the associated memory. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{arena_8c_a12ee16feb1183e7af2ca83f904398922}{hide\+Arena}} (\mbox{\hyperlink{struct_arena}{Arena}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{gameover_8c_af5a57582e3f2a42749711036c767fe64}{arena}})
+\begin{DoxyCompactList}\small\item\em Hides the arena by making the associated sprites invisible. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{arena_8c_a533d9f59c73297aca71fb1c4d2b85b91}{show\+Arena}} (\mbox{\hyperlink{struct_arena}{Arena}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{gameover_8c_af5a57582e3f2a42749711036c767fe64}{arena}})
+\begin{DoxyCompactList}\small\item\em Shows the arena by making the associated sprites visible. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_animated_sprite}{Animated\+Sprite}} \mbox{\hyperlink{arena_8c_a89bb4990728a6b21aa91c78e48746bd7}{furnace\+Decor}}
+\item 
+\mbox{\hyperlink{struct_animated_sprite}{Animated\+Sprite}} \mbox{\hyperlink{arena_8c_aa8e3a5fc7b81ed22a329a0d0247ec8cb}{drill\+Decor}}
+\item 
+\mbox{\hyperlink{struct_animated_sprite}{Animated\+Sprite}} \mbox{\hyperlink{arena_8c_aa9141e22347f921a36f02aa6bd7af811}{factory\+Decor}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{arena_8c_a0917d504d8873616620b006187d006bf}\index{arena.c@{arena.c}!destroyArenas@{destroyArenas}}
+\index{destroyArenas@{destroyArenas}!arena.c@{arena.c}}
+\doxysubsubsection{\texorpdfstring{destroyArenas()}{destroyArenas()}}
+{\footnotesize\ttfamily \label{arena_8c_a0917d504d8873616620b006187d006bf} 
+void destroy\+Arenas (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_arena}{Arena}} \texorpdfstring{$\ast$}{*}}]{arena}{}\end{DoxyParamCaption})}
+
+
+
+Destroys the arenas and frees the associated memory. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em arena} & The array of \doxylink{struct_arena}{Arena} objects to be destroyed. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=273pt]{arena_8c_a0917d504d8873616620b006187d006bf_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arena_8c_a0917d504d8873616620b006187d006bf_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{arena_8c_a12ee16feb1183e7af2ca83f904398922}\index{arena.c@{arena.c}!hideArena@{hideArena}}
+\index{hideArena@{hideArena}!arena.c@{arena.c}}
+\doxysubsubsection{\texorpdfstring{hideArena()}{hideArena()}}
+{\footnotesize\ttfamily \label{arena_8c_a12ee16feb1183e7af2ca83f904398922} 
+void hide\+Arena (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_arena}{Arena}} \texorpdfstring{$\ast$}{*}}]{arena}{}\end{DoxyParamCaption})}
+
+
+
+Hides the arena by making the associated sprites invisible. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em arena} & A pointer to the \doxylink{struct_arena}{Arena} to be hidden. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arena_8c_a12ee16feb1183e7af2ca83f904398922_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arena_8c_a12ee16feb1183e7af2ca83f904398922_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{arena_8c_aa3fdd3e87acb2a6ff24a3fca4412ebe4}\index{arena.c@{arena.c}!initializeArenas@{initializeArenas}}
+\index{initializeArenas@{initializeArenas}!arena.c@{arena.c}}
+\doxysubsubsection{\texorpdfstring{initializeArenas()}{initializeArenas()}}
+{\footnotesize\ttfamily \label{arena_8c_aa3fdd3e87acb2a6ff24a3fca4412ebe4} 
+\mbox{\hyperlink{struct_arena}{Arena}} \texorpdfstring{$\ast$}{*} initialize\+Arenas (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Initializes the arenas. 
+
+Initializes the arenas by reading the information from the files and creating the \doxylink{struct_arena}{Arena} objects.
+
+\begin{DoxyReturn}{Returns}
+An array of \doxylink{struct_arena}{Arena} objects. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arena_8c_aa3fdd3e87acb2a6ff24a3fca4412ebe4_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arena_8c_aa3fdd3e87acb2a6ff24a3fca4412ebe4_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{arena_8c_a0f21764fa944b4729f9a6cff2d05d507}\index{arena.c@{arena.c}!read\_arena\_info@{read\_arena\_info}}
+\index{read\_arena\_info@{read\_arena\_info}!arena.c@{arena.c}}
+\doxysubsubsection{\texorpdfstring{read\_arena\_info()}{read\_arena\_info()}}
+{\footnotesize\ttfamily \label{arena_8c_a0f21764fa944b4729f9a6cff2d05d507} 
+static \mbox{\hyperlink{struct_arena}{Arena}} \texorpdfstring{$\ast$}{*} read\+\_\+arena\+\_\+info (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{arena\+\_\+info}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arena_8c_a0f21764fa944b4729f9a6cff2d05d507_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arena_8c_a0f21764fa944b4729f9a6cff2d05d507_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{arena_8c_a533d9f59c73297aca71fb1c4d2b85b91}\index{arena.c@{arena.c}!showArena@{showArena}}
+\index{showArena@{showArena}!arena.c@{arena.c}}
+\doxysubsubsection{\texorpdfstring{showArena()}{showArena()}}
+{\footnotesize\ttfamily \label{arena_8c_a533d9f59c73297aca71fb1c4d2b85b91} 
+void show\+Arena (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_arena}{Arena}} \texorpdfstring{$\ast$}{*}}]{arena}{}\end{DoxyParamCaption})}
+
+
+
+Shows the arena by making the associated sprites visible. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em arena} & A pointer to the \doxylink{struct_arena}{Arena} to be shown. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arena_8c_a533d9f59c73297aca71fb1c4d2b85b91_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arena_8c_a533d9f59c73297aca71fb1c4d2b85b91_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{arena_8c_aa8e3a5fc7b81ed22a329a0d0247ec8cb}\index{arena.c@{arena.c}!drillDecor@{drillDecor}}
+\index{drillDecor@{drillDecor}!arena.c@{arena.c}}
+\doxysubsubsection{\texorpdfstring{drillDecor}{drillDecor}}
+{\footnotesize\ttfamily \label{arena_8c_aa8e3a5fc7b81ed22a329a0d0247ec8cb} 
+\mbox{\hyperlink{struct_animated_sprite}{Animated\+Sprite}} drill\+Decor}
+
+\Hypertarget{arena_8c_aa9141e22347f921a36f02aa6bd7af811}\index{arena.c@{arena.c}!factoryDecor@{factoryDecor}}
+\index{factoryDecor@{factoryDecor}!arena.c@{arena.c}}
+\doxysubsubsection{\texorpdfstring{factoryDecor}{factoryDecor}}
+{\footnotesize\ttfamily \label{arena_8c_aa9141e22347f921a36f02aa6bd7af811} 
+\mbox{\hyperlink{struct_animated_sprite}{Animated\+Sprite}} factory\+Decor}
+
+\Hypertarget{arena_8c_a89bb4990728a6b21aa91c78e48746bd7}\index{arena.c@{arena.c}!furnaceDecor@{furnaceDecor}}
+\index{furnaceDecor@{furnaceDecor}!arena.c@{arena.c}}
+\doxysubsubsection{\texorpdfstring{furnaceDecor}{furnaceDecor}}
+{\footnotesize\ttfamily \label{arena_8c_a89bb4990728a6b21aa91c78e48746bd7} 
+\mbox{\hyperlink{struct_animated_sprite}{Animated\+Sprite}} furnace\+Decor}
+

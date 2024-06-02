@@ -1,0 +1,7 @@
+<map id="switchAnimatedSpriteOfAnimatedGameObject" name="switchAnimatedSpriteOfAnimatedGameObject">
+<area shape="rect" id="Node000001" title="Switches sprites of an animated game object." alt="" coords="5,23,223,64"/>
+<area shape="rect" id="Node000002" href="$sprite_8c.html#a4ed5b9becd1df00c68f6348b54b01191" title="Gets a sprite from a given sprite array." alt="" coords="302,5,407,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="223,29,287,23,288,28,223,35"/>
+<area shape="rect" id="Node000003" href="$gameobject_8c.html#aaab2489d023b98f5089e354979662252" title="Updates the sprite of a game object." alt="" coords="271,55,438,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="223,52,255,55,255,60,223,57"/>
+</map>

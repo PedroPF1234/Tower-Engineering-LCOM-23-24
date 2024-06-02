@@ -1,0 +1,18 @@
+<map id="create_animated_sprite" name="create_animated_sprite">
+<area shape="rect" id="Node000001" title="Initializes a new animated sprite." alt="" coords="1070,32,1227,58"/>
+<area shape="rect" id="Node000002" href="$arena_8c.html#aa3fdd3e87acb2a6ff24a3fca4412ebe4" title="Initializes the arenas." alt="" coords="670,5,779,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1054,42,779,24,779,19,1055,36"/>
+<area shape="rect" id="Node000007" href="$sprite_8c.html#afc4dd6f8235181ecf069684ba7e0eada" title="Initializes a new array of animated sprites from a given array of animated sprites." alt="" coords="827,53,1022,93"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="1055,59,1023,63,1022,58,1054,54"/>
+<area shape="rect" id="Node000003" href="$gameplay_8c.html#a91bd3234380a02ca10ddc23b13cfc521" title="Includes all things related to the gameplay of the game." alt="" coords="494,32,622,58"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="655,32,623,37,622,32,654,27"/>
+<area shape="rect" id="Node000004" href="$game_8c.html#a315e950a7e6bb500fe11c37ee1122577" title="Encapsulates the whole game logic." alt="" coords="327,32,446,58"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="479,48,447,48,447,42,479,42"/>
+<area shape="rect" id="Node000005" href="$device__controller_8c.html#a4d10f01a84e9e24f18682c0bca48dca6" title="Calls all device&#39;s interrupt handlers." alt="" coords="162,32,279,58"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="312,48,279,48,279,42,312,42"/>
+<area shape="rect" id="Node000006" href="$proj_8c.html#af244d65e69677cf312af1950452ec256" title=" " alt="" coords="5,32,114,58"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="146,48,114,48,114,42,146,42"/>
+<area shape="rect" id="Node000008" href="$player_8c.html#a1896161c4f39a705b5e60096e2e48994" title="Initializes a new player." alt="" coords="672,56,777,82"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="812,73,777,73,777,67,812,68"/>
+<area shape="poly" id="edge8_Node000008_Node000003" title=" " alt="" coords="656,62,622,57,623,51,657,56"/>
+</map>

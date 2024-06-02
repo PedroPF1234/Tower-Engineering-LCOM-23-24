@@ -1,0 +1,101 @@
+\doxysection{src/\+Game/\+Gameplay/economy.h File Reference}
+\hypertarget{economy_8h}{}\label{economy_8h}\index{src/Game/Gameplay/economy.h@{src/Game/Gameplay/economy.h}}
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+Include dependency graph for economy.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=236pt]{economy_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{economy_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_economy}{Economy}}
+\begin{DoxyCompactList}\small\item\em Struct that represents the prices of towers and upgrades of the game. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct Economy \mbox{\hyperlink{economy_8h_aedf70cc68365b46d890e058878f970d6}{Economy}}
+\begin{DoxyCompactList}\small\item\em Struct that represents the prices of towers and upgrades of the game. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_economy}{Economy}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{economy_8h_a8f545e1585d3fa8f76863a64f226ac1e}{read\+\_\+prices\+\_\+info}} (char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}prices\+\_\+info)
+\begin{DoxyCompactList}\small\item\em Reads the prices information from the corresponding file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Typedef Documentation}
+\Hypertarget{economy_8h_aedf70cc68365b46d890e058878f970d6}\index{economy.h@{economy.h}!Economy@{Economy}}
+\index{Economy@{Economy}!economy.h@{economy.h}}
+\doxysubsubsection{\texorpdfstring{Economy}{Economy}}
+{\footnotesize\ttfamily \label{economy_8h_aedf70cc68365b46d890e058878f970d6} 
+typedef struct Economy Economy}
+
+
+
+Struct that represents the prices of towers and upgrades of the game. 
+
+Contains the prices of unlocking, building and upgrading the towers.
+
+
+\begin{DoxyParams}{Parameters}
+{\em unlock\+\_\+prices} & An array of integers that represent the prices to unlock each tower. \\
+\hline
+{\em unlock\+\_\+count} & The size of the array of unlock prices.\\
+\hline
+{\em build\+\_\+prices} & An array of integers that represent the prices to build each tower. \\
+\hline
+{\em build\+\_\+count} & The size of the array of build prices.\\
+\hline
+{\em upgrade\+\_\+crossbow\+\_\+prices} & An array of integers that represent the prices to upgrade the crossbow tower. \\
+\hline
+{\em upgrade\+\_\+crossbow\+\_\+count} & The size of the array of upgrade crossbow prices.\\
+\hline
+{\em upgrade\+\_\+cannon\+\_\+prices} & An array of integers that represent the prices to upgrade the cannon tower. \\
+\hline
+{\em upgrade\+\_\+cannon\+\_\+count} & The size of the array of upgrade cannon prices.\\
+\hline
+{\em upgrade\+\_\+laser\+\_\+prices} & An array of integers that represent the prices to upgrade the laser tower. \\
+\hline
+{\em upgrade\+\_\+laser\+\_\+count} & The size of the array of upgrade laser prices. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{economy_8h_a8f545e1585d3fa8f76863a64f226ac1e}\index{economy.h@{economy.h}!read\_prices\_info@{read\_prices\_info}}
+\index{read\_prices\_info@{read\_prices\_info}!economy.h@{economy.h}}
+\doxysubsubsection{\texorpdfstring{read\_prices\_info()}{read\_prices\_info()}}
+{\footnotesize\ttfamily \label{economy_8h_a8f545e1585d3fa8f76863a64f226ac1e} 
+\mbox{\hyperlink{struct_economy}{Economy}} \texorpdfstring{$\ast$}{*} read\+\_\+prices\+\_\+info (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{prices\+\_\+info}{}\end{DoxyParamCaption})}
+
+
+
+Reads the prices information from the corresponding file. 
+
+Reads the prices information from the corresponding file and initializes the \doxylink{struct_economy}{Economy} object.
+
+
+\begin{DoxyParams}{Parameters}
+{\em prices\+\_\+info} & The array of strings that represent the prices information. \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{economy_8h_a8f545e1585d3fa8f76863a64f226ac1e_icgraph}
+\end{center}
+\end{figure}

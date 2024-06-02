@@ -1,0 +1,5 @@
+<map id="vg_draw_hline" name="vg_draw_hline">
+<area shape="rect" id="Node000001" title="Draws a line of pixels." alt="" coords="184,5,288,31"/>
+<area shape="rect" id="Node000002" href="$graphics_8c.html#a4d53728322f948683b768482bf4906e8" title="Draws a rectangle." alt="" coords="5,5,136,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="168,21,136,21,136,16,168,16"/>
+</map>

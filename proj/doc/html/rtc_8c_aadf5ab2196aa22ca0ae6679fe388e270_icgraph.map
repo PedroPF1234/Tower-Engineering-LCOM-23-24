@@ -1,0 +1,17 @@
+<map id="rtc_toggle_periodic_int" name="rtc_toggle_periodic_int">
+<area shape="rect" id="Node000001" title="Enables or disables RTC periodic interrupts." alt="" coords="726,37,877,63"/>
+<area shape="rect" id="Node000002" href="$rtc_8c.html#a3c40f97c04701fc6ac45a19bb92be181" title="Disables all RTC interrupts." alt="" coords="545,12,678,38"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="710,41,678,36,678,31,711,35"/>
+<area shape="rect" id="Node000006" href="$rtc_8c.html#af086192448abc551b618e1856d661926" title="Encapsulates the RTC initialization and subscription." alt="" coords="344,55,462,96"/>
+<area shape="poly" id="edge8_Node000001_Node000006" title=" " alt="" coords="710,59,462,74,462,69,710,53"/>
+<area shape="rect" id="Node000003" href="$rtc_8c.html#a6a46d7dad3841ae858c249d42081f9ac" title="Encapsulates the RTC disable and unsubscription." alt="" coords="308,5,497,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="530,25,498,24,498,19,530,20"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="541,44,463,64,462,59,540,39"/>
+<area shape="rect" id="Node000004" href="$device__controller_8c.html#ab1bc69df0c7a23951179c8258d9ac75c" title="Encapsulates the termination of all the devices." alt="" coords="162,8,260,34"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="293,22,261,23,261,17,293,17"/>
+<area shape="rect" id="Node000005" href="$proj_8c.html#af244d65e69677cf312af1950452ec256" title=" " alt="" coords="5,35,114,60"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="147,35,114,41,114,35,146,30"/>
+<area shape="rect" id="Node000007" href="$device__controller_8c.html#a47e74a2f7a5edae37287b8bcfbb30562" title="Encapsulates the initialization of all the devices." alt="" coords="162,59,260,84"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="328,77,260,75,260,70,328,71"/>
+<area shape="poly" id="edge7_Node000007_Node000005" title=" " alt="" coords="146,64,114,59,114,53,147,59"/>
+</map>

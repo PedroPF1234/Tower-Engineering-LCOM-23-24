@@ -1,0 +1,15 @@
+<map id="src/Devices/RTC/rtc.c" name="src/Devices/RTC/rtc.c">
+<area shape="rect" id="Node000001" title=" " alt="" coords="47,5,200,31"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,153,84,178"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="105,34,80,53,59,80,49,109,46,138,41,137,44,108,54,78,76,50,102,29"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="122,153,186,178"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="128,31,151,137,146,138,123,32"/>
+<area shape="rect" id="Node000004" href="$rtc_8h.html" title=" " alt="" coords="69,79,116,105"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="121,32,106,66,101,64,116,30"/>
+<area shape="rect" id="Node000005" href="$rtc__time_8h.html" title=" " alt="" coords="192,79,271,105"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="143,29,201,68,198,72,140,34"/>
+<area shape="poly" id="edge4_Node000004_Node000002" title=" " alt="" coords="87,106,63,141,59,138,82,103"/>
+<area shape="poly" id="edge6_Node000005_Node000003" title=" " alt="" coords="220,107,180,144,176,140,216,103"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="210,153,284,178"/>
+<area shape="poly" id="edge7_Node000005_Node000006" title=" " alt="" coords="236,104,244,137,238,138,231,105"/>
+</map>

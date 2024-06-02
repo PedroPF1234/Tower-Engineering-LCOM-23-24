@@ -1,0 +1,43 @@
+<map id="exitGame" name="exitGame">
+<area shape="rect" id="Node000001" title="Exits the game." alt="" coords="5,232,83,258"/>
+<area shape="rect" id="Node000002" href="$enemy_8c.html#ab25f3d1f4b2e71a0e588f4e44cd96fe8" title="Destroys an EnemyArray and frees associated memory." alt="" coords="131,56,267,82"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="50,230,81,178,129,116,161,89,165,93,133,120,85,181,55,233"/>
+<area shape="rect" id="Node000007" href="$arena_8c.html#a12ee16feb1183e7af2ca83f904398922" title="Hides the arena by making the associated sprites invisible." alt="" coords="159,131,239,156"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="58,229,90,202,129,173,151,161,153,166,132,178,93,206,61,233"/>
+<area shape="rect" id="Node000011" href="$gameobject_8c.html#a5450390b74149c8e80f882c397d7bafb" title="Removes a sprite from a spriteless game object." alt="" coords="514,179,672,220"/>
+<area shape="poly" id="edge23_Node000001_Node000011" title=" " alt="" coords="82,229,130,217,228,204,327,197,498,194,499,200,327,203,228,210,131,222,84,234"/>
+<area shape="rect" id="Node000012" href="$button_8c.html#a4d66a0f1c519e7e4ab43d96d3286db4f" title="Turns off the visibility of all the Button&#39;s Sprites in a ButtonArray." alt="" coords="154,232,244,258"/>
+<area shape="poly" id="edge14_Node000001_Node000012" title=" " alt="" coords="83,242,138,242,138,248,83,248"/>
+<area shape="rect" id="Node000014" href="$gameobject_8c.html#a64b60833d4cca1b443b1804d5bc7c2ac" title="Hides all the GameObjects in the GameObjectArray." alt="" coords="136,281,262,307"/>
+<area shape="poly" id="edge16_Node000001_Node000014" title=" " alt="" coords="84,254,142,273,141,279,82,260"/>
+<area shape="rect" id="Node000017" href="$sprite_8c.html#a19f3014843720f3932dd5a25b1c0cd12" title="Hides all sprites in a given sprite array." alt="" coords="156,331,242,356"/>
+<area shape="poly" id="edge20_Node000001_Node000017" title=" " alt="" coords="59,256,91,286,132,317,142,323,140,327,129,322,87,291,56,260"/>
+<area shape="rect" id="Node000018" href="$weapon_8c.html#ae5e46be3e9f65ef3450c21bb7a47e7a7" title="Hides the weapon by making the associated sprite invisible." alt="" coords="153,380,245,406"/>
+<area shape="poly" id="edge21_Node000001_Node000018" title=" " alt="" coords="53,257,82,310,105,340,132,367,140,372,137,377,129,371,101,344,78,313,49,259"/>
+<area shape="rect" id="Node000003" href="$enemy_8c.html#ade21f14f9d1e80dd3e6c893fb9fc61b2" title="Destroys an enemy and frees associated memory." alt="" coords="334,29,439,55"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="267,56,318,49,319,54,268,62"/>
+<area shape="rect" id="Node000004" href="$gameobject_8c.html#ab2ca8f1feaafcb93216e911798e96b40" title="Destroys a game object, removes it from the render pipeline and frees associated memory." alt="" coords="524,31,662,56"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="440,40,508,40,508,46,440,45"/>
+<area shape="rect" id="Node000005" href="$sprite_8c.html#af16c6befaac9ffb673b9e3c798d542ed" title="Destroys a sprite and frees associated memory." alt="" coords="752,5,856,31"/>
+<area shape="poly" id="edge6_Node000003_Node000005" title=" " alt="" coords="439,27,506,16,628,10,737,12,736,17,628,15,507,21,440,32"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="662,33,737,23,737,29,663,38"/>
+<area shape="rect" id="Node000006" href="$gameobject_8c.html#a11caa0bf998b9de720cc858c6d02274b" title=" " alt="" coords="728,108,880,134"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="647,54,681,65,762,99,760,104,679,70,646,60"/>
+<area shape="rect" id="Node000008" href="$gameobject_8c.html#a90ff45e7b7576b7b1c88255466ac2ff5" title="Hides an animated game object." alt="" coords="506,80,680,106"/>
+<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="238,131,315,116,405,104,491,96,491,102,405,109,315,121,239,136"/>
+<area shape="rect" id="Node000009" href="$towers_8c.html#ad53e6aa00d7f7525ecefb28a51fa05bb" title="Hide the sprites of all the towers in a TowerArray." alt="" coords="343,131,430,156"/>
+<area shape="poly" id="edge10_Node000007_Node000009" title=" " alt="" coords="239,141,328,141,328,146,239,146"/>
+<area shape="poly" id="edge9_Node000008_Node000006" title=" " alt="" coords="681,102,713,106,712,111,680,107"/>
+<area shape="rect" id="Node000010" href="$towers_8c.html#a23d2d6181fcd8d6fedd8308045a16810" title="Retrieves a TowerBase from a TowerArray." alt="" coords="540,129,646,155"/>
+<area shape="poly" id="edge11_Node000009_Node000010" title=" " alt="" coords="431,141,525,140,525,145,431,146"/>
+<area shape="poly" id="edge12_Node000009_Node000011" title=" " alt="" coords="431,153,502,172,500,177,430,158"/>
+<area shape="poly" id="edge13_Node000011_Node000006" title=" " alt="" coords="649,176,679,165,753,137,754,142,681,170,651,181"/>
+<area shape="rect" id="Node000013" href="$button_8c.html#ac3e1fa5a312e4690dd8b5d14db4bdd0f" title="Retrieves a Button from a ButtonArray." alt="" coords="333,232,441,258"/>
+<area shape="poly" id="edge15_Node000012_Node000013" title=" " alt="" coords="245,242,317,242,317,248,245,248"/>
+<area shape="rect" id="Node000015" href="$gameobject_8c.html#ad8cd8916d4c5dab325a599b2385122f0" title="Retrieves a GameObject from a GameObjectArray at a specified index." alt="" coords="315,281,458,307"/>
+<area shape="poly" id="edge17_Node000014_Node000015" title=" " alt="" coords="262,292,299,292,299,297,262,297"/>
+<area shape="rect" id="Node000016" href="$gameobject_8c.html#aed2b525f6703cd35381c0cc9e7397a63" title="Hides a game object by removing it from the render pipeline." alt="" coords="328,331,446,356"/>
+<area shape="poly" id="edge18_Node000014_Node000016" title=" " alt="" coords="251,305,321,324,320,329,250,310"/>
+<area shape="poly" id="edge19_Node000016_Node000006" title=" " alt="" coords="439,328,552,290,617,262,678,229,734,186,779,143,782,147,738,190,681,234,619,267,554,295,441,333"/>
+<area shape="poly" id="edge22_Node000018_Node000016" title=" " alt="" coords="245,378,320,358,321,363,246,383"/>
+</map>

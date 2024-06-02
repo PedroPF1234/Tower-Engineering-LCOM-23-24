@@ -1,0 +1,8 @@
+<map id="Enemy" name="Enemy">
+<area shape="rect" id="Node000001" title="Represents an enemy in the game." alt="" coords="18,232,80,258"/>
+<area shape="rect" id="Node000002" href="$struct_game_object.html" title="Represents a game object in the game." alt="" coords="71,111,166,137"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="106,151,58,233,54,230,102,149"/>
+<area shape="rect" id="Node000003" href="$struct_sprite.html" title="Struct that represents a sprite." alt="" coords="5,5,61,31"/>
+<area shape="poly" id="edge3_Node000001_Node000003" title=" " alt="" coords="32,47,27,94,25,124,27,154,36,196,47,231,42,232,31,198,22,154,20,124,22,94,27,46"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="54,41,111,109,107,113,50,44"/>
+</map>

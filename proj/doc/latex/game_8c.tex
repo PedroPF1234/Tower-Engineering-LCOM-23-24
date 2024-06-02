@@ -1,0 +1,105 @@
+\doxysection{src/\+Game/game.c File Reference}
+\hypertarget{game_8c}{}\label{game_8c}\index{src/Game/game.c@{src/Game/game.c}}
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include "{}Menu/menu.\+h"{}}\newline
+{\ttfamily \#include "{}Game\+Over/gameover.\+h"{}}\newline
+{\ttfamily \#include "{}Gameplay/gameplay.\+h"{}}\newline
+{\ttfamily \#include "{}Instructions/instructions.\+h"{}}\newline
+{\ttfamily \#include "{}gamestates.\+h"{}}\newline
+Include dependency graph for game.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{game_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{game_8c_a315e950a7e6bb500fe11c37ee1122577}{game\+\_\+main\+\_\+loop}} ()
+\begin{DoxyCompactList}\small\item\em Encapsulates the whole game logic. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_mouse_device}{Mouse\+Device}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{game_8c_af690dfd2cb895a02795e3ee3c10792cc}{mouse\+\_\+device}}
+\item 
+\mbox{\hyperlink{struct_keyboard_device}{Keyboard\+Device}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{game_8c_aaaee12ef170dce59e90a53ecb0c75172}{keyboard\+\_\+device}}
+\item 
+bool \mbox{\hyperlink{game_8c_a189e4b3cf5d30c8f132982577142f27f}{last\+\_\+pressed\+\_\+was\+\_\+mouse}}
+\item 
+\mbox{\hyperlink{gamestates_8h_a7899b65f1ea0f655e4bbf8d2a5714285}{Game\+State}} \mbox{\hyperlink{game_8c_a25362b33bad9ff6222dc40646c411649}{state}} = \mbox{\hyperlink{gamestates_8h_a7899b65f1ea0f655e4bbf8d2a5714285ac22743f1fc74de09544ecc9bab74a17b}{MAIN\+\_\+\+MENU}}
+\item 
+static bool \mbox{\hyperlink{game_8c_ad06c27c82c07f03b83de6e63a0e2a60f}{game\+\_\+booted}} = false
+\item 
+bool \mbox{\hyperlink{game_8c_a0448fec049217e428b9ec21c03e51d52}{playing}} = false
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{game_8c_a315e950a7e6bb500fe11c37ee1122577}\index{game.c@{game.c}!game\_main\_loop@{game\_main\_loop}}
+\index{game\_main\_loop@{game\_main\_loop}!game.c@{game.c}}
+\doxysubsubsection{\texorpdfstring{game\_main\_loop()}{game\_main\_loop()}}
+{\footnotesize\ttfamily \label{game_8c_a315e950a7e6bb500fe11c37ee1122577} 
+int game\+\_\+main\+\_\+loop (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Encapsulates the whole game logic. 
+
+Initializes the loop of game states. Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{game_8c_a315e950a7e6bb500fe11c37ee1122577_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{game_8c_a315e950a7e6bb500fe11c37ee1122577_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{game_8c_ad06c27c82c07f03b83de6e63a0e2a60f}\index{game.c@{game.c}!game\_booted@{game\_booted}}
+\index{game\_booted@{game\_booted}!game.c@{game.c}}
+\doxysubsubsection{\texorpdfstring{game\_booted}{game\_booted}}
+{\footnotesize\ttfamily \label{game_8c_ad06c27c82c07f03b83de6e63a0e2a60f} 
+bool game\+\_\+booted = false\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{game_8c_aaaee12ef170dce59e90a53ecb0c75172}\index{game.c@{game.c}!keyboard\_device@{keyboard\_device}}
+\index{keyboard\_device@{keyboard\_device}!game.c@{game.c}}
+\doxysubsubsection{\texorpdfstring{keyboard\_device}{keyboard\_device}}
+{\footnotesize\ttfamily \label{game_8c_aaaee12ef170dce59e90a53ecb0c75172} 
+\mbox{\hyperlink{struct_keyboard_device}{Keyboard\+Device}}\texorpdfstring{$\ast$}{*} keyboard\+\_\+device\hspace{0.3cm}{\ttfamily [extern]}}
+
+\Hypertarget{game_8c_a189e4b3cf5d30c8f132982577142f27f}\index{game.c@{game.c}!last\_pressed\_was\_mouse@{last\_pressed\_was\_mouse}}
+\index{last\_pressed\_was\_mouse@{last\_pressed\_was\_mouse}!game.c@{game.c}}
+\doxysubsubsection{\texorpdfstring{last\_pressed\_was\_mouse}{last\_pressed\_was\_mouse}}
+{\footnotesize\ttfamily \label{game_8c_a189e4b3cf5d30c8f132982577142f27f} 
+bool last\+\_\+pressed\+\_\+was\+\_\+mouse\hspace{0.3cm}{\ttfamily [extern]}}
+
+\Hypertarget{game_8c_af690dfd2cb895a02795e3ee3c10792cc}\index{game.c@{game.c}!mouse\_device@{mouse\_device}}
+\index{mouse\_device@{mouse\_device}!game.c@{game.c}}
+\doxysubsubsection{\texorpdfstring{mouse\_device}{mouse\_device}}
+{\footnotesize\ttfamily \label{game_8c_af690dfd2cb895a02795e3ee3c10792cc} 
+\mbox{\hyperlink{struct_mouse_device}{Mouse\+Device}}\texorpdfstring{$\ast$}{*} mouse\+\_\+device\hspace{0.3cm}{\ttfamily [extern]}}
+
+\Hypertarget{game_8c_a0448fec049217e428b9ec21c03e51d52}\index{game.c@{game.c}!playing@{playing}}
+\index{playing@{playing}!game.c@{game.c}}
+\doxysubsubsection{\texorpdfstring{playing}{playing}}
+{\footnotesize\ttfamily \label{game_8c_a0448fec049217e428b9ec21c03e51d52} 
+bool playing = false}
+
+\Hypertarget{game_8c_a25362b33bad9ff6222dc40646c411649}\index{game.c@{game.c}!state@{state}}
+\index{state@{state}!game.c@{game.c}}
+\doxysubsubsection{\texorpdfstring{state}{state}}
+{\footnotesize\ttfamily \label{game_8c_a25362b33bad9ff6222dc40646c411649} 
+\mbox{\hyperlink{gamestates_8h_a7899b65f1ea0f655e4bbf8d2a5714285}{Game\+State}} state = \mbox{\hyperlink{gamestates_8h_a7899b65f1ea0f655e4bbf8d2a5714285ac22743f1fc74de09544ecc9bab74a17b}{MAIN\+\_\+\+MENU}}}
+

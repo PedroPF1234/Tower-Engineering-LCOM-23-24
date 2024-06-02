@@ -1,0 +1,5 @@
+<map id="create_rotation_abled_sprite" name="create_rotation_abled_sprite">
+<area shape="rect" id="Node000001" title="Initializes a new sprite with the ability to be rotated." alt="" coords="5,5,151,46"/>
+<area shape="rect" id="Node000002" href="$sprite_8c.html#a6b627ebca9ac330b47c8645631e9e045" title=" " alt="" coords="199,13,295,39"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="151,23,183,23,183,28,151,28"/>
+</map>

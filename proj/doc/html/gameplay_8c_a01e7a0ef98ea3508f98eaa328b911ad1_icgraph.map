@@ -1,0 +1,18 @@
+<map id="enterGame" name="enterGame">
+<area shape="rect" id="Node000001" title="Enters the game." alt="" coords="891,31,976,56"/>
+<area shape="rect" id="Node000002" href="$gameover_8c.html#a20563f1d3e320df15dfbf0c7d99b069d" title=" " alt="" coords="670,5,839,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="875,38,838,33,839,27,876,33"/>
+<area shape="rect" id="Node000007" href="$menu_8c.html#aa318138e879f960abd1e233898a5b046" title=" " alt="" coords="666,55,843,80"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="876,54,844,58,843,53,875,49"/>
+<area shape="rect" id="Node000003" href="$gameover_8c.html#af2f7ce039c1cc4997de1b9469f1d8059" title="Updates the game over screen." alt="" coords="494,5,618,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="655,21,618,21,618,16,655,16"/>
+<area shape="rect" id="Node000004" href="$game_8c.html#a315e950a7e6bb500fe11c37ee1122577" title="Encapsulates the whole game logic." alt="" coords="327,31,446,56"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="479,32,447,37,446,32,479,27"/>
+<area shape="rect" id="Node000005" href="$device__controller_8c.html#a4d10f01a84e9e24f18682c0bca48dca6" title="Calls all device&#39;s interrupt handlers." alt="" coords="162,31,279,56"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="312,46,279,46,279,41,312,41"/>
+<area shape="rect" id="Node000006" href="$proj_8c.html#af244d65e69677cf312af1950452ec256" title=" " alt="" coords="5,31,114,56"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="146,46,114,46,114,41,146,41"/>
+<area shape="rect" id="Node000008" href="$menu_8c.html#ac05247c60977ff8e8674fef3132618c3" title="Updates the menu." alt="" coords="510,55,602,80"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="651,70,602,70,602,65,651,65"/>
+<area shape="poly" id="edge8_Node000008_Node000004" title=" " alt="" coords="494,61,447,55,447,49,495,56"/>
+</map>

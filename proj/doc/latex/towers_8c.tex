@@ -1,0 +1,489 @@
+\doxysection{src/\+Game/\+Gameplay/\+Tower/towers.c File Reference}
+\hypertarget{towers_8c}{}\label{towers_8c}\index{src/Game/Gameplay/Tower/towers.c@{src/Game/Gameplay/Tower/towers.c}}
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include $<$math.\+h$>$}\newline
+{\ttfamily \#include "{}towers.\+h"{}}\newline
+{\ttfamily \#include "{}../../../\+Image\+Assets/\+Tower\+Base.\+xpm"{}}\newline
+{\ttfamily \#include "{}../../../\+Image\+Assets/\+Towers.\+xpm"{}}\newline
+Include dependency graph for towers.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{towers_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{towers_8c_a974abd8eb6b4b3e78607d4a3da66d64c}{initialize\+Different\+Tower\+Sprites}} ()
+\begin{DoxyCompactList}\small\item\em Initializes the sprites for the different types of turrets. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_tower_base}{Tower\+Base}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{towers_8c_ab88da1219fece0f54859e162bb6d2016}{initialize\+Tower}} (int16\+\_\+t x, int16\+\_\+t y)
+\begin{DoxyCompactList}\small\item\em Initializes a new tower. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_tower_array}{Tower\+Array}} \mbox{\hyperlink{towers_8c_ae145763026f3f13f72fc210ef7bff8bd}{new\+Tower\+Array}} (uint32\+\_\+t capacity)
+\begin{DoxyCompactList}\small\item\em Initializes a new array of Tower\+Bases. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{towers_8c_ac9b0598e368bd8934a1f9d91ab96f6a9}{push\+Tower\+Array}} (\mbox{\hyperlink{struct_tower_array}{Tower\+Array}} \texorpdfstring{$\ast$}{*}array, \mbox{\hyperlink{struct_tower_base}{Tower\+Base}} \texorpdfstring{$\ast$}{*}tower)
+\begin{DoxyCompactList}\small\item\em Adds a \doxylink{struct_tower_base}{Tower\+Base} to a \doxylink{struct_tower_array}{Tower\+Array}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_tower_base}{Tower\+Base}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{towers_8c_a23d2d6181fcd8d6fedd8308045a16810}{get\+Tower\+Array}} (\mbox{\hyperlink{struct_tower_array}{Tower\+Array}} \texorpdfstring{$\ast$}{*}array, uint32\+\_\+t index)
+\begin{DoxyCompactList}\small\item\em Retrieves a \doxylink{struct_tower_base}{Tower\+Base} from a \doxylink{struct_tower_array}{Tower\+Array}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{towers_8c_a9b138ee53113b2cef75c0c6c1782f77c}{remove\+Tower\+Array}} (\mbox{\hyperlink{struct_tower_array}{Tower\+Array}} \texorpdfstring{$\ast$}{*}array, uint32\+\_\+t index)
+\begin{DoxyCompactList}\small\item\em Removes a \doxylink{struct_tower_base}{Tower\+Base} from a \doxylink{struct_tower_array}{Tower\+Array}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{towers_8c_afef53eb0e92ab272ead12090ac37bd96}{destroy\+Turret\+Array}} (\mbox{\hyperlink{struct_tower_array}{Tower\+Array}} \texorpdfstring{$\ast$}{*}array)
+\begin{DoxyCompactList}\small\item\em Destroys a \doxylink{struct_tower_array}{Tower\+Array} and frees associated memory. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{towers_8c_aaa0d2c93b98860b8607047705ef016b7}{destroy\+Tower}} (\mbox{\hyperlink{struct_tower_base}{Tower\+Base}} \texorpdfstring{$\ast$}{*}tower)
+\begin{DoxyCompactList}\small\item\em Destroys a tower and frees associated memory. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{towers_8c_ae7f4c8abb8157de78fcb8bd1828c5163}{set\+Tower\+Hovered}} (\mbox{\hyperlink{struct_tower_base}{Tower\+Base}} \texorpdfstring{$\ast$}{*}tower, bool hovered)
+\item 
+void \mbox{\hyperlink{towers_8c_a0b9540e5b038f3ac47cc5e1c8b83b36c}{mount\+Turret}} (\mbox{\hyperlink{struct_tower_base}{Tower\+Base}} \texorpdfstring{$\ast$}{*}tower, \mbox{\hyperlink{towers_8h_a251e51a50f09b8bf056c1e11febce1e6}{Turret\+Type}} type)
+\begin{DoxyCompactList}\small\item\em Mounts a turret on a tower. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{towers_8c_ac21ec10d225ec42f95b8e52d5670ad20}{unmount\+Turret}} (\mbox{\hyperlink{struct_tower_base}{Tower\+Base}} \texorpdfstring{$\ast$}{*}tower)
+\begin{DoxyCompactList}\small\item\em Unmounts a turret from a tower. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{towers_8c_ad53e6aa00d7f7525ecefb28a51fa05bb}{hide\+Towers}} (\mbox{\hyperlink{struct_tower_array}{Tower\+Array}} \texorpdfstring{$\ast$}{*}array)
+\begin{DoxyCompactList}\small\item\em Hide the sprites of all the towers in a \doxylink{struct_tower_array}{Tower\+Array}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{towers_8c_acac69dca8944180bf112a43ff27da703}{show\+Towers}} (\mbox{\hyperlink{struct_tower_array}{Tower\+Array}} \texorpdfstring{$\ast$}{*}array)
+\begin{DoxyCompactList}\small\item\em Show the sprites of all the towers in a \doxylink{struct_tower_array}{Tower\+Array}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{towers_8c_a8f185fdcdf1f60b5984da277f9d918e3}{rotate\+Towers\+Towards\+Target}} (\mbox{\hyperlink{struct_tower_array}{Tower\+Array}} \texorpdfstring{$\ast$}{*}array, \mbox{\hyperlink{struct_enemy_array}{Enemy\+Array}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{gameplay_8c_a33f4bd1f8d3cdbfa5d99e1b7e196f170}{enemies}})
+\begin{DoxyCompactList}\small\item\em Rotate the turrets of all the towers in a \doxylink{struct_tower_array}{Tower\+Array} towards their targets. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_sprite}{Sprite}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{towers_8c_a570582588524061609a9f5cdff5371a5}{crossbow\+Turret}}
+\item 
+\mbox{\hyperlink{struct_sprite}{Sprite}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{towers_8c_a8a8d308afe95f190d9e5f8506c26a305}{canon\+Turret}}
+\item 
+\mbox{\hyperlink{struct_sprite}{Sprite}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{towers_8c_a2a8a66f4443668aa1e79f9c7798c5a20}{laser\+Turret}}
+\item 
+int \mbox{\hyperlink{towers_8c_a7ea545c3470ec259a6b23116258c5530}{rotations}} = 0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{towers_8c_aaa0d2c93b98860b8607047705ef016b7}\index{towers.c@{towers.c}!destroyTower@{destroyTower}}
+\index{destroyTower@{destroyTower}!towers.c@{towers.c}}
+\doxysubsubsection{\texorpdfstring{destroyTower()}{destroyTower()}}
+{\footnotesize\ttfamily \label{towers_8c_aaa0d2c93b98860b8607047705ef016b7} 
+void destroy\+Tower (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_tower_base}{Tower\+Base}} \texorpdfstring{$\ast$}{*}}]{tower}{}\end{DoxyParamCaption})}
+
+
+
+Destroys a tower and frees associated memory. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tower} & A pointer to the \doxylink{struct_tower_base}{Tower\+Base} to be destroyed. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{towers_8c_aaa0d2c93b98860b8607047705ef016b7_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{towers_8c_aaa0d2c93b98860b8607047705ef016b7_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{towers_8c_afef53eb0e92ab272ead12090ac37bd96}\index{towers.c@{towers.c}!destroyTurretArray@{destroyTurretArray}}
+\index{destroyTurretArray@{destroyTurretArray}!towers.c@{towers.c}}
+\doxysubsubsection{\texorpdfstring{destroyTurretArray()}{destroyTurretArray()}}
+{\footnotesize\ttfamily \label{towers_8c_afef53eb0e92ab272ead12090ac37bd96} 
+void destroy\+Turret\+Array (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_tower_array}{Tower\+Array}} \texorpdfstring{$\ast$}{*}}]{array}{}\end{DoxyParamCaption})}
+
+
+
+Destroys a \doxylink{struct_tower_array}{Tower\+Array} and frees associated memory. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em array} & The \doxylink{struct_tower_array}{Tower\+Array} to destroy. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{towers_8c_afef53eb0e92ab272ead12090ac37bd96_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{towers_8c_afef53eb0e92ab272ead12090ac37bd96_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{towers_8c_a23d2d6181fcd8d6fedd8308045a16810}\index{towers.c@{towers.c}!getTowerArray@{getTowerArray}}
+\index{getTowerArray@{getTowerArray}!towers.c@{towers.c}}
+\doxysubsubsection{\texorpdfstring{getTowerArray()}{getTowerArray()}}
+{\footnotesize\ttfamily \label{towers_8c_a23d2d6181fcd8d6fedd8308045a16810} 
+\mbox{\hyperlink{struct_tower_base}{Tower\+Base}} \texorpdfstring{$\ast$}{*} get\+Tower\+Array (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_tower_array}{Tower\+Array}} \texorpdfstring{$\ast$}{*}}]{array}{, }\item[{uint32\+\_\+t}]{index}{}\end{DoxyParamCaption})}
+
+
+
+Retrieves a \doxylink{struct_tower_base}{Tower\+Base} from a \doxylink{struct_tower_array}{Tower\+Array}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em array} & The \doxylink{struct_tower_array}{Tower\+Array} to retrieve the \doxylink{struct_tower_base}{Tower\+Base} from. \\
+\hline
+{\em index} & The index of the \doxylink{struct_tower_base}{Tower\+Base} to retrieve. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The \doxylink{struct_tower_base}{Tower\+Base} at the specified index. 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{towers_8c_a23d2d6181fcd8d6fedd8308045a16810_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{towers_8c_ad53e6aa00d7f7525ecefb28a51fa05bb}\index{towers.c@{towers.c}!hideTowers@{hideTowers}}
+\index{hideTowers@{hideTowers}!towers.c@{towers.c}}
+\doxysubsubsection{\texorpdfstring{hideTowers()}{hideTowers()}}
+{\footnotesize\ttfamily \label{towers_8c_ad53e6aa00d7f7525ecefb28a51fa05bb} 
+void hide\+Towers (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_tower_array}{Tower\+Array}} \texorpdfstring{$\ast$}{*}}]{array}{}\end{DoxyParamCaption})}
+
+
+
+Hide the sprites of all the towers in a \doxylink{struct_tower_array}{Tower\+Array}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em array} & A pointer to the \doxylink{struct_tower_array}{Tower\+Array} containing the tower to be updated. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{towers_8c_ad53e6aa00d7f7525ecefb28a51fa05bb_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{towers_8c_ad53e6aa00d7f7525ecefb28a51fa05bb_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{towers_8c_a974abd8eb6b4b3e78607d4a3da66d64c}\index{towers.c@{towers.c}!initializeDifferentTowerSprites@{initializeDifferentTowerSprites}}
+\index{initializeDifferentTowerSprites@{initializeDifferentTowerSprites}!towers.c@{towers.c}}
+\doxysubsubsection{\texorpdfstring{initializeDifferentTowerSprites()}{initializeDifferentTowerSprites()}}
+{\footnotesize\ttfamily \label{towers_8c_a974abd8eb6b4b3e78607d4a3da66d64c} 
+void initialize\+Different\+Tower\+Sprites (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Initializes the sprites for the different types of turrets. 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{towers_8c_a974abd8eb6b4b3e78607d4a3da66d64c_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{towers_8c_a974abd8eb6b4b3e78607d4a3da66d64c_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{towers_8c_ab88da1219fece0f54859e162bb6d2016}\index{towers.c@{towers.c}!initializeTower@{initializeTower}}
+\index{initializeTower@{initializeTower}!towers.c@{towers.c}}
+\doxysubsubsection{\texorpdfstring{initializeTower()}{initializeTower()}}
+{\footnotesize\ttfamily \label{towers_8c_ab88da1219fece0f54859e162bb6d2016} 
+\mbox{\hyperlink{struct_tower_base}{Tower\+Base}} \texorpdfstring{$\ast$}{*} initialize\+Tower (\begin{DoxyParamCaption}\item[{int16\+\_\+t}]{x}{, }\item[{int16\+\_\+t}]{y}{}\end{DoxyParamCaption})}
+
+
+
+Initializes a new tower. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & The initial x position of the tower. \\
+\hline
+{\em y} & The initial y position of the tower. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the newly initialized \doxylink{struct_tower_base}{Tower\+Base}. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{towers_8c_ab88da1219fece0f54859e162bb6d2016_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{towers_8c_ab88da1219fece0f54859e162bb6d2016_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{towers_8c_a0b9540e5b038f3ac47cc5e1c8b83b36c}\index{towers.c@{towers.c}!mountTurret@{mountTurret}}
+\index{mountTurret@{mountTurret}!towers.c@{towers.c}}
+\doxysubsubsection{\texorpdfstring{mountTurret()}{mountTurret()}}
+{\footnotesize\ttfamily \label{towers_8c_a0b9540e5b038f3ac47cc5e1c8b83b36c} 
+void mount\+Turret (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_tower_base}{Tower\+Base}} \texorpdfstring{$\ast$}{*}}]{tower}{, }\item[{\mbox{\hyperlink{towers_8h_a251e51a50f09b8bf056c1e11febce1e6}{Turret\+Type}}}]{type}{}\end{DoxyParamCaption})}
+
+
+
+Mounts a turret on a tower. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tower} & A pointer to the \doxylink{struct_tower_base}{Tower\+Base} to be updated. \\
+\hline
+{\em type} & The type of turret to be mounted. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{towers_8c_a0b9540e5b038f3ac47cc5e1c8b83b36c_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{towers_8c_a0b9540e5b038f3ac47cc5e1c8b83b36c_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{towers_8c_ae145763026f3f13f72fc210ef7bff8bd}\index{towers.c@{towers.c}!newTowerArray@{newTowerArray}}
+\index{newTowerArray@{newTowerArray}!towers.c@{towers.c}}
+\doxysubsubsection{\texorpdfstring{newTowerArray()}{newTowerArray()}}
+{\footnotesize\ttfamily \label{towers_8c_ae145763026f3f13f72fc210ef7bff8bd} 
+\mbox{\hyperlink{struct_tower_array}{Tower\+Array}} new\+Tower\+Array (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{capacity}{}\end{DoxyParamCaption})}
+
+
+
+Initializes a new array of Tower\+Bases. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em capacity} & The initial capacity of the \doxylink{struct_tower_array}{Tower\+Array}. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A new \doxylink{struct_tower_array}{Tower\+Array}. 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{towers_8c_ae145763026f3f13f72fc210ef7bff8bd_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{towers_8c_ac9b0598e368bd8934a1f9d91ab96f6a9}\index{towers.c@{towers.c}!pushTowerArray@{pushTowerArray}}
+\index{pushTowerArray@{pushTowerArray}!towers.c@{towers.c}}
+\doxysubsubsection{\texorpdfstring{pushTowerArray()}{pushTowerArray()}}
+{\footnotesize\ttfamily \label{towers_8c_ac9b0598e368bd8934a1f9d91ab96f6a9} 
+void push\+Tower\+Array (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_tower_array}{Tower\+Array}} \texorpdfstring{$\ast$}{*}}]{array}{, }\item[{\mbox{\hyperlink{struct_tower_base}{Tower\+Base}} \texorpdfstring{$\ast$}{*}}]{tower}{}\end{DoxyParamCaption})}
+
+
+
+Adds a \doxylink{struct_tower_base}{Tower\+Base} to a \doxylink{struct_tower_array}{Tower\+Array}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em array} & The \doxylink{struct_tower_array}{Tower\+Array} to add the \doxylink{struct_tower_base}{Tower\+Base} to. \\
+\hline
+{\em tower} & The \doxylink{struct_tower_base}{Tower\+Base} to add. \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{towers_8c_ac9b0598e368bd8934a1f9d91ab96f6a9_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{towers_8c_a9b138ee53113b2cef75c0c6c1782f77c}\index{towers.c@{towers.c}!removeTowerArray@{removeTowerArray}}
+\index{removeTowerArray@{removeTowerArray}!towers.c@{towers.c}}
+\doxysubsubsection{\texorpdfstring{removeTowerArray()}{removeTowerArray()}}
+{\footnotesize\ttfamily \label{towers_8c_a9b138ee53113b2cef75c0c6c1782f77c} 
+void remove\+Tower\+Array (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_tower_array}{Tower\+Array}} \texorpdfstring{$\ast$}{*}}]{array}{, }\item[{uint32\+\_\+t}]{index}{}\end{DoxyParamCaption})}
+
+
+
+Removes a \doxylink{struct_tower_base}{Tower\+Base} from a \doxylink{struct_tower_array}{Tower\+Array}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em array} & The \doxylink{struct_tower_array}{Tower\+Array} to remove the \doxylink{struct_tower_base}{Tower\+Base} from. \\
+\hline
+{\em index} & The index of the \doxylink{struct_tower_base}{Tower\+Base} to remove. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{towers_8c_a9b138ee53113b2cef75c0c6c1782f77c_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{towers_8c_a8f185fdcdf1f60b5984da277f9d918e3}\index{towers.c@{towers.c}!rotateTowersTowardsTarget@{rotateTowersTowardsTarget}}
+\index{rotateTowersTowardsTarget@{rotateTowersTowardsTarget}!towers.c@{towers.c}}
+\doxysubsubsection{\texorpdfstring{rotateTowersTowardsTarget()}{rotateTowersTowardsTarget()}}
+{\footnotesize\ttfamily \label{towers_8c_a8f185fdcdf1f60b5984da277f9d918e3} 
+void rotate\+Towers\+Towards\+Target (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_tower_array}{Tower\+Array}} \texorpdfstring{$\ast$}{*}}]{array}{, }\item[{\mbox{\hyperlink{struct_enemy_array}{Enemy\+Array}} \texorpdfstring{$\ast$}{*}}]{target}{}\end{DoxyParamCaption})}
+
+
+
+Rotate the turrets of all the towers in a \doxylink{struct_tower_array}{Tower\+Array} towards their targets. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tower} & A pointer to the \doxylink{struct_tower_base}{Tower\+Base}. \\
+\hline
+{\em target} & A pointer to the \doxylink{struct_enemy_array}{Enemy\+Array} containing the enemies to target. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{towers_8c_a8f185fdcdf1f60b5984da277f9d918e3_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{towers_8c_a8f185fdcdf1f60b5984da277f9d918e3_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{towers_8c_ae7f4c8abb8157de78fcb8bd1828c5163}\index{towers.c@{towers.c}!setTowerHovered@{setTowerHovered}}
+\index{setTowerHovered@{setTowerHovered}!towers.c@{towers.c}}
+\doxysubsubsection{\texorpdfstring{setTowerHovered()}{setTowerHovered()}}
+{\footnotesize\ttfamily \label{towers_8c_ae7f4c8abb8157de78fcb8bd1828c5163} 
+void set\+Tower\+Hovered (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_tower_base}{Tower\+Base}} \texorpdfstring{$\ast$}{*}}]{tower}{, }\item[{bool}]{hovered}{}\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=334pt]{towers_8c_ae7f4c8abb8157de78fcb8bd1828c5163_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{towers_8c_acac69dca8944180bf112a43ff27da703}\index{towers.c@{towers.c}!showTowers@{showTowers}}
+\index{showTowers@{showTowers}!towers.c@{towers.c}}
+\doxysubsubsection{\texorpdfstring{showTowers()}{showTowers()}}
+{\footnotesize\ttfamily \label{towers_8c_acac69dca8944180bf112a43ff27da703} 
+void show\+Towers (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_tower_array}{Tower\+Array}} \texorpdfstring{$\ast$}{*}}]{array}{}\end{DoxyParamCaption})}
+
+
+
+Show the sprites of all the towers in a \doxylink{struct_tower_array}{Tower\+Array}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em array} & A pointer to the \doxylink{struct_tower_array}{Tower\+Array} containing the tower to be updated. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=266pt]{towers_8c_acac69dca8944180bf112a43ff27da703_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{towers_8c_acac69dca8944180bf112a43ff27da703_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{towers_8c_ac21ec10d225ec42f95b8e52d5670ad20}\index{towers.c@{towers.c}!unmountTurret@{unmountTurret}}
+\index{unmountTurret@{unmountTurret}!towers.c@{towers.c}}
+\doxysubsubsection{\texorpdfstring{unmountTurret()}{unmountTurret()}}
+{\footnotesize\ttfamily \label{towers_8c_ac21ec10d225ec42f95b8e52d5670ad20} 
+void unmount\+Turret (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_tower_base}{Tower\+Base}} \texorpdfstring{$\ast$}{*}}]{tower}{}\end{DoxyParamCaption})}
+
+
+
+Unmounts a turret from a tower. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tower} & A pointer to the \doxylink{struct_tower_base}{Tower\+Base} to be updated. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{towers_8c_ac21ec10d225ec42f95b8e52d5670ad20_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{towers_8c_ac21ec10d225ec42f95b8e52d5670ad20_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{towers_8c_a8a8d308afe95f190d9e5f8506c26a305}\index{towers.c@{towers.c}!canonTurret@{canonTurret}}
+\index{canonTurret@{canonTurret}!towers.c@{towers.c}}
+\doxysubsubsection{\texorpdfstring{canonTurret}{canonTurret}}
+{\footnotesize\ttfamily \label{towers_8c_a8a8d308afe95f190d9e5f8506c26a305} 
+\mbox{\hyperlink{struct_sprite}{Sprite}}\texorpdfstring{$\ast$}{*} canon\+Turret}
+
+\Hypertarget{towers_8c_a570582588524061609a9f5cdff5371a5}\index{towers.c@{towers.c}!crossbowTurret@{crossbowTurret}}
+\index{crossbowTurret@{crossbowTurret}!towers.c@{towers.c}}
+\doxysubsubsection{\texorpdfstring{crossbowTurret}{crossbowTurret}}
+{\footnotesize\ttfamily \label{towers_8c_a570582588524061609a9f5cdff5371a5} 
+\mbox{\hyperlink{struct_sprite}{Sprite}}\texorpdfstring{$\ast$}{*} crossbow\+Turret}
+
+\Hypertarget{towers_8c_a2a8a66f4443668aa1e79f9c7798c5a20}\index{towers.c@{towers.c}!laserTurret@{laserTurret}}
+\index{laserTurret@{laserTurret}!towers.c@{towers.c}}
+\doxysubsubsection{\texorpdfstring{laserTurret}{laserTurret}}
+{\footnotesize\ttfamily \label{towers_8c_a2a8a66f4443668aa1e79f9c7798c5a20} 
+\mbox{\hyperlink{struct_sprite}{Sprite}}\texorpdfstring{$\ast$}{*} laser\+Turret}
+
+\Hypertarget{towers_8c_a7ea545c3470ec259a6b23116258c5530}\index{towers.c@{towers.c}!rotations@{rotations}}
+\index{rotations@{rotations}!towers.c@{towers.c}}
+\doxysubsubsection{\texorpdfstring{rotations}{rotations}}
+{\footnotesize\ttfamily \label{towers_8c_a7ea545c3470ec259a6b23116258c5530} 
+int rotations = 0}
+

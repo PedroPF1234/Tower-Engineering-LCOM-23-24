@@ -1,0 +1,7 @@
+<map id="exitMenu" name="exitMenu">
+<area shape="rect" id="Node000001" title="Exits the menu." alt="" coords="5,5,80,31"/>
+<area shape="rect" id="Node000002" href="$button_8c.html#a4d66a0f1c519e7e4ab43d96d3286db4f" title="Turns off the visibility of all the Button&#39;s Sprites in a ButtonArray." alt="" coords="128,5,218,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="80,16,112,16,112,21,80,21"/>
+<area shape="rect" id="Node000003" href="$button_8c.html#ac3e1fa5a312e4690dd8b5d14db4bdd0f" title="Retrieves a Button from a ButtonArray." alt="" coords="266,5,374,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="218,16,250,16,250,21,218,21"/>
+</map>

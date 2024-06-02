@@ -1,0 +1,53 @@
+\doxysection{keyboardkeys.\+h}
+\hypertarget{keyboardkeys_8h_source}{}\label{keyboardkeys_8h_source}\index{src/Devices/KeyBoard/keyboardkeys.h@{src/Devices/KeyBoard/keyboardkeys.h}}
+\mbox{\hyperlink{keyboardkeys_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ Keyboard\ Scancodes}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#define\ ESC\_MAKE\ 0x01\ }\textcolor{comment}{//\ Make\ Code\ for\ ESC\ Key}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#define\ ESC\_BREAK\ 0x81\ }\textcolor{comment}{//\ Break\ Code\ for\ ESC\ Key}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ UP\_ARROW\_MAKE\ 0x48\ }\textcolor{comment}{//\ Make\ Code\ for\ UP\ Arrow\ Key}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#define\ UP\_ARROW\_BREAK\ 0xC8\ }\textcolor{comment}{//\ Break\ Code\ for\ UP\ Arrow\ Key}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#define\ DOWN\_ARROW\_MAKE\ 0x50\ }\textcolor{comment}{//\ Make\ Code\ for\ DOWN\ Arrow\ Key}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#define\ DOWN\_ARROW\_BREAK\ 0xD0\ }\textcolor{comment}{//\ Break\ Code\ for\ DOWN\ Arrow\ Key}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#define\ LEFT\_ARROW\_MAKE\ 0x4B\ }\textcolor{comment}{//\ Make\ Code\ for\ LEFT\ Arrow\ Key}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#define\ LEFT\_ARROW\_BREAK\ 0xCB\ }\textcolor{comment}{//\ Break\ Code\ for\ LEFT\ Arrow\ Key}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#define\ RIGHT\_ARROW\_MAKE\ 0x4D\ }\textcolor{comment}{//\ Make\ Code\ for\ RIGHT\ Arrow\ Key}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#define\ RIGHT\_ARROW\_BREAK\ 0xCD\ }\textcolor{comment}{//\ Break\ Code\ for\ RIGHT\ Arrow\ Key}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#define\ ENTER\_MAKE\ 0x1C\ }\textcolor{comment}{//\ Make\ Code\ for\ ENTER\ Key}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#define\ ENTER\_BREAK\ 0x9C\ }\textcolor{comment}{//\ Break\ Code\ for\ ENTER\ Key}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#define\ SPACE\_MAKE\ 0x39\ }\textcolor{comment}{//\ Make\ Code\ for\ SPACE\ Key}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#define\ SPACE\_BREAK\ 0xB9\ }\textcolor{comment}{//\ Break\ Code\ for\ SPACE\ Key}}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#define\ BACKSPACE\_MAKE\ 0x0E\ }\textcolor{comment}{//\ Make\ Code\ for\ BACKSPACE\ Key}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#define\ BACKSPACE\_BREAK\ 0x8E\ }\textcolor{comment}{//\ Break\ Code\ for\ BACKSPACE\ Key}}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#define\ W\_MAKE\ 0x11\ }\textcolor{comment}{//\ Make\ Code\ for\ W\ Key}}
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#define\ W\_BREAK\ 0x91\ }\textcolor{comment}{//\ Break\ Code\ for\ W\ Key}}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#define\ A\_MAKE\ 0x1E\ }\textcolor{comment}{//\ Make\ Code\ for\ A\ Key}}
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#define\ A\_BREAK\ 0x9E\ }\textcolor{comment}{//\ Break\ Code\ for\ A\ Key}}
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#define\ S\_MAKE\ 0x1F\ }\textcolor{comment}{//\ Make\ Code\ for\ S\ Key}}
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#define\ S\_BREAK\ 0x9F\ }\textcolor{comment}{//\ Break\ Code\ for\ S\ Key}}
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#define\ D\_MAKE\ 0x20\ }\textcolor{comment}{//\ Make\ Code\ for\ D\ Key}}
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#define\ D\_BREAK\ 0xA0\ }\textcolor{comment}{//\ Break\ Code\ for\ D\ Key}}
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#define\ E\_MAKE\ 0x12\ }\textcolor{comment}{//\ Make\ Code\ for\ E\ Key}}
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#define\ E\_BREAK\ 0x92\ }\textcolor{comment}{//\ Break\ Code\ for\ E\ Key}}
+\DoxyCodeLine{00037\ \textcolor{preprocessor}{\#define\ Q\_MAKE\ 0x10\ }\textcolor{comment}{//\ Make\ Code\ for\ Q\ Key}}
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#define\ Q\_BREAK\ 0x90\ }\textcolor{comment}{//\ Break\ Code\ for\ Q\ Key}}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_key_presses}{KeyPresses}}\ \{}
+\DoxyCodeLine{00041\ \ \ uint8\_t\ \mbox{\hyperlink{struct_key_presses_a6a985ca8342738956cb19b6ea4382fa9}{key}};}
+\DoxyCodeLine{00042\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{struct_key_presses_a01502f0fc5fbda68031c48291cb38137}{special}};}
+\DoxyCodeLine{00043\ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_key_presses}{KeyPresses}}*\ \mbox{\hyperlink{struct_key_presses_abc9cbe5cf9fb8583c973a9337e1d5a46}{next}};}
+\DoxyCodeLine{00044\ \}\ \mbox{\hyperlink{keyboardkeys_8h_a6f6ec4cc4cba332c09a9495f4da5b6ac}{KeyPresses}};}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{keyboardkeys_8h_a1694c3560e3c24c372f2da32af1dae1b}{addKeyPressAtEnd}}(\mbox{\hyperlink{struct_key_presses}{KeyPresses}}**\ head,\ uint8\_t\ \mbox{\hyperlink{struct_key_presses_a6a985ca8342738956cb19b6ea4382fa9}{key}},\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{struct_key_presses_a01502f0fc5fbda68031c48291cb38137}{special}});}
+\DoxyCodeLine{00047\ uint16\_t*\ \mbox{\hyperlink{keyboardkeys_8h_a1f966262499dcaa9a4f80fae19c3e42b}{processPressedKeys}}(\mbox{\hyperlink{struct_key_presses}{KeyPresses}}**\ head);}
+
+\end{DoxyCode}

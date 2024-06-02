@@ -1,0 +1,7 @@
+<map id="init_render_pipeline" name="init_render_pipeline">
+<area shape="rect" id="Node000001" title="Initializes a render pipeline." alt="" coords="5,31,138,56"/>
+<area shape="rect" id="Node000002" href="$gameobject_8c.html#a7d0c1a0dd005df040cc05565d27e5e13" title=" " alt="" coords="186,5,390,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="138,33,170,29,170,35,138,38"/>
+<area shape="rect" id="Node000003" href="$gameobject_8c.html#a84aced79002334c0053bf3a94ab4e947" title=" " alt="" coords="229,55,347,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="138,48,213,57,213,62,138,53"/>
+</map>

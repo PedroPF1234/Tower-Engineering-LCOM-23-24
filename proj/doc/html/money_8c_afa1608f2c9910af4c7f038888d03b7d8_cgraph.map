@@ -1,0 +1,11 @@
+<map id="createMoneyDigitsGameObjects" name="createMoneyDigitsGameObjects">
+<area shape="rect" id="Node000001" title="Creates the game objects that represent the digits of the money amount using the associated sprites." alt="" coords="5,70,216,96"/>
+<area shape="rect" id="Node000002" href="$gameobject_8c.html#a3e3995c85445e5e632c02ce335f6d43a" title="Creates a game object from a sprite." alt="" coords="264,5,428,46"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="166,67,248,47,249,52,167,72"/>
+<area shape="rect" id="Node000004" href="$sprite_8c.html#a4ed5b9becd1df00c68f6348b54b01191" title="Gets a sprite from a given sprite array." alt="" coords="294,70,398,96"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="216,80,278,80,278,86,216,86"/>
+<area shape="rect" id="Node000005" href="$gameobject_8c.html#a7814e4774ca4e96cdf37aaf01e2bd08d" title="Adds a GameObject to a GameObjectArray." alt="" coords="267,120,425,145"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="176,94,267,113,266,118,175,99"/>
+<area shape="rect" id="Node000003" href="$gameobject_8c.html#a6a1ebecd29c69ded46970bd41c3097f0" title=" " alt="" coords="476,13,617,39"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="428,23,460,23,460,28,428,28"/>
+</map>

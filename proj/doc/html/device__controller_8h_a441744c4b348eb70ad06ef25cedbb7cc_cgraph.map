@@ -1,0 +1,19 @@
+<map id="update_timer_freq" name="update_timer_freq">
+<area shape="rect" id="Node000001" title="Updates the frequency of the timer." alt="" coords="5,108,131,134"/>
+<area shape="rect" id="Node000002" href="$timer_8c.html#acaf7742ecd9e34865122cde30749e54f" title="Subscribes and enables Timer 0 interrupts with a given frequency." alt="" coords="191,71,315,112"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="131,108,175,101,176,106,131,114"/>
+<area shape="rect" id="Node000009" href="$timer_8c.html#ab9eea51549744bca5c5c923b388bb4ee" title=" " alt="" coords="179,136,327,162"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="131,128,164,133,163,138,131,133"/>
+<area shape="rect" id="Node000003" href="$timer_8c.html#aca1506be74dfc71c6f90772ca269c619" title=" " alt="" coords="375,55,514,80"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="315,81,359,75,360,81,315,86"/>
+<area shape="rect" id="Node000008" href="$timer_8c.html#a6f786481e80308348d629d605ffa2d84" title=" " alt="" coords="378,104,512,130"/>
+<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="315,97,363,103,362,109,315,102"/>
+<area shape="rect" id="Node000004" href="$timer_8c.html#afafc1891c876602d55b894103b1841a7" title=" " alt="" coords="562,5,670,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="491,51,553,33,555,38,493,57"/>
+<area shape="rect" id="Node000006" href="$utils_8c.html#a31ab374573517f8a5ba31c52a49a8606" title=" " alt="" coords="568,55,664,80"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="515,65,553,65,553,70,515,70"/>
+<area shape="rect" id="Node000007" href="$utils_8c.html#afc6ca7a9a39943ff1792d206da514a59" title=" " alt="" coords="566,104,666,130"/>
+<area shape="poly" id="edge6_Node000003_Node000007" title=" " alt="" coords="493,78,555,97,553,102,491,84"/>
+<area shape="rect" id="Node000005" href="$utils_8c.html#a2b56f50ba159e9d5115ed1a75eff15d9" title=" " alt="" coords="718,5,808,31"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="670,16,702,16,702,21,670,21"/>
+</map>

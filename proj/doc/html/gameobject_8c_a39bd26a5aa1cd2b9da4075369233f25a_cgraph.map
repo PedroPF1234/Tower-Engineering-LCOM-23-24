@@ -1,0 +1,15 @@
+<map id="destroy_gameobjects" name="destroy_gameobjects">
+<area shape="rect" id="Node000001" title="Destroys the game objects." alt="" coords="5,83,151,108"/>
+<area shape="rect" id="Node000002" href="$gameobject_8c.html#ab2ca8f1feaafcb93216e911798e96b40" title="Destroys a game object, removes it from the render pipeline and frees associated memory." alt="" coords="226,53,364,79"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="151,83,210,75,211,80,152,88"/>
+<area shape="rect" id="Node000005" href="$gameobject_8c.html#a7e91d1a7fcf8ae4b0d63f5c6e57e70e8" title=" " alt="" coords="199,103,391,144"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="152,102,183,106,183,112,151,108"/>
+<area shape="rect" id="Node000003" href="$sprite_8c.html#af16c6befaac9ffb673b9e3c798d542ed" title="Destroys a sprite and frees associated memory." alt="" coords="482,5,585,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="362,50,466,29,467,34,363,55"/>
+<area shape="rect" id="Node000004" href="$gameobject_8c.html#a11caa0bf998b9de720cc858c6d02274b" title=" " alt="" coords="457,55,609,80"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="364,64,441,64,441,70,364,69"/>
+<area shape="rect" id="Node000006" href="$gameobject_8c.html#a90679da3162b90b280ebdac3e6bf76a6" title=" " alt="" coords="452,108,615,134"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="391,120,436,119,436,125,391,125"/>
+<area shape="rect" id="Node000007" href="$gameobject_8c.html#a6c5f23be817ba82ba175b2d08841a507" title=" " alt="" coords="439,157,627,183"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="392,140,450,151,449,156,391,145"/>
+</map>
