@@ -127,7 +127,7 @@ Every action that had a determined timing to occur was implemented using the RTC
 |   Move Diagonally Up Left: <kbd><kbd>&uarr;</kbd> or <kbd>W</kbd></kbd> + <kbd><kbd>&larr;</kbd> or <kbd>A</kbd></kbd> or vice versa |  Select: <kbd>ENTER</kbd> |
 |   Move Diagonally Up Right: <kbd><kbd>&uarr;</kbd> or <kbd>W</kbd></kbd> + <kbd><kbd>&rarr;</kbd> or <kbd>D</kbd></kbd> or vice versa |  Pause: <kbd>ESC</kbd> |
 |   Move Diagonally Down Left: <kbd><kbd>&darr;</kbd> or <kbd>S</kbd></kbd> + <kbd><kbd>&larr;</kbd> or <kbd>A</kbd></kbd> or vice versa |  Open Store/Base: <kbd>E</kbd> |
-|   Move Diagonally Down Right: <kbd><kbd>&darr;</kbd> or <kbd>S</kbd></kbd> + <kbd><kbd>&rarr;</kbd> or <kbd>D</kbd></kbd> or vice versa |
+|   Move Diagonally Down Right: <kbd><kbd>&darr;</kbd> or <kbd>S</kbd></kbd> + <kbd><kbd>&rarr;</kbd> or <kbd>D</kbd></kbd> or vice versa | Open Turret Menu: <kbd>E</kbd> |
 
 ## The Group
 ### Group Name: T05-G02
